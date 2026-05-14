@@ -1,0 +1,333 @@
+# 🍔 FlowDelivery
+
+Production-ready Flutter food delivery application built with MVVM architecture, Supabase backend integration, and scalable software engineering practices.
+
+---
+
+# 📱 Overview
+
+FlowDelivery is a modern delivery platform developed as a portfolio-grade software engineering project focused on:
+
+- Flutter cross-platform development
+- MVVM architecture
+- Clean Architecture principles
+- Supabase backend integration
+- Design System scalability
+- AI-assisted development workflow
+- CI/CD readiness
+- Professional engineering conventions
+
+The project is being developed with a strong emphasis on maintainability, scalability, documentation, and real-world engineering practices.
+
+---
+
+# 🚀 Tech Stack
+
+## Frontend
+
+- Flutter
+- Dart
+- Material 3
+- MVVM Architecture
+
+---
+
+## Backend
+
+- Supabase
+- PostgreSQL
+- Authentication
+- Storage
+- Realtime
+
+---
+
+## Architecture & Engineering
+
+- MVVM
+- Repository Pattern
+- Feature-first organization
+- Design Tokens
+- Conventional Commits
+- Semantic Versioning
+- CI/CD Ready
+
+---
+
+## AI-Assisted Development
+
+This project uses AI-assisted workflows during development:
+
+- OpenAI Codex CLI
+- GitHub Copilot
+- Prompt Engineering
+- Context-driven software generation
+
+---
+
+# 📂 Project Structure
+
+```text
+lib/
+├── app/
+├── core/
+├── shared/
+├── features/
+│   ├── auth/
+│   ├── home/
+│   ├── restaurants/
+│   ├── cart/
+│   ├── checkout/
+│   ├── orders/
+│   └── profile/
+├── design_system/
+└── main.dart
+```
+
+---
+
+# 🧠 Architectural Principles
+
+The project follows:
+
+- Separation of Concerns
+- Single Responsibility Principle
+- Dependency Inversion
+- Reactive State Management
+- Scalable Feature Modules
+- Clean UI Composition
+
+---
+
+# 🎨 Design System
+
+FlowDelivery uses a scalable Design System strategy including:
+
+- Semantic colors
+- Typography tokens
+- Spacing tokens
+- Radius tokens
+- Elevation standards
+- Responsive layouts
+
+---
+
+# 📋 Planned Features
+
+## Authentication
+
+- Email/password login
+- Social authentication
+- Session persistence
+
+---
+
+## Restaurant Feed
+
+- Featured restaurants
+- Categories
+- Search
+- Filters
+
+---
+
+## Product Details
+
+- Product customization
+- Add-to-cart flow
+- Dynamic pricing
+
+---
+
+## Cart & Checkout
+
+- Shopping cart
+- Address selection
+- Payment flow
+- Order summary
+
+---
+
+## Orders
+
+- Order tracking
+- Order history
+- Delivery status timeline
+
+---
+
+## Profile
+
+- User information
+- Addresses
+- Payment methods
+- Preferences
+
+---
+
+# 📸 Planned Screens
+
+- Splash & Onboarding
+- Authentication
+- Home Feed
+- Restaurant Details
+- Product Details
+- Cart
+- Checkout
+- Order Tracking
+- Order History
+- User Profile
+
+---
+
+# 🧪 Quality Assurance
+
+Planned QA strategy includes:
+
+- Unit tests
+- Widget tests
+- Integration tests
+- Lint rules
+- Static analysis
+- CI validation pipelines
+
+---
+
+# 🔀 Git Conventions
+
+This project follows:
+
+- Conventional Commits
+- Git Flow-inspired branching strategy
+- Semantic Versioning
+
+Example:
+
+```bash
+feat(cart): implement cart state management
+```
+
+---
+
+# 📚 Documentation
+
+Project documentation is organized under:
+
+```text
+docs/
+├── architecture/
+├── conventions/
+├── setup/
+├── qa/
+└── releases/
+```
+
+---
+
+# ⚙️ Environment Strategy
+
+Planned environments:
+
+- Development
+- Staging
+- Production
+
+Configuration management will include:
+
+- Environment variables
+- Secure secrets management
+- Build flavors
+- CI/CD pipelines
+
+---
+
+# 🛠️ Getting Started
+
+## Prerequisites
+
+- Flutter SDK
+- Dart SDK
+- VS Code
+- Android Studio
+- Supabase account
+
+---
+
+## Clone repository
+
+```bash
+git clone https://github.com/leomoraesitu/flowdelivery-app.git
+```
+
+---
+
+## Install dependencies
+
+```bash
+flutter pub get
+```
+
+---
+
+## Run application
+
+```bash
+flutter run
+```
+
+---
+
+# 📈 Roadmap
+
+## Phase 1 — Foundation
+
+- [ ] Project setup
+- [ ] MVVM structure
+- [ ] Design System
+- [ ] Routing
+- [ ] Theme architecture
+
+---
+
+## Phase 2 — Core Features
+
+- [ ] Authentication
+- [ ] Home feed
+- [ ] Restaurant details
+- [ ] Product details
+
+---
+
+## Phase 3 — Commerce
+
+- [ ] Cart
+- [ ] Checkout
+- [ ] Payments
+- [ ] Orders
+
+---
+
+## Phase 4 — Production Readiness
+
+- [ ] Tests
+- [ ] CI/CD
+- [ ] Analytics
+- [ ] Monitoring
+- [ ] Release pipelines
+
+---
+
+# 👨‍💻 Author
+
+Leonardo de Moraes Souza
+
+Flutter Developer • Mobile Engineer • AI-Assisted Software Development
+
+- GitHub: https://github.com/leomoraesitu
+- LinkedIn: https://linkedin.com/in/leomoraesitu
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
