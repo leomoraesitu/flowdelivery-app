@@ -1,0 +1,253 @@
+{
+  "name": "FlowDelivery Bug Triage Template",
+  "defaultLists": false,
+
+  "labels": [
+    { "name": "bug", "color": "red", "id": "lab_bug" },
+    { "name": "fix", "color": "red", "id": "lab_fix" },
+    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
+    { "name": "backend", "color": "orange", "id": "lab_backend" },
+    { "name": "supabase", "color": "green", "id": "lab_supabase" },
+    { "name": "flutterflow", "color": "pink", "id": "lab_flutterflow" },
+    { "name": "qa", "color": "yellow", "id": "lab_qa" },
+    { "name": "regression", "color": "purple", "id": "lab_regression" },
+    { "name": "blocked", "color": "red", "id": "lab_blocked" },
+    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
+    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
+    { "name": "priority-low", "color": "green", "id": "lab_priority_low" }
+  ],
+
+  "customFields": [
+    {
+      "id": "cf_severity",
+      "display": { "cardFront": true },
+      "name": "Severity",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_sev_critical",
+          "value": { "text": "CRITICAL" },
+          "color": "red"
+        },
+        {
+          "id": "opt_sev_high",
+          "value": { "text": "HIGH" },
+          "color": "orange"
+        },
+        {
+          "id": "opt_sev_medium",
+          "value": { "text": "MEDIUM" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_sev_low",
+          "value": { "text": "LOW" },
+          "color": "green"
+        }
+      ]
+    },
+    {
+      "id": "cf_environment",
+      "display": { "cardFront": true },
+      "name": "Environment",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_env_dev",
+          "value": { "text": "DEV" },
+          "color": "blue"
+        },
+        {
+          "id": "opt_env_staging",
+          "value": { "text": "STAGING" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_env_prod",
+          "value": { "text": "PROD" },
+          "color": "red"
+        }
+      ]
+    },
+    {
+      "id": "cf_status",
+      "display": { "cardFront": true },
+      "name": "Bug Status",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_reported",
+          "value": { "text": "REPORTED" },
+          "color": "blue"
+        },
+        {
+          "id": "opt_reproduced",
+          "value": { "text": "REPRODUCED" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_fixing",
+          "value": { "text": "FIXING" },
+          "color": "orange"
+        },
+        {
+          "id": "opt_validated",
+          "value": { "text": "VALIDATED" },
+          "color": "green"
+        },
+        {
+          "id": "opt_blocked",
+          "value": { "text": "BLOCKED" },
+          "color": "red"
+        }
+      ]
+    }
+  ],
+
+  "lists": [
+    {
+      "name": "🐞 Reported",
+      "cards": [
+        {
+          "name": "[BUG] Descrever comportamento incorreto",
+          "desc": "# Resumo\nDescrever o problema observado.\n\n# Passos para Reproduzir\n1. Passo 1\n2. Passo 2\n3. Passo 3\n\n# Resultado Atual\nO que aconteceu.\n\n# Resultado Esperado\nO que deveria acontecer.\n\n# Evidências\n- Screenshot, vídeo, log ou link",
+          "idLabels": [
+            "lab_bug",
+            "lab_priority_medium"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_reported",
+              "idCustomField": "cf_status"
+            },
+            {
+              "value": null,
+              "idValue": "opt_sev_medium",
+              "idCustomField": "cf_severity"
+            },
+            {
+              "value": null,
+              "idValue": "opt_env_dev",
+              "idCustomField": "cf_environment"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🔎 Triage",
+      "cards": [
+        {
+          "name": "[TRIAGE] Classificar bug",
+          "desc": "# Checklist\n- [ ] Severidade definida\n- [ ] Ambiente confirmado\n- [ ] Área afetada marcada\n- [ ] Regressão avaliada\n- [ ] Responsável definido",
+          "idLabels": [
+            "lab_bug",
+            "lab_qa"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "✅ Reproduced",
+      "cards": [
+        {
+          "name": "[BUG] Bug reproduzido",
+          "desc": "# Evidência de Reprodução\n- [ ] Passos confirmados\n- [ ] Log relevante anexado\n- [ ] Versão/build informada\n\n# Hipótese Técnica\nDescrever possível causa.",
+          "idLabels": [
+            "lab_bug",
+            "lab_fix"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_reproduced",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🚧 Fixing",
+      "cards": [
+        {
+          "name": "[FIX] Corrigir bug confirmado",
+          "desc": "# Objetivo\nCorrigir causa raiz do bug.\n\n# Critérios de Aceite\n- [ ] Bug não reproduz mais\n- [ ] Fluxo relacionado continua funcionando\n- [ ] Regressão avaliada",
+          "idLabels": [
+            "lab_fix",
+            "lab_priority_high"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_fixing",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "👀 Review",
+      "cards": []
+    },
+    {
+      "name": "🧪 QA Validation",
+      "cards": [
+        {
+          "name": "[QA] Validar correção",
+          "desc": "# Validação\n- [ ] Cenário original validado\n- [ ] Cenários próximos testados\n- [ ] Evidência anexada\n- [ ] Ambiente registrado",
+          "idLabels": [
+            "lab_qa",
+            "lab_fix"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_validated",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🎉 Done",
+      "cards": []
+    },
+    {
+      "name": "🚫 Won't Fix / Duplicate",
+      "cards": [
+        {
+          "name": "[BUG] Fechado sem correção",
+          "desc": "# Motivo\n- Duplicado, inválido, fora de escopo ou não reproduzível.\n\n# Referência\n- Link para card relacionado ou decisão.",
+          "idLabels": [
+            "lab_bug",
+            "lab_priority_low"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "⛔ Blocked",
+      "cards": [
+        {
+          "name": "[BLOCKED] Bug bloqueado",
+          "desc": "# Motivo\nDescrever dependência que impede correção ou validação.\n\n# Próxima Ação\n- [ ] Responsável definido\n- [ ] Evidência necessária listada",
+          "idLabels": [
+            "lab_blocked",
+            "lab_bug"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_blocked",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

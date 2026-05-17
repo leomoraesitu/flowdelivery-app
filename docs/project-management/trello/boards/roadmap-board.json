@@ -1,0 +1,86 @@
+{
+  "name": "FlowDelivery - Roadmap",
+  "board": "FlowDelivery - Roadmap",
+  "lists": [
+    {
+      "name": "🧱 Foundation",
+      "cards": [
+        {
+          "name": "[EPIC] Sprint 0 — Foundation & Governance",
+          "labels": ["architecture", "mvvm", "docs", "priority-high"],
+          "desc": "# Objective\nEstablish the technical and organizational foundation of FlowDelivery.\n\n# Scope\n- Git workflow\n- Conventional Commits\n- MVVM architecture\n- Supabase setup documentation\n- Design System documentation\n- Trello workflow\n- Codex governance\n\n# Release Target\nv0.1.0\n\n# Acceptance Criteria\n- [x] Documentation created\n- [x] Repository structure created\n- [x] Initial validation passes\n- [ ] Remaining implementation tasks mapped"
+        },
+        {
+          "name": "[FOUNDATION] Development workflow hardening",
+          "labels": ["chore", "ci-cd", "qa", "priority-medium"],
+          "desc": "# Objective\nStrengthen the validation workflow before product features accelerate.\n\n# Scope\n- CI checks\n- Analyzer discipline\n- Test execution baseline\n- PR review checklist\n\n# Release Target\nv0.1.x\n\n# Acceptance Criteria\n- [ ] CI expectations documented\n- [ ] Local validation commands confirmed\n- [ ] Review checklist aligned with Definition of Done"
+        }
+      ]
+    },
+    {
+      "name": "📱 MVP",
+      "cards": [
+        {
+          "name": "[EPIC] User Authentication",
+          "labels": ["feat", "auth", "supabase", "priority-high"],
+          "desc": "# Objective\nImplement complete user authentication for the MVP.\n\n# Features\n- Login\n- Sign up\n- Password recovery\n- Persistent session\n\n# Release Target\nv0.2.0\n\n# Acceptance Criteria\n- [ ] User can create an account\n- [ ] User can log in and log out\n- [ ] Session state survives app restart\n- [ ] Auth failures show clear feedback"
+        },
+        {
+          "name": "[EPIC] Restaurant Feed",
+          "labels": ["feat", "frontend", "mvvm", "priority-high"],
+          "desc": "# Objective\nCreate the main restaurant discovery experience.\n\n# Features\n- Categories\n- Search\n- Responsive cards\n- Loading and empty states\n\n# Release Target\nv0.3.0\n\n# Acceptance Criteria\n- [ ] Feed renders with mock or real data\n- [ ] Search/filter states are handled\n- [ ] UI follows design tokens\n- [ ] View model boundaries stay clear"
+        },
+        {
+          "name": "[EPIC] Cart & Checkout",
+          "labels": ["feat", "frontend", "backend", "priority-medium"],
+          "desc": "# Objective\nImplement the base ordering path.\n\n# Features\n- Cart management\n- Checkout summary\n- Address selection\n- Mock payment\n\n# Release Target\nv0.4.0\n\n# Acceptance Criteria\n- [ ] User can add and remove items\n- [ ] Totals are calculated consistently\n- [ ] Checkout state is validated\n- [ ] Failure and empty states are represented"
+        }
+      ]
+    },
+    {
+      "name": "🚚 Delivery System",
+      "cards": [
+        {
+          "name": "[EPIC] Order Tracking",
+          "labels": ["feat", "backend", "supabase", "priority-medium"],
+          "desc": "# Objective\nImplement the order tracking experience after checkout.\n\n# Features\n- Order status lifecycle\n- Timeline UI\n- Status updates\n- Tracking details\n\n# Release Target\nv0.5.0\n\n# Acceptance Criteria\n- [ ] Status model defined\n- [ ] Tracking screen implemented\n- [ ] Data source boundary documented\n- [ ] QA scenarios cover status changes"
+        },
+        {
+          "name": "[EPIC] User Profile",
+          "labels": ["feat", "frontend", "backend", "priority-medium"],
+          "desc": "# Objective\nCreate the user profile management area.\n\n# Features\n- Personal data\n- Addresses\n- Order history\n- Favorites\n\n# Release Target\nv0.6.0\n\n# Acceptance Criteria\n- [ ] Profile screen structure defined\n- [ ] Address management planned\n- [ ] Order history contract mapped\n- [ ] Privacy-sensitive states reviewed"
+        }
+      ]
+    },
+    {
+      "name": "🚀 Releases",
+      "cards": [
+        {
+          "name": "[RELEASE] MVP Portfolio Release",
+          "labels": ["release", "recruiter-portfolio", "qa", "priority-high"],
+          "desc": "# Objective\nPublish the first polished portfolio-ready version.\n\n# Scope\n- Android build\n- Web build if supported\n- README updated\n- Screenshots or demo evidence\n- QA checklist validated\n\n# Release Target\nv1.0.0\n\n# Acceptance Criteria\n- [ ] Release scope closed\n- [ ] Known issues documented\n- [ ] QA evidence attached\n- [ ] Portfolio narrative ready"
+        },
+        {
+          "name": "[RELEASE] Technical stabilization",
+          "labels": ["release", "technical-debt", "qa", "priority-medium"],
+          "desc": "# Objective\nReserve a stabilization window before public portfolio sharing.\n\n# Scope\n- Bug triage\n- Technical debt cleanup\n- Documentation consistency\n- Build validation\n\n# Release Target\nv1.0.0-rc\n\n# Acceptance Criteria\n- [ ] Critical bugs closed\n- [ ] High-impact debt reviewed\n- [ ] Release notes drafted\n- [ ] Final validation commands run"
+        }
+      ]
+    },
+    {
+      "name": "🔮 Future Vision",
+      "cards": [
+        {
+          "name": "[EPIC] Real-Time Delivery Intelligence",
+          "labels": ["ai", "backend", "architecture", "priority-low"],
+          "desc": "# Objective\nExplore advanced logistics and intelligence capabilities after the MVP.\n\n# Possibilities\n- Real-time tracking\n- Courier matching\n- Advanced analytics\n- AI delivery insights\n\n# Release Target\nFuture\n\n# Acceptance Criteria\n- [ ] MVP learnings reviewed\n- [ ] Technical feasibility assessed\n- [ ] Clear boundary between portfolio scope and future scope documented"
+        },
+        {
+          "name": "[EPIC] Analytics Dashboard",
+          "labels": ["analytics", "backend", "frontend", "priority-low"],
+          "desc": "# Objective\nExplore analytics capabilities for product and operational insights.\n\n# Possibilities\n- Order metrics\n- Restaurant performance\n- User behavior summaries\n- Admin-oriented dashboards\n\n# Release Target\nFuture\n\n# Acceptance Criteria\n- [ ] Data events identified\n- [ ] Privacy considerations reviewed\n- [ ] Dashboard audience defined"
+        }
+      ]
+    }
+  ]
+}

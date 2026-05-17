@@ -1,0 +1,221 @@
+{
+  "name": "FlowDelivery Release Template",
+  "defaultLists": false,
+
+  "labels": [
+    { "name": "docs", "color": "blue", "id": "lab_docs" },
+    { "name": "feat", "color": "green", "id": "lab_feat" },
+    { "name": "fix", "color": "red", "id": "lab_fix" },
+    { "name": "chore", "color": "black", "id": "lab_chore" },
+    { "name": "release", "color": "orange", "id": "lab_release" },
+    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
+    { "name": "backend", "color": "orange", "id": "lab_backend" },
+    { "name": "supabase", "color": "green", "id": "lab_supabase" },
+    { "name": "qa", "color": "yellow", "id": "lab_qa" },
+    { "name": "blocked", "color": "red", "id": "lab_blocked" },
+    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
+    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
+    { "name": "priority-low", "color": "green", "id": "lab_priority_low" }
+  ],
+
+  "customFields": [
+    {
+      "id": "cf_release_version",
+      "display": { "cardFront": true },
+      "name": "Release Version",
+      "type": "text"
+    },
+    {
+      "id": "cf_release_date",
+      "display": { "cardFront": true },
+      "name": "Release Date",
+      "type": "date"
+    },
+    {
+      "id": "cf_status",
+      "display": { "cardFront": true },
+      "name": "Release Status",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_planned",
+          "value": { "text": "PLANNED" },
+          "color": "blue"
+        },
+        {
+          "id": "opt_freeze",
+          "value": { "text": "FREEZE" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_qa",
+          "value": { "text": "QA" },
+          "color": "pink"
+        },
+        {
+          "id": "opt_released",
+          "value": { "text": "RELEASED" },
+          "color": "green"
+        },
+        {
+          "id": "opt_blocked",
+          "value": { "text": "BLOCKED" },
+          "color": "red"
+        }
+      ]
+    },
+    {
+      "id": "cf_risk",
+      "display": { "cardFront": true },
+      "name": "Risk",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_risk_high",
+          "value": { "text": "HIGH" },
+          "color": "red"
+        },
+        {
+          "id": "opt_risk_medium",
+          "value": { "text": "MEDIUM" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_risk_low",
+          "value": { "text": "LOW" },
+          "color": "green"
+        }
+      ]
+    }
+  ],
+
+  "lists": [
+    {
+      "name": "📦 Release Scope",
+      "cards": [
+        {
+          "name": "[RELEASE] vX.Y.Z — Nome da Release",
+          "desc": "# Objetivo\nDefinir o objetivo da release.\n\n# Escopo\n- Feature 1\n- Correção 1\n- Ajuste técnico 1\n\n# Fora de Escopo\n- Item que não entra nesta release\n\n# Critérios de Aceite\n- [ ] Escopo fechado\n- [ ] Dependências mapeadas\n- [ ] Riscos documentados",
+          "idLabels": [
+            "lab_release",
+            "lab_priority_high"
+          ],
+          "customFieldItems": [
+            {
+              "value": { "text": "vX.Y.Z" },
+              "idValue": null,
+              "idCustomField": "cf_release_version"
+            },
+            {
+              "value": null,
+              "idValue": "opt_planned",
+              "idCustomField": "cf_status"
+            },
+            {
+              "value": null,
+              "idValue": "opt_risk_medium",
+              "idCustomField": "cf_risk"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🧊 Code Freeze",
+      "cards": [
+        {
+          "name": "[CHORE] Congelar escopo da release",
+          "desc": "# Objetivo\nBloquear novas mudanças fora do escopo aprovado.\n\n# Checklist\n- [ ] Branch/tag de release criado\n- [ ] Pendências críticas revisadas\n- [ ] Novas mudanças redirecionadas para próxima release",
+          "idLabels": [
+            "lab_chore",
+            "lab_release"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_freeze",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🧪 QA & Regression",
+      "cards": [
+        {
+          "name": "[QA] Validar release candidate",
+          "desc": "# Cenários\n- [ ] Fluxo principal\n- [ ] Autenticação\n- [ ] Checkout/pedido\n- [ ] Responsividade\n- [ ] Regressões conhecidas",
+          "idLabels": [
+            "lab_qa",
+            "lab_release"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_qa",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "📝 Release Notes",
+      "cards": [
+        {
+          "name": "[DOCS] Preparar notas da release",
+          "desc": "# Conteúdo\n- [ ] Novidades\n- [ ] Correções\n- [ ] Mudanças técnicas relevantes\n- [ ] Limitações conhecidas",
+          "idLabels": [
+            "lab_docs",
+            "lab_release"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🚀 Ready to Ship",
+      "cards": []
+    },
+    {
+      "name": "🎉 Released",
+      "cards": [
+        {
+          "name": "[RELEASE] Pós-release checklist",
+          "desc": "# Checklist\n- [ ] Tag publicada\n- [ ] Changelog atualizado\n- [ ] Evidências de QA anexadas\n- [ ] Próximos débitos registrados",
+          "idLabels": [
+            "lab_release",
+            "lab_docs"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_released",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "⛔ Blocked",
+      "cards": [
+        {
+          "name": "[BLOCKED] Impedimento de release",
+          "desc": "# Motivo\nDescrever o bloqueio.\n\n# Plano de Ação\n- [ ] Responsável definido\n- [ ] Próxima decisão registrada",
+          "idLabels": [
+            "lab_blocked",
+            "lab_release"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_blocked",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

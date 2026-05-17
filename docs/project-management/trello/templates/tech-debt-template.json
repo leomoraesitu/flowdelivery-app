@@ -1,0 +1,244 @@
+{
+  "name": "FlowDelivery Tech Debt Template",
+  "defaultLists": false,
+
+  "labels": [
+    { "name": "docs", "color": "blue", "id": "lab_docs" },
+    { "name": "fix", "color": "red", "id": "lab_fix" },
+    { "name": "refactor", "color": "purple", "id": "lab_refactor" },
+    { "name": "chore", "color": "black", "id": "lab_chore" },
+    { "name": "architecture", "color": "sky", "id": "lab_architecture" },
+    { "name": "design-system", "color": "pink", "id": "lab_design_system" },
+    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
+    { "name": "backend", "color": "orange", "id": "lab_backend" },
+    { "name": "supabase", "color": "green", "id": "lab_supabase" },
+    { "name": "mvvm", "color": "purple", "id": "lab_mvvm" },
+    { "name": "qa", "color": "yellow", "id": "lab_qa" },
+    { "name": "blocked", "color": "red", "id": "lab_blocked" },
+    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
+    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
+    { "name": "priority-low", "color": "green", "id": "lab_priority_low" }
+  ],
+
+  "customFields": [
+    {
+      "id": "cf_impact",
+      "display": { "cardFront": true },
+      "name": "Impact",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_impact_high",
+          "value": { "text": "HIGH" },
+          "color": "red"
+        },
+        {
+          "id": "opt_impact_medium",
+          "value": { "text": "MEDIUM" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_impact_low",
+          "value": { "text": "LOW" },
+          "color": "green"
+        }
+      ]
+    },
+    {
+      "id": "cf_effort",
+      "display": { "cardFront": true },
+      "name": "Effort",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_effort_small",
+          "value": { "text": "SMALL" },
+          "color": "green"
+        },
+        {
+          "id": "opt_effort_medium",
+          "value": { "text": "MEDIUM" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_effort_large",
+          "value": { "text": "LARGE" },
+          "color": "red"
+        }
+      ]
+    },
+    {
+      "id": "cf_status",
+      "display": { "cardFront": true },
+      "name": "Status",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_identified",
+          "value": { "text": "IDENTIFIED" },
+          "color": "blue"
+        },
+        {
+          "id": "opt_prioritized",
+          "value": { "text": "PRIORITIZED" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_progress",
+          "value": { "text": "IN PROGRESS" },
+          "color": "orange"
+        },
+        {
+          "id": "opt_validated",
+          "value": { "text": "VALIDATED" },
+          "color": "green"
+        }
+      ]
+    },
+    {
+      "id": "cf_estimate_hours",
+      "display": { "cardFront": true },
+      "name": "Estimate (Hours)",
+      "type": "number"
+    }
+  ],
+
+  "lists": [
+    {
+      "name": "📥 Debt Inbox",
+      "cards": [
+        {
+          "name": "[DEBT] Descrever débito técnico",
+          "desc": "# Problema\nDescrever o débito identificado.\n\n# Evidência\n- Arquivo, módulo ou comportamento afetado\n\n# Risco de Não Fazer\n- Impacto esperado se o débito continuar",
+          "idLabels": [
+            "lab_refactor",
+            "lab_priority_medium"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_identified",
+              "idCustomField": "cf_status"
+            },
+            {
+              "value": null,
+              "idValue": "opt_impact_medium",
+              "idCustomField": "cf_impact"
+            },
+            {
+              "value": null,
+              "idValue": "opt_effort_medium",
+              "idCustomField": "cf_effort"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🧠 Analyze",
+      "cards": [
+        {
+          "name": "[ARCH] Avaliar impacto arquitetural",
+          "desc": "# Checklist\n- [ ] Causa raiz identificada\n- [ ] Módulos afetados mapeados\n- [ ] Risco de regressão avaliado\n- [ ] Estratégia incremental definida",
+          "idLabels": [
+            "lab_architecture",
+            "lab_refactor"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "⚖️ Prioritized",
+      "cards": [
+        {
+          "name": "[DEBT] Quick win técnico",
+          "desc": "# Objetivo\nResolver um débito de baixo esforço e impacto claro.\n\n# Critérios de Aceite\n- [ ] Mudança pequena\n- [ ] Validação objetiva\n- [ ] Sem alteração de comportamento esperado",
+          "idLabels": [
+            "lab_refactor",
+            "lab_priority_high"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_prioritized",
+              "idCustomField": "cf_status"
+            },
+            {
+              "value": null,
+              "idValue": "opt_impact_high",
+              "idCustomField": "cf_impact"
+            },
+            {
+              "value": null,
+              "idValue": "opt_effort_small",
+              "idCustomField": "cf_effort"
+            },
+            {
+              "value": { "number": "2" },
+              "idValue": null,
+              "idCustomField": "cf_estimate_hours"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🚧 In Progress",
+      "cards": []
+    },
+    {
+      "name": "👀 Review",
+      "cards": []
+    },
+    {
+      "name": "🧪 Validation",
+      "cards": [
+        {
+          "name": "[QA] Validar débito resolvido",
+          "desc": "# Validação\n- [ ] Analyzer/build ok\n- [ ] Teste relevante executado\n- [ ] Fluxo afetado revisado\n- [ ] Evidência anexada",
+          "idLabels": [
+            "lab_qa",
+            "lab_refactor"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_validated",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "📚 Documented",
+      "cards": [
+        {
+          "name": "[DOCS] Registrar decisão técnica",
+          "desc": "# Objetivo\nDocumentar a decisão tomada ao resolver o débito.\n\n# Checklist\n- [ ] Antes/depois descrito\n- [ ] Tradeoffs registrados\n- [ ] Links para PR/commit adicionados",
+          "idLabels": [
+            "lab_docs",
+            "lab_architecture"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🎉 Done",
+      "cards": []
+    },
+    {
+      "name": "⛔ Blocked",
+      "cards": [
+        {
+          "name": "[BLOCKED] Débito bloqueado",
+          "desc": "# Motivo\nDescrever dependência ou decisão pendente.\n\n# Próxima Ação\n- [ ] Responsável definido\n- [ ] Data de reavaliação definida",
+          "idLabels": [
+            "lab_blocked",
+            "lab_refactor"
+          ]
+        }
+      ]
+    }
+  ]
+}
