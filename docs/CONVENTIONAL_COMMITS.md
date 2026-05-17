@@ -125,7 +125,7 @@ test(auth): add login repository tests
 Tarefas de manutenção.
 
 ```text
-chore(deps): update flutter_bloc
+chore(deps): update flutter_riverpod
 ```
 
 ### build

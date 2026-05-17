@@ -1,0 +1,82 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "AI Morning Start",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/ai/morning.ps1"
+      ]
+    },
+    {
+      "label": "AI Continue Feature",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/ai/continue.ps1"
+      ]
+    },
+    {
+      "label": "AI Review Feature",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/ai/review.ps1"
+      ]
+    },
+    {
+      "label": "AI Learning Mode",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/ai/learn.ps1"
+      ]
+    },
+    {
+      "label": "AI End Day",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/ai/end-day.ps1"
+      ]
+    },
+    {
+      "label": "AI Memory Loop",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/ai/ai_memory_loop.ps1"
+      ]
+    },
+    {
+      "label": "AI Session Context",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        ".codex/scripts/session_context.ps1"
+      ]
+    }
+  ]
+}

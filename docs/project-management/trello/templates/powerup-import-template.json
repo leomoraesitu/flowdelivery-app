@@ -54,7 +54,7 @@
             "cards": [
                 {
                     "name": "Client Follow-Ups",
-                    "idLabels": ["lab_business", "lab_deep"],
+                    "idLabels": ["lab_business"],
                     "customFieldItems": [
                         {
                         "value": { "text": "Test for custom field" },
@@ -85,11 +85,11 @@
                 },
                 {
                     "name": "Content to Record 🎥",
-                    "idLabels": ["lab_business", "lab_dopamine"]
+                    "idLabels": ["lab_business"]
                 },
                 {
                     "name": "Admin Tasks 🗂️",
-                    "idLabels": ["lab_business", "lab_quick"]
+                    "idLabels": ["lab_business"]
                 }
             ]
         }

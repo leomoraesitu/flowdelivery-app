@@ -1,0 +1,8 @@
+approval_policy = "always"
+sandbox_mode = "workspace-write"
+ask_for_confirmation = true
+auto_apply_changes = false
+verbose_reasoning = true
+show_diff_before_apply = true
+max_file_changes = 3
+teaching_mode = true

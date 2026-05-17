@@ -141,7 +141,6 @@
           "desc": "# Objetivo\nImplementar autenticação completa.\n\n# Funcionalidades\n- Login\n- Cadastro\n- Recuperação de senha\n- Sessão persistente",
           "idLabels": [
             "lab_feat",
-            "lab_auth",
             "lab_supabase"
           ],
           "customFieldItems": [
@@ -316,7 +315,6 @@
           "name": "[EPIC] Real-Time Delivery Intelligence",
           "desc": "# Objetivo\nEvoluir o sistema para inteligência logística.\n\n# Possibilidades\n- Tracking em tempo real\n- Matching de entregadores\n- Analytics avançado\n- AI Delivery Insights",
           "idLabels": [
-            "lab_ai",
             "lab_backend",
             "lab_architecture"
           ],
