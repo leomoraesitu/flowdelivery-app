@@ -29,6 +29,11 @@
           "name": "[CHORE] Sync Sprint 0 cards in Trello",
           "labels": ["chore", "blocked", "priority-medium"],
           "desc": "# Objective\nSynchronize real Trello cards with the local Sprint 0 board template.\n\n# Scope\n- Fetch current Trello cards\n- Create missing cards\n- Move completed cards to Done\n- Keep pending cards in Ready or Backlog\n\n# Acceptance Criteria\n- [ ] Composio Trello auth available\n- [ ] Cards created or updated\n- [ ] Local board template matches real board state\n\n# Dependencies\n- Active Composio Trello connection"
+        },
+        {
+          "name": "[UX] Add prototype PNG assets",
+          "labels": ["ux", "design-system", "frontend", "priority-low"],
+          "desc": "# Objective\nAdd UX/UI prototype PNG files to the repository as visual references for future implementation.\n\n# Scope\n- Add prototype PNG files to the appropriate assets or documentation folder\n- Use clear and consistent filenames\n- Reference the prototypes from relevant documentation if needed\n\n# Acceptance Criteria\n- [ ] PNG files added to the repository\n- [ ] File location is clear and consistent\n- [ ] Prototype files can be used as reference for future UI implementation"
         }
       ]
     },
