@@ -1,0 +1,150 @@
+{
+  "name": "Sprint 0 - Foundation & Governance",
+  "board": "FlowDelivery - Product Backlog",
+  "lists": [
+    {
+      "name": "🏔️ Epics",
+      "cards": [
+        {
+          "name": "[EPIC] Sprint 0 — Foundation & Governance",
+          "labels": ["docs", "architecture", "design-system", "ci-cd", "ai", "priority-high"],
+          "desc": "# Objective\nEstablish the technical, architectural and organizational foundation of FlowDelivery.\n\n# Scope\n- Project governance\n- Trello workflow\n- Conventional Commits\n- Branching strategy\n- MVVM architecture documentation\n- Design system documentation\n- Environment and Supabase setup documentation\n- Codex governance\n- QA strategy\n- Initial CI workflow\n\n# Acceptance Criteria\n- [x] Standards documented\n- [x] Trello workflow mapped\n- [x] Base repository structure created\n- [x] Analyzer passes\n- [x] Initial tests pass\n- [ ] Remaining implementation tasks mapped"
+        }
+      ]
+    },
+    {
+      "name": "🛣️ Roadmap",
+      "cards": [
+        {
+          "name": "[CHORE] Complete Sprint 0 open items",
+          "labels": ["chore", "priority-medium"],
+          "desc": "# Objective\nTrack the remaining Sprint 0 items that are not fully implemented yet.\n\n# Scope\n- Base navigation strategy implementation\n- Theme structure implementation\n- GitHub labels synchronization\n- Real Trello card synchronization after Composio auth is available\n\n# Acceptance Criteria\n- [ ] Open items represented in Trello\n- [ ] Sprint 0 status updated after completion"
+        }
+      ]
+    },
+    {
+      "name": "📥 Backlog",
+      "cards": [
+        {
+          "name": "[CHORE] Sync Sprint 0 cards in Trello",
+          "labels": ["chore", "blocked", "priority-medium"],
+          "desc": "# Objective\nSynchronize real Trello cards with the local Sprint 0 board template.\n\n# Scope\n- Fetch current Trello cards\n- Create missing cards\n- Move completed cards to Done\n- Keep pending cards in Ready or Backlog\n\n# Acceptance Criteria\n- [ ] Composio Trello auth available\n- [ ] Cards created or updated\n- [ ] Local board template matches real board state\n\n# Dependencies\n- Active Composio Trello connection"
+        }
+      ]
+    },
+    {
+      "name": "🧠 Refinement",
+      "cards": []
+    },
+    {
+      "name": "✅ Ready",
+      "cards": [
+        {
+          "name": "[ARCH] Implement base navigation strategy",
+          "labels": ["architecture", "frontend", "priority-medium"],
+          "desc": "# Objective\nIntroduce the initial app navigation strategy.\n\n# Scope\n- Decide routing package and app shell structure\n- Document routing conventions\n- Prepare implementation path for feature navigation\n\n# Acceptance Criteria\n- [ ] Navigation strategy implemented or explicitly deferred\n- [ ] Documentation updated"
+        },
+        {
+          "name": "[STYLE] Implement theme structure",
+          "labels": ["design-system", "frontend", "priority-medium"],
+          "desc": "# Objective\nCreate the initial Flutter theme structure based on documented design tokens.\n\n# Scope\n- Theme entry point\n- Light theme placeholder\n- Dark theme placeholder\n- Token usage convention\n\n# Acceptance Criteria\n- [ ] Theme structure exists in code\n- [ ] Analyzer passes\n- [ ] Documentation remains aligned"
+        },
+        {
+          "name": "[CHORE] Configure GitHub labels",
+          "labels": ["chore", "ci-cd", "priority-low"],
+          "desc": "# Objective\nCreate GitHub repository labels aligned with Trello labels and Conventional Commit types.\n\n# Scope\n- docs\n- feat\n- fix\n- refactor\n- chore\n- test\n- ci-cd\n- architecture\n- design-system\n- priority labels\n\n# Acceptance Criteria\n- [ ] GitHub labels created\n- [ ] Label naming matches project conventions"
+        }
+      ]
+    },
+    {
+      "name": "🚧 In Progress",
+      "cards": []
+    },
+    {
+      "name": "👀 Code Review",
+      "cards": []
+    },
+    {
+      "name": "🧪 QA",
+      "cards": []
+    },
+    {
+      "name": "🚀 Ready for Release",
+      "cards": []
+    },
+    {
+      "name": "🎉 Done",
+      "cards": [
+        {
+          "name": "[DOCS] Project management standard",
+          "labels": ["docs", "priority-high"],
+          "desc": "# Objective\nDocument the project management standard.\n\n# Acceptance Criteria\n- [x] PROJECT_MANAGEMENT_STANDARD.md created"
+        },
+        {
+          "name": "[DOCS] Trello workflow",
+          "labels": ["docs", "priority-high"],
+          "desc": "# Objective\nDocument the Trello workflow and board structure.\n\n# Acceptance Criteria\n- [x] TRELLO_WORKFLOW.md created and aligned with current board structure"
+        },
+        {
+          "name": "[DOCS] Definition of Done",
+          "labels": ["docs", "qa"],
+          "desc": "# Objective\nDocument completion criteria for project tasks.\n\n# Acceptance Criteria\n- [x] DEFINITION_OF_DONE.md created"
+        },
+        {
+          "name": "[DOCS] Branching strategy",
+          "labels": ["docs", "ci-cd"],
+          "desc": "# Objective\nDocument branch conventions and PR workflow.\n\n# Acceptance Criteria\n- [x] BRANCHING_STRATEGY.md created"
+        },
+        {
+          "name": "[DOCS] Conventional commits",
+          "labels": ["docs"],
+          "desc": "# Objective\nDocument commit message standards.\n\n# Acceptance Criteria\n- [x] CONVENTIONAL_COMMITS.md created and formatted"
+        },
+        {
+          "name": "[DOCS] Architecture overview",
+          "labels": ["docs", "architecture", "mvvm"],
+          "desc": "# Objective\nDocument the high-level architecture.\n\n# Acceptance Criteria\n- [x] ARCHITECTURE_OVERVIEW.md created\n- [x] MVVM_STRUCTURE.md created"
+        },
+        {
+          "name": "[DOCS] Design system foundation",
+          "labels": ["docs", "design-system", "ux"],
+          "desc": "# Objective\nDocument the design system baseline and tokens.\n\n# Acceptance Criteria\n- [x] DESIGN_SYSTEM.md created\n- [x] TOKENS.md created"
+        },
+        {
+          "name": "[DOCS] Environment and Supabase setup",
+          "labels": ["docs", "supabase", "backend"],
+          "desc": "# Objective\nDocument setup requirements for environments and Supabase.\n\n# Acceptance Criteria\n- [x] ENVIRONMENT_SETUP.md created\n- [x] SUPABASE_SETUP.md created"
+        },
+        {
+          "name": "[DOCS] Codex governance and QA strategy",
+          "labels": ["docs", "ai", "qa"],
+          "desc": "# Objective\nDocument AI-assisted workflow rules and QA strategy.\n\n# Acceptance Criteria\n- [x] CODEX_GOVERNANCE.md created\n- [x] QA_STRATEGY.md created"
+        },
+        {
+          "name": "[CHORE] Repository foundation structure",
+          "labels": ["chore", "architecture"],
+          "desc": "# Objective\nCreate base repository structure markers for future implementation.\n\n# Acceptance Criteria\n- [x] lib/app marker created\n- [x] lib/features marker created\n- [x] lib/shared marker created\n- [x] test marker created\n- [x] assets marker created\n- [x] supabase marker created"
+        },
+        {
+          "name": "[CI] Initial Flutter CI workflow",
+          "labels": ["ci-cd", "chore"],
+          "desc": "# Objective\nCreate the initial GitHub Actions workflow for Flutter validation.\n\n# Acceptance Criteria\n- [x] .github/workflows/flutter-ci.yml created"
+        },
+        {
+          "name": "[TEST] Initial widget test",
+          "labels": ["test", "frontend"],
+          "desc": "# Objective\nCreate a minimal test so the test runner validates the project.\n\n# Acceptance Criteria\n- [x] test/widget_test.dart created\n- [x] Dart MCP run_tests passes"
+        },
+        {
+          "name": "[CHORE] Flutter SDK compatibility",
+          "labels": ["chore", "ci-cd"],
+          "desc": "# Objective\nAlign project SDK constraints with the installed Flutter/Dart toolchain.\n\n# Acceptance Criteria\n- [x] pubspec.yaml SDK constraint updated\n- [x] Dart MCP pub get passes\n- [x] Dart MCP analyze_files passes\n- [x] Dart MCP run_tests passes"
+        }
+      ]
+    },
+    {
+      "name": "⛔ Blocked",
+      "cards": []
+    }
+  ]
+}

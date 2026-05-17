@@ -1,0 +1,339 @@
+{
+  "name": "FlowDelivery Roadmap",
+  "defaultLists": false,
+
+  "labels": [
+    { "name": "docs", "color": "blue", "id": "lab_docs" },
+    { "name": "feat", "color": "green", "id": "lab_feat" },
+    { "name": "fix", "color": "red", "id": "lab_fix" },
+    { "name": "refactor", "color": "purple", "id": "lab_refactor" },
+    { "name": "chore", "color": "black", "id": "lab_chore" },
+    { "name": "architecture", "color": "sky", "id": "lab_architecture" },
+    { "name": "design-system", "color": "pink", "id": "lab_design_system" },
+    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
+    { "name": "backend", "color": "orange", "id": "lab_backend" },
+    { "name": "supabase", "color": "green", "id": "lab_supabase" },
+    { "name": "flutterflow", "color": "pink", "id": "lab_flutterflow" },
+    { "name": "mvvm", "color": "purple", "id": "lab_mvvm" },
+    { "name": "qa", "color": "yellow", "id": "lab_qa" },
+    { "name": "blocked", "color": "red", "id": "lab_blocked" },
+    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
+    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
+    { "name": "priority-low", "color": "green", "id": "lab_priority_low" },
+    { "name": "release", "color": "orange", "id": "lab_release" },
+    { "name": "recruiter-portfolio", "color": "blue", "id": "lab_recruiter_portfolio" }
+  ],
+
+  "customFields": [
+    {
+      "id": "cf_quarter",
+      "display": { "cardFront": true },
+      "name": "Quarter",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_q1",
+          "value": { "text": "Q1" },
+          "color": "green"
+        },
+        {
+          "id": "opt_q2",
+          "value": { "text": "Q2" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_q3",
+          "value": { "text": "Q3" },
+          "color": "orange"
+        },
+        {
+          "id": "opt_q4",
+          "value": { "text": "Q4" },
+          "color": "red"
+        }
+      ]
+    },
+    {
+      "id": "cf_release_version",
+      "display": { "cardFront": true },
+      "name": "Release Version",
+      "type": "text"
+    },
+    {
+      "id": "cf_story_points",
+      "display": { "cardFront": true },
+      "name": "Story Points",
+      "type": "number"
+    },
+    {
+      "id": "cf_status",
+      "display": { "cardFront": true },
+      "name": "Roadmap Status",
+      "type": "list",
+      "options": [
+        {
+          "id": "opt_planned",
+          "value": { "text": "PLANNED" },
+          "color": "blue"
+        },
+        {
+          "id": "opt_progress",
+          "value": { "text": "IN PROGRESS" },
+          "color": "yellow"
+        },
+        {
+          "id": "opt_completed",
+          "value": { "text": "COMPLETED" },
+          "color": "green"
+        },
+        {
+          "id": "opt_blocked",
+          "value": { "text": "BLOCKED" },
+          "color": "red"
+        }
+      ]
+    }
+  ],
+
+  "lists": [
+    {
+      "name": "🧱 Foundation",
+      "cards": [
+        {
+          "name": "[EPIC] Sprint 0 — Foundation & Governance",
+          "desc": "# Objetivo\nEstabelecer a fundação técnica e organizacional do projeto.\n\n# Escopo\n- Workflow Git\n- Conventional Commits\n- Arquitetura MVVM\n- Setup Supabase\n- Design System\n- Workflow Trello\n- Codex Governance\n\n# Critérios de Aceite\n- [ ] Estrutura inicial criada\n- [ ] Documentação criada\n- [ ] Workflow validado",
+          "idLabels": [
+            "lab_architecture",
+            "lab_mvvm",
+            "lab_priority_high"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_q1",
+              "idCustomField": "cf_quarter"
+            },
+            {
+              "value": { "text": "v0.1.0" },
+              "idValue": null,
+              "idCustomField": "cf_release_version"
+            },
+            {
+              "value": { "number": "13" },
+              "idValue": null,
+              "idCustomField": "cf_story_points"
+            },
+            {
+              "value": null,
+              "idValue": "opt_planned",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "📱 MVP",
+      "cards": [
+        {
+          "name": "[EPIC] User Authentication",
+          "desc": "# Objetivo\nImplementar autenticação completa.\n\n# Funcionalidades\n- Login\n- Cadastro\n- Recuperação de senha\n- Sessão persistente",
+          "idLabels": [
+            "lab_feat",
+            "lab_auth",
+            "lab_supabase"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_q1",
+              "idCustomField": "cf_quarter"
+            },
+            {
+              "value": { "text": "v0.2.0" },
+              "idValue": null,
+              "idCustomField": "cf_release_version"
+            },
+            {
+              "value": { "number": "8" },
+              "idValue": null,
+              "idCustomField": "cf_story_points"
+            }
+          ]
+        },
+
+        {
+          "name": "[EPIC] Restaurant Feed",
+          "desc": "# Objetivo\nCriar feed principal de restaurantes.\n\n# Funcionalidades\n- Categorias\n- Busca\n- Cards responsivos\n- Filtros",
+          "idLabels": [
+            "lab_feat",
+            "lab_frontend",
+            "lab_mvvm"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_q1",
+              "idCustomField": "cf_quarter"
+            },
+            {
+              "value": { "text": "v0.3.0" },
+              "idValue": null,
+              "idCustomField": "cf_release_version"
+            },
+            {
+              "value": { "number": "13" },
+              "idValue": null,
+              "idCustomField": "cf_story_points"
+            }
+          ]
+        },
+
+        {
+          "name": "[EPIC] Cart & Checkout",
+          "desc": "# Objetivo\nImplementar fluxo de compra.\n\n# Funcionalidades\n- Carrinho\n- Checkout\n- Endereço\n- Pagamento mock",
+          "idLabels": [
+            "lab_feat",
+            "lab_frontend",
+            "lab_backend"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_q2",
+              "idCustomField": "cf_quarter"
+            },
+            {
+              "value": { "text": "v0.4.0" },
+              "idValue": null,
+              "idCustomField": "cf_release_version"
+            },
+            {
+              "value": { "number": "21" },
+              "idValue": null,
+              "idCustomField": "cf_story_points"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "🚚 Delivery System",
+      "cards": [
+        {
+          "name": "[EPIC] Order Tracking",
+          "desc": "# Objetivo\nImplementar rastreamento de pedidos.\n\n# Funcionalidades\n- Timeline\n- Status em tempo real\n- Tracking UI",
+          "idLabels": [
+            "lab_feat",
+            "lab_backend",
+            "lab_supabase"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_q2",
+              "idCustomField": "cf_quarter"
+            },
+            {
+              "value": { "text": "v0.5.0" },
+              "idValue": null,
+              "idCustomField": "cf_release_version"
+            },
+            {
+              "value": { "number": "13" },
+              "idValue": null,
+              "idCustomField": "cf_story_points"
+            }
+          ]
+        },
+
+        {
+          "name": "[EPIC] User Profile",
+          "desc": "# Objetivo\nCriar gestão de perfil do usuário.\n\n# Funcionalidades\n- Dados pessoais\n- Endereços\n- Histórico de pedidos\n- Favoritos",
+          "idLabels": [
+            "lab_feat",
+            "lab_frontend"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_q2",
+              "idCustomField": "cf_quarter"
+            },
+            {
+              "value": { "text": "v0.6.0" },
+              "idValue": null,
+              "idCustomField": "cf_release_version"
+            },
+            {
+              "value": { "number": "8" },
+              "idValue": null,
+              "idCustomField": "cf_story_points"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "🚀 Releases",
+      "cards": [
+        {
+          "name": "[RELEASE] MVP Portfolio Release",
+          "desc": "# Objetivo\nPublicar primeira versão apresentável para portfólio.\n\n# Escopo\n- Build Android\n- Build Web\n- README atualizado\n- Screenshots\n- QA validado",
+          "idLabels": [
+            "lab_release",
+            "lab_recruiter_portfolio",
+            "lab_priority_high"
+          ],
+          "customFieldItems": [
+            {
+              "value": { "text": "v1.0.0" },
+              "idValue": null,
+              "idCustomField": "cf_release_version"
+            },
+            {
+              "value": null,
+              "idValue": "opt_q3",
+              "idCustomField": "cf_quarter"
+            },
+            {
+              "value": null,
+              "idValue": "opt_planned",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "🔮 Future Vision",
+      "cards": [
+        {
+          "name": "[EPIC] Real-Time Delivery Intelligence",
+          "desc": "# Objetivo\nEvoluir o sistema para inteligência logística.\n\n# Possibilidades\n- Tracking em tempo real\n- Matching de entregadores\n- Analytics avançado\n- AI Delivery Insights",
+          "idLabels": [
+            "lab_ai",
+            "lab_backend",
+            "lab_architecture"
+          ],
+          "customFieldItems": [
+            {
+              "value": null,
+              "idValue": "opt_q4",
+              "idCustomField": "cf_quarter"
+            },
+            {
+              "value": null,
+              "idValue": "opt_planned",
+              "idCustomField": "cf_status"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "labels": [
+    {
+      "name": "api",
+      "color": "soft_green",
+      "description": "Integrações REST, GraphQL ou serviços externos."
+    },
+    {
+      "name": "priority-low",
+      "color": "green",
+      "description": "Baixa prioridade."
+    },
+    {
+      "name": "feat",
+      "color": "high_contrast_green",
+      "description": "Nova funcionalidade do sistema."
+    },
+    {
+      "name": "performance",
+      "color": "soft_yellow",
+      "description": "Otimizações de desempenho."
+    },
+    {
+      "name": "priority-medium",
+      "color": "yellow",
+      "description": "Prioridade média."
+    },
+    {
+      "name": "test",
+      "color": "high_contrast_yellow",
+      "description": "Testes unitários, widget ou integração."
+    },
+    {
+      "name": "release",
+      "color": "soft_orange",
+      "description": "Preparação e publicação de releases."
+    },
+    {
+      "name": "ux",
+      "color": "orange",
+      "description": "Experiência do usuário e usabilidade."
+    },
+    {
+      "name": "qa",
+      "color": "high_contrast_orange",
+      "description": "Validação de qualidade e homologação."
+    },
+    {
+      "name": "priority-high",
+      "color": "soft_red",
+      "description": "Alta prioridade."
+    },
+    {
+      "name": "security",
+      "color": "red",
+      "description": "Segurança da aplicação e hardening."
+    },
+    {
+      "name": "fix",
+      "color": "high_contrast_red",
+      "description": "Correção de bug ou comportamento inesperado."
+    },
+    {
+      "name": "ci-cd",
+      "color": "soft_purple",
+      "description": "Pipelines, automação e deploy."
+    },
+    {
+      "name": "mvvm",
+      "color": "purple",
+      "description": "Arquitetura MVVM e organização de camadas."
+    },
+    {
+      "name": "refactor",
+      "color": "high_contrast_purple",
+      "description": "Refatoração sem alteração funcional."
+    },
+    {
+      "name": "analytics",
+      "color": "soft_blue",
+      "description": "Eventos, métricas e telemetria."
+    },
+    {
+      "name": "recruiter-portfolio",
+      "color": "blue",
+      "description": "Itens estratégicos para apresentação de portfólio."
+    },
+    {
+      "name": "docs",
+      "color": "high_contrast_blue",
+      "description": "Documentação técnica, organizacional e arquitetural."
+    },
+    {
+      "name": "auth",
+      "color": "soft_sky",
+      "description": "Autenticação, autorização e segurança."
+    },
+    {
+      "name": "ai",
+      "color": "sky",
+      "description": "Automação, IA assistida e integração Codex/OpenAI."
+    },
+    {
+      "name": "architecture",
+      "color": "high_contrast_sky",
+      "description": "Arquitetura de software e decisões estruturais."
+    },
+    {
+      "name": "backend",
+      "color": "soft_lime",
+      "description": "Supabase, APIs, banco de dados e integrações."
+    },
+    {
+      "name": "supabase",
+      "color": "lime",
+      "description": "Itens relacionados ao Supabase."
+    },
+    {
+      "name": "frontend",
+      "color": "high_contrast_lime",
+      "description": "Camada Flutter/UI."
+    },
+    {
+      "name": "blocked",
+      "color": "soft_pink",
+      "description": "Tarefa bloqueada por dependência ou impedimento."
+    },
+    {
+      "name": "flutterflow",
+      "color": "pink",
+      "description": "Itens relacionados ao FlutterFlow."
+    },
+    {
+      "name": "design-system",
+      "color": "high_contrast_pink",
+      "description": "Tokens, UI, componentes e guidelines visuais."
+    },
+    {
+      "name": "database",
+      "color": "soft_black",
+      "description": "Schema, migrations e modelagem de dados."
+    },
+    {
+      "name": "technical-debt",
+      "color": "black",
+      "description": "Débito técnico identificado."
+    },
+    {
+      "name": "chore",
+      "color": "high_contrast_black",
+      "description": "Infraestrutura, configuração ou manutenção."
+    }
+  ]
+}
