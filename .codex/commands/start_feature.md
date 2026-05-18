@@ -12,6 +12,8 @@ Depois:
 - explique responsabilidades, entidades, repositories, use cases, Riverpod providers e ViewModels
 - explique tradeoffs e riscos
 - não implemente ainda
+- após aprovação da arquitetura, execute `.codex/workflows/02_technical_plan.md`
+- gere e registre o arquivo-plan correspondente em `.ai/plans/`
 
 ## Uso
 

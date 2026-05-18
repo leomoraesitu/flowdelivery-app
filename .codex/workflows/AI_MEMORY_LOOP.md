@@ -44,7 +44,59 @@ Leia:
 - architect
 - reviewer
 
-## 2. Desenvolvimento Incremental
+## 2. Início de Feature (Start Feature)
+
+Executar quando uma nova feature ainda precisa de análise arquitetural e plano técnico.
+
+### Comando
+
+```txt
+Leia:
+.codex/commands/start_feature.md
+```
+
+### Objetivos
+
+- analisar a feature antes de implementar;
+- propor arquitetura MVVM incremental;
+- explicar responsabilidades e tradeoffs;
+- gerar plano técnico em `.ai/plans/`;
+- identificar skills Flutter/Dart relevantes por etapa;
+- manter implementação bloqueada até aprovação humana.
+
+### Regras
+
+- não implementar durante o planejamento;
+- registrar o arquivo-plan antes de executar tasks;
+- respeitar ADRs, contexto versionado e guardrails.
+
+## 3. Plano Tecnico (Technical Plan)
+
+Executar depois da analise arquitetural da feature e antes da implementacao.
+
+### Comando
+
+```txt
+Leia:
+.codex/commands/technical_plan.md
+```
+
+### Objetivos
+
+- confirmar a feature atual;
+- revisar contexto, ADRs e skills Flutter/Dart pertinentes;
+- atualizar documentacao pertinente quando houver impacto;
+- gerar arquivo-plan em `.ai/plans/`;
+- registrar validacao, riscos, criterios de aceite e fora de escopo;
+- manter implementacao bloqueada ate aprovacao humana.
+
+### Regras
+
+- nao implementar durante a geracao do plano;
+- cada etapa deve ser pequena e validavel;
+- cada etapa deve listar arquivos, validacao e skills aplicaveis.
+
+## 4. Desenvolvimento Incremental
 
 Durante o desenvolvimento da feature atual.
 
@@ -58,6 +110,8 @@ Leia:
 ### Objetivos
 
 - continuar implementação incremental;
+- executar a próxima task pendente do arquivo em `.ai/plans`;
+- identificar skills Flutter/Dart pertinentes para a task;
 - evitar implementação excessiva;
 - manter separação de responsabilidades;
 - garantir aprendizado contínuo;
@@ -71,7 +125,7 @@ Leia:
 - limitar quantidade de arquivos alterados;
 - seguir MVVM + Clean Architecture.
 
-## 3. Review Técnico
+## 5. Review Técnico
 
 Executar review rigoroso da implementação atual.
 
@@ -90,6 +144,7 @@ Leia:
 - validar testabilidade;
 - validar escalabilidade;
 - identificar anti-patterns Flutter;
+- conferir aderência às skills Flutter/Dart pertinentes;
 - melhorar legibilidade e naming.
 
 ### Severidade
@@ -101,7 +156,7 @@ Classificar problemas como:
 - medium
 - low
 
-## 4. Learning Mode
+## 6. Learning Mode
 
 Transformar implementação em aprendizado.
 
@@ -130,7 +185,7 @@ Leia:
 - melhorias futuras;
 - erros comuns.
 
-## 5. Finalização do Dia (End Day)
+## 7. Finalização do Dia (End Day)
 
 Persistir memória operacional do projeto.
 
@@ -161,6 +216,8 @@ Leia:
 ## Sempre
 
 - explicar antes de implementar;
+- planejar feature quando necessário;
+- gerar arquivo-plan em `.ai/plans` antes da implementação;
 - implementar incrementalmente;
 - seguir MVVM;
 - seguir Clean Architecture;
