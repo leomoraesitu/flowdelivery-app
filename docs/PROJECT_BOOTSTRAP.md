@@ -95,6 +95,29 @@ This project is intentionally designed to be developed with AI pair-programming 
 - GPT-based agents
 - MCP tooling
 - Automated code generation assistants
+- Flutter/Dart agent skills in `.agents/skills`
+
+---
+
+## Operational AI Loop
+
+Use the scripted loop as the default entrypoint:
+
+```powershell
+.\scripts\ai\ai_memory_loop.ps1
+```
+
+The current workflow is:
+
+1. `Morning Start` - load project, sprint and feature context.
+2. `Start Feature` - analyze architecture and tradeoffs.
+3. `Technical Plan` - generate or update `.ai/plans/YYYY-MM-DD-<feature>-plan.md`.
+4. `Continue Feature` - implement only the next pending task from the plan.
+5. `Review Feature` - review architecture, tests, risks and Flutter practices.
+6. `Learning Mode` - explain implementation concepts and tradeoffs.
+7. `End Day` - update memory, risks, debt and next steps.
+
+Feature implementation must not start before the relevant plan exists in `.ai/plans`.
 
 ---
 
@@ -110,6 +133,7 @@ Agents MUST:
 - Avoid tight coupling
 - Avoid business logic inside widgets
 - Avoid direct Supabase calls inside UI layers
+- Follow the approved `.ai/plans` task order
 
 ---
 
@@ -132,6 +156,8 @@ Agents MUST:
 - Prefer reusable widgets
 - Respect lint rules
 - Generate documentation comments when necessary
+- Validate the smallest executable scope after changes
+- Update relevant documentation when workflow, architecture or behavior changes
 
 ---
 
@@ -153,6 +179,20 @@ Agents MUST:
 - Keep Supabase isolated from presentation layer
 - Respect Row Level Security patterns
 - Use DTO mapping when appropriate
+
+---
+
+### Agent Skills Rules
+
+Agents SHOULD:
+- Use `.ai/context/agent_skills.md` to select task-specific Flutter/Dart skills
+- List applicable skills in `.ai/plans` when generating technical plans
+- Prefer repository ADRs and context files over generic skill guidance
+
+Agents MUST NOT:
+- Use `flutter-use-http-package` for Supabase integration
+- Import Supabase directly inside widgets
+- Apply a skill that contradicts project architecture
 
 ---
 

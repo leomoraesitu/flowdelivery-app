@@ -56,12 +56,46 @@ The project is being developed with a strong emphasis on maintainability, scalab
 
 ## AI-Assisted Development
 
-This project uses AI-assisted workflows during development:
+This project uses AI-assisted workflows during development with explicit human approval gates.
 
 - OpenAI Codex CLI
 - GitHub Copilot
 - Prompt Engineering
 - Context-driven software generation
+- Flutter/Dart agent skills in `.agents/skills`
+- Persistent planning in `.ai/plans`
+
+Recommended command loop:
+
+```powershell
+.\scripts\ai\ai_memory_loop.ps1
+```
+
+Operational flow:
+
+1. `Morning Start` - recover project, sprint and feature context.
+2. `Start Feature` - analyze architecture and tradeoffs before implementation.
+3. `Technical Plan` - generate or update `.ai/plans/YYYY-MM-DD-<feature>-plan.md`.
+4. `Continue Feature` - execute only the next pending task from the plan.
+5. `Review Feature` - review MVVM, Clean Architecture, tests, naming and risks.
+6. `Learning Mode` - explain architecture, Flutter concepts and tradeoffs.
+7. `End Day` - persist progress, pending work, risks and technical debt.
+
+AI workflow directories:
+
+```text
+.ai/
+├── context/      # project context loaded by agents
+├── memory/       # current sprint, feature and technical debt
+├── plans/        # implementation plans tracked task by task
+└── reviews/      # daily and feature reviews
+
+.agents/skills/  # installed Flutter/Dart agent skills
+.codex/commands/ # prompt commands copied by scripts/ai
+.codex/workflows/# repeatable AI execution workflows
+```
+
+Rule of thumb: no feature implementation should start before a matching file exists in `.ai/plans`.
 
 ---
 
@@ -216,7 +250,9 @@ Project documentation is organized under:
 ```text
 docs/
 ├── architecture/
-├── conventions/
+├── ai/
+├── design-system/
+├── project-management/
 ├── setup/
 ├── qa/
 └── releases/

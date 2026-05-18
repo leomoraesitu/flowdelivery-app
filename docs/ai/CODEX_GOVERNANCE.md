@@ -12,9 +12,11 @@ AI assistants must:
 2. Present a short plan before editing.
 3. Explain tradeoffs clearly.
 4. Wait for confirmation before applying changes.
-5. Keep changes small and reversible.
-6. Validate the smallest executable scope.
-7. Summarize what changed and how it was validated.
+5. Generate or update the relevant `.ai/plans/YYYY-MM-DD-<feature>-plan.md` before feature implementation.
+6. Execute only the next pending task from the approved plan.
+7. Keep changes small and reversible.
+8. Validate the smallest executable scope.
+9. Summarize what changed and how it was validated.
 
 ## Safety Rules
 
@@ -26,6 +28,8 @@ AI assistants must not:
 - merge branches automatically
 - expose secrets
 - treat generated docs as more authoritative than repository code
+- implement a feature before the relevant `.ai/plans` file exists
+- use generic skills or external guidance when it conflicts with repository ADRs
 
 ## Architecture Rules
 
@@ -41,6 +45,25 @@ Generated code must:
 ## Documentation Rules
 
 When changing behavior or architecture, update the relevant documentation in the same task.
+
+When changing AI workflows, update the matching files under:
+
+- `.codex/commands/`
+- `.codex/workflows/`
+- `scripts/ai/`
+- `.ai/context/`
+- this governance document when rules change
+
+## Agent Skills Rules
+
+Flutter/Dart skills installed in `.agents/skills` may be used as task-specific guidance.
+
+Agents must:
+
+- select only skills relevant to the current task
+- list applicable skills in technical plans when useful
+- keep `.ai/context/agent_skills.md` aligned with installed skills
+- treat repository architecture docs and ADRs as higher priority than skill guidance
 
 ## Review Expectation
 
