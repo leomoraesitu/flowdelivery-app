@@ -1,36 +1,54 @@
 {
-    "name": "Operating System",
-    "defaultLists": false,
-    "labels": [
-        { "name": "Home", "color": "green", "id": "lab_home" },
-        { "name": "Business", "color": "blue", "id": "lab_business" }
-    ],
-    "customFields": [
+  "name": "Operating System",
+  "defaultLists": false,
+  "labels": [
+    {
+      "name": "Home",
+      "color": "green",
+      "id": "lab_home"
+    },
+    {
+      "name": "Business",
+      "color": "blue",
+      "id": "lab_business"
+    }
+  ],
+  "customFields": [
     {
       "id": "69509dda2e133c2f58baff5f",
-      "display": { "cardFront": false },
+      "display": {
+        "cardFront": false
+      },
       "name": "Checkbox",
       "type": "checkbox"
     },
     {
       "id": "69509de5d4c73d0073871c49",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Date",
       "type": "date"
     },
     {
       "id": "69509df2e7a6ebe14b51c5e7",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Dropdown",
       "options": [
         {
           "id": "69509dfe06676068ad3e47a4",
-          "value": { "text": "DropList1" },
+          "value": {
+            "text": "DropList1"
+          },
           "color": "orange"
         },
         {
           "id": "69509e080000341713361645",
-          "value": { "text": "DropList2" },
+          "value": {
+            "text": "DropList2"
+          },
           "color": "green"
         }
       ],
@@ -38,60 +56,97 @@
     },
     {
       "id": "69509e278f247de2472ead93",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Number",
       "type": "number"
     },
     {
       "id": "69509e30d201693e0e0c441e",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Text",
       "type": "text"
-    }],
-    "lists": [
+    }
+  ],
+  "lists": [
+    {
+      "name": "🔵 This Week",
+      "cards": [
         {
-            "name": "🔵 This Week",
-            "cards": [
+          "name": "Client Follow-Ups",
+          "idLabels": [
+            "lab_business"
+          ],
+          "desc": "# Checklist\n- [ ] Confirm next contact\n- [x] Review account notes",
+          "checklists": [
+            {
+              "name": "Checklist",
+              "checkItems": [
                 {
-                    "name": "Client Follow-Ups",
-                    "idLabels": ["lab_business"],
-                    "customFieldItems": [
-                        {
-                        "value": { "text": "Test for custom field" },
-                        "idValue": null,
-                        "idCustomField": "69509e30d201693e0e0c441e"
-                        },
-                        {
-                        "value": { "number": "123" },
-                        "idValue": null,
-                        "idCustomField": "69509e278f247de2472ead93"
-                        },
-                        {
-                        "value": null,
-                        "idValue": "69509dfe06676068ad3e47a4",
-                        "idCustomField": "69509df2e7a6ebe14b51c5e7"
-                        },
-                        {
-                        "value": { "date": "2025-12-28T04:00:00.000Z" },
-                        "idValue": null,
-                        "idCustomField": "69509de5d4c73d0073871c49"
-                        },
-                        {
-                        "value": { "checked": "true" },
-                        "idValue": null,
-                        "idCustomField": "69509dda2e133c2f58baff5f"
-                        }
-                    ]
+                  "name": "Confirm next contact",
+                  "pos": 1,
+                  "state": "incomplete"
                 },
                 {
-                    "name": "Content to Record 🎥",
-                    "idLabels": ["lab_business"]
-                },
-                {
-                    "name": "Admin Tasks 🗂️",
-                    "idLabels": ["lab_business"]
+                  "name": "Review account notes",
+                  "pos": 2,
+                  "state": "complete"
                 }
-            ]
+              ]
+            }
+          ],
+          "customFieldItems": [
+            {
+              "value": {
+                "text": "Test for custom field"
+              },
+              "idValue": null,
+              "idCustomField": "69509e30d201693e0e0c441e"
+            },
+            {
+              "value": {
+                "number": "123"
+              },
+              "idValue": null,
+              "idCustomField": "69509e278f247de2472ead93"
+            },
+            {
+              "value": null,
+              "idValue": "69509dfe06676068ad3e47a4",
+              "idCustomField": "69509df2e7a6ebe14b51c5e7"
+            },
+            {
+              "value": {
+                "date": "2025-12-28T04:00:00.000Z"
+              },
+              "idValue": null,
+              "idCustomField": "69509de5d4c73d0073871c49"
+            },
+            {
+              "value": {
+                "checked": "true"
+              },
+              "idValue": null,
+              "idCustomField": "69509dda2e133c2f58baff5f"
+            }
+          ]
+        },
+        {
+          "name": "Content to Record 🎥",
+          "idLabels": [
+            "lab_business"
+          ]
+        },
+        {
+          "name": "Admin Tasks 🗂️",
+          "idLabels": [
+            "lab_business"
+          ]
         }
-    ]
+      ]
+    }
+  ]
 }

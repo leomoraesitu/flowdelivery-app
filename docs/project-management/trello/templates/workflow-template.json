@@ -1,79 +1,185 @@
 {
   "name": "FlowDelivery Workflow Template",
   "defaultLists": false,
-
   "labels": [
-    { "name": "docs", "color": "blue", "id": "lab_docs" },
-    { "name": "feat", "color": "green", "id": "lab_feat" },
-    { "name": "fix", "color": "red", "id": "lab_fix" },
-    { "name": "refactor", "color": "purple", "id": "lab_refactor" },
-    { "name": "chore", "color": "black", "id": "lab_chore" },
-    { "name": "architecture", "color": "sky", "id": "lab_architecture" },
-    { "name": "design-system", "color": "pink", "id": "lab_design_system" },
-    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
-    { "name": "backend", "color": "orange", "id": "lab_backend" },
-    { "name": "supabase", "color": "green", "id": "lab_supabase" },
-    { "name": "flutterflow", "color": "pink", "id": "lab_flutterflow" },
-    { "name": "mvvm", "color": "purple", "id": "lab_mvvm" },
-    { "name": "qa", "color": "yellow", "id": "lab_qa" },
-    { "name": "blocked", "color": "red", "id": "lab_blocked" },
-    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
-    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
-    { "name": "priority-low", "color": "green", "id": "lab_priority_low" }
+    {
+      "name": "docs",
+      "color": "blue",
+      "id": "lab_docs"
+    },
+    {
+      "name": "feat",
+      "color": "green",
+      "id": "lab_feat"
+    },
+    {
+      "name": "fix",
+      "color": "red",
+      "id": "lab_fix"
+    },
+    {
+      "name": "refactor",
+      "color": "purple",
+      "id": "lab_refactor"
+    },
+    {
+      "name": "chore",
+      "color": "black",
+      "id": "lab_chore"
+    },
+    {
+      "name": "architecture",
+      "color": "sky",
+      "id": "lab_architecture"
+    },
+    {
+      "name": "design-system",
+      "color": "pink",
+      "id": "lab_design_system"
+    },
+    {
+      "name": "frontend",
+      "color": "lime",
+      "id": "lab_frontend"
+    },
+    {
+      "name": "backend",
+      "color": "orange",
+      "id": "lab_backend"
+    },
+    {
+      "name": "supabase",
+      "color": "green",
+      "id": "lab_supabase"
+    },
+    {
+      "name": "flutterflow",
+      "color": "pink",
+      "id": "lab_flutterflow"
+    },
+    {
+      "name": "mvvm",
+      "color": "purple",
+      "id": "lab_mvvm"
+    },
+    {
+      "name": "qa",
+      "color": "yellow",
+      "id": "lab_qa"
+    },
+    {
+      "name": "blocked",
+      "color": "red",
+      "id": "lab_blocked"
+    },
+    {
+      "name": "priority-high",
+      "color": "red",
+      "id": "lab_priority_high"
+    },
+    {
+      "name": "priority-medium",
+      "color": "yellow",
+      "id": "lab_priority_medium"
+    },
+    {
+      "name": "priority-low",
+      "color": "green",
+      "id": "lab_priority_low"
+    }
   ],
-
   "customFields": [
     {
       "id": "cf_story_points",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Story Points",
       "type": "number"
     },
     {
       "id": "cf_sprint",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Sprint",
       "type": "text"
     },
     {
       "id": "cf_status",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Status",
       "type": "list",
       "options": [
         {
           "id": "opt_todo",
-          "value": { "text": "TODO" },
+          "value": {
+            "text": "TODO"
+          },
           "color": "blue"
         },
         {
           "id": "opt_progress",
-          "value": { "text": "IN PROGRESS" },
+          "value": {
+            "text": "IN PROGRESS"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_review",
-          "value": { "text": "REVIEW" },
+          "value": {
+            "text": "REVIEW"
+          },
           "color": "orange"
         },
         {
           "id": "opt_done",
-          "value": { "text": "DONE" },
+          "value": {
+            "text": "DONE"
+          },
           "color": "green"
         }
       ]
     }
   ],
-
   "lists": [
-    { "name": "📥 Backlog", "cards": [] },
-    { "name": "🧠 Refinement", "cards": [] },
-    { "name": "✅ Ready", "cards": [] },
-    { "name": "🚧 In Progress", "cards": [] },
-    { "name": "👀 Code Review", "cards": [] },
-    { "name": "🧪 QA", "cards": [] },
-    { "name": "🚀 Ready for Release", "cards": [] },
-    { "name": "🎉 Done", "cards": [] },
-    { "name": "⛔ Blocked", "cards": [] }
+    {
+      "name": "📥 Backlog",
+      "cards": []
+    },
+    {
+      "name": "🧠 Refinement",
+      "cards": []
+    },
+    {
+      "name": "✅ Ready",
+      "cards": []
+    },
+    {
+      "name": "🚧 In Progress",
+      "cards": []
+    },
+    {
+      "name": "👀 Code Review",
+      "cards": []
+    },
+    {
+      "name": "🧪 QA",
+      "cards": []
+    },
+    {
+      "name": "🚀 Ready for Release",
+      "cards": []
+    },
+    {
+      "name": "🎉 Done",
+      "cards": []
+    },
+    {
+      "name": "⛔ Blocked",
+      "cards": []
+    }
   ]
 }

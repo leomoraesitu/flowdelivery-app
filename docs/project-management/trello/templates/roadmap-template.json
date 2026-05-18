@@ -1,100 +1,197 @@
 {
   "name": "FlowDelivery Roadmap",
   "defaultLists": false,
-
   "labels": [
-    { "name": "docs", "color": "blue", "id": "lab_docs" },
-    { "name": "feat", "color": "green", "id": "lab_feat" },
-    { "name": "fix", "color": "red", "id": "lab_fix" },
-    { "name": "refactor", "color": "purple", "id": "lab_refactor" },
-    { "name": "chore", "color": "black", "id": "lab_chore" },
-    { "name": "architecture", "color": "sky", "id": "lab_architecture" },
-    { "name": "design-system", "color": "pink", "id": "lab_design_system" },
-    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
-    { "name": "backend", "color": "orange", "id": "lab_backend" },
-    { "name": "supabase", "color": "green", "id": "lab_supabase" },
-    { "name": "flutterflow", "color": "pink", "id": "lab_flutterflow" },
-    { "name": "mvvm", "color": "purple", "id": "lab_mvvm" },
-    { "name": "qa", "color": "yellow", "id": "lab_qa" },
-    { "name": "blocked", "color": "red", "id": "lab_blocked" },
-    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
-    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
-    { "name": "priority-low", "color": "green", "id": "lab_priority_low" },
-    { "name": "release", "color": "orange", "id": "lab_release" },
-    { "name": "recruiter-portfolio", "color": "blue", "id": "lab_recruiter_portfolio" }
+    {
+      "name": "docs",
+      "color": "blue",
+      "id": "lab_docs"
+    },
+    {
+      "name": "feat",
+      "color": "green",
+      "id": "lab_feat"
+    },
+    {
+      "name": "fix",
+      "color": "red",
+      "id": "lab_fix"
+    },
+    {
+      "name": "refactor",
+      "color": "purple",
+      "id": "lab_refactor"
+    },
+    {
+      "name": "chore",
+      "color": "black",
+      "id": "lab_chore"
+    },
+    {
+      "name": "architecture",
+      "color": "sky",
+      "id": "lab_architecture"
+    },
+    {
+      "name": "design-system",
+      "color": "pink",
+      "id": "lab_design_system"
+    },
+    {
+      "name": "frontend",
+      "color": "lime",
+      "id": "lab_frontend"
+    },
+    {
+      "name": "backend",
+      "color": "orange",
+      "id": "lab_backend"
+    },
+    {
+      "name": "supabase",
+      "color": "green",
+      "id": "lab_supabase"
+    },
+    {
+      "name": "flutterflow",
+      "color": "pink",
+      "id": "lab_flutterflow"
+    },
+    {
+      "name": "mvvm",
+      "color": "purple",
+      "id": "lab_mvvm"
+    },
+    {
+      "name": "qa",
+      "color": "yellow",
+      "id": "lab_qa"
+    },
+    {
+      "name": "blocked",
+      "color": "red",
+      "id": "lab_blocked"
+    },
+    {
+      "name": "priority-high",
+      "color": "red",
+      "id": "lab_priority_high"
+    },
+    {
+      "name": "priority-medium",
+      "color": "yellow",
+      "id": "lab_priority_medium"
+    },
+    {
+      "name": "priority-low",
+      "color": "green",
+      "id": "lab_priority_low"
+    },
+    {
+      "name": "release",
+      "color": "orange",
+      "id": "lab_release"
+    },
+    {
+      "name": "recruiter-portfolio",
+      "color": "blue",
+      "id": "lab_recruiter_portfolio"
+    }
   ],
-
   "customFields": [
     {
       "id": "cf_quarter",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Quarter",
       "type": "list",
       "options": [
         {
           "id": "opt_q1",
-          "value": { "text": "Q1" },
+          "value": {
+            "text": "Q1"
+          },
           "color": "green"
         },
         {
           "id": "opt_q2",
-          "value": { "text": "Q2" },
+          "value": {
+            "text": "Q2"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_q3",
-          "value": { "text": "Q3" },
+          "value": {
+            "text": "Q3"
+          },
           "color": "orange"
         },
         {
           "id": "opt_q4",
-          "value": { "text": "Q4" },
+          "value": {
+            "text": "Q4"
+          },
           "color": "red"
         }
       ]
     },
     {
       "id": "cf_release_version",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Release Version",
       "type": "text"
     },
     {
       "id": "cf_story_points",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Story Points",
       "type": "number"
     },
     {
       "id": "cf_status",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Roadmap Status",
       "type": "list",
       "options": [
         {
           "id": "opt_planned",
-          "value": { "text": "PLANNED" },
+          "value": {
+            "text": "PLANNED"
+          },
           "color": "blue"
         },
         {
           "id": "opt_progress",
-          "value": { "text": "IN PROGRESS" },
+          "value": {
+            "text": "IN PROGRESS"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_completed",
-          "value": { "text": "COMPLETED" },
+          "value": {
+            "text": "COMPLETED"
+          },
           "color": "green"
         },
         {
           "id": "opt_blocked",
-          "value": { "text": "BLOCKED" },
+          "value": {
+            "text": "BLOCKED"
+          },
           "color": "red"
         }
       ]
     }
   ],
-
   "lists": [
     {
       "name": "🧱 Foundation",
@@ -102,6 +199,68 @@
         {
           "name": "[EPIC] Sprint 0 — Foundation & Governance",
           "desc": "# Objetivo\nEstabelecer a fundação técnica e organizacional do projeto.\n\n# Escopo\n- Workflow Git\n- Conventional Commits\n- Arquitetura MVVM\n- Setup Supabase\n- Design System\n- Workflow Trello\n- Codex Governance\n\n# Critérios de Aceite\n- [ ] Estrutura inicial criada\n- [ ] Documentação criada\n- [ ] Workflow validado",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Workflow Git",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Conventional Commits",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Arquitetura MVVM",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Setup Supabase",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Design System",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Workflow Trello",
+                  "pos": 6,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Codex Governance",
+                  "pos": 7,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Estrutura inicial criada",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Documentação criada",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Workflow validado",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_architecture",
             "lab_mvvm",
@@ -114,12 +273,16 @@
               "idCustomField": "cf_quarter"
             },
             {
-              "value": { "text": "v0.1.0" },
+              "value": {
+                "text": "v0.1.0"
+              },
               "idValue": null,
               "idCustomField": "cf_release_version"
             },
             {
-              "value": { "number": "13" },
+              "value": {
+                "number": "13"
+              },
               "idValue": null,
               "idCustomField": "cf_story_points"
             },
@@ -132,13 +295,39 @@
         }
       ]
     },
-
     {
       "name": "📱 MVP",
       "cards": [
         {
           "name": "[EPIC] User Authentication",
           "desc": "# Objetivo\nImplementar autenticação completa.\n\n# Funcionalidades\n- Login\n- Cadastro\n- Recuperação de senha\n- Sessão persistente",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Login",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Cadastro",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Recuperação de senha",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Sessão persistente",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_feat",
             "lab_supabase"
@@ -150,21 +339,51 @@
               "idCustomField": "cf_quarter"
             },
             {
-              "value": { "text": "v0.2.0" },
+              "value": {
+                "text": "v0.2.0"
+              },
               "idValue": null,
               "idCustomField": "cf_release_version"
             },
             {
-              "value": { "number": "8" },
+              "value": {
+                "number": "8"
+              },
               "idValue": null,
               "idCustomField": "cf_story_points"
             }
           ]
         },
-
         {
           "name": "[EPIC] Restaurant Feed",
           "desc": "# Objetivo\nCriar feed principal de restaurantes.\n\n# Funcionalidades\n- Categorias\n- Busca\n- Cards responsivos\n- Filtros",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Categorias",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Busca",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Cards responsivos",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Filtros",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_feat",
             "lab_frontend",
@@ -177,21 +396,51 @@
               "idCustomField": "cf_quarter"
             },
             {
-              "value": { "text": "v0.3.0" },
+              "value": {
+                "text": "v0.3.0"
+              },
               "idValue": null,
               "idCustomField": "cf_release_version"
             },
             {
-              "value": { "number": "13" },
+              "value": {
+                "number": "13"
+              },
               "idValue": null,
               "idCustomField": "cf_story_points"
             }
           ]
         },
-
         {
           "name": "[EPIC] Cart & Checkout",
           "desc": "# Objetivo\nImplementar fluxo de compra.\n\n# Funcionalidades\n- Carrinho\n- Checkout\n- Endereço\n- Pagamento mock",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Carrinho",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Checkout",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Endereço",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Pagamento mock",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_feat",
             "lab_frontend",
@@ -204,12 +453,16 @@
               "idCustomField": "cf_quarter"
             },
             {
-              "value": { "text": "v0.4.0" },
+              "value": {
+                "text": "v0.4.0"
+              },
               "idValue": null,
               "idCustomField": "cf_release_version"
             },
             {
-              "value": { "number": "21" },
+              "value": {
+                "number": "21"
+              },
               "idValue": null,
               "idCustomField": "cf_story_points"
             }
@@ -217,13 +470,34 @@
         }
       ]
     },
-
     {
       "name": "🚚 Delivery System",
       "cards": [
         {
           "name": "[EPIC] Order Tracking",
           "desc": "# Objetivo\nImplementar rastreamento de pedidos.\n\n# Funcionalidades\n- Timeline\n- Status em tempo real\n- Tracking UI",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Timeline",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Status em tempo real",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Tracking UI",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_feat",
             "lab_backend",
@@ -236,21 +510,51 @@
               "idCustomField": "cf_quarter"
             },
             {
-              "value": { "text": "v0.5.0" },
+              "value": {
+                "text": "v0.5.0"
+              },
               "idValue": null,
               "idCustomField": "cf_release_version"
             },
             {
-              "value": { "number": "13" },
+              "value": {
+                "number": "13"
+              },
               "idValue": null,
               "idCustomField": "cf_story_points"
             }
           ]
         },
-
         {
           "name": "[EPIC] User Profile",
           "desc": "# Objetivo\nCriar gestão de perfil do usuário.\n\n# Funcionalidades\n- Dados pessoais\n- Endereços\n- Histórico de pedidos\n- Favoritos",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Dados pessoais",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Endereços",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Histórico de pedidos",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Favoritos",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_feat",
             "lab_frontend"
@@ -262,12 +566,16 @@
               "idCustomField": "cf_quarter"
             },
             {
-              "value": { "text": "v0.6.0" },
+              "value": {
+                "text": "v0.6.0"
+              },
               "idValue": null,
               "idCustomField": "cf_release_version"
             },
             {
-              "value": { "number": "8" },
+              "value": {
+                "number": "8"
+              },
               "idValue": null,
               "idCustomField": "cf_story_points"
             }
@@ -275,13 +583,44 @@
         }
       ]
     },
-
     {
       "name": "🚀 Releases",
       "cards": [
         {
           "name": "[RELEASE] MVP Portfolio Release",
           "desc": "# Objetivo\nPublicar primeira versão apresentável para portfólio.\n\n# Escopo\n- Build Android\n- Build Web\n- README atualizado\n- Screenshots\n- QA validado",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Build Android",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Build Web",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "README atualizado",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Screenshots",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "QA validado",
+                  "pos": 5,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_release",
             "lab_recruiter_portfolio",
@@ -289,7 +628,9 @@
           ],
           "customFieldItems": [
             {
-              "value": { "text": "v1.0.0" },
+              "value": {
+                "text": "v1.0.0"
+              },
               "idValue": null,
               "idCustomField": "cf_release_version"
             },
@@ -307,13 +648,39 @@
         }
       ]
     },
-
     {
       "name": "🔮 Future Vision",
       "cards": [
         {
           "name": "[EPIC] Real-Time Delivery Intelligence",
           "desc": "# Objetivo\nEvoluir o sistema para inteligência logística.\n\n# Possibilidades\n- Tracking em tempo real\n- Matching de entregadores\n- Analytics avançado\n- AI Delivery Insights",
+          "checklists": [
+            {
+              "name": "Possibilities",
+              "checkItems": [
+                {
+                  "name": "Tracking em tempo real",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Matching de entregadores",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Analytics avançado",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "AI Delivery Insights",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_backend",
             "lab_architecture"

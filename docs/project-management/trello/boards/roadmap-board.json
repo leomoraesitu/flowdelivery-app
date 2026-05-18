@@ -7,13 +7,137 @@
       "cards": [
         {
           "name": "[EPIC] Sprint 0 — Foundation & Governance",
-          "labels": ["architecture", "mvvm", "docs", "priority-high"],
-          "desc": "# Objective\nEstablish the technical and organizational foundation of FlowDelivery.\n\n# Scope\n- Git workflow\n- Conventional Commits\n- MVVM architecture\n- Supabase setup documentation\n- Design System documentation\n- Trello workflow\n- Codex governance\n\n# Release Target\nv0.1.0\n\n# Acceptance Criteria\n- [x] Documentation created\n- [x] Repository structure created\n- [x] Initial validation passes\n- [ ] Remaining implementation tasks mapped"
+          "labels": [
+            "architecture",
+            "mvvm",
+            "docs",
+            "priority-high"
+          ],
+          "desc": "# Objective\nEstablish the technical and organizational foundation of FlowDelivery.\n\n# Scope\n- Git workflow\n- Conventional Commits\n- MVVM architecture\n- Supabase setup documentation\n- Design System documentation\n- Trello workflow\n- Codex governance\n\n# Release Target\nv0.1.0\n\n# Acceptance Criteria\n- [x] Documentation created\n- [x] Repository structure created\n- [x] Initial validation passes\n- [ ] Remaining implementation tasks mapped",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Git workflow",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Conventional Commits",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "MVVM architecture",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Supabase setup documentation",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Design System documentation",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Trello workflow",
+                  "pos": 6,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Codex governance",
+                  "pos": 7,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Documentation created",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "Repository structure created",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "Initial validation passes",
+                  "pos": 3,
+                  "state": "complete"
+                },
+                {
+                  "name": "Remaining implementation tasks mapped",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[FOUNDATION] Development workflow hardening",
-          "labels": ["chore", "ci-cd", "qa", "priority-medium"],
-          "desc": "# Objective\nStrengthen the validation workflow before product features accelerate.\n\n# Scope\n- CI checks\n- Analyzer discipline\n- Test execution baseline\n- PR review checklist\n\n# Release Target\nv0.1.x\n\n# Acceptance Criteria\n- [ ] CI expectations documented\n- [ ] Local validation commands confirmed\n- [ ] Review checklist aligned with Definition of Done"
+          "labels": [
+            "chore",
+            "ci-cd",
+            "qa",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nStrengthen the validation workflow before product features accelerate.\n\n# Scope\n- CI checks\n- Analyzer discipline\n- Test execution baseline\n- PR review checklist\n\n# Release Target\nv0.1.x\n\n# Acceptance Criteria\n- [ ] CI expectations documented\n- [ ] Local validation commands confirmed\n- [ ] Review checklist aligned with Definition of Done",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "CI checks",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Analyzer discipline",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Test execution baseline",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "PR review checklist",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "CI expectations documented",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Local validation commands confirmed",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Review checklist aligned with Definition of Done",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -22,18 +146,189 @@
       "cards": [
         {
           "name": "[EPIC] User Authentication",
-          "labels": ["feat", "auth", "supabase", "priority-high"],
-          "desc": "# Objective\nImplement complete user authentication for the MVP.\n\n# Features\n- Login\n- Sign up\n- Password recovery\n- Persistent session\n\n# Release Target\nv0.2.0\n\n# Acceptance Criteria\n- [ ] User can create an account\n- [ ] User can log in and log out\n- [ ] Session state survives app restart\n- [ ] Auth failures show clear feedback"
+          "labels": [
+            "feat",
+            "auth",
+            "supabase",
+            "priority-high"
+          ],
+          "desc": "# Objective\nImplement complete user authentication for the MVP.\n\n# Features\n- Login\n- Sign up\n- Password recovery\n- Persistent session\n\n# Release Target\nv0.2.0\n\n# Acceptance Criteria\n- [ ] User can create an account\n- [ ] User can log in and log out\n- [ ] Session state survives app restart\n- [ ] Auth failures show clear feedback",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Login",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Sign up",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Password recovery",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Persistent session",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "User can create an account",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "User can log in and log out",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Session state survives app restart",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Auth failures show clear feedback",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[EPIC] Restaurant Feed",
-          "labels": ["feat", "frontend", "mvvm", "priority-high"],
-          "desc": "# Objective\nCreate the main restaurant discovery experience.\n\n# Features\n- Categories\n- Search\n- Responsive cards\n- Loading and empty states\n\n# Release Target\nv0.3.0\n\n# Acceptance Criteria\n- [ ] Feed renders with mock or real data\n- [ ] Search/filter states are handled\n- [ ] UI follows design tokens\n- [ ] View model boundaries stay clear"
+          "labels": [
+            "feat",
+            "frontend",
+            "mvvm",
+            "priority-high"
+          ],
+          "desc": "# Objective\nCreate the main restaurant discovery experience.\n\n# Features\n- Categories\n- Search\n- Responsive cards\n- Loading and empty states\n\n# Release Target\nv0.3.0\n\n# Acceptance Criteria\n- [ ] Feed renders with mock or real data\n- [ ] Search/filter states are handled\n- [ ] UI follows design tokens\n- [ ] View model boundaries stay clear",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Categories",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Search",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Responsive cards",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Loading and empty states",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Feed renders with mock or real data",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Search/filter states are handled",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "UI follows design tokens",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "View model boundaries stay clear",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[EPIC] Cart & Checkout",
-          "labels": ["feat", "frontend", "backend", "priority-medium"],
-          "desc": "# Objective\nImplement the base ordering path.\n\n# Features\n- Cart management\n- Checkout summary\n- Address selection\n- Mock payment\n\n# Release Target\nv0.4.0\n\n# Acceptance Criteria\n- [ ] User can add and remove items\n- [ ] Totals are calculated consistently\n- [ ] Checkout state is validated\n- [ ] Failure and empty states are represented"
+          "labels": [
+            "feat",
+            "frontend",
+            "backend",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nImplement the base ordering path.\n\n# Features\n- Cart management\n- Checkout summary\n- Address selection\n- Mock payment\n\n# Release Target\nv0.4.0\n\n# Acceptance Criteria\n- [ ] User can add and remove items\n- [ ] Totals are calculated consistently\n- [ ] Checkout state is validated\n- [ ] Failure and empty states are represented",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Cart management",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Checkout summary",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Address selection",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Mock payment",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "User can add and remove items",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Totals are calculated consistently",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Checkout state is validated",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Failure and empty states are represented",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -42,13 +337,127 @@
       "cards": [
         {
           "name": "[EPIC] Order Tracking",
-          "labels": ["feat", "backend", "supabase", "priority-medium"],
-          "desc": "# Objective\nImplement the order tracking experience after checkout.\n\n# Features\n- Order status lifecycle\n- Timeline UI\n- Status updates\n- Tracking details\n\n# Release Target\nv0.5.0\n\n# Acceptance Criteria\n- [ ] Status model defined\n- [ ] Tracking screen implemented\n- [ ] Data source boundary documented\n- [ ] QA scenarios cover status changes"
+          "labels": [
+            "feat",
+            "backend",
+            "supabase",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nImplement the order tracking experience after checkout.\n\n# Features\n- Order status lifecycle\n- Timeline UI\n- Status updates\n- Tracking details\n\n# Release Target\nv0.5.0\n\n# Acceptance Criteria\n- [ ] Status model defined\n- [ ] Tracking screen implemented\n- [ ] Data source boundary documented\n- [ ] QA scenarios cover status changes",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Order status lifecycle",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Timeline UI",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Status updates",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Tracking details",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Status model defined",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Tracking screen implemented",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Data source boundary documented",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "QA scenarios cover status changes",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[EPIC] User Profile",
-          "labels": ["feat", "frontend", "backend", "priority-medium"],
-          "desc": "# Objective\nCreate the user profile management area.\n\n# Features\n- Personal data\n- Addresses\n- Order history\n- Favorites\n\n# Release Target\nv0.6.0\n\n# Acceptance Criteria\n- [ ] Profile screen structure defined\n- [ ] Address management planned\n- [ ] Order history contract mapped\n- [ ] Privacy-sensitive states reviewed"
+          "labels": [
+            "feat",
+            "frontend",
+            "backend",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nCreate the user profile management area.\n\n# Features\n- Personal data\n- Addresses\n- Order history\n- Favorites\n\n# Release Target\nv0.6.0\n\n# Acceptance Criteria\n- [ ] Profile screen structure defined\n- [ ] Address management planned\n- [ ] Order history contract mapped\n- [ ] Privacy-sensitive states reviewed",
+          "checklists": [
+            {
+              "name": "Features",
+              "checkItems": [
+                {
+                  "name": "Personal data",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Addresses",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Order history",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Favorites",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Profile screen structure defined",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Address management planned",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Order history contract mapped",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Privacy-sensitive states reviewed",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -57,13 +466,132 @@
       "cards": [
         {
           "name": "[RELEASE] MVP Portfolio Release",
-          "labels": ["release", "recruiter-portfolio", "qa", "priority-high"],
-          "desc": "# Objective\nPublish the first polished portfolio-ready version.\n\n# Scope\n- Android build\n- Web build if supported\n- README updated\n- Screenshots or demo evidence\n- QA checklist validated\n\n# Release Target\nv1.0.0\n\n# Acceptance Criteria\n- [ ] Release scope closed\n- [ ] Known issues documented\n- [ ] QA evidence attached\n- [ ] Portfolio narrative ready"
+          "labels": [
+            "release",
+            "recruiter-portfolio",
+            "qa",
+            "priority-high"
+          ],
+          "desc": "# Objective\nPublish the first polished portfolio-ready version.\n\n# Scope\n- Android build\n- Web build if supported\n- README updated\n- Screenshots or demo evidence\n- QA checklist validated\n\n# Release Target\nv1.0.0\n\n# Acceptance Criteria\n- [ ] Release scope closed\n- [ ] Known issues documented\n- [ ] QA evidence attached\n- [ ] Portfolio narrative ready",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Android build",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Web build if supported",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "README updated",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Screenshots or demo evidence",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "QA checklist validated",
+                  "pos": 5,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Release scope closed",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Known issues documented",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "QA evidence attached",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Portfolio narrative ready",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[RELEASE] Technical stabilization",
-          "labels": ["release", "technical-debt", "qa", "priority-medium"],
-          "desc": "# Objective\nReserve a stabilization window before public portfolio sharing.\n\n# Scope\n- Bug triage\n- Technical debt cleanup\n- Documentation consistency\n- Build validation\n\n# Release Target\nv1.0.0-rc\n\n# Acceptance Criteria\n- [ ] Critical bugs closed\n- [ ] High-impact debt reviewed\n- [ ] Release notes drafted\n- [ ] Final validation commands run"
+          "labels": [
+            "release",
+            "technical-debt",
+            "qa",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nReserve a stabilization window before public portfolio sharing.\n\n# Scope\n- Bug triage\n- Technical debt cleanup\n- Documentation consistency\n- Build validation\n\n# Release Target\nv1.0.0-rc\n\n# Acceptance Criteria\n- [ ] Critical bugs closed\n- [ ] High-impact debt reviewed\n- [ ] Release notes drafted\n- [ ] Final validation commands run",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Bug triage",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Technical debt cleanup",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Documentation consistency",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Build validation",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Critical bugs closed",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "High-impact debt reviewed",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Release notes drafted",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Final validation commands run",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -72,13 +600,117 @@
       "cards": [
         {
           "name": "[EPIC] Real-Time Delivery Intelligence",
-          "labels": ["ai", "backend", "architecture", "priority-low"],
-          "desc": "# Objective\nExplore advanced logistics and intelligence capabilities after the MVP.\n\n# Possibilities\n- Real-time tracking\n- Courier matching\n- Advanced analytics\n- AI delivery insights\n\n# Release Target\nFuture\n\n# Acceptance Criteria\n- [ ] MVP learnings reviewed\n- [ ] Technical feasibility assessed\n- [ ] Clear boundary between portfolio scope and future scope documented"
+          "labels": [
+            "ai",
+            "backend",
+            "architecture",
+            "priority-low"
+          ],
+          "desc": "# Objective\nExplore advanced logistics and intelligence capabilities after the MVP.\n\n# Possibilities\n- Real-time tracking\n- Courier matching\n- Advanced analytics\n- AI delivery insights\n\n# Release Target\nFuture\n\n# Acceptance Criteria\n- [ ] MVP learnings reviewed\n- [ ] Technical feasibility assessed\n- [ ] Clear boundary between portfolio scope and future scope documented",
+          "checklists": [
+            {
+              "name": "Possibilities",
+              "checkItems": [
+                {
+                  "name": "Real-time tracking",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Courier matching",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Advanced analytics",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "AI delivery insights",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "MVP learnings reviewed",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Technical feasibility assessed",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Clear boundary between portfolio scope and future scope documented",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[EPIC] Analytics Dashboard",
-          "labels": ["analytics", "backend", "frontend", "priority-low"],
-          "desc": "# Objective\nExplore analytics capabilities for product and operational insights.\n\n# Possibilities\n- Order metrics\n- Restaurant performance\n- User behavior summaries\n- Admin-oriented dashboards\n\n# Release Target\nFuture\n\n# Acceptance Criteria\n- [ ] Data events identified\n- [ ] Privacy considerations reviewed\n- [ ] Dashboard audience defined"
+          "labels": [
+            "analytics",
+            "backend",
+            "frontend",
+            "priority-low"
+          ],
+          "desc": "# Objective\nExplore analytics capabilities for product and operational insights.\n\n# Possibilities\n- Order metrics\n- Restaurant performance\n- User behavior summaries\n- Admin-oriented dashboards\n\n# Release Target\nFuture\n\n# Acceptance Criteria\n- [ ] Data events identified\n- [ ] Privacy considerations reviewed\n- [ ] Dashboard audience defined",
+          "checklists": [
+            {
+              "name": "Possibilities",
+              "checkItems": [
+                {
+                  "name": "Order metrics",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Restaurant performance",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "User behavior summaries",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Admin-oriented dashboards",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Data events identified",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Privacy considerations reviewed",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Dashboard audience defined",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

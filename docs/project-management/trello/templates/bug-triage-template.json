@@ -1,109 +1,184 @@
 {
   "name": "FlowDelivery Bug Triage Template",
   "defaultLists": false,
-
   "labels": [
-    { "name": "bug", "color": "red", "id": "lab_bug" },
-    { "name": "fix", "color": "red", "id": "lab_fix" },
-    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
-    { "name": "backend", "color": "orange", "id": "lab_backend" },
-    { "name": "supabase", "color": "green", "id": "lab_supabase" },
-    { "name": "flutterflow", "color": "pink", "id": "lab_flutterflow" },
-    { "name": "qa", "color": "yellow", "id": "lab_qa" },
-    { "name": "regression", "color": "purple", "id": "lab_regression" },
-    { "name": "blocked", "color": "red", "id": "lab_blocked" },
-    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
-    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
-    { "name": "priority-low", "color": "green", "id": "lab_priority_low" }
+    {
+      "name": "bug",
+      "color": "red",
+      "id": "lab_bug"
+    },
+    {
+      "name": "fix",
+      "color": "red",
+      "id": "lab_fix"
+    },
+    {
+      "name": "frontend",
+      "color": "lime",
+      "id": "lab_frontend"
+    },
+    {
+      "name": "backend",
+      "color": "orange",
+      "id": "lab_backend"
+    },
+    {
+      "name": "supabase",
+      "color": "green",
+      "id": "lab_supabase"
+    },
+    {
+      "name": "flutterflow",
+      "color": "pink",
+      "id": "lab_flutterflow"
+    },
+    {
+      "name": "qa",
+      "color": "yellow",
+      "id": "lab_qa"
+    },
+    {
+      "name": "regression",
+      "color": "purple",
+      "id": "lab_regression"
+    },
+    {
+      "name": "blocked",
+      "color": "red",
+      "id": "lab_blocked"
+    },
+    {
+      "name": "priority-high",
+      "color": "red",
+      "id": "lab_priority_high"
+    },
+    {
+      "name": "priority-medium",
+      "color": "yellow",
+      "id": "lab_priority_medium"
+    },
+    {
+      "name": "priority-low",
+      "color": "green",
+      "id": "lab_priority_low"
+    }
   ],
-
   "customFields": [
     {
       "id": "cf_severity",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Severity",
       "type": "list",
       "options": [
         {
           "id": "opt_sev_critical",
-          "value": { "text": "CRITICAL" },
+          "value": {
+            "text": "CRITICAL"
+          },
           "color": "red"
         },
         {
           "id": "opt_sev_high",
-          "value": { "text": "HIGH" },
+          "value": {
+            "text": "HIGH"
+          },
           "color": "orange"
         },
         {
           "id": "opt_sev_medium",
-          "value": { "text": "MEDIUM" },
+          "value": {
+            "text": "MEDIUM"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_sev_low",
-          "value": { "text": "LOW" },
+          "value": {
+            "text": "LOW"
+          },
           "color": "green"
         }
       ]
     },
     {
       "id": "cf_environment",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Environment",
       "type": "list",
       "options": [
         {
           "id": "opt_env_dev",
-          "value": { "text": "DEV" },
+          "value": {
+            "text": "DEV"
+          },
           "color": "blue"
         },
         {
           "id": "opt_env_staging",
-          "value": { "text": "STAGING" },
+          "value": {
+            "text": "STAGING"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_env_prod",
-          "value": { "text": "PROD" },
+          "value": {
+            "text": "PROD"
+          },
           "color": "red"
         }
       ]
     },
     {
       "id": "cf_status",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Bug Status",
       "type": "list",
       "options": [
         {
           "id": "opt_reported",
-          "value": { "text": "REPORTED" },
+          "value": {
+            "text": "REPORTED"
+          },
           "color": "blue"
         },
         {
           "id": "opt_reproduced",
-          "value": { "text": "REPRODUCED" },
+          "value": {
+            "text": "REPRODUCED"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_fixing",
-          "value": { "text": "FIXING" },
+          "value": {
+            "text": "FIXING"
+          },
           "color": "orange"
         },
         {
           "id": "opt_validated",
-          "value": { "text": "VALIDATED" },
+          "value": {
+            "text": "VALIDATED"
+          },
           "color": "green"
         },
         {
           "id": "opt_blocked",
-          "value": { "text": "BLOCKED" },
+          "value": {
+            "text": "BLOCKED"
+          },
           "color": "red"
         }
       ]
     }
   ],
-
   "lists": [
     {
       "name": "🐞 Reported",
@@ -141,6 +216,38 @@
         {
           "name": "[TRIAGE] Classificar bug",
           "desc": "# Checklist\n- [ ] Severidade definida\n- [ ] Ambiente confirmado\n- [ ] Área afetada marcada\n- [ ] Regressão avaliada\n- [ ] Responsável definido",
+          "checklists": [
+            {
+              "name": "Checklist",
+              "checkItems": [
+                {
+                  "name": "Severidade definida",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Ambiente confirmado",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Área afetada marcada",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Regressão avaliada",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Responsável definido",
+                  "pos": 5,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_bug",
             "lab_qa"
@@ -174,6 +281,28 @@
         {
           "name": "[FIX] Corrigir bug confirmado",
           "desc": "# Objetivo\nCorrigir causa raiz do bug.\n\n# Critérios de Aceite\n- [ ] Bug não reproduz mais\n- [ ] Fluxo relacionado continua funcionando\n- [ ] Regressão avaliada",
+          "checklists": [
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Bug não reproduz mais",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Fluxo relacionado continua funcionando",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Regressão avaliada",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_fix",
             "lab_priority_high"

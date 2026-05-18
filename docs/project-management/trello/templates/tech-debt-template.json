@@ -1,108 +1,193 @@
 {
   "name": "FlowDelivery Tech Debt Template",
   "defaultLists": false,
-
   "labels": [
-    { "name": "docs", "color": "blue", "id": "lab_docs" },
-    { "name": "fix", "color": "red", "id": "lab_fix" },
-    { "name": "refactor", "color": "purple", "id": "lab_refactor" },
-    { "name": "chore", "color": "black", "id": "lab_chore" },
-    { "name": "architecture", "color": "sky", "id": "lab_architecture" },
-    { "name": "design-system", "color": "pink", "id": "lab_design_system" },
-    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
-    { "name": "backend", "color": "orange", "id": "lab_backend" },
-    { "name": "supabase", "color": "green", "id": "lab_supabase" },
-    { "name": "mvvm", "color": "purple", "id": "lab_mvvm" },
-    { "name": "qa", "color": "yellow", "id": "lab_qa" },
-    { "name": "blocked", "color": "red", "id": "lab_blocked" },
-    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
-    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
-    { "name": "priority-low", "color": "green", "id": "lab_priority_low" }
+    {
+      "name": "docs",
+      "color": "blue",
+      "id": "lab_docs"
+    },
+    {
+      "name": "fix",
+      "color": "red",
+      "id": "lab_fix"
+    },
+    {
+      "name": "refactor",
+      "color": "purple",
+      "id": "lab_refactor"
+    },
+    {
+      "name": "chore",
+      "color": "black",
+      "id": "lab_chore"
+    },
+    {
+      "name": "architecture",
+      "color": "sky",
+      "id": "lab_architecture"
+    },
+    {
+      "name": "design-system",
+      "color": "pink",
+      "id": "lab_design_system"
+    },
+    {
+      "name": "frontend",
+      "color": "lime",
+      "id": "lab_frontend"
+    },
+    {
+      "name": "backend",
+      "color": "orange",
+      "id": "lab_backend"
+    },
+    {
+      "name": "supabase",
+      "color": "green",
+      "id": "lab_supabase"
+    },
+    {
+      "name": "mvvm",
+      "color": "purple",
+      "id": "lab_mvvm"
+    },
+    {
+      "name": "qa",
+      "color": "yellow",
+      "id": "lab_qa"
+    },
+    {
+      "name": "blocked",
+      "color": "red",
+      "id": "lab_blocked"
+    },
+    {
+      "name": "priority-high",
+      "color": "red",
+      "id": "lab_priority_high"
+    },
+    {
+      "name": "priority-medium",
+      "color": "yellow",
+      "id": "lab_priority_medium"
+    },
+    {
+      "name": "priority-low",
+      "color": "green",
+      "id": "lab_priority_low"
+    }
   ],
-
   "customFields": [
     {
       "id": "cf_impact",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Impact",
       "type": "list",
       "options": [
         {
           "id": "opt_impact_high",
-          "value": { "text": "HIGH" },
+          "value": {
+            "text": "HIGH"
+          },
           "color": "red"
         },
         {
           "id": "opt_impact_medium",
-          "value": { "text": "MEDIUM" },
+          "value": {
+            "text": "MEDIUM"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_impact_low",
-          "value": { "text": "LOW" },
+          "value": {
+            "text": "LOW"
+          },
           "color": "green"
         }
       ]
     },
     {
       "id": "cf_effort",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Effort",
       "type": "list",
       "options": [
         {
           "id": "opt_effort_small",
-          "value": { "text": "SMALL" },
+          "value": {
+            "text": "SMALL"
+          },
           "color": "green"
         },
         {
           "id": "opt_effort_medium",
-          "value": { "text": "MEDIUM" },
+          "value": {
+            "text": "MEDIUM"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_effort_large",
-          "value": { "text": "LARGE" },
+          "value": {
+            "text": "LARGE"
+          },
           "color": "red"
         }
       ]
     },
     {
       "id": "cf_status",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Status",
       "type": "list",
       "options": [
         {
           "id": "opt_identified",
-          "value": { "text": "IDENTIFIED" },
+          "value": {
+            "text": "IDENTIFIED"
+          },
           "color": "blue"
         },
         {
           "id": "opt_prioritized",
-          "value": { "text": "PRIORITIZED" },
+          "value": {
+            "text": "PRIORITIZED"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_progress",
-          "value": { "text": "IN PROGRESS" },
+          "value": {
+            "text": "IN PROGRESS"
+          },
           "color": "orange"
         },
         {
           "id": "opt_validated",
-          "value": { "text": "VALIDATED" },
+          "value": {
+            "text": "VALIDATED"
+          },
           "color": "green"
         }
       ]
     },
     {
       "id": "cf_estimate_hours",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Estimate (Hours)",
       "type": "number"
     }
   ],
-
   "lists": [
     {
       "name": "📥 Debt Inbox",
@@ -140,6 +225,33 @@
         {
           "name": "[ARCH] Avaliar impacto arquitetural",
           "desc": "# Checklist\n- [ ] Causa raiz identificada\n- [ ] Módulos afetados mapeados\n- [ ] Risco de regressão avaliado\n- [ ] Estratégia incremental definida",
+          "checklists": [
+            {
+              "name": "Checklist",
+              "checkItems": [
+                {
+                  "name": "Causa raiz identificada",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Módulos afetados mapeados",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Risco de regressão avaliado",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Estratégia incremental definida",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_architecture",
             "lab_refactor"
@@ -153,6 +265,28 @@
         {
           "name": "[DEBT] Quick win técnico",
           "desc": "# Objetivo\nResolver um débito de baixo esforço e impacto claro.\n\n# Critérios de Aceite\n- [ ] Mudança pequena\n- [ ] Validação objetiva\n- [ ] Sem alteração de comportamento esperado",
+          "checklists": [
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Mudança pequena",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Validação objetiva",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Sem alteração de comportamento esperado",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_refactor",
             "lab_priority_high"
@@ -174,7 +308,9 @@
               "idCustomField": "cf_effort"
             },
             {
-              "value": { "number": "2" },
+              "value": {
+                "number": "2"
+              },
               "idValue": null,
               "idCustomField": "cf_estimate_hours"
             }
@@ -216,6 +352,28 @@
         {
           "name": "[DOCS] Registrar decisão técnica",
           "desc": "# Objetivo\nDocumentar a decisão tomada ao resolver o débito.\n\n# Checklist\n- [ ] Antes/depois descrito\n- [ ] Tradeoffs registrados\n- [ ] Links para PR/commit adicionados",
+          "checklists": [
+            {
+              "name": "Checklist",
+              "checkItems": [
+                {
+                  "name": "Antes/depois descrito",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Tradeoffs registrados",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Links para PR/commit adicionados",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_docs",
             "lab_architecture"

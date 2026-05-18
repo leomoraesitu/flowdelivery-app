@@ -7,23 +7,309 @@
       "cards": [
         {
           "name": "[EPIC] Sprint 0 — Foundation & Governance",
-          "labels": ["docs", "architecture", "design-system", "ci-cd", "ai", "priority-high"],
-          "desc": "# Objective\nEstablish the technical, architectural and organizational foundation of FlowDelivery.\n\n# Scope\n- Project governance\n- Trello workflow\n- Conventional Commits\n- Branching strategy\n- MVVM architecture documentation\n- Design system documentation\n- Environment and Supabase setup documentation\n- Codex governance\n- QA strategy\n- Initial CI workflow\n\n# Acceptance Criteria\n- [x] Standards documented\n- [x] Trello workflow mapped\n- [x] Base repository structure created\n- [x] Analyzer passes\n- [x] Initial tests pass\n- [ ] Remaining implementation tasks mapped"
+          "labels": [
+            "docs",
+            "architecture",
+            "design-system",
+            "ci-cd",
+            "ai",
+            "priority-high"
+          ],
+          "desc": "# Objective\nEstablish the technical, architectural and organizational foundation of FlowDelivery.\n\n# Scope\n- Project governance\n- Trello workflow\n- Conventional Commits\n- Branching strategy\n- MVVM architecture documentation\n- Design system documentation\n- Environment and Supabase setup documentation\n- Codex governance\n- QA strategy\n- Initial CI workflow\n\n# Acceptance Criteria\n- [x] Standards documented\n- [x] Trello workflow mapped\n- [x] Base repository structure created\n- [x] Analyzer passes\n- [x] Initial tests pass\n- [ ] Remaining implementation tasks mapped",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Project governance",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Trello workflow",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Conventional Commits",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Branching strategy",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "MVVM architecture documentation",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Design system documentation",
+                  "pos": 6,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Environment and Supabase setup documentation",
+                  "pos": 7,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Codex governance",
+                  "pos": 8,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "QA strategy",
+                  "pos": 9,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Initial CI workflow",
+                  "pos": 10,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Standards documented",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "Trello workflow mapped",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "Base repository structure created",
+                  "pos": 3,
+                  "state": "complete"
+                },
+                {
+                  "name": "Analyzer passes",
+                  "pos": 4,
+                  "state": "complete"
+                },
+                {
+                  "name": "Initial tests pass",
+                  "pos": 5,
+                  "state": "complete"
+                },
+                {
+                  "name": "Remaining implementation tasks mapped",
+                  "pos": 6,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[EPIC] User Authentication",
-          "labels": ["feat", "auth", "supabase", "backend", "priority-high"],
-          "desc": "# Objective\nImplement the base authentication flow for FlowDelivery users.\n\n# Scope\n- Login\n- Sign up\n- Password recovery\n- Session persistence\n- Auth state handling\n\n# Acceptance Criteria\n- [ ] Auth flow defined\n- [ ] Supabase auth integration planned\n- [ ] Error states mapped\n- [ ] QA scenarios documented"
+          "labels": [
+            "feat",
+            "auth",
+            "supabase",
+            "backend",
+            "priority-high"
+          ],
+          "desc": "# Objective\nImplement the base authentication flow for FlowDelivery users.\n\n# Scope\n- Login\n- Sign up\n- Password recovery\n- Session persistence\n- Auth state handling\n\n# Acceptance Criteria\n- [ ] Auth flow defined\n- [ ] Supabase auth integration planned\n- [ ] Error states mapped\n- [ ] QA scenarios documented",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Login",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Sign up",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Password recovery",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Session persistence",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Auth state handling",
+                  "pos": 5,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Auth flow defined",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Supabase auth integration planned",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Error states mapped",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "QA scenarios documented",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[EPIC] Restaurant Feed",
-          "labels": ["feat", "frontend", "mvvm", "priority-high"],
-          "desc": "# Objective\nCreate the main restaurant browsing experience.\n\n# Scope\n- Restaurant list\n- Category filters\n- Search\n- Restaurant cards\n- Empty and loading states\n\n# Acceptance Criteria\n- [ ] View model responsibility defined\n- [ ] UI states mapped\n- [ ] Data contract documented\n- [ ] Initial QA scenarios listed"
+          "labels": [
+            "feat",
+            "frontend",
+            "mvvm",
+            "priority-high"
+          ],
+          "desc": "# Objective\nCreate the main restaurant browsing experience.\n\n# Scope\n- Restaurant list\n- Category filters\n- Search\n- Restaurant cards\n- Empty and loading states\n\n# Acceptance Criteria\n- [ ] View model responsibility defined\n- [ ] UI states mapped\n- [ ] Data contract documented\n- [ ] Initial QA scenarios listed",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Restaurant list",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Category filters",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Search",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Restaurant cards",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Empty and loading states",
+                  "pos": 5,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "View model responsibility defined",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "UI states mapped",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Data contract documented",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Initial QA scenarios listed",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[EPIC] Cart & Checkout",
-          "labels": ["feat", "frontend", "backend", "priority-medium"],
-          "desc": "# Objective\nImplement the base cart and checkout experience.\n\n# Scope\n- Add and remove items\n- Quantity update\n- Delivery address selection\n- Order summary\n- Mock payment flow\n\n# Acceptance Criteria\n- [ ] Cart state behavior defined\n- [ ] Checkout steps mapped\n- [ ] Error and empty states listed\n- [ ] Release dependency identified"
+          "labels": [
+            "feat",
+            "frontend",
+            "backend",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nImplement the base cart and checkout experience.\n\n# Scope\n- Add and remove items\n- Quantity update\n- Delivery address selection\n- Order summary\n- Mock payment flow\n\n# Acceptance Criteria\n- [ ] Cart state behavior defined\n- [ ] Checkout steps mapped\n- [ ] Error and empty states listed\n- [ ] Release dependency identified",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Add and remove items",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Quantity update",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Delivery address selection",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Order summary",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Mock payment flow",
+                  "pos": 5,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Cart state behavior defined",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Checkout steps mapped",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Error and empty states listed",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Release dependency identified",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -32,13 +318,131 @@
       "cards": [
         {
           "name": "[ROADMAP] MVP Portfolio Release",
-          "labels": ["release", "recruiter-portfolio", "priority-high"],
-          "desc": "# Objective\nTrack the minimum product scope needed for a polished portfolio release.\n\n# Scope\n- Foundation complete\n- Auth flow\n- Restaurant feed\n- Cart and checkout\n- Basic order tracking\n- README and screenshots\n\n# Acceptance Criteria\n- [ ] MVP scope agreed\n- [ ] Release risks mapped\n- [ ] QA checklist created\n- [ ] Portfolio evidence planned"
+          "labels": [
+            "release",
+            "recruiter-portfolio",
+            "priority-high"
+          ],
+          "desc": "# Objective\nTrack the minimum product scope needed for a polished portfolio release.\n\n# Scope\n- Foundation complete\n- Auth flow\n- Restaurant feed\n- Cart and checkout\n- Basic order tracking\n- README and screenshots\n\n# Acceptance Criteria\n- [ ] MVP scope agreed\n- [ ] Release risks mapped\n- [ ] QA checklist created\n- [ ] Portfolio evidence planned",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Foundation complete",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Auth flow",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Restaurant feed",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Cart and checkout",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Basic order tracking",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "README and screenshots",
+                  "pos": 6,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "MVP scope agreed",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Release risks mapped",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "QA checklist created",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Portfolio evidence planned",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[ROADMAP] Delivery System Evolution",
-          "labels": ["feat", "backend", "supabase", "priority-medium"],
-          "desc": "# Objective\nPlan the delivery tracking capabilities after the first MVP.\n\n# Scope\n- Order status lifecycle\n- Tracking timeline\n- Realtime updates\n- Delivery history\n\n# Acceptance Criteria\n- [ ] Data model drafted\n- [ ] Realtime dependency evaluated\n- [ ] MVP boundary documented"
+          "labels": [
+            "feat",
+            "backend",
+            "supabase",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nPlan the delivery tracking capabilities after the first MVP.\n\n# Scope\n- Order status lifecycle\n- Tracking timeline\n- Realtime updates\n- Delivery history\n\n# Acceptance Criteria\n- [ ] Data model drafted\n- [ ] Realtime dependency evaluated\n- [ ] MVP boundary documented",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Order status lifecycle",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Tracking timeline",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Realtime updates",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Delivery history",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Data model drafted",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Realtime dependency evaluated",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "MVP boundary documented",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -47,18 +451,152 @@
       "cards": [
         {
           "name": "[CHORE] Sync Sprint 0 cards in Trello",
-          "labels": ["chore", "blocked", "priority-medium"],
-          "desc": "# Objective\nSynchronize real Trello cards with the local Sprint 0 board template.\n\n# Scope\n- Fetch current Trello cards\n- Create missing cards\n- Move completed cards to Done\n- Keep pending cards in Ready or Backlog\n\n# Acceptance Criteria\n- [ ] Trello auth available\n- [ ] Cards created or updated\n- [ ] Local board template matches real board state\n\n# Dependencies\n- Active Trello connection"
+          "labels": [
+            "chore",
+            "blocked",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nSynchronize real Trello cards with the local Sprint 0 board template.\n\n# Scope\n- Fetch current Trello cards\n- Create missing cards\n- Move completed cards to Done\n- Keep pending cards in Ready or Backlog\n\n# Acceptance Criteria\n- [ ] Trello auth available\n- [ ] Cards created or updated\n- [ ] Local board template matches real board state\n\n# Dependencies\n- Active Trello connection",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Fetch current Trello cards",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create missing cards",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Move completed cards to Done",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Keep pending cards in Ready or Backlog",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Trello auth available",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Cards created or updated",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Local board template matches real board state",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Dependencies",
+              "checkItems": [
+                {
+                  "name": "Active Trello connection",
+                  "pos": 1,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[UX] Add prototype PNG assets",
-          "labels": ["ux", "design-system", "frontend", "priority-low"],
-          "desc": "# Objective\nAdd UX/UI prototype PNG files to the repository as visual references for future implementation.\n\n# Scope\n- Add prototype PNG files to the appropriate assets or documentation folder\n- Use clear and consistent filenames\n- Reference the prototypes from relevant documentation if needed\n\n# Acceptance Criteria\n- [ ] PNG files added to the repository\n- [ ] File location is clear and consistent\n- [ ] Prototype files can be used as reference for future UI implementation"
+          "labels": [
+            "ux",
+            "design-system",
+            "frontend",
+            "priority-low"
+          ],
+          "desc": "# Objective\nAdd UX/UI prototype PNG files to the repository as visual references for future implementation.\n\n# Scope\n- Add prototype PNG files to the appropriate assets or documentation folder\n- Use clear and consistent filenames\n- Reference the prototypes from relevant documentation if needed\n\n# Acceptance Criteria\n- [ ] PNG files added to the repository\n- [ ] File location is clear and consistent\n- [ ] Prototype files can be used as reference for future UI implementation",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Add prototype PNG files to the appropriate assets or documentation folder",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Use clear and consistent filenames",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Reference the prototypes from relevant documentation if needed",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "PNG files added to the repository",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "File location is clear and consistent",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Prototype files can be used as reference for future UI implementation",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[DEBT] Align roadmap template labels",
-          "labels": ["technical-debt", "docs", "priority-low"],
-          "desc": "# Objective\nReview roadmap template labels and keep them aligned with the Trello label map.\n\n# Context\nSome roadmap items use labels that must exist in the shared map before import.\n\n# Acceptance Criteria\n- [ ] Roadmap labels checked\n- [ ] Missing labels added to the map or removed from cards\n- [ ] JSON validation executed"
+          "labels": [
+            "technical-debt",
+            "docs",
+            "priority-low"
+          ],
+          "desc": "# Objective\nReview roadmap template labels and keep them aligned with the Trello label map.\n\n# Context\nSome roadmap items use labels that must exist in the shared map before import.\n\n# Acceptance Criteria\n- [ ] Roadmap labels checked\n- [ ] Missing labels added to the map or removed from cards\n- [ ] JSON validation executed",
+          "checklists": [
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Roadmap labels checked",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Missing labels added to the map or removed from cards",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "JSON validation executed",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -67,8 +605,45 @@
       "cards": [
         {
           "name": "[REFINE] Auth stories",
-          "labels": ["feat", "auth", "supabase", "priority-high"],
-          "desc": "# Objective\nBreak the authentication epic into implementation-ready stories.\n\n# Checklist\n- [ ] Login story\n- [ ] Sign up story\n- [ ] Password recovery story\n- [ ] Session persistence story\n- [ ] QA scenarios"
+          "labels": [
+            "feat",
+            "auth",
+            "supabase",
+            "priority-high"
+          ],
+          "desc": "# Objective\nBreak the authentication epic into implementation-ready stories.\n\n# Checklist\n- [ ] Login story\n- [ ] Sign up story\n- [ ] Password recovery story\n- [ ] Session persistence story\n- [ ] QA scenarios",
+          "checklists": [
+            {
+              "name": "Checklist",
+              "checkItems": [
+                {
+                  "name": "Login story",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Sign up story",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Password recovery story",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Session persistence story",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "QA scenarios",
+                  "pos": 5,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -77,13 +652,105 @@
       "cards": [
         {
           "name": "[ARCH] Implement base navigation strategy",
-          "labels": ["architecture", "frontend", "priority-medium"],
-          "desc": "# Objective\nIntroduce the initial app navigation strategy.\n\n# Scope\n- Decide routing package and app shell structure\n- Document routing conventions\n- Prepare implementation path for feature navigation\n\n# Acceptance Criteria\n- [ ] Navigation strategy implemented or explicitly deferred\n- [ ] Documentation updated"
+          "labels": [
+            "architecture",
+            "frontend",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nIntroduce the initial app navigation strategy.\n\n# Scope\n- Decide routing package and app shell structure\n- Document routing conventions\n- Prepare implementation path for feature navigation\n\n# Acceptance Criteria\n- [ ] Navigation strategy implemented or explicitly deferred\n- [ ] Documentation updated",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Decide routing package and app shell structure",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Document routing conventions",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Prepare implementation path for feature navigation",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Navigation strategy implemented or explicitly deferred",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Documentation updated",
+                  "pos": 2,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[STYLE] Implement theme structure",
-          "labels": ["design-system", "frontend", "priority-medium"],
-          "desc": "# Objective\nCreate the initial Flutter theme structure based on documented design tokens.\n\n# Scope\n- Theme entry point\n- Light theme placeholder\n- Dark theme placeholder\n- Token usage convention\n\n# Acceptance Criteria\n- [ ] Theme structure exists in code\n- [ ] Analyzer passes\n- [ ] Documentation remains aligned"
+          "labels": [
+            "design-system",
+            "frontend",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nCreate the initial Flutter theme structure based on documented design tokens.\n\n# Scope\n- Theme entry point\n- Light theme placeholder\n- Dark theme placeholder\n- Token usage convention\n\n# Acceptance Criteria\n- [ ] Theme structure exists in code\n- [ ] Analyzer passes\n- [ ] Documentation remains aligned",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Theme entry point",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Light theme placeholder",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Dark theme placeholder",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Token usage convention",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Theme structure exists in code",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Analyzer passes",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Documentation remains aligned",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -108,23 +775,95 @@
       "cards": [
         {
           "name": "[DOCS] Project management standard",
-          "labels": ["docs", "priority-high"],
-          "desc": "# Objective\nDocument the project management standard.\n\n# Acceptance Criteria\n- [x] PROJECT_MANAGEMENT_STANDARD.md created"
+          "labels": [
+            "docs",
+            "priority-high"
+          ],
+          "desc": "# Objective\nDocument the project management standard.\n\n# Acceptance Criteria\n- [x] PROJECT_MANAGEMENT_STANDARD.md created",
+          "checklists": [
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "PROJECT_MANAGEMENT_STANDARD.md created",
+                  "pos": 1,
+                  "state": "complete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[DOCS] Trello workflow",
-          "labels": ["docs", "priority-high"],
-          "desc": "# Objective\nDocument the Trello workflow and board structure.\n\n# Acceptance Criteria\n- [x] TRELLO_WORKFLOW.md created and aligned with current board structure"
+          "labels": [
+            "docs",
+            "priority-high"
+          ],
+          "desc": "# Objective\nDocument the Trello workflow and board structure.\n\n# Acceptance Criteria\n- [x] TRELLO_WORKFLOW.md created and aligned with current board structure",
+          "checklists": [
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "TRELLO_WORKFLOW.md created and aligned with current board structure",
+                  "pos": 1,
+                  "state": "complete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[DOCS] Architecture overview",
-          "labels": ["docs", "architecture", "mvvm"],
-          "desc": "# Objective\nDocument the high-level architecture.\n\n# Acceptance Criteria\n- [x] ARCHITECTURE_OVERVIEW.md created\n- [x] MVVM_STRUCTURE.md created"
+          "labels": [
+            "docs",
+            "architecture",
+            "mvvm"
+          ],
+          "desc": "# Objective\nDocument the high-level architecture.\n\n# Acceptance Criteria\n- [x] ARCHITECTURE_OVERVIEW.md created\n- [x] MVVM_STRUCTURE.md created",
+          "checklists": [
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "ARCHITECTURE_OVERVIEW.md created",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "MVVM_STRUCTURE.md created",
+                  "pos": 2,
+                  "state": "complete"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "[DOCS] Design system foundation",
-          "labels": ["docs", "design-system", "ux"],
-          "desc": "# Objective\nDocument the design system baseline and tokens.\n\n# Acceptance Criteria\n- [x] DESIGN_SYSTEM.md created\n- [x] TOKENS.md created"
+          "labels": [
+            "docs",
+            "design-system",
+            "ux"
+          ],
+          "desc": "# Objective\nDocument the design system baseline and tokens.\n\n# Acceptance Criteria\n- [x] DESIGN_SYSTEM.md created\n- [x] TOKENS.md created",
+          "checklists": [
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "DESIGN_SYSTEM.md created",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "TOKENS.md created",
+                  "pos": 2,
+                  "state": "complete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },

@@ -79,6 +79,44 @@ Examples:
 # Technical Notes
 ```
 
+### JSON Checklist Structure
+
+Markdown checklist items inside `desc` are useful for human reading, but they are not enough for automation. Any JSON card that needs real Trello checklists must also declare a `checklists` array.
+
+Use this structure:
+
+```json
+{
+  "name": "[FEAT] Example card",
+  "desc": "# Objective\nDescribe the expected outcome.\n\n# Acceptance Criteria\n- [ ] First criterion\n- [x] Completed criterion",
+  "checklists": [
+    {
+      "name": "Acceptance Criteria",
+      "checkItems": [
+        {
+          "name": "First criterion",
+          "pos": 1,
+          "state": "incomplete"
+        },
+        {
+          "name": "Completed criterion",
+          "pos": 2,
+          "state": "complete"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Automation rules:
+
+- `desc` remains the readable card body.
+- `checklists` is the source of truth for creating Trello checklists.
+- `checkItems[].state` must be `incomplete` or `complete`.
+- `checkItems[].pos` is 1-based and preserves item order.
+- Supported generated checklist names are `Scope`, `Acceptance Criteria`, `Dependencies`, `Checklist`, `Features` and `Possibilities`.
+
 ---
 
 ## Labels

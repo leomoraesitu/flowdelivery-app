@@ -1,104 +1,195 @@
 {
   "name": "FlowDelivery Sprint Template",
   "defaultLists": false,
-
   "labels": [
-    { "name": "docs", "color": "blue", "id": "lab_docs" },
-    { "name": "feat", "color": "green", "id": "lab_feat" },
-    { "name": "fix", "color": "red", "id": "lab_fix" },
-    { "name": "refactor", "color": "purple", "id": "lab_refactor" },
-    { "name": "chore", "color": "black", "id": "lab_chore" },
-    { "name": "architecture", "color": "sky", "id": "lab_architecture" },
-    { "name": "design-system", "color": "pink", "id": "lab_design_system" },
-    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
-    { "name": "backend", "color": "orange", "id": "lab_backend" },
-    { "name": "supabase", "color": "green", "id": "lab_supabase" },
-    { "name": "flutterflow", "color": "pink", "id": "lab_flutterflow" },
-    { "name": "mvvm", "color": "purple", "id": "lab_mvvm" },
-    { "name": "qa", "color": "yellow", "id": "lab_qa" },
-    { "name": "blocked", "color": "red", "id": "lab_blocked" },
-    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
-    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
-    { "name": "priority-low", "color": "green", "id": "lab_priority_low" }
+    {
+      "name": "docs",
+      "color": "blue",
+      "id": "lab_docs"
+    },
+    {
+      "name": "feat",
+      "color": "green",
+      "id": "lab_feat"
+    },
+    {
+      "name": "fix",
+      "color": "red",
+      "id": "lab_fix"
+    },
+    {
+      "name": "refactor",
+      "color": "purple",
+      "id": "lab_refactor"
+    },
+    {
+      "name": "chore",
+      "color": "black",
+      "id": "lab_chore"
+    },
+    {
+      "name": "architecture",
+      "color": "sky",
+      "id": "lab_architecture"
+    },
+    {
+      "name": "design-system",
+      "color": "pink",
+      "id": "lab_design_system"
+    },
+    {
+      "name": "frontend",
+      "color": "lime",
+      "id": "lab_frontend"
+    },
+    {
+      "name": "backend",
+      "color": "orange",
+      "id": "lab_backend"
+    },
+    {
+      "name": "supabase",
+      "color": "green",
+      "id": "lab_supabase"
+    },
+    {
+      "name": "flutterflow",
+      "color": "pink",
+      "id": "lab_flutterflow"
+    },
+    {
+      "name": "mvvm",
+      "color": "purple",
+      "id": "lab_mvvm"
+    },
+    {
+      "name": "qa",
+      "color": "yellow",
+      "id": "lab_qa"
+    },
+    {
+      "name": "blocked",
+      "color": "red",
+      "id": "lab_blocked"
+    },
+    {
+      "name": "priority-high",
+      "color": "red",
+      "id": "lab_priority_high"
+    },
+    {
+      "name": "priority-medium",
+      "color": "yellow",
+      "id": "lab_priority_medium"
+    },
+    {
+      "name": "priority-low",
+      "color": "green",
+      "id": "lab_priority_low"
+    }
   ],
-
   "customFields": [
     {
       "id": "cf_story_points",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Story Points",
       "type": "number"
     },
     {
       "id": "cf_sprint",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Sprint",
       "type": "text"
     },
     {
       "id": "cf_status",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Status",
       "type": "list",
       "options": [
         {
           "id": "opt_todo",
-          "value": { "text": "TODO" },
+          "value": {
+            "text": "TODO"
+          },
           "color": "blue"
         },
         {
           "id": "opt_progress",
-          "value": { "text": "IN PROGRESS" },
+          "value": {
+            "text": "IN PROGRESS"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_review",
-          "value": { "text": "REVIEW" },
+          "value": {
+            "text": "REVIEW"
+          },
           "color": "orange"
         },
         {
           "id": "opt_qa",
-          "value": { "text": "QA" },
+          "value": {
+            "text": "QA"
+          },
           "color": "pink"
         },
         {
           "id": "opt_done",
-          "value": { "text": "DONE" },
+          "value": {
+            "text": "DONE"
+          },
           "color": "green"
         }
       ]
     },
     {
       "id": "cf_priority",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Priority",
       "type": "list",
       "options": [
         {
           "id": "opt_priority_high",
-          "value": { "text": "HIGH" },
+          "value": {
+            "text": "HIGH"
+          },
           "color": "red"
         },
         {
           "id": "opt_priority_medium",
-          "value": { "text": "MEDIUM" },
+          "value": {
+            "text": "MEDIUM"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_priority_low",
-          "value": { "text": "LOW" },
+          "value": {
+            "text": "LOW"
+          },
           "color": "green"
         }
       ]
     },
     {
       "id": "cf_estimate_hours",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Estimate (Hours)",
       "type": "number"
     }
   ],
-
   "lists": [
     {
       "name": "📥 Sprint Backlog",
@@ -106,18 +197,69 @@
         {
           "name": "[EPIC] Sprint X — Nome da Sprint",
           "desc": "# Objetivo\nDefinir objetivo macro da sprint.\n\n# Escopo\n- Item 1\n- Item 2\n- Item 3\n\n# Critérios de Aceite\n- [ ] Critério 1\n- [ ] Critério 2\n\n# Dependências\n- Dependência X",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Item 1",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Item 2",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Item 3",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Critério 1",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Critério 2",
+                  "pos": 2,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Dependencies",
+              "checkItems": [
+                {
+                  "name": "Dependência X",
+                  "pos": 1,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_architecture",
             "lab_priority_high"
           ],
           "customFieldItems": [
             {
-              "value": { "text": "Sprint X" },
+              "value": {
+                "text": "Sprint X"
+              },
               "idValue": null,
               "idCustomField": "cf_sprint"
             },
             {
-              "value": { "number": "13" },
+              "value": {
+                "number": "13"
+              },
               "idValue": null,
               "idCustomField": "cf_story_points"
             },
@@ -135,13 +277,29 @@
         }
       ]
     },
-
     {
       "name": "🧠 Refinement",
       "cards": [
         {
           "name": "[FEAT] Refinar User Stories",
           "desc": "# Objetivo\nRefinar histórias da sprint.\n\n# Critérios de Aceite\n- [ ] Histórias refinadas\n- [ ] Dependências mapeadas",
+          "checklists": [
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Histórias refinadas",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Dependências mapeadas",
+                  "pos": 2,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_feat",
             "lab_priority_medium"
@@ -149,7 +307,6 @@
         }
       ]
     },
-
     {
       "name": "✅ Ready",
       "cards": [
@@ -163,13 +320,34 @@
         }
       ]
     },
-
     {
       "name": "🚧 In Progress",
       "cards": [
         {
           "name": "[FEAT] Implementar feature exemplo",
           "desc": "# Objetivo\nImplementar funcionalidade exemplo.\n\n# Critérios de Aceite\n- [ ] Build ok\n- [ ] Analyzer ok\n- [ ] Testes executados",
+          "checklists": [
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Build ok",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Analyzer ok",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Testes executados",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_feat",
             "lab_frontend",
@@ -177,12 +355,16 @@
           ],
           "customFieldItems": [
             {
-              "value": { "number": "5" },
+              "value": {
+                "number": "5"
+              },
               "idValue": null,
               "idCustomField": "cf_story_points"
             },
             {
-              "value": { "number": "8" },
+              "value": {
+                "number": "8"
+              },
               "idValue": null,
               "idCustomField": "cf_estimate_hours"
             },
@@ -195,12 +377,10 @@
         }
       ]
     },
-
     {
       "name": "👀 Code Review",
       "cards": []
     },
-
     {
       "name": "🧪 QA",
       "cards": [
@@ -213,17 +393,14 @@
         }
       ]
     },
-
     {
       "name": "🚀 Ready for Release",
       "cards": []
     },
-
     {
       "name": "🎉 Done",
       "cards": []
     },
-
     {
       "name": "⛔ Blocked",
       "cards": [

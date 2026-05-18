@@ -1,94 +1,167 @@
 {
   "name": "FlowDelivery Release Template",
   "defaultLists": false,
-
   "labels": [
-    { "name": "docs", "color": "blue", "id": "lab_docs" },
-    { "name": "feat", "color": "green", "id": "lab_feat" },
-    { "name": "fix", "color": "red", "id": "lab_fix" },
-    { "name": "chore", "color": "black", "id": "lab_chore" },
-    { "name": "release", "color": "orange", "id": "lab_release" },
-    { "name": "frontend", "color": "lime", "id": "lab_frontend" },
-    { "name": "backend", "color": "orange", "id": "lab_backend" },
-    { "name": "supabase", "color": "green", "id": "lab_supabase" },
-    { "name": "qa", "color": "yellow", "id": "lab_qa" },
-    { "name": "blocked", "color": "red", "id": "lab_blocked" },
-    { "name": "priority-high", "color": "red", "id": "lab_priority_high" },
-    { "name": "priority-medium", "color": "yellow", "id": "lab_priority_medium" },
-    { "name": "priority-low", "color": "green", "id": "lab_priority_low" }
+    {
+      "name": "docs",
+      "color": "blue",
+      "id": "lab_docs"
+    },
+    {
+      "name": "feat",
+      "color": "green",
+      "id": "lab_feat"
+    },
+    {
+      "name": "fix",
+      "color": "red",
+      "id": "lab_fix"
+    },
+    {
+      "name": "chore",
+      "color": "black",
+      "id": "lab_chore"
+    },
+    {
+      "name": "release",
+      "color": "orange",
+      "id": "lab_release"
+    },
+    {
+      "name": "frontend",
+      "color": "lime",
+      "id": "lab_frontend"
+    },
+    {
+      "name": "backend",
+      "color": "orange",
+      "id": "lab_backend"
+    },
+    {
+      "name": "supabase",
+      "color": "green",
+      "id": "lab_supabase"
+    },
+    {
+      "name": "qa",
+      "color": "yellow",
+      "id": "lab_qa"
+    },
+    {
+      "name": "blocked",
+      "color": "red",
+      "id": "lab_blocked"
+    },
+    {
+      "name": "priority-high",
+      "color": "red",
+      "id": "lab_priority_high"
+    },
+    {
+      "name": "priority-medium",
+      "color": "yellow",
+      "id": "lab_priority_medium"
+    },
+    {
+      "name": "priority-low",
+      "color": "green",
+      "id": "lab_priority_low"
+    }
   ],
-
   "customFields": [
     {
       "id": "cf_release_version",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Release Version",
       "type": "text"
     },
     {
       "id": "cf_release_date",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Release Date",
       "type": "date"
     },
     {
       "id": "cf_status",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Release Status",
       "type": "list",
       "options": [
         {
           "id": "opt_planned",
-          "value": { "text": "PLANNED" },
+          "value": {
+            "text": "PLANNED"
+          },
           "color": "blue"
         },
         {
           "id": "opt_freeze",
-          "value": { "text": "FREEZE" },
+          "value": {
+            "text": "FREEZE"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_qa",
-          "value": { "text": "QA" },
+          "value": {
+            "text": "QA"
+          },
           "color": "pink"
         },
         {
           "id": "opt_released",
-          "value": { "text": "RELEASED" },
+          "value": {
+            "text": "RELEASED"
+          },
           "color": "green"
         },
         {
           "id": "opt_blocked",
-          "value": { "text": "BLOCKED" },
+          "value": {
+            "text": "BLOCKED"
+          },
           "color": "red"
         }
       ]
     },
     {
       "id": "cf_risk",
-      "display": { "cardFront": true },
+      "display": {
+        "cardFront": true
+      },
       "name": "Risk",
       "type": "list",
       "options": [
         {
           "id": "opt_risk_high",
-          "value": { "text": "HIGH" },
+          "value": {
+            "text": "HIGH"
+          },
           "color": "red"
         },
         {
           "id": "opt_risk_medium",
-          "value": { "text": "MEDIUM" },
+          "value": {
+            "text": "MEDIUM"
+          },
           "color": "yellow"
         },
         {
           "id": "opt_risk_low",
-          "value": { "text": "LOW" },
+          "value": {
+            "text": "LOW"
+          },
           "color": "green"
         }
       ]
     }
   ],
-
   "lists": [
     {
       "name": "📦 Release Scope",
@@ -96,13 +169,57 @@
         {
           "name": "[RELEASE] vX.Y.Z — Nome da Release",
           "desc": "# Objetivo\nDefinir o objetivo da release.\n\n# Escopo\n- Feature 1\n- Correção 1\n- Ajuste técnico 1\n\n# Fora de Escopo\n- Item que não entra nesta release\n\n# Critérios de Aceite\n- [ ] Escopo fechado\n- [ ] Dependências mapeadas\n- [ ] Riscos documentados",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Feature 1",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Correção 1",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Ajuste técnico 1",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Escopo fechado",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Dependências mapeadas",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Riscos documentados",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_release",
             "lab_priority_high"
           ],
           "customFieldItems": [
             {
-              "value": { "text": "vX.Y.Z" },
+              "value": {
+                "text": "vX.Y.Z"
+              },
               "idValue": null,
               "idCustomField": "cf_release_version"
             },
@@ -126,6 +243,28 @@
         {
           "name": "[CHORE] Congelar escopo da release",
           "desc": "# Objetivo\nBloquear novas mudanças fora do escopo aprovado.\n\n# Checklist\n- [ ] Branch/tag de release criado\n- [ ] Pendências críticas revisadas\n- [ ] Novas mudanças redirecionadas para próxima release",
+          "checklists": [
+            {
+              "name": "Checklist",
+              "checkItems": [
+                {
+                  "name": "Branch/tag de release criado",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Pendências críticas revisadas",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Novas mudanças redirecionadas para próxima release",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_chore",
             "lab_release"
@@ -183,6 +322,33 @@
         {
           "name": "[RELEASE] Pós-release checklist",
           "desc": "# Checklist\n- [ ] Tag publicada\n- [ ] Changelog atualizado\n- [ ] Evidências de QA anexadas\n- [ ] Próximos débitos registrados",
+          "checklists": [
+            {
+              "name": "Checklist",
+              "checkItems": [
+                {
+                  "name": "Tag publicada",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Changelog atualizado",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Evidências de QA anexadas",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Próximos débitos registrados",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ],
           "idLabels": [
             "lab_release",
             "lab_docs"
