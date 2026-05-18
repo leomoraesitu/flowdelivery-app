@@ -7,6 +7,7 @@ $files = @(
   ".ai/memory/technical_debt.md",
   ".ai/memory/known_issues.md",
   ".ai/memory/architecture_notes.md",
+  ".ai/prompts/end_day_latest.md",
   ".codex/guardrails.md",
   ".codex/workflow.md",
   ".codex/workflows/AI_MEMORY_LOOP.md",
