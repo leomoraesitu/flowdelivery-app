@@ -17,7 +17,7 @@ Notes:
 - These are architecture decisions, but package installation has not happened yet.
 - Do not import missing packages before adding dependencies intentionally.
 
-### Trello synchronization is local-only
+### Trello synchronization is partial/manual
 
 Status:
 Known
@@ -29,7 +29,8 @@ Affected areas:
 
 Notes:
 - Local JSON/Markdown artifacts exist.
-- Real Trello synchronization depends on authenticated integration.
+- The real Trello card for base navigation strategy was updated through authenticated Zapier tooling.
+- Broad Trello synchronization is still manual/partial and depends on authenticated integration availability per task.
 
 ## Reporting Rule
 

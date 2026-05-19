@@ -13,6 +13,7 @@ Medium
 Notes:
 - Several AI/project workflow files were created before feature implementation.
 - Future implementation must keep docs aligned with real code.
+- Routing documentation was reconciled with the deferred implementation decision, but future feature work must keep the plan and code aligned.
 
 ### Add planned dependencies intentionally
 
@@ -25,6 +26,7 @@ Medium
 Notes:
 - `flutter_riverpod`, `go_router` and Supabase packages are planned but not yet present in `pubspec.yaml`.
 - Check `pubspec.yaml` before writing code that imports these packages.
+- `go_router` conventions are documented, but the dependency remains intentionally absent until an approved implementation step.
 
 ## Rules
 
