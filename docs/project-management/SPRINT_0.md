@@ -30,10 +30,10 @@ Completed:
 - Initial Flutter CI workflow
 - Initial widget test
 - Dart MCP validation
+- Base navigation strategy documented and implementation explicitly deferred
 
 Open:
 
-- Base navigation strategy implementation
 - Theme structure implementation
 - GitHub labels synchronization
 - Real Trello card synchronization after Composio authentication is available
@@ -89,7 +89,8 @@ Open:
 
 - [x] MVVM structure documented
 - [x] Feature-first organization documented
-- [ ] Base navigation strategy implementation
+- [x] Base navigation strategy documented in `docs/architecture/ROUTING_CONVENTIONS.md`
+- [x] Navigation implementation explicitly deferred until approved feature work
 
 ### Design System
 

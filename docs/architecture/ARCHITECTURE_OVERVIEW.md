@@ -35,11 +35,15 @@ Supabase / External Services
 
 Application-level configuration:
 
-- routing
+- routing through centralized app-level route modules
 - theme
 - environment config
 - dependency setup
 - app shell
+
+Routing conventions are defined in `docs/architecture/ROUTING_CONVENTIONS.md`.
+Global routes should live under `lib/app/routes`; feature widgets should provide
+pages, not application-wide navigation policy.
 
 ### lib/features
 

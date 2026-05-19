@@ -657,7 +657,7 @@
             "frontend",
             "priority-medium"
           ],
-          "desc": "# Objective\nIntroduce the initial app navigation strategy.\n\n# Scope\n- Decide routing package and app shell structure\n- Document routing conventions\n- Prepare implementation path for feature navigation\n\n# Acceptance Criteria\n- [ ] Navigation strategy implemented or explicitly deferred\n- [ ] Documentation updated",
+          "desc": "# Objective\nIntroduce the initial app navigation strategy.\n\n# Scope\n- Decide routing package and app shell structure\n- Document routing conventions\n- Prepare implementation path for feature navigation\n\n# Outcome\n- Routing package and app shell structure documented\n- Routing conventions documented in docs/architecture/ROUTING_CONVENTIONS.md\n- Feature navigation implementation path documented\n- Runtime navigation implementation explicitly deferred until approved feature work\n\n# Acceptance Criteria\n- [x] Navigation strategy implemented or explicitly deferred\n- [x] Documentation updated",
           "checklists": [
             {
               "name": "Scope",
@@ -665,17 +665,17 @@
                 {
                   "name": "Decide routing package and app shell structure",
                   "pos": 1,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Document routing conventions",
                   "pos": 2,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Prepare implementation path for feature navigation",
                   "pos": 3,
-                  "state": "incomplete"
+                  "state": "complete"
                 }
               ]
             },
@@ -685,12 +685,12 @@
                 {
                   "name": "Navigation strategy implemented or explicitly deferred",
                   "pos": 1,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Documentation updated",
                   "pos": 2,
-                  "state": "incomplete"
+                  "state": "complete"
                 }
               ]
             }

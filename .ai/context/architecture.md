@@ -37,7 +37,7 @@ Supabase / External Services
 
 `lib/app` owns:
 
-- routing
+- routing through centralized modules under `lib/app/routes`
 - theme
 - environment config
 - dependency setup
@@ -70,6 +70,7 @@ Supabase / External Services
 - Repositories depend on datasources.
 - Datasources depend on Supabase or external clients.
 - UI must not call Supabase directly.
+- Global routes must not be defined inside feature widgets.
 - Features must not depend on another feature implementation.
 - Shared code must remain generic.
 
