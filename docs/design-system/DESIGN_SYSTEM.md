@@ -53,6 +53,16 @@ Radius values should be centralized and reused.
 
 Reusable components should live in shared or app-level UI folders when they are not feature-specific.
 
+## Token Usage
+
+The official token usage convention is documented in `docs/design-system/TOKENS.md`.
+
+In short:
+
+- use `Theme.of(context).colorScheme` for semantic colors in widgets;
+- use token classes for spacing, radius, size, and duration values;
+- keep light and dark palette constants inside theme implementation code.
+
 ## Sprint 0 Scope
 
 Sprint 0 defines the design system contract. Full component implementation can happen incrementally.
