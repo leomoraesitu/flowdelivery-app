@@ -5,15 +5,16 @@
 ### Align generated documentation with implementation
 
 Status:
-Open
+Monitoring
 
 Impact:
-Medium
+Low
 
 Notes:
 - Several AI/project workflow files were created before feature implementation.
-- Future implementation must keep docs aligned with real code.
-- Routing documentation was reconciled with the deferred implementation decision, but future feature work must keep the plan and code aligned.
+- Sprint 0 governance docs and local Trello artifacts were reconciled after theme, labels and Trello sync tasks.
+- Future feature work must keep docs aligned with real code.
+- Routing documentation remains reconciled with the deferred implementation decision.
 
 ### Add planned dependencies intentionally
 

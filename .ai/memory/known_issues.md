@@ -20,7 +20,7 @@ Notes:
 ### Trello synchronization is partial/manual
 
 Status:
-Known
+Resolved for Sprint 0 completed open items
 
 Affected areas:
 
@@ -30,7 +30,8 @@ Affected areas:
 Notes:
 - Local JSON/Markdown artifacts exist.
 - The real Trello card for base navigation strategy was updated through authenticated Zapier tooling.
-- Broad Trello synchronization is still manual/partial and depends on authenticated integration availability per task.
+- Theme structure, GitHub labels and Sprint 0 open item cards were updated through authenticated Zapier/Trello tooling.
+- Future Trello synchronization still depends on authenticated integration availability per task.
 
 ## Reporting Rule
 
