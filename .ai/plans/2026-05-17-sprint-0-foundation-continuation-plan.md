@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Convert the documented Sprint 0 foundation into a minimal, tested Flutter application shell with routing, theme tokens, and feature-first structure ready for MVP work.
+**Goal:** Convert the documented Sprint 0 foundation into a minimal, tested Flutter application shell with theme tokens and feature-first structure ready for MVP work, while keeping runtime routing implementation deferred until an approved feature slice needs it.
 
 **Architecture:** The repository already documents MVVM, feature-first organization, repository boundaries, design tokens, QA strategy, Trello workflow, and Codex governance. The application code is still intentionally small: `lib/main.dart` renders a `MaterialApp` with `Hello World!`, while `lib/app`, `lib/features`, and `lib/shared` currently contain structure markers only. This plan implements the smallest code foundation that makes the documented architecture real without starting product features prematurely.
 
@@ -24,9 +24,13 @@ Completed foundation:
 - CI exists at `.github/workflows/flutter-ci.yml`.
 - Base folders exist: `lib/app`, `lib/features`, `lib/shared`, `assets`, `supabase`, and `test`.
 
+Completed or deferred Sprint 0 items from repository docs:
+
+- Base navigation strategy documented in `docs/architecture/ROUTING_CONVENTIONS.md`.
+- Runtime navigation implementation explicitly deferred until approved feature work.
+
 Open Sprint 0 items from repository docs:
 
-- Base navigation strategy implementation.
 - Theme structure implementation.
 - GitHub labels synchronization.
 - Real Trello card synchronization after external authentication is available.
@@ -42,7 +46,6 @@ Important constraint:
 Create:
 
 - `lib/app/app.dart` - app root widget that owns `MaterialApp`.
-- `lib/app/routes/app_routes.dart` - route names and route generation for the initial shell.
 - `lib/app/theme/app_theme.dart` - light and dark `ThemeData`.
 - `lib/app/theme/app_spacing.dart` - spacing tokens from `docs/design-system/TOKENS.md`.
 - `lib/app/theme/app_radius.dart` - radius tokens from `docs/design-system/TOKENS.md`.
@@ -57,6 +60,7 @@ Modify:
 - `lib/main.dart` - delegate app creation to `FlowDeliveryApp`.
 - `test/widget_test.dart` - either update to the new app shell or keep only if it remains useful.
 - `docs/project-management/SPRINT_0.md` - mark implemented items only after code and validation pass.
+- `.ai/plans/2026-05-17-sprint-0-foundation-continuation-plan.md` - keep this plan aligned with the deferred routing decision.
 
 Do not modify in this plan:
 
@@ -64,6 +68,7 @@ Do not modify in this plan:
 - Trello JSON IDs.
 - Product features such as auth, cart, checkout, orders, or profile.
 - External synchronization tasks that require authenticated services.
+- Runtime routing implementation. Routing conventions are documented, but GoRouter wiring belongs to an approved feature plan.
 
 ---
 
@@ -507,121 +512,98 @@ git commit -m "feat(theme): add Material 3 app themes"
 
 ---
 
-### Task 4: Base Navigation Strategy
+### Task 4: Base Navigation Strategy Documentation
 
 **Files:**
 
-- Create: `lib/app/routes/app_routes.dart`
-- Modify: `lib/app/app.dart`
-- Test: `test/app/app_test.dart`
+- Create: `docs/architecture/ROUTING_CONVENTIONS.md`
+- Modify: `docs/architecture/ARCHITECTURE_OVERVIEW.md`
+- Modify: `.ai/context/architecture.md`
+- Modify: `docs/project-management/SPRINT_0.md`
+- Modify: `docs/project-management/trello/boards/product-backlog-board.json`
+- Modify: `docs/project-management/trello/boards/sprint-0-board.json`
+- Test: documentation and JSON validation only
 
-- [ ] **Step 1: Extend app shell test for named initial route**
+- [x] **Step 1: Document routing conventions**
 
-Update `test/app/app_test.dart`:
+Create `docs/architecture/ROUTING_CONVENTIONS.md` with:
 
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:flowdelivery_app/app/app.dart';
-
-void main() {
-  testWidgets('renders FlowDelivery app shell', (tester) async {
-    await tester.pumpWidget(const FlowDeliveryApp());
-
-    final materialApp = tester.widget<MaterialApp>(find.byType(MaterialApp));
-
-    expect(materialApp.initialRoute, '/');
-    expect(find.text('FlowDelivery'), findsOneWidget);
-    expect(find.text('Foundation ready'), findsOneWidget);
-  });
-}
+```text
+- go_router as the accepted routing package
+- MaterialApp.router as the future app shell
+- lib/app/routes as the global routing boundary
+- centralized route names and paths
+- auth redirects based on app auth state
+- StatefulShellRoute.indexedStack as the future protected shell approach
 ```
 
-- [ ] **Step 2: Run app test and confirm it fails**
+- [x] **Step 2: Document the implementation path**
+
+Add the incremental routing path:
+
+```text
+1. Add go_router only in an approved implementation step.
+2. Create app_routes.dart for route names and paths.
+3. Create app_router.dart with GoRouter.
+4. Migrate lib/app/app.dart to MaterialApp.router.
+5. Add auth redirects after auth state exists.
+6. Add StatefulShellRoute.indexedStack after multiple protected destinations exist.
+```
+
+- [x] **Step 3: Update architecture documentation**
+
+Update `docs/architecture/ARCHITECTURE_OVERVIEW.md` and `.ai/context/architecture.md` so agents and humans know that global routes belong under `lib/app/routes` and feature widgets must not own global route policy.
+
+- [x] **Step 4: Reconcile Sprint 0 and local Trello artifacts**
+
+Update:
+
+```text
+docs/project-management/SPRINT_0.md
+docs/project-management/trello/boards/product-backlog-board.json
+docs/project-management/trello/boards/sprint-0-board.json
+```
+
+Expected state:
+
+```text
+- Base navigation strategy is documented.
+- Runtime navigation implementation is explicitly deferred.
+- Theme structure, GitHub labels, and real Trello sync remain open.
+```
+
+- [x] **Step 5: Update the real Trello card**
+
+Update the real Trello card `[ARCH] Implement base navigation strategy`:
+
+```text
+- description includes the documented outcome
+- checklist items are complete
+- card is moved to Done
+```
+
+- [x] **Step 6: Validate documentation and JSON**
 
 Run:
 
 ```bash
-flutter test test/app/app_test.dart
+git diff --check
+Get-Content -Raw docs/project-management/trello/boards/sprint-0-board.json | ConvertFrom-Json | Out-Null
+Get-Content -Raw docs/project-management/trello/boards/product-backlog-board.json | ConvertFrom-Json | Out-Null
 ```
 
 Expected:
 
 ```text
-Expected: '/'
-  Actual: <null>
+No diff check errors.
+Both JSON files parse successfully.
 ```
 
-- [ ] **Step 3: Create route definitions**
-
-Create `lib/app/routes/app_routes.dart`:
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:flowdelivery_app/features/splash/presentation/pages/splash_page.dart';
-
-abstract final class AppRoutes {
-  static const String splash = '/';
-
-  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    return switch (settings.name) {
-      splash || null => MaterialPageRoute<void>(
-          builder: (_) => const SplashPage(),
-          settings: const RouteSettings(name: splash),
-        ),
-      _ => MaterialPageRoute<void>(
-          builder: (_) => const SplashPage(),
-          settings: const RouteSettings(name: splash),
-        ),
-    };
-  }
-}
-```
-
-- [ ] **Step 4: Wire route generation into the app root**
-
-Modify `lib/app/app.dart`:
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:flowdelivery_app/app/routes/app_routes.dart';
-import 'package:flowdelivery_app/app/theme/app_theme.dart';
-
-class FlowDeliveryApp extends StatelessWidget {
-  const FlowDeliveryApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'FlowDelivery',
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      initialRoute: AppRoutes.splash,
-      onGenerateRoute: AppRoutes.onGenerateRoute,
-    );
-  }
-}
-```
-
-- [ ] **Step 5: Run focused tests**
-
-Run:
+- [x] **Step 7: Commit**
 
 ```bash
-flutter test test/app/app_test.dart test/app/theme/app_theme_test.dart
-```
-
-Expected:
-
-```text
-All tests passed!
-```
-
-- [ ] **Step 6: Commit**
-
-```bash
-git add lib/app/app.dart lib/app/routes/app_routes.dart test/app/app_test.dart
-git commit -m "feat(app): add base route strategy"
+git add .ai/context/architecture.md docs/architecture/ARCHITECTURE_OVERVIEW.md docs/architecture/ROUTING_CONVENTIONS.md docs/project-management/SPRINT_0.md docs/project-management/trello/boards/product-backlog-board.json docs/project-management/trello/boards/sprint-0-board.json
+git commit -m "docs(architecture): document routing strategy"
 ```
 
 ---
@@ -630,12 +612,12 @@ git commit -m "feat(app): add base route strategy"
 
 **Files:**
 
-- Modify: `docs/project-management/SPRINT_0.md`
+- Modify: `docs/project-management/SPRINT_0.md` only after theme Tasks 1 through 3 pass
 - Test: documentation review only
 
-- [ ] **Step 1: Update completed checklist items**
+- [ ] **Step 1: Update completed theme checklist items**
 
-Modify the open Sprint 0 items only if Tasks 1 through 4 passed:
+Modify the open Sprint 0 items only if Tasks 1 through 3 passed:
 
 ```markdown
 Open:
@@ -651,7 +633,8 @@ Update backlog sections:
 
 - [x] MVVM structure documented
 - [x] Feature-first organization documented
-- [x] Base navigation strategy implementation
+- [x] Base navigation strategy documented in `docs/architecture/ROUTING_CONVENTIONS.md`
+- [x] Navigation implementation explicitly deferred until approved feature work
 
 ### Design System
 
@@ -737,7 +720,8 @@ This expected output is only valid after all planned commits are created. If the
 - Restaurant feed implementation.
 - Cart, checkout, orders, delivery, analytics, and profile features.
 - Supabase schema, RLS policies, Edge Functions, and environment secret setup.
-- Trello or GitHub API synchronization without authenticated tooling.
+- GitHub API synchronization without authenticated tooling.
+- Runtime routing implementation. `go_router` remains documented and deferred until an approved feature task needs it.
 - Adding Riverpod or GoRouter before there is a concrete use case in code.
 
 ---
@@ -758,9 +742,10 @@ That future plan should introduce Riverpod, Supabase Auth, auth repositories, au
 
 Spec coverage:
 
-- Sprint 0 open item "Base navigation strategy implementation" is covered by Task 4.
+- Sprint 0 navigation strategy is covered by Task 4 as documented and explicitly deferred.
 - Sprint 0 open item "Theme structure implementation" is covered by Tasks 2 and 3.
-- External sync items are intentionally left open because the repository states Trello sync depends on external authentication availability.
+- GitHub label sync is intentionally left open because it requires external authenticated tooling.
+- Real Trello sync for the base navigation card was completed through authenticated Zapier tooling; broad Trello synchronization remains outside this plan.
 - The current `Hello World!` shell is replaced through Task 1, with tests.
 
 Placeholder scan:
@@ -770,5 +755,5 @@ Placeholder scan:
 
 Type consistency:
 
-- `FlowDeliveryApp`, `AppTheme`, `AppRoutes`, `SplashPage`, `AppSpacing`, `AppRadius`, `AppSizes`, and `AppDurations` are defined before use in later tasks.
-- Route name `/` is consistently represented as `AppRoutes.splash`.
+- `FlowDeliveryApp`, `AppTheme`, `SplashPage`, `AppSpacing`, `AppRadius`, `AppSizes`, and `AppDurations` are defined before use in later tasks.
+- Runtime route symbols are no longer introduced in this plan. Future route names and paths should follow `docs/architecture/ROUTING_CONVENTIONS.md`.
