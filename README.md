@@ -1,4 +1,8 @@
-# 🍔 FlowDelivery
+# <img src="assets/images/icone-flowdelivery.png" alt="FlowDelivery icon" width="32"> FlowDelivery
+
+<p align="center">
+<img src="assets/images/branding/logo-flowdelivery-light.png" alt="FlowDelivery logo" width="240">
+</p>
 
 Portfolio-grade Flutter food delivery application built with MVVM architecture, planned Supabase backend integration, and scalable software engineering practices.
 
