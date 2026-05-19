@@ -1,7 +1,7 @@
 # FlowDelivery — Project Bootstrap
 
 Version: 1.0.0  
-Status: Bootstrap Phase  
+Status: Sprint 0 foundation and governance complete
 Author: Leonardo de Moraes Souza  
 Project Type: Portfolio / SaaS Simulation / Fullstack Flutter Engineering  
 Architecture: MVVM + Feature First  
@@ -209,15 +209,27 @@ Agents MUST NOT:
 - Feature-first architecture
 - Repository Pattern
 
-## State Management
+## Current Stack
+
+The current `pubspec.yaml` includes:
+
+- Flutter
+- Dart
+- Material
+- flutter_test
+- flutter_lints
+
+The initial app theme and design tokens are implemented under `lib/app/theme`.
+
+## Planned State Management
 
 - flutter_riverpod
 
-## Routing
+## Planned Routing
 
 - go_router
 
-## Backend
+## Planned Backend
 
 - Supabase
 - PostgreSQL
@@ -225,19 +237,19 @@ Agents MUST NOT:
 - Storage
 - Edge Functions
 
-## Code Generation
+## Planned Code Generation
 
 - freezed
 - json_serializable
 - build_runner
 
-## UI
+## Planned UI Packages
 
 - flex_color_scheme
 - google_fonts
 - responsive_framework
 
-## Utilities
+## Planned Utilities
 
 - intl
 - logger
@@ -387,18 +399,18 @@ The project must implement a centralized design system.
 - AppSpacing
 - AppRadius
 - AppSizes
-- AppTypography
 - AppDurations
+- AppFonts
 
 ---
 
 ## Theme Requirements
 
-- Light theme
-- Dark theme
-- Material 3
-- Semantic colors
-- Responsive typography
+- Initial light theme placeholder implemented
+- Initial dark theme placeholder implemented
+- Material 3 enabled
+- Semantic colors documented and represented in theme color constants
+- Responsive typography remains planned for future UI work
 
 ---
 

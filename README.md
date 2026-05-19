@@ -1,6 +1,6 @@
 # 🍔 FlowDelivery
 
-Production-ready Flutter food delivery application built with MVVM architecture, Supabase backend integration, and scalable software engineering practices.
+Portfolio-grade Flutter food delivery application built with MVVM architecture, planned Supabase backend integration, and scalable software engineering practices.
 
 ---
 
@@ -17,7 +17,7 @@ FlowDelivery is a modern delivery platform developed as a portfolio-grade softwa
 - CI/CD readiness
 - Professional engineering conventions
 
-The project is being developed with a strong emphasis on maintainability, scalability, documentation, and real-world engineering practices.
+Sprint 0 foundation and governance are complete. Product feature implementation starts next with Authentication planning.
 
 ---
 
@@ -34,11 +34,11 @@ The project is being developed with a strong emphasis on maintainability, scalab
 
 ## Backend
 
-- Supabase
-- PostgreSQL
-- Authentication
-- Storage
-- Realtime
+- Supabase (planned)
+- PostgreSQL (planned)
+- Authentication (planned)
+- Storage (planned)
+- Realtime (planned)
 
 ---
 
@@ -48,6 +48,7 @@ The project is being developed with a strong emphasis on maintainability, scalab
 - Repository Pattern
 - Feature-first organization
 - Design Tokens
+- Initial light and dark app themes
 - Conventional Commits
 - Semantic Versioning
 - CI/CD Ready
@@ -104,17 +105,12 @@ Rule of thumb: no feature implementation should start before a matching file exi
 ```text
 lib/
 ├── app/
-├── core/
-├── shared/
+│   ├── theme/
+│   └── README.md
 ├── features/
-│   ├── auth/
-│   ├── home/
-│   ├── restaurants/
-│   ├── cart/
-│   ├── checkout/
-│   ├── orders/
-│   └── profile/
-├── design_system/
+│   └── README.md
+├── shared/
+│   └── README.md
 └── main.dart
 ```
 
@@ -141,7 +137,8 @@ FlowDelivery uses a scalable Design System strategy including:
 - Typography tokens
 - Spacing tokens
 - Radius tokens
-- Elevation standards
+- Size and duration tokens
+- Initial Material 3 light/dark theme placeholders
 - Responsive layouts
 
 ---
@@ -317,17 +314,17 @@ flutter run
 
 ## Phase 1 — Foundation
 
-- [ ] Project setup
-- [ ] MVVM structure
-- [ ] Design System
-- [ ] Routing
-- [ ] Theme architecture
+- [x] Project setup
+- [x] MVVM structure documented
+- [x] Design System documentation
+- [x] Routing strategy documented and runtime implementation deferred
+- [x] Theme architecture
 
 ---
 
 ## Phase 2 — Core Features
 
-- [ ] Authentication
+- [ ] Authentication planning
 - [ ] Home feed
 - [ ] Restaurant details
 - [ ] Product details
