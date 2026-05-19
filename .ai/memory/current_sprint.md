@@ -2,32 +2,35 @@
 
 ## Sprint
 
-Sprint 0 — Foundation & Governance
+Sprint 1 — Authentication Foundation
 
 ## Status
 
-Foundation and governance completed for Sprint 0.
+Active.
 
 ## Focus
 
-- AI-native project structure
-- Codex workflow
-- project management documentation
-- Trello templates and boards
-- architecture and process guardrails
+- authentication foundation
+- Supabase Auth integration boundaries
+- Riverpod dependency wiring
+- GoRouter route conventions and auth guard
+- MVVM and Clean Architecture validation
+- focused tests per implementation slice
 
 ## Current Priorities
 
-- preserve Riverpod decision
-- start future feature work through planning workflows
-- keep documentation aligned with implementation
-- avoid authentication implementation before approved planning
+- execute `.ai/plans/2026-05-19-authentication-plan.md` incrementally
+- start with Task 1 only after approval
+- keep Supabase outside widgets and ViewModels
+- keep route policy at app level
+- update documentation and memory only after validated implementation slices
 
 ## Notes
 
 - Use `.codex/workflows/` for repeatable execution.
 - Use `.ai/context/` as project context.
 - Use `.ai/agents/` for role-specific behavior.
-- Theme structure implementation completed.
-- GitHub labels configured and validated in the repository.
-- Sprint 0 Trello cards synchronized for completed open items.
+- Sprint 0 foundation and governance completed.
+- Sprint 1 generated in `docs/project-management/SPRINT_1.md`.
+- Authentication technical plan registered in `.ai/plans/2026-05-19-authentication-plan.md`.
+- Implementation remains blocked until the next task is explicitly approved.

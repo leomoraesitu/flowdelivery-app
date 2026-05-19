@@ -1,0 +1,857 @@
+{
+  "name": "Sprint 1 - Authentication Foundation",
+  "board": "FlowDelivery - Product Backlog",
+  "lists": [
+    {
+      "name": "🏔️ Epics",
+      "cards": [
+        {
+          "name": "[EPIC] Sprint 1 — Authentication Foundation",
+          "labels": [
+            "auth",
+            "architecture",
+            "mvvm",
+            "supabase",
+            "frontend",
+            "backend",
+            "priority-high"
+          ],
+          "desc": "# Objective\nDeliver a minimal, testable authentication foundation with Supabase Auth, Riverpod, GoRouter, MVVM, and Clean Architecture boundaries.\n\n# Scope\n- Auth dependencies\n- Supabase environment configuration\n- Auth domain boundaries\n- Auth ViewModel and state\n- Supabase datasource and repository implementation\n- Riverpod provider wiring\n- Declarative routing and auth guard\n- Sign-in and sign-up UI\n- Supabase app startup initialization\n- Documentation and memory reconciliation\n\n# Acceptance Criteria\n- [ ] Auth feature has explicit domain, data, presentation, provider, and routing boundaries\n- [ ] Widgets do not import Supabase\n- [ ] ViewModels do not import Supabase\n- [ ] Supabase calls are isolated in the datasource layer\n- [ ] Riverpod is used for dependency wiring and UI state observation\n- [ ] GoRouter owns global route policy and auth redirects\n- [ ] Route paths and names are centralized\n- [ ] Each implemented slice has focused validation\n- [ ] Documentation and memory reflect only validated implementation\n\n# Dependencies\n- Approved plan: .ai/plans/2026-05-19-authentication-plan.md\n- Active branch: feat/authentication-flow",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Auth dependencies",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Supabase environment configuration",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Auth domain boundaries",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Auth ViewModel and state",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Supabase datasource and repository implementation",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Riverpod provider wiring",
+                  "pos": 6,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Declarative routing and auth guard",
+                  "pos": 7,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Sign-in and sign-up UI",
+                  "pos": 8,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Supabase app startup initialization",
+                  "pos": 9,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Documentation and memory reconciliation",
+                  "pos": 10,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Auth feature has explicit domain, data, presentation, provider, and routing boundaries",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Widgets do not import Supabase",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "ViewModels do not import Supabase",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Supabase calls are isolated in the datasource layer",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Riverpod is used for dependency wiring and UI state observation",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "GoRouter owns global route policy and auth redirects",
+                  "pos": 6,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Route paths and names are centralized",
+                  "pos": 7,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Each implemented slice has focused validation",
+                  "pos": 8,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Documentation and memory reflect only validated implementation",
+                  "pos": 9,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Dependencies",
+              "checkItems": [
+                {
+                  "name": "Approved plan: .ai/plans/2026-05-19-authentication-plan.md",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "Active branch: feat/authentication-flow",
+                  "pos": 2,
+                  "state": "complete"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🛣️ Roadmap",
+      "cards": []
+    },
+    {
+      "name": "📥 Backlog",
+      "cards": []
+    },
+    {
+      "name": "🧠 Refinement",
+      "cards": []
+    },
+    {
+      "name": "✅ Ready",
+      "cards": [
+        {
+          "name": "[CHORE] Add auth dependencies intentionally",
+          "labels": [
+            "chore",
+            "auth",
+            "supabase",
+            "frontend",
+            "priority-high"
+          ],
+          "desc": "# Objective\nAdd the approved authentication foundation dependencies to the project.\n\n# Scope\n- Add flutter_riverpod\n- Add go_router\n- Add supabase_flutter\n- Resolve dependencies\n- Run static analysis\n\n# Acceptance Criteria\n- [ ] pubspec.yaml includes approved auth dependencies\n- [ ] pubspec.lock is updated by dependency resolution\n- [ ] flutter analyze passes\n\n# Dependencies\n- Approved authentication plan\n\n# Technical Notes\nDo not import new packages in Dart code during this card.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Add flutter_riverpod",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add go_router",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add supabase_flutter",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Resolve dependencies",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Run static analysis",
+                  "pos": 5,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "pubspec.yaml includes approved auth dependencies",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "pubspec.lock is updated by dependency resolution",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "flutter analyze passes",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Configure Supabase environment",
+          "labels": [
+            "feat",
+            "auth",
+            "supabase",
+            "backend",
+            "priority-high"
+          ],
+          "desc": "# Objective\nCentralize Supabase environment access at app level.\n\n# Scope\n- Create app environment object\n- Read SUPABASE_URL from Dart defines\n- Read SUPABASE_ANON_KEY from Dart defines\n- Add configuration tests\n\n# Acceptance Criteria\n- [ ] AppEnvironment exposes Supabase URL and anon key\n- [ ] AppEnvironment reports whether Supabase config exists\n- [ ] Focused configuration tests pass\n\n# Dependencies\n- Auth dependencies card completed\n\n# Technical Notes\nDo not initialize Supabase in this card.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create app environment object",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Read SUPABASE_URL from Dart defines",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Read SUPABASE_ANON_KEY from Dart defines",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add configuration tests",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "AppEnvironment exposes Supabase URL and anon key",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "AppEnvironment reports whether Supabase config exists",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Focused configuration tests pass",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Model auth domain boundaries",
+          "labels": [
+            "feat",
+            "auth",
+            "mvvm",
+            "architecture",
+            "priority-high"
+          ],
+          "desc": "# Objective\nCreate domain models and repository contract for authentication.\n\n# Scope\n- Create AuthUser\n- Create AuthFailure\n- Create AuthRepository contract\n- Add domain tests\n\n# Acceptance Criteria\n- [ ] Domain files do not import Flutter widgets, Riverpod, GoRouter, or Supabase\n- [ ] AuthRepository exposes sign in, sign up, and sign out\n- [ ] Domain tests pass\n\n# Dependencies\n- Auth dependencies card completed\n\n# Technical Notes\nDomain code describes business meaning and must stay backend-independent.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create AuthUser",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create AuthFailure",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create AuthRepository contract",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add domain tests",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Domain files do not import Flutter widgets, Riverpod, GoRouter, or Supabase",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "AuthRepository exposes sign in, sign up, and sign out",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Domain tests pass",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Add auth state and ViewModel",
+          "labels": [
+            "feat",
+            "auth",
+            "mvvm",
+            "frontend",
+            "priority-high"
+          ],
+          "desc": "# Objective\nCreate explicit authentication UI state and a testable ViewModel.\n\n# Scope\n- Create AuthState\n- Create AuthViewModel\n- Handle loading state\n- Handle authenticated state\n- Handle failure state\n- Add ViewModel tests\n\n# Acceptance Criteria\n- [ ] ViewModel depends on AuthRepository\n- [ ] ViewModel does not import Supabase\n- [ ] ViewModel tests cover initial, success, failure, and sign-out states\n\n# Dependencies\n- Auth domain boundaries card completed\n\n# Technical Notes\nWidgets should render AuthState and delegate user actions to AuthViewModel.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create AuthState",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create AuthViewModel",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Handle loading state",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Handle authenticated state",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Handle failure state",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add ViewModel tests",
+                  "pos": 6,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "ViewModel depends on AuthRepository",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "ViewModel does not import Supabase",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "ViewModel tests cover initial, success, failure, and sign-out states",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Add Supabase datasource and repository",
+          "labels": [
+            "feat",
+            "auth",
+            "supabase",
+            "backend",
+            "architecture",
+            "priority-high"
+          ],
+          "desc": "# Objective\nIsolate Supabase Auth calls in the data layer and expose domain-safe repository behavior.\n\n# Scope\n- Create auth remote datasource contract\n- Create Supabase Auth datasource implementation\n- Create AuthRepository implementation\n- Map remote user to AuthUser\n- Map remote errors to AuthFailure\n- Add repository implementation tests\n\n# Acceptance Criteria\n- [ ] Supabase imports are limited to datasource layer\n- [ ] Repository returns domain models\n- [ ] Repository maps backend errors to user-safe failures\n- [ ] Repository implementation tests pass\n\n# Dependencies\n- Auth domain boundaries card completed\n- Auth dependencies card completed\n\n# Technical Notes\nPrefer fake datasource tests instead of brittle Supabase SDK mocks.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create auth remote datasource contract",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create Supabase Auth datasource implementation",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create AuthRepository implementation",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Map remote user to AuthUser",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Map remote errors to AuthFailure",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add repository implementation tests",
+                  "pos": 6,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Supabase imports are limited to datasource layer",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Repository returns domain models",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Repository maps backend errors to user-safe failures",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Repository implementation tests pass",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Wire Riverpod auth providers",
+          "labels": [
+            "feat",
+            "auth",
+            "mvvm",
+            "frontend",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nWire authentication dependencies with Riverpod.\n\n# Scope\n- Create Supabase client provider\n- Create auth datasource provider\n- Create auth repository provider\n- Create auth ViewModel provider\n- Add provider override tests\n- Wrap app root with ProviderScope when approved\n\n# Acceptance Criteria\n- [ ] Providers contain wiring, not business rules\n- [ ] Auth repository provider can be overridden in tests\n- [ ] Provider wiring tests pass\n\n# Dependencies\n- Auth state and ViewModel card completed\n- Supabase datasource and repository card completed\n\n# Technical Notes\nProvider wiring should not force real Supabase calls in unit tests.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create Supabase client provider",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create auth datasource provider",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create auth repository provider",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create auth ViewModel provider",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add provider override tests",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Wrap app root with ProviderScope when approved",
+                  "pos": 6,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Providers contain wiring, not business rules",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Auth repository provider can be overridden in tests",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Provider wiring tests pass",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Add declarative routing and auth guard",
+          "labels": [
+            "feat",
+            "auth",
+            "frontend",
+            "architecture",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nCreate initial GoRouter route registry and app-level auth redirect behavior.\n\n# Scope\n- Create route constants\n- Create app router\n- Add public auth routes\n- Add auth redirect behavior\n- Keep global route policy outside feature widgets\n- Add routing tests\n\n# Acceptance Criteria\n- [ ] Route names and paths are centralized\n- [ ] GoRouter owns auth redirect behavior\n- [ ] Route guards do not call Supabase directly\n- [ ] Routing tests pass\n\n# Dependencies\n- Riverpod auth providers card completed\n- Sign-in and sign-up destination pages available or approved as part of routing task\n\n# Technical Notes\nAvoid redirect loops by separating loading, authenticated, and unauthenticated states.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create route constants",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create app router",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add public auth routes",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add auth redirect behavior",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Keep global route policy outside feature widgets",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add routing tests",
+                  "pos": 6,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Route names and paths are centralized",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "GoRouter owns auth redirect behavior",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Route guards do not call Supabase directly",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Routing tests pass",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Add sign-in and sign-up UI",
+          "labels": [
+            "feat",
+            "auth",
+            "frontend",
+            "ux",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nCreate sign-in and sign-up views that render auth state and delegate actions.\n\n# Scope\n- Create sign-in page\n- Create sign-up page\n- Render email field\n- Render password field\n- Render primary action buttons\n- Render navigation between sign-in and sign-up\n- Add widget tests\n\n# Acceptance Criteria\n- [ ] Auth pages do not call repositories directly\n- [ ] Auth pages do not import Supabase\n- [ ] Auth pages delegate actions to ViewModel/provider\n- [ ] Widget tests pass\n\n# Dependencies\n- Riverpod auth providers card completed\n- Auth state and ViewModel card completed\n\n# Technical Notes\nUse existing theme and tokens where practical.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create sign-in page",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create sign-up page",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Render email field",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Render password field",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Render primary action buttons",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Render navigation between sign-in and sign-up",
+                  "pos": 6,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add widget tests",
+                  "pos": 7,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Auth pages do not call repositories directly",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Auth pages do not import Supabase",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Auth pages delegate actions to ViewModel/provider",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Widget tests pass",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Initialize Supabase at app startup",
+          "labels": [
+            "feat",
+            "auth",
+            "supabase",
+            "backend",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nInitialize Supabase at the application boundary using app-level configuration.\n\n# Scope\n- Inspect current app startup\n- Initialize Flutter bindings\n- Read AppEnvironment\n- Initialize Supabase when valid config exists\n- Keep tests isolated from real SDK initialization\n\n# Acceptance Criteria\n- [ ] Supabase initialization lives at app boundary\n- [ ] Feature code does not initialize Supabase\n- [ ] Static analysis passes\n- [ ] Tests pass\n\n# Dependencies\n- Supabase environment configuration card completed\n- Auth dependencies card completed\n\n# Technical Notes\nDo not commit real Supabase secrets.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Inspect current app startup",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Initialize Flutter bindings",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Read AppEnvironment",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Initialize Supabase when valid config exists",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Keep tests isolated from real SDK initialization",
+                  "pos": 5,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Supabase initialization lives at app boundary",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Feature code does not initialize Supabase",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Static analysis passes",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Tests pass",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[DOCS] Reconcile auth documentation and memory",
+          "labels": [
+            "docs",
+            "auth",
+            "technical-debt",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nUpdate documentation and operational memory after validated authentication slices.\n\n# Scope\n- Update current feature memory\n- Update technical debt after dependencies are installed\n- Update Supabase setup docs with Dart defines\n- Update routing docs only if behavior differs from current conventions\n\n# Acceptance Criteria\n- [ ] Memory reflects completed validated slices\n- [ ] Technical debt reflects real dependency state\n- [ ] Supabase setup docs mention SUPABASE_URL and SUPABASE_ANON_KEY\n- [ ] Documentation does not claim unimplemented behavior\n\n# Dependencies\n- Relevant implementation slices completed and validated\n\n# Technical Notes\nDo not update docs ahead of implementation.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Update current feature memory",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Update technical debt after dependencies are installed",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Update Supabase setup docs with Dart defines",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Update routing docs only if behavior differs from current conventions",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Memory reflects completed validated slices",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Technical debt reflects real dependency state",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Supabase setup docs mention SUPABASE_URL and SUPABASE_ANON_KEY",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Documentation does not claim unimplemented behavior",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🚧 In Progress",
+      "cards": []
+    },
+    {
+      "name": "👀 Code Review",
+      "cards": []
+    },
+    {
+      "name": "🧪 QA",
+      "cards": []
+    },
+    {
+      "name": "🚀 Ready for Release",
+      "cards": []
+    },
+    {
+      "name": "🎉 Done",
+      "cards": []
+    },
+    {
+      "name": "⛔ Blocked",
+      "cards": []
+    }
+  ]
+}
