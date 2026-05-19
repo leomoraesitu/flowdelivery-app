@@ -86,7 +86,7 @@
 - `dart-resolve-package-conflicts`
 - `dart-run-static-analysis`
 
-- [ ] **Step 1: Confirm dependency baseline**
+- [x] **Step 1: Confirm dependency baseline**
 
 Run:
 
@@ -102,7 +102,7 @@ go_router is absent
 supabase_flutter is absent
 ```
 
-- [ ] **Step 2: Add approved dependencies**
+- [x] **Step 2: Add approved dependencies**
 
 Run:
 
@@ -116,7 +116,7 @@ Expected:
 Changed 3 dependencies!
 ```
 
-- [ ] **Step 3: Resolve dependencies**
+- [x] **Step 3: Resolve dependencies**
 
 Run:
 
@@ -130,7 +130,7 @@ Expected:
 Got dependencies!
 ```
 
-- [ ] **Step 4: Validate static analysis**
+- [x] **Step 4: Validate static analysis**
 
 Run:
 

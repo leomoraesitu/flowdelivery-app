@@ -6,11 +6,11 @@ Authentication
 
 ## Status
 
-Planned for Sprint 1
+In progress for Sprint 1
 
 ## Current Step
 
-Step 1 — Execute approved authentication plan incrementally
+Task 2 — Centralize Supabase Environment Configuration
 
 ## Completed
 
@@ -26,10 +26,10 @@ Step 1 — Execute approved authentication plan incrementally
 - architecture approved
 - technical plan generated in `.ai/plans/2026-05-19-authentication-plan.md`
 - Sprint 1 generated in `docs/project-management/SPRINT_1.md`
+- Task 1 — add auth dependencies intentionally
 
 ## Pending
 
-- Task 1 — add auth dependencies intentionally
 - app environment configuration
 - auth domain boundaries
 - auth ViewModel and state
@@ -45,4 +45,4 @@ Step 1 — Execute approved authentication plan incrementally
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 1 — Add Auth Dependencies Intentionally.
+Current next implementation candidate: Task 2 — Centralize Supabase Environment Configuration.
