@@ -176,7 +176,7 @@ No issues found!
 
 - `dart-add-unit-test`
 
-- [ ] **Step 1: Write configuration test**
+- [x] **Step 1: Write configuration test**
 
 Create `test/app/config/app_environment_test.dart`:
 
@@ -201,7 +201,7 @@ void main() {
 }
 ```
 
-- [ ] **Step 2: Run test to verify missing implementation**
+- [x] **Step 2: Run test to verify missing implementation**
 
 Run:
 
@@ -215,7 +215,7 @@ Expected:
 Error: Can't read 'lib/app/config/app_environment.dart'
 ```
 
-- [ ] **Step 3: Create environment object**
+- [x] **Step 3: Create environment object**
 
 Create `lib/app/config/app_environment.dart`:
 
@@ -231,7 +231,7 @@ abstract final class AppEnvironment {
 }
 ```
 
-- [ ] **Step 4: Validate configuration slice**
+- [x] **Step 4: Validate configuration slice**
 
 Run:
 

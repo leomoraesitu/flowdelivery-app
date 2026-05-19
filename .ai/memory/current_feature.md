@@ -10,7 +10,7 @@ In progress for Sprint 1
 
 ## Current Step
 
-Task 2 — Centralize Supabase Environment Configuration
+Task 3 — Model Auth Domain Boundaries
 
 ## Completed
 
@@ -27,10 +27,10 @@ Task 2 — Centralize Supabase Environment Configuration
 - technical plan generated in `.ai/plans/2026-05-19-authentication-plan.md`
 - Sprint 1 generated in `docs/project-management/SPRINT_1.md`
 - Task 1 — add auth dependencies intentionally
+- Task 2 — centralize Supabase environment configuration
 
 ## Pending
 
-- app environment configuration
 - auth domain boundaries
 - auth ViewModel and state
 - auth data layer
@@ -45,4 +45,4 @@ Task 2 — Centralize Supabase Environment Configuration
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 2 — Centralize Supabase Environment Configuration.
+Current next implementation candidate: Task 3 — Model Auth Domain Boundaries.
