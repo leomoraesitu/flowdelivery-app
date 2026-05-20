@@ -39,17 +39,17 @@
                 {
                   "name": "Auth ViewModel and state",
                   "pos": 4,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Supabase datasource and repository implementation",
                   "pos": 5,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Riverpod provider wiring",
                   "pos": 6,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Declarative routing and auth guard",
@@ -99,7 +99,7 @@
                 {
                   "name": "Riverpod is used for dependency wiring and UI state observation",
                   "pos": 5,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "GoRouter owns global route policy and auth redirects",
@@ -114,7 +114,7 @@
                 {
                   "name": "Each implemented slice has focused validation",
                   "pos": 8,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Documentation and memory reflect only validated implementation",
@@ -292,147 +292,6 @@
                 },
                 {
                   "name": "Repository implementation tests pass",
-                  "pos": 4,
-                  "state": "incomplete"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "[FEAT] Wire Riverpod auth providers",
-          "labels": [
-            "feat",
-            "auth",
-            "mvvm",
-            "frontend",
-            "priority-medium"
-          ],
-          "desc": "# Objective\nWire authentication dependencies with Riverpod.\n\n# Scope\n- Create Supabase client provider\n- Create auth datasource provider\n- Create auth repository provider\n- Create auth ViewModel provider\n- Add provider override tests\n- Wrap app root with ProviderScope when approved\n\n# Acceptance Criteria\n- [ ] Providers contain wiring, not business rules\n- [ ] Auth repository provider can be overridden in tests\n- [ ] Provider wiring tests pass\n\n# Dependencies\n- Auth state and ViewModel card completed\n- Supabase datasource and repository card completed\n\n# Technical Notes\nProvider wiring should not force real Supabase calls in unit tests.",
-          "checklists": [
-            {
-              "name": "Scope",
-              "checkItems": [
-                {
-                  "name": "Create Supabase client provider",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Create auth datasource provider",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Create auth repository provider",
-                  "pos": 3,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Create auth ViewModel provider",
-                  "pos": 4,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Add provider override tests",
-                  "pos": 5,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Wrap app root with ProviderScope when approved",
-                  "pos": 6,
-                  "state": "incomplete"
-                }
-              ]
-            },
-            {
-              "name": "Acceptance Criteria",
-              "checkItems": [
-                {
-                  "name": "Providers contain wiring, not business rules",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Auth repository provider can be overridden in tests",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Provider wiring tests pass",
-                  "pos": 3,
-                  "state": "incomplete"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "[FEAT] Add declarative routing and auth guard",
-          "labels": [
-            "feat",
-            "auth",
-            "frontend",
-            "architecture",
-            "priority-medium"
-          ],
-          "desc": "# Objective\nCreate initial GoRouter route registry and app-level auth redirect behavior.\n\n# Scope\n- Create route constants\n- Create app router\n- Add public auth routes\n- Add auth redirect behavior\n- Keep global route policy outside feature widgets\n- Add routing tests\n\n# Acceptance Criteria\n- [ ] Route names and paths are centralized\n- [ ] GoRouter owns auth redirect behavior\n- [ ] Route guards do not call Supabase directly\n- [ ] Routing tests pass\n\n# Dependencies\n- Riverpod auth providers card completed\n- Sign-in and sign-up destination pages available or approved as part of routing task\n\n# Technical Notes\nAvoid redirect loops by separating loading, authenticated, and unauthenticated states.",
-          "checklists": [
-            {
-              "name": "Scope",
-              "checkItems": [
-                {
-                  "name": "Create route constants",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Create app router",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Add public auth routes",
-                  "pos": 3,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Add auth redirect behavior",
-                  "pos": 4,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Keep global route policy outside feature widgets",
-                  "pos": 5,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Add routing tests",
-                  "pos": 6,
-                  "state": "incomplete"
-                }
-              ]
-            },
-            {
-              "name": "Acceptance Criteria",
-              "checkItems": [
-                {
-                  "name": "Route names and paths are centralized",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "GoRouter owns auth redirect behavior",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Route guards do not call Supabase directly",
-                  "pos": 3,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Routing tests pass",
                   "pos": 4,
                   "state": "incomplete"
                 }
@@ -652,7 +511,81 @@
     },
     {
       "name": "🚧 In Progress",
-      "cards": []
+      "cards": [
+        {
+          "name": "[FEAT] Add declarative routing and auth guard",
+          "labels": [
+            "feat",
+            "auth",
+            "frontend",
+            "architecture",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nCreate initial GoRouter route registry and app-level auth redirect behavior.\n\n# Scope\n- Create route constants\n- Create app router\n- Add public auth routes\n- Add auth redirect behavior\n- Keep global route policy outside feature widgets\n- Add routing tests\n\n# Acceptance Criteria\n- [ ] Route names and paths are centralized\n- [ ] GoRouter owns auth redirect behavior\n- [ ] Route guards do not call Supabase directly\n- [ ] Routing tests pass\n\n# Dependencies\n- Riverpod auth providers card completed\n- Sign-in and sign-up destination pages available or approved as part of routing task\n\n# Technical Notes\nAvoid redirect loops by separating loading, authenticated, and unauthenticated states.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create route constants",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Create app router",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add public auth routes",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add auth redirect behavior",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Keep global route policy outside feature widgets",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Add routing tests",
+                  "pos": 6,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Route names and paths are centralized",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "GoRouter owns auth redirect behavior",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Route guards do not call Supabase directly",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Routing tests pass",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "👀 Code Review",
@@ -841,6 +774,74 @@
                 },
                 {
                   "name": "Domain tests pass",
+                  "pos": 3,
+                  "state": "complete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Wire Riverpod auth providers",
+          "labels": [
+            "feat",
+            "auth",
+            "mvvm",
+            "frontend",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nWire authentication dependencies with Riverpod.\n\n# Scope\n- Create Supabase client provider\n- Create auth datasource provider\n- Create auth repository provider\n- Create auth ViewModel provider\n- Add provider override tests\n- Wrap app root with ProviderScope when approved\n\n# Acceptance Criteria\n- [x] Providers contain wiring, not business rules\n- [x] Auth repository provider can be overridden in tests\n- [x] Provider wiring tests pass\n\n# Dependencies\n- Auth state and ViewModel card completed\n- Supabase datasource and repository card completed\n\n# Technical Notes\nProvider wiring should not force real Supabase calls in unit tests.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create Supabase client provider",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "Create auth datasource provider",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "Create auth repository provider",
+                  "pos": 3,
+                  "state": "complete"
+                },
+                {
+                  "name": "Create auth ViewModel provider",
+                  "pos": 4,
+                  "state": "complete"
+                },
+                {
+                  "name": "Add provider override tests",
+                  "pos": 5,
+                  "state": "complete"
+                },
+                {
+                  "name": "Wrap app root with ProviderScope when approved",
+                  "pos": 6,
+                  "state": "complete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Providers contain wiring, not business rules",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "Auth repository provider can be overridden in tests",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "Provider wiring tests pass",
                   "pos": 3,
                   "state": "complete"
                 }

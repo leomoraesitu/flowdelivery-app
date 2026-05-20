@@ -10,7 +10,7 @@ In progress for Sprint 1
 
 ## Current Step
 
-Task 6 — Wire Riverpod Providers
+Task 7 — Add Declarative Routing and Auth Guard
 
 ## Completed
 
@@ -31,10 +31,10 @@ Task 6 — Wire Riverpod Providers
 - Task 3 — model auth domain boundaries
 - Task 4 — add auth state and ViewModel
 - Task 5 — add Supabase datasource and repository implementation
+- Task 6 — wire Riverpod providers
 
 ## Pending
 
-- Riverpod providers
 - routing and auth guard
 - UI
 - tests
@@ -44,4 +44,4 @@ Task 6 — Wire Riverpod Providers
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 6 — Wire Riverpod Providers.
+Current next implementation candidate: Task 7 — Add Declarative Routing and Auth Guard.
