@@ -24,17 +24,17 @@
                 {
                   "name": "Auth dependencies",
                   "pos": 1,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Supabase environment configuration",
                   "pos": 2,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Auth domain boundaries",
                   "pos": 3,
-                  "state": "incomplete"
+                  "state": "complete"
                 },
                 {
                   "name": "Auth ViewModel and state",
@@ -157,185 +157,6 @@
     {
       "name": "✅ Ready",
       "cards": [
-        {
-          "name": "[CHORE] Add auth dependencies intentionally",
-          "labels": [
-            "chore",
-            "auth",
-            "supabase",
-            "frontend",
-            "priority-high"
-          ],
-          "desc": "# Objective\nAdd the approved authentication foundation dependencies to the project.\n\n# Scope\n- Add flutter_riverpod\n- Add go_router\n- Add supabase_flutter\n- Resolve dependencies\n- Run static analysis\n\n# Acceptance Criteria\n- [ ] pubspec.yaml includes approved auth dependencies\n- [ ] pubspec.lock is updated by dependency resolution\n- [ ] flutter analyze passes\n\n# Dependencies\n- Approved authentication plan\n\n# Technical Notes\nDo not import new packages in Dart code during this card.",
-          "checklists": [
-            {
-              "name": "Scope",
-              "checkItems": [
-                {
-                  "name": "Add flutter_riverpod",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Add go_router",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Add supabase_flutter",
-                  "pos": 3,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Resolve dependencies",
-                  "pos": 4,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Run static analysis",
-                  "pos": 5,
-                  "state": "incomplete"
-                }
-              ]
-            },
-            {
-              "name": "Acceptance Criteria",
-              "checkItems": [
-                {
-                  "name": "pubspec.yaml includes approved auth dependencies",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "pubspec.lock is updated by dependency resolution",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "flutter analyze passes",
-                  "pos": 3,
-                  "state": "incomplete"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "[FEAT] Configure Supabase environment",
-          "labels": [
-            "feat",
-            "auth",
-            "supabase",
-            "backend",
-            "priority-high"
-          ],
-          "desc": "# Objective\nCentralize Supabase environment access at app level.\n\n# Scope\n- Create app environment object\n- Read SUPABASE_URL from Dart defines\n- Read SUPABASE_ANON_KEY from Dart defines\n- Add configuration tests\n\n# Acceptance Criteria\n- [ ] AppEnvironment exposes Supabase URL and anon key\n- [ ] AppEnvironment reports whether Supabase config exists\n- [ ] Focused configuration tests pass\n\n# Dependencies\n- Auth dependencies card completed\n\n# Technical Notes\nDo not initialize Supabase in this card.",
-          "checklists": [
-            {
-              "name": "Scope",
-              "checkItems": [
-                {
-                  "name": "Create app environment object",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Read SUPABASE_URL from Dart defines",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Read SUPABASE_ANON_KEY from Dart defines",
-                  "pos": 3,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Add configuration tests",
-                  "pos": 4,
-                  "state": "incomplete"
-                }
-              ]
-            },
-            {
-              "name": "Acceptance Criteria",
-              "checkItems": [
-                {
-                  "name": "AppEnvironment exposes Supabase URL and anon key",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "AppEnvironment reports whether Supabase config exists",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Focused configuration tests pass",
-                  "pos": 3,
-                  "state": "incomplete"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "[FEAT] Model auth domain boundaries",
-          "labels": [
-            "feat",
-            "auth",
-            "mvvm",
-            "architecture",
-            "priority-high"
-          ],
-          "desc": "# Objective\nCreate domain models and repository contract for authentication.\n\n# Scope\n- Create AuthUser\n- Create AuthFailure\n- Create AuthRepository contract\n- Add domain tests\n\n# Acceptance Criteria\n- [ ] Domain files do not import Flutter widgets, Riverpod, GoRouter, or Supabase\n- [ ] AuthRepository exposes sign in, sign up, and sign out\n- [ ] Domain tests pass\n\n# Dependencies\n- Auth dependencies card completed\n\n# Technical Notes\nDomain code describes business meaning and must stay backend-independent.",
-          "checklists": [
-            {
-              "name": "Scope",
-              "checkItems": [
-                {
-                  "name": "Create AuthUser",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Create AuthFailure",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Create AuthRepository contract",
-                  "pos": 3,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Add domain tests",
-                  "pos": 4,
-                  "state": "incomplete"
-                }
-              ]
-            },
-            {
-              "name": "Acceptance Criteria",
-              "checkItems": [
-                {
-                  "name": "Domain files do not import Flutter widgets, Riverpod, GoRouter, or Supabase",
-                  "pos": 1,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "AuthRepository exposes sign in, sign up, and sign out",
-                  "pos": 2,
-                  "state": "incomplete"
-                },
-                {
-                  "name": "Domain tests pass",
-                  "pos": 3,
-                  "state": "incomplete"
-                }
-              ]
-            }
-          ]
-        },
         {
           "name": "[FEAT] Add auth state and ViewModel",
           "labels": [
@@ -847,7 +668,187 @@
     },
     {
       "name": "🎉 Done",
-      "cards": []
+      "cards": [
+        {
+          "name": "[CHORE] Add auth dependencies intentionally",
+          "labels": [
+            "chore",
+            "auth",
+            "supabase",
+            "frontend",
+            "priority-high"
+          ],
+          "desc": "# Objective\nAdd the approved authentication foundation dependencies to the project.\n\n# Scope\n- Add flutter_riverpod\n- Add go_router\n- Add supabase_flutter\n- Resolve dependencies\n- Run static analysis\n\n# Acceptance Criteria\n- [x] pubspec.yaml includes approved auth dependencies\n- [x] pubspec.lock is updated by dependency resolution\n- [x] flutter analyze passes\n\n# Dependencies\n- Approved authentication plan\n\n# Technical Notes\nDo not import new packages in Dart code during this card.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Add flutter_riverpod",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "Add go_router",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "Add supabase_flutter",
+                  "pos": 3,
+                  "state": "complete"
+                },
+                {
+                  "name": "Resolve dependencies",
+                  "pos": 4,
+                  "state": "complete"
+                },
+                {
+                  "name": "Run static analysis",
+                  "pos": 5,
+                  "state": "complete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "pubspec.yaml includes approved auth dependencies",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "pubspec.lock is updated by dependency resolution",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "flutter analyze passes",
+                  "pos": 3,
+                  "state": "complete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Configure Supabase environment",
+          "labels": [
+            "feat",
+            "auth",
+            "supabase",
+            "backend",
+            "priority-high"
+          ],
+          "desc": "# Objective\nCentralize Supabase environment access at app level.\n\n# Scope\n- Create app environment object\n- Read SUPABASE_URL from Dart defines\n- Read SUPABASE_ANON_KEY from Dart defines\n- Add configuration tests\n\n# Acceptance Criteria\n- [x] AppEnvironment exposes Supabase URL and anon key\n- [x] AppEnvironment reports whether Supabase config exists\n- [x] Focused configuration tests pass\n\n# Dependencies\n- Auth dependencies card completed\n\n# Technical Notes\nDo not initialize Supabase in this card.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create app environment object",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "Read SUPABASE_URL from Dart defines",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "Read SUPABASE_ANON_KEY from Dart defines",
+                  "pos": 3,
+                  "state": "complete"
+                },
+                {
+                  "name": "Add configuration tests",
+                  "pos": 4,
+                  "state": "complete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "AppEnvironment exposes Supabase URL and anon key",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "AppEnvironment reports whether Supabase config exists",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "Focused configuration tests pass",
+                  "pos": 3,
+                  "state": "complete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "[FEAT] Model auth domain boundaries",
+          "labels": [
+            "feat",
+            "auth",
+            "mvvm",
+            "architecture",
+            "priority-high"
+          ],
+          "desc": "# Objective\nCreate domain models and repository contract for authentication.\n\n# Scope\n- Create AuthUser\n- Create AuthFailure\n- Create AuthRepository contract\n- Add domain tests\n\n# Acceptance Criteria\n- [x] Domain files do not import Flutter widgets, Riverpod, GoRouter, or Supabase\n- [x] AuthRepository exposes sign in, sign up, and sign out\n- [x] Domain tests pass\n\n# Dependencies\n- Auth dependencies card completed\n\n# Technical Notes\nDomain code describes business meaning and must stay backend-independent.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create AuthUser",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "Create AuthFailure",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "Create AuthRepository contract",
+                  "pos": 3,
+                  "state": "complete"
+                },
+                {
+                  "name": "Add domain tests",
+                  "pos": 4,
+                  "state": "complete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "Domain files do not import Flutter widgets, Riverpod, GoRouter, or Supabase",
+                  "pos": 1,
+                  "state": "complete"
+                },
+                {
+                  "name": "AuthRepository exposes sign in, sign up, and sign out",
+                  "pos": 2,
+                  "state": "complete"
+                },
+                {
+                  "name": "Domain tests pass",
+                  "pos": 3,
+                  "state": "complete"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "⛔ Blocked",

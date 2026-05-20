@@ -281,7 +281,7 @@ All tests passed!
 - `dart-add-unit-test`
 - `flutter-apply-architecture-best-practices`
 
-- [ ] **Step 1: Write domain tests**
+- [x] **Step 1: Write domain tests**
 
 Create `test/features/auth/domain/auth_domain_test.dart`:
 
@@ -349,7 +349,7 @@ void main() {
 }
 ```
 
-- [ ] **Step 2: Run test to verify missing domain files**
+- [x] **Step 2: Run test to verify missing domain files**
 
 Run:
 
@@ -363,7 +363,7 @@ Expected:
 Error: Can't read one or more auth domain imports
 ```
 
-- [ ] **Step 3: Create `AuthUser`**
+- [x] **Step 3: Create `AuthUser`**
 
 Create `lib/features/auth/domain/entities/auth_user.dart`:
 
@@ -379,7 +379,7 @@ class AuthUser {
 }
 ```
 
-- [ ] **Step 4: Create `AuthFailure`**
+- [x] **Step 4: Create `AuthFailure`**
 
 Create `lib/features/auth/domain/failures/auth_failure.dart`:
 
@@ -394,7 +394,7 @@ class AuthFailure implements Exception {
 }
 ```
 
-- [ ] **Step 5: Create `AuthRepository`**
+- [x] **Step 5: Create `AuthRepository`**
 
 Create `lib/features/auth/domain/repositories/auth_repository.dart`:
 
@@ -416,7 +416,7 @@ abstract interface class AuthRepository {
 }
 ```
 
-- [ ] **Step 6: Validate domain slice**
+- [x] **Step 6: Validate domain slice**
 
 Run:
 

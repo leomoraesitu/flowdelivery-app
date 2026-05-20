@@ -10,7 +10,7 @@ In progress for Sprint 1
 
 ## Current Step
 
-Task 3 — Model Auth Domain Boundaries
+Task 4 — Add Auth State and ViewModel
 
 ## Completed
 
@@ -28,10 +28,10 @@ Task 3 — Model Auth Domain Boundaries
 - Sprint 1 generated in `docs/project-management/SPRINT_1.md`
 - Task 1 — add auth dependencies intentionally
 - Task 2 — centralize Supabase environment configuration
+- Task 3 — model auth domain boundaries
 
 ## Pending
 
-- auth domain boundaries
 - auth ViewModel and state
 - auth data layer
 - repository layer
@@ -45,4 +45,4 @@ Task 3 — Model Auth Domain Boundaries
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 3 — Model Auth Domain Boundaries.
+Current next implementation candidate: Task 4 — Add Auth State and ViewModel.
