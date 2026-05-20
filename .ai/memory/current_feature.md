@@ -10,7 +10,7 @@ In progress for Sprint 1
 
 ## Current Step
 
-Task 5 — Add Supabase Datasource and Repository Implementation
+Task 6 — Wire Riverpod Providers
 
 ## Completed
 
@@ -30,11 +30,10 @@ Task 5 — Add Supabase Datasource and Repository Implementation
 - Task 2 — centralize Supabase environment configuration
 - Task 3 — model auth domain boundaries
 - Task 4 — add auth state and ViewModel
+- Task 5 — add Supabase datasource and repository implementation
 
 ## Pending
 
-- auth data layer
-- repository layer
 - Riverpod providers
 - routing and auth guard
 - UI
@@ -45,4 +44,4 @@ Task 5 — Add Supabase Datasource and Repository Implementation
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 5 — Add Supabase Datasource and Repository Implementation.
+Current next implementation candidate: Task 6 — Wire Riverpod Providers.
