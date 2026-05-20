@@ -465,7 +465,7 @@ All tests passed!
 - `dart-add-unit-test`
 - `flutter-apply-architecture-best-practices`
 
-- [ ] **Step 1: Write ViewModel tests**
+- [x] **Step 1: Write ViewModel tests**
 
 Create `test/features/auth/presentation/auth_view_model_test.dart`:
 
@@ -570,7 +570,7 @@ void main() {
 }
 ```
 
-- [ ] **Step 2: Run test to verify missing presentation files**
+- [x] **Step 2: Run test to verify missing presentation files**
 
 Run:
 
@@ -584,7 +584,7 @@ Expected:
 Error: Can't read one or more auth presentation imports
 ```
 
-- [ ] **Step 3: Create explicit auth state**
+- [x] **Step 3: Create explicit auth state**
 
 Create `lib/features/auth/presentation/state/auth_state.dart`:
 
@@ -631,7 +631,7 @@ class AuthState {
 }
 ```
 
-- [ ] **Step 4: Create `AuthViewModel`**
+- [x] **Step 4: Create `AuthViewModel`**
 
 Create `lib/features/auth/presentation/viewmodels/auth_view_model.dart`:
 
@@ -697,7 +697,7 @@ class AuthViewModel extends ChangeNotifier {
 }
 ```
 
-- [ ] **Step 5: Validate ViewModel slice**
+- [x] **Step 5: Validate ViewModel slice**
 
 Run:
 

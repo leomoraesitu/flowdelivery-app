@@ -10,7 +10,7 @@ In progress for Sprint 1
 
 ## Current Step
 
-Task 4 — Add Auth State and ViewModel
+Task 5 — Add Supabase Datasource and Repository Implementation
 
 ## Completed
 
@@ -29,10 +29,10 @@ Task 4 — Add Auth State and ViewModel
 - Task 1 — add auth dependencies intentionally
 - Task 2 — centralize Supabase environment configuration
 - Task 3 — model auth domain boundaries
+- Task 4 — add auth state and ViewModel
 
 ## Pending
 
-- auth ViewModel and state
 - auth data layer
 - repository layer
 - Riverpod providers
@@ -45,4 +45,4 @@ Task 4 — Add Auth State and ViewModel
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 4 — Add Auth State and ViewModel.
+Current next implementation candidate: Task 5 — Add Supabase Datasource and Repository Implementation.
