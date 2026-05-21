@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'app/routes/app_router.dart';
-import 'app/theme/app_theme.dart';
+import 'app/app.dart';
+import 'app/bootstrap/supabase_bootstrap.dart';
+import 'app/config/app_environment.dart';
 
-void main() {
-  runApp(const ProviderScope(child: MainApp()));
-}
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MainApp extends ConsumerWidget {
-  const MainApp({super.key});
+  await initializeSupabaseIfConfigured(
+    hasSupabaseConfig: AppEnvironment.hasSupabaseConfig,
+    supabaseUrl: AppEnvironment.supabaseUrl,
+    supabaseAnonKey: AppEnvironment.supabaseAnonKey,
+    initializeSupabase: ({
+      required String url,
+      required String anonKey,
+    }) {
+      return Supabase.initialize(
+        url: url,
+        anonKey: anonKey,
+      );
+    },
+  );
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp.router(
-      routerConfig: ref.watch(appRouterProvider),
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-    );
-  }
+  runApp(const FlowDeliveryApp());
 }

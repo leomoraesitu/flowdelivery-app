@@ -1,3 +1,4 @@
+import 'package:flowdelivery_app/app/theme/app_theme.dart';
 import 'package:flowdelivery_app/features/auth/domain/entities/auth_user.dart';
 import 'package:flowdelivery_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.dart';
@@ -6,6 +7,10 @@ import 'package:flowdelivery_app/features/auth/presentation/providers/auth_provi
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+final _authPageTestTheme = AppTheme.light.copyWith(
+  splashFactory: NoSplash.splashFactory,
+);
 
 class FakeAuthRepository implements AuthRepository {
   String? lastSignInEmail;
@@ -42,10 +47,11 @@ void main() {
 
       await tester.pumpWidget(
         ProviderScope(
-          overrides: [
-            authRepositoryProvider.overrideWithValue(fakeRepository),
-          ],
-          child: const MaterialApp(home: SignInPage()),
+          overrides: [authRepositoryProvider.overrideWithValue(fakeRepository)],
+          child: MaterialApp(
+            theme: _authPageTestTheme,
+            home: const SignInPage(),
+          ),
         ),
       );
 
@@ -78,10 +84,11 @@ void main() {
 
       await tester.pumpWidget(
         ProviderScope(
-          overrides: [
-            authRepositoryProvider.overrideWithValue(fakeRepository),
-          ],
-          child: const MaterialApp(home: SignUpPage()),
+          overrides: [authRepositoryProvider.overrideWithValue(fakeRepository)],
+          child: MaterialApp(
+            theme: _authPageTestTheme,
+            home: const SignUpPage(),
+          ),
         ),
       );
 

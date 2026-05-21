@@ -1,6 +1,7 @@
 import 'package:flowdelivery_app/app/routes/app_router.dart';
 import 'package:flowdelivery_app/features/auth/domain/entities/auth_user.dart';
 import 'package:flowdelivery_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -48,6 +49,6 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    expect(find.text('Sign In'), findsOneWidget);
+    expect(find.byType(SignInPage), findsOneWidget);
   });
 }

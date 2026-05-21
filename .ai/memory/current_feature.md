@@ -10,7 +10,7 @@ In progress for Sprint 1
 
 ## Current Step
 
-Task 9 — Initialize Supabase at App Startup
+Task 10 — Reconcile Documentation and Memory
 
 ## Completed
 
@@ -34,10 +34,11 @@ Task 9 — Initialize Supabase at App Startup
 - Task 6 — wire Riverpod providers
 - Task 7 — add declarative routing and auth guard
 - Task 8 — add Sign In and Sign Up UI
+- Task 9 — initialize Supabase at app startup
+- architecture alignment: created `lib/app/app.dart` as root app shell and kept `lib/main.dart` for bootstrap only
 
 ## Pending
 
-- startup initialization
 - remaining tests
 - documentation updates
 
@@ -45,4 +46,4 @@ Task 9 — Initialize Supabase at App Startup
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 9 — Initialize Supabase at App Startup.
+Current next implementation candidate: Task 10 — Reconcile Documentation and Memory.
