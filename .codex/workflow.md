@@ -13,6 +13,10 @@
 
 ## Daily Operational Loop
 
+Regra operacional global:
+
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
+
 Leia:
 
 ```txt

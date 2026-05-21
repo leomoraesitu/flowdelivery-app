@@ -226,6 +226,7 @@ Leia:
 - revisar arquitetura;
 - justificar tradeoffs;
 - atualizar memória operacional.
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 
 ## Nunca
 

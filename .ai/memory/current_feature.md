@@ -10,7 +10,7 @@ In progress for Sprint 1
 
 ## Current Step
 
-Task 7 — Add Declarative Routing and Auth Guard
+Task 8 — Add Sign In and Sign Up UI
 
 ## Completed
 
@@ -32,10 +32,10 @@ Task 7 — Add Declarative Routing and Auth Guard
 - Task 4 — add auth state and ViewModel
 - Task 5 — add Supabase datasource and repository implementation
 - Task 6 — wire Riverpod providers
+- Task 7 — add declarative routing and auth guard
 
 ## Pending
 
-- routing and auth guard
 - UI
 - tests
 - documentation updates
@@ -44,4 +44,4 @@ Task 7 — Add Declarative Routing and Auth Guard
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 7 — Add Declarative Routing and Auth Guard.
+Current next implementation candidate: Task 8 — Add Sign In and Sign Up UI.

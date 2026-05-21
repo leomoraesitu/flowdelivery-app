@@ -57,6 +57,7 @@ O arquivo deve conter:
 - Registre qualquer dependência ainda ausente no `pubspec.yaml`.
 - O arquivo-plan deve ser criado antes de iniciar qualquer implementação.
 - Use skills de `.agents/skills` somente quando forem pertinentes à etapa.
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 
 ## Saída esperada
 
