@@ -1,4 +1,6 @@
 import 'package:flowdelivery_app/app/routes/app_routes.dart';
+import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.dart';
+import 'package:flowdelivery_app/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/state/auth_state.dart';
 import 'package:flutter/material.dart';
@@ -20,12 +22,12 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.signInPath,
         name: AppRoutes.signInName,
-        builder: (context, state) => const _SignInPlaceholderPage(),
+        builder: (context, state) => const SignInPage(),
       ),
       GoRoute(
         path: AppRoutes.signUpPath,
         name: AppRoutes.signUpName,
-        builder: (context, state) => const _SignUpPlaceholderPage(),
+        builder: (context, state) => const SignUpPage(),
       ),
     ],
     redirect: (context, state) {
@@ -59,32 +61,6 @@ class _HomePlaceholderPage extends StatelessWidget {
     return const Scaffold(
       body: Center(
         child: Text('Home'),
-      ),
-    );
-  }
-}
-
-class _SignInPlaceholderPage extends StatelessWidget {
-  const _SignInPlaceholderPage();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Sign In'),
-      ),
-    );
-  }
-}
-
-class _SignUpPlaceholderPage extends StatelessWidget {
-  const _SignUpPlaceholderPage();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Sign Up'),
       ),
     );
   }

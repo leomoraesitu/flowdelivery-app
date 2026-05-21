@@ -16,7 +16,7 @@ Notes:
 - Future feature work must keep docs aligned with real code.
 - Routing documentation remains reconciled with the deferred implementation decision.
 
-### Add planned dependencies intentionally
+### Keep runtime initialization aligned with installed dependencies
 
 Status:
 Open
@@ -25,9 +25,9 @@ Impact:
 Medium
 
 Notes:
-- `flutter_riverpod`, `go_router` and Supabase packages are planned but not yet present in `pubspec.yaml`.
-- Check `pubspec.yaml` before writing code that imports these packages.
-- `go_router` conventions are documented, but the dependency remains intentionally absent until an approved implementation step.
+- `flutter_riverpod`, `go_router`, and `supabase_flutter` are already present in `pubspec.yaml`.
+- Supabase initialization at app startup is still pending Task 9.
+- Keep docs/memory synchronized with each validated implementation slice.
 
 ## Rules
 

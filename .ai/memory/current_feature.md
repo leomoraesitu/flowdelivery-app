@@ -10,7 +10,7 @@ In progress for Sprint 1
 
 ## Current Step
 
-Task 8 — Add Sign In and Sign Up UI
+Task 9 — Initialize Supabase at App Startup
 
 ## Completed
 
@@ -33,15 +33,16 @@ Task 8 — Add Sign In and Sign Up UI
 - Task 5 — add Supabase datasource and repository implementation
 - Task 6 — wire Riverpod providers
 - Task 7 — add declarative routing and auth guard
+- Task 8 — add Sign In and Sign Up UI
 
 ## Pending
 
-- UI
-- tests
+- startup initialization
+- remaining tests
 - documentation updates
 
 ## Notes
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 8 — Add Sign In and Sign Up UI.
+Current next implementation candidate: Task 9 — Initialize Supabase at App Startup.

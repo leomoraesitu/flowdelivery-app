@@ -2,20 +2,19 @@
 
 ## Current Issues
 
-### Dependencies not installed yet
+### Supabase startup initialization pending
 
 Status:
 Known
 
 Affected areas:
 
-- Riverpod
-- GoRouter
-- Supabase client
+- App startup
+- Supabase client lifecycle
 
 Notes:
-- These are architecture decisions, but package installation has not happened yet.
-- Do not import missing packages before adding dependencies intentionally.
+- Dependencies are installed, but app startup initialization is not finalized yet.
+- Execute Task 9 to initialize Supabase at the application boundary.
 
 ### Trello synchronization is partial/manual
 

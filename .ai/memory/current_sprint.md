@@ -20,7 +20,7 @@ Active.
 ## Current Priorities
 
 - execute `.ai/plans/2026-05-19-authentication-plan.md` incrementally
-- start with Task 1 only after approval
+- execute only the next approved pending task
 - keep Supabase outside widgets and ViewModels
 - keep route policy at app level
 - update documentation and memory only after validated implementation slices
@@ -33,4 +33,4 @@ Active.
 - Sprint 0 foundation and governance completed.
 - Sprint 1 generated in `docs/project-management/SPRINT_1.md`.
 - Authentication technical plan registered in `.ai/plans/2026-05-19-authentication-plan.md`.
-- Implementation remains blocked until the next task is explicitly approved.
+- Next pending step: Task 9 — Initialize Supabase at App Startup.
