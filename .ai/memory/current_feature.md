@@ -6,11 +6,11 @@ Authentication
 
 ## Status
 
-In progress for Sprint 1
+Task 10 completed for Sprint 1
 
 ## Current Step
 
-Task 10 — Reconcile Documentation and Memory
+Awaiting next approved task
 
 ## Completed
 
@@ -36,14 +36,19 @@ Task 10 — Reconcile Documentation and Memory
 - Task 8 — add Sign In and Sign Up UI
 - Task 9 — initialize Supabase at app startup
 - architecture alignment: created `lib/app/app.dart` as root app shell and kept `lib/main.dart` for bootstrap only
+- Task 10 — Step 1: update current feature memory
+- Task 10 — Step 2: update technical debt
+- Task 10 — Step 3: update Supabase setup docs
+- Task 10 — Step 4: run final focused validation
 
 ## Pending
 
-- remaining tests
-- documentation updates
+- Awaiting next approved feature/task
 
 ## Notes
 
 Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-Current next implementation candidate: Task 10 — Reconcile Documentation and Memory.
+Task 10 validation completed with Dart MCP:
+- `analyze_files`: No errors.
+- `run_tests`: All tests passed.

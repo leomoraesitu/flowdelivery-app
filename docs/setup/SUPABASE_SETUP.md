@@ -51,12 +51,15 @@ notifications
 
 ## Runtime Configuration
 
-Supabase client configuration is read from Dart defines:
+Supabase client configuration is read from Dart defines at app startup:
 
 ```text
 SUPABASE_URL
 SUPABASE_ANON_KEY
 ```
+
+Both values are required to enable real authentication. They are read by
+`AppEnvironment` and passed to `Supabase.initialize` from `lib/main.dart`.
 
 For local VS Code launches, use:
 
@@ -74,11 +77,25 @@ The VS Code Supabase launch configurations pass the local file with:
 --dart-define-from-file=.vscode/supabase.local.json
 ```
 
+Use either `flowdelivery_app (supabase)` or `flowdelivery_app (supabase web)`
+from `.vscode/launch.json` when testing authentication against a real Supabase
+project.
+
 ## Startup Decision
 
 In development and widget tests, the app may start without Supabase
 configuration. Authentication then uses a repository fallback that returns an
 `AuthFailure` instead of touching the Supabase SDK.
+
+Current fallback:
+
+```text
+UnconfiguredAuthRepository
+```
+
+The fallback keeps widgets and ViewModels testable without real Supabase
+credentials while still surfacing a user-safe configuration error when auth
+actions are attempted.
 
 When Supabase configuration is present, the SDK must be initialized by the app
 startup path before any Supabase client provider is read. A configured but

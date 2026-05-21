@@ -1466,15 +1466,15 @@ All tests passed!
 
 - `dart-run-static-analysis`
 
-- [ ] **Step 1: Update current feature memory**
+- [x] **Step 1: Update current feature memory**
 
 Record completed slices and next pending step in `.ai/memory/current_feature.md`.
 
-- [ ] **Step 2: Update technical debt**
+- [x] **Step 2: Update technical debt**
 
 If dependencies are installed, remove or revise the debt item that says Riverpod, GoRouter, and Supabase are absent.
 
-- [ ] **Step 3: Update Supabase setup docs**
+- [x] **Step 3: Update Supabase setup docs**
 
 Document required Dart defines:
 
@@ -1483,7 +1483,7 @@ SUPABASE_URL
 SUPABASE_ANON_KEY
 ```
 
-- [ ] **Step 4: Run final focused validation**
+- [x] **Step 4: Run final focused validation**
 
 Run:
 

@@ -16,17 +16,18 @@ Notes:
 - Future feature work must keep docs aligned with real code.
 - Routing documentation remains reconciled with the deferred implementation decision.
 
-### Keep runtime initialization aligned with installed dependencies
+### Keep auth documentation aligned with implementation
 
 Status:
-Open
+Monitoring
 
 Impact:
-Medium
+Low
 
 Notes:
 - `flutter_riverpod`, `go_router`, and `supabase_flutter` are already present in `pubspec.yaml`.
-- Supabase initialization at app startup is still pending Task 9.
+- Supabase initialization at app startup was implemented in Task 9.
+- Auth dependency wiring now uses app-level provider overrides and an unconfigured repository fallback when Supabase Dart defines are absent.
 - Keep docs/memory synchronized with each validated implementation slice.
 
 ## Rules

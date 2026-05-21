@@ -18,9 +18,10 @@ Deliver a minimal, testable authentication foundation with Supabase Auth, Riverp
 
 ## Status
 
-Planned.
+Completed and validated.
 
-This sprint is generated from the approved technical plan. Implementation has not started yet.
+This sprint was implemented incrementally from the approved technical plan.
+Tasks 1-10 are completed for the Authentication foundation.
 
 ---
 
@@ -64,9 +65,10 @@ Sprint 1 focuses on authentication foundation only:
 
 ### Documentation
 
-- Supabase setup documentation updated only after implementation changes are validated.
+- Supabase setup documentation updated after implementation changes were validated.
+- Routing conventions wording refreshed to reflect implemented behavior.
 - Current feature memory updated after completed slices.
-- Technical debt updated after planned dependencies are installed.
+- Technical debt updated after planned dependencies and startup integration were completed.
 
 ---
 
@@ -74,85 +76,85 @@ Sprint 1 focuses on authentication foundation only:
 
 ### Dependencies
 
-- [ ] Add `flutter_riverpod`, `go_router`, and `supabase_flutter` intentionally.
-- [ ] Run dependency resolution.
-- [ ] Run static analysis after dependency changes.
+- [x] Add `flutter_riverpod`, `go_router`, and `supabase_flutter` intentionally.
+- [x] Run dependency resolution.
+- [x] Run static analysis after dependency changes.
 
 ### App Configuration
 
-- [ ] Create app-level Supabase environment configuration.
-- [ ] Add tests for `SUPABASE_URL` and `SUPABASE_ANON_KEY` access.
-- [ ] Validate configuration slice.
+- [x] Create app-level Supabase environment configuration.
+- [x] Add tests for `SUPABASE_URL` and `SUPABASE_ANON_KEY` access.
+- [x] Validate configuration slice.
 
 ### Auth Domain
 
-- [ ] Create `AuthUser`.
-- [ ] Create `AuthFailure`.
-- [ ] Create `AuthRepository` contract.
-- [ ] Add domain tests.
+- [x] Create `AuthUser`.
+- [x] Create `AuthFailure`.
+- [x] Create `AuthRepository` contract.
+- [x] Add domain tests.
 
 ### Auth Presentation Logic
 
-- [ ] Create explicit `AuthState`.
-- [ ] Create `AuthViewModel`.
-- [ ] Add ViewModel tests for initial, success, failure, and sign-out states.
+- [x] Create explicit `AuthState`.
+- [x] Create `AuthViewModel`.
+- [x] Add ViewModel tests for initial, success, failure, and sign-out states.
 
 ### Auth Data Layer
 
-- [ ] Create auth remote datasource contract.
-- [ ] Create Supabase Auth datasource implementation.
-- [ ] Create repository implementation.
-- [ ] Add repository implementation tests with fake datasource.
+- [x] Create auth remote datasource contract.
+- [x] Create Supabase Auth datasource implementation.
+- [x] Create repository implementation.
+- [x] Add repository implementation tests with fake datasource.
 
 ### Riverpod Wiring
 
-- [ ] Create auth providers.
-- [ ] Add provider override tests.
-- [ ] Wrap the app root with `ProviderScope` when approved by the implementation step.
+- [x] Create auth providers.
+- [x] Add provider override tests.
+- [x] Wrap the app root with `ProviderScope` when approved by the implementation step.
 
 ### Routing
 
-- [ ] Create route constants.
-- [ ] Create app router with GoRouter.
-- [ ] Add auth redirect behavior based on auth state.
-- [ ] Preserve app-level ownership of global navigation policy.
-- [ ] Add routing tests.
+- [x] Create route constants.
+- [x] Create app router with GoRouter.
+- [x] Add auth redirect behavior based on auth state.
+- [x] Preserve app-level ownership of global navigation policy.
+- [x] Add routing tests.
 
 ### Auth UI
 
-- [ ] Create sign-in page.
-- [ ] Create sign-up page.
-- [ ] Render email and password fields.
-- [ ] Render primary action buttons.
-- [ ] Render navigation between sign-in and sign-up.
-- [ ] Add widget tests for auth pages.
+- [x] Create sign-in page.
+- [x] Create sign-up page.
+- [x] Render email and password fields.
+- [x] Render primary action buttons.
+- [x] Render navigation between sign-in and sign-up.
+- [x] Add widget tests for auth pages.
 
 ### Startup Integration
 
-- [ ] Initialize Supabase at app startup using app-level configuration.
-- [ ] Avoid real SDK initialization in tests where possible.
-- [ ] Validate startup integration with analysis and tests.
+- [x] Initialize Supabase at app startup using app-level configuration.
+- [x] Avoid real SDK initialization in tests where possible.
+- [x] Validate startup integration with analysis and tests.
 
 ### Documentation and Memory
 
-- [ ] Update `.ai/memory/current_feature.md` after validated implementation slices.
-- [ ] Update `.ai/memory/technical_debt.md` after dependencies are installed.
-- [ ] Update `docs/setup/SUPABASE_SETUP.md` with required Dart defines.
-- [ ] Update routing documentation only if implemented behavior differs from current conventions.
+- [x] Update `.ai/memory/current_feature.md` after validated implementation slices.
+- [x] Update `.ai/memory/technical_debt.md` after dependencies are installed.
+- [x] Update `docs/setup/SUPABASE_SETUP.md` with required Dart defines.
+- [x] Update routing documentation when wording needed reconciliation with implemented behavior.
 
 ---
 
 ## Acceptance Criteria
 
-- [ ] Auth feature has explicit domain, data, presentation, provider, and routing boundaries.
-- [ ] Widgets do not import Supabase.
-- [ ] ViewModels do not import Supabase.
-- [ ] Supabase calls are isolated in the datasource layer.
-- [ ] Riverpod is used for dependency wiring and UI state observation.
-- [ ] GoRouter owns global route policy and auth redirects.
-- [ ] Route paths and names are centralized.
-- [ ] Each implemented slice has focused validation.
-- [ ] Documentation and memory reflect only validated implementation.
+- [x] Auth feature has explicit domain, data, presentation, provider, and routing boundaries.
+- [x] Widgets do not import Supabase.
+- [x] ViewModels do not import Supabase.
+- [x] Supabase calls are isolated in the datasource layer.
+- [x] Riverpod is used for dependency wiring and UI state observation.
+- [x] GoRouter owns global route policy and auth redirects.
+- [x] Route paths and names are centralized.
+- [x] Each implemented slice has focused validation.
+- [x] Documentation and memory reflect only validated implementation.
 
 ---
 
@@ -195,11 +197,16 @@ Project rule:
 - Flutter and Dart commands should use Dart MCP after `add_roots` when that tooling is available.
 - If Dart MCP is unavailable, record the fallback before using CLI commands.
 
+Final Sprint 1 validation:
+
+- Dart MCP `analyze_files`: No errors.
+- Dart MCP `run_tests`: All tests passed.
+
 ---
 
 ## Success Criteria
 
-- Authentication foundation is implemented incrementally.
+- Authentication foundation was implemented incrementally.
 - Each slice is testable and reversible.
 - MVVM and Clean Architecture boundaries remain intact.
 - Supabase stays outside widgets and ViewModels.
