@@ -1,3 +1,6 @@
+$OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
 Write-Host ""
 Write-Host "=== FLOWDELIVERY AI MEMORY LOOP ==="
 Write-Host ""
@@ -38,8 +41,8 @@ switch ($option) {
   }
 }
 
-if ($null -ne $path) {
-  $content = Get-Content $path -Raw
+if (($null -ne $path) -and (Test-Path $path)) {
+  $content = Get-Content $path -Raw -Encoding utf8
   $content | Set-Clipboard
 
   Write-Host ""
@@ -47,4 +50,7 @@ if ($null -ne $path) {
   Write-Host ""
   Write-Host "Prompt copied to clipboard!"
   Write-Host ""
+} else {
+  Write-Error "Invalid option or command file not found."
+  exit 1
 }
