@@ -15,6 +15,13 @@
 - [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`
 - [ ] New placeholders and route placeholders are covered by the guard test
 
+## Theme Guard Checklist
+
+- [ ] UI uses semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)
+- [ ] No `Color(0x...)` hardcoded values in feature presentation code
+- [ ] No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`
+- [ ] Visual hardcoded guard tests are updated when new UI patterns are introduced
+
 ## Validation
 
 ## Residual Risk

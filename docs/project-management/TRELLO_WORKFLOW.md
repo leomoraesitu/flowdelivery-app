@@ -88,6 +88,15 @@ Use the exact Localization Guard Checklist below for any card that introduces or
 - [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`
 - [ ] New placeholders and route placeholders are covered by the guard test
 
+### Theme Guard Checklist
+
+Use the exact Theme Guard Checklist below for any card that introduces or changes user-facing UI styling.
+
+- [ ] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)
+- [ ] No `Color(0x...)` hardcoded values in feature presentation code
+- [ ] No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`
+- [ ] Visual hardcoded guard test is updated when new UI patterns are introduced
+
 ### JSON Checklist Structure
 
 Markdown checklist items inside `desc` are useful for human reading, but they are not enough for automation. Any JSON card that needs real Trello checklists must also declare a `checklists` array.
@@ -111,6 +120,59 @@ Use this structure:
           "name": "Completed criterion",
           "pos": 2,
           "state": "complete"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### UI Card Example (Localization + Theme Guard)
+
+Use this example when creating cards that change user-facing UI:
+
+```json
+{
+  "name": "[FEAT] Update sign-in screen states",
+  "desc": "# Objective\nImprove sign-in feedback and loading states.\n\n# Scope\n- Update button loading state\n- Add error banner and retry action\n\n# Acceptance Criteria\n- [ ] New copy uses ARB keys\n- [ ] UI uses semantic colors and tokens only",
+  "checklists": [
+    {
+      "name": "Localization Guard Checklist",
+      "checkItems": [
+        {
+          "name": "Every new user-facing string has an ARB key",
+          "pos": 1,
+          "state": "incomplete"
+        },
+        {
+          "name": "UI reads strings through AppLocalizations",
+          "pos": 2,
+          "state": "incomplete"
+        },
+        {
+          "name": "No hardcoded copy in UI widgets and placeholders",
+          "pos": 3,
+          "state": "incomplete"
+        }
+      ]
+    },
+    {
+      "name": "Theme Guard Checklist",
+      "checkItems": [
+        {
+          "name": "UI uses semantic theme APIs and app tokens",
+          "pos": 1,
+          "state": "incomplete"
+        },
+        {
+          "name": "No Color(0x...) hardcoded values in presentation",
+          "pos": 2,
+          "state": "incomplete"
+        },
+        {
+          "name": "No AppLightColors/AppDarkColors usage outside lib/app/theme",
+          "pos": 3,
+          "state": "incomplete"
         }
       ]
     }
@@ -191,6 +253,7 @@ Requirements:
 - acceptance criteria defined
 - dependencies mapped
 - labels assigned
+- Localization Guard and Theme Guard checklists attached when card affects user-facing UI
 
 ### Ready → In Progress
 
@@ -208,6 +271,7 @@ Requirements:
 - `flutter analyze` executed when applicable
 - `flutter test` executed when applicable
 - documentation updated when needed
+- Localization Guard and Theme Guard checklist items completed for user-facing UI cards
 
 ### Code Review → QA
 

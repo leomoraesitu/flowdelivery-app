@@ -28,6 +28,8 @@ Primary docs:
 - Do not add user-facing copy directly in widgets, pages, or route placeholders.
 - Add new UI strings through Flutter gen-l10n ARB files and consume them with `AppLocalizations`.
 - Keep localized error semantics in domain/data as codes or neutral values, and map them to copy in presentation.
+- Do not hardcode visual styling values in feature presentation when semantic theme APIs or app tokens exist.
+- Use `Theme.of(context)` and app tokens (`AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`) for UI styling.
 - Update docs when behavior or architecture changes.
 
 ## Naming Rules

@@ -42,6 +42,7 @@ Cada plan deve conter:
 - validação por tarefa
 - skills Flutter/Dart aplicáveis por etapa
 - localization guard checklist for any stage that introduces or changes user-facing copy
+- theme guard checklist for any stage that introduces or changes user-facing UI styling
 - riscos
 - critérios de aceite
 - itens fora de escopo

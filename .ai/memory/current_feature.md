@@ -55,6 +55,7 @@ Awaiting next approved task
 - Post-Sprint 1 stabilization — centralized auth UI and auth error copy in Flutter gen-l10n ARB files and generated `AppLocalizations`
 - Post-Sprint 1 stabilization — added a guard test that blocks hardcoded user-facing copy in presentation and route files
 - Post-Sprint 1 stabilization validation — focused auth suites remain green after i18n refactor (17 tests)
+- Post-Sprint 1 governance hardening — Localization Guard and Theme Guard workflows/templates aligned in project-management and Trello artifacts
 
 ## Pending
 

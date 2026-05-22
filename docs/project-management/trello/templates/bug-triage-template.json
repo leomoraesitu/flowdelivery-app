@@ -280,7 +280,7 @@
       "cards": [
         {
           "name": "[FIX] Corrigir bug confirmado",
-          "desc": "# Objetivo\nCorrigir causa raiz do bug.\n\n# Critérios de Aceite\n- [ ] Bug não reproduz mais\n- [ ] Fluxo relacionado continua funcionando\n- [ ] Regressão avaliada",
+          "desc": "# Objetivo\nCorrigir causa raiz do bug.\n\n# Critérios de Aceite\n- [ ] Bug não reproduz mais\n- [ ] Fluxo relacionado continua funcionando\n- [ ] Regressão avaliada\n\n# Guardrails de UI\n- [ ] Localization Guard aplicado quando houver copy de UI\n- [ ] Theme Guard aplicado para evitar hardcodeds visuais",
           "checklists": [
             {
               "name": "Acceptance Criteria",
@@ -297,6 +297,46 @@
                 },
                 {
                   "name": "Regressão avaliada",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Localization Guard Checklist",
+              "checkItems": [
+                {
+                  "name": "Every new user-facing string has an ARB key",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "UI reads strings through AppLocalizations",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No hardcoded copy in UI widgets and placeholders",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Theme Guard Checklist",
+              "checkItems": [
+                {
+                  "name": "UI uses semantic theme APIs and app tokens",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No Color(0x...) hardcoded values in presentation",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No AppLightColors/AppDarkColors usage outside lib/app/theme",
                   "pos": 3,
                   "state": "incomplete"
                 }

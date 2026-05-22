@@ -224,7 +224,7 @@
       "cards": [
         {
           "name": "[ARCH] Avaliar impacto arquitetural",
-          "desc": "# Checklist\n- [ ] Causa raiz identificada\n- [ ] Módulos afetados mapeados\n- [ ] Risco de regressão avaliado\n- [ ] Estratégia incremental definida",
+          "desc": "# Checklist\n- [ ] Causa raiz identificada\n- [ ] Módulos afetados mapeados\n- [ ] Risco de regressão avaliado\n- [ ] Estratégia incremental definida\n- [ ] Estratégia para remover hardcodeds visuais quando aplicável",
           "checklists": [
             {
               "name": "Checklist",
@@ -248,6 +248,11 @@
                   "name": "Estratégia incremental definida",
                   "pos": 4,
                   "state": "incomplete"
+                },
+                {
+                  "name": "Estratégia para remover hardcodeds visuais quando aplicável",
+                  "pos": 5,
+                  "state": "incomplete"
                 }
               ]
             }
@@ -264,7 +269,7 @@
       "cards": [
         {
           "name": "[DEBT] Quick win técnico",
-          "desc": "# Objetivo\nResolver um débito de baixo esforço e impacto claro.\n\n# Critérios de Aceite\n- [ ] Mudança pequena\n- [ ] Validação objetiva\n- [ ] Sem alteração de comportamento esperado",
+          "desc": "# Objetivo\nResolver um débito de baixo esforço e impacto claro.\n\n# Critérios de Aceite\n- [ ] Mudança pequena\n- [ ] Validação objetiva\n- [ ] Sem alteração de comportamento esperado\n\n# Theme Guard\n- [ ] Sem hardcoded visual indevido após o ajuste",
           "checklists": [
             {
               "name": "Acceptance Criteria",
@@ -281,6 +286,26 @@
                 },
                 {
                   "name": "Sem alteração de comportamento esperado",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Theme Guard Checklist",
+              "checkItems": [
+                {
+                  "name": "No Color(0x...) hardcoded values in presentation",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No AppLightColors/AppDarkColors usage outside lib/app/theme",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Visual hardcoded guard test updated when needed",
                   "pos": 3,
                   "state": "incomplete"
                 }

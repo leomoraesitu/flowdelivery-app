@@ -39,6 +39,15 @@ Ensure the app behaves correctly across all device form factors and input method
 *   **Fallback for Locked Orientation:** If business requirements strictly mandate a locked orientation, use the `Display API` to retrieve physical screen dimensions instead of `MediaQuery`. `MediaQuery` fails to receive the larger window size in compatibility modes.
 *   **Support Multiple Inputs:** Implement support for basic mice, trackpads, and keyboard shortcuts. Ensure touch targets are appropriately sized and keyboard navigation is accessible.
 
+## FlowDelivery Guardrail Alignment
+
+When this skill is used in FlowDelivery, apply visual governance constraints together with responsive behavior:
+
+*   Use semantic theme APIs and app tokens for spacing, radius, sizes, durations, and colors whenever available.
+*   Avoid introducing `Color(0x...)` hardcoded values in feature presentation code.
+*   Avoid direct use of low-level palette classes outside `lib/app/theme`.
+*   Keep the visual hardcoded guard test updated when responsive refactors introduce new UI patterns.
+
 ## Workflow: Constructing an Adaptive Layout
 
 Follow this workflow to implement a layout that adapts to the available `BoxConstraints`.

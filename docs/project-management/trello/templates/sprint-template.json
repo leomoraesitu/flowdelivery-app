@@ -324,25 +324,50 @@
       "name": "🚧 In Progress",
       "cards": [
         {
-          "name": "[FEAT] Implementar feature exemplo",
-          "desc": "# Objetivo\nImplementar funcionalidade exemplo.\n\n# Critérios de Aceite\n- [ ] Build ok\n- [ ] Analyzer ok\n- [ ] Testes executados",
+          "name": "[FEAT] Update sign-in screen states",
+          "desc": "# Objective\nImprove sign-in feedback and loading states.\n\n# Scope\n- Update button loading state\n- Add error banner and retry action\n\n# Acceptance Criteria\n- [ ] New copy uses ARB keys\n- [ ] UI uses semantic colors and tokens only",
           "checklists": [
             {
-              "name": "Acceptance Criteria",
+              "name": "Localization Guard Checklist",
               "checkItems": [
                 {
-                  "name": "Build ok",
+                  "name": "Every new user-facing string has an ARB key",
                   "pos": 1,
                   "state": "incomplete"
                 },
                 {
-                  "name": "Analyzer ok",
+                  "name": "UI reads strings through AppLocalizations",
                   "pos": 2,
                   "state": "incomplete"
                 },
                 {
-                  "name": "Testes executados",
+                  "name": "No hardcoded copy in UI widgets and placeholders",
                   "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Theme Guard Checklist",
+              "checkItems": [
+                {
+                  "name": "UI uses semantic theme APIs and app tokens",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No Color(0x...) hardcoded values in presentation",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No AppLightColors/AppDarkColors usage outside lib/app/theme",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Visual hardcoded guard test updated when needed",
+                  "pos": 4,
                   "state": "incomplete"
                 }
               ]
@@ -351,12 +376,13 @@
           "idLabels": [
             "lab_feat",
             "lab_frontend",
-            "lab_mvvm"
+            "lab_design_system",
+            "lab_priority_medium"
           ],
           "customFieldItems": [
             {
               "value": {
-                "number": "5"
+                "number": "3"
               },
               "idValue": null,
               "idCustomField": "cf_story_points"

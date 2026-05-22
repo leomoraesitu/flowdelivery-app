@@ -28,6 +28,7 @@ Active.
 - update documentation and memory only after validated implementation slices
 - keep auth i18n centralized in Flutter gen-l10n ARB files and generated `AppLocalizations`
 - keep the hardcoded copy guard test green when adding new UI placeholders or features
+- keep Theme Guard checklist and visual hardcoded constraints enforced for UI tasks
 - keep design-system docs synchronized with implemented typography and locale choices
 
 ## Notes

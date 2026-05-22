@@ -33,6 +33,13 @@ Se a etapa tocar UI, placeholders, dialogs, snackbars, routes ou qualquer copy d
 - nao ha texto hardcoded em `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet` ou `semanticLabel`;
 - o guard test permanece verde.
 
+Se a etapa tocar estilo visual de UI, inclua tambem um checklist de theme guard com estes itens:
+
+- a UI usa `Theme.of(context)` e tokens (`AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`) quando aplicavel;
+- nao ha `Color(0x...)` hardcoded em presentation;
+- nao ha uso direto de `AppLightColors`/`AppDarkColors` fora de `lib/app/theme`;
+- o guard test visual permanece verde.
+
 ## Registro do plano
 
 Crie um arquivo-plan em `.ai/plans/` com o plano aprovado.
@@ -52,6 +59,7 @@ O arquivo deve conter:
 - validação por etapa
 - skills aplicáveis por etapa
 - checklist de localization guard para etapas com UI ou copy de usuario
+- checklist de theme guard para etapas com alteracao visual de UI
 - riscos
 - critérios de aceite
 - itens fora de escopo

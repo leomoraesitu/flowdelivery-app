@@ -52,7 +52,7 @@
       "cards": [
         {
           "name": "[EPIC] Sprint 0 — Foundation & Governance",
-          "desc": "# Objetivo\nEstabelecer a fundação técnica e organizacional do projeto.\n\n# Escopo\n- Workflow Git\n- Conventional Commits\n- Arquitetura MVVM\n- Design System\n- Setup de ambientes\n\n# Critérios de Aceite\n- [ ] Documentação criada\n- [ ] Estrutura inicial pronta\n- [ ] Workflow validado",
+          "desc": "# Objetivo\nEstabelecer a fundação técnica e organizacional do projeto.\n\n# Escopo\n- Workflow Git\n- Conventional Commits\n- Arquitetura MVVM\n- Design System\n- Setup de ambientes\n\n# Critérios de Aceite\n- [ ] Documentação criada\n- [ ] Estrutura inicial pronta\n- [ ] Workflow validado\n\n# Notas de Guardrails\n- Aplicar Localization Guard e Theme Guard para features com UI.",
           "checklists": [
             {
               "name": "Scope",
@@ -100,6 +100,51 @@
                 {
                   "name": "Workflow validado",
                   "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Localization Guard Checklist",
+              "checkItems": [
+                {
+                  "name": "Every new user-facing string has an ARB key",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "UI reads strings through AppLocalizations",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No hardcoded copy in UI widgets and placeholders",
+                  "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Theme Guard Checklist",
+              "checkItems": [
+                {
+                  "name": "UI uses semantic theme APIs and app tokens",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No Color(0x...) hardcoded values in presentation",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No AppLightColors/AppDarkColors usage outside lib/app/theme",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Visual hardcoded guard test updated when needed",
+                  "pos": 4,
                   "state": "incomplete"
                 }
               ]

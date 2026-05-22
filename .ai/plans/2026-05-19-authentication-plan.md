@@ -17,6 +17,10 @@ After Tasks 1-10 were completed, approved stabilization slices extended the impl
 - Google Fonts integration aligned with `AppFonts` (`Plus Jakarta Sans`, `Inter`, `Space Grotesk`);
 - centralized auth copy and auth error messages in Flutter gen-l10n ARB files with generated `AppLocalizations`.
 - a guard test that blocks new hardcoded user-facing copy in presentation and route files.
+- localization governance formalized in project-management docs/templates, including required Localization Guard checklist usage for UI cards.
+- Theme plan governance applied in project-management and Trello artifacts with a canonical Theme Guard checklist for user-facing UI work.
+- Trello workflow/backlog/sprint/bug-triage/release/roadmap/tech-debt templates updated to include importable Localization and Theme guardrails where applicable.
+- practical UI card examples were added to workflow documentation and Trello workflow/sprint templates to standardize guardrail execution.
 
 These slices were validated through focused auth tests and documented in sprint/memory artifacts.
 
@@ -30,6 +34,7 @@ These slices were validated through focused auth tests and documented in sprint/
 - Current `pubspec.yaml` includes `flutter_riverpod`, `go_router`, `supabase_flutter`, `flutter_localizations`, and `intl`.
 - Supabase calls must stay outside widgets and ViewModels.
 - Runtime navigation is already introduced through `go_router`; route policy remains app-level.
+- Strings and Theme governance are now part of delivery workflow through Localization Guard and Theme Guard checklists in project-management/Trello templates.
 - Implementation must be incremental and stop after each approved task.
 
 ## Out of Scope
