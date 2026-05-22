@@ -79,6 +79,15 @@ Examples:
 # Technical Notes
 ```
 
+### Localization Guard Checklist
+
+Use the exact Localization Guard Checklist below for any card that introduces or changes user-facing text.
+
+- [ ] Every new user-facing string has an ARB key
+- [ ] UI reads strings through `AppLocalizations`
+- [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`
+- [ ] New placeholders and route placeholders are covered by the guard test
+
 ### JSON Checklist Structure
 
 Markdown checklist items inside `desc` are useful for human reading, but they are not enough for automation. Any JSON card that needs real Trello checklists must also declare a `checklists` array.

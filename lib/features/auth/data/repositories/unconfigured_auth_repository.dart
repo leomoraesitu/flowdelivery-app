@@ -5,16 +5,12 @@ import 'package:flowdelivery_app/features/auth/domain/repositories/auth_reposito
 class UnconfiguredAuthRepository implements AuthRepository {
   const UnconfiguredAuthRepository();
 
-  static const _message =
-      'Supabase is not configured. Provide SUPABASE_URL and '
-      'SUPABASE_ANON_KEY to enable authentication.';
-
   @override
   Future<AuthUser> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
-    throw const AuthFailure(message: _message);
+    throw const AuthFailure(code: AuthFailureCode.unconfiguredEnvironment);
   }
 
   @override
@@ -22,7 +18,12 @@ class UnconfiguredAuthRepository implements AuthRepository {
     required String email,
     required String password,
   }) async {
-    throw const AuthFailure(message: _message);
+    throw const AuthFailure(code: AuthFailureCode.unconfiguredEnvironment);
+  }
+
+  @override
+  Future<void> sendPasswordRecoveryEmail({required String email}) async {
+    throw const AuthFailure(code: AuthFailureCode.unconfiguredEnvironment);
   }
 
   @override

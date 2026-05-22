@@ -1,0 +1,171 @@
+{
+  "@@locale": "pt_BR",
+  "authErrorInvalidCredentials": "E-mail ou senha invalidos.",
+  "@authErrorInvalidCredentials": {
+    "description": "Shown when the user enters invalid sign in credentials."
+  },
+  "authErrorEmailNotConfirmed": "Confirme seu e-mail antes de entrar.",
+  "@authErrorEmailNotConfirmed": {
+    "description": "Shown when the user tries to sign in without confirming the email address."
+  },
+  "authErrorUserAlreadyRegistered": "Este e-mail ja esta cadastrado.",
+  "@authErrorUserAlreadyRegistered": {
+    "description": "Shown when sign up uses an email that already exists."
+  },
+  "authErrorPasswordTooShort": "A senha deve ter pelo menos 6 caracteres.",
+  "@authErrorPasswordTooShort": {
+    "description": "Shown when sign up password is below the minimum accepted length."
+  },
+  "authErrorNetworkFailure": "Falha de conexao. Verifique sua internet e tente novamente.",
+  "@authErrorNetworkFailure": {
+    "description": "Shown when an auth request fails because of a connectivity problem."
+  },
+  "authErrorGenericFailure": "Nao foi possivel concluir a autenticacao. Tente novamente.",
+  "@authErrorGenericFailure": {
+    "description": "Generic auth error shown when no specific mapping is available."
+  },
+  "authErrorUnconfiguredEnvironment": "O Supabase nao esta configurado. Defina SUPABASE_URL e SUPABASE_ANON_KEY para habilitar a autenticacao.",
+  "@authErrorUnconfiguredEnvironment": {
+    "description": "Shown when auth is requested before Supabase environment variables are configured."
+  },
+  "authSignInTitle": "Bem-vindo ao FlowDelivery",
+  "@authSignInTitle": {
+    "description": "Title shown on the sign in page."
+  },
+  "authSignInSubtitle": "Pratos deliciosos dos seus restaurantes locais favoritos, entregues na sua porta.",
+  "@authSignInSubtitle": {
+    "description": "Subtitle shown on the sign in page."
+  },
+  "authSignUpTitle": "Crie sua conta FlowDelivery",
+  "@authSignUpTitle": {
+    "description": "Title shown on the sign up page."
+  },
+  "authSignUpSubtitle": "Salve seus restaurantes favoritos, acompanhe pedidos e finalize suas compras mais rapido.",
+  "@authSignUpSubtitle": {
+    "description": "Subtitle shown on the sign up page."
+  },
+  "authForgotPasswordTitle": "Recupere sua senha",
+  "@authForgotPasswordTitle": {
+    "description": "Title shown on the forgot password page."
+  },
+  "authForgotPasswordSubtitle": "Esta primeira versao adiciona o ponto de entrada de recuperacao enquanto o fluxo completo ainda aguarda aprovacao.",
+  "@authForgotPasswordSubtitle": {
+    "description": "Subtitle shown on the forgot password page."
+  },
+  "authEmailLabel": "E-mail",
+  "@authEmailLabel": {
+    "description": "Label for auth email fields."
+  },
+  "authPasswordLabel": "Senha",
+  "@authPasswordLabel": {
+    "description": "Label for auth password fields."
+  },
+  "authEmailHint": "nome@exemplo.com",
+  "@authEmailHint": {
+    "description": "Placeholder hint for auth email fields."
+  },
+  "authSignInPasswordHint": "Digite sua senha",
+  "@authSignInPasswordHint": {
+    "description": "Placeholder hint for sign in password field."
+  },
+  "authSignUpPasswordHint": "Crie uma senha segura",
+  "@authSignUpPasswordHint": {
+    "description": "Placeholder hint for sign up password field."
+  },
+  "authForgotPasswordCta": "Esqueceu a senha?",
+  "@authForgotPasswordCta": {
+    "description": "Call to action that navigates to the forgot password page."
+  },
+  "authSignInPrimaryAction": "Entrar",
+  "@authSignInPrimaryAction": {
+    "description": "Primary button label for sign in."
+  },
+  "authSignUpPrimaryAction": "Criar conta",
+  "@authSignUpPrimaryAction": {
+    "description": "Primary button label for sign up."
+  },
+  "authForgotPasswordPrimaryAction": "Solicitar link de recuperacao",
+  "@authForgotPasswordPrimaryAction": {
+    "description": "Primary button label for forgot password."
+  },
+  "authForgotPasswordBackAction": "Voltar para entrar",
+  "@authForgotPasswordBackAction": {
+    "description": "Secondary navigation label to return to sign in."
+  },
+  "authSignInSuccess": "Autenticado com sucesso. Redirecionando para o proximo destino.",
+  "@authSignInSuccess": {
+    "description": "Success banner shown after sign in."
+  },
+  "authSignUpSuccess": "Conta criada com sucesso. Redirecionando para o proximo destino.",
+  "@authSignUpSuccess": {
+    "description": "Success banner shown after sign up."
+  },
+  "authForgotPasswordHelper": "Enviaremos um link de recuperacao para este e-mail quando estiver disponivel no seu ambiente.",
+  "@authForgotPasswordHelper": {
+    "description": "Helper text below the forgot password email field."
+  },
+  "authForgotPasswordPlaceholderInfo": "Quando o fluxo real de recuperacao for aprovado, esta tela chamara a camada de autenticacao em vez de atuar apenas como placeholder visual.",
+  "@authForgotPasswordPlaceholderInfo": {
+    "description": "Informational copy about the staged rollout of the recovery flow."
+  },
+  "authForgotPasswordEmptyEmailError": "Informe seu e-mail para solicitar o link de recuperacao.",
+  "@authForgotPasswordEmptyEmailError": {
+    "description": "Validation message shown when forgot password is submitted without an email."
+  },
+  "authForgotPasswordSuccess": "Link de recuperacao solicitado. Verifique sua caixa de entrada para os proximos passos.",
+  "@authForgotPasswordSuccess": {
+    "description": "Success banner shown after requesting password recovery."
+  },
+  "authForgotPasswordDefaultBanner": "A recuperacao de senha esta conectada na camada de autenticacao. Use um ambiente configurado valido para enviar o e-mail.",
+  "@authForgotPasswordDefaultBanner": {
+    "description": "Default informational banner shown on forgot password page."
+  },
+  "authSignInLegalLeading": "Ao continuar, voce concorda com nossos ",
+  "@authSignInLegalLeading": {
+    "description": "Leading legal text shown on sign in page."
+  },
+  "authSignUpLegalLeading": "Ao criar uma conta, voce concorda com nossos ",
+  "@authSignUpLegalLeading": {
+    "description": "Leading legal text shown on sign up page."
+  },
+  "authForgotPasswordLegalLeading": "Precisa de ajuda imediata? Consulte nossos ",
+  "@authForgotPasswordLegalLeading": {
+    "description": "Leading legal text shown on forgot password page."
+  },
+  "authLegalTerms": "Termos de Servico",
+  "@authLegalTerms": {
+    "description": "Clickable legal terms label."
+  },
+  "authSocialDivider": "ou continue com",
+  "@authSocialDivider": {
+    "description": "Divider label above social auth providers."
+  },
+  "authSocialGoogle": "Google",
+  "@authSocialGoogle": {
+    "description": "Label for the Google social sign-in button."
+  },
+  "authSocialApple": "Apple",
+  "@authSocialApple": {
+    "description": "Label for the Apple social sign-in button."
+  },
+  "authSocialComingSoon": "Login social em breve.",
+  "@authSocialComingSoon": {
+    "description": "Message shown while social auth is not yet implemented."
+  },
+  "appHomePlaceholder": "Home",
+  "@appHomePlaceholder": {
+    "description": "Temporary home placeholder label while the authenticated app shell is not implemented."
+  },
+  "authTabSignIn": "Entrar",
+  "@authTabSignIn": {
+    "description": "Sign in tab label."
+  },
+  "authTabSignUp": "Criar conta",
+  "@authTabSignUp": {
+    "description": "Sign up tab label."
+  },
+  "authTabReports": "Relatorios",
+  "@authTabReports": {
+    "description": "Placeholder tab label for reports."
+  }
+}

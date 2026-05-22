@@ -4,9 +4,13 @@ import 'package:flowdelivery_app/features/auth/domain/failures/auth_failure.dart
 import 'package:flutter_test/flutter_test.dart';
 
 class FakeAuthRemoteDatasource implements AuthRemoteDatasource {
-  const FakeAuthRemoteDatasource({this.shouldFail = false});
+  const FakeAuthRemoteDatasource({
+    this.shouldFail = false,
+    this.errorMessage,
+  });
 
   final bool shouldFail;
+  final String? errorMessage;
 
   @override
   Future<AuthRemoteUser> signInWithEmailAndPassword({
@@ -14,7 +18,9 @@ class FakeAuthRemoteDatasource implements AuthRemoteDatasource {
     required String password,
   }) async {
     if (shouldFail) {
-      throw const AuthRemoteException(message: 'Invalid credentials');
+      throw AuthRemoteException(
+        message: errorMessage ?? 'Invalid credentials',
+      );
     }
 
     return AuthRemoteUser(id: 'user-1', email: email);
@@ -26,7 +32,9 @@ class FakeAuthRemoteDatasource implements AuthRemoteDatasource {
     required String password,
   }) async {
     if (shouldFail) {
-      throw const AuthRemoteException(message: 'Unable to create account');
+      throw AuthRemoteException(
+        message: errorMessage ?? 'Unable to create account',
+      );
     }
 
     return AuthRemoteUser(id: 'user-2', email: email);
@@ -35,7 +43,18 @@ class FakeAuthRemoteDatasource implements AuthRemoteDatasource {
   @override
   Future<void> signOut() async {
     if (shouldFail) {
-      throw const AuthRemoteException(message: 'Unable to sign out');
+      throw AuthRemoteException(
+        message: errorMessage ?? 'Unable to sign out',
+      );
+    }
+  }
+
+  @override
+  Future<void> sendPasswordRecoveryEmail({required String email}) async {
+    if (shouldFail) {
+      throw AuthRemoteException(
+        message: errorMessage ?? 'Unable to send recovery email',
+      );
     }
   }
 }
@@ -72,7 +91,10 @@ void main() {
 
     test('maps remote exception to auth failure', () async {
       final repository = AuthRepositoryImpl(
-        datasource: FakeAuthRemoteDatasource(shouldFail: true),
+        datasource: const FakeAuthRemoteDatasource(
+          shouldFail: true,
+          errorMessage: 'Invalid login credentials',
+        ),
       );
 
       expect(
@@ -80,7 +102,56 @@ void main() {
           email: 'user@example.com',
           password: 'bad-password',
         ),
-        throwsA(isA<AuthFailure>()),
+        throwsA(
+          isA<AuthFailure>().having(
+            (error) => error.code,
+            'code',
+            AuthFailureCode.invalidCredentials,
+          ),
+        ),
+      );
+    });
+
+    test('maps already registered error to user-safe PT-BR message', () async {
+      final repository = AuthRepositoryImpl(
+        datasource: const FakeAuthRemoteDatasource(
+          shouldFail: true,
+          errorMessage: 'User already registered',
+        ),
+      );
+
+      expect(
+        () => repository.signUpWithEmailAndPassword(
+          email: 'existing@example.com',
+          password: 'password123',
+        ),
+        throwsA(
+          isA<AuthFailure>().having(
+            (error) => error.code,
+            'code',
+            AuthFailureCode.userAlreadyRegistered,
+          ),
+        ),
+      );
+    });
+
+    test('maps network error to user-safe PT-BR message', () async {
+      final repository = AuthRepositoryImpl(
+        datasource: const FakeAuthRemoteDatasource(
+          shouldFail: true,
+          errorMessage: 'Network request failed',
+        ),
+      );
+
+      expect(
+        () => repository.sendPasswordRecoveryEmail(email: 'user@example.com'),
+        throwsA(
+          isA<AuthFailure>().having(
+            (error) => error.code,
+            'code',
+            AuthFailureCode.networkFailure,
+          ),
+        ),
       );
     });
 
@@ -91,6 +162,17 @@ void main() {
 
       expect(
         repository.signOut,
+        throwsA(isA<AuthFailure>()),
+      );
+    });
+
+    test('maps password recovery remote exception to auth failure', () async {
+      final repository = AuthRepositoryImpl(
+        datasource: FakeAuthRemoteDatasource(shouldFail: true),
+      );
+
+      expect(
+        () => repository.sendPasswordRecoveryEmail(email: 'user@example.com'),
         throwsA(isA<AuthFailure>()),
       );
     });

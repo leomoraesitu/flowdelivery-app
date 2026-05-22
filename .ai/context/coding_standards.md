@@ -25,6 +25,9 @@ Primary docs:
 - Keep Supabase calls out of UI.
 - Prefer typed models and explicit state.
 - Prefer feature-first organization.
+- Do not add user-facing copy directly in widgets, pages, or route placeholders.
+- Add new UI strings through Flutter gen-l10n ARB files and consume them with `AppLocalizations`.
+- Keep localized error semantics in domain/data as codes or neutral values, and map them to copy in presentation.
 - Update docs when behavior or architecture changes.
 
 ## Naming Rules

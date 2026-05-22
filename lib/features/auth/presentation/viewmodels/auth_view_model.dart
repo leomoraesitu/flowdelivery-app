@@ -26,7 +26,7 @@ class AuthViewModel extends ChangeNotifier {
       );
       _setState(AuthState.authenticated(user));
     } on AuthFailure catch (error) {
-      _setState(AuthState.failure(error.message));
+      _setState(AuthState.failure(error));
     }
   }
 
@@ -43,13 +43,22 @@ class AuthViewModel extends ChangeNotifier {
       );
       _setState(AuthState.authenticated(user));
     } on AuthFailure catch (error) {
-      _setState(AuthState.failure(error.message));
+      _setState(AuthState.failure(error));
     }
   }
 
   Future<void> signOut() async {
     await _authRepository.signOut();
     _setState(const AuthState.unauthenticated());
+  }
+
+  Future<AuthFailure?> sendPasswordRecoveryEmail({required String email}) async {
+    try {
+      await _authRepository.sendPasswordRecoveryEmail(email: email);
+      return null;
+    } on AuthFailure catch (error) {
+      return error;
+    }
   }
 
   void _setState(AuthState state) {

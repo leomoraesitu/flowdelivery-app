@@ -16,6 +16,8 @@ Active.
 - GoRouter route conventions and auth guard
 - MVVM and Clean Architecture validation
 - focused tests per implementation slice
+- PT-BR localization and auth copy consistency
+- documentation and memory reconciliation after auth stabilization
 
 ## Current Priorities
 
@@ -24,6 +26,9 @@ Active.
 - keep Supabase outside widgets and ViewModels
 - keep route policy at app level
 - update documentation and memory only after validated implementation slices
+- keep auth i18n centralized in Flutter gen-l10n ARB files and generated `AppLocalizations`
+- keep the hardcoded copy guard test green when adding new UI placeholders or features
+- keep design-system docs synchronized with implemented typography and locale choices
 
 ## Notes
 
@@ -33,4 +38,5 @@ Active.
 - Sprint 0 foundation and governance completed.
 - Sprint 1 generated in `docs/project-management/SPRINT_1.md`.
 - Authentication technical plan registered in `.ai/plans/2026-05-19-authentication-plan.md`.
-- Next pending step: Task 9 — Initialize Supabase at App Startup.
+- Next pending step: Awaiting next approved task for Authentication.
+- Latest stabilization status: PT-BR auth UI and user-safe auth errors completed and validated.

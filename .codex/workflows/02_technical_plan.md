@@ -26,6 +26,13 @@ Cada etapa deve:
 - listar riscos
 - listar skills Flutter/Dart aplicáveis
 
+Se a etapa tocar UI, placeholders, dialogs, snackbars, routes ou qualquer copy de usuario, inclua tambem um checklist de localization guard com estes itens:
+
+- existe chave ARB para cada string nova;
+- a UI consome `AppLocalizations`;
+- nao ha texto hardcoded em `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet` ou `semanticLabel`;
+- o guard test permanece verde.
+
 ## Registro do plano
 
 Crie um arquivo-plan em `.ai/plans/` com o plano aprovado.
@@ -44,6 +51,7 @@ O arquivo deve conter:
 - arquivos previstos por etapa
 - validação por etapa
 - skills aplicáveis por etapa
+- checklist de localization guard para etapas com UI ou copy de usuario
 - riscos
 - critérios de aceite
 - itens fora de escopo

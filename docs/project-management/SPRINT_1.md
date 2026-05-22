@@ -52,6 +52,13 @@ Sprint 1 focuses on authentication foundation only:
 - Auth domain, data, presentation, ViewModel, and provider boundaries implemented.
 - Initial GoRouter route registry and app router implemented.
 - Sign-in and sign-up screens implemented.
+- Post-completion sign-in screen UI/UX parity update applied to match `docs/ux/prototypes/auth-screen.png`.
+- Shared auth UI shell extracted to reduce duplication between sign-in and sign-up pages.
+- Forgot-password route and page were connected to a functional password recovery request flow.
+- Social login placeholders remain explicitly disabled with "coming soon" microcopy.
+- Auth flow UI was translated to PT-BR and locale was configured at app level.
+- Authentication copy and user-safe auth errors were centralized in app-level i18n files.
+- Typography families were confirmed and applied through theme tokens with Google Fonts integration.
 
 ### Testing
 
@@ -62,6 +69,12 @@ Sprint 1 focuses on authentication foundation only:
 - Focused tests for Riverpod provider wiring.
 - Focused tests for auth pages.
 - Routing tests when route implementation is introduced.
+- Auth pages tests updated to account for a scrollable sign-in layout and kept passing.
+- Router tests include forgot-password route navigation coverage for unauthenticated flow.
+- Recovery flow tests added for repository, viewmodel, and forgot-password page success/error feedback.
+- Localization and i18n refactor changes were validated with focused auth test suites.
+- User-facing strings now flow through Flutter gen-l10n ARB files and generated `AppLocalizations`.
+- The localization guard test blocks hardcoded copy in presentation and route files, including `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, `semanticLabel`, `InputDecoration.errorText`, `TextSpan.text`, and `SnackBarAction`.
 
 ### Documentation
 
@@ -69,6 +82,21 @@ Sprint 1 focuses on authentication foundation only:
 - Routing conventions wording refreshed to reflect implemented behavior.
 - Current feature memory updated after completed slices.
 - Technical debt updated after planned dependencies and startup integration were completed.
+- Memory and sprint records updated after sign-in UI parity stabilization.
+- Design system docs were updated with explicit font families and i18n source-of-truth references.
+- Documentation and workflow templates were updated so new feature plans must include a localization guard checklist before implementation.
+
+### Post-Completion Stabilization
+
+- A focused UI/UX stabilization step was executed after Tasks 1-10 to align the sign-in page with the approved auth prototype.
+- The update was restricted to presentation-layer behavior and did not introduce new authentication capabilities.
+- Validation remained focused on auth page widget tests for regression safety.
+- A second stabilization slice unified auth UI composition with a shared shell and clearer visual-state semantics.
+- Placeholder controls were made intentionally non-interactive to avoid implying unsupported behavior.
+- A third stabilization slice enabled functional password recovery wiring while preserving MVVM/Clean Architecture boundaries.
+- A fourth stabilization slice translated authentication UI and operational auth messages to PT-BR.
+- A fifth stabilization slice centralized auth copy into Flutter gen-l10n ARB files and removed the duplicate static auth copy catalog.
+- A sixth stabilization slice expanded localization discipline with a guard test that blocks hardcoded user-facing copy in presentation and route files.
 
 ---
 

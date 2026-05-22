@@ -62,6 +62,9 @@ Leia:
 - explicar responsabilidades e tradeoffs;
 - gerar plano técnico em `.ai/plans/`;
 - identificar skills Flutter/Dart relevantes por etapa;
+- incluir no plano um checklist de localization guard para novos textos de UI;
+- confirmar que a feature usará Flutter gen-l10n ARB + `AppLocalizations` para user-facing copy;
+- registrar que novas telas, placeholders e dialogs nao devem nascer com strings hardcoded;
 - manter implementação bloqueada até aprovação humana.
 
 ### Regras
@@ -88,6 +91,9 @@ Leia:
 - atualizar documentacao pertinente quando houver impacto;
 - gerar arquivo-plan em `.ai/plans/`;
 - registrar validacao, riscos, criterios de aceite e fora de escopo;
+- incluir um checklist de localization guard em toda nova task de UI;
+- exigir ARB + `AppLocalizations` antes de adicionar copy nova;
+- exigir cobertura do guard test quando a task introduzir placeholders ou copy visual;
 - manter implementacao bloqueada ate aprovacao humana.
 
 ### Regras
@@ -223,6 +229,9 @@ Leia:
 - seguir Clean Architecture;
 - manter separação de responsabilidades;
 - gerar testes;
+- incluir checklist de localization guard quando a task tocar UI, placeholders, dialogs, snackbars ou routes;
+- usar ARB + `AppLocalizations` para copy de usuario nova;
+- manter o guard test de hardcoded strings atualizado quando surgirem novos padroes;
 - revisar arquitetura;
 - justificar tradeoffs;
 - atualizar memória operacional.

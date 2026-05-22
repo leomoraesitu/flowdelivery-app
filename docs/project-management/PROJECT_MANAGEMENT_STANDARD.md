@@ -61,6 +61,7 @@ AI assistants must:
 - never overwrite files automatically
 - never delete files without confirmation
 - never commit without approval
+- keep ARB files and `AppLocalizations` as the source of truth for presentation copy
 
 ---
 
@@ -87,6 +88,13 @@ test/
 - Release
 - Documentation Update
 
+## Planning Rules
+
+Any feature or planning artifact that introduces user-facing copy must:
+- list the affected screens or flows
+- confirm the ARB key strategy before implementation
+- include the Localization Guard Checklist below before implementation
+
 # Sprint Structure
 
 Each sprint contains:
@@ -96,6 +104,13 @@ Each sprint contains:
 - backlog items
 - story points
 - release goals
+
+## Localization Guard Checklist
+
+- [ ] Every new user-facing string has an ARB key
+- [ ] UI reads strings through `AppLocalizations`
+- [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`
+- [ ] New placeholders and route placeholders are covered by the guard test
 
 # Required Standards
 

@@ -22,6 +22,9 @@ class FakeAuthRepository implements AuthRepository {
 
   @override
   Future<void> signOut() async {}
+
+  @override
+  Future<void> sendPasswordRecoveryEmail({required String email}) async {}
 }
 
 void main() {
@@ -33,10 +36,14 @@ void main() {
       expect(user.email, 'user@example.com');
     });
 
-    test('auth failure stores a user-safe message', () {
-      const failure = AuthFailure(message: 'Invalid credentials');
+    test('auth failure stores a failure code and optional fallback message', () {
+      const failure = AuthFailure(
+        code: AuthFailureCode.genericFailure,
+        fallbackMessage: 'Invalid credentials',
+      );
 
-      expect(failure.message, 'Invalid credentials');
+      expect(failure.code, AuthFailureCode.genericFailure);
+      expect(failure.fallbackMessage, 'Invalid credentials');
     });
 
     test('repository contract exposes email/password auth actions', () async {
@@ -50,6 +57,10 @@ void main() {
       final signedUpUser = await repository.signUpWithEmailAndPassword(
         email: 'new@example.com',
         password: 'password123',
+      );
+
+      await repository.sendPasswordRecoveryEmail(
+        email: 'recover@example.com',
       );
 
       await repository.signOut();

@@ -27,6 +27,10 @@ abstract interface class AuthRemoteDatasource {
     required String password,
   });
 
+  Future<void> sendPasswordRecoveryEmail({
+    required String email,
+  });
+
   Future<void> signOut();
 }
 
@@ -60,6 +64,15 @@ class SupabaseAuthRemoteDatasource implements AuthRemoteDatasource {
         password: password,
       ),
     );
+  }
+
+  @override
+  Future<void> sendPasswordRecoveryEmail({required String email}) async {
+    try {
+      await _client.auth.resetPasswordForEmail(email);
+    } on AuthException catch (error) {
+      throw AuthRemoteException(message: error.message);
+    }
   }
 
   @override

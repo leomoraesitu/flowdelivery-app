@@ -21,7 +21,7 @@ FlowDelivery is a modern delivery platform developed as a portfolio-grade softwa
 - CI/CD readiness
 - Professional engineering conventions
 
-Sprint 0 foundation and governance are complete. Product feature implementation starts next with Authentication planning.
+Sprint 0 foundation and governance are complete. Sprint 1 Authentication foundation is implemented and validated, including PT-BR auth localization and centralized auth i18n.
 
 ---
 
@@ -171,9 +171,10 @@ FlowDelivery uses a scalable Design System strategy including:
 
 ## Authentication
 
-- Email/password login
-- Social authentication
-- Session persistence
+- Email/password login (implemented)
+- Password recovery request (implemented)
+- Social authentication (planned)
+- Session persistence (in progress with auth foundation)
 
 ---
 

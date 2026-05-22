@@ -41,6 +41,7 @@ Cada plan deve conter:
 - tarefas pequenas com checklist (`- [ ]`)
 - validação por tarefa
 - skills Flutter/Dart aplicáveis por etapa
+- localization guard checklist for any stage that introduces or changes user-facing copy
 - riscos
 - critérios de aceite
 - itens fora de escopo

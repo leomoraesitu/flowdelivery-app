@@ -16,7 +16,7 @@ class FakeAuthRepository implements AuthRepository {
     required String password,
   }) async {
     if (shouldFail) {
-      throw const AuthFailure(message: 'Invalid credentials');
+      throw const AuthFailure(code: AuthFailureCode.invalidCredentials);
     }
 
     return AuthUser(id: 'user-1', email: email);
@@ -28,7 +28,7 @@ class FakeAuthRepository implements AuthRepository {
     required String password,
   }) async {
     if (shouldFail) {
-      throw const AuthFailure(message: 'Unable to create account');
+      throw const AuthFailure(code: AuthFailureCode.genericFailure);
     }
 
     return AuthUser(id: 'user-2', email: email);
@@ -36,6 +36,16 @@ class FakeAuthRepository implements AuthRepository {
 
   @override
   Future<void> signOut() async {}
+
+  @override
+  Future<void> sendPasswordRecoveryEmail({required String email}) async {
+    if (shouldFail) {
+      throw const AuthFailure(
+        code: AuthFailureCode.genericFailure,
+        fallbackMessage: 'Nao foi possivel enviar o e-mail de recuperacao',
+      );
+    }
+  }
 }
 
 void main() {
@@ -47,7 +57,7 @@ void main() {
 
       expect(viewModel.state.status, AuthStatus.unauthenticated);
       expect(viewModel.state.user, isNull);
-      expect(viewModel.state.message, isNull);
+      expect(viewModel.state.failure, isNull);
     });
 
     test('successful sign in stores authenticated user', () async {
@@ -62,7 +72,7 @@ void main() {
 
       expect(viewModel.state.status, AuthStatus.authenticated);
       expect(viewModel.state.user?.email, 'user@example.com');
-      expect(viewModel.state.message, isNull);
+      expect(viewModel.state.failure, isNull);
     });
 
     test('failed sign in exposes user-safe error message', () async {
@@ -77,7 +87,7 @@ void main() {
 
       expect(viewModel.state.status, AuthStatus.failure);
       expect(viewModel.state.user, isNull);
-      expect(viewModel.state.message, 'Invalid credentials');
+      expect(viewModel.state.failure?.code, AuthFailureCode.invalidCredentials);
     });
 
     test('sign out clears authenticated user', () async {
@@ -93,6 +103,31 @@ void main() {
 
       expect(viewModel.state.status, AuthStatus.unauthenticated);
       expect(viewModel.state.user, isNull);
+    });
+
+    test('password recovery request returns null on success', () async {
+      final viewModel = AuthViewModel(
+        authRepository: FakeAuthRepository(),
+      );
+
+      final result = await viewModel.sendPasswordRecoveryEmail(
+        email: 'user@example.com',
+      );
+
+      expect(result, isNull);
+    });
+
+    test('password recovery request returns user-safe error on failure', () async {
+      final viewModel = AuthViewModel(
+        authRepository: FakeAuthRepository(shouldFail: true),
+      );
+
+      final result = await viewModel.sendPasswordRecoveryEmail(
+        email: 'user@example.com',
+      );
+
+      expect(result?.code, AuthFailureCode.genericFailure);
+      expect(result?.fallbackMessage, 'Nao foi possivel enviar o e-mail de recuperacao');
     });
   });
 }

@@ -1,6 +1,7 @@
 import 'package:flowdelivery_app/app/bootstrap/supabase_providers.dart';
 import 'package:flowdelivery_app/app/di/app_providers.dart';
 import 'package:flowdelivery_app/features/auth/domain/entities/auth_user.dart';
+import 'package:flowdelivery_app/features/auth/domain/failures/auth_failure.dart';
 import 'package:flowdelivery_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/state/auth_state.dart';
@@ -26,6 +27,9 @@ class FakeAuthRepository implements AuthRepository {
 
   @override
   Future<void> signOut() async {}
+
+  @override
+  Future<void> sendPasswordRecoveryEmail({required String email}) async {}
 }
 
 void main() {
@@ -66,7 +70,10 @@ void main() {
       );
 
       expect(viewModel.state.status, AuthStatus.failure);
-      expect(viewModel.state.message, contains('Supabase'));
+      expect(
+        viewModel.state.failure?.code,
+        AuthFailureCode.unconfiguredEnvironment,
+      );
     },
   );
 
@@ -87,7 +94,7 @@ void main() {
           isA<Object>().having(
             (error) => error.toString(),
             'message',
-            contains('not initialized'),
+            contains('nao foi inicializado'),
           ),
         ),
       );

@@ -14,11 +14,11 @@ final supabaseInitializedProvider = Provider<bool>((ref) {
 
 final supabaseClientProvider = Provider<SupabaseClient>((ref) {
   if (!ref.watch(supabaseConfiguredProvider)) {
-    throw StateError('Supabase is not configured.');
+    throw StateError('O Supabase nao esta configurado.');
   }
 
   if (!ref.watch(supabaseInitializedProvider)) {
-    throw StateError('Supabase is configured but was not initialized.');
+    throw StateError('O Supabase esta configurado, mas nao foi inicializado.');
   }
 
   return Supabase.instance.client;

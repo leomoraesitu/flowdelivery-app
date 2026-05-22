@@ -2,10 +2,10 @@
 
 ## Current Issues
 
-### Supabase startup initialization pending
+### Supabase startup initialization completed
 
 Status:
-Known
+Resolved
 
 Affected areas:
 
@@ -13,8 +13,8 @@ Affected areas:
 - Supabase client lifecycle
 
 Notes:
-- Dependencies are installed, but app startup initialization is not finalized yet.
-- Execute Task 9 to initialize Supabase at the application boundary.
+- App startup initialization was implemented at the app boundary.
+- Keep this item as resolved history to avoid reintroducing startup initialization drift.
 
 ### Trello synchronization is partial/manual
 
@@ -31,6 +31,23 @@ Notes:
 - The real Trello card for base navigation strategy was updated through authenticated Zapier tooling.
 - Theme structure, GitHub labels and Sprint 0 open item cards were updated through authenticated Zapier/Trello tooling.
 - Future Trello synchronization still depends on authenticated integration availability per task.
+
+### Auth localization drift risk after rapid stabilization slices
+
+Status:
+Resolved
+
+Affected areas:
+
+- Authentication UI copy
+- User-safe auth error copy
+- Design system documentation consistency
+
+Notes:
+- Auth flow text was translated to PT-BR.
+- Auth copy was centralized in Flutter gen-l10n ARB files and generated `AppLocalizations`.
+- Font, locale, and localization-guard references were aligned in design-system, sprint, and workflow docs.
+- Focused auth tests remained green after refactor.
 
 ## Reporting Rule
 

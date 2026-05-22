@@ -8,16 +8,28 @@
 
 **Tech Stack:** Flutter, Dart, `flutter_riverpod`, `go_router`, `supabase_flutter`, `flutter_test`, `flutter_lints`.
 
+## Post-Plan Execution Notes
+
+After Tasks 1-10 were completed, approved stabilization slices extended the implemented scope with:
+
+- forgot-password functional recovery request wiring;
+- PT-BR auth UI translation and locale setup in app shell;
+- Google Fonts integration aligned with `AppFonts` (`Plus Jakarta Sans`, `Inter`, `Space Grotesk`);
+- centralized auth copy and auth error messages in Flutter gen-l10n ARB files with generated `AppLocalizations`.
+- a guard test that blocks new hardcoded user-facing copy in presentation and route files.
+
+These slices were validated through focused auth tests and documented in sprint/memory artifacts.
+
 ---
 
 ## Current Repository Baseline
 
 - Current branch: `feat/authentication-flow`.
 - Current feature: `Authentication`.
-- Current status: `Planning`.
-- Current `pubspec.yaml` does not include `flutter_riverpod`, `go_router`, or `supabase_flutter`.
+- Current status: `Completed and stabilized`.
+- Current `pubspec.yaml` includes `flutter_riverpod`, `go_router`, `supabase_flutter`, `flutter_localizations`, and `intl`.
 - Supabase calls must stay outside widgets and ViewModels.
-- Runtime navigation is deferred until an approved implementation task adds `go_router`.
+- Runtime navigation is already introduced through `go_router`; route policy remains app-level.
 - Implementation must be incremental and stop after each approved task.
 
 ## Out of Scope
@@ -747,7 +759,7 @@ All tests passed!
 - `dart-add-unit-test`
 - `flutter-apply-architecture-best-practices`
 
-- [ ] **Step 1: Write repository implementation tests**
+- [x] **Step 1: Write repository implementation tests**
 
 Create `test/features/auth/data/auth_repository_impl_test.dart`:
 
@@ -823,7 +835,7 @@ void main() {
 }
 ```
 
-- [ ] **Step 2: Run test to verify missing data files**
+- [x] **Step 2: Run test to verify missing data files**
 
 Run:
 
@@ -837,7 +849,7 @@ Expected:
 Error: Can't read one or more auth data imports
 ```
 
-- [ ] **Step 3: Create datasource contract and Supabase implementation**
+- [x] **Step 3: Create datasource contract and Supabase implementation**
 
 Create `lib/features/auth/data/datasources/auth_remote_datasource.dart`:
 
@@ -933,7 +945,7 @@ class SupabaseAuthRemoteDatasource implements AuthRemoteDatasource {
 }
 ```
 
-- [ ] **Step 4: Create repository implementation**
+- [x] **Step 4: Create repository implementation**
 
 Create `lib/features/auth/data/repositories/auth_repository_impl.dart`:
 
@@ -1001,7 +1013,7 @@ class AuthRepositoryImpl implements AuthRepository {
 }
 ```
 
-- [ ] **Step 5: Validate data slice**
+- [x] **Step 5: Validate data slice**
 
 Run:
 
@@ -1051,7 +1063,7 @@ All tests passed!
 - `dart-add-unit-test`
 - `flutter-apply-architecture-best-practices`
 
-- [ ] **Step 1: Write provider wiring test**
+- [x] **Step 1: Write provider wiring test**
 
 Create `test/features/auth/presentation/auth_providers_test.dart`:
 
@@ -1104,7 +1116,7 @@ void main() {
 }
 ```
 
-- [ ] **Step 2: Run test to verify missing providers**
+- [x] **Step 2: Run test to verify missing providers**
 
 Run:
 
@@ -1118,7 +1130,7 @@ Expected:
 Error: Can't read auth_providers.dart
 ```
 
-- [ ] **Step 3: Create auth providers**
+- [x] **Step 3: Create auth providers**
 
 Create `lib/features/auth/presentation/providers/auth_providers.dart`:
 
@@ -1153,7 +1165,7 @@ final authViewModelProvider = ChangeNotifierProvider<AuthViewModel>((ref) {
 });
 ```
 
-- [ ] **Step 4: Wrap app root with `ProviderScope`**
+- [x] **Step 4: Wrap app root with `ProviderScope`**
 
 Modify `lib/app/app.dart` so the root app is wrapped once:
 
@@ -1175,7 +1187,7 @@ class FlowDeliveryApp extends StatelessWidget {
 
 Keep existing theme configuration inside `FlowDeliveryAppView` or the existing app widget shape used by the repository.
 
-- [ ] **Step 5: Validate provider slice**
+- [x] **Step 5: Validate provider slice**
 
 Run:
 
@@ -1228,11 +1240,11 @@ All tests passed!
 - `flutter-setup-declarative-routing`
 - `dart-add-unit-test`
 
-- [ ] **Step 1: Confirm ordering**
+- [x] **Step 1: Confirm ordering**
 
 If `sign_in_page.dart` and `sign_up_page.dart` do not exist, execute Task 8 before this task or request approval to create minimal route destination pages in this task.
 
-- [ ] **Step 2: Write route constants**
+- [x] **Step 2: Write route constants**
 
 Create `lib/app/routes/app_routes.dart`:
 
@@ -1248,19 +1260,19 @@ abstract final class AppRoutes {
 }
 ```
 
-- [ ] **Step 3: Create router test**
+- [x] **Step 3: Create router test**
 
 Create `test/app/routes/app_router_test.dart` with a widget test that pumps `MaterialApp.router` and verifies unauthenticated users see the sign-in route.
 
-- [ ] **Step 4: Create app router**
+- [x] **Step 4: Create app router**
 
 Create `lib/app/routes/app_router.dart` with `GoRouter`, public auth routes, and an auth redirect function that reads auth state from the approved provider boundary.
 
-- [ ] **Step 5: Migrate app root to `MaterialApp.router`**
+- [x] **Step 5: Migrate app root to `MaterialApp.router`**
 
 Modify `lib/app/app.dart` to use the router config while preserving existing theme setup.
 
-- [ ] **Step 6: Validate routing slice**
+- [x] **Step 6: Validate routing slice**
 
 Run:
 
@@ -1311,7 +1323,7 @@ All tests passed!
 - `flutter-add-widget-test`
 - `flutter-build-responsive-layout`
 
-- [ ] **Step 1: Write widget tests**
+- [x] **Step 1: Write widget tests**
 
 Create `test/features/auth/presentation/auth_pages_test.dart` to verify each page renders:
 
@@ -1322,7 +1334,7 @@ Primary action button
 Navigation link to the paired auth page
 ```
 
-- [ ] **Step 2: Run test to verify missing pages**
+- [x] **Step 2: Run test to verify missing pages**
 
 Run:
 
@@ -1336,7 +1348,7 @@ Expected:
 Error: Can't read one or more auth page imports
 ```
 
-- [ ] **Step 3: Create sign-in page**
+- [x] **Step 3: Create sign-in page**
 
 Create `lib/features/auth/presentation/pages/sign_in_page.dart` with a `ConsumerStatefulWidget` that:
 
@@ -1345,11 +1357,11 @@ Create `lib/features/auth/presentation/pages/sign_in_page.dart` with a `Consumer
 - calls `signInWithEmailAndPassword`;
 - shows loading and failure state.
 
-- [ ] **Step 4: Create sign-up page**
+- [x] **Step 4: Create sign-up page**
 
 Create `lib/features/auth/presentation/pages/sign_up_page.dart` with the same boundaries as sign-in, calling `signUpWithEmailAndPassword`.
 
-- [ ] **Step 5: Validate UI slice**
+- [x] **Step 5: Validate UI slice**
 
 Run:
 
@@ -1399,7 +1411,7 @@ All tests passed!
 - `dart-add-unit-test`
 - `dart-run-static-analysis`
 
-- [ ] **Step 1: Inspect current app startup**
+- [x] **Step 1: Inspect current app startup**
 
 Read:
 
@@ -1410,11 +1422,11 @@ lib/app/app.dart
 
 Confirm the existing app class names before editing.
 
-- [ ] **Step 2: Add startup initialization**
+- [x] **Step 2: Add startup initialization**
 
 Modify `lib/main.dart` to ensure Flutter bindings are initialized, read `AppEnvironment`, and initialize Supabase only with valid config.
 
-- [ ] **Step 3: Validate app startup slice**
+- [x] **Step 3: Validate app startup slice**
 
 Run:
 

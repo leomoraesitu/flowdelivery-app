@@ -16,6 +16,9 @@ Antes:
 - explique responsabilidades
 - explique tradeoffs
 - confirme arquivos afetados
+- confirme se a etapa introduz novos textos de usuario;
+- se introduzir, inclua o checklist de localization guard na etapa;
+- garanta que ARB + `AppLocalizations` sejam a fonte de verdade para strings novas;
 
 Depois:
 
@@ -23,6 +26,17 @@ Depois:
 - explique boas práticas
 - valide o menor recorte útil
 - atualize `.ai/memory/current_feature.md` quando necessário
+
+## Checklist de Localization Guard
+
+Quando a tarefa adicionar ou alterar texto de usuario, a IA deve verificar explicitamente:
+
+- existe chave nova em ARB para cada string nova?
+- a UI consome `AppLocalizations` em vez de texto hardcoded?
+- placeholders, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet` e `semanticLabel` tambem estao localizados?
+- o guard test continua verde depois da mudanca?
+
+Se a resposta para qualquer item for nao, a etapa nao esta pronta para fechamento.
 
 Aguarde confirmação antes de continuar para outra etapa.
 

@@ -1,8 +1,19 @@
-class AuthFailure implements Exception {
-  const AuthFailure({required this.message});
+enum AuthFailureCode {
+  invalidCredentials,
+  emailNotConfirmed,
+  userAlreadyRegistered,
+  passwordTooShort,
+  networkFailure,
+  unconfiguredEnvironment,
+  genericFailure,
+}
 
-  final String message;
+class AuthFailure implements Exception {
+  const AuthFailure({required this.code, this.fallbackMessage});
+
+  final AuthFailureCode code;
+  final String? fallbackMessage;
 
   @override
-  String toString() => message;
+  String toString() => fallbackMessage ?? code.name;
 }

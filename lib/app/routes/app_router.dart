@@ -1,8 +1,10 @@
 import 'package:flowdelivery_app/app/routes/app_routes.dart';
+import 'package:flowdelivery_app/features/auth/presentation/pages/forgot_password_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/state/auth_state.dart';
+import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -29,12 +31,18 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         name: AppRoutes.signUpName,
         builder: (context, state) => const SignUpPage(),
       ),
+      GoRoute(
+        path: AppRoutes.forgotPasswordPath,
+        name: AppRoutes.forgotPasswordName,
+        builder: (context, state) => const ForgotPasswordPage(),
+      ),
     ],
     redirect: (context, state) {
       final authStatus = authViewModel.state.status;
       final currentPath = state.uri.path;
       final isInAuthRoute = currentPath == AppRoutes.signInPath ||
-          currentPath == AppRoutes.signUpPath;
+          currentPath == AppRoutes.signUpPath ||
+          currentPath == AppRoutes.forgotPasswordPath;
 
       if (authStatus == AuthStatus.loading) {
         return null;
@@ -58,9 +66,11 @@ class _HomePlaceholderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final l10n = AppLocalizations.of(context);
+
+    return Scaffold(
       body: Center(
-        child: Text('Home'),
+        child: Text(l10n.appHomePlaceholder),
       ),
     );
   }

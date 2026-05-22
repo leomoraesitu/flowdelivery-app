@@ -1,4 +1,5 @@
 import 'package:flowdelivery_app/features/auth/domain/entities/auth_user.dart';
+import 'package:flowdelivery_app/features/auth/domain/failures/auth_failure.dart';
 
 enum AuthStatus {
   unauthenticated,
@@ -11,30 +12,30 @@ class AuthState {
   const AuthState({
     required this.status,
     this.user,
-    this.message,
+    this.failure,
   });
 
   const AuthState.unauthenticated()
       : status = AuthStatus.unauthenticated,
         user = null,
-        message = null;
+        failure = null;
 
   const AuthState.loading()
       : status = AuthStatus.loading,
         user = null,
-        message = null;
+        failure = null;
 
   const AuthState.authenticated(AuthUser authenticatedUser)
       : status = AuthStatus.authenticated,
         user = authenticatedUser,
-        message = null;
+      failure = null;
 
-  const AuthState.failure(String errorMessage)
+    const AuthState.failure(AuthFailure authFailure)
       : status = AuthStatus.failure,
         user = null,
-        message = errorMessage;
+      failure = authFailure;
 
   final AuthStatus status;
   final AuthUser? user;
-  final String? message;
+    final AuthFailure? failure;
 }
