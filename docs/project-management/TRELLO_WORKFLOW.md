@@ -95,6 +95,7 @@ Use the exact Theme Guard Checklist below for any card that introduces or change
 - [ ] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)
 - [ ] No `Color(0x...)` hardcoded values in feature presentation code
 - [ ] No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`
+- [ ] No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist
 - [ ] Visual hardcoded guard test is updated when new UI patterns are introduced
 
 ### JSON Checklist Structure
@@ -172,6 +173,11 @@ Use this example when creating cards that change user-facing UI:
         {
           "name": "No AppLightColors/AppDarkColors usage outside lib/app/theme",
           "pos": 3,
+          "state": "incomplete"
+        },
+        {
+          "name": "No Colors.* hardcoded usage in feature presentation when semantic ColorScheme roles exist",
+          "pos": 4,
           "state": "incomplete"
         }
       ]

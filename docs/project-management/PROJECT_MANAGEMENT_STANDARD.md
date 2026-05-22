@@ -95,6 +95,11 @@ Any feature or planning artifact that introduces user-facing copy must:
 - confirm the ARB key strategy before implementation
 - include the Localization Guard Checklist below before implementation
 
+Any feature or planning artifact that introduces or changes user-facing UI styling must:
+- list the affected screens or flows
+- confirm semantic theme/token usage before implementation
+- include the Theme Guard Checklist below before implementation
+
 # Sprint Structure
 
 Each sprint contains:
@@ -111,6 +116,14 @@ Each sprint contains:
 - [ ] UI reads strings through `AppLocalizations`
 - [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`
 - [ ] New placeholders and route placeholders are covered by the guard test
+
+## Theme Guard Checklist
+
+- [ ] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)
+- [ ] No `Color(0x...)` hardcoded values in feature presentation code
+- [ ] No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`
+- [ ] No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist
+- [ ] Visual hardcoded guard test remains green after UI changes
 
 # Required Standards
 

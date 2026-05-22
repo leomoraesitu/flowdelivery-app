@@ -1,4 +1,3 @@
-import 'package:flowdelivery_app/app/theme/app_colors.dart';
 import 'package:flowdelivery_app/app/theme/app_tokens.dart';
 import 'package:flutter/material.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
@@ -66,7 +65,7 @@ class AuthPageShell extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: Icon(icon, color: Colors.white, size: 36),
+                  child: Icon(icon, color: colorScheme.onPrimary, size: 36),
                 ),
               ),
               const SizedBox(height: AppSpacing.xl),
@@ -80,7 +79,7 @@ class AuthPageShell extends StatelessWidget {
               Text(
                 subtitle,
                 style: textTheme.titleMedium?.copyWith(
-                  color: AppLightColors.secondaryText,
+                  color: colorScheme.onSurfaceVariant,
                   height: 1.35,
                 ),
               ),
@@ -173,10 +172,7 @@ class AuthSocialSection extends StatelessWidget {
             const Expanded(child: Divider()),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-              child: Text(
-                l10n.authSocialDivider,
-                style: textTheme.titleMedium,
-              ),
+              child: Text(l10n.authSocialDivider, style: textTheme.titleMedium),
             ),
             const Expanded(child: Divider()),
           ],
@@ -242,7 +238,7 @@ class AuthLegalText extends StatelessWidget {
         TextSpan(
           text: leadingText,
           style: textTheme.titleMedium?.copyWith(
-            color: AppLightColors.secondaryText,
+            color: colorScheme.onSurfaceVariant,
           ),
           children: [
             TextSpan(
@@ -310,7 +306,7 @@ class _AuthTabBar extends StatelessWidget {
               child: Center(
                 child: Text(
                   l10n.authTabReports,
-                  style: TextStyle(color: AppLightColors.secondaryText),
+                  style: TextStyle(color: colorScheme.onSurfaceVariant),
                 ),
               ),
             ),
@@ -347,7 +343,13 @@ class _AuthTabButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppRadius.lg),
         ),
         alignment: Alignment.center,
-        child: Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            color: colorScheme.onTertiaryContainer,
+          ),
+        ),
       );
     }
 

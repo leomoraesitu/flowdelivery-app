@@ -78,4 +78,5 @@ Use these checklists in cards that touch user-facing UI:
 - UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)
 - No `Color(0x...)` hardcoded values in feature presentation code
 - No direct `AppLightColors`/`AppDarkColors` usage outside `lib/app/theme`
+- No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist
 - Visual hardcoded guard test is updated when new UI patterns are introduced

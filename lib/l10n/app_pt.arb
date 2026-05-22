@@ -32,7 +32,7 @@
   "authForgotPasswordDefaultBanner": "A recuperacao de senha esta conectada na camada de autenticacao. Use um ambiente configurado valido para enviar o e-mail.",
   "authSignInLegalLeading": "Ao continuar, voce concorda com nossos ",
   "authSignUpLegalLeading": "Ao criar uma conta, voce concorda com nossos ",
-  "authForgotPasswordLegalLeading": "Precisa de ajuda imediata? Consulte nossos ",
+  "authForgotPasswordLegalLeading": "Precisa de ajuda? Consulte nossos ",
   "authLegalTerms": "Termos de Servico",
   "authSocialDivider": "ou continue com",
   "authSocialGoogle": "Google",

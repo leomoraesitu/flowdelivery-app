@@ -128,7 +128,7 @@
   "@authSignUpLegalLeading": {
     "description": "Leading legal text shown on sign up page."
   },
-  "authForgotPasswordLegalLeading": "Precisa de ajuda imediata? Consulte nossos ",
+  "authForgotPasswordLegalLeading": "Precisa de ajuda? Consulte nossos ",
   "@authForgotPasswordLegalLeading": {
     "description": "Leading legal text shown on forgot password page."
   },

@@ -124,7 +124,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get authForgotPasswordLegalLeading =>
-      'Precisa de ajuda imediata? Consulte nossos ';
+      'Precisa de ajuda? Consulte nossos ';
 
   @override
   String get authLegalTerms => 'Termos de Servico';
@@ -274,7 +274,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get authForgotPasswordLegalLeading =>
-      'Precisa de ajuda imediata? Consulte nossos ';
+      'Precisa de ajuda? Consulte nossos ';
 
   @override
   String get authLegalTerms => 'Termos de Servico';

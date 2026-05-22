@@ -105,29 +105,61 @@ void main() {
       expect(viewModel.state.user, isNull);
     });
 
-    test('password recovery request returns null on success', () async {
+    test('password recovery request stores success state', () async {
       final viewModel = AuthViewModel(
         authRepository: FakeAuthRepository(),
       );
 
-      final result = await viewModel.sendPasswordRecoveryEmail(
+      await viewModel.sendPasswordRecoveryEmail(
         email: 'user@example.com',
       );
 
-      expect(result, isNull);
+      expect(
+        viewModel.state.passwordRecoveryStatus,
+        PasswordRecoveryStatus.success,
+      );
+      expect(viewModel.state.passwordRecoveryFailure, isNull);
     });
 
-    test('password recovery request returns user-safe error on failure', () async {
+    test('password recovery request stores user-safe error on failure', () async {
       final viewModel = AuthViewModel(
         authRepository: FakeAuthRepository(shouldFail: true),
       );
 
-      final result = await viewModel.sendPasswordRecoveryEmail(
+      await viewModel.sendPasswordRecoveryEmail(
         email: 'user@example.com',
       );
 
-      expect(result?.code, AuthFailureCode.genericFailure);
-      expect(result?.fallbackMessage, 'Nao foi possivel enviar o e-mail de recuperacao');
+      expect(
+        viewModel.state.passwordRecoveryStatus,
+        PasswordRecoveryStatus.failure,
+      );
+      expect(
+        viewModel.state.passwordRecoveryFailure?.code,
+        AuthFailureCode.genericFailure,
+      );
+      expect(
+        viewModel.state.passwordRecoveryFailure?.fallbackMessage,
+        'Nao foi possivel enviar o e-mail de recuperacao',
+      );
+    });
+
+    test('resetPasswordRecoveryState clears stale recovery feedback', () async {
+      final viewModel = AuthViewModel(
+        authRepository: FakeAuthRepository(shouldFail: true),
+      );
+
+      await viewModel.sendPasswordRecoveryEmail(
+        email: 'user@example.com',
+      );
+
+      viewModel.resetPasswordRecoveryState();
+
+      expect(
+        viewModel.state.passwordRecoveryStatus,
+        PasswordRecoveryStatus.idle,
+      );
+      expect(viewModel.state.passwordRecoveryFailure, isNull);
     });
   });
 }

@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
-  final authViewModel = ref.watch(authViewModelProvider);
+  final authViewModel = ref.read(authViewModelProvider);
 
   return GoRouter(
     initialLocation: AppRoutes.homePath,

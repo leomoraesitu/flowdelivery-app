@@ -52,13 +52,39 @@ class AuthViewModel extends ChangeNotifier {
     _setState(const AuthState.unauthenticated());
   }
 
-  Future<AuthFailure?> sendPasswordRecoveryEmail({required String email}) async {
+  Future<void> sendPasswordRecoveryEmail({required String email}) async {
+    _setState(
+      _state.copyWith(
+        passwordRecoveryStatus: PasswordRecoveryStatus.loading,
+        passwordRecoveryFailure: null,
+      ),
+    );
+
     try {
       await _authRepository.sendPasswordRecoveryEmail(email: email);
-      return null;
+      _setState(
+        _state.copyWith(
+          passwordRecoveryStatus: PasswordRecoveryStatus.success,
+          passwordRecoveryFailure: null,
+        ),
+      );
     } on AuthFailure catch (error) {
-      return error;
+      _setState(
+        _state.copyWith(
+          passwordRecoveryStatus: PasswordRecoveryStatus.failure,
+          passwordRecoveryFailure: error,
+        ),
+      );
     }
+  }
+
+  void resetPasswordRecoveryState() {
+    _setState(
+      _state.copyWith(
+        passwordRecoveryStatus: PasswordRecoveryStatus.idle,
+        passwordRecoveryFailure: null,
+      ),
+    );
   }
 
   void _setState(AuthState state) {

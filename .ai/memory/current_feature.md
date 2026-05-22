@@ -2,17 +2,30 @@
 
 ## Feature
 
-Authentication
+[ARCH] Theme guard and UI/UX standardization
 
 ## Status
 
-Task 10 completed for Sprint 1
+Post-review corrective pass completed; docs and Trello synchronized (teacher mode)
 
 ## Current Step
 
-Awaiting next approved task
+End-day wrap-up completed with project-management and Trello board updates; awaiting commit and next approved plan/task
 
 ## Completed
+
+- Start Feature (teacher mode) for Theme Guard and UI/UX standardization
+- technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
+- Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
+- Task 2 completed — canonical Theme Guard contract verified and normalized across docs/templates/commands
+- Task 3 completed — visual hardcoded guard test added and validated (`test/app/theme/no_hardcoded_visual_values_test.dart`)
+- Task 4 completed — auth presentation slice normalized to semantic color APIs and visual guard baseline exception removed
+- Task 5 completed — memory artifacts reconciled with strict Theme Guard enforcement and residual debt notes
+- Post-review corrective pass completed — router/provider coupling, password-recovery lifecycle state, and remaining semantic color alignments fixed with focused tests and analyze green
+- Project-management docs synchronized with Theme Guard parity updates (`DEFINITION_OF_DONE.md`, `PROJECT_MANAGEMENT_STANDARD.md`, `SPRINT_1.md`, `TRELLO_WORKFLOW.md`, `trello-map.md`)
+- Trello JSON templates synchronized with Theme Guard checklist parity (`workflow`, `backlog`, `bug-triage`, `sprint`, `tech-debt`, `release`)
+- Real Trello updates completed on board `FlowDelivery - Project Management`: governance/docs cards commented and moved to archive-equivalent done list
+- Real Trello updates completed on board `FlowDelivery - Product Backlog`: Sprint 1/Auth epic status comments posted and Theme Guard architecture card moved from `✅ Ready` to `🎉 Done`
 
 - architecture context
 - Riverpod decision
@@ -59,11 +72,12 @@ Awaiting next approved task
 
 ## Pending
 
-- Awaiting next approved feature/task
+- Commit current validated code+docs changes in the working tree
+- Awaiting approval for next implementation plan (Theme Guard/UI-UX follow-up slice or next feature plan)
 
 ## Notes
 
-Do not implement more than the next approved task from `.ai/plans/2026-05-19-authentication-plan.md`.
+Do not implement more than the next approved task from `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
 Task 10 validation completed with Dart MCP:
 - `analyze_files`: No errors.
@@ -76,3 +90,10 @@ Post-Sprint stabilization validation:
 - `test/features/auth/presentation/auth_pages_test.dart`: passed.
 - `test/features/auth/presentation/auth_view_model_test.dart`: passed.
 - `test/features/auth/data/auth_repository_impl_test.dart`: passed.
+Theme Guard/UI-UX standardization validation:
+- `flutter test test/app/theme/no_hardcoded_visual_values_test.dart`: passed with strict rules (no baseline exception).
+- `flutter analyze lib/features/auth/presentation/widgets/auth_page_shell.dart`: no issues.
+- Follow-up audit after approval: no `home/feed/cart` feature presentation slices exist yet; current `lib/features/**/presentation/**/*.dart` remains compliant.
+Post-review corrective validation:
+- `flutter test test/app/routes/app_router_test.dart test/features/auth/presentation/auth_view_model_test.dart test/features/auth/presentation/auth_pages_test.dart test/features/auth/presentation/auth_providers_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: passed.
+- `flutter analyze` on updated auth presentation/viewmodel/router test files: no issues.

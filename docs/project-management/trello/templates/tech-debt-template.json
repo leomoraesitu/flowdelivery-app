@@ -305,8 +305,13 @@
                   "state": "incomplete"
                 },
                 {
-                  "name": "Visual hardcoded guard test updated when needed",
+                  "name": "No Colors.* hardcoded usage in feature presentation when semantic ColorScheme roles exist",
                   "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Visual hardcoded guard test updated when needed",
+                  "pos": 4,
                   "state": "incomplete"
                 }
               ]

@@ -70,8 +70,9 @@ Sprint 1 focuses on authentication foundation only:
 - Focused tests for auth pages.
 - Routing tests when route implementation is introduced.
 - Auth pages tests updated to account for a scrollable sign-in layout and kept passing.
-- Router tests include forgot-password route navigation coverage for unauthenticated flow.
+- Router tests include redirect coverage for unauthenticated, authenticated, and loading auth states.
 - Recovery flow tests added for repository, viewmodel, and forgot-password page success/error feedback.
+- Recovery flow tests include stale-feedback reset behavior when revisiting forgot-password screen.
 - Localization and i18n refactor changes were validated with focused auth test suites.
 - User-facing strings now flow through Flutter gen-l10n ARB files and generated `AppLocalizations`.
 - The localization guard test blocks hardcoded copy in presentation and route files, including `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, `semanticLabel`, `InputDecoration.errorText`, `TextSpan.text`, and `SnackBarAction`.
@@ -97,6 +98,7 @@ Sprint 1 focuses on authentication foundation only:
 - A fourth stabilization slice translated authentication UI and operational auth messages to PT-BR.
 - A fifth stabilization slice centralized auth copy into Flutter gen-l10n ARB files and removed the duplicate static auth copy catalog.
 - A sixth stabilization slice expanded localization discipline with a guard test that blocks hardcoded user-facing copy in presentation and route files.
+- A seventh stabilization slice applied post-review corrective fixes for router/provider coupling, password-recovery lifecycle consistency, and semantic theme usage cleanup in auth presentation.
 
 ---
 
@@ -188,7 +190,7 @@ Sprint 1 focuses on authentication foundation only:
 
 ## Out of Scope
 
-- Password reset.
+- Password reset confirmation/deep-link token handoff screens.
 - Social login.
 - Profile table synchronization.
 - Role-based access.

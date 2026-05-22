@@ -2,6 +2,8 @@ import 'package:flowdelivery_app/app/routes/app_routes.dart';
 import 'package:flowdelivery_app/app/theme/app_tokens.dart';
 import 'package:flowdelivery_app/features/auth/presentation/localization/auth_failure_localizer.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
+import 'package:flowdelivery_app/features/auth/presentation/state/auth_state.dart';
+import 'package:flowdelivery_app/features/auth/presentation/viewmodels/auth_view_model.dart';
 import 'package:flowdelivery_app/features/auth/presentation/widgets/auth_page_shell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,9 +19,25 @@ class ForgotPasswordPage extends ConsumerStatefulWidget {
 
 class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
   final _emailController = TextEditingController();
-  bool _isSubmitting = false;
-  String? _feedbackMessage;
-  bool _feedbackIsError = false;
+  late final AuthViewModel _authViewModel;
+  bool _didResetRecoveryState = false;
+  String? _validationMessage;
+
+  @override
+  void initState() {
+    super.initState();
+    _authViewModel = ref.read(authViewModelProvider);
+    Future<void>(() {
+      if (!mounted) {
+        return;
+      }
+
+      _authViewModel.resetPasswordRecoveryState();
+      setState(() {
+        _didResetRecoveryState = true;
+      });
+    });
+  }
 
   @override
   void dispose() {
@@ -29,10 +47,18 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    final authViewModel = ref.watch(authViewModelProvider);
+    final state = ref.watch(authViewModelProvider.select((value) => value.state));
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     final l10n = AppLocalizations.of(context);
+    final isSubmitting =
+        state.passwordRecoveryStatus == PasswordRecoveryStatus.loading;
+    final bannerData = _buildBannerData(
+      l10n: l10n,
+      colorScheme: colorScheme,
+      state: state,
+      validationMessage: _validationMessage,
+    );
 
     return AuthPageShell(
       icon: Icons.mark_email_read_outlined,
@@ -46,7 +72,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
         children: [
           Text(
             l10n.authEmailLabel,
-            style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+            style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: AppSpacing.xs),
           TextField(
@@ -85,82 +111,54 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
         style: FilledButton.styleFrom(
           minimumSize: const Size(double.infinity, 56),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadius.pill),
+            borderRadius: BorderRadius.circular(AppRadius.xl),
           ),
         ),
-        onPressed: _isSubmitting
+        onPressed: isSubmitting
             ? null
             : () async {
                 final email = _emailController.text.trim();
 
                 if (email.isEmpty) {
                   setState(() {
-                    _feedbackIsError = true;
-                    _feedbackMessage = l10n.authForgotPasswordEmptyEmailError;
+                    _validationMessage = l10n.authForgotPasswordEmptyEmailError;
                   });
                   return;
                 }
 
                 setState(() {
-                  _isSubmitting = true;
-                  _feedbackMessage = null;
+                  _validationMessage = null;
                 });
 
-                final error = await authViewModel.sendPasswordRecoveryEmail(
+                await _authViewModel.sendPasswordRecoveryEmail(
                   email: email,
                 );
-
-                if (!mounted) {
-                  return;
-                }
-
-                setState(() {
-                  _isSubmitting = false;
-                  if (error != null) {
-                    _feedbackIsError = true;
-                    _feedbackMessage = error.localized(l10n);
-                  } else {
-                    _feedbackIsError = false;
-                    _feedbackMessage = l10n.authForgotPasswordSuccess;
-                  }
-                });
               },
-        child: _isSubmitting
-            ? const SizedBox(
+        child: isSubmitting
+          ? SizedBox(
                 height: 18,
                 width: 18,
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
-                  color: Colors.white,
+                  color: colorScheme.onPrimary,
                 ),
               )
-            : Text(l10n.authForgotPasswordPrimaryAction),
+            : Text(l10n.authForgotPasswordPrimaryAction, style: const TextStyle(fontWeight: FontWeight.w900)),
       ),
-      statusBanner: _feedbackMessage == null
-          ? AuthStatusBanner(
-              message: l10n.authForgotPasswordDefaultBanner,
-              icon: Icons.info_outline,
-              backgroundColor: colorScheme.tertiaryContainer,
-              foregroundColor: colorScheme.onTertiaryContainer,
-            )
-          : AuthStatusBanner(
-              key: const Key('forgotPasswordFeedbackBanner'),
-              message: _feedbackMessage!,
-              icon: _feedbackIsError ? Icons.error_outline : Icons.check_circle_outline,
-              backgroundColor: _feedbackIsError
-                  ? colorScheme.errorContainer
-                  : colorScheme.primaryContainer,
-              foregroundColor: _feedbackIsError
-                  ? colorScheme.onErrorContainer
-                  : colorScheme.onPrimaryContainer,
-            ),
+      statusBanner: AuthStatusBanner(
+        key: bannerData.key,
+        message: bannerData.message,
+        icon: bannerData.icon,
+        backgroundColor: bannerData.backgroundColor,
+        foregroundColor: bannerData.foregroundColor,
+      ),
       socialSection: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           OutlinedButton(
             key: const Key('forgotPasswordBackToSignInButton'),
             onPressed: () => context.go(AppRoutes.signInPath),
-            child: Text(l10n.authForgotPasswordBackAction),
+            child: Text(l10n.authForgotPasswordBackAction, style: const TextStyle(fontWeight: FontWeight.w700)),
           ),
         ],
       ),
@@ -169,4 +167,70 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
       ),
     );
   }
+
+  _RecoveryBannerData _buildBannerData({
+    required AppLocalizations l10n,
+    required ColorScheme colorScheme,
+    required AuthState state,
+    required String? validationMessage,
+  }) {
+    if (validationMessage != null) {
+      return _RecoveryBannerData(
+        key: const Key('forgotPasswordFeedbackBanner'),
+        message: validationMessage,
+        icon: Icons.error_outline,
+        backgroundColor: colorScheme.errorContainer,
+        foregroundColor: colorScheme.onErrorContainer,
+      );
+    }
+
+    if (!_didResetRecoveryState) {
+      return _RecoveryBannerData(
+        message: l10n.authForgotPasswordDefaultBanner,
+        icon: Icons.info_outline,
+        backgroundColor: colorScheme.tertiaryContainer,
+        foregroundColor: colorScheme.onTertiaryContainer,
+      );
+    }
+
+    return switch (state.passwordRecoveryStatus) {
+      PasswordRecoveryStatus.success => _RecoveryBannerData(
+          key: const Key('forgotPasswordFeedbackBanner'),
+          message: l10n.authForgotPasswordSuccess,
+          icon: Icons.check_circle_outline,
+          backgroundColor: colorScheme.primaryContainer,
+          foregroundColor: colorScheme.onPrimaryContainer,
+        ),
+      PasswordRecoveryStatus.failure => _RecoveryBannerData(
+          key: const Key('forgotPasswordFeedbackBanner'),
+          message: state.passwordRecoveryFailure?.localized(l10n) ??
+              l10n.authErrorGenericFailure,
+          icon: Icons.error_outline,
+          backgroundColor: colorScheme.errorContainer,
+          foregroundColor: colorScheme.onErrorContainer,
+        ),
+      _ => _RecoveryBannerData(
+          message: l10n.authForgotPasswordDefaultBanner,
+          icon: Icons.info_outline,
+          backgroundColor: colorScheme.tertiaryContainer,
+          foregroundColor: colorScheme.onTertiaryContainer,
+        ),
+    };
+  }
+}
+
+class _RecoveryBannerData {
+  const _RecoveryBannerData({
+    required this.message,
+    required this.icon,
+    required this.backgroundColor,
+    required this.foregroundColor,
+    this.key,
+  });
+
+  final Key? key;
+  final String message;
+  final IconData icon;
+  final Color backgroundColor;
+  final Color foregroundColor;
 }

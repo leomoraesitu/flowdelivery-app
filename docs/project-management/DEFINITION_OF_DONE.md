@@ -46,6 +46,7 @@ A task can only move to DONE when all criteria are satisfied.
 - [ ] Screenshots attached if necessary
 
 Use the exact Localization Guard Checklist below for any task that touches user-facing text.
+Use the exact Theme Guard Checklist below for any task that touches user-facing UI styling.
 
 ## Localization Guard Checklist
 
@@ -53,6 +54,14 @@ Use the exact Localization Guard Checklist below for any task that touches user-
 - [ ] UI reads strings through `AppLocalizations`
 - [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`
 - [ ] New placeholders and route placeholders are covered by the guard test
+
+## Theme Guard Checklist
+
+- [ ] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)
+- [ ] No `Color(0x...)` hardcoded values in feature presentation code
+- [ ] No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`
+- [ ] No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist
+- [ ] Visual hardcoded guard test remains green after UI changes
 
 ---
 

@@ -50,7 +50,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
         children: [
           Text(
             l10n.authEmailLabel,
-            style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+            style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: AppSpacing.xs),
           TextField(
@@ -65,7 +65,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
           const SizedBox(height: AppSpacing.lg),
           Text(
             l10n.authPasswordLabel,
-            style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+            style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: AppSpacing.xs),
           TextField(
@@ -96,7 +96,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
         style: FilledButton.styleFrom(
           minimumSize: const Size(double.infinity, 56),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadius.pill),
+            borderRadius: BorderRadius.circular(AppRadius.xl),
           ),
         ),
         onPressed: isLoading
@@ -108,15 +108,15 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                 );
               },
         child: isLoading
-            ? const SizedBox(
+          ? SizedBox(
                 height: 18,
                 width: 18,
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
-                  color: Colors.white,
+                  color: colorScheme.onPrimary,
                 ),
               )
-            : Text(l10n.authSignUpPrimaryAction),
+            : Text(l10n.authSignUpPrimaryAction, style: const TextStyle(fontWeight: FontWeight.w900)),
       ),
       statusBanner: state.status == AuthStatus.failure && state.failure != null
           ? AuthStatusBanner(

@@ -247,6 +247,11 @@
                   "name": "No AppLightColors/AppDarkColors usage outside lib/app/theme",
                   "pos": 3,
                   "state": "incomplete"
+                },
+                {
+                  "name": "No Colors.* hardcoded usage in feature presentation when semantic ColorScheme roles exist",
+                  "pos": 4,
+                  "state": "incomplete"
                 }
               ]
             }

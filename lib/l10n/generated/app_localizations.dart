@@ -294,7 +294,7 @@ abstract class AppLocalizations {
   /// Leading legal text shown on forgot password page.
   ///
   /// In pt_BR, this message translates to:
-  /// **'Precisa de ajuda imediata? Consulte nossos '**
+  /// **'Precisa de ajuda? Consulte nossos '**
   String get authForgotPasswordLegalLeading;
 
   /// Clickable legal terms label.

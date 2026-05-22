@@ -50,7 +50,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
         children: [
           Text(
             l10n.authEmailLabel,
-            style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+            style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: AppSpacing.xs),
           TextField(
@@ -68,7 +68,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
               Expanded(
                 child: Text(
                   l10n.authPasswordLabel,
-                  style: textTheme.titleLarge?.copyWith(
+                  style: textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -115,7 +115,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
         style: FilledButton.styleFrom(
           minimumSize: const Size(double.infinity, 56),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadius.pill),
+            borderRadius: BorderRadius.circular(AppRadius.xl),
           ),
         ),
         onPressed: isLoading
@@ -127,15 +127,15 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                 );
               },
         child: isLoading
-            ? const SizedBox(
+          ? SizedBox(
                 height: 18,
                 width: 18,
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
-                  color: Colors.white,
+                  color: colorScheme.onPrimary,
                 ),
               )
-            : Text(l10n.authSignInPrimaryAction),
+            : Text(l10n.authSignInPrimaryAction, style: const TextStyle(fontWeight: FontWeight.w900)),
       ),
       statusBanner: state.status == AuthStatus.failure && state.failure != null
           ? AuthStatusBanner(
