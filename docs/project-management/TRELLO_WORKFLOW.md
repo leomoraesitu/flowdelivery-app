@@ -96,7 +96,7 @@ Use the exact Theme Guard Checklist below for any card that introduces or change
 - [ ] No `Color(0x...)` hardcoded values in feature presentation code
 - [ ] No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`
 - [ ] No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist
-- [ ] Visual hardcoded guard test is updated when new UI patterns are introduced
+- [ ] Visual hardcoded guard test remains green after UI changes
 
 ### JSON Checklist Structure
 
@@ -151,8 +151,13 @@ Use this example when creating cards that change user-facing UI:
           "state": "incomplete"
         },
         {
-          "name": "No hardcoded copy in UI widgets and placeholders",
+          "name": "No hardcoded copy in Text, SnackBar, Tooltip, AlertDialog, BottomSheet, showModalBottomSheet, or semanticLabel",
           "pos": 3,
+          "state": "incomplete"
+        },
+        {
+          "name": "New placeholders and route placeholders are covered by the guard test",
+          "pos": 4,
           "state": "incomplete"
         }
       ]
@@ -161,23 +166,28 @@ Use this example when creating cards that change user-facing UI:
       "name": "Theme Guard Checklist",
       "checkItems": [
         {
-          "name": "UI uses semantic theme APIs and app tokens",
+          "name": "UI uses only semantic theme APIs and app tokens (Theme.of(context), AppSpacing, AppRadius, AppSizes, AppDurations)",
           "pos": 1,
           "state": "incomplete"
         },
         {
-          "name": "No Color(0x...) hardcoded values in presentation",
+          "name": "No Color(0x...) hardcoded values in feature presentation code",
           "pos": 2,
           "state": "incomplete"
         },
         {
-          "name": "No AppLightColors/AppDarkColors usage outside lib/app/theme",
+          "name": "No direct AppLightColors or AppDarkColors usage outside lib/app/theme",
           "pos": 3,
           "state": "incomplete"
         },
         {
-          "name": "No Colors.* hardcoded usage in feature presentation when semantic ColorScheme roles exist",
+          "name": "No direct Colors.* hardcoded usage in feature presentation when equivalent semantic ColorScheme roles exist",
           "pos": 4,
+          "state": "incomplete"
+        },
+        {
+          "name": "Visual hardcoded guard test remains green after UI changes",
+          "pos": 5,
           "state": "incomplete"
         }
       ]

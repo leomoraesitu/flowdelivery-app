@@ -83,7 +83,7 @@ Notes:
 ### Reduce manual synchronization between docs and Trello artifacts
 
 Status:
-Monitoring
+Reduced / Monitoring
 
 Impact:
 Low
@@ -91,7 +91,8 @@ Low
 Notes:
 - Theme Guard checklist parity required coordinated updates across markdown docs, Trello JSON templates, and real Trello cards.
 - Manual synchronization increased risk of transient inconsistency (one template was temporarily patched in the wrong section and then corrected in the same session).
-- Consider adding a lightweight consistency check/script to validate checklist parity across `docs/project-management/**` and `docs/project-management/trello/templates/*.json` before end-day closure.
+- Lightweight local parity check added in `test/app/project_management/trello_guard_checklists_test.dart`.
+- The check validates `DEFINITION_OF_DONE.md` against `TRELLO_WORKFLOW.md` and existing guard checklists in `docs/project-management/trello/templates/*.json`.
 - Keep Trello board updates explicit and scoped to intended cards to avoid stale status drift.
 
 ## Rules

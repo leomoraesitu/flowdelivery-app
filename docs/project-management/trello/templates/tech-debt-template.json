@@ -295,23 +295,28 @@
               "name": "Theme Guard Checklist",
               "checkItems": [
                 {
-                  "name": "No Color(0x...) hardcoded values in presentation",
+                  "name": "UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)",
                   "pos": 1,
                   "state": "incomplete"
                 },
                 {
-                  "name": "No AppLightColors/AppDarkColors usage outside lib/app/theme",
+                  "name": "No `Color(0x...)` hardcoded values in feature presentation code",
                   "pos": 2,
                   "state": "incomplete"
                 },
                 {
-                  "name": "No Colors.* hardcoded usage in feature presentation when semantic ColorScheme roles exist",
+                  "name": "No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`",
                   "pos": 3,
                   "state": "incomplete"
                 },
                 {
-                  "name": "Visual hardcoded guard test updated when needed",
+                  "name": "No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist",
                   "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Visual hardcoded guard test remains green after UI changes",
+                  "pos": 5,
                   "state": "incomplete"
                 }
               ]
