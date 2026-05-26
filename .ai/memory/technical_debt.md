@@ -5,7 +5,7 @@
 ### Align generated documentation with implementation
 
 Status:
-Monitoring
+Reduced / Monitoring
 
 Impact:
 Low
@@ -15,11 +15,13 @@ Notes:
 - Sprint 0 governance docs and local Trello artifacts were reconciled after theme, labels and Trello sync tasks.
 - Future feature work must keep docs aligned with real code.
 - Routing documentation remains reconciled with the deferred implementation decision.
+- `docs/PROJECT_BOOTSTRAP.md` now separates implemented Supabase/Auth behavior from planned database, realtime, storage, Edge Functions, Google OAuth, role-based access, and secure-storage work.
+- Historical `.ai/plans` remain as implementation records and should not be treated as current source of truth when they conflict with repository code.
 
 ### Keep auth documentation aligned with implementation
 
 Status:
-Monitoring
+Reduced / Monitoring
 
 Impact:
 Low
@@ -29,7 +31,8 @@ Notes:
 - Supabase initialization at app startup was implemented in Task 9.
 - Auth dependency wiring now uses app-level provider overrides and an unconfigured repository fallback when Supabase Dart defines are absent.
 - Sign-in UI was updated for prototype parity (`docs/ux/prototypes/auth-screen.png`) and must remain synchronized with auth page tests.
-- Keep docs/memory synchronized with each validated implementation slice.
+- `docs/PROJECT_BOOTSTRAP.md` now documents current auth support as email/password plus password recovery request, with Google OAuth, reset deep-link completion, profile synchronization, and role-based access marked as planned.
+- Keep docs/memory synchronized with each validated implementation slice before reducing this debt further.
 
 ### Keep auth UI parity scoped to visual layer
 
