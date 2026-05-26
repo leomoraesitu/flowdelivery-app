@@ -96,7 +96,10 @@ Notes:
 - Manual synchronization increased risk of transient inconsistency (one template was temporarily patched in the wrong section and then corrected in the same session).
 - Lightweight local parity check added in `test/app/project_management/trello_guard_checklists_test.dart`.
 - The check validates `DEFINITION_OF_DONE.md` against `TRELLO_WORKFLOW.md` and existing guard checklists in `docs/project-management/trello/templates/*.json`.
-- Keep Trello board updates explicit and scoped to intended cards to avoid stale status drift.
+- `docs/project-management/TRELLO_WORKFLOW.md` now requires a real Trello parity check with `trello_get_card_checklists` when a card is created, updated, moved to a done-equivalent list, or used as delivery evidence.
+- Checklist item state changes should use `trello_update_checklist_item_state` only after local implementation evidence exists.
+- Keep Trello board updates explicit, scoped to intended cards, and documented with a short card comment when they are used to close work.
+- This debt remains `Reduced / Monitoring` because the repo can guard versioned artifacts, but cannot prove external Trello state without MCP/API access and human-supervised validation.
 
 ## Rules
 

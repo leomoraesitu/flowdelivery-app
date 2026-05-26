@@ -86,7 +86,10 @@ Use the exact Localization Guard Checklist below for any card that introduces or
 - [ ] Every new user-facing string has an ARB key
 - [ ] UI reads strings through `AppLocalizations`
 - [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`
-- [ ] New placeholders and route placeholders are covered by the guard test
+- [ ] ARB catalog parity guard remains green after copy changes
+- [ ] New placeholders are declared in template metadata and preserved across translated catalogs
+- [ ] New placeholders and route placeholders are covered by the guard tests
+- [ ] Generated localization freshness guard remains green after ARB changes once available
 
 ### Theme Guard Checklist
 
@@ -164,8 +167,23 @@ Use this example when creating cards that change user-facing UI:
           "state": "incomplete"
         },
         {
-          "name": "New placeholders and route placeholders are covered by the guard test",
+          "name": "ARB catalog parity guard remains green after copy changes",
           "pos": 4,
+          "state": "incomplete"
+        },
+        {
+          "name": "New placeholders are declared in template metadata and preserved across translated catalogs",
+          "pos": 5,
+          "state": "incomplete"
+        },
+        {
+          "name": "New placeholders and route placeholders are covered by the guard tests",
+          "pos": 6,
+          "state": "incomplete"
+        },
+        {
+          "name": "Generated localization freshness guard remains green after ARB changes once available",
+          "pos": 7,
           "state": "incomplete"
         }
       ]
@@ -212,6 +230,20 @@ Automation rules:
 - `checkItems[].pos` is 1-based and preserves item order.
 - Supported generated checklist names are `Scope`, `Acceptance Criteria`, `Dependencies`, `Checklist`, `Features` and `Possibilities`.
 - Real Trello card creation is incomplete until checklist parity is verified with `trello_get_card_checklists`.
+
+### Real Trello Parity Check
+
+Local docs and JSON templates are not proof that Trello itself is synchronized. Whenever a card is created, updated, moved to a done-equivalent list, or used as delivery evidence, run a real Trello checklist check before considering the sync complete.
+
+Required flow:
+
+1. Identify the real Trello card ID or URL.
+2. Read the real checklists with `trello_get_card_checklists`.
+3. Compare checklist names, item names, item order, and item states against the intended source: the project-management doc, the JSON template, or the approved implementation plan.
+4. Use `trello_update_checklist_item_state` only for items that are already validated by local implementation evidence.
+5. Add a short Trello comment with the validation evidence when the card is used to close work.
+
+This check is intentionally human-supervised. The local guard prevents drift in versioned artifacts, while the Trello parity check confirms the external board state.
 
 ---
 

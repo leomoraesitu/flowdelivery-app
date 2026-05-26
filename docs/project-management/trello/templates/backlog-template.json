@@ -123,8 +123,23 @@
                   "state": "incomplete"
                 },
                 {
-                  "name": "New placeholders and route placeholders are covered by the guard test",
+                  "name": "ARB catalog parity guard remains green after copy changes",
                   "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "New placeholders are declared in template metadata and preserved across translated catalogs",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "New placeholders and route placeholders are covered by the guard tests",
+                  "pos": 6,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Generated localization freshness guard remains green after ARB changes once available",
+                  "pos": 7,
                   "state": "incomplete"
                 }
               ]

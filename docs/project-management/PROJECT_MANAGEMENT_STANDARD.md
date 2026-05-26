@@ -115,7 +115,10 @@ Each sprint contains:
 - [ ] Every new user-facing string has an ARB key
 - [ ] UI reads strings through `AppLocalizations`
 - [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`
-- [ ] New placeholders and route placeholders are covered by the guard test
+- [ ] ARB catalog parity guard remains green after copy changes
+- [ ] New placeholders are declared in template metadata and preserved across translated catalogs
+- [ ] New placeholders and route placeholders are covered by the guard tests
+- [ ] Generated localization freshness guard remains green after ARB changes once available
 
 ## Theme Guard Checklist
 
