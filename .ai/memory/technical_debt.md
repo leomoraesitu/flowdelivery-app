@@ -74,7 +74,7 @@ Notes:
 ### Continue Theme Guard normalization beyond auth slice
 
 Status:
-Monitoring
+Reduced / Monitoring
 
 Impact:
 Low
@@ -83,7 +83,9 @@ Notes:
 - Theme Guard contract is now enforced by `test/app/theme/no_hardcoded_visual_values_test.dart` with strict rules (no temporary baseline exception).
 - First priority normalization slice is complete: `lib/features/auth/presentation/widgets/auth_page_shell.dart`.
 - Recommended next slice selection order (when these modules exist): `home` -> `feed` -> `cart`.
-- Follow-up audit (2026-05-22): these feature modules are not present yet in the current workspace.
+- Follow-up audit (2026-05-22): these feature modules were not present in the workspace.
+- Follow-up audit (2026-05-26): `home`, `feed`, and `cart` still do not exist under `lib/features` or `test/features`.
+- The visual hardcoded guard scans all feature presentation files under `lib/features/**/presentation/**/*.dart`, so future slices are covered as soon as they add presentation code.
 - Post-review cleanup removed remaining non-semantic auth presentation usages (`Colors.white` and `shadow.withAlpha(30)`) in favor of `ColorScheme` semantic roles.
 - Keep incremental refactors per slice and validate with focused tests plus `flutter analyze` on touched files.
 
