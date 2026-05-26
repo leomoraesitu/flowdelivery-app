@@ -62,8 +62,10 @@ Notes:
 - Generated access uses `AppLocalizations` from `lib/l10n/generated/app_localizations.dart`.
 - Presentation maps auth failure codes to localized copy; data and domain stay localization-neutral.
 - The repo now includes a guard test that blocks hardcoded user-facing copy in presentation and route files.
-- The repo now includes `test/app/l10n/arb_catalog_parity_test.dart` to validate ARB locale declarations, string-key parity, template descriptions, and orphan metadata.
-- Ensure future features add copy through ARB files before adding UI code.
+- `test/app/l10n/arb_catalog_parity_test.dart` validates ARB locale declarations, string-key parity, template descriptions, orphan metadata, template placeholder metadata, and translated placeholder parity.
+- `test/app/l10n/generated_localizations_freshness_test.dart` validates that template ARB keys are exposed by generated `AppLocalizations` accessors.
+- Ensure future features add copy through ARB files before adding UI code, then run hardcoded-copy, ARB parity, and generated freshness guards.
+- External translation platform integration remains deferred until the MVP UI surface grows enough to justify it.
 
 ### Continue Theme Guard normalization beyond auth slice
 

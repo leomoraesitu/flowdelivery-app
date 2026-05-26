@@ -19,6 +19,7 @@ Active.
 - PT-BR localization and auth copy consistency
 - documentation and memory reconciliation after auth stabilization
 - theme guard enforcement and UI/UX standardization planning
+- scalable i18n pipeline guardrails for future UI feature growth
 
 ## Current Priorities
 
@@ -29,6 +30,7 @@ Active.
 - update documentation and memory only after validated implementation slices
 - keep auth i18n centralized in Flutter gen-l10n ARB files and generated `AppLocalizations`
 - keep the hardcoded copy guard test green when adding new UI placeholders or features
+- keep ARB catalog parity and generated localization freshness guards green after ARB changes
 - keep Theme Guard checklist and visual hardcoded constraints enforced for UI tasks
 - keep design-system docs synchronized with implemented typography and locale choices
 - execute `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md` incrementally after explicit approval per task
@@ -45,4 +47,5 @@ Active.
 - Theme Guard status: Task 4 (priority auth slice normalization) and Task 5 (memory reconciliation) completed.
 - Visual hardcoded guard test now strict (no baseline exception) and green.
 - Post-review corrective pass completed: router coupling and forgot-password lifecycle consistency fixed with focused coverage.
-- Next pending step: Awaiting approval for next plan/slice or commit of validated corrections.
+- I18n pipeline guardrails now include hardcoded-copy, ARB catalog parity, placeholder parity, and generated localization freshness validation.
+- Next pending step: Commit the validated i18n pipeline guardrail changes or select the next product feature slice.

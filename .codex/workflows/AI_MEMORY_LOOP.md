@@ -237,6 +237,8 @@ Leia:
 - incluir checklist de theme guard quando a task alterar estilo visual de UI;
 - usar ARB + `AppLocalizations` para copy de usuario nova;
 - manter o guard test de hardcoded strings atualizado quando surgirem novos padroes;
+- manter o ARB catalog parity guard atualizado quando surgirem novas chaves, placeholders ou locales;
+- manter o generated localization freshness guard verde depois de alterar ARBs;
 - manter o guard test visual atualizado quando surgirem novos padroes de estilo;
 - revisar arquitetura;
 - justificar tradeoffs;

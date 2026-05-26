@@ -92,6 +92,74 @@ void main() {
 
       expect(failures, isEmpty, reason: failures.join('\n'));
     });
+
+    test('template placeholder metadata and translations stay aligned', () {
+      final failures = <String>[
+        ..._templatePlaceholderMetadataFailures(template),
+      ];
+
+      for (final catalog in catalogs.where((catalog) => catalog != template)) {
+        failures.addAll(
+          _placeholderParityFailures(template: template, catalog: catalog),
+        );
+      }
+
+      expect(failures, isEmpty, reason: failures.join('\n'));
+    });
+
+    test('template placeholders are declared in metadata', () {
+      final failures = _templatePlaceholderMetadataFailures(
+        _ArbCatalog(
+          path: 'memory/template.arb',
+          expectedLocale: 'pt_BR',
+          values: const {
+            '@@locale': 'pt_BR',
+            'cartItemQuantity': '{quantity} itens',
+            '@cartItemQuantity': {'description': 'Cart item count label.'},
+          },
+        ),
+      );
+
+      expect(
+        failures,
+        contains(
+          'memory/template.arb: `cartItemQuantity` uses placeholder '
+          '`quantity` without metadata.',
+        ),
+      );
+    });
+
+    test('translated catalogs preserve template placeholders', () {
+      final failures = _placeholderParityFailures(
+        template: _ArbCatalog(
+          path: 'memory/app_pt_BR.arb',
+          expectedLocale: 'pt_BR',
+          values: const {
+            '@@locale': 'pt_BR',
+            'cartItemQuantity': '{quantity} itens',
+            '@cartItemQuantity': {
+              'description': 'Cart item count label.',
+              'placeholders': {
+                'quantity': {'type': 'int', 'example': '3'},
+              },
+            },
+          },
+        ),
+        catalog: _ArbCatalog(
+          path: 'memory/app_en.arb',
+          expectedLocale: 'en',
+          values: const {'@@locale': 'en', 'cartItemQuantity': '{count} items'},
+        ),
+      );
+
+      expect(
+        failures,
+        contains(
+          'memory/app_en.arb: `cartItemQuantity` placeholders differ from '
+          'template. Missing `quantity`; unexpected `count`.',
+        ),
+      );
+    });
   });
 }
 
@@ -143,6 +211,34 @@ class _ArbCatalog {
         metadata['description'] is String &&
         (metadata['description'] as String).trim().isNotEmpty;
   }
+
+  String valueFor(String key) {
+    final value = values[key];
+
+    if (value is! String) {
+      throw StateError('$path: `$key` must be a string resource.');
+    }
+
+    return value;
+  }
+
+  Set<String> placeholdersInValue(String key) {
+    return _placeholderNamesIn(valueFor(key));
+  }
+
+  Set<String> metadataPlaceholdersFor(String key) {
+    final metadata = values['@$key'];
+    if (metadata is! Map<String, Object?>) {
+      return <String>{};
+    }
+
+    final placeholders = metadata['placeholders'];
+    if (placeholders is! Map<String, Object?>) {
+      return <String>{};
+    }
+
+    return placeholders.keys.toSet();
+  }
 }
 
 bool _isStringResource(String key, Object? value) {
@@ -152,4 +248,87 @@ bool _isStringResource(String key, Object? value) {
 String _formatKeys(Iterable<String> keys) {
   final sortedKeys = keys.toList()..sort();
   return sortedKeys.map((key) => '`$key`').join(', ');
+}
+
+List<String> _templatePlaceholderMetadataFailures(_ArbCatalog template) {
+  final failures = <String>[];
+
+  for (final key in template.stringKeys) {
+    final valuePlaceholders = template.placeholdersInValue(key);
+    final metadataPlaceholders = template.metadataPlaceholdersFor(key);
+    final missingMetadata = valuePlaceholders.difference(metadataPlaceholders);
+    final orphanMetadata = metadataPlaceholders.difference(valuePlaceholders);
+
+    for (final placeholder in _sorted(missingMetadata)) {
+      failures.add(
+        '${template.path}: `$key` uses placeholder '
+        '`$placeholder` without metadata.',
+      );
+    }
+
+    for (final placeholder in _sorted(orphanMetadata)) {
+      failures.add(
+        '${template.path}: `$key` declares metadata placeholder '
+        '`$placeholder` that is not used.',
+      );
+    }
+  }
+
+  return failures;
+}
+
+List<String> _placeholderParityFailures({
+  required _ArbCatalog template,
+  required _ArbCatalog catalog,
+}) {
+  final failures = <String>[];
+
+  for (final key in template.stringKeys.intersection(catalog.stringKeys)) {
+    final templatePlaceholders = template.placeholdersInValue(key);
+    final catalogPlaceholders = catalog.placeholdersInValue(key);
+
+    final missingPlaceholders = templatePlaceholders.difference(
+      catalogPlaceholders,
+    );
+    final unexpectedPlaceholders = catalogPlaceholders.difference(
+      templatePlaceholders,
+    );
+
+    if (missingPlaceholders.isEmpty && unexpectedPlaceholders.isEmpty) {
+      continue;
+    }
+
+    final details = <String>[];
+    if (missingPlaceholders.isNotEmpty) {
+      details.add('Missing ${_formatKeys(missingPlaceholders)}');
+    }
+    if (unexpectedPlaceholders.isNotEmpty) {
+      details.add('unexpected ${_formatKeys(unexpectedPlaceholders)}');
+    }
+
+    failures.add(
+      '${catalog.path}: `$key` placeholders differ from template. '
+      '${details.join('; ')}.',
+    );
+  }
+
+  return failures;
+}
+
+Set<String> _placeholderNamesIn(String value) {
+  final placeholders = <String>{};
+  final pattern = RegExp(r'\{([A-Za-z][A-Za-z0-9_]*)(?:[,}])');
+
+  for (final match in pattern.allMatches(value)) {
+    final placeholder = match.group(1);
+    if (placeholder != null) {
+      placeholders.add(placeholder);
+    }
+  }
+
+  return placeholders;
+}
+
+List<String> _sorted(Iterable<String> values) {
+  return values.toList()..sort();
 }

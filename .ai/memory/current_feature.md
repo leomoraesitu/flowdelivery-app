@@ -6,11 +6,11 @@
 
 ## Status
 
-Post-review corrective pass completed; docs and Trello synchronized (teacher mode)
+Scalable i18n pipeline guard hardening completed and validated
 
 ## Current Step
 
-End-day wrap-up completed with project-management and Trello board updates; awaiting commit and next approved plan/task
+I18n generated freshness and placeholder parity guards implemented, validated, and reconciled; awaiting commit
 
 ## Completed
 
@@ -26,6 +26,17 @@ End-day wrap-up completed with project-management and Trello board updates; awai
 - Trello JSON templates synchronized with Theme Guard checklist parity (`workflow`, `backlog`, `bug-triage`, `sprint`, `tech-debt`, `release`)
 - Real Trello updates completed on board `FlowDelivery - Project Management`: governance/docs cards commented and moved to archive-equivalent done list
 - Real Trello updates completed on board `FlowDelivery - Product Backlog`: Sprint 1/Auth epic status comments posted and Theme Guard architecture card moved from `✅ Ready` to `🎉 Done`
+- Lightweight Trello/docs checklist parity guard added and committed (`a3c2291`)
+- i18n pipeline plan generated in `docs/project-management/I18N_PIPELINE_PLAN.md`
+- Product Backlog Trello card `[DEBT] Add ARB catalog parity guard` created and updated with real checklists plus validation evidence
+- ARB catalog parity guard added in `test/app/l10n/arb_catalog_parity_test.dart`
+- ARB catalog parity guard validates locale declarations, catalog key parity, template descriptions, and orphan metadata
+- ARB catalog parity guard committed and pushed (`c7bf183`)
+- Project-management docs generated for scalable i18n pipeline phase 2 (`docs/project-management/I18N_PIPELINE_PLAN.md`, `docs/project-management/DEFINITION_OF_DONE.md`)
+- Product Backlog Trello card `[DEBT] Evolve i18n pipeline guardrails` created in `📥 Backlog` with real Scope, Acceptance Criteria, and Validation checklists
+- Generated localization freshness guard added in `test/app/l10n/generated_localizations_freshness_test.dart`
+- ARB catalog parity guard hardened to validate template placeholder metadata and translated placeholder parity
+- I18n guard validation passed for hardcoded-copy, ARB catalog parity, and generated localization freshness tests
 
 - architecture context
 - Riverpod decision
@@ -72,8 +83,9 @@ End-day wrap-up completed with project-management and Trello board updates; awai
 
 ## Pending
 
-- Commit current validated code+docs changes in the working tree
-- Awaiting approval for next implementation plan (Theme Guard/UI-UX follow-up slice or next feature plan)
+- Commit current validated i18n pipeline guardrail changes
+- Decide the next approved implementation slice: move to the next product feature or continue governance hardening
+- Keep real Trello checklist item states manually aligned until the MCP supports checklist item state updates
 
 ## Notes
 
@@ -97,3 +109,13 @@ Theme Guard/UI-UX standardization validation:
 Post-review corrective validation:
 - `flutter test test/app/routes/app_router_test.dart test/features/auth/presentation/auth_view_model_test.dart test/features/auth/presentation/auth_pages_test.dart test/features/auth/presentation/auth_providers_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: passed.
 - `flutter analyze` on updated auth presentation/viewmodel/router test files: no issues.
+Trello/docs parity validation:
+- `test/app/project_management/trello_guard_checklists_test.dart`: added and committed in `a3c2291`.
+ARB catalog parity validation:
+- Dart MCP `add_roots` executed before Dart validation.
+- `test/app/l10n/no_hardcoded_ui_strings_test.dart` and `test/app/l10n/arb_catalog_parity_test.dart`: 5 tests passed.
+- Dart MCP `analyze_files` on `test/app/l10n/arb_catalog_parity_test.dart`: no errors.
+Scalable i18n pipeline validation:
+- Dart MCP `add_roots` executed before Dart validation.
+- `test/app/l10n/no_hardcoded_ui_strings_test.dart`, `test/app/l10n/arb_catalog_parity_test.dart`, and `test/app/l10n/generated_localizations_freshness_test.dart`: 9 tests passed.
+- Dart MCP `analyze_files` on updated i18n guard tests: no errors.
