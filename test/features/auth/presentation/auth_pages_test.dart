@@ -59,7 +59,10 @@ class FakeAuthRepository implements AuthRepository {
   }
 }
 
-Widget _buildTestApp({required Widget home, required FakeAuthRepository fakeRepository}) {
+Widget _buildTestApp({
+  required Widget home,
+  required FakeAuthRepository fakeRepository,
+}) {
   return ProviderScope(
     overrides: [authRepositoryProvider.overrideWithValue(fakeRepository)],
     child: MaterialApp(
@@ -105,7 +108,9 @@ void main() {
     ) async {
       final fakeRepository = FakeAuthRepository();
 
-      await tester.pumpWidget(_buildTestApp(home: const SignInPage(), fakeRepository: fakeRepository));
+      await tester.pumpWidget(
+        _buildTestApp(home: const SignInPage(), fakeRepository: fakeRepository),
+      );
 
       expect(find.byKey(const Key('signInEmailField')), findsOneWidget);
       expect(find.byKey(const Key('signInPasswordField')), findsOneWidget);
@@ -114,7 +119,10 @@ void main() {
         find.byKey(const Key('signInNavigateToSignUpButton')),
         findsOneWidget,
       );
-      expect(find.byKey(const Key('signInForgotPasswordButton')), findsOneWidget);
+      expect(
+        find.byKey(const Key('signInForgotPasswordButton')),
+        findsOneWidget,
+      );
 
       await tester.enterText(
         find.byKey(const Key('signInEmailField')),
@@ -137,7 +145,9 @@ void main() {
     ) async {
       final fakeRepository = FakeAuthRepository();
 
-      await tester.pumpWidget(_buildTestApp(home: const SignUpPage(), fakeRepository: fakeRepository));
+      await tester.pumpWidget(
+        _buildTestApp(home: const SignUpPage(), fakeRepository: fakeRepository),
+      );
 
       expect(find.byKey(const Key('signUpEmailField')), findsOneWidget);
       expect(find.byKey(const Key('signUpPasswordField')), findsOneWidget);
@@ -163,42 +173,104 @@ void main() {
       expect(fakeRepository.lastSignUpEmail, 'new@example.com');
     });
 
-    testWidgets('forgot password page submits recovery request', (tester) async {
+    testWidgets('social auth placeholders are visible but disabled', (
+      tester,
+    ) async {
       final fakeRepository = FakeAuthRepository();
 
-      await tester.pumpWidget(_buildTestApp(home: const ForgotPasswordPage(), fakeRepository: fakeRepository));
+      await tester.pumpWidget(
+        _buildTestApp(home: const SignInPage(), fakeRepository: fakeRepository),
+      );
+
+      await tester.ensureVisible(find.text('Login social em breve.'));
+      await tester.pumpAndSettle();
+
+      final googleButton = tester.widget<OutlinedButton>(
+        find.widgetWithText(OutlinedButton, 'Google'),
+      );
+      final appleButton = tester.widget<OutlinedButton>(
+        find.widgetWithText(OutlinedButton, 'Apple'),
+      );
+
+      expect(googleButton.onPressed, isNull);
+      expect(appleButton.onPressed, isNull);
+      expect(find.text('Login social em breve.'), findsOneWidget);
+    });
+
+    testWidgets('reports tab is visual copy and not a navigation action', (
+      tester,
+    ) async {
+      final fakeRepository = FakeAuthRepository();
+
+      await tester.pumpWidget(
+        _buildTestApp(home: const SignInPage(), fakeRepository: fakeRepository),
+      );
+
+      expect(find.text('Relatorios'), findsOneWidget);
+      expect(find.widgetWithText(TextButton, 'Relatorios'), findsNothing);
+    });
+
+    testWidgets('forgot password page submits recovery request', (
+      tester,
+    ) async {
+      final fakeRepository = FakeAuthRepository();
+
+      await tester.pumpWidget(
+        _buildTestApp(
+          home: const ForgotPasswordPage(),
+          fakeRepository: fakeRepository,
+        ),
+      );
 
       await tester.enterText(
         find.byKey(const Key('forgotPasswordEmailField')),
         'recover@example.com',
       );
 
-      await tester.ensureVisible(find.byKey(const Key('forgotPasswordPrimaryButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('forgotPasswordPrimaryButton')),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byKey(const Key('forgotPasswordPrimaryButton')));
       await tester.pumpAndSettle();
 
       expect(fakeRepository.lastRecoveryEmail, 'recover@example.com');
-      expect(find.byKey(const Key('forgotPasswordFeedbackBanner')), findsOneWidget);
-      expect(find.textContaining('Link de recuperacao solicitado'), findsOneWidget);
+      expect(
+        find.byKey(const Key('forgotPasswordFeedbackBanner')),
+        findsOneWidget,
+      );
+      expect(
+        find.textContaining('Link de recuperacao solicitado'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('forgot password page renders failure banner', (tester) async {
       final fakeRepository = FakeAuthRepository(failRecovery: true);
 
-      await tester.pumpWidget(_buildTestApp(home: const ForgotPasswordPage(), fakeRepository: fakeRepository));
+      await tester.pumpWidget(
+        _buildTestApp(
+          home: const ForgotPasswordPage(),
+          fakeRepository: fakeRepository,
+        ),
+      );
 
       await tester.enterText(
         find.byKey(const Key('forgotPasswordEmailField')),
         'recover@example.com',
       );
 
-      await tester.ensureVisible(find.byKey(const Key('forgotPasswordPrimaryButton')));
+      await tester.ensureVisible(
+        find.byKey(const Key('forgotPasswordPrimaryButton')),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byKey(const Key('forgotPasswordPrimaryButton')));
       await tester.pumpAndSettle();
 
-      expect(find.byKey(const Key('forgotPasswordFeedbackBanner')), findsOneWidget);
+      expect(
+        find.byKey(const Key('forgotPasswordFeedbackBanner')),
+        findsOneWidget,
+      );
       expect(
         find.text('Nao foi possivel enviar o e-mail de recuperacao'),
         findsOneWidget,
@@ -225,7 +297,10 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(fakeRepository.lastRecoveryEmail, isNull);
-      expect(find.byKey(const Key('forgotPasswordFeedbackBanner')), findsOneWidget);
+      expect(
+        find.byKey(const Key('forgotPasswordFeedbackBanner')),
+        findsOneWidget,
+      );
     });
 
     testWidgets('forgot password page resets stale feedback when revisited', (
@@ -255,8 +330,14 @@ void main() {
       await tester.tap(find.byKey(const Key('forgotPasswordPrimaryButton')));
       await tester.pumpAndSettle();
 
-      expect(find.byKey(const Key('forgotPasswordFeedbackBanner')), findsOneWidget);
-      expect(find.textContaining('Link de recuperacao solicitado'), findsOneWidget);
+      expect(
+        find.byKey(const Key('forgotPasswordFeedbackBanner')),
+        findsOneWidget,
+      );
+      expect(
+        find.textContaining('Link de recuperacao solicitado'),
+        findsOneWidget,
+      );
 
       await tester.pumpWidget(
         _buildTestAppWithContainer(
@@ -274,8 +355,14 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.byKey(const Key('forgotPasswordFeedbackBanner')), findsNothing);
-      expect(find.textContaining('Link de recuperacao solicitado'), findsNothing);
+      expect(
+        find.byKey(const Key('forgotPasswordFeedbackBanner')),
+        findsNothing,
+      );
+      expect(
+        find.textContaining('Link de recuperacao solicitado'),
+        findsNothing,
+      );
     });
   });
 }

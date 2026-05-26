@@ -37,7 +37,7 @@ Notes:
 ### Keep auth UI parity scoped to visual layer
 
 Status:
-Monitoring
+Reduced / Monitoring
 
 Impact:
 Low
@@ -50,6 +50,7 @@ Notes:
 - Password recovery is now wired end-to-end through datasource/repository/ViewModel and exposed in the forgot-password page.
 - Password recovery stale feedback lifecycle issue identified in review was fixed with explicit state reset behavior and focused widget coverage.
 - Social sign-in actions remain intentionally disabled with "coming soon" copy to prevent accidental scope confusion.
+- Auth page widget tests now verify that social sign-in placeholders are visible but disabled and that the reports tab is visual copy, not a navigation action.
 - Next approved auth increment should focus on social sign-in implementation or full recovery UX hardening (deep links/manual QA) with focused tests.
 
 ### Evolve i18n from static PT-BR catalogs to scalable localization pipeline
