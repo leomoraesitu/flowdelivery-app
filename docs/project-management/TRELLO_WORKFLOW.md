@@ -102,6 +102,14 @@ Use the exact Theme Guard Checklist below for any card that introduces or change
 
 Markdown checklist items inside `desc` are useful for human reading, but they are not enough for automation. Any JSON card that needs real Trello checklists must also declare a `checklists` array.
 
+When creating or updating a real Trello card through MCP/API:
+
+- create the card body first;
+- create one real Trello checklist for every object in `checklists`;
+- create one real Trello checklist item for every `checkItems[]` entry;
+- validate the result with `trello_get_card_checklists`;
+- do not leave duplicated `- [ ]` checklist items in `desc` after real checklists exist.
+
 Use this structure:
 
 ```json
@@ -203,6 +211,7 @@ Automation rules:
 - `checkItems[].state` must be `incomplete` or `complete`.
 - `checkItems[].pos` is 1-based and preserves item order.
 - Supported generated checklist names are `Scope`, `Acceptance Criteria`, `Dependencies`, `Checklist`, `Features` and `Possibilities`.
+- Real Trello card creation is incomplete until checklist parity is verified with `trello_get_card_checklists`.
 
 ---
 

@@ -52,7 +52,7 @@ Notes:
 ### Evolve i18n from static PT-BR catalogs to scalable localization pipeline
 
 Status:
-Monitoring
+Reduced / Monitoring
 
 Impact:
 Low
@@ -62,6 +62,7 @@ Notes:
 - Generated access uses `AppLocalizations` from `lib/l10n/generated/app_localizations.dart`.
 - Presentation maps auth failure codes to localized copy; data and domain stay localization-neutral.
 - The repo now includes a guard test that blocks hardcoded user-facing copy in presentation and route files.
+- The repo now includes `test/app/l10n/arb_catalog_parity_test.dart` to validate ARB locale declarations, string-key parity, template descriptions, and orphan metadata.
 - Ensure future features add copy through ARB files before adding UI code.
 
 ### Continue Theme Guard normalization beyond auth slice
