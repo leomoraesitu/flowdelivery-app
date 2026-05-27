@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 
 class AuthViewModel extends ChangeNotifier {
   AuthViewModel({required AuthRepository authRepository})
-      : _authRepository = authRepository;
+    : _authRepository = authRepository;
 
   final AuthRepository _authRepository;
 
@@ -48,8 +48,32 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   Future<void> signOut() async {
-    await _authRepository.signOut();
-    _setState(const AuthState.unauthenticated());
+    _setState(
+      _state.copyWith(
+        signOutStatus: SignOutStatus.loading,
+        signOutFailure: null,
+      ),
+    );
+
+    try {
+      await _authRepository.signOut();
+      _setState(
+        _state.copyWith(
+          status: AuthStatus.unauthenticated,
+          user: null,
+          failure: null,
+          signOutStatus: SignOutStatus.success,
+          signOutFailure: null,
+        ),
+      );
+    } on AuthFailure catch (error) {
+      _setState(
+        _state.copyWith(
+          signOutStatus: SignOutStatus.failure,
+          signOutFailure: error,
+        ),
+      );
+    }
   }
 
   Future<void> sendPasswordRecoveryEmail({required String email}) async {
@@ -78,11 +102,46 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
+  Future<void> updatePassword({required String password}) async {
+    _setState(
+      _state.copyWith(
+        passwordResetStatus: PasswordResetStatus.loading,
+        passwordResetFailure: null,
+      ),
+    );
+
+    try {
+      await _authRepository.updatePassword(password: password);
+      _setState(
+        _state.copyWith(
+          passwordResetStatus: PasswordResetStatus.success,
+          passwordResetFailure: null,
+        ),
+      );
+    } on AuthFailure catch (error) {
+      _setState(
+        _state.copyWith(
+          passwordResetStatus: PasswordResetStatus.failure,
+          passwordResetFailure: error,
+        ),
+      );
+    }
+  }
+
   void resetPasswordRecoveryState() {
     _setState(
       _state.copyWith(
         passwordRecoveryStatus: PasswordRecoveryStatus.idle,
         passwordRecoveryFailure: null,
+      ),
+    );
+  }
+
+  void resetPasswordResetState() {
+    _setState(
+      _state.copyWith(
+        passwordResetStatus: PasswordResetStatus.idle,
+        passwordResetFailure: null,
       ),
     );
   }

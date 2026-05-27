@@ -1,10 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRemoteUser {
-  const AuthRemoteUser({
-    required this.id,
-    required this.email,
-  });
+  const AuthRemoteUser({required this.id, required this.email});
 
   final String id;
   final String email;
@@ -27,18 +24,22 @@ abstract interface class AuthRemoteDatasource {
     required String password,
   });
 
-  Future<void> sendPasswordRecoveryEmail({
-    required String email,
-  });
+  Future<void> sendPasswordRecoveryEmail({required String email});
+
+  Future<void> updatePassword({required String password});
 
   Future<void> signOut();
 }
 
 class SupabaseAuthRemoteDatasource implements AuthRemoteDatasource {
-  const SupabaseAuthRemoteDatasource({required SupabaseClient client})
-    : _client = client;
+  const SupabaseAuthRemoteDatasource({
+    required SupabaseClient client,
+    String? passwordRecoveryRedirectUrl,
+  }) : _client = client,
+       _passwordRecoveryRedirectUrl = passwordRecoveryRedirectUrl;
 
   final SupabaseClient _client;
+  final String? _passwordRecoveryRedirectUrl;
 
   @override
   Future<AuthRemoteUser> signInWithEmailAndPassword({
@@ -46,10 +47,7 @@ class SupabaseAuthRemoteDatasource implements AuthRemoteDatasource {
     required String password,
   }) async {
     return _authenticate(
-      () => _client.auth.signInWithPassword(
-        email: email,
-        password: password,
-      ),
+      () => _client.auth.signInWithPassword(email: email, password: password),
     );
   }
 
@@ -59,17 +57,26 @@ class SupabaseAuthRemoteDatasource implements AuthRemoteDatasource {
     required String password,
   }) async {
     return _authenticate(
-      () => _client.auth.signUp(
-        email: email,
-        password: password,
-      ),
+      () => _client.auth.signUp(email: email, password: password),
     );
   }
 
   @override
   Future<void> sendPasswordRecoveryEmail({required String email}) async {
     try {
-      await _client.auth.resetPasswordForEmail(email);
+      await _client.auth.resetPasswordForEmail(
+        email,
+        redirectTo: _passwordRecoveryRedirectUrl,
+      );
+    } on AuthException catch (error) {
+      throw AuthRemoteException(message: error.message);
+    }
+  }
+
+  @override
+  Future<void> updatePassword({required String password}) async {
+    try {
+      await _client.auth.updateUser(UserAttributes(password: password));
     } on AuthException catch (error) {
       throw AuthRemoteException(message: error.message);
     }

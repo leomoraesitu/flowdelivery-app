@@ -5,6 +5,7 @@ import 'package:flowdelivery_app/app/routes/app_routes.dart';
 import 'package:flowdelivery_app/features/auth/domain/entities/auth_user.dart';
 import 'package:flowdelivery_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/forgot_password_page.dart';
+import 'package:flowdelivery_app/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/viewmodels/auth_view_model.dart';
@@ -45,6 +46,9 @@ class _FakeAuthRepository implements AuthRepository {
 
   @override
   Future<void> sendPasswordRecoveryEmail({required String email}) async {}
+
+  @override
+  Future<void> updatePassword({required String password}) async {}
 }
 
 void main() {
@@ -87,14 +91,92 @@ void main() {
     expect(find.byType(ForgotPasswordPage), findsOneWidget);
   });
 
+  testWidgets('allows unauthenticated users to reach reset-password route', (
+    tester,
+  ) async {
+    late GoRouter router;
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(_FakeAuthRepository()),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            router = ref.watch(appRouterProvider);
+            return MaterialApp.router(
+              routerConfig: router,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
+        ),
+      ),
+    );
+
+    router.go(AppRoutes.resetPasswordPath);
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, AppRoutes.resetPasswordPath);
+    expect(find.byType(ResetPasswordPage), findsOneWidget);
+  });
+
+  testWidgets('keeps authenticated recovery sessions on reset-password route', (
+    tester,
+  ) async {
+    late GoRouter router;
+    final fakeRepository = _FakeAuthRepository();
+    final authViewModel = AuthViewModel(authRepository: fakeRepository);
+
+    await authViewModel.signInWithEmailAndPassword(
+      email: 'recover@example.com',
+      password: 'password123',
+    );
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(fakeRepository),
+          authViewModelProvider.overrideWith((ref) => authViewModel),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            router = ref.watch(appRouterProvider);
+            return MaterialApp.router(
+              routerConfig: router,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
+        ),
+      ),
+    );
+
+    router.go(AppRoutes.resetPasswordPath);
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, AppRoutes.resetPasswordPath);
+    expect(find.byType(ResetPasswordPage), findsOneWidget);
+  });
+
   testWidgets('redirects authenticated users away from auth routes', (
     tester,
   ) async {
     late GoRouter router;
     final fakeRepository = _FakeAuthRepository();
-    final authViewModel = AuthViewModel(
-      authRepository: fakeRepository,
-    );
+    final authViewModel = AuthViewModel(authRepository: fakeRepository);
 
     await authViewModel.signInWithEmailAndPassword(
       email: 'user@example.com',
@@ -137,13 +219,13 @@ void main() {
     expect(router.state.uri.path, AppRoutes.homePath);
   });
 
-  testWidgets('keeps current route while auth state is loading', (tester) async {
+  testWidgets('keeps current route while auth state is loading', (
+    tester,
+  ) async {
     late GoRouter router;
     final pendingSignIn = Completer<AuthUser>();
     final fakeRepository = _FakeAuthRepository(pendingSignIn: pendingSignIn);
-    final authViewModel = AuthViewModel(
-      authRepository: fakeRepository,
-    );
+    final authViewModel = AuthViewModel(authRepository: fakeRepository);
 
     unawaited(
       authViewModel.signInWithEmailAndPassword(

@@ -53,6 +53,22 @@ Notes:
 - Auth page widget tests now verify that social sign-in placeholders are visible but disabled and that the reports tab is visual copy, not a navigation action.
 - Next approved auth increment should focus on social sign-in implementation or full recovery UX hardening (deep links/manual QA) with focused tests.
 
+### Complete password recovery reset flow
+
+Status:
+Resolved / Monitoring
+
+Impact:
+Medium
+
+Notes:
+- Current implementation sends the Supabase recovery email and shows request feedback.
+- Reset-password route, new-password UI, ViewModel reset state, repository/datasource password update support, ARB copy, and focused automated tests are implemented.
+- Supabase password update calls remain in the datasource layer and routing policy remains in `lib/app/routes`.
+- Supabase Auth URL configuration was applied for local reset redirects.
+- Manual QA with a real Supabase recovery link validated that the web build lands on `/reset-password` and renders the reset-password UI.
+- Remaining monitoring is limited to inbox/email-provider deliverability in non-local environments.
+
 ### Evolve i18n from static PT-BR catalogs to scalable localization pipeline
 
 Status:
@@ -69,6 +85,7 @@ Notes:
 - `test/app/l10n/arb_catalog_parity_test.dart` validates ARB locale declarations, string-key parity, template descriptions, orphan metadata, template placeholder metadata, and translated placeholder parity.
 - `test/app/l10n/generated_localizations_freshness_test.dart` validates that template ARB keys are exposed by generated `AppLocalizations` accessors.
 - Ensure future features add copy through ARB files before adding UI code, then run hardcoded-copy, ARB parity, and generated freshness guards.
+- Forgot-password stale placeholder/approval messaging drift was corrected in PT, PT-BR, and EN catalogs and validated with focused auth + l10n guard tests (19 tests passed).
 - External translation platform integration remains deferred until the MVP UI surface grows enough to justify it.
 
 ### Continue Theme Guard normalization beyond auth slice
@@ -85,8 +102,10 @@ Notes:
 - Recommended next slice selection order (when these modules exist): `home` -> `feed` -> `cart`.
 - Follow-up audit (2026-05-22): these feature modules were not present in the workspace.
 - Follow-up audit (2026-05-26): `home`, `feed`, and `cart` still do not exist under `lib/features` or `test/features`.
+- Follow-up audit (2026-05-27): `home`, `feed`, and `cart` still do not exist under `lib/features` or `test/features`.
 - The visual hardcoded guard scans all feature presentation files under `lib/features/**/presentation/**/*.dart`, so future slices are covered as soon as they add presentation code.
 - Post-review cleanup removed remaining non-semantic auth presentation usages (`Colors.white` and `shadow.withAlpha(30)`) in favor of `ColorScheme` semantic roles.
+- Validation follow-up (2026-05-27): `flutter test test/app/theme/no_hardcoded_visual_values_test.dart` passed.
 - Keep incremental refactors per slice and validate with focused tests plus `flutter analyze` on touched files.
 
 ### Reduce manual synchronization between docs and Trello artifacts
@@ -105,6 +124,7 @@ Notes:
 - `docs/project-management/TRELLO_WORKFLOW.md` now requires a real Trello parity check with `trello_get_card_checklists` when a card is created, updated, moved to a done-equivalent list, or used as delivery evidence.
 - Checklist item state changes should use `trello_update_checklist_item_state` only after local implementation evidence exists.
 - Keep Trello board updates explicit, scoped to intended cards, and documented with a short card comment when they are used to close work.
+- Follow-up validation (2026-05-27): `flutter test test/app/project_management/trello_guard_checklists_test.dart` passed (2 tests).
 - This debt remains `Reduced / Monitoring` because the repo can guard versioned artifacts, but cannot prove external Trello state without MCP/API access and human-supervised validation.
 
 ## Rules

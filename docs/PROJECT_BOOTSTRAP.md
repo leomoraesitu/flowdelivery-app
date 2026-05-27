@@ -463,6 +463,7 @@ Implemented:
 - Supabase client bootstrap from app-level Dart defines
 - Email/password sign-in and sign-up through the auth datasource
 - Password recovery request flow
+- Password reset screen and password update support for an established recovery session
 - Repository and datasource boundaries that keep Supabase out of widgets and ViewModels
 - Unconfigured auth repository fallback when Supabase defines are missing
 
@@ -513,11 +514,12 @@ notifications
 
 - Email/password
 - Password recovery request
+- Password reset submission after the Supabase recovery session is established
 
 ## Planned Auth Support
 
+- Manual QA and environment-specific validation for recovery redirect/deep-link configuration
 - Google OAuth
-- Reset-password deep-link completion screen
 - Profile synchronization
 - Role-based access
 

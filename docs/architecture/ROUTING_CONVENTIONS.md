@@ -71,7 +71,12 @@ Current initial routes:
 /
 /sign-in
 /sign-up
+/forgot-password
+/reset-password
 ```
+
+The reset-password route is part of the password recovery completion feature. It is an auth/recovery route, not a protected app destination, and unauthenticated users can reach it while completing recovery.
+On web, password recovery redirects use path URLs so Supabase fragments do not conflict with hash-based route parsing.
 
 Expected protected routes as the MVP grows:
 
@@ -140,12 +145,15 @@ Implemented foundation:
 4. `lib/app/routes/app_router.dart` owns the initial `GoRouter`.
 5. `lib/app/app.dart` uses `MaterialApp.router`.
 6. Auth redirects read auth state through the Riverpod/ViewModel flow.
+7. `/reset-password` is registered as an auth/recovery route for password recovery completion.
 
 Future expansion:
 
 1. Add additional protected destinations only when their feature slices exist.
 2. Add shell navigation only after multiple protected top-level destinations
    exist.
+3. Validate platform-specific recovery redirects manually when adding new
+   deployed web domains or mobile deep-link schemes.
 
 ### Phase 1: Routing Dependency
 

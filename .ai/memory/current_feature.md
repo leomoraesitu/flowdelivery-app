@@ -2,15 +2,15 @@
 
 ## Feature
 
-[ARCH] Theme guard and UI/UX standardization
+[FEAT] Complete password recovery flow
 
 ## Status
 
-Scalable i18n pipeline guard hardening completed and validated
+Implementation validated
 
 ## Current Step
 
-I18n generated freshness and placeholder parity guards implemented, validated, and reconciled; awaiting commit
+Password update contracts, reset-password route, ViewModel state, reset UI, ARB copy, focused automated validation, Supabase redirect configuration, local web recovery-link QA, and end-day localization copy consistency fix completed.
 
 ## Completed
 
@@ -37,6 +37,18 @@ I18n generated freshness and placeholder parity guards implemented, validated, a
 - Generated localization freshness guard added in `test/app/l10n/generated_localizations_freshness_test.dart`
 - ARB catalog parity guard hardened to validate template placeholder metadata and translated placeholder parity
 - I18n guard validation passed for hardcoded-copy, ARB catalog parity, and generated localization freshness tests
+- Password recovery completion planning started for reset deep-link/session handling, reset-password route, new-password UI, Supabase password update, focused tests, and docs/Trello governance.
+- Password recovery implementation slice completed: repository/datasource `updatePassword`, ViewModel reset state, `/reset-password` route, reset UI validation/feedback, ARB copy, generated localization update, and focused automated tests.
+- Password recovery web redirect hardening completed: path URL strategy enabled, Supabase recovery requests now use explicit `/reset-password` redirect URLs, authenticated recovery sessions stay on the reset route, and real Supabase recovery-link QA validated the release web build renders the reset-password UI.
+- Non-local mailbox deliverability runbook added in `docs/setup/SUPABASE_SETUP.md` and `docs/qa/QA_STRATEGY.md` for recovery email validation with external providers.
+- Non-local mailbox deliverability runbook executed successfully with Outlook (Hotmail) QA inbox evidence: email arrival confirmed, recovery link target reached `http://localhost:3000/reset-password?...`, and password update completed with success feedback.
+- Trello governance parity validation re-executed with `flutter test test/app/project_management/trello_guard_checklists_test.dart` and remains green (2 tests passed).
+- Real Trello parity check executed via local `trello-desktop-mcp` for card `[DEBT] Evolve i18n pipeline guardrails` (`https://trello.com/c/BS6n5o0w`): checklists `Scope` (5/5), `Acceptance Criteria` (5/5), and `Validation` (4/4) are complete.
+- Trello evidence comment added to the same card with the parity-check summary and local guard validation.
+- Auth hardening post-review Tasks 1-4 completed: sign-out failure contract/state handling, explicit environment-based recovery redirect origin, granular reset-page selectors to reduce rebuild scope, and focused sign-out failure unit coverage.
+- Auth provider migration strategy approved as phased rollout in `.ai/plans/2026-05-26-auth-hardening-post-review-plan.md` (parallel introduction, slice cutover, legacy removal) with validation gates and rollback criteria.
+- Forgot-password copy consistency aligned with current implementation in `lib/l10n/app_pt.arb`, `lib/l10n/app_pt_BR.arb`, and `lib/l10n/app_en.arb`, with generated localizations refreshed.
+- End-day focused validation after localization copy alignment passed: `test/features/auth/presentation/auth_pages_test.dart`, `test/app/l10n/arb_catalog_parity_test.dart`, and `test/app/l10n/generated_localizations_freshness_test.dart` (19 tests passed).
 
 - architecture context
 - Riverpod decision
@@ -83,14 +95,13 @@ I18n generated freshness and placeholder parity guards implemented, validated, a
 
 ## Pending
 
-- Commit current validated i18n pipeline guardrail changes
-- Decide the next approved implementation slice: move to the next product feature or continue governance hardening
 - Keep real Trello checklist item states manually aligned until the MCP supports checklist item state updates
 
 ## Notes
 
-Do not implement more than the next approved task from `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`.
+Do not implement more than the next approved task from `.ai/plans/2026-05-26-password-recovery-completion-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
+After password-recovery closure, execute the next approved governance task from `.ai/plans/2026-05-26-trello-sync-debt-reduction-plan.md`.
 Task 10 validation completed with Dart MCP:
 - `analyze_files`: No errors.
 - `run_tests`: All tests passed.
@@ -109,6 +120,8 @@ Theme Guard/UI-UX standardization validation:
 Post-review corrective validation:
 - `flutter test test/app/routes/app_router_test.dart test/features/auth/presentation/auth_view_model_test.dart test/features/auth/presentation/auth_pages_test.dart test/features/auth/presentation/auth_providers_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: passed.
 - `flutter analyze` on updated auth presentation/viewmodel/router test files: no issues.
+Auth hardening post-review consolidated validation:
+- `flutter test test/features/auth/presentation/auth_view_model_test.dart test/features/auth/presentation/auth_pages_test.dart test/app/routes/auth_recovery_redirect_test.dart test/app/routes/app_router_test.dart`: 31 tests passed.
 Trello/docs parity validation:
 - `test/app/project_management/trello_guard_checklists_test.dart`: added and committed in `a3c2291`.
 ARB catalog parity validation:

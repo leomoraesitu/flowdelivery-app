@@ -55,6 +55,7 @@ Sprint 1 focuses on authentication foundation only:
 - Post-completion sign-in screen UI/UX parity update applied to match `docs/ux/prototypes/auth-screen.png`.
 - Shared auth UI shell extracted to reduce duplication between sign-in and sign-up pages.
 - Forgot-password route and page were connected to a functional password recovery request flow.
+- Reset-password route, UI, ViewModel state, repository contract, and Supabase password update support were added for established recovery sessions.
 - Social login placeholders remain explicitly disabled with "coming soon" microcopy.
 - Auth flow UI was translated to PT-BR and locale was configured at app level.
 - Authentication copy and user-safe auth errors were centralized in app-level i18n files.
@@ -73,6 +74,7 @@ Sprint 1 focuses on authentication foundation only:
 - Router tests include redirect coverage for unauthenticated, authenticated, and loading auth states.
 - Recovery flow tests added for repository, viewmodel, and forgot-password page success/error feedback.
 - Recovery flow tests include stale-feedback reset behavior when revisiting forgot-password screen.
+- Reset-password tests cover repository password update mapping, ViewModel reset lifecycle, auth guard routing, widget validation, success, and failure feedback.
 - Localization and i18n refactor changes were validated with focused auth test suites.
 - User-facing strings now flow through Flutter gen-l10n ARB files and generated `AppLocalizations`.
 - The localization guard test blocks hardcoded copy in presentation and route files, including `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, `semanticLabel`, `InputDecoration.errorText`, `TextSpan.text`, and `SnackBarAction`.
@@ -99,6 +101,15 @@ Sprint 1 focuses on authentication foundation only:
 - A fifth stabilization slice centralized auth copy into Flutter gen-l10n ARB files and removed the duplicate static auth copy catalog.
 - A sixth stabilization slice expanded localization discipline with a guard test that blocks hardcoded user-facing copy in presentation and route files.
 - A seventh stabilization slice applied post-review corrective fixes for router/provider coupling, password-recovery lifecycle consistency, and semantic theme usage cleanup in auth presentation.
+
+### Password Recovery Completion
+
+- The implemented Sprint 1 recovery scope currently sends the Supabase recovery email and shows request feedback.
+- The password recovery completion slice added reset-password route handling, new-password UI, ViewModel reset state, repository/datasource password update support, and focused automated tests.
+- Supabase password update calls remain isolated in the datasource layer.
+- Recovery redirect configuration was validated with a real Supabase recovery link against the local release web build; the link lands on `/reset-password` and renders the reset-password UI.
+- Inbox/email-provider deliverability remains environment-specific and should be validated when a non-local QA mailbox is selected.
+- Social login, profile synchronization, role-based access, realtime, Edge Functions, and the full authenticated app shell remain out of scope.
 
 ---
 
@@ -190,7 +201,7 @@ Sprint 1 focuses on authentication foundation only:
 
 ## Out of Scope
 
-- Password reset confirmation/deep-link token handoff screens.
+- Platform-specific production deep-link delivery beyond the local web recovery redirect.
 - Social login.
 - Profile table synchronization.
 - Role-based access.

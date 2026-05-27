@@ -1,5 +1,6 @@
 import 'package:flowdelivery_app/app/routes/app_routes.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/forgot_password_page.dart';
+import 'package:flowdelivery_app/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
@@ -36,19 +37,28 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         name: AppRoutes.forgotPasswordName,
         builder: (context, state) => const ForgotPasswordPage(),
       ),
+      GoRoute(
+        path: AppRoutes.resetPasswordPath,
+        name: AppRoutes.resetPasswordName,
+        builder: (context, state) => const ResetPasswordPage(),
+      ),
     ],
     redirect: (context, state) {
       final authStatus = authViewModel.state.status;
       final currentPath = state.uri.path;
-      final isInAuthRoute = currentPath == AppRoutes.signInPath ||
+      final isInAuthRoute =
+          currentPath == AppRoutes.signInPath ||
           currentPath == AppRoutes.signUpPath ||
-          currentPath == AppRoutes.forgotPasswordPath;
+          currentPath == AppRoutes.forgotPasswordPath ||
+          currentPath == AppRoutes.resetPasswordPath;
 
       if (authStatus == AuthStatus.loading) {
         return null;
       }
 
-      if (authStatus == AuthStatus.authenticated && isInAuthRoute) {
+      if (authStatus == AuthStatus.authenticated &&
+          isInAuthRoute &&
+          currentPath != AppRoutes.resetPasswordPath) {
         return AppRoutes.homePath;
       }
 
@@ -68,10 +78,6 @@ class _HomePlaceholderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    return Scaffold(
-      body: Center(
-        child: Text(l10n.appHomePlaceholder),
-      ),
-    );
+    return Scaffold(body: Center(child: Text(l10n.appHomePlaceholder)));
   }
 }

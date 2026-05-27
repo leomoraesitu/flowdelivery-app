@@ -27,5 +27,10 @@ class UnconfiguredAuthRepository implements AuthRepository {
   }
 
   @override
+  Future<void> updatePassword({required String password}) async {
+    throw const AuthFailure(code: AuthFailureCode.unconfiguredEnvironment);
+  }
+
+  @override
   Future<void> signOut() async {}
 }

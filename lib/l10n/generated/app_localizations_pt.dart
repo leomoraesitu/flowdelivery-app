@@ -54,7 +54,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get authForgotPasswordSubtitle =>
-      'Esta primeira versao adiciona o ponto de entrada de recuperacao enquanto o fluxo completo ainda aguarda aprovacao.';
+      'Solicite um link de recuperacao para redefinir sua senha no e-mail informado.';
 
   @override
   String get authEmailLabel => 'E-mail';
@@ -100,7 +100,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get authForgotPasswordPlaceholderInfo =>
-      'Quando o fluxo real de recuperacao for aprovado, esta tela chamara a camada de autenticacao em vez de atuar apenas como placeholder visual.';
+      'Se o ambiente estiver configurado corretamente, enviaremos o link de recuperacao para o e-mail informado.';
 
   @override
   String get authForgotPasswordEmptyEmailError =>
@@ -113,6 +113,40 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get authForgotPasswordDefaultBanner =>
       'A recuperacao de senha esta conectada na camada de autenticacao. Use um ambiente configurado valido para enviar o e-mail.';
+
+  @override
+  String get authResetPasswordTitle => 'Crie uma nova senha';
+
+  @override
+  String get authResetPasswordSubtitle =>
+      'Defina uma nova senha depois de abrir o link de recuperacao enviado para o seu e-mail.';
+
+  @override
+  String get authResetPasswordConfirmLabel => 'Confirmar senha';
+
+  @override
+  String get authResetPasswordPasswordHint => 'Digite a nova senha';
+
+  @override
+  String get authResetPasswordConfirmHint => 'Repita a nova senha';
+
+  @override
+  String get authResetPasswordPrimaryAction => 'Atualizar senha';
+
+  @override
+  String get authResetPasswordEmptyPasswordError =>
+      'Informe a nova senha para continuar.';
+
+  @override
+  String get authResetPasswordMismatchError =>
+      'As senhas informadas nao conferem.';
+
+  @override
+  String get authResetPasswordSuccess =>
+      'Senha atualizada com sucesso. Volte para entrar com a nova senha.';
+
+  @override
+  String get authResetPasswordBackAction => 'Voltar para entrar';
 
   @override
   String get authSignInLegalLeading =>
@@ -204,7 +238,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get authForgotPasswordSubtitle =>
-      'Esta primeira versao adiciona o ponto de entrada de recuperacao enquanto o fluxo completo ainda aguarda aprovacao.';
+      'Solicite um link de recuperacao para redefinir sua senha no e-mail informado.';
 
   @override
   String get authEmailLabel => 'E-mail';
@@ -250,7 +284,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get authForgotPasswordPlaceholderInfo =>
-      'Quando o fluxo real de recuperacao for aprovado, esta tela chamara a camada de autenticacao em vez de atuar apenas como placeholder visual.';
+      'Se o ambiente estiver configurado corretamente, enviaremos o link de recuperacao para o e-mail informado.';
 
   @override
   String get authForgotPasswordEmptyEmailError =>
@@ -263,6 +297,40 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get authForgotPasswordDefaultBanner =>
       'A recuperacao de senha esta conectada na camada de autenticacao. Use um ambiente configurado valido para enviar o e-mail.';
+
+  @override
+  String get authResetPasswordTitle => 'Crie uma nova senha';
+
+  @override
+  String get authResetPasswordSubtitle =>
+      'Defina uma nova senha depois de abrir o link de recuperacao enviado para o seu e-mail.';
+
+  @override
+  String get authResetPasswordConfirmLabel => 'Confirmar senha';
+
+  @override
+  String get authResetPasswordPasswordHint => 'Digite a nova senha';
+
+  @override
+  String get authResetPasswordConfirmHint => 'Repita a nova senha';
+
+  @override
+  String get authResetPasswordPrimaryAction => 'Atualizar senha';
+
+  @override
+  String get authResetPasswordEmptyPasswordError =>
+      'Informe a nova senha para continuar.';
+
+  @override
+  String get authResetPasswordMismatchError =>
+      'As senhas informadas nao conferem.';
+
+  @override
+  String get authResetPasswordSuccess =>
+      'Senha atualizada com sucesso. Volte para entrar com a nova senha.';
+
+  @override
+  String get authResetPasswordBackAction => 'Voltar para entrar';
 
   @override
   String get authSignInLegalLeading =>

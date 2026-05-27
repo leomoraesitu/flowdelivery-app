@@ -174,7 +174,7 @@ abstract class AppLocalizations {
   /// Subtitle shown on the forgot password page.
   ///
   /// In pt_BR, this message translates to:
-  /// **'Esta primeira versao adiciona o ponto de entrada de recuperacao enquanto o fluxo completo ainda aguarda aprovacao.'**
+  /// **'Solicite um link de recuperacao para redefinir sua senha no e-mail informado.'**
   String get authForgotPasswordSubtitle;
 
   /// Label for auth email fields.
@@ -255,10 +255,10 @@ abstract class AppLocalizations {
   /// **'Enviaremos um link de recuperacao para este e-mail quando estiver disponivel no seu ambiente.'**
   String get authForgotPasswordHelper;
 
-  /// Informational copy about the staged rollout of the recovery flow.
+  /// Informational copy about recovery-link delivery when environment configuration is valid.
   ///
   /// In pt_BR, this message translates to:
-  /// **'Quando o fluxo real de recuperacao for aprovado, esta tela chamara a camada de autenticacao em vez de atuar apenas como placeholder visual.'**
+  /// **'Se o ambiente estiver configurado corretamente, enviaremos o link de recuperacao para o e-mail informado.'**
   String get authForgotPasswordPlaceholderInfo;
 
   /// Validation message shown when forgot password is submitted without an email.
@@ -278,6 +278,66 @@ abstract class AppLocalizations {
   /// In pt_BR, this message translates to:
   /// **'A recuperacao de senha esta conectada na camada de autenticacao. Use um ambiente configurado valido para enviar o e-mail.'**
   String get authForgotPasswordDefaultBanner;
+
+  /// Title shown on the reset password page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Crie uma nova senha'**
+  String get authResetPasswordTitle;
+
+  /// Subtitle shown on the reset password page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Defina uma nova senha depois de abrir o link de recuperacao enviado para o seu e-mail.'**
+  String get authResetPasswordSubtitle;
+
+  /// Label for the reset password confirmation field.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Confirmar senha'**
+  String get authResetPasswordConfirmLabel;
+
+  /// Placeholder hint for the reset password field.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Digite a nova senha'**
+  String get authResetPasswordPasswordHint;
+
+  /// Placeholder hint for the reset password confirmation field.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Repita a nova senha'**
+  String get authResetPasswordConfirmHint;
+
+  /// Primary button label for reset password.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Atualizar senha'**
+  String get authResetPasswordPrimaryAction;
+
+  /// Validation message shown when reset password is submitted without a password.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Informe a nova senha para continuar.'**
+  String get authResetPasswordEmptyPasswordError;
+
+  /// Validation message shown when reset password and confirmation do not match.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'As senhas informadas nao conferem.'**
+  String get authResetPasswordMismatchError;
+
+  /// Success banner shown after resetting the password.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Senha atualizada com sucesso. Volte para entrar com a nova senha.'**
+  String get authResetPasswordSuccess;
+
+  /// Secondary navigation label to return to sign in from reset password.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Voltar para entrar'**
+  String get authResetPasswordBackAction;
 
   /// Leading legal text shown on sign in page.
   ///

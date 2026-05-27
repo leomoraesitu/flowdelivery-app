@@ -3,6 +3,7 @@ import 'package:flowdelivery_app/features/auth/domain/entities/auth_user.dart';
 import 'package:flowdelivery_app/features/auth/domain/failures/auth_failure.dart';
 import 'package:flowdelivery_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/forgot_password_page.dart';
+import 'package:flowdelivery_app/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
@@ -17,13 +18,18 @@ final _authPageTestTheme = AppTheme.light.copyWith(
 );
 
 class FakeAuthRepository implements AuthRepository {
-  FakeAuthRepository({this.failRecovery = false});
+  FakeAuthRepository({
+    this.failRecovery = false,
+    this.failPasswordUpdate = false,
+  });
 
   final bool failRecovery;
+  final bool failPasswordUpdate;
 
   String? lastSignInEmail;
   String? lastSignUpEmail;
   String? lastRecoveryEmail;
+  String? lastUpdatedPassword;
 
   @override
   Future<AuthUser> signInWithEmailAndPassword({
@@ -56,6 +62,18 @@ class FakeAuthRepository implements AuthRepository {
     }
 
     lastRecoveryEmail = email;
+  }
+
+  @override
+  Future<void> updatePassword({required String password}) async {
+    if (failPasswordUpdate) {
+      throw const AuthFailure(
+        code: AuthFailureCode.genericFailure,
+        fallbackMessage: 'Nao foi possivel atualizar a senha',
+      );
+    }
+
+    lastUpdatedPassword = password;
   }
 }
 
@@ -363,6 +381,107 @@ void main() {
         find.textContaining('Link de recuperacao solicitado'),
         findsNothing,
       );
+    });
+
+    testWidgets(
+      'reset password page validates password mismatch before submit',
+      (tester) async {
+        final fakeRepository = FakeAuthRepository();
+
+        await tester.pumpWidget(
+          _buildTestApp(
+            home: const ResetPasswordPage(),
+            fakeRepository: fakeRepository,
+          ),
+        );
+
+        await tester.enterText(
+          find.byKey(const Key('resetPasswordPasswordField')),
+          'new-password123',
+        );
+        await tester.enterText(
+          find.byKey(const Key('resetPasswordConfirmPasswordField')),
+          'different-password',
+        );
+        await tester.ensureVisible(
+          find.byKey(const Key('resetPasswordPrimaryButton')),
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(find.byKey(const Key('resetPasswordPrimaryButton')));
+        await tester.pumpAndSettle();
+
+        expect(fakeRepository.lastUpdatedPassword, isNull);
+        expect(
+          find.byKey(const Key('resetPasswordFeedbackBanner')),
+          findsOneWidget,
+        );
+      },
+    );
+
+    testWidgets('reset password page submits matching password', (
+      tester,
+    ) async {
+      final fakeRepository = FakeAuthRepository();
+
+      await tester.pumpWidget(
+        _buildTestApp(
+          home: const ResetPasswordPage(),
+          fakeRepository: fakeRepository,
+        ),
+      );
+
+      await tester.enterText(
+        find.byKey(const Key('resetPasswordPasswordField')),
+        'new-password123',
+      );
+      await tester.enterText(
+        find.byKey(const Key('resetPasswordConfirmPasswordField')),
+        'new-password123',
+      );
+      await tester.ensureVisible(
+        find.byKey(const Key('resetPasswordPrimaryButton')),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('resetPasswordPrimaryButton')));
+      await tester.pumpAndSettle();
+
+      expect(fakeRepository.lastUpdatedPassword, 'new-password123');
+      expect(
+        find.byKey(const Key('resetPasswordFeedbackBanner')),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('reset password page renders failure banner', (tester) async {
+      final fakeRepository = FakeAuthRepository(failPasswordUpdate: true);
+
+      await tester.pumpWidget(
+        _buildTestApp(
+          home: const ResetPasswordPage(),
+          fakeRepository: fakeRepository,
+        ),
+      );
+
+      await tester.enterText(
+        find.byKey(const Key('resetPasswordPasswordField')),
+        'new-password123',
+      );
+      await tester.enterText(
+        find.byKey(const Key('resetPasswordConfirmPasswordField')),
+        'new-password123',
+      );
+      await tester.ensureVisible(
+        find.byKey(const Key('resetPasswordPrimaryButton')),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('resetPasswordPrimaryButton')));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.byKey(const Key('resetPasswordFeedbackBanner')),
+        findsOneWidget,
+      );
+      expect(find.text('Nao foi possivel atualizar a senha'), findsOneWidget);
     });
   });
 }

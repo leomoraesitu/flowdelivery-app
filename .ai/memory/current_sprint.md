@@ -20,6 +20,7 @@ Active.
 - documentation and memory reconciliation after auth stabilization
 - theme guard enforcement and UI/UX standardization planning
 - scalable i18n pipeline guardrails for future UI feature growth
+- password recovery completion planning
 
 ## Current Priorities
 
@@ -48,4 +49,10 @@ Active.
 - Visual hardcoded guard test now strict (no baseline exception) and green.
 - Post-review corrective pass completed: router coupling and forgot-password lifecycle consistency fixed with focused coverage.
 - I18n pipeline guardrails now include hardcoded-copy, ARB catalog parity, placeholder parity, and generated localization freshness validation.
-- Next pending step: Commit the validated i18n pipeline guardrail changes or select the next product feature slice.
+- Password recovery completion is now the selected next feature planning slice: reset deep-link/session handling, reset-password route, new-password UI, Supabase password update, focused tests, and Supabase redirect manual QA notes.
+- Password recovery completion automated slice implemented: reset-password route, new-password UI, ViewModel reset state, Supabase password update through datasource, ARB copy, and focused tests.
+- Next approved slice decision: continue governance hardening with `.ai/plans/2026-05-26-trello-sync-debt-reduction-plan.md` before starting the next product feature slice.
+- Recovery deliverability execution remains pending external QA inbox/provider availability.
+- Auth hardening post-review implementation tasks completed (`.ai/plans/2026-05-26-auth-hardening-post-review-plan.md` Tasks 1-4) with focused test validation.
+- Phased migration strategy from legacy provider usage to non-legacy Riverpod pattern documented with gates and rollback criteria (Task 5).
+- Auth hardening consolidated focused suite executed and green (31 tests across auth ViewModel/pages/recovery redirect/router).

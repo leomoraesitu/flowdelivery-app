@@ -54,7 +54,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authForgotPasswordSubtitle =>
-      'This first version adds the recovery entry point while the complete flow still awaits approval.';
+      'Request a recovery link to reset your password for the provided email.';
 
   @override
   String get authEmailLabel => 'Email';
@@ -100,7 +100,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authForgotPasswordPlaceholderInfo =>
-      'When the real recovery flow is approved, this page will call the authentication layer instead of acting only as a visual placeholder.';
+      'If your environment is configured correctly, we will send the recovery link to the provided email.';
 
   @override
   String get authForgotPasswordEmptyEmailError =>
@@ -113,6 +113,39 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get authForgotPasswordDefaultBanner =>
       'Password recovery is connected to the authentication layer. Use a valid configured environment to send the email.';
+
+  @override
+  String get authResetPasswordTitle => 'Create a new password';
+
+  @override
+  String get authResetPasswordSubtitle =>
+      'Set a new password after opening the recovery link sent to your email.';
+
+  @override
+  String get authResetPasswordConfirmLabel => 'Confirm password';
+
+  @override
+  String get authResetPasswordPasswordHint => 'Enter the new password';
+
+  @override
+  String get authResetPasswordConfirmHint => 'Repeat the new password';
+
+  @override
+  String get authResetPasswordPrimaryAction => 'Update password';
+
+  @override
+  String get authResetPasswordEmptyPasswordError =>
+      'Enter the new password to continue.';
+
+  @override
+  String get authResetPasswordMismatchError => 'The passwords do not match.';
+
+  @override
+  String get authResetPasswordSuccess =>
+      'Password updated successfully. Go back to sign in with the new password.';
+
+  @override
+  String get authResetPasswordBackAction => 'Back to sign in';
 
   @override
   String get authSignInLegalLeading => 'By continuing, you agree to our ';

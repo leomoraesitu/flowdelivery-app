@@ -40,6 +40,8 @@ Manual QA should validate:
 - empty states
 - error states
 - responsive behavior when applicable
+- external-provider behavior when applicable (for auth recovery, include
+	inbox/email-provider deliverability on a non-local QA mailbox)
 
 ## Evidence
 

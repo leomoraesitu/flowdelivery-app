@@ -48,7 +48,7 @@
   "@authForgotPasswordTitle": {
     "description": "Title shown on the forgot password page."
   },
-  "authForgotPasswordSubtitle": "Esta primeira versao adiciona o ponto de entrada de recuperacao enquanto o fluxo completo ainda aguarda aprovacao.",
+  "authForgotPasswordSubtitle": "Solicite um link de recuperacao para redefinir sua senha no e-mail informado.",
   "@authForgotPasswordSubtitle": {
     "description": "Subtitle shown on the forgot password page."
   },
@@ -104,9 +104,9 @@
   "@authForgotPasswordHelper": {
     "description": "Helper text below the forgot password email field."
   },
-  "authForgotPasswordPlaceholderInfo": "Quando o fluxo real de recuperacao for aprovado, esta tela chamara a camada de autenticacao em vez de atuar apenas como placeholder visual.",
+  "authForgotPasswordPlaceholderInfo": "Se o ambiente estiver configurado corretamente, enviaremos o link de recuperacao para o e-mail informado.",
   "@authForgotPasswordPlaceholderInfo": {
-    "description": "Informational copy about the staged rollout of the recovery flow."
+    "description": "Informational copy about recovery-link delivery when environment configuration is valid."
   },
   "authForgotPasswordEmptyEmailError": "Informe seu e-mail para solicitar o link de recuperacao.",
   "@authForgotPasswordEmptyEmailError": {
@@ -119,6 +119,46 @@
   "authForgotPasswordDefaultBanner": "A recuperacao de senha esta conectada na camada de autenticacao. Use um ambiente configurado valido para enviar o e-mail.",
   "@authForgotPasswordDefaultBanner": {
     "description": "Default informational banner shown on forgot password page."
+  },
+  "authResetPasswordTitle": "Crie uma nova senha",
+  "@authResetPasswordTitle": {
+    "description": "Title shown on the reset password page."
+  },
+  "authResetPasswordSubtitle": "Defina uma nova senha depois de abrir o link de recuperacao enviado para o seu e-mail.",
+  "@authResetPasswordSubtitle": {
+    "description": "Subtitle shown on the reset password page."
+  },
+  "authResetPasswordConfirmLabel": "Confirmar senha",
+  "@authResetPasswordConfirmLabel": {
+    "description": "Label for the reset password confirmation field."
+  },
+  "authResetPasswordPasswordHint": "Digite a nova senha",
+  "@authResetPasswordPasswordHint": {
+    "description": "Placeholder hint for the reset password field."
+  },
+  "authResetPasswordConfirmHint": "Repita a nova senha",
+  "@authResetPasswordConfirmHint": {
+    "description": "Placeholder hint for the reset password confirmation field."
+  },
+  "authResetPasswordPrimaryAction": "Atualizar senha",
+  "@authResetPasswordPrimaryAction": {
+    "description": "Primary button label for reset password."
+  },
+  "authResetPasswordEmptyPasswordError": "Informe a nova senha para continuar.",
+  "@authResetPasswordEmptyPasswordError": {
+    "description": "Validation message shown when reset password is submitted without a password."
+  },
+  "authResetPasswordMismatchError": "As senhas informadas nao conferem.",
+  "@authResetPasswordMismatchError": {
+    "description": "Validation message shown when reset password and confirmation do not match."
+  },
+  "authResetPasswordSuccess": "Senha atualizada com sucesso. Volte para entrar com a nova senha.",
+  "@authResetPasswordSuccess": {
+    "description": "Success banner shown after resetting the password."
+  },
+  "authResetPasswordBackAction": "Voltar para entrar",
+  "@authResetPasswordBackAction": {
+    "description": "Secondary navigation label to return to sign in from reset password."
   },
   "authSignInLegalLeading": "Ao continuar, voce concorda com nossos ",
   "@authSignInLegalLeading": {

@@ -6,6 +6,7 @@ void main() {
     test('exposes Supabase dart define values as strings', () {
       expect(AppEnvironment.supabaseUrl, isA<String>());
       expect(AppEnvironment.supabaseAnonKey, isA<String>());
+      expect(AppEnvironment.passwordRecoveryRedirectOrigin, isA<String>());
     });
 
     test('reports whether Supabase configuration is available', () {

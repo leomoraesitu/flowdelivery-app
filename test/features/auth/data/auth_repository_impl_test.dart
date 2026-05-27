@@ -4,13 +4,11 @@ import 'package:flowdelivery_app/features/auth/domain/failures/auth_failure.dart
 import 'package:flutter_test/flutter_test.dart';
 
 class FakeAuthRemoteDatasource implements AuthRemoteDatasource {
-  const FakeAuthRemoteDatasource({
-    this.shouldFail = false,
-    this.errorMessage,
-  });
+  FakeAuthRemoteDatasource({this.shouldFail = false, this.errorMessage});
 
   final bool shouldFail;
   final String? errorMessage;
+  String? lastUpdatedPassword;
 
   @override
   Future<AuthRemoteUser> signInWithEmailAndPassword({
@@ -18,9 +16,7 @@ class FakeAuthRemoteDatasource implements AuthRemoteDatasource {
     required String password,
   }) async {
     if (shouldFail) {
-      throw AuthRemoteException(
-        message: errorMessage ?? 'Invalid credentials',
-      );
+      throw AuthRemoteException(message: errorMessage ?? 'Invalid credentials');
     }
 
     return AuthRemoteUser(id: 'user-1', email: email);
@@ -43,9 +39,7 @@ class FakeAuthRemoteDatasource implements AuthRemoteDatasource {
   @override
   Future<void> signOut() async {
     if (shouldFail) {
-      throw AuthRemoteException(
-        message: errorMessage ?? 'Unable to sign out',
-      );
+      throw AuthRemoteException(message: errorMessage ?? 'Unable to sign out');
     }
   }
 
@@ -56,6 +50,17 @@ class FakeAuthRemoteDatasource implements AuthRemoteDatasource {
         message: errorMessage ?? 'Unable to send recovery email',
       );
     }
+  }
+
+  @override
+  Future<void> updatePassword({required String password}) async {
+    if (shouldFail) {
+      throw AuthRemoteException(
+        message: errorMessage ?? 'Unable to update password',
+      );
+    }
+
+    lastUpdatedPassword = password;
   }
 }
 
@@ -91,7 +96,7 @@ void main() {
 
     test('maps remote exception to auth failure', () async {
       final repository = AuthRepositoryImpl(
-        datasource: const FakeAuthRemoteDatasource(
+        datasource: FakeAuthRemoteDatasource(
           shouldFail: true,
           errorMessage: 'Invalid login credentials',
         ),
@@ -114,7 +119,7 @@ void main() {
 
     test('maps already registered error to user-safe PT-BR message', () async {
       final repository = AuthRepositoryImpl(
-        datasource: const FakeAuthRemoteDatasource(
+        datasource: FakeAuthRemoteDatasource(
           shouldFail: true,
           errorMessage: 'User already registered',
         ),
@@ -137,7 +142,7 @@ void main() {
 
     test('maps network error to user-safe PT-BR message', () async {
       final repository = AuthRepositoryImpl(
-        datasource: const FakeAuthRemoteDatasource(
+        datasource: FakeAuthRemoteDatasource(
           shouldFail: true,
           errorMessage: 'Network request failed',
         ),
@@ -160,10 +165,7 @@ void main() {
         datasource: FakeAuthRemoteDatasource(shouldFail: true),
       );
 
-      expect(
-        repository.signOut,
-        throwsA(isA<AuthFailure>()),
-      );
+      expect(repository.signOut, throwsA(isA<AuthFailure>()));
     });
 
     test('maps password recovery remote exception to auth failure', () async {
@@ -174,6 +176,35 @@ void main() {
       expect(
         () => repository.sendPasswordRecoveryEmail(email: 'user@example.com'),
         throwsA(isA<AuthFailure>()),
+      );
+    });
+
+    test('delegates password update to remote datasource', () async {
+      final datasource = FakeAuthRemoteDatasource();
+      final repository = AuthRepositoryImpl(datasource: datasource);
+
+      await repository.updatePassword(password: 'new-password123');
+
+      expect(datasource.lastUpdatedPassword, 'new-password123');
+    });
+
+    test('maps password update remote exception to auth failure', () async {
+      final repository = AuthRepositoryImpl(
+        datasource: FakeAuthRemoteDatasource(
+          shouldFail: true,
+          errorMessage: 'Password should be at least 6 characters',
+        ),
+      );
+
+      expect(
+        () => repository.updatePassword(password: 'short'),
+        throwsA(
+          isA<AuthFailure>().having(
+            (error) => error.code,
+            'code',
+            AuthFailureCode.passwordTooShort,
+          ),
+        ),
       );
     });
   });

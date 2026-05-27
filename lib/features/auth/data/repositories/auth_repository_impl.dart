@@ -45,6 +45,15 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<void> updatePassword({required String password}) async {
+    try {
+      await _datasource.updatePassword(password: password);
+    } on AuthRemoteException catch (error) {
+      throw _mapRemoteFailure(error.message);
+    }
+  }
+
+  @override
   Future<void> signOut() async {
     try {
       await _datasource.signOut();
@@ -59,10 +68,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final remoteUser = await action();
 
-      return AuthUser(
-        id: remoteUser.id,
-        email: remoteUser.email,
-      );
+      return AuthUser(id: remoteUser.id, email: remoteUser.email);
     } on AuthRemoteException catch (error) {
       throw _mapRemoteFailure(error.message);
     }
