@@ -233,14 +233,14 @@ Automation rules:
 
 ### Real Trello Parity Check
 
-Local docs and JSON templates are not proof that Trello itself is synchronized. Whenever a card is created, updated, moved to a done-equivalent list, or used as delivery evidence, run a real Trello checklist check before considering the sync complete.
+Local docs and JSON templates are not proof that Trello itself is synchronized. Whenever a card is created, updated, moved to a done-equivalent list, or used as delivery evidence, run a real Trello checklist check before considering the sync complete. This parity check is part of the Definition of Done for Trello-governed work.
 
 Required flow:
 
 1. Identify the real Trello card ID or URL.
 2. Read the real checklists with `trello_get_card_checklists`.
 3. Compare checklist names, item names, item order, and item states against the intended source: the project-management doc, the JSON template, or the approved implementation plan.
-4. Use `trello_update_checklist_item_state` only for items that are already validated by local implementation evidence.
+4. Use `trello_update_checklist_item_state` only for items that are already validated by local implementation evidence and already satisfy the relevant Definition of Done criteria.
 5. Add a short Trello comment with the validation evidence when the card is used to close work.
 
 This check is intentionally human-supervised. The local guard prevents drift in versioned artifacts, while the Trello parity check confirms the external board state.

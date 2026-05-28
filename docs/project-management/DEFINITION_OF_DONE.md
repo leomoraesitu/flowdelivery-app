@@ -74,6 +74,8 @@ Use the exact Theme Guard Checklist below for any task that touches user-facing 
 - [ ] Branch synchronized
 - [ ] Pull Request approved
 
+When a backlog item is used as Trello delivery evidence, confirm the real card checklist state with `trello_get_card_checklists` before treating the item as done in the board.
+
 ---
 
 # Release Criteria
