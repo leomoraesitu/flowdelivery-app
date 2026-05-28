@@ -31,6 +31,10 @@ Leia:
 - indicar prioridade
 - separar backlog, refinement, ready e blocked
 - alinhar labels ao mapa Trello
+- ao criar cards reais, converter `checklists[]` em checklists reais do Trello
+- criar itens reais para cada `checkItems[]`
+- validar checklists reais com `trello_get_card_checklists`
+- remover checkboxes Markdown duplicados da descrição quando checklists reais existirem
 
 ## Nunca
 
@@ -38,6 +42,7 @@ Leia:
 - misturar epic, story e tarefa sem distinção
 - ignorar dependências
 - usar labels fora do mapa sem registrar
+- tratar `- [ ]` em `desc` como substituto de checklist real
 
 ## Saída esperada
 

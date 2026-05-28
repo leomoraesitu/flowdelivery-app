@@ -118,7 +118,7 @@
             "backend",
             "priority-high"
           ],
-          "desc": "# Objective\nImplement the base authentication flow for FlowDelivery users.\n\n# Scope\n- Login\n- Sign up\n- Password recovery\n- Session persistence\n- Auth state handling\n\n# Acceptance Criteria\n- [ ] Auth flow defined\n- [ ] Supabase auth integration planned\n- [ ] Error states mapped\n- [ ] QA scenarios documented",
+          "desc": "# Objective\nImplement the base authentication flow for FlowDelivery users.\n\n# Scope\n- Login\n- Sign up\n- Password recovery\n- Session persistence (Planned Scope / Monitoring)\n- Auth state handling\n\n# Acceptance Criteria\n- [ ] Auth flow defined\n- [ ] Supabase auth integration planned\n- [ ] Error states mapped\n- [ ] QA scenarios documented\n\n# Technical Notes\n- Session persistence should remain Planned Scope unless recurring regressions or workaround-driven operations require reclassification as Technical Debt.",
           "checklists": [
             {
               "name": "Scope",
@@ -139,7 +139,7 @@
                   "state": "incomplete"
                 },
                 {
-                  "name": "Session persistence",
+                  "name": "Session persistence (Planned Scope / Monitoring)",
                   "pos": 4,
                   "state": "incomplete"
                 },
@@ -597,6 +597,88 @@
               ]
             }
           ]
+        },
+        {
+          "name": "[DEBT] Add ARB catalog parity guard",
+          "labels": [
+            "technical-debt",
+            "docs",
+            "test",
+            "priority-medium"
+          ],
+          "desc": "# Objective\nAdd a local guard that validates ARB catalog consistency before new UI features expand the localization surface.\n\n# Context\nThe project already blocks hardcoded UI copy, but ARB files can still drift through missing keys, missing template descriptions, orphan metadata, or invalid @@locale declarations.\n\n# Scope\nTracked in the Trello checklist named `Scope`.\n\n# Out of Scope\n- Rewrite existing copy\n- Add new locales\n- Integrate external translation tooling\n- Update real Trello cards\n\n# Plan\nSee docs/project-management/I18N_PIPELINE_PLAN.md.\n\n# Acceptance Criteria\nTracked in the Trello checklist named `Acceptance Criteria`.\n\n# Dependencies\nTracked in the Trello checklist named `Dependencies`.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                {
+                  "name": "Create an ARB parity test for app_pt_BR, app_pt and app_en",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Keep app_pt_BR as the template metadata source of truth",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Validate locale declarations and key parity",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Update technical debt memory after validation",
+                  "pos": 4,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                {
+                  "name": "ARB parity test exists",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Missing locale keys fail with clear messages",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Missing template descriptions fail with clear messages",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "@@locale values are validated",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Existing user-facing copy remains unchanged",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Dart MCP validation evidence is recorded",
+                  "pos": 6,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Dependencies",
+              "checkItems": [
+                {
+                  "name": "Dart MCP add_roots available before Flutter validation",
+                  "pos": 1,
+                  "state": "incomplete"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -611,7 +693,7 @@
             "supabase",
             "priority-high"
           ],
-          "desc": "# Objective\nBreak the authentication epic into implementation-ready stories.\n\n# Checklist\n- [ ] Login story\n- [ ] Sign up story\n- [ ] Password recovery story\n- [ ] Session persistence story\n- [ ] QA scenarios",
+          "desc": "# Objective\nBreak the authentication epic into implementation-ready stories.\n\n# Checklist\n- [ ] Login story\n- [ ] Sign up story\n- [ ] Password recovery story\n- [ ] Session persistence story (Planned Scope / Monitoring)\n- [ ] QA scenarios\n\n# Technical Notes\n- Promote session persistence to Technical Debt only if recurring user impact or workaround-driven operations are observed.",
           "checklists": [
             {
               "name": "Checklist",
@@ -632,7 +714,7 @@
                   "state": "incomplete"
                 },
                 {
-                  "name": "Session persistence story",
+                  "name": "Session persistence story (Planned Scope / Monitoring)",
                   "pos": 4,
                   "state": "incomplete"
                 },

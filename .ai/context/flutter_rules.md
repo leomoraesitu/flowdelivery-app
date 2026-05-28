@@ -41,7 +41,13 @@ Avoid representing complex state only with nullable values.
 - Use app theme and design tokens.
 - Avoid hardcoded spacing when tokens exist.
 - Avoid hardcoded semantic colors.
+- Avoid direct usage of low-level palette classes outside `lib/app/theme`.
 - Support light and dark theme evolution.
+
+## Guardrails
+
+- UI tasks must include Localization Guard and Theme Guard checklists.
+- Keep hardcoded copy guard tests and visual hardcoded guard tests updated when new UI patterns are introduced.
 
 ## File Organization
 

@@ -26,6 +26,20 @@ Cada etapa deve:
 - listar riscos
 - listar skills Flutter/Dart aplicáveis
 
+Se a etapa tocar UI, placeholders, dialogs, snackbars, routes ou qualquer copy de usuario, inclua tambem um checklist de localization guard com estes itens:
+
+- existe chave ARB para cada string nova;
+- a UI consome `AppLocalizations`;
+- nao ha texto hardcoded em `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet` ou `semanticLabel`;
+- o guard test permanece verde.
+
+Se a etapa tocar estilo visual de UI, inclua tambem um checklist de theme guard com estes itens:
+
+- a UI usa `Theme.of(context)` e tokens (`AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`) quando aplicavel;
+- nao ha `Color(0x...)` hardcoded em presentation;
+- nao ha uso direto de `AppLightColors`/`AppDarkColors` fora de `lib/app/theme`;
+- o guard test visual permanece verde.
+
 ## Registro do plano
 
 Crie um arquivo-plan em `.ai/plans/` com o plano aprovado.
@@ -44,6 +58,8 @@ O arquivo deve conter:
 - arquivos previstos por etapa
 - validação por etapa
 - skills aplicáveis por etapa
+- checklist de localization guard para etapas com UI ou copy de usuario
+- checklist de theme guard para etapas com alteracao visual de UI
 - riscos
 - critérios de aceite
 - itens fora de escopo
@@ -57,6 +73,7 @@ O arquivo deve conter:
 - Registre qualquer dependência ainda ausente no `pubspec.yaml`.
 - O arquivo-plan deve ser criado antes de iniciar qualquer implementação.
 - Use skills de `.agents/skills` somente quando forem pertinentes à etapa.
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 
 ## Saída esperada
 

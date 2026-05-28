@@ -16,6 +16,8 @@ Depois:
 - gere um arquivo-plan em `.ai/plans/YYYY-MM-DD-<feature>-plan.md`
 - inclua skills Flutter/Dart aplicaveis por etapa
 - inclua validacao por etapa
+- inclua checklist de localization guard para etapas com copy de usuario
+- inclua checklist de theme guard para etapas com alteracao visual de UI
 - inclua riscos, criterios de aceite e itens fora de escopo
 - nao implemente ainda
 
