@@ -280,7 +280,7 @@
       "cards": [
         {
           "name": "[FIX] Corrigir bug confirmado",
-          "desc": "# Objetivo\nCorrigir causa raiz do bug.\n\n# Critérios de Aceite\n- [ ] Bug não reproduz mais\n- [ ] Fluxo relacionado continua funcionando\n- [ ] Regressão avaliada",
+          "desc": "# Objetivo\nCorrigir causa raiz do bug.\n\n# Critérios de Aceite\n- [ ] Bug não reproduz mais\n- [ ] Fluxo relacionado continua funcionando\n- [ ] Regressão avaliada\n\n# Guardrails de UI\n- [ ] Localization Guard aplicado quando houver copy de UI\n- [ ] Theme Guard aplicado para evitar hardcodeds visuais",
           "checklists": [
             {
               "name": "Acceptance Criteria",
@@ -298,6 +298,76 @@
                 {
                   "name": "Regressão avaliada",
                   "pos": 3,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Localization Guard Checklist",
+              "checkItems": [
+                {
+                  "name": "Every new user-facing string has an ARB key",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "UI reads strings through `AppLocalizations`",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "ARB catalog parity guard remains green after copy changes",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "New placeholders are declared in template metadata and preserved across translated catalogs",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "New placeholders and route placeholders are covered by the guard tests",
+                  "pos": 6,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Generated localization freshness guard remains green after ARB changes once available",
+                  "pos": 7,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Theme Guard Checklist",
+              "checkItems": [
+                {
+                  "name": "UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No `Color(0x...)` hardcoded values in feature presentation code",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Visual hardcoded guard test remains green after UI changes",
+                  "pos": 5,
                   "state": "incomplete"
                 }
               ]

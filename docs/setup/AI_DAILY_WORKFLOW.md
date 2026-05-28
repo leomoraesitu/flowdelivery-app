@@ -89,9 +89,17 @@ Objetivos:
 - validar o menor recorte util;
 - atualizar `.ai/memory/current_feature.md` quando necessario.
 
+Checklist adicional para tarefas com UI:
+
+- confirmar se ha textos novos de usuario;
+- usar ARB + `AppLocalizations` como origem de strings;
+- manter o guard de strings hardcoded verde;
+- evitar `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet` e `semanticLabel` hardcoded.
+
 Regra importante:
 
 - nao implementar multiplas etapas de uma vez.
+- se a etapa introduzir UI nova, ela tambem deve passar pelo checklist de localization guard antes do fechamento.
 
 ### 4. AI Review Feature
 

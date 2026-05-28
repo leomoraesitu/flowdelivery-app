@@ -45,6 +45,27 @@ A task can only move to DONE when all criteria are satisfied.
 - [ ] Technical decisions documented
 - [ ] Screenshots attached if necessary
 
+Use the exact Localization Guard Checklist below for any task that touches user-facing text.
+Use the exact Theme Guard Checklist below for any task that touches user-facing UI styling.
+
+## Localization Guard Checklist
+
+- [ ] Every new user-facing string has an ARB key
+- [ ] UI reads strings through `AppLocalizations`
+- [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`
+- [ ] ARB catalog parity guard remains green after copy changes
+- [ ] New placeholders are declared in template metadata and preserved across translated catalogs
+- [ ] New placeholders and route placeholders are covered by the guard tests
+- [ ] Generated localization freshness guard remains green after ARB changes once available
+
+## Theme Guard Checklist
+
+- [ ] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)
+- [ ] No `Color(0x...)` hardcoded values in feature presentation code
+- [ ] No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`
+- [ ] No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist
+- [ ] Visual hardcoded guard test remains green after UI changes
+
 ---
 
 ## Git
@@ -52,6 +73,8 @@ A task can only move to DONE when all criteria are satisfied.
 - [ ] Conventional Commit applied
 - [ ] Branch synchronized
 - [ ] Pull Request approved
+
+When a backlog item is used as Trello delivery evidence, confirm the real card checklist state with `trello_get_card_checklists` before treating the item as done in the board.
 
 ---
 

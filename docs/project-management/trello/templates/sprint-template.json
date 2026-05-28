@@ -324,25 +324,75 @@
       "name": "🚧 In Progress",
       "cards": [
         {
-          "name": "[FEAT] Implementar feature exemplo",
-          "desc": "# Objetivo\nImplementar funcionalidade exemplo.\n\n# Critérios de Aceite\n- [ ] Build ok\n- [ ] Analyzer ok\n- [ ] Testes executados",
+          "name": "[FEAT] Update sign-in screen states",
+          "desc": "# Objective\nImprove sign-in feedback and loading states.\n\n# Scope\n- Update button loading state\n- Add error banner and retry action\n\n# Acceptance Criteria\n- [ ] New copy uses ARB keys\n- [ ] UI uses semantic colors and tokens only",
           "checklists": [
             {
-              "name": "Acceptance Criteria",
+              "name": "Localization Guard Checklist",
               "checkItems": [
                 {
-                  "name": "Build ok",
+                  "name": "Every new user-facing string has an ARB key",
                   "pos": 1,
                   "state": "incomplete"
                 },
                 {
-                  "name": "Analyzer ok",
+                  "name": "UI reads strings through `AppLocalizations`",
                   "pos": 2,
                   "state": "incomplete"
                 },
                 {
-                  "name": "Testes executados",
+                  "name": "No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`",
                   "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "ARB catalog parity guard remains green after copy changes",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "New placeholders are declared in template metadata and preserved across translated catalogs",
+                  "pos": 5,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "New placeholders and route placeholders are covered by the guard tests",
+                  "pos": 6,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Generated localization freshness guard remains green after ARB changes once available",
+                  "pos": 7,
+                  "state": "incomplete"
+                }
+              ]
+            },
+            {
+              "name": "Theme Guard Checklist",
+              "checkItems": [
+                {
+                  "name": "UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)",
+                  "pos": 1,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No `Color(0x...)` hardcoded values in feature presentation code",
+                  "pos": 2,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`",
+                  "pos": 3,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist",
+                  "pos": 4,
+                  "state": "incomplete"
+                },
+                {
+                  "name": "Visual hardcoded guard test remains green after UI changes",
+                  "pos": 5,
                   "state": "incomplete"
                 }
               ]
@@ -351,12 +401,13 @@
           "idLabels": [
             "lab_feat",
             "lab_frontend",
-            "lab_mvvm"
+            "lab_design_system",
+            "lab_priority_medium"
           ],
           "customFieldItems": [
             {
               "value": {
-                "number": "5"
+                "number": "3"
               },
               "idValue": null,
               "idCustomField": "cf_story_points"
