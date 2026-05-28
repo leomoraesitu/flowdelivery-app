@@ -2,15 +2,15 @@
 
 ## Feature
 
-[FEAT] Complete password recovery flow
+[DEBT] Reduce Trello sync debt
 
 ## Status
 
-Implementation validated
+Approved / Not started
 
 ## Current Step
 
-Password update contracts, reset-password route, ViewModel state, reset UI, ARB copy, focused automated validation, Supabase redirect configuration, local web recovery-link QA, and end-day localization copy consistency fix completed.
+Execute the next approved governance task from `.ai/plans/2026-05-26-trello-sync-debt-reduction-plan.md`.
 
 ## Completed
 

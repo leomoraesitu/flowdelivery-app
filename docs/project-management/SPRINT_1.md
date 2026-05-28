@@ -20,6 +20,8 @@ Deliver a minimal, testable authentication foundation with Supabase Auth, Riverp
 
 Completed and validated.
 
+Sprint 1 is closed and its implementation state is reflected in the repository docs and memory.
+
 This sprint was implemented incrementally from the approved technical plan.
 Tasks 1-10 are completed for the Authentication foundation.
 

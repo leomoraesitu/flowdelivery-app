@@ -1,7 +1,7 @@
 # FlowDelivery — Project Bootstrap
 
 Version: 1.0.0  
-Status: Sprint 0 foundation and governance complete
+Status: Sprint 1 authentication foundation complete and validated
 Author: Leonardo de Moraes Souza  
 Project Type: Portfolio / SaaS Simulation / Fullstack Flutter Engineering  
 Architecture: MVVM + Feature First  
@@ -218,16 +218,26 @@ The current `pubspec.yaml` includes:
 - Material
 - flutter_test
 - flutter_lints
+- flutter_riverpod
+- go_router
+- supabase_flutter
 
 The initial app theme and design tokens are implemented under `lib/app/theme`.
 
+Auth foundation currently implemented:
+
+- email/password authentication
+- password recovery request flow
+- reset-password route and recovery-session password update flow
+- PT-BR auth localization and centralized auth copy
+
 ## Planned State Management
 
-- flutter_riverpod
+- Additional feature-state expansion continues with Riverpod.
 
 ## Planned Routing
 
-- go_router
+- Additional route and guard expansion continues with GoRouter.
 
 ## Planned Backend
 

@@ -46,6 +46,7 @@ Notes:
 - Auth dependency wiring now uses app-level provider overrides and an unconfigured repository fallback when Supabase Dart defines are absent.
 - Sign-in UI was updated for prototype parity (`docs/ux/prototypes/auth-screen.png`) and must remain synchronized with auth page tests.
 - `docs/PROJECT_BOOTSTRAP.md` now documents current auth support as email/password plus password recovery request, with Google OAuth, reset deep-link completion, profile synchronization, and role-based access marked as planned.
+- Sprint 1 auth foundation is complete and validated; treat auth docs as closed-slice history plus regression baseline.
 - Keep docs/memory synchronized with each validated implementation slice before reducing this debt further.
 
 ### Keep auth UI parity scoped to visual layer
