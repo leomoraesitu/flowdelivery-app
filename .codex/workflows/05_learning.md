@@ -26,6 +26,7 @@ Explicar a implementação realizada como um professor Flutter Senior.
 - Explique Clean Architecture sem excesso de teoria.
 - Explique Riverpod no contexto do projeto.
 - Mostre onde cada responsabilidade pertence.
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 
 ## Saída esperada
 

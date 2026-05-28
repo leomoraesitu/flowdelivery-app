@@ -17,6 +17,7 @@ Implementar somente a etapa solicitada.
 - leia o arquivo-plan pertinente em `.ai/plans/`
 - identifique a próxima etapa pendente
 - identifique as skills aplicáveis em `.agents/skills`
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 - explique o objetivo
 - explique o conceito
 - explique os arquivos

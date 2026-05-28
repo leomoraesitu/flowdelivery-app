@@ -2,20 +2,21 @@
 
 ## Objective
 
-Define the routing conventions for FlowDelivery before navigation is implemented.
+Define the routing conventions used by FlowDelivery.
 
 This document complements `ADR 004 - Use GoRouter`. The ADR records the
 decision; this document defines how routing should be organized in the codebase.
 
 ## Routing Package
 
-FlowDelivery uses `go_router` as the planned routing solution.
+FlowDelivery uses `go_router` as its routing solution.
 
 Important:
 
 - `go_router` is accepted as the routing package.
-- The dependency must be added intentionally to `pubspec.yaml` before any import.
-- Do not import `go_router` while the package is absent from the project.
+- The dependency is installed in `pubspec.yaml`.
+- Future routing packages must not be introduced without an approved architecture
+  decision.
 
 ## App Shell
 
@@ -28,8 +29,8 @@ Expected responsibilities:
 - `lib/app/routes/` owns route configuration, route paths and route names.
 - Feature pages provide screen widgets, not global navigation policy.
 
-The root app should migrate from `MaterialApp` to `MaterialApp.router` only when
-the routing dependency is added as part of an approved implementation step.
+The root app already uses `MaterialApp.router`. Future app-shell changes should
+preserve this boundary.
 
 ## Route Organization
 
@@ -64,13 +65,18 @@ redirect behavior.
 
 Keep route names and paths centralized.
 
-Expected initial public routes:
+Current initial routes:
 
 ```text
 /
 /sign-in
 /sign-up
+/forgot-password
+/reset-password
 ```
+
+The reset-password route is part of the password recovery completion feature. It is an auth/recovery route, not a protected app destination, and unauthenticated users can reach it while completing recovery.
+On web, password recovery redirects use path URLs so Supabase fragments do not conflict with hash-based route parsing.
 
 Expected protected routes as the MVP grows:
 
@@ -128,18 +134,26 @@ focused on rendering their own UI state.
 
 ## Implementation Path
 
-Feature navigation should be introduced incrementally. Do not implement the full
-route tree before the feature slices that need it exist.
+Feature navigation must continue to evolve incrementally. Do not implement the
+full route tree before the feature slices that need it exist.
 
-Recommended order:
+Implemented foundation:
 
-1. Keep `go_router` documented as the accepted routing package.
-2. Add `go_router` to `pubspec.yaml` only in an approved implementation step.
-3. Create `lib/app/routes/app_routes.dart` with route names and paths.
-4. Create `lib/app/routes/app_router.dart` with the initial `GoRouter`.
-5. Migrate `lib/app/app.dart` from `MaterialApp` to `MaterialApp.router`.
-6. Add auth redirects only after auth state is exposed through the app state flow.
-7. Add shell navigation only after multiple protected destinations exist.
+1. `go_router` is documented as the accepted routing package.
+2. `go_router` is installed in `pubspec.yaml`.
+3. `lib/app/routes/app_routes.dart` centralizes route names and paths.
+4. `lib/app/routes/app_router.dart` owns the initial `GoRouter`.
+5. `lib/app/app.dart` uses `MaterialApp.router`.
+6. Auth redirects read auth state through the Riverpod/ViewModel flow.
+7. `/reset-password` is registered as an auth/recovery route for password recovery completion.
+
+Future expansion:
+
+1. Add additional protected destinations only when their feature slices exist.
+2. Add shell navigation only after multiple protected top-level destinations
+   exist.
+3. Validate platform-specific recovery redirects manually when adding new
+   deployed web domains or mobile deep-link schemes.
 
 ### Phase 1: Routing Dependency
 
@@ -154,6 +168,10 @@ Exit criteria:
 - Dependency resolution succeeds.
 - Static analysis still passes.
 
+Status:
+
+- Completed.
+
 ### Phase 2: Route Registry
 
 Entry criteria:
@@ -166,6 +184,10 @@ Exit criteria:
 - Route paths and names are centralized in `app_routes.dart`.
 - Widgets do not contain duplicated route strings.
 - Public and protected route groups are easy to identify.
+
+Status:
+
+- Completed for the initial auth routes.
 
 ### Phase 3: App Router
 
@@ -180,6 +202,10 @@ Exit criteria:
 - `lib/app/app.dart` uses `MaterialApp.router`.
 - Feature pages are used as destinations but do not own global route policy.
 
+Status:
+
+- Completed for the initial auth routes.
+
 ### Phase 4: Auth Redirects
 
 Entry criteria:
@@ -193,6 +219,10 @@ Exit criteria:
 - Authenticated users are redirected away from sign-in/sign-up when appropriate.
 - Loading or unknown auth state is handled without redirect loops.
 
+Status:
+
+- Completed for the initial auth flow.
+
 ### Phase 5: Protected App Shell
 
 Entry criteria:
@@ -205,6 +235,10 @@ Exit criteria:
 - `StatefulShellRoute.indexedStack` owns tab navigation.
 - Branches preserve state when switching sections.
 - Feature pages remain responsible only for their own UI state.
+
+Status:
+
+- Future scope.
 
 ## Boundaries
 

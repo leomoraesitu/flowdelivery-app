@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'app/theme/app_theme.dart';
+import 'app/app.dart';
+import 'app/bootstrap/supabase_bootstrap.dart';
+import 'app/config/app_environment.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy();
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  await initializeSupabaseIfConfigured(
+    hasSupabaseConfig: AppEnvironment.hasSupabaseConfig,
+    supabaseUrl: AppEnvironment.supabaseUrl,
+    supabaseAnonKey: AppEnvironment.supabaseAnonKey,
+    initializeSupabase: ({required String url, required String anonKey}) {
+      return Supabase.initialize(url: url, anonKey: anonKey);
+    },
+  );
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
-    );
-  }
+  runApp(const FlowDeliveryApp());
 }

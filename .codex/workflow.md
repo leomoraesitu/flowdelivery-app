@@ -11,7 +11,16 @@
 9. Atualizar documentação
 10. Explicar aprendizado
 
+Regra complementar para tasks de UI:
+
+- aplicar Localization Guard para copy de usuario
+- aplicar Theme Guard para alteracoes visuais
+
 ## Daily Operational Loop
+
+Regra operacional global:
+
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 
 Leia:
 

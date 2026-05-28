@@ -454,9 +454,21 @@ Environment files must NEVER be committed with secrets.
 
 # 13. Supabase Architecture
 
-## Services Used
+## Current Implementation
 
-- Auth
+The current repository implementation uses Supabase for authentication only.
+
+Implemented:
+
+- Supabase client bootstrap from app-level Dart defines
+- Email/password sign-in and sign-up through the auth datasource
+- Password recovery request flow
+- Password reset screen and password update support for an established recovery session
+- Repository and datasource boundaries that keep Supabase out of widgets and ViewModels
+- Unconfigured auth repository fallback when Supabase defines are missing
+
+Planned but not yet implemented:
+
 - Database
 - Realtime
 - Storage
@@ -498,14 +510,24 @@ notifications
 
 # 16. Authentication Strategy
 
-## Supported Auth
+## Current Auth Support
 
 - Email/password
+- Password recovery request
+- Password reset submission after the Supabase recovery session is established
+
+## Planned Auth Support
+
+- Manual QA and environment-specific validation for recovery redirect/deep-link configuration
 - Google OAuth
+- Profile synchronization
+- Role-based access
 
 ---
 
 ## Roles
+
+The role model is planned for future authorization work and is not implemented in the current repository state.
 
 ```txt
 customer
@@ -520,11 +542,12 @@ admin
 
 ## Mandatory Security Rules
 
-- RLS enabled on all tables
-- Auth required for protected routes
-- Role-based authorization
-- Input validation
-- Secure storage handling
+- Keep Supabase calls isolated in datasources.
+- Keep widgets and ViewModels free of direct Supabase imports.
+- Use app-level routing for authentication redirects.
+- Validate inputs before calling auth operations.
+- Enable RLS and role-based authorization when database-backed features are implemented.
+- Use secure storage only through an approved implementation plan.
 
 ---
 

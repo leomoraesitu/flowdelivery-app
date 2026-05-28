@@ -87,6 +87,14 @@ return MaterialApp(
 
 Follow this workflow when adding or modifying localized content.
 
+### FlowDelivery Guardrail Alignment
+
+When this skill is used in FlowDelivery, pair localization changes with UI governance checks:
+
+- Ensure new user-facing copy is tracked by the Localization Guard checklist in plans/templates.
+- If the same task also changes visual styling, include the Theme Guard checklist in the plan/task.
+- Keep hardcoded copy guard tests green after introducing new placeholders, dialogs, or route copy.
+
 ### 1. Define ARB Files
 *   **If creating NEW content:** Add the base string to the template file (`lib/l10n/app_en.arb`). Include a description for context.
 *   **If EDITING existing content:** Locate the key in all supported `.arb` files and update the values.

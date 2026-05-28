@@ -44,6 +44,18 @@ normal: 250ms
 slow: 400ms
 ```
 
+## Fonts
+
+```text
+primary: Plus Jakarta Sans
+secondary: Inter
+mono: Space Grotesk
+```
+
+Reference:
+
+- `lib/app/theme/app_tokens.dart` (`AppFonts`)
+
 ## Color Roles
 
 ```text
@@ -95,6 +107,8 @@ Use token classes for layout and interaction values:
 - `AppSizes` for icons and touch targets.
 - `AppDurations` for animations and transitions.
 
+Use `AppFonts` for font family naming in theme composition.
+
 Avoid magic numbers such as `8`, `16`, `24`, or `250` in widgets when an
 equivalent token exists.
 
@@ -111,3 +125,20 @@ Feature widgets should:
 ## Implementation Note
 
 Token names are stable contracts. Flutter constants can be introduced later under `lib/app/theme` or `lib/shared/constants`.
+
+## Auth Copy Tokens (PT-BR)
+
+Auth UI and auth error copy is centralized in Flutter gen-l10n ARB files:
+
+- `lib/l10n/app_pt.arb`
+- `lib/l10n/app_pt_BR.arb`
+- `lib/l10n/app_en.arb`
+
+Generated access uses:
+
+- `lib/l10n/generated/app_localizations.dart`
+
+Rule:
+
+- Add new user-facing strings through ARB files and read them with `AppLocalizations`.
+- Keep auth failure semantics in the domain/data layers as codes or neutral values, then map them to localized copy in presentation.
