@@ -31,6 +31,7 @@ Executar o ciclo completo de uma feature no FlowDelivery.
 - Não ultrapasse 3 arquivos sem confirmação.
 - Use MVVM, Clean Architecture e Riverpod.
 - Preserve Supabase fora da UI.
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 
 ## Saída esperada
 

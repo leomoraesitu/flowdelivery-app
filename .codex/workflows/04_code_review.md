@@ -41,6 +41,7 @@ Fazer review rigoroso da implementação atual.
 - Sugira melhorias.
 - Não altere arquivos durante o review.
 - Use skills de `.agents/skills` como checklist auxiliar, não como fonte acima do código versionado.
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 
 ## Saída esperada
 

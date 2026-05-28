@@ -8,23 +8,22 @@ Primary doc:
 
 ## Current Status
 
-The current `pubspec.yaml` does not yet include Riverpod packages.
-
 Riverpod is the selected state management approach for FlowDelivery.
+The current `pubspec.yaml` already includes `flutter_riverpod`.
 
-## Intended Package
+## Current Package
 
-When state management implementation starts, evaluate adding:
+Package in use:
 
 - `flutter_riverpod`
 
-Do not import or use Riverpod APIs before the package is added to `pubspec.yaml`.
+Riverpod is already in use in app bootstrap (`ProviderScope` in `lib/main.dart`) and in the auth feature providers.
 
 ## MVVM Alignment
 
 FlowDelivery uses MVVM with Riverpod providers.
 
-Recommended flow:
+Current recommended flow:
 
 ```text
 Widget
@@ -89,4 +88,4 @@ Widgets should:
 
 ## Testing Rule
 
-When Riverpod is introduced for a feature, add focused tests for ViewModels/providers where practical.
+When Riverpod is used in a feature, add focused tests for ViewModels/providers where practical.

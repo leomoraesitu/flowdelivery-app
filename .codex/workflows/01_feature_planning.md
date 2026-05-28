@@ -34,6 +34,7 @@ Analisar a feature solicitada antes de qualquer implementação.
 - Mantenha Supabase fora de widgets.
 - Use `.ai/context/agent_skills.md` para escolher apenas skills pertinentes.
 - Não aplique uma skill que contradiga ADRs ou contexto versionado do projeto.
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 
 ## Saída esperada
 
