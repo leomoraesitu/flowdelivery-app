@@ -11,6 +11,7 @@ Depois:
 - proponha arquitetura MVVM incremental
 - explique responsabilidades, entidades, repositories, use cases, Riverpod providers e ViewModels
 - explique tradeoffs e riscos
+- inclua guardrails de Localization e Theme quando a feature tocar UI
 - não implemente ainda
 - após aprovação da arquitetura, execute `.codex/workflows/02_technical_plan.md`
 - gere e registre o arquivo-plan correspondente em `.ai/plans/`

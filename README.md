@@ -21,7 +21,27 @@ FlowDelivery is a modern delivery platform developed as a portfolio-grade softwa
 - CI/CD readiness
 - Professional engineering conventions
 
-Sprint 0 foundation and governance are complete. Product feature implementation starts next with Authentication planning.
+Sprint 0 foundation and governance are complete. Sprint 1 Authentication foundation is complete and validated, including PT-BR auth localization, centralized auth i18n, and the password recovery flow.
+
+---
+
+# 🎨 Prototype
+
+<p align="center">
+  <img width="160" alt="splash-onboarding" src="docs/ux/prototypes/splash-onboarding.png" />
+  <img width="160" alt="auth-screen" src="docs/ux/prototypes/auth-screen.png" />
+  <img width="160" alt="home-feed" src="docs/ux/prototypes/home-feed.png" />
+  <img width="160" alt="restaurant-details" src="docs/ux/prototypes/restaurant-details.png" />
+  <img width="160" alt="product-details" src="docs/ux/prototypes/product-details.png" />
+</p>
+
+<p align="center">
+  <img width="160" alt="cart" src="docs/ux/prototypes/cart.png" />
+  <img width="160" alt="checkout" src="docs/ux/prototypes/checkout.png" />
+  <img width="160" alt="order-tracking" src="docs/ux/prototypes/order-tracking.png" />
+  <img width="160" alt="order-history" src="docs/ux/prototypes/order-history.png" />
+  <img width="160" alt="user-profile" src="docs/ux/prototypes/user-profile.png" />
+</p>
 
 ---
 
@@ -60,7 +80,7 @@ Sprint 0 foundation and governance are complete. Product feature implementation 
 
 - Supabase (planned)
 - PostgreSQL (planned)
-- Authentication (planned)
+- Authentication (implemented foundation)
 - Storage (planned)
 - Realtime (planned)
 
@@ -171,9 +191,10 @@ FlowDelivery uses a scalable Design System strategy including:
 
 ## Authentication
 
-- Email/password login
-- Social authentication
-- Session persistence
+- Email/password login (implemented)
+- Password recovery request (implemented)
+- Social authentication (planned)
+- Session persistence (planned)
 
 ---
 

@@ -4,6 +4,17 @@ All notable changes to FlowDelivery will be documented in this file.
 
 The project follows Semantic Versioning and Conventional Commits.
 
+## [Unreleased]
+
+### Added
+
+- Sprint 1 Authentication Foundation completed and validated.
+- Password recovery flow, PT-BR auth localization, Riverpod wiring, GoRouter auth guard, and MVVM/Clean Architecture auth boundaries stabilized.
+
+### Changed
+
+- README, bootstrap documentation, sprint records, and project memory were updated to reflect Sprint 1 closure and the next governance slice.
+
 ## [0.1.0] - Sprint 0
 
 ### Added

@@ -62,6 +62,11 @@ Leia:
 - explicar responsabilidades e tradeoffs;
 - gerar plano técnico em `.ai/plans/`;
 - identificar skills Flutter/Dart relevantes por etapa;
+- incluir no plano um checklist de localization guard para novos textos de UI;
+- incluir no plano um checklist de theme guard para alteracoes visuais de UI;
+- confirmar que a feature usará Flutter gen-l10n ARB + `AppLocalizations` para user-facing copy;
+- registrar que novas telas, placeholders e dialogs nao devem nascer com strings hardcoded;
+- registrar que estilos novos nao devem nascer com hardcoded visual quando houver tema/tokens;
 - manter implementação bloqueada até aprovação humana.
 
 ### Regras
@@ -88,6 +93,11 @@ Leia:
 - atualizar documentacao pertinente quando houver impacto;
 - gerar arquivo-plan em `.ai/plans/`;
 - registrar validacao, riscos, criterios de aceite e fora de escopo;
+- incluir um checklist de localization guard em toda nova task de UI;
+- incluir um checklist de theme guard em toda task que alterar estilo de UI;
+- exigir ARB + `AppLocalizations` antes de adicionar copy nova;
+- exigir cobertura do guard test quando a task introduzir placeholders ou copy visual;
+- exigir cobertura do guard test visual quando a task introduzir novos padroes de estilo;
 - manter implementacao bloqueada ate aprovacao humana.
 
 ### Regras
@@ -223,9 +233,17 @@ Leia:
 - seguir Clean Architecture;
 - manter separação de responsabilidades;
 - gerar testes;
+- incluir checklist de localization guard quando a task tocar UI, placeholders, dialogs, snackbars ou routes;
+- incluir checklist de theme guard quando a task alterar estilo visual de UI;
+- usar ARB + `AppLocalizations` para copy de usuario nova;
+- manter o guard test de hardcoded strings atualizado quando surgirem novos padroes;
+- manter o ARB catalog parity guard atualizado quando surgirem novas chaves, placeholders ou locales;
+- manter o generated localization freshness guard verde depois de alterar ARBs;
+- manter o guard test visual atualizado quando surgirem novos padroes de estilo;
 - revisar arquitetura;
 - justificar tradeoffs;
 - atualizar memória operacional.
+- Execute comandos flutter e dart pelo Dart MCP. Antes execute 'add_roots' .
 
 ## Nunca
 

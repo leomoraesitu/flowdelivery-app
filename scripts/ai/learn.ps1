@@ -1,4 +1,14 @@
-$content = Get-Content .codex/commands/learning_mode.md -Raw
+$OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+$path = ".codex/commands/learning_mode.md"
+
+if (-not (Test-Path $path)) {
+	Write-Error "Command file not found: $path"
+	exit 1
+}
+
+$content = Get-Content $path -Raw -Encoding utf8
 $content | Set-Clipboard
 
 Write-Host $content

@@ -15,22 +15,25 @@ Current project bootstrap:
 - Flutter
 - Dart
 - Material
+- flutter_riverpod
+- go_router
+- supabase_flutter
 - flutter_lints
 - flutter_test
 
-Current `pubspec.yaml` does not yet include Supabase, Riverpod or routing packages.
+Current `pubspec.yaml` already includes Supabase, Riverpod and routing packages.
 
-## Planned State Management
+## State Management
 
 Riverpod is the selected state management approach for FlowDelivery.
 
-Expected package when implementation starts:
+Current package:
 
 - `flutter_riverpod`
 
-## Planned Backend Platform
+## Backend Platform
 
-Supabase is the planned backend foundation.
+Supabase is the backend foundation in the current stack.
 
 Expected services:
 
