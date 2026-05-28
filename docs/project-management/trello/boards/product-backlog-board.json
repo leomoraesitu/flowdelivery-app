@@ -118,7 +118,7 @@
             "backend",
             "priority-high"
           ],
-          "desc": "# Objective\nImplement the base authentication flow for FlowDelivery users.\n\n# Scope\n- Login\n- Sign up\n- Password recovery\n- Session persistence\n- Auth state handling\n\n# Acceptance Criteria\n- [ ] Auth flow defined\n- [ ] Supabase auth integration planned\n- [ ] Error states mapped\n- [ ] QA scenarios documented",
+          "desc": "# Objective\nImplement the base authentication flow for FlowDelivery users.\n\n# Scope\n- Login\n- Sign up\n- Password recovery\n- Session persistence (Planned Scope / Monitoring)\n- Auth state handling\n\n# Acceptance Criteria\n- [ ] Auth flow defined\n- [ ] Supabase auth integration planned\n- [ ] Error states mapped\n- [ ] QA scenarios documented\n\n# Technical Notes\n- Session persistence should remain Planned Scope unless recurring regressions or workaround-driven operations require reclassification as Technical Debt.",
           "checklists": [
             {
               "name": "Scope",
@@ -139,7 +139,7 @@
                   "state": "incomplete"
                 },
                 {
-                  "name": "Session persistence",
+                  "name": "Session persistence (Planned Scope / Monitoring)",
                   "pos": 4,
                   "state": "incomplete"
                 },
@@ -693,7 +693,7 @@
             "supabase",
             "priority-high"
           ],
-          "desc": "# Objective\nBreak the authentication epic into implementation-ready stories.\n\n# Checklist\n- [ ] Login story\n- [ ] Sign up story\n- [ ] Password recovery story\n- [ ] Session persistence story\n- [ ] QA scenarios",
+          "desc": "# Objective\nBreak the authentication epic into implementation-ready stories.\n\n# Checklist\n- [ ] Login story\n- [ ] Sign up story\n- [ ] Password recovery story\n- [ ] Session persistence story (Planned Scope / Monitoring)\n- [ ] QA scenarios\n\n# Technical Notes\n- Promote session persistence to Technical Debt only if recurring user impact or workaround-driven operations are observed.",
           "checklists": [
             {
               "name": "Checklist",
@@ -714,7 +714,7 @@
                   "state": "incomplete"
                 },
                 {
-                  "name": "Session persistence story",
+                  "name": "Session persistence story (Planned Scope / Monitoring)",
                   "pos": 4,
                   "state": "incomplete"
                 },

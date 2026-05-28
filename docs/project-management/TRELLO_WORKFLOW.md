@@ -245,6 +245,14 @@ Required flow:
 
 This check is intentionally human-supervised. The local guard prevents drift in versioned artifacts, while the Trello parity check confirms the external board state.
 
+### Session Persistence Classification Rule
+
+Use this rule for cards mentioning session persistence:
+
+1. Keep as Planned Scope when there is no active QA/production regression and no recurring manual workaround.
+2. Promote to Technical Debt when there is recurring user impact (unexpected sign-out, auth redirect loop, critical state loss) or repeated operational workaround.
+3. Add a short Trello comment recording the classification decision and the trigger that would cause reclassification.
+
 ---
 
 ## Labels

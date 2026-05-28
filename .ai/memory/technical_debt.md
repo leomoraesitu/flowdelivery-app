@@ -2,6 +2,20 @@
 
 ## Active Items
 
+### Session persistence classification policy
+
+Status:
+Policy active
+
+Impact:
+Low
+
+Notes:
+- Session persistence remains Planned Scope when it is outside the current sprint scope, has no active QA/production regression, and does not require recurring manual workarounds.
+- Session persistence must be promoted to Technical Debt when there is a partially implemented flow causing inconsistency, recurring unexpected sign-out, auth redirect loops, loss of critical auth state, or frequent manual mitigation.
+- Keep the current classification as Planned Scope / Monitoring while no reproducible regression exists.
+- Reclassify immediately if session behavior starts impacting approved delivery scope or introduces security/compliance risks.
+
 ### Align generated documentation with implementation
 
 Status:
@@ -131,3 +145,4 @@ Notes:
 
 - Do not fix unrelated debt during feature work without confirmation.
 - Convert debt into Trello cards when it affects delivery.
+- Classify session persistence items as Planned Scope first, and escalate to Technical Debt only when impact is recurring or workaround-driven.
