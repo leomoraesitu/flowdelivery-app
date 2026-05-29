@@ -8,11 +8,11 @@ metadata:
 # Internationalizing Flutter Applications
 
 ## Contents
-- [Core Concepts](#core-concepts)
-- [Setup Workflow](#setup-workflow)
-- [Implementation Workflow](#implementation-workflow)
-- [Advanced Formatting](#advanced-formatting)
-- [Examples](#examples)
+- Core Concepts
+- Setup Workflow
+- Implementation Workflow
+- Advanced Formatting
+- Examples
 
 ## Core Concepts
 Flutter handles internationalization (i18n) and localization (l10n) via the `flutter_localizations` and `intl` packages. The standard approach uses App Resource Bundle (`.arb`) files to define localized strings, which are then compiled into a generated `AppLocalizations` class for type-safe access within the widget tree.
