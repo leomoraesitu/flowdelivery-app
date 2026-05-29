@@ -2,7 +2,7 @@
 
 ## Feature
 
-[DEBT] Reduce Trello sync debt
+[DEBT] Auth UI placeholder parity
 
 ## Status
 
@@ -10,7 +10,7 @@ Reduced / Monitoring
 
 ## Current Step
 
-Monitor Trello sync parity during future Trello-governed work and select the next approved product or governance slice before implementing more changes.
+Monitor auth UI placeholders during future auth presentation work and select the next approved product or governance slice before implementing more changes.
 
 ## Completed
 
@@ -50,6 +50,7 @@ Monitor Trello sync parity during future Trello-governed work and select the nex
 - Forgot-password copy consistency aligned with current implementation in `lib/l10n/app_pt.arb`, `lib/l10n/app_pt_BR.arb`, and `lib/l10n/app_en.arb`, with generated localizations refreshed.
 - End-day focused validation after localization copy alignment passed: `test/features/auth/presentation/auth_pages_test.dart`, `test/app/l10n/arb_catalog_parity_test.dart`, and `test/app/l10n/generated_localizations_freshness_test.dart` (19 tests passed).
 - Trello sync debt reduction reconciled in memory: versioned workflow docs already require real Trello parity checks, technical debt is classified as `Reduced / Monitoring`, and future Trello-governed work must validate real checklist state before using cards as delivery evidence.
+- Auth UI placeholder parity reconciled in memory: `test/features/auth/presentation/auth_pages_test.dart` already verifies social auth placeholders are visible but disabled and the reports tab is visual copy rather than navigation; technical debt remains `Reduced / Monitoring`.
 
 - architecture context
 - Riverpod decision
@@ -98,6 +99,7 @@ Monitor Trello sync parity during future Trello-governed work and select the nex
 
 - Select and approve the next product or governance slice before implementation.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
+- Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.
 
 ## Notes
 
