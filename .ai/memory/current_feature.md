@@ -6,11 +6,11 @@
 
 ## Status
 
-Approved / Not started
+Reduced / Monitoring
 
 ## Current Step
 
-Execute the next approved governance task from `.ai/plans/2026-05-26-trello-sync-debt-reduction-plan.md`.
+Monitor Trello sync parity during future Trello-governed work and select the next approved product or governance slice before implementing more changes.
 
 ## Completed
 
@@ -49,6 +49,7 @@ Execute the next approved governance task from `.ai/plans/2026-05-26-trello-sync
 - Auth provider migration strategy approved as phased rollout in `.ai/plans/2026-05-26-auth-hardening-post-review-plan.md` (parallel introduction, slice cutover, legacy removal) with validation gates and rollback criteria.
 - Forgot-password copy consistency aligned with current implementation in `lib/l10n/app_pt.arb`, `lib/l10n/app_pt_BR.arb`, and `lib/l10n/app_en.arb`, with generated localizations refreshed.
 - End-day focused validation after localization copy alignment passed: `test/features/auth/presentation/auth_pages_test.dart`, `test/app/l10n/arb_catalog_parity_test.dart`, and `test/app/l10n/generated_localizations_freshness_test.dart` (19 tests passed).
+- Trello sync debt reduction reconciled in memory: versioned workflow docs already require real Trello parity checks, technical debt is classified as `Reduced / Monitoring`, and future Trello-governed work must validate real checklist state before using cards as delivery evidence.
 
 - architecture context
 - Riverpod decision
@@ -95,13 +96,13 @@ Execute the next approved governance task from `.ai/plans/2026-05-26-trello-sync
 
 ## Pending
 
-- Keep real Trello checklist item states manually aligned until the MCP supports checklist item state updates
+- Select and approve the next product or governance slice before implementation.
+- Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 
 ## Notes
 
-Do not implement more than the next approved task from `.ai/plans/2026-05-26-password-recovery-completion-plan.md`.
 Use `docs/architecture/ROUTING_CONVENTIONS.md` when planning future auth redirects and protected routes.
-After password-recovery closure, execute the next approved governance task from `.ai/plans/2026-05-26-trello-sync-debt-reduction-plan.md`.
+For Trello-governed work, follow `docs/project-management/TRELLO_WORKFLOW.md`: validate real card checklist parity with `trello_get_card_checklists` and add evidence comments when cards are used to close work.
 Task 10 validation completed with Dart MCP:
 - `analyze_files`: No errors.
 - `run_tests`: All tests passed.
