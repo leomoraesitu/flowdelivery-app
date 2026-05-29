@@ -2,7 +2,7 @@
 
 ## Feature
 
-[DEBT] Auth UI placeholder parity
+[DEBT] Theme Guard future slices monitoring
 
 ## Status
 
@@ -10,7 +10,7 @@ Reduced / Monitoring
 
 ## Current Step
 
-Monitor auth UI placeholders during future auth presentation work and select the next approved product or governance slice before implementing more changes.
+Monitor Theme Guard coverage for future presentation slices and select the next approved product or governance slice before implementing more changes.
 
 ## Completed
 
@@ -51,6 +51,7 @@ Monitor auth UI placeholders during future auth presentation work and select the
 - End-day focused validation after localization copy alignment passed: `test/features/auth/presentation/auth_pages_test.dart`, `test/app/l10n/arb_catalog_parity_test.dart`, and `test/app/l10n/generated_localizations_freshness_test.dart` (19 tests passed).
 - Trello sync debt reduction reconciled in memory: versioned workflow docs already require real Trello parity checks, technical debt is classified as `Reduced / Monitoring`, and future Trello-governed work must validate real checklist state before using cards as delivery evidence.
 - Auth UI placeholder parity reconciled in memory: `test/features/auth/presentation/auth_pages_test.dart` already verifies social auth placeholders are visible but disabled and the reports tab is visual copy rather than navigation; technical debt remains `Reduced / Monitoring`.
+- Theme Guard future slices reconciled in memory: `home`, `feed`, and `cart` presentation slices still do not exist, no placeholder modules were created, and the global visual guard covers future `lib/features/**/presentation/**/*.dart` files as soon as approved slices add them.
 
 - architecture context
 - Riverpod decision
@@ -100,6 +101,7 @@ Monitor auth UI placeholders during future auth presentation work and select the
 - Select and approve the next product or governance slice before implementation.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 - Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.
+- Keep future `home`, `feed`, and `cart` presentation slices on semantic theme APIs and app tokens from their first approved implementation task.
 
 ## Notes
 
