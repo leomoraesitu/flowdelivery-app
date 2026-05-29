@@ -8,12 +8,12 @@ metadata:
 # Implementing Adaptive Layouts
 
 ## Contents
-- [Space Measurement Guidelines](#space-measurement-guidelines)
-- [Widget Sizing and Constraints](#widget-sizing-and-constraints)
-- [Device and Orientation Behaviors](#device-and-orientation-behaviors)
-- [Workflow: Constructing an Adaptive Layout](#workflow-constructing-an-adaptive-layout)
-- [Workflow: Optimizing for Large Screens](#workflow-optimizing-for-large-screens)
-- [Examples](#examples)
+- Space Measurement Guidelines
+- Widget Sizing and Constraints
+- Device and Orientation Behaviors
+- Workflow: Constructing an Adaptive Layout
+- Workflow: Optimizing for Large Screens
+- Examples
 
 ## Space Measurement Guidelines
 Determine the available space accurately to ensure layouts adapt to the app window, not just the physical device.
