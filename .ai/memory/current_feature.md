@@ -10,12 +10,13 @@ Planned / Approved
 
 ## Current Step
 
-Execute only Task 1 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after explicit implementation approval.
+Execute only Task 2 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after explicit implementation approval.
 
 ## Completed
 
 - Home static feed scope approved: protected `/home`, typed local fixtures, prototype-aligned UI, Riverpod wiring, ARB copy, Theme Guard, and focused tests.
 - Home technical plan generated in `.ai/plans/2026-06-01-home-static-feed-plan.md`.
+- Task 1 completed — typed local Home entities finalized as immutable value models for category, promotion, and restaurant contracts without introducing repository/datasource abstractions.
 - Sprint 2 project-management artifact generated in `docs/project-management/SPRINT_2.md`.
 - Real Trello story `[FEAT] Home restaurant feed static UI` created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Localization Guard, and Theme Guard parity verified (`https://trello.com/c/X3jAdpd2`).
 - Home remains presentation-first: Supabase schema, repository, datasource, remote loading, search behavior, filters, and destination navigation are deferred.
@@ -103,7 +104,7 @@ Execute only Task 1 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after e
 
 ## Pending
 
-- Execute Task 1 only after explicit approval: define typed local Home models.
+- Execute Task 2 only after explicit approval: add typed fixture data and Riverpod provider.
 - Keep the Home implementation incremental and limited to the approved static restaurant-feed slice.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 - Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.
