@@ -14,9 +14,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
   final authViewModel = ref.read(authViewModelProvider);
 
   return GoRouter(
-    initialLocation: AppRoutes.homePath,
+    initialLocation: AppRoutes.rootPath,
     refreshListenable: authViewModel,
     routes: <RouteBase>[
+      GoRoute(
+        path: AppRoutes.rootPath,
+        name: AppRoutes.rootName,
+        redirect: (context, state) => AppRoutes.homePath,
+      ),
       GoRoute(
         path: AppRoutes.homePath,
         name: AppRoutes.homeName,
@@ -51,6 +56,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           currentPath == AppRoutes.signUpPath ||
           currentPath == AppRoutes.forgotPasswordPath ||
           currentPath == AppRoutes.resetPasswordPath;
+      final isProtectedRoute = currentPath == AppRoutes.homePath;
 
       if (authStatus == AuthStatus.loading) {
         return null;
@@ -62,7 +68,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         return AppRoutes.homePath;
       }
 
-      if (authStatus != AuthStatus.authenticated && !isInAuthRoute) {
+      if (authStatus != AuthStatus.authenticated && isProtectedRoute) {
         return AppRoutes.signInPath;
       }
 

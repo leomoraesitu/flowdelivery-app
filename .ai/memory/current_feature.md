@@ -10,7 +10,7 @@ Planned / Approved
 
 ## Current Step
 
-Execute only Task 3 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after explicit implementation approval.
+Execute only Task 4 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after explicit implementation approval.
 
 ## Completed
 
@@ -18,6 +18,7 @@ Execute only Task 3 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after e
 - Home technical plan generated in `.ai/plans/2026-06-01-home-static-feed-plan.md`.
 - Task 1 completed — typed local Home entities finalized as immutable value models for category, promotion, and restaurant contracts without introducing repository/datasource abstractions.
 - Task 2 completed — typed local Home feed fixtures and a read-only Riverpod provider now expose deterministic category, promotion, and featured-restaurant content without adding repository/datasource abstractions.
+- Task 3 completed — `/home` is now the centralized protected authenticated destination, `/` is a root entry redirect, unauthenticated access to `/home` returns to sign-in, and reset-password recovery behavior remains unchanged.
 - Sprint 2 project-management artifact generated in `docs/project-management/SPRINT_2.md`.
 - Real Trello story `[FEAT] Home restaurant feed static UI` created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Localization Guard, and Theme Guard parity verified (`https://trello.com/c/X3jAdpd2`).
 - Home remains presentation-first: Supabase schema, repository, datasource, remote loading, search behavior, filters, and destination navigation are deferred.
@@ -105,7 +106,7 @@ Execute only Task 3 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after e
 
 ## Pending
 
-- Execute Task 3 only after explicit approval: register the protected Home route.
+- Execute Task 4 only after explicit approval: add localized Home copy through ARB and generated localizations.
 - Keep the Home implementation incremental and limited to the approved static restaurant-feed slice.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 - Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.

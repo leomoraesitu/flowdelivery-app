@@ -84,6 +84,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(SignInPage), findsOneWidget);
+    expect(router.state.uri.path, AppRoutes.signInPath);
 
     router.go(AppRoutes.forgotPasswordPath);
     await tester.pumpAndSettle();
@@ -125,6 +126,42 @@ void main() {
 
     expect(router.state.uri.path, AppRoutes.resetPasswordPath);
     expect(find.byType(ResetPasswordPage), findsOneWidget);
+  });
+
+  testWidgets('redirects unauthenticated users away from home route', (
+    tester,
+  ) async {
+    late GoRouter router;
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(_FakeAuthRepository()),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            router = ref.watch(appRouterProvider);
+            return MaterialApp.router(
+              routerConfig: router,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
+        ),
+      ),
+    );
+
+    router.go(AppRoutes.homePath);
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, AppRoutes.signInPath);
+    expect(find.byType(SignInPage), findsOneWidget);
   });
 
   testWidgets('keeps authenticated recovery sessions on reset-password route', (
@@ -214,6 +251,48 @@ void main() {
     expect(find.text('Home placeholder'), findsNothing);
 
     router.go(AppRoutes.signUpPath);
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, AppRoutes.homePath);
+  });
+
+  testWidgets('redirects authenticated users from root entry to home route', (
+    tester,
+  ) async {
+    late GoRouter router;
+    final fakeRepository = _FakeAuthRepository();
+    final authViewModel = AuthViewModel(authRepository: fakeRepository);
+
+    await authViewModel.signInWithEmailAndPassword(
+      email: 'user@example.com',
+      password: 'password123',
+    );
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(fakeRepository),
+          authViewModelProvider.overrideWith((ref) => authViewModel),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            router = ref.watch(appRouterProvider);
+            return MaterialApp.router(
+              routerConfig: router,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
+        ),
+      ),
+    );
+
     await tester.pumpAndSettle();
 
     expect(router.state.uri.path, AppRoutes.homePath);
