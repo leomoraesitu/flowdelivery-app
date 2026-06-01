@@ -1,21 +1,7 @@
 import 'package:flowdelivery_app/features/home/domain/entities/home_category.dart';
+import 'package:flowdelivery_app/features/home/domain/entities/home_feed_content.dart';
 import 'package:flowdelivery_app/features/home/domain/entities/home_promotion.dart';
 import 'package:flowdelivery_app/features/home/domain/entities/home_restaurant.dart';
-
-class HomeFeedContent {
-  HomeFeedContent({
-    required this.deliveryAddress,
-    required List<HomeCategory> categories,
-    required this.promotion,
-    required List<HomeRestaurant> featuredRestaurants,
-  }) : categories = List.unmodifiable(categories),
-       featuredRestaurants = List.unmodifiable(featuredRestaurants);
-
-  final String deliveryAddress;
-  final List<HomeCategory> categories;
-  final HomePromotion promotion;
-  final List<HomeRestaurant> featuredRestaurants;
-}
 
 final homeFeedFixtureContent = HomeFeedContent(
   deliveryAddress: 'Rua das Flores, 42',

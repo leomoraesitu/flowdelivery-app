@@ -1,6 +1,6 @@
 import 'package:flowdelivery_app/app/theme/app_tokens.dart';
-import 'package:flowdelivery_app/features/home/data/fixtures/home_feed_fixtures.dart';
 import 'package:flowdelivery_app/features/home/domain/entities/home_category.dart';
+import 'package:flowdelivery_app/features/home/domain/entities/home_feed_content.dart';
 import 'package:flowdelivery_app/features/home/domain/entities/home_restaurant.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';

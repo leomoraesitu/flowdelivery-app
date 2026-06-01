@@ -6,11 +6,11 @@ Home Remote Feed Foundation
 
 ## Status
 
-Planned / Approved
+In Progress
 
 ## Current Step
 
-Execute only Task 1 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
+Execute only Task 2 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
 
 ## Completed
 
@@ -30,6 +30,7 @@ Execute only Task 1 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 - Home remote technical plan generated in `.ai/plans/2026-06-01-home-remote-feed-plan.md`.
 - Sprint 3 project-management artifact generated in `docs/project-management/SPRINT_3.md`.
 - Real Trello story `[FEAT] Home remote feed foundation` created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, and Theme Guard checklists (`https://trello.com/c/bzxIa3wx`).
+- Sprint 3 Task 1 completed — `HomeFeedContent` was promoted into the Home domain layer, `HomeRepository` now defines the feed contract, and the static Home provider reads through that repository boundary while keeping the validated UI behavior unchanged.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -114,7 +115,7 @@ Execute only Task 1 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 
 ## Pending / Deferred
 
-- Execute Task 1 only after explicit approval: promote the Home feed aggregate and repository contract for the remote slice.
+- Execute Task 2 only after explicit approval: add the Supabase Home feed schema, explicit grants, RLS, and seed data.
 - Keep the Home implementation incremental and limited to the approved remote-feed foundation slice.
 - Keep profile/address persistence out of the remote feed slice; the delivery-address placeholder remains local.
 - Keep search, filtering, restaurant details, destination navigation, Storage-backed media, and Realtime out of scope until separate approved slices exist.
@@ -165,3 +166,6 @@ Home widget coverage validation:
 - `flutter analyze test/features/home/presentation/home_page_test.dart`: no issues.
 Sprint 2 closure validation:
 - `flutter test test/app/project_management/trello_guard_checklists_test.dart`: passed.
+- Sprint 3 Task 1 validation:
+- `dart analyze lib/features/home test/features/home`: no issues.
+- `flutter test test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart`: all tests passed.
