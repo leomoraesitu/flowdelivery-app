@@ -2,28 +2,29 @@
 
 ## Sprint
 
-Sprint 2 — Home Restaurant Feed Foundation
+Sprint 3 — Home Remote Feed Foundation
 
 ## Status
 
-Completed / Validated.
+Planned / Approved.
 
-Sprint 2 is closed after the validated Home delivery slice, documentation reconciliation, and Trello parity confirmation.
+Sprint 3 starts from the validated static Home baseline and is limited to the first authenticated remote-feed read path.
 
 ## Focus
 
-- protected Home route
-- typed local restaurant-feed fixtures
-- prototype-aligned static Home UI
-- Riverpod fixture wiring
-- focused routing and widget tests
-- Localization Guard and Theme Guard enforcement from the first Home slice
+- Supabase-backed read-only Home feed foundation
+- explicit grants and RLS for new Home feed tables
+- DTO, datasource, repository, and async Riverpod provider wiring
+- preserved `/home` route contract and existing Home composition
+- localized loading/empty/error states only if the async flow requires them
+- Localization Guard and Theme Guard enforcement for new async UI states
 
 ## Current Priorities
 
-- preserve the validated auth foundation as the current baseline
-- select and approve the next product or governance slice before additional implementation work
-- defer Supabase restaurant schema, datasource, repository, DTO, and remote loading until a separate approved Home slice
+- preserve the validated auth foundation and Sprint 2 Home baseline as the current baseline
+- execute only the next approved task from `.ai/plans/2026-06-01-home-remote-feed-plan.md`
+- keep profile/address persistence out of this Home slice
+- keep search, filtering, detail navigation, destination tabs, Storage media, and Realtime deferred until separate approved slices
 - keep Trello documentation, workflow artifacts, and real-card evidence aligned when Trello-governed work touches cards
 - validate real Trello checklist parity with `trello_get_card_checklists` before using cards as delivery evidence
 - keep Supabase outside widgets and ViewModels
@@ -37,12 +38,13 @@ Sprint 2 is closed after the validated Home delivery slice, documentation reconc
 
 ## Notes
 
-- Sprint 2 generated in `docs/project-management/SPRINT_2.md`.
-- Home technical plan registered in `.ai/plans/2026-06-01-home-static-feed-plan.md`.
-- Home scope is static and presentation-first because the Supabase `public` schema has no restaurant tables yet.
+- Sprint 2 (`docs/project-management/SPRINT_2.md`) is closed as the validated static Home baseline.
+- Sprint 3 generated in `docs/project-management/SPRINT_3.md`.
+- Home remote technical plan registered in `.ai/plans/2026-06-01-home-remote-feed-plan.md`.
+- The next Home slice introduces the minimal remote read path only; delivery-address persistence remains local/deferred.
 - Active branch: `feat/home`.
-- Real Trello story synchronized with validated implementation evidence: `https://trello.com/c/X3jAdpd2`.
-- Sprint 2 Home slice completed with validated provider, routing, widget, localization-guard, and theme-guard coverage.
+- The previous real Trello story remains closed with validated implementation evidence: `https://trello.com/c/X3jAdpd2`.
+- The new real Trello story is staged in `✅ Ready`: `https://trello.com/c/bzxIa3wx`.
 - Use `.codex/workflows/` for repeatable execution.
 - Use `.ai/context/` as project context.
 - Use `.ai/agents/` for role-specific behavior.

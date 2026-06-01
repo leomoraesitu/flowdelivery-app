@@ -2,17 +2,15 @@
 
 ## Feature
 
-Home Restaurant Feed Foundation
+Home Remote Feed Foundation
 
 ## Status
 
-Completed / Validated
+Planned / Approved
 
 ## Current Step
 
-No active implementation step.
-
-Await the next explicitly approved Home follow-up slice before making further product changes.
+Execute only Task 1 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
 
 ## Completed
 
@@ -28,6 +26,10 @@ Await the next explicitly approved Home follow-up slice before making further pr
 - Sprint 2 project-management artifact generated in `docs/project-management/SPRINT_2.md`.
 - Real Trello story `[FEAT] Home restaurant feed static UI` is synchronized with validated implementation evidence and guard parity (`https://trello.com/c/X3jAdpd2`).
 - Home remains presentation-first: Supabase schema, repository, datasource, remote loading, search behavior, filters, and destination navigation are deferred.
+- Sprint 3 planning approved — the next Home slice is a read-only Supabase-backed remote feed foundation with explicit grants, RLS, datasource/repository boundaries, async provider wiring, and focused validation.
+- Home remote technical plan generated in `.ai/plans/2026-06-01-home-remote-feed-plan.md`.
+- Sprint 3 project-management artifact generated in `docs/project-management/SPRINT_3.md`.
+- Real Trello story `[FEAT] Home remote feed foundation` created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, and Theme Guard checklists (`https://trello.com/c/bzxIa3wx`).
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -112,12 +114,14 @@ Await the next explicitly approved Home follow-up slice before making further pr
 
 ## Pending / Deferred
 
-- Select and approve the next Home follow-up slice before additional implementation work.
-- Keep the Home implementation incremental and limited to the approved static restaurant-feed slice.
-- Keep Supabase restaurant schema, datasource, repository, DTO, and remote loading deferred until a separate approved slice exists.
+- Execute Task 1 only after explicit approval: promote the Home feed aggregate and repository contract for the remote slice.
+- Keep the Home implementation incremental and limited to the approved remote-feed foundation slice.
+- Keep profile/address persistence out of the remote feed slice; the delivery-address placeholder remains local.
+- Keep search, filtering, restaurant details, destination navigation, Storage-backed media, and Realtime out of scope until separate approved slices exist.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 - Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.
 - Keep future `home`, `feed`, and `cart` presentation slices on semantic theme APIs and app tokens from their first approved implementation task.
+- Keep explicit Data API grants and RLS paired in any future Supabase Home migration because public-table exposure must not be assumed.
 
 ## Notes
 
