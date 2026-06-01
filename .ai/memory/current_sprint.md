@@ -6,9 +6,9 @@ Sprint 3 — Home Remote Feed Foundation
 
 ## Status
 
-Planned / Approved.
+Validated / Completed.
 
-Sprint 3 starts from the validated static Home baseline and is limited to the first authenticated remote-feed read path.
+Sprint 3 closed after validating the first authenticated remote-feed read path for Home and reconciling docs, memory, and real-card governance evidence.
 
 ## Focus
 
@@ -22,7 +22,7 @@ Sprint 3 starts from the validated static Home baseline and is limited to the fi
 ## Current Priorities
 
 - preserve the validated auth foundation and Sprint 2 Home baseline as the current baseline
-- execute only the next approved task from `.ai/plans/2026-06-01-home-remote-feed-plan.md`
+- treat Sprint 3 as closed and require a new explicitly approved Home slice before further implementation
 - keep profile/address persistence out of this Home slice
 - keep search, filtering, detail navigation, destination tabs, Storage media, and Realtime deferred until separate approved slices
 - keep Trello documentation, workflow artifacts, and real-card evidence aligned when Trello-governed work touches cards
@@ -44,7 +44,8 @@ Sprint 3 starts from the validated static Home baseline and is limited to the fi
 - The next Home slice introduces the minimal remote read path only; delivery-address persistence remains local/deferred.
 - Active branch: `feat/home`.
 - The previous real Trello story remains closed with validated implementation evidence: `https://trello.com/c/X3jAdpd2`.
-- The new real Trello story is staged in `✅ Ready`: `https://trello.com/c/bzxIa3wx`.
+- The Sprint 3 real Trello story is closed with validated implementation evidence: `https://trello.com/c/bzxIa3wx`.
+- Sprint 3 validation includes focused datasource/repository/provider/widget tests, localization/theme guards, router regression coverage, and Trello checklist parity validation.
 - Use `.codex/workflows/` for repeatable execution.
 - Use `.ai/context/` as project context.
 - Use `.ai/agents/` for role-specific behavior.

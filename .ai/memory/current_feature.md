@@ -6,11 +6,11 @@ Home Remote Feed Foundation
 
 ## Status
 
-In Progress
+Completed
 
 ## Current Step
 
-Execute only Task 7 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
+Await the next explicitly approved Home slice; the remote-feed foundation is closed.
 
 ## Completed
 
@@ -36,6 +36,7 @@ Execute only Task 7 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 - Sprint 3 Task 4 completed — the Home repository is now asynchronous, the app composes a Supabase-backed Home datasource/repository at the composition root, and Riverpod now exposes an async Home feed provider with a fixture compatibility fallback so the validated UI remains stable while remote loading lands incrementally.
 - Sprint 3 Task 5 completed — the Home page now renders explicit async loading, error, and empty states from the remote feed provider, all new copy is localized via ARB/AppLocalizations, and the new state UI uses semantic theme APIs/tokens without hardcoded palette values.
 - Sprint 3 Task 6 completed — focused remote-feed regression coverage now proves remote success rendering in `HomePage`, preserves fixture compatibility fallback on async provider failure, and keeps datasource/repository/provider/widget coverage contract-oriented without touching production code.
+- Sprint 3 Task 7 completed — Sprint 3 docs, feature/sprint memory, and the real Trello card were reconciled after final governance validation so the slice closes with implementation evidence, deferred scope notes, and checklist parity preserved.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -120,7 +121,7 @@ Execute only Task 7 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 
 ## Pending / Deferred
 
-- Execute Task 7 only after explicit approval: reconcile documentation, memory, and Trello after validation.
+- The Home remote-feed foundation slice is complete; future Home work requires a new explicitly approved slice.
 - Keep the Home implementation incremental and limited to the approved remote-feed foundation slice.
 - Keep profile/address persistence out of the remote feed slice; the delivery-address placeholder remains local.
 - Keep search, filtering, restaurant details, destination navigation, Storage-backed media, and Realtime out of scope until separate approved slices exist.
@@ -189,3 +190,5 @@ Sprint 2 closure validation:
 - Sprint 3 Task 6 validation:
 - `dart analyze test/features/home/presentation/home_page_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/data/home_repository_impl_test.dart test/features/home/data/home_remote_datasource_test.dart test/features/home/presentation/home_feed_providers_test.dart`: no issues.
 - `flutter test test/features/home/data/home_remote_datasource_test.dart test/features/home/data/home_repository_impl_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart test/app/routes/app_router_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: all tests passed.
+- Sprint 3 Task 7 validation:
+- `flutter test test/app/project_management/trello_guard_checklists_test.dart`: passed after final documentation/Trello reconciliation.

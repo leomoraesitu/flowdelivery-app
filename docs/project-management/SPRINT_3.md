@@ -14,9 +14,9 @@ Reference prototype:
 
 ## Status
 
-Planned / Approved.
+Validated / Completed.
 
-Sprint 3 is opened for the next approved Home slice and starts from the validated Sprint 2 baseline.
+Sprint 3 closed with the Home remote-feed foundation validated against focused datasource, repository, provider, widget, localization, theme, router, and Trello-governance checks.
 
 ## Sprint Goal
 
@@ -35,25 +35,25 @@ Validate the first remote read path for Home without broadening into profile per
 
 ## Backlog
 
-- [ ] Promote the Home feed aggregate and repository contract.
-- [ ] Add the Supabase Home feed schema, grants, RLS, and seed data.
-- [ ] Add Home remote DTOs and Supabase datasource.
-- [ ] Implement the Home repository and async Riverpod wiring.
-- [ ] Add localized async Home states.
-- [ ] Add focused remote feed coverage.
-- [ ] Reconcile docs, memory, and Trello after validation.
+- [x] Promote the Home feed aggregate and repository contract.
+- [x] Add the Supabase Home feed schema, grants, RLS, and seed data.
+- [x] Add Home remote DTOs and Supabase datasource.
+- [x] Implement the Home repository and async Riverpod wiring.
+- [x] Add localized async Home states.
+- [x] Add focused remote feed coverage.
+- [x] Reconcile docs, memory, and Trello after validation.
 
 ## Acceptance Criteria
 
-- [ ] `/home` keeps its protected authenticated route contract.
-- [ ] Home feed categories, featured restaurants, and promotions are loaded from Supabase through repository and datasource boundaries.
-- [ ] New Home feed tables are created with explicit grants and RLS enabled.
-- [ ] `anon` does not gain access to the Home feed tables.
-- [ ] The validated Home composition from Sprint 2 is preserved for successful data rendering.
-- [ ] Loading, empty, and error states are localized through ARB catalogs and `AppLocalizations`.
-- [ ] Presentation styling for new states uses semantic theme APIs and app tokens only.
-- [ ] Focused datasource, repository, provider, widget, localization guard, theme guard, and governance validation pass.
-- [ ] Trello checklist state reflects implementation evidence only.
+- [x] `/home` keeps its protected authenticated route contract.
+- [x] Home feed categories, featured restaurants, and promotions are loaded from Supabase through repository and datasource boundaries.
+- [x] New Home feed tables are created with explicit grants and RLS enabled.
+- [x] `anon` does not gain access to the Home feed tables.
+- [x] The validated Home composition from Sprint 2 is preserved for successful data rendering.
+- [x] Loading, empty, and error states are localized through ARB catalogs and `AppLocalizations`.
+- [x] Presentation styling for new states uses semantic theme APIs and app tokens only.
+- [x] Focused datasource, repository, provider, widget, localization guard, theme guard, and governance validation pass.
+- [x] Trello checklist state reflects implementation evidence only.
 
 ## Dependencies
 
@@ -62,25 +62,25 @@ Validate the first remote read path for Home without broadening into profile per
 - [x] Existing Riverpod, GoRouter, localization, and theme guardrails.
 - [x] Existing Home domain entities and Home presentation widgets.
 - [x] Approved plan: `.ai/plans/2026-06-01-home-remote-feed-plan.md`.
-- [ ] Implementation approval for Task 1.
+- [x] Implementation approval for Task 1.
 
 ## Localization Guard Checklist
 
-- [ ] Every new user-facing string has an ARB key.
-- [ ] UI reads strings through `AppLocalizations`.
-- [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`.
-- [ ] ARB catalog parity guard remains green after copy changes.
-- [ ] New placeholders are declared in template metadata and preserved across translated catalogs.
-- [ ] New placeholders and route placeholders are covered by the guard tests.
-- [ ] Generated localization freshness guard remains green after ARB changes.
+- [x] Every new user-facing string has an ARB key.
+- [x] UI reads strings through `AppLocalizations`.
+- [x] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`.
+- [x] ARB catalog parity guard remains green after copy changes.
+- [x] New placeholders are declared in template metadata and preserved across translated catalogs.
+- [x] New placeholders and route placeholders are covered by the guard tests.
+- [x] Generated localization freshness guard remains green after ARB changes.
 
 ## Theme Guard Checklist
 
-- [ ] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`).
-- [ ] No `Color(0x...)` hardcoded values exist in feature presentation code.
-- [ ] No direct `AppLightColors` or `AppDarkColors` usage exists outside `lib/app/theme`.
-- [ ] No direct `Colors.*` usage exists in feature presentation when semantic `ColorScheme` roles apply.
-- [ ] Visual hardcoded guard test remains green after UI changes.
+- [x] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`).
+- [x] No `Color(0x...)` hardcoded values exist in feature presentation code.
+- [x] No direct `AppLightColors` or `AppDarkColors` usage exists outside `lib/app/theme`.
+- [x] No direct `Colors.*` usage exists in feature presentation when semantic `ColorScheme` roles apply.
+- [x] Visual hardcoded guard test remains green after UI changes.
 
 ## Validation Plan
 
@@ -93,6 +93,18 @@ Validate the first remote read path for Home without broadening into profile per
 - `flutter test test/app/theme/no_hardcoded_visual_values_test.dart`
 - `flutter test test/app/project_management/trello_guard_checklists_test.dart`
 - focused `flutter analyze` on touched Home, Supabase, and localization files
+
+## Validation Evidence
+
+- Task 1: `dart analyze lib/features/home test/features/home` and `flutter test test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart`.
+- Task 2: transaction-scoped Supabase SQL smoke test confirmed the Home tables, authenticated read policies, `SELECT`-only grants, and expected seed counts.
+- Task 3: `dart analyze lib/features/home/data/dtos lib/features/home/data/datasources test/features/home/data` and `flutter test test/features/home/data/home_remote_datasource_test.dart`.
+- Task 4: focused `dart analyze` on repository/provider/app wiring files and `flutter test test/features/home/data/home_repository_impl_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart test/app/routes/app_router_test.dart`.
+- Task 5: `flutter gen-l10n`, focused `dart analyze` on Home page/l10n/guard files, and `flutter test test/features/home/presentation/home_page_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/theme/no_hardcoded_visual_values_test.dart test/app/routes/app_router_test.dart`.
+- Task 6: `dart analyze test/features/home/presentation/home_page_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/data/home_repository_impl_test.dart test/features/home/data/home_remote_datasource_test.dart test/features/home/presentation/home_feed_providers_test.dart` and `flutter test test/features/home/data/home_remote_datasource_test.dart test/features/home/data/home_repository_impl_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart test/app/routes/app_router_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`.
+- Task 7: `flutter test test/app/project_management/trello_guard_checklists_test.dart`.
+
+No new placeholders or route placeholders were introduced in this slice; the placeholder-related localization guard items remained satisfied without requiring new runtime placeholder coverage.
 
 ## Technical Notes
 
