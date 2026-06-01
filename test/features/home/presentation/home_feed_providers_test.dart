@@ -9,10 +9,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('homeFeedProvider', () {
-    test('exposes deterministic typed home feed content', () {
+    test('exposes deterministic typed home feed content by default', () async {
       final container = ProviderContainer();
       addTearDown(container.dispose);
 
+      await container.read(homeFeedAsyncProvider.future);
       final content = container.read(homeFeedProvider);
 
       expect(content.deliveryAddress, 'Rua das Flores, 42');
@@ -38,7 +39,7 @@ void main() {
       expect(content.featuredRestaurants.first.categoryIds, ['all', 'burgers']);
     });
 
-    test('reads the feed content through the repository contract', () {
+    test('reads the feed content through the repository contract', () async {
       final expectedContent = HomeFeedContent(
         deliveryAddress: 'Avenida Brasil, 1000',
         categories: const [HomeCategory(id: 'all')],
@@ -70,15 +71,17 @@ void main() {
       );
       addTearDown(container.dispose);
 
+      await container.read(homeFeedAsyncProvider.future);
       final content = container.read(homeFeedProvider);
 
       expect(content, expectedContent);
     });
 
-    test('exposes read-only collections to presentation', () {
+    test('exposes read-only collections to presentation', () async {
       final container = ProviderContainer();
       addTearDown(container.dispose);
 
+      await container.read(homeFeedAsyncProvider.future);
       final content = container.read(homeFeedProvider);
 
       expect(
@@ -104,7 +107,7 @@ class _TestHomeRepository implements HomeRepository {
   final HomeFeedContent content;
 
   @override
-  HomeFeedContent getHomeFeedContent() {
+  Future<HomeFeedContent> getHomeFeedContent() async {
     return content;
   }
 }

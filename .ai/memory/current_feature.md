@@ -10,7 +10,7 @@ In Progress
 
 ## Current Step
 
-Execute only Task 4 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
+Execute only Task 5 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
 
 ## Completed
 
@@ -33,6 +33,7 @@ Execute only Task 4 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 - Sprint 3 Task 1 completed — `HomeFeedContent` was promoted into the Home domain layer, `HomeRepository` now defines the feed contract, and the static Home provider reads through that repository boundary while keeping the validated UI behavior unchanged.
 - Sprint 3 Task 2 completed — the Home remote feed Supabase foundation now has a migration for `restaurant_categories`, `restaurants`, `restaurant_category_links`, and `home_promotions`, with explicit `authenticated`/`service_role` `SELECT` grants, RLS read policies, and development seed data aligned with the current Home contract.
 - Sprint 3 Task 3 completed — Home remote DTOs now parse Supabase rows into typed category, promotion, and restaurant payloads, and a dedicated Supabase datasource owns the Home feed queries, row orchestration, category-link aggregation, and explicit Home remote exceptions.
+- Sprint 3 Task 4 completed — the Home repository is now asynchronous, the app composes a Supabase-backed Home datasource/repository at the composition root, and Riverpod now exposes an async Home feed provider with a fixture compatibility fallback so the validated UI remains stable while remote loading lands incrementally.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -117,7 +118,7 @@ Execute only Task 4 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 
 ## Pending / Deferred
 
-- Execute Task 4 only after explicit approval: implement the Home repository and async Riverpod wiring.
+- Execute Task 5 only after explicit approval: add explicit async Home UI states and localized user feedback.
 - Keep the Home implementation incremental and limited to the approved remote-feed foundation slice.
 - Keep profile/address persistence out of the remote feed slice; the delivery-address placeholder remains local.
 - Keep search, filtering, restaurant details, destination navigation, Storage-backed media, and Realtime out of scope until separate approved slices exist.
@@ -176,3 +177,6 @@ Sprint 2 closure validation:
 - Sprint 3 Task 3 validation:
 - `dart analyze lib/features/home/data/dtos lib/features/home/data/datasources test/features/home/data`: no issues.
 - `flutter test test/features/home/data/home_remote_datasource_test.dart`: all tests passed.
+- Sprint 3 Task 4 validation:
+- `dart analyze lib/features/home/domain/repositories/home_repository.dart lib/features/home/data/repositories/home_repository_impl.dart lib/features/home/presentation/providers/home_feed_providers.dart lib/app/di/app_providers.dart test/features/home/data/home_repository_impl_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart test/app/routes/app_router_test.dart`: no issues.
+- `flutter test test/features/home/data/home_repository_impl_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart test/app/routes/app_router_test.dart`: all tests passed.
