@@ -15,7 +15,6 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   go_router: ^17.2.3
-  google_fonts: ^6.3.2
   intl: ^0.20.2
   supabase_flutter: ^2.12.4
 
@@ -29,3 +28,13 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+  fonts:
+    - family: Plus Jakarta Sans
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-Variable.ttf
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Variable.ttf
+    - family: Space Grotesk
+      fonts:
+        - asset: assets/fonts/SpaceGrotesk-Variable.ttf
