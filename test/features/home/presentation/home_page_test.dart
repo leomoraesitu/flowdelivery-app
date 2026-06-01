@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:flowdelivery_app/app/theme/app_theme.dart';
 import 'package:flowdelivery_app/features/home/data/fixtures/home_feed_fixtures.dart';
+import 'package:flowdelivery_app/features/home/domain/entities/home_category.dart';
 import 'package:flowdelivery_app/features/home/domain/entities/home_feed_content.dart';
+import 'package:flowdelivery_app/features/home/domain/entities/home_promotion.dart';
+import 'package:flowdelivery_app/features/home/domain/entities/home_restaurant.dart';
 import 'package:flowdelivery_app/features/home/domain/repositories/home_repository.dart';
 import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
 import 'package:flowdelivery_app/features/home/presentation/providers/home_feed_providers.dart';
@@ -36,6 +39,40 @@ Widget _buildTestApp({List overrides = const []}) {
 
 void main() {
   group('HomePage', () {
+    testWidgets('renders remote feed content from the repository success path', (
+      tester,
+    ) async {
+      final remoteContent = await _loadRemoteContent();
+
+      await tester.pumpWidget(
+        _buildTestApp(
+          overrides: [
+            homeRepositoryProvider.overrideWithValue(
+              _FakeHomeRepository(() async => remoteContent),
+            ),
+          ],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final context = tester.element(find.byType(HomePage));
+      final l10n = AppLocalizations.of(context);
+
+      expect(
+        find.text(l10n.homeDeliveryAddressValue(remoteContent.deliveryAddress)),
+        findsOneWidget,
+      );
+      expect(find.text('Pizza Prime'), findsOneWidget);
+      expect(find.text('Forno Central'), findsOneWidget);
+      expect(
+        find.text(homeFeedFixtureContent.featuredRestaurants.first.name),
+        findsNothing,
+      );
+      expect(find.text(l10n.homeLoadingStateTitle), findsNothing);
+      expect(find.text(l10n.homeEmptyStateTitle), findsNothing);
+      expect(find.text(l10n.homeErrorStateTitle), findsNothing);
+    });
+
     testWidgets(
       'renders localized header, categories, promotion, restaurants, and selected home destination',
       (tester) async {
@@ -231,4 +268,42 @@ class _FakeHomeRepository implements HomeRepository {
   Future<HomeFeedContent> getHomeFeedContent() {
     return loader();
   }
+}
+
+Future<HomeFeedContent> _loadRemoteContent() async {
+  return HomeFeedContent(
+    deliveryAddress: 'Avenida Paulista, 1500',
+    categories: const [
+      HomeCategory(id: 'all'),
+      HomeCategory(id: 'pizza'),
+    ],
+    promotion: const HomePromotion(
+      id: 'promotion-remote',
+      imageAssetPath: 'assets/images/promo.png',
+      discountPercentage: 35,
+      hasFreeDelivery: false,
+    ),
+    featuredRestaurants: [
+      HomeRestaurant(
+        id: 'restaurant-remote-1',
+        name: 'Pizza Prime',
+        imageAssetPath: 'assets/images/restaurant.png',
+        rating: 4.9,
+        deliveryTimeMinMinutes: 15,
+        deliveryTimeMaxMinutes: 25,
+        cuisine: 'pizza',
+        categoryIds: ['all', 'pizza'],
+      ),
+      HomeRestaurant(
+        id: 'restaurant-remote-2',
+        name: 'Forno Central',
+        imageAssetPath: 'assets/images/restaurant.png',
+        rating: 4.7,
+        deliveryTimeMinMinutes: 20,
+        deliveryTimeMaxMinutes: 30,
+        cuisine: 'italian',
+        categoryIds: ['all'],
+      ),
+    ],
+  );
 }

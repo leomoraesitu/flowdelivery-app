@@ -10,7 +10,7 @@ In Progress
 
 ## Current Step
 
-Execute only Task 6 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
+Execute only Task 7 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
 
 ## Completed
 
@@ -35,6 +35,7 @@ Execute only Task 6 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 - Sprint 3 Task 3 completed — Home remote DTOs now parse Supabase rows into typed category, promotion, and restaurant payloads, and a dedicated Supabase datasource owns the Home feed queries, row orchestration, category-link aggregation, and explicit Home remote exceptions.
 - Sprint 3 Task 4 completed — the Home repository is now asynchronous, the app composes a Supabase-backed Home datasource/repository at the composition root, and Riverpod now exposes an async Home feed provider with a fixture compatibility fallback so the validated UI remains stable while remote loading lands incrementally.
 - Sprint 3 Task 5 completed — the Home page now renders explicit async loading, error, and empty states from the remote feed provider, all new copy is localized via ARB/AppLocalizations, and the new state UI uses semantic theme APIs/tokens without hardcoded palette values.
+- Sprint 3 Task 6 completed — focused remote-feed regression coverage now proves remote success rendering in `HomePage`, preserves fixture compatibility fallback on async provider failure, and keeps datasource/repository/provider/widget coverage contract-oriented without touching production code.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -119,7 +120,7 @@ Execute only Task 6 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 
 ## Pending / Deferred
 
-- Execute Task 6 only after explicit approval: add focused remote feed regression coverage across datasource/repository/provider/widget boundaries.
+- Execute Task 7 only after explicit approval: reconcile documentation, memory, and Trello after validation.
 - Keep the Home implementation incremental and limited to the approved remote-feed foundation slice.
 - Keep profile/address persistence out of the remote feed slice; the delivery-address placeholder remains local.
 - Keep search, filtering, restaurant details, destination navigation, Storage-backed media, and Realtime out of scope until separate approved slices exist.
@@ -185,3 +186,6 @@ Sprint 2 closure validation:
 - `flutter gen-l10n`: generated localizations refreshed for new Home async-state copy.
 - `dart analyze lib/features/home/presentation/pages/home_page.dart test/features/home/presentation/home_page_test.dart lib/l10n/generated test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/theme/no_hardcoded_visual_values_test.dart test/app/routes/app_router_test.dart`: no issues.
 - `flutter test test/features/home/presentation/home_page_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/theme/no_hardcoded_visual_values_test.dart test/app/routes/app_router_test.dart`: all tests passed.
+- Sprint 3 Task 6 validation:
+- `dart analyze test/features/home/presentation/home_page_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/data/home_repository_impl_test.dart test/features/home/data/home_remote_datasource_test.dart test/features/home/presentation/home_feed_providers_test.dart`: no issues.
+- `flutter test test/features/home/data/home_remote_datasource_test.dart test/features/home/data/home_repository_impl_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart test/app/routes/app_router_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: all tests passed.

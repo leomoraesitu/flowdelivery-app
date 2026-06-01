@@ -94,6 +94,27 @@ void main() {
         expect(container.read(homeFeedProvider), expectedContent);
       },
     );
+
+    test(
+      'keeps the fixture content as a compatibility fallback when async loading fails',
+      () async {
+        final container = ProviderContainer(
+          overrides: [
+            homeRepositoryProvider.overrideWithValue(
+              _FakeHomeRepository(() async => throw StateError('boom')),
+            ),
+          ],
+        );
+        addTearDown(container.dispose);
+
+        expect(container.read(homeFeedProvider), homeFeedFixtureContent);
+        await expectLater(
+          container.read(homeFeedAsyncProvider.future),
+          throwsA(isA<StateError>()),
+        );
+        expect(container.read(homeFeedProvider), homeFeedFixtureContent);
+      },
+    );
   });
 }
 
