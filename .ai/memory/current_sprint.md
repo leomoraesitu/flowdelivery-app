@@ -2,29 +2,28 @@
 
 ## Sprint
 
-Sprint 3 — Home Remote Feed Foundation
+Sprint 4 — Home Discovery Interactions
 
 ## Status
 
-Validated / Completed.
+Planned / Approved.
 
-Sprint 3 closed after validating the first authenticated remote-feed read path for Home and reconciling docs, memory, and real-card governance evidence.
+Sprint 4 starts from the validated remote-feed baseline and is limited to interactive search/category discovery on the authenticated Home feed.
 
 ## Focus
 
-- Supabase-backed read-only Home feed foundation
-- explicit grants and RLS for new Home feed tables
-- DTO, datasource, repository, and async Riverpod provider wiring
-- preserved `/home` route contract and existing Home composition
-- localized loading/empty/error states only if the async flow requires them
-- Localization Guard and Theme Guard enforcement for new async UI states
+- interactive search and category discovery on top of the validated remote Home feed
+- derived filtering state owned in Riverpod rather than widgets
+- preserved `/home` route contract and existing remote datasource/repository boundaries
+- localized discovery empty-results feedback only if interaction UX requires it
+- Localization Guard and Theme Guard enforcement for new interaction states
 
 ## Current Priorities
 
 - preserve the validated auth foundation and Sprint 2 Home baseline as the current baseline
-- treat Sprint 3 as closed and require a new explicitly approved Home slice before further implementation
+- treat Sprint 4 as the active approved Home slice and execute only one approved task at a time
 - keep profile/address persistence out of this Home slice
-- keep search, filtering, detail navigation, destination tabs, Storage media, and Realtime deferred until separate approved slices
+- keep restaurant details, destination tabs, ranking, pagination, Storage media, and Realtime deferred until separate approved slices
 - keep Trello documentation, workflow artifacts, and real-card evidence aligned when Trello-governed work touches cards
 - validate real Trello checklist parity with `trello_get_card_checklists` before using cards as delivery evidence
 - keep Supabase outside widgets and ViewModels
@@ -40,12 +39,15 @@ Sprint 3 closed after validating the first authenticated remote-feed read path f
 
 - Sprint 2 (`docs/project-management/SPRINT_2.md`) is closed as the validated static Home baseline.
 - Sprint 3 generated in `docs/project-management/SPRINT_3.md`.
+- Sprint 4 generated in `docs/project-management/SPRINT_4.md`.
 - Home remote technical plan registered in `.ai/plans/2026-06-01-home-remote-feed-plan.md`.
-- The next Home slice introduces the minimal remote read path only; delivery-address persistence remains local/deferred.
+- Home discovery technical plan registered in `.ai/plans/2026-06-01-home-discovery-interactions-plan.md`.
+- The next Home slice introduces interactive search/category discovery only; delivery-address persistence remains local/deferred.
 - Active branch: `feat/home`.
 - The previous real Trello story remains closed with validated implementation evidence: `https://trello.com/c/X3jAdpd2`.
 - The Sprint 3 real Trello story is closed with validated implementation evidence: `https://trello.com/c/bzxIa3wx`.
 - Sprint 3 validation includes focused datasource/repository/provider/widget tests, localization/theme guards, router regression coverage, and Trello checklist parity validation.
+- Sprint 4 requires a new real Trello story with Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, and Theme Guard checklists before implementation starts.
 - Use `.codex/workflows/` for repeatable execution.
 - Use `.ai/context/` as project context.
 - Use `.ai/agents/` for role-specific behavior.

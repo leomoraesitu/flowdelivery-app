@@ -2,15 +2,15 @@
 
 ## Feature
 
-Home Remote Feed Foundation
+Home Discovery Interactions
 
 ## Status
 
-Completed
+Planned / Approved
 
 ## Current Step
 
-Await the next explicitly approved Home slice; the remote-feed foundation is closed.
+Execute only Task 1 from `.ai/plans/2026-06-01-home-discovery-interactions-plan.md` after explicit implementation approval.
 
 ## Completed
 
@@ -37,6 +37,9 @@ Await the next explicitly approved Home slice; the remote-feed foundation is clo
 - Sprint 3 Task 5 completed — the Home page now renders explicit async loading, error, and empty states from the remote feed provider, all new copy is localized via ARB/AppLocalizations, and the new state UI uses semantic theme APIs/tokens without hardcoded palette values.
 - Sprint 3 Task 6 completed — focused remote-feed regression coverage now proves remote success rendering in `HomePage`, preserves fixture compatibility fallback on async provider failure, and keeps datasource/repository/provider/widget coverage contract-oriented without touching production code.
 - Sprint 3 Task 7 completed — Sprint 3 docs, feature/sprint memory, and the real Trello card were reconciled after final governance validation so the slice closes with implementation evidence, deferred scope notes, and checklist parity preserved.
+- Sprint 4 planning approved — the next Home slice focuses on interactive discovery over the validated remote feed foundation, limited to search, category selection, localized empty-results behavior if needed, and focused provider/widget/guard validation.
+- Home discovery technical plan generated in `.ai/plans/2026-06-01-home-discovery-interactions-plan.md`.
+- Sprint 4 project-management artifact generated in `docs/project-management/SPRINT_4.md`.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -122,9 +125,10 @@ Await the next explicitly approved Home slice; the remote-feed foundation is clo
 ## Pending / Deferred
 
 - The Home remote-feed foundation slice is complete; future Home work requires a new explicitly approved slice.
-- Keep the Home implementation incremental and limited to the approved remote-feed foundation slice.
-- Keep profile/address persistence out of the remote feed slice; the delivery-address placeholder remains local.
-- Keep search, filtering, restaurant details, destination navigation, Storage-backed media, and Realtime out of scope until separate approved slices exist.
+- Execute Sprint 4 Task 1 only after explicit approval: define discovery state ownership and the derived filtered-feed contract.
+- Keep the Home implementation incremental and limited to the approved discovery-interactions slice.
+- Keep profile/address persistence out of the discovery slice; the delivery-address placeholder remains local.
+- Keep restaurant details, destination navigation, ranking, pagination, Storage-backed media, and Realtime out of scope until separate approved slices exist.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 - Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.
 - Keep future `home`, `feed`, and `cart` presentation slices on semantic theme APIs and app tokens from their first approved implementation task.
