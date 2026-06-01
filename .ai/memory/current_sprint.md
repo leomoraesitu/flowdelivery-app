@@ -6,7 +6,9 @@ Sprint 2 — Home Restaurant Feed Foundation
 
 ## Status
 
-Planned / Approved.
+Completed / Validated.
+
+Sprint 2 is closed after the validated Home delivery slice, documentation reconciliation, and Trello parity confirmation.
 
 ## Focus
 
@@ -19,9 +21,9 @@ Planned / Approved.
 
 ## Current Priorities
 
-- execute only the next approved Home plan task
 - preserve the validated auth foundation as the current baseline
-- defer Supabase restaurant schema and remote loading until a separate approved slice
+- select and approve the next product or governance slice before additional implementation work
+- defer Supabase restaurant schema, datasource, repository, DTO, and remote loading until a separate approved Home slice
 - keep Trello documentation, workflow artifacts, and real-card evidence aligned when Trello-governed work touches cards
 - validate real Trello checklist parity with `trello_get_card_checklists` before using cards as delivery evidence
 - keep Supabase outside widgets and ViewModels
@@ -39,7 +41,8 @@ Planned / Approved.
 - Home technical plan registered in `.ai/plans/2026-06-01-home-static-feed-plan.md`.
 - Home scope is static and presentation-first because the Supabase `public` schema has no restaurant tables yet.
 - Active branch: `feat/home`.
-- Real Trello story synchronized in `✅ Ready`: `https://trello.com/c/X3jAdpd2`.
+- Real Trello story synchronized with validated implementation evidence: `https://trello.com/c/X3jAdpd2`.
+- Sprint 2 Home slice completed with validated provider, routing, widget, localization-guard, and theme-guard coverage.
 - Use `.codex/workflows/` for repeatable execution.
 - Use `.ai/context/` as project context.
 - Use `.ai/agents/` for role-specific behavior.

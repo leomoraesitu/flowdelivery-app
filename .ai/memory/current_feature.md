@@ -6,11 +6,13 @@ Home Restaurant Feed Foundation
 
 ## Status
 
-Planned / Approved
+Completed / Validated
 
 ## Current Step
 
-Execute only Task 7 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after explicit implementation approval.
+No active implementation step.
+
+Await the next explicitly approved Home follow-up slice before making further product changes.
 
 ## Completed
 
@@ -22,8 +24,9 @@ Execute only Task 7 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after e
 - Task 4 completed — Home copy now lives in ARB catalogs with generated `AppLocalizations` accessors for address, search, categories, promo banner, featured section, restaurant metadata, and bottom navigation labels.
 - Task 5 completed — `/home` now renders the approved static Home feed UI with responsive layout, localized presentation copy, semantic theme tokens, decorative asset fallbacks, and focused provider/router/guard validation.
 - Task 6 completed — focused Home widget coverage now validates localized header/search copy, selected category state, promotion content, fixture restaurant rendering, selected Home navigation state, and deferred bottom-nav no-op behavior.
+- Task 7 completed — Sprint 2, feature memory, and sprint memory were reconciled after validation; Trello parity was verified against the real card before final closure evidence was recorded.
 - Sprint 2 project-management artifact generated in `docs/project-management/SPRINT_2.md`.
-- Real Trello story `[FEAT] Home restaurant feed static UI` created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Localization Guard, and Theme Guard parity verified (`https://trello.com/c/X3jAdpd2`).
+- Real Trello story `[FEAT] Home restaurant feed static UI` is synchronized with validated implementation evidence and guard parity (`https://trello.com/c/X3jAdpd2`).
 - Home remains presentation-first: Supabase schema, repository, datasource, remote loading, search behavior, filters, and destination navigation are deferred.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -107,10 +110,11 @@ Execute only Task 7 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after e
 - Post-Sprint 1 stabilization validation — focused auth suites remain green after i18n refactor (17 tests)
 - Post-Sprint 1 governance hardening — Localization Guard and Theme Guard workflows/templates aligned in project-management and Trello artifacts
 
-## Pending
+## Pending / Deferred
 
-- Execute Task 7 only after explicit approval: reconcile Sprint 2 and feature memory after the validated Home delivery slice.
+- Select and approve the next Home follow-up slice before additional implementation work.
 - Keep the Home implementation incremental and limited to the approved static restaurant-feed slice.
+- Keep Supabase restaurant schema, datasource, repository, DTO, and remote loading deferred until a separate approved slice exists.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 - Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.
 - Keep future `home`, `feed`, and `cart` presentation slices on semantic theme APIs and app tokens from their first approved implementation task.
@@ -155,3 +159,5 @@ Home static UI validation:
 Home widget coverage validation:
 - `flutter test test/features/home/presentation/home_page_test.dart test/features/home/presentation/home_feed_providers_test.dart test/app/routes/app_router_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: all tests passed.
 - `flutter analyze test/features/home/presentation/home_page_test.dart`: no issues.
+Sprint 2 closure validation:
+- `flutter test test/app/project_management/trello_guard_checklists_test.dart`: passed.
