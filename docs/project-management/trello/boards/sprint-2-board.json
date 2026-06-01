@@ -1,0 +1,81 @@
+{
+  "name": "Sprint 2 - Home Restaurant Feed Foundation",
+  "board": "FlowDelivery - Product Backlog",
+  "lists": [
+    {
+      "name": "✅ Ready",
+      "cards": [
+        {
+          "name": "[FEAT] Home restaurant feed static UI",
+          "labels": [
+            "feat",
+            "frontend",
+            "mvvm",
+            "ux",
+            "design-system",
+            "priority-high"
+          ],
+          "desc": "# Objective\nDeliver the first authenticated Home slice as a prototype-aligned static restaurant feed with typed local fixtures and focused validation.\n\n# Scope\nTracked in the real Trello checklist named `Scope`.\n\n# Acceptance Criteria\nTracked in the real Trello checklist named `Acceptance Criteria`.\n\n# Dependencies\nTracked in the real Trello checklist named `Dependencies`.\n\n# Technical Notes\n- Approved plan: `.ai/plans/2026-06-01-home-static-feed-plan.md`\n- Active branch: `feat/home`\n- Parent epic context: `[EPIC] Restaurant Feed`\n- Supabase schema, remote loading, functional search, functional filters, and destination navigation remain out of scope.",
+          "checklists": [
+            {
+              "name": "Scope",
+              "checkItems": [
+                { "name": "Define typed local Home models", "pos": 1, "state": "incomplete" },
+                { "name": "Add local fixtures and read-only Riverpod provider", "pos": 2, "state": "incomplete" },
+                { "name": "Register protected /home route", "pos": 3, "state": "incomplete" },
+                { "name": "Add localized Home copy through ARB catalogs", "pos": 4, "state": "incomplete" },
+                { "name": "Build prototype-aligned Home page composition", "pos": 5, "state": "incomplete" },
+                { "name": "Add focused Home widget coverage", "pos": 6, "state": "incomplete" },
+                { "name": "Reconcile docs, memory, and Trello after validation", "pos": 7, "state": "incomplete" }
+              ]
+            },
+            {
+              "name": "Acceptance Criteria",
+              "checkItems": [
+                { "name": "Home is reachable through a protected /home route", "pos": 1, "state": "incomplete" },
+                { "name": "Home renders local typed restaurant feed fixtures", "pos": 2, "state": "incomplete" },
+                { "name": "No premature Supabase repository or datasource is introduced", "pos": 3, "state": "incomplete" },
+                { "name": "Search, filters, and deferred tabs remain non-functional in this slice", "pos": 4, "state": "incomplete" },
+                { "name": "UI copy uses ARB catalogs and AppLocalizations", "pos": 5, "state": "incomplete" },
+                { "name": "UI styling uses semantic theme APIs and app tokens", "pos": 6, "state": "incomplete" },
+                { "name": "Focused tests and guards pass", "pos": 7, "state": "incomplete" }
+              ]
+            },
+            {
+              "name": "Dependencies",
+              "checkItems": [
+                { "name": "Approved plan: .ai/plans/2026-06-01-home-static-feed-plan.md", "pos": 1, "state": "complete" },
+                { "name": "Active branch: feat/home", "pos": 2, "state": "complete" },
+                { "name": "Existing auth foundation and protected-route policy", "pos": 3, "state": "complete" },
+                { "name": "Existing Riverpod, GoRouter, localization, and theme guardrails", "pos": 4, "state": "complete" },
+                { "name": "Implementation approval for Task 1", "pos": 5, "state": "incomplete" }
+              ]
+            },
+            {
+              "name": "Localization Guard Checklist",
+              "checkItems": [
+                { "name": "Every new user-facing string has an ARB key", "pos": 1, "state": "incomplete" },
+                { "name": "UI reads strings through AppLocalizations", "pos": 2, "state": "incomplete" },
+                { "name": "No hardcoded copy in Text, SnackBar, Tooltip, AlertDialog, BottomSheet, showModalBottomSheet, or semanticLabel", "pos": 3, "state": "incomplete" },
+                { "name": "ARB catalog parity guard remains green after copy changes", "pos": 4, "state": "incomplete" },
+                { "name": "New placeholders are declared in template metadata and preserved across translated catalogs", "pos": 5, "state": "incomplete" },
+                { "name": "New placeholders and route placeholders are covered by the guard tests", "pos": 6, "state": "incomplete" },
+                { "name": "Generated localization freshness guard remains green after ARB changes", "pos": 7, "state": "incomplete" }
+              ]
+            },
+            {
+              "name": "Theme Guard Checklist",
+              "checkItems": [
+                { "name": "UI uses only semantic theme APIs and app tokens (Theme.of(context), AppSpacing, AppRadius, AppSizes, AppDurations)", "pos": 1, "state": "incomplete" },
+                { "name": "No Color(0x...) hardcoded values exist in feature presentation code", "pos": 2, "state": "incomplete" },
+                { "name": "No direct AppLightColors or AppDarkColors usage exists outside lib/app/theme", "pos": 3, "state": "incomplete" },
+                { "name": "No direct Colors.* usage exists in feature presentation when semantic ColorScheme roles apply", "pos": 4, "state": "incomplete" },
+                { "name": "Visual hardcoded guard test remains green after UI changes", "pos": 5, "state": "incomplete" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

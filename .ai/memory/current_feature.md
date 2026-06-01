@@ -2,18 +2,23 @@
 
 ## Feature
 
-[DEBT] Theme Guard future slices monitoring
+Home Restaurant Feed Foundation
 
 ## Status
 
-Reduced / Monitoring
+Planned / Approved
 
 ## Current Step
 
-Monitor Theme Guard coverage for future presentation slices and select the next approved product or governance slice before implementing more changes.
+Execute only Task 1 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after explicit implementation approval.
 
 ## Completed
 
+- Home static feed scope approved: protected `/home`, typed local fixtures, prototype-aligned UI, Riverpod wiring, ARB copy, Theme Guard, and focused tests.
+- Home technical plan generated in `.ai/plans/2026-06-01-home-static-feed-plan.md`.
+- Sprint 2 project-management artifact generated in `docs/project-management/SPRINT_2.md`.
+- Real Trello story `[FEAT] Home restaurant feed static UI` created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Localization Guard, and Theme Guard parity verified (`https://trello.com/c/X3jAdpd2`).
+- Home remains presentation-first: Supabase schema, repository, datasource, remote loading, search behavior, filters, and destination navigation are deferred.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -98,7 +103,8 @@ Monitor Theme Guard coverage for future presentation slices and select the next 
 
 ## Pending
 
-- Select and approve the next product or governance slice before implementation.
+- Execute Task 1 only after explicit approval: define typed local Home models.
+- Keep the Home implementation incremental and limited to the approved static restaurant-feed slice.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 - Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.
 - Keep future `home`, `feed`, and `cart` presentation slices on semantic theme APIs and app tokens from their first approved implementation task.

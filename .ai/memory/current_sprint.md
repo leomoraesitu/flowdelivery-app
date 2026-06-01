@@ -2,23 +2,26 @@
 
 ## Sprint
 
-Sprint 1 — Authentication Foundation
+Sprint 2 — Home Restaurant Feed Foundation
 
 ## Status
 
-Completed.
+Planned / Approved.
 
 ## Focus
 
-- post-Sprint 1 governance hardening
-- Trello sync debt monitoring
-- documentation and memory reconciliation after sprint closure
-- preserve the validated auth foundation as the current baseline
-- keep localization and theme guardrails enforced for future UI slices
+- protected Home route
+- typed local restaurant-feed fixtures
+- prototype-aligned static Home UI
+- Riverpod fixture wiring
+- focused routing and widget tests
+- Localization Guard and Theme Guard enforcement from the first Home slice
 
 ## Current Priorities
 
-- select and approve the next product or governance slice before implementation
+- execute only the next approved Home plan task
+- preserve the validated auth foundation as the current baseline
+- defer Supabase restaurant schema and remote loading until a separate approved slice
 - keep Trello documentation, workflow artifacts, and real-card evidence aligned when Trello-governed work touches cards
 - validate real Trello checklist parity with `trello_get_card_checklists` before using cards as delivery evidence
 - keep Supabase outside widgets and ViewModels
@@ -32,6 +35,11 @@ Completed.
 
 ## Notes
 
+- Sprint 2 generated in `docs/project-management/SPRINT_2.md`.
+- Home technical plan registered in `.ai/plans/2026-06-01-home-static-feed-plan.md`.
+- Home scope is static and presentation-first because the Supabase `public` schema has no restaurant tables yet.
+- Active branch: `feat/home`.
+- Real Trello story synchronized in `✅ Ready`: `https://trello.com/c/X3jAdpd2`.
 - Use `.codex/workflows/` for repeatable execution.
 - Use `.ai/context/` as project context.
 - Use `.ai/agents/` for role-specific behavior.
@@ -43,7 +51,7 @@ Completed.
 - Visual hardcoded guard test now strict (no baseline exception) and green.
 - Post-review corrective pass completed: router coupling and forgot-password lifecycle consistency fixed with focused coverage.
 - I18n pipeline guardrails now include hardcoded-copy, ARB catalog parity, placeholder parity, and generated localization freshness validation.
-- Password recovery completion is now the selected next feature planning slice: reset deep-link/session handling, reset-password route, new-password UI, Supabase password update, focused tests, and Supabase redirect manual QA notes.
+- Historical Sprint 1 password-recovery planning slice covered reset deep-link/session handling, reset-password route, new-password UI, Supabase password update, focused tests, and Supabase redirect manual QA notes.
 - Password recovery completion automated slice implemented: reset-password route, new-password UI, ViewModel reset state, Supabase password update through datasource, ARB copy, and focused tests.
 - Sprint 1 is closed; Trello sync debt reduction is now `Reduced / Monitoring`, so the next implementation requires an explicitly selected and approved product or governance slice.
 - Recovery deliverability execution remains pending external QA inbox/provider availability.

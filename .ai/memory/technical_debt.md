@@ -122,6 +122,8 @@ Notes:
 - Post-review cleanup removed remaining non-semantic auth presentation usages (`Colors.white` and `shadow.withAlpha(30)`) in favor of `ColorScheme` semantic roles.
 - Validation follow-up (2026-05-27): `flutter test test/app/theme/no_hardcoded_visual_values_test.dart` passed.
 - Keep incremental refactors per slice and validate with focused tests plus `flutter analyze` on touched files.
+- Home is now the selected first presentation slice through `.ai/plans/2026-06-01-home-static-feed-plan.md`.
+- The Home plan requires semantic theme APIs and app tokens from its first UI task; keep this debt in monitoring until that slice is validated.
 
 ### Reduce manual synchronization between docs and Trello artifacts
 
