@@ -240,6 +240,33 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get homeLoadingStateTitle => 'Carregando sua Home';
+
+  @override
+  String get homeLoadingStateMessage =>
+      'Estamos buscando os restaurantes e as ofertas mais recentes para voce.';
+
+  @override
+  String get homeLoadingStateSemanticLabel => 'Carregando feed da Home';
+
+  @override
+  String get homeErrorStateTitle => 'Nao foi possivel carregar sua Home';
+
+  @override
+  String get homeErrorStateMessage =>
+      'Tente novamente para atualizar restaurantes e ofertas.';
+
+  @override
+  String get homeRetryAction => 'Tentar novamente';
+
+  @override
+  String get homeEmptyStateTitle => 'Nada em destaque agora';
+
+  @override
+  String get homeEmptyStateMessage =>
+      'Volte em instantes para conferir novos restaurantes e ofertas.';
+
+  @override
   String get homeBottomNavHome => 'Home';
 
   @override
@@ -486,6 +513,33 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   ) {
     return '$rating • $minMinutes-$maxMinutes min';
   }
+
+  @override
+  String get homeLoadingStateTitle => 'Carregando sua Home';
+
+  @override
+  String get homeLoadingStateMessage =>
+      'Estamos buscando os restaurantes e as ofertas mais recentes para voce.';
+
+  @override
+  String get homeLoadingStateSemanticLabel => 'Carregando feed da Home';
+
+  @override
+  String get homeErrorStateTitle => 'Nao foi possivel carregar sua Home';
+
+  @override
+  String get homeErrorStateMessage =>
+      'Tente novamente para atualizar restaurantes e ofertas.';
+
+  @override
+  String get homeRetryAction => 'Tentar novamente';
+
+  @override
+  String get homeEmptyStateTitle => 'Nada em destaque agora';
+
+  @override
+  String get homeEmptyStateMessage =>
+      'Volte em instantes para conferir novos restaurantes e ofertas.';
 
   @override
   String get homeBottomNavHome => 'Home';

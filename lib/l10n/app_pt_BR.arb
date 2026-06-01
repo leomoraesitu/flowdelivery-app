@@ -290,6 +290,38 @@
       }
     }
   },
+  "homeLoadingStateTitle": "Carregando sua Home",
+  "@homeLoadingStateTitle": {
+    "description": "Title shown while the Home remote feed is loading."
+  },
+  "homeLoadingStateMessage": "Estamos buscando os restaurantes e as ofertas mais recentes para voce.",
+  "@homeLoadingStateMessage": {
+    "description": "Body copy shown while the Home remote feed is loading."
+  },
+  "homeLoadingStateSemanticLabel": "Carregando feed da Home",
+  "@homeLoadingStateSemanticLabel": {
+    "description": "Semantic label announced for the Home loading indicator."
+  },
+  "homeErrorStateTitle": "Nao foi possivel carregar sua Home",
+  "@homeErrorStateTitle": {
+    "description": "Title shown when the Home remote feed fails to load."
+  },
+  "homeErrorStateMessage": "Tente novamente para atualizar restaurantes e ofertas.",
+  "@homeErrorStateMessage": {
+    "description": "Body copy shown when the Home remote feed fails to load."
+  },
+  "homeRetryAction": "Tentar novamente",
+  "@homeRetryAction": {
+    "description": "Retry button label shown after a Home remote feed loading failure."
+  },
+  "homeEmptyStateTitle": "Nada em destaque agora",
+  "@homeEmptyStateTitle": {
+    "description": "Title shown when the Home remote feed loads without featured restaurants."
+  },
+  "homeEmptyStateMessage": "Volte em instantes para conferir novos restaurantes e ofertas.",
+  "@homeEmptyStateMessage": {
+    "description": "Body copy shown when the Home remote feed loads without featured restaurants."
+  },
   "homeBottomNavHome": "Home",
   "@homeBottomNavHome": {
     "description": "Bottom navigation label for the Home destination."

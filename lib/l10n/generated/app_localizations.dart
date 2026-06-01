@@ -499,6 +499,54 @@ abstract class AppLocalizations {
     int maxMinutes,
   );
 
+  /// Title shown while the Home remote feed is loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando sua Home'**
+  String get homeLoadingStateTitle;
+
+  /// Body copy shown while the Home remote feed is loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Estamos buscando os restaurantes e as ofertas mais recentes para voce.'**
+  String get homeLoadingStateMessage;
+
+  /// Semantic label announced for the Home loading indicator.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando feed da Home'**
+  String get homeLoadingStateSemanticLabel;
+
+  /// Title shown when the Home remote feed fails to load.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nao foi possivel carregar sua Home'**
+  String get homeErrorStateTitle;
+
+  /// Body copy shown when the Home remote feed fails to load.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tente novamente para atualizar restaurantes e ofertas.'**
+  String get homeErrorStateMessage;
+
+  /// Retry button label shown after a Home remote feed loading failure.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tentar novamente'**
+  String get homeRetryAction;
+
+  /// Title shown when the Home remote feed loads without featured restaurants.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nada em destaque agora'**
+  String get homeEmptyStateTitle;
+
+  /// Body copy shown when the Home remote feed loads without featured restaurants.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Volte em instantes para conferir novos restaurantes e ofertas.'**
+  String get homeEmptyStateMessage;
+
   /// Bottom navigation label for the Home destination.
   ///
   /// In pt_BR, this message translates to:

@@ -237,6 +237,33 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get homeLoadingStateTitle => 'Loading your home feed';
+
+  @override
+  String get homeLoadingStateMessage =>
+      'We are fetching the latest restaurants and deals for you.';
+
+  @override
+  String get homeLoadingStateSemanticLabel => 'Loading home feed';
+
+  @override
+  String get homeErrorStateTitle => 'Could not load your home feed';
+
+  @override
+  String get homeErrorStateMessage =>
+      'Try again to refresh restaurants and deals.';
+
+  @override
+  String get homeRetryAction => 'Try again';
+
+  @override
+  String get homeEmptyStateTitle => 'Nothing featured right now';
+
+  @override
+  String get homeEmptyStateMessage =>
+      'Check back in a moment for new restaurants and offers.';
+
+  @override
   String get homeBottomNavHome => 'Home';
 
   @override
