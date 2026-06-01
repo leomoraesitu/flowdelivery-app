@@ -25,13 +25,19 @@ class HomePage extends ConsumerWidget {
               availableWidth: constraints.maxWidth,
               child: asyncContent.when(
                 data: (content) {
+                  final viewData = ref.watch(homeFeedViewProvider);
+
                   if (content.featuredRestaurants.isEmpty) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         HomeFeedHeader(
-                          deliveryAddress: content.deliveryAddress,
-                          logoAssetPath: content.promotion.imageAssetPath,
+                          deliveryAddress: viewData.deliveryAddress,
+                          logoAssetPath: viewData.promotion.imageAssetPath,
+                          searchQuery: viewData.discoveryState.searchQuery,
+                          onSearchChanged: ref
+                              .read(homeFeedDiscoveryControllerProvider.notifier)
+                              .setSearchQuery,
                         ),
                         SizedBox(height: AppSpacing.xl),
                         _HomeFeedStateCard(
@@ -47,13 +53,20 @@ class HomePage extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       HomeFeedHeader(
-                        deliveryAddress: content.deliveryAddress,
-                        logoAssetPath: content.promotion.imageAssetPath,
+                        deliveryAddress: viewData.deliveryAddress,
+                        logoAssetPath: viewData.promotion.imageAssetPath,
+                        searchQuery: viewData.discoveryState.searchQuery,
+                        onSearchChanged: ref
+                            .read(homeFeedDiscoveryControllerProvider.notifier)
+                            .setSearchQuery,
                       ),
                       SizedBox(height: AppSpacing.xl),
                       HomeFeedSections(
-                        content: content,
+                        viewData: viewData,
                         availableWidth: constraints.maxWidth,
+                        onCategorySelected: ref
+                            .read(homeFeedDiscoveryControllerProvider.notifier)
+                            .selectCategory,
                       ),
                     ],
                   );

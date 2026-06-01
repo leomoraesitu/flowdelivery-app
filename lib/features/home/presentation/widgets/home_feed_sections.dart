@@ -1,19 +1,22 @@
 import 'package:flowdelivery_app/app/theme/app_tokens.dart';
 import 'package:flowdelivery_app/features/home/domain/entities/home_category.dart';
-import 'package:flowdelivery_app/features/home/domain/entities/home_feed_content.dart';
+import 'package:flowdelivery_app/features/home/domain/entities/home_promotion.dart';
 import 'package:flowdelivery_app/features/home/domain/entities/home_restaurant.dart';
+import 'package:flowdelivery_app/features/home/presentation/providers/home_feed_providers.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class HomeFeedSections extends StatelessWidget {
   const HomeFeedSections({
-    required this.content,
+    required this.viewData,
     required this.availableWidth,
+    required this.onCategorySelected,
     super.key,
   });
 
-  final HomeFeedContent content;
+  final HomeFeedViewData viewData;
   final double availableWidth;
+  final ValueChanged<String> onCategorySelected;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +25,16 @@ class HomeFeedSections extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _CategoryScroller(categories: content.categories),
+        _CategoryScroller(
+          categories: viewData.categories,
+          selectedCategoryId: viewData.discoveryState.selectedCategoryId,
+          onCategorySelected: onCategorySelected,
+        ),
         SizedBox(height: AppSpacing.xl),
-        _PromotionBanner(content: content, showArtwork: availableWidth >= 520),
+        _PromotionBanner(
+          promotion: viewData.promotion,
+          showArtwork: availableWidth >= 520,
+        ),
         SizedBox(height: AppSpacing.xl),
         Row(
           children: [
@@ -40,16 +50,22 @@ class HomeFeedSections extends StatelessWidget {
           ],
         ),
         SizedBox(height: AppSpacing.md),
-        _RestaurantGrid(restaurants: content.featuredRestaurants),
+        _RestaurantGrid(restaurants: viewData.visibleRestaurants),
       ],
     );
   }
 }
 
 class _CategoryScroller extends StatelessWidget {
-  const _CategoryScroller({required this.categories});
+  const _CategoryScroller({
+    required this.categories,
+    required this.selectedCategoryId,
+    required this.onCategorySelected,
+  });
 
   final List<HomeCategory> categories;
+  final String selectedCategoryId;
+  final ValueChanged<String> onCategorySelected;
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +78,14 @@ class _CategoryScroller extends StatelessWidget {
           for (var index = 0; index < categories.length; index++) ...[
             ChoiceChip(
               label: Text(_labelForCategory(context, categories[index])),
-              selected: index == 0,
-              onSelected: (_) {},
+              selected: categories[index].id == selectedCategoryId,
+              onSelected: (selected) {
+                if (selected) {
+                  onCategorySelected(categories[index].id);
+                }
+              },
               labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: index == 0
+                color: categories[index].id == selectedCategoryId
                     ? colorScheme.onPrimaryContainer
                     : colorScheme.onSurface,
                 fontWeight: FontWeight.w600,
@@ -73,7 +93,7 @@ class _CategoryScroller extends StatelessWidget {
               backgroundColor: colorScheme.surfaceContainerLow,
               selectedColor: colorScheme.primaryContainer,
               side: BorderSide(
-                color: index == 0
+                color: categories[index].id == selectedCategoryId
                     ? colorScheme.primaryContainer
                     : colorScheme.outlineVariant,
               ),
@@ -107,9 +127,9 @@ class _CategoryScroller extends StatelessWidget {
 }
 
 class _PromotionBanner extends StatelessWidget {
-  const _PromotionBanner({required this.content, required this.showArtwork});
+  const _PromotionBanner({required this.promotion, required this.showArtwork});
 
-  final HomeFeedContent content;
+  final HomePromotion promotion;
   final bool showArtwork;
 
   @override
@@ -145,12 +165,12 @@ class _PromotionBanner extends StatelessWidget {
                   children: [
                     _BannerPill(
                       label: l10n.homeBannerDiscountValue(
-                        content.promotion.discountPercentage,
+                        promotion.discountPercentage,
                       ),
                       backgroundColor: colorScheme.surface,
                       foregroundColor: colorScheme.primary,
                     ),
-                    if (content.promotion.hasFreeDelivery)
+                    if (promotion.hasFreeDelivery)
                       _BannerPill(
                         label: l10n.homeBannerFreeDeliveryBadge,
                         backgroundColor: colorScheme.tertiaryContainer,
@@ -173,7 +193,7 @@ class _PromotionBanner extends StatelessWidget {
               padding: EdgeInsets.all(AppSpacing.md),
               child: ExcludeSemantics(
                 child: Image.asset(
-                  content.promotion.imageAssetPath,
+                  promotion.imageAssetPath,
                   fit: BoxFit.contain,
                   errorBuilder: (context, error, stackTrace) {
                     return Icon(

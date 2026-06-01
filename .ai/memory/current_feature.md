@@ -10,7 +10,7 @@ In Progress
 
 ## Current Step
 
-Wait for explicit approval before executing Task 3 from `.ai/plans/2026-06-01-home-discovery-interactions-plan.md`.
+Wait for explicit approval before executing Task 4 from `.ai/plans/2026-06-01-home-discovery-interactions-plan.md`.
 
 ## Completed
 
@@ -42,6 +42,7 @@ Wait for explicit approval before executing Task 3 from `.ai/plans/2026-06-01-ho
 - Sprint 4 project-management artifact generated in `docs/project-management/SPRINT_4.md`.
 - Sprint 4 Task 1 completed — Home discovery state ownership now lives in Riverpod through a dedicated discovery controller, and presentation can read a derived Home feed view contract that preserves the current unfiltered success behavior while decoupling widgets from future filter logic.
 - Sprint 4 Task 2 completed — the derived Home discovery provider now applies deterministic category filtering plus normalized search matching over the existing remote feed aggregate, while keeping the default state behavior equivalent to the validated Sprint 3 success path.
+- Sprint 4 Task 3 completed — the existing Home search input and category chips now drive the approved Riverpod discovery-state owner, the rendered restaurant set updates from the derived filtered feed contract, and the current successful Home layout remains structurally aligned with the approved prototype.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -127,7 +128,7 @@ Wait for explicit approval before executing Task 3 from `.ai/plans/2026-06-01-ho
 ## Pending / Deferred
 
 - The Home remote-feed foundation slice is complete; future Home work requires a new explicitly approved slice.
-- Wait for explicit approval before executing Sprint 4 Task 3: wire the existing Home search field and category chips to the approved discovery-state owner.
+- Wait for explicit approval before executing Sprint 4 Task 4: add the localized discovery empty-results feedback only if the interactive Home UX now requires a distinct no-match state.
 - Keep the Home implementation incremental and limited to the approved discovery-interactions slice.
 - Keep profile/address persistence out of the discovery slice; the delivery-address placeholder remains local.
 - Keep restaurant details, destination navigation, ranking, pagination, Storage-backed media, and Realtime out of scope until separate approved slices exist.
@@ -204,3 +205,6 @@ Sprint 2 closure validation:
 - Sprint 4 Task 2 validation:
 - `dart analyze lib/features/home/presentation/providers/home_feed_providers.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_feed_async_providers_test.dart`: no issues.
 - `flutter test test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_feed_async_providers_test.dart`: all tests passed.
+- Sprint 4 Task 3 validation:
+- `dart analyze lib/features/home/presentation/pages/home_page.dart lib/features/home/presentation/widgets/home_feed_header.dart lib/features/home/presentation/widgets/home_feed_sections.dart test/features/home/presentation/home_page_test.dart`: no issues.
+- `flutter test test/features/home/presentation/home_page_test.dart`: all tests passed.

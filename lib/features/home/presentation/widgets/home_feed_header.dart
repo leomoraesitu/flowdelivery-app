@@ -2,15 +2,50 @@ import 'package:flowdelivery_app/app/theme/app_tokens.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-class HomeFeedHeader extends StatelessWidget {
+class HomeFeedHeader extends StatefulWidget {
   const HomeFeedHeader({
     required this.deliveryAddress,
     required this.logoAssetPath,
+    required this.searchQuery,
+    required this.onSearchChanged,
     super.key,
   });
 
   final String deliveryAddress;
   final String logoAssetPath;
+  final String searchQuery;
+  final ValueChanged<String> onSearchChanged;
+
+  @override
+  State<HomeFeedHeader> createState() => _HomeFeedHeaderState();
+}
+
+class _HomeFeedHeaderState extends State<HomeFeedHeader> {
+  late final TextEditingController _searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController(text: widget.searchQuery);
+  }
+
+  @override
+  void didUpdateWidget(covariant HomeFeedHeader oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (_searchController.text != widget.searchQuery) {
+      _searchController.value = TextEditingValue(
+        text: widget.searchQuery,
+        selection: TextSelection.collapsed(offset: widget.searchQuery.length),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +68,7 @@ class HomeFeedHeader extends StatelessWidget {
               alignment: Alignment.center,
               child: ExcludeSemantics(
                 child: Image.asset(
-                  logoAssetPath,
+                  widget.logoAssetPath,
                   width: AppSizes.iconLg,
                   height: AppSizes.iconLg,
                   fit: BoxFit.contain,
@@ -60,7 +95,7 @@ class HomeFeedHeader extends StatelessWidget {
                   ),
                   SizedBox(height: AppSpacing.xs / 2),
                   Text(
-                    l10n.homeDeliveryAddressValue(deliveryAddress),
+                    l10n.homeDeliveryAddressValue(widget.deliveryAddress),
                     style: theme.textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
@@ -85,7 +120,8 @@ class HomeFeedHeader extends StatelessWidget {
         ),
         SizedBox(height: AppSpacing.lg),
         TextField(
-          readOnly: true,
+          controller: _searchController,
+          onChanged: widget.onSearchChanged,
           decoration: InputDecoration(
             hintText: l10n.homeSearchHint,
             prefixIcon: const Icon(Icons.search, size: AppSizes.iconLg),

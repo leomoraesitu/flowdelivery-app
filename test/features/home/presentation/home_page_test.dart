@@ -129,6 +129,49 @@ void main() {
       },
     );
 
+    testWidgets('search input updates discovery state and filters restaurants', (
+      tester,
+    ) async {
+      await tester.pumpWidget(_buildTestApp());
+      await tester.pumpAndSettle();
+
+      await tester.enterText(find.byType(TextField), 'japanese');
+      await tester.pumpAndSettle();
+
+      expect(find.text('Sushi Zen'), findsOneWidget);
+      expect(find.text('Burger Artisan Collective'), findsNothing);
+      expect(find.text('Pasta Roma'), findsNothing);
+      expect(find.text('Taco Harbor'), findsNothing);
+    });
+
+    testWidgets(
+      'category chip selection updates discovery state and selected UI deterministically',
+      (tester) async {
+        await tester.pumpWidget(_buildTestApp());
+        await tester.pumpAndSettle();
+
+        final context = tester.element(find.byType(HomePage));
+        final l10n = AppLocalizations.of(context);
+
+        await tester.tap(find.widgetWithText(ChoiceChip, l10n.homeCategoryHealthy));
+        await tester.pumpAndSettle();
+
+        final allCategoryChip = tester.widget<ChoiceChip>(
+          find.widgetWithText(ChoiceChip, l10n.homeCategoryAll),
+        );
+        final healthyCategoryChip = tester.widget<ChoiceChip>(
+          find.widgetWithText(ChoiceChip, l10n.homeCategoryHealthy),
+        );
+
+        expect(allCategoryChip.selected, isFalse);
+        expect(healthyCategoryChip.selected, isTrue);
+        expect(find.text('Pasta Roma'), findsOneWidget);
+        expect(find.text('Taco Harbor'), findsOneWidget);
+        expect(find.text('Burger Artisan Collective'), findsNothing);
+        expect(find.text('Sushi Zen'), findsNothing);
+      },
+    );
+
     testWidgets('renders a semantic localized loading state', (tester) async {
       final completer = Completer<HomeFeedContent>();
 
