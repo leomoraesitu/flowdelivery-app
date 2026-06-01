@@ -56,6 +56,40 @@ class HomeFeedViewData {
   String get deliveryAddress => content.deliveryAddress;
 }
 
+String _normalizeDiscoveryQuery(String value) {
+  return value.trim().toLowerCase();
+}
+
+bool _matchesSelectedCategory(
+  HomeRestaurant restaurant,
+  HomeFeedDiscoveryState discoveryState,
+) {
+  final selectedCategoryId = discoveryState.selectedCategoryId;
+
+  if (selectedCategoryId == homeAllCategoryId) {
+    return true;
+  }
+
+  return restaurant.categoryIds.contains(selectedCategoryId);
+}
+
+bool _matchesSearchQuery(
+  HomeRestaurant restaurant,
+  HomeFeedDiscoveryState discoveryState,
+) {
+  final normalizedQuery = _normalizeDiscoveryQuery(discoveryState.searchQuery);
+
+  if (normalizedQuery.isEmpty) {
+    return true;
+  }
+
+  final normalizedName = _normalizeDiscoveryQuery(restaurant.name);
+  final normalizedCuisine = _normalizeDiscoveryQuery(restaurant.cuisine);
+
+  return normalizedName.contains(normalizedQuery) ||
+      normalizedCuisine.contains(normalizedQuery);
+}
+
 final homeRepositoryProvider = Provider<HomeRepository>((ref) {
   return const FixtureHomeRepository();
 });
@@ -76,10 +110,17 @@ final homeFeedDiscoveryControllerProvider =
 final homeFeedViewProvider = Provider<HomeFeedViewData>((ref) {
   final content = ref.watch(homeFeedProvider);
   final discoveryState = ref.watch(homeFeedDiscoveryControllerProvider);
+  final visibleRestaurants = content.featuredRestaurants
+      .where(
+        (restaurant) =>
+            _matchesSelectedCategory(restaurant, discoveryState) &&
+            _matchesSearchQuery(restaurant, discoveryState),
+      )
+      .toList(growable: false);
 
   return HomeFeedViewData(
     content: content,
     discoveryState: discoveryState,
-    visibleRestaurants: content.featuredRestaurants,
+    visibleRestaurants: visibleRestaurants,
   );
 });

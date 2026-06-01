@@ -101,6 +101,56 @@ void main() {
   });
 
   group('homeFeed discovery providers', () {
+    HomeFeedContent buildDiscoveryContent() {
+      return HomeFeedContent(
+        deliveryAddress: 'Avenida Brasil, 1000',
+        categories: const [
+          HomeCategory(id: 'all'),
+          HomeCategory(id: 'burgers'),
+          HomeCategory(id: 'pizza'),
+          HomeCategory(id: 'sushi'),
+        ],
+        promotion: const HomePromotion(
+          id: 'custom_promotion',
+          imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+          discountPercentage: 15,
+          hasFreeDelivery: false,
+        ),
+        featuredRestaurants: [
+          HomeRestaurant(
+            id: 'burger_house',
+            name: 'Burger House',
+            imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+            rating: 4.4,
+            deliveryTimeMinMinutes: 18,
+            deliveryTimeMaxMinutes: 28,
+            cuisine: 'american',
+            categoryIds: const ['all', 'burgers'],
+          ),
+          HomeRestaurant(
+            id: 'roma_pizza',
+            name: 'Roma Pizza',
+            imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+            rating: 4.7,
+            deliveryTimeMinMinutes: 20,
+            deliveryTimeMaxMinutes: 32,
+            cuisine: 'italian',
+            categoryIds: const ['all', 'pizza'],
+          ),
+          HomeRestaurant(
+            id: 'sushi_zen',
+            name: 'Sushi Zen',
+            imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+            rating: 4.8,
+            deliveryTimeMinMinutes: 22,
+            deliveryTimeMaxMinutes: 34,
+            cuisine: 'japanese',
+            categoryIds: const ['all', 'sushi'],
+          ),
+        ],
+      );
+    }
+
     test('owns default selected category and search query state', () {
       final container = ProviderContainer();
       addTearDown(container.dispose);
@@ -112,31 +162,7 @@ void main() {
     });
 
     test('exposes a derived feed contract for presentation', () async {
-      final expectedContent = HomeFeedContent(
-        deliveryAddress: 'Avenida Brasil, 1000',
-        categories: const [
-          HomeCategory(id: 'all'),
-          HomeCategory(id: 'pizza'),
-        ],
-        promotion: const HomePromotion(
-          id: 'custom_promotion',
-          imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
-          discountPercentage: 15,
-          hasFreeDelivery: false,
-        ),
-        featuredRestaurants: [
-          HomeRestaurant(
-            id: 'custom_restaurant',
-            name: 'Custom Restaurant',
-            imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
-            rating: 4.4,
-            deliveryTimeMinMinutes: 18,
-            deliveryTimeMaxMinutes: 28,
-            cuisine: 'fusion',
-            categoryIds: const ['all'],
-          ),
-        ],
-      );
+      final expectedContent = buildDiscoveryContent();
       final container = ProviderContainer(
         overrides: [
           homeRepositoryProvider.overrideWithValue(
@@ -158,32 +184,81 @@ void main() {
       expect(viewData.discoveryState.searchQuery, isEmpty);
     });
 
-    test('updates the derived discovery contract when state changes', () async {
-      final expectedContent = HomeFeedContent(
-        deliveryAddress: 'Avenida Brasil, 1000',
-        categories: const [
-          HomeCategory(id: 'all'),
-          HomeCategory(id: 'pizza'),
-        ],
-        promotion: const HomePromotion(
-          id: 'custom_promotion',
-          imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
-          discountPercentage: 15,
-          hasFreeDelivery: false,
-        ),
-        featuredRestaurants: [
-          HomeRestaurant(
-            id: 'custom_restaurant',
-            name: 'Custom Restaurant',
-            imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
-            rating: 4.4,
-            deliveryTimeMinMinutes: 18,
-            deliveryTimeMaxMinutes: 28,
-            cuisine: 'fusion',
-            categoryIds: const ['all'],
+    test('keeps the default discovery state equivalent to the full feed', () async {
+      final expectedContent = buildDiscoveryContent();
+      final container = ProviderContainer(
+        overrides: [
+          homeRepositoryProvider.overrideWithValue(
+            _TestHomeRepository(expectedContent),
           ),
         ],
       );
+      addTearDown(container.dispose);
+
+      await container.read(homeFeedAsyncProvider.future);
+      final viewData = container.read(homeFeedViewProvider);
+
+      expect(
+        viewData.visibleRestaurants.map((restaurant) => restaurant.id).toList(),
+        expectedContent.featuredRestaurants
+            .map((restaurant) => restaurant.id)
+            .toList(),
+      );
+    });
+
+    test('filters restaurants by selected category id', () async {
+      final expectedContent = buildDiscoveryContent();
+      final container = ProviderContainer(
+        overrides: [
+          homeRepositoryProvider.overrideWithValue(
+            _TestHomeRepository(expectedContent),
+          ),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      await container.read(homeFeedAsyncProvider.future);
+
+      container
+          .read(homeFeedDiscoveryControllerProvider.notifier)
+          .selectCategory('pizza');
+
+      final viewData = container.read(homeFeedViewProvider);
+
+      expect(
+        viewData.visibleRestaurants.map((restaurant) => restaurant.id).toList(),
+        equals(['roma_pizza']),
+      );
+    });
+
+    test('filters restaurants by normalized search query', () async {
+      final expectedContent = buildDiscoveryContent();
+      final container = ProviderContainer(
+        overrides: [
+          homeRepositoryProvider.overrideWithValue(
+            _TestHomeRepository(expectedContent),
+          ),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      await container.read(homeFeedAsyncProvider.future);
+
+      container
+          .read(homeFeedDiscoveryControllerProvider.notifier)
+          .setSearchQuery('  JAPANESE  ');
+
+      final viewData = container.read(homeFeedViewProvider);
+
+      expect(
+        viewData.visibleRestaurants.map((restaurant) => restaurant.id).toList(),
+        equals(['sushi_zen']),
+      );
+    });
+
+    test('combines selected category and normalized search query deterministically',
+        () async {
+      final expectedContent = buildDiscoveryContent();
       final container = ProviderContainer(
         overrides: [
           homeRepositoryProvider.overrideWithValue(
@@ -200,13 +275,16 @@ void main() {
           .selectCategory('pizza');
       container
           .read(homeFeedDiscoveryControllerProvider.notifier)
-          .setSearchQuery('roma');
+          .setSearchQuery('  ROMA ');
 
       final viewData = container.read(homeFeedViewProvider);
 
       expect(viewData.discoveryState.selectedCategoryId, 'pizza');
-      expect(viewData.discoveryState.searchQuery, 'roma');
-      expect(viewData.visibleRestaurants, expectedContent.featuredRestaurants);
+      expect(viewData.discoveryState.searchQuery, '  ROMA ');
+      expect(
+        viewData.visibleRestaurants.map((restaurant) => restaurant.id).toList(),
+        equals(['roma_pizza']),
+      );
     });
   });
 }
