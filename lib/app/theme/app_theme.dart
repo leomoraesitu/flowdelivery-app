@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 import 'app_tokens.dart';
@@ -103,7 +102,7 @@ abstract final class AppTheme {
 
   static TextTheme _buildTextTheme(ColorScheme colorScheme) {
     final baseTheme = Typography.material2021().black;
-    final primaryTextTheme = GoogleFonts.plusJakartaSansTextTheme(baseTheme);
+    final primaryTextTheme = baseTheme.apply(fontFamily: AppFonts.primary);
 
     return primaryTextTheme
         .apply(
@@ -111,10 +110,14 @@ abstract final class AppTheme {
           displayColor: colorScheme.onSurface,
         )
         .copyWith(
-          bodyMedium: GoogleFonts.inter(textStyle: primaryTextTheme.bodyMedium),
-          bodySmall: GoogleFonts.inter(textStyle: primaryTextTheme.bodySmall),
-          labelSmall: GoogleFonts.spaceGrotesk(
-            textStyle: primaryTextTheme.labelSmall,
+          bodyMedium: primaryTextTheme.bodyMedium?.copyWith(
+            fontFamily: AppFonts.secondary,
+          ),
+          bodySmall: primaryTextTheme.bodySmall?.copyWith(
+            fontFamily: AppFonts.secondary,
+          ),
+          labelSmall: primaryTextTheme.labelSmall?.copyWith(
+            fontFamily: AppFonts.mono,
           ),
         );
   }
