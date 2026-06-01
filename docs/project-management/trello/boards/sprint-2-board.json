@@ -20,7 +20,7 @@
             {
               "name": "Scope",
               "checkItems": [
-                { "name": "Define typed local Home models", "pos": 1, "state": "incomplete" },
+                { "name": "Define typed local Home models", "pos": 1, "state": "complete" },
                 { "name": "Add local fixtures and read-only Riverpod provider", "pos": 2, "state": "incomplete" },
                 { "name": "Register protected /home route", "pos": 3, "state": "incomplete" },
                 { "name": "Add localized Home copy through ARB catalogs", "pos": 4, "state": "incomplete" },
@@ -48,7 +48,7 @@
                 { "name": "Active branch: feat/home", "pos": 2, "state": "complete" },
                 { "name": "Existing auth foundation and protected-route policy", "pos": 3, "state": "complete" },
                 { "name": "Existing Riverpod, GoRouter, localization, and theme guardrails", "pos": 4, "state": "complete" },
-                { "name": "Implementation approval for Task 1", "pos": 5, "state": "incomplete" }
+                { "name": "Implementation approval for Task 1", "pos": 5, "state": "complete" }
               ]
             },
             {
