@@ -6,6 +6,8 @@ The project follows Semantic Versioning and Conventional Commits.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-06-01
+
 ### Added
 
 - Sprint 1 Authentication Foundation completed and validated.
@@ -14,6 +16,11 @@ The project follows Semantic Versioning and Conventional Commits.
 ### Changed
 
 - README, bootstrap documentation, sprint records, and project memory were updated to reflect Sprint 1 closure and the next governance slice.
+- Google Fonts files are bundled locally so Android release builds render the configured typography without runtime downloads.
+
+### Fixed
+
+- Android release builds now declare internet access, allowing Supabase authentication requests outside debug and profile modes.
 
 ## [0.1.0] - Sprint 0
 
