@@ -99,6 +99,116 @@ void main() {
       );
     });
   });
+
+  group('homeFeed discovery providers', () {
+    test('owns default selected category and search query state', () {
+      final container = ProviderContainer();
+      addTearDown(container.dispose);
+
+      final discoveryState = container.read(homeFeedDiscoveryControllerProvider);
+
+      expect(discoveryState.selectedCategoryId, homeAllCategoryId);
+      expect(discoveryState.searchQuery, isEmpty);
+    });
+
+    test('exposes a derived feed contract for presentation', () async {
+      final expectedContent = HomeFeedContent(
+        deliveryAddress: 'Avenida Brasil, 1000',
+        categories: const [
+          HomeCategory(id: 'all'),
+          HomeCategory(id: 'pizza'),
+        ],
+        promotion: const HomePromotion(
+          id: 'custom_promotion',
+          imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+          discountPercentage: 15,
+          hasFreeDelivery: false,
+        ),
+        featuredRestaurants: [
+          HomeRestaurant(
+            id: 'custom_restaurant',
+            name: 'Custom Restaurant',
+            imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+            rating: 4.4,
+            deliveryTimeMinMinutes: 18,
+            deliveryTimeMaxMinutes: 28,
+            cuisine: 'fusion',
+            categoryIds: const ['all'],
+          ),
+        ],
+      );
+      final container = ProviderContainer(
+        overrides: [
+          homeRepositoryProvider.overrideWithValue(
+            _TestHomeRepository(expectedContent),
+          ),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      await container.read(homeFeedAsyncProvider.future);
+      final viewData = container.read(homeFeedViewProvider);
+
+      expect(viewData.content, expectedContent);
+      expect(viewData.deliveryAddress, expectedContent.deliveryAddress);
+      expect(viewData.categories, expectedContent.categories);
+      expect(viewData.promotion, expectedContent.promotion);
+      expect(viewData.visibleRestaurants, expectedContent.featuredRestaurants);
+      expect(viewData.discoveryState.selectedCategoryId, homeAllCategoryId);
+      expect(viewData.discoveryState.searchQuery, isEmpty);
+    });
+
+    test('updates the derived discovery contract when state changes', () async {
+      final expectedContent = HomeFeedContent(
+        deliveryAddress: 'Avenida Brasil, 1000',
+        categories: const [
+          HomeCategory(id: 'all'),
+          HomeCategory(id: 'pizza'),
+        ],
+        promotion: const HomePromotion(
+          id: 'custom_promotion',
+          imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+          discountPercentage: 15,
+          hasFreeDelivery: false,
+        ),
+        featuredRestaurants: [
+          HomeRestaurant(
+            id: 'custom_restaurant',
+            name: 'Custom Restaurant',
+            imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+            rating: 4.4,
+            deliveryTimeMinMinutes: 18,
+            deliveryTimeMaxMinutes: 28,
+            cuisine: 'fusion',
+            categoryIds: const ['all'],
+          ),
+        ],
+      );
+      final container = ProviderContainer(
+        overrides: [
+          homeRepositoryProvider.overrideWithValue(
+            _TestHomeRepository(expectedContent),
+          ),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      await container.read(homeFeedAsyncProvider.future);
+
+      container
+          .read(homeFeedDiscoveryControllerProvider.notifier)
+          .selectCategory('pizza');
+      container
+          .read(homeFeedDiscoveryControllerProvider.notifier)
+          .setSearchQuery('roma');
+
+      final viewData = container.read(homeFeedViewProvider);
+
+      expect(viewData.discoveryState.selectedCategoryId, 'pizza');
+      expect(viewData.discoveryState.searchQuery, 'roma');
+      expect(viewData.visibleRestaurants, expectedContent.featuredRestaurants);
+    });
+  });
 }
 
 class _TestHomeRepository implements HomeRepository {
