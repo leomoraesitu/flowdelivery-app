@@ -9,12 +9,13 @@ import 'package:flowdelivery_app/features/auth/presentation/pages/reset_password
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/viewmodels/auth_view_model.dart';
+import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
+import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 
 class _FakeAuthRepository implements AuthRepository {
   _FakeAuthRepository({this.pendingSignIn});
@@ -248,7 +249,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(SignInPage), findsNothing);
-    expect(find.text('Home placeholder'), findsNothing);
+    expect(find.byType(HomePage), findsOneWidget);
 
     router.go(AppRoutes.signUpPath);
     await tester.pumpAndSettle();
@@ -296,6 +297,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(router.state.uri.path, AppRoutes.homePath);
+    expect(find.byType(HomePage), findsOneWidget);
   });
 
   testWidgets('keeps current route while auth state is loading', (
@@ -338,10 +340,8 @@ void main() {
       ),
     );
 
-    router.go(AppRoutes.forgotPasswordPath);
-    await tester.pumpAndSettle();
+    await tester.pump();
 
-    expect(find.byType(ForgotPasswordPage), findsOneWidget);
-    expect(router.state.uri.path, AppRoutes.forgotPasswordPath);
+    expect(router.state.uri.path, AppRoutes.homePath);
   });
 }

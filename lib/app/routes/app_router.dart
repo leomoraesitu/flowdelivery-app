@@ -5,8 +5,7 @@ import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.d
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/state/auth_state.dart';
-import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
-import 'package:flutter/material.dart';
+import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,7 +24,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.homePath,
         name: AppRoutes.homeName,
-        builder: (context, state) => const _HomePlaceholderPage(),
+        builder: (context, state) => const HomePage(),
       ),
       GoRoute(
         path: AppRoutes.signInPath,
@@ -76,14 +75,3 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     },
   );
 });
-
-class _HomePlaceholderPage extends StatelessWidget {
-  const _HomePlaceholderPage();
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
-    return Scaffold(body: Center(child: Text(l10n.appHomePlaceholder)));
-  }
-}

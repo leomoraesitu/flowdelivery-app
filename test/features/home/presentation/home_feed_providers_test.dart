@@ -10,6 +10,7 @@ void main() {
 
       final content = container.read(homeFeedProvider);
 
+      expect(content.deliveryAddress, 'Rua das Flores, 42');
       expect(
         content.categories.map((category) => category.id).toList(),
         equals(['all', 'burgers', 'pizza', 'sushi', 'healthy']),
@@ -18,7 +19,9 @@ void main() {
       expect(content.promotion.discountPercentage, 30);
       expect(content.promotion.hasFreeDelivery, isTrue);
       expect(
-        content.featuredRestaurants.map((restaurant) => restaurant.name).toList(),
+        content.featuredRestaurants
+            .map((restaurant) => restaurant.name)
+            .toList(),
         equals([
           'Burger Artisan Collective',
           'Pasta Roma',
@@ -41,7 +44,8 @@ void main() {
         throwsUnsupportedError,
       );
       expect(
-        () => content.featuredRestaurants.add(content.featuredRestaurants.first),
+        () =>
+            content.featuredRestaurants.add(content.featuredRestaurants.first),
         throwsUnsupportedError,
       );
       expect(

@@ -4,18 +4,21 @@ import 'package:flowdelivery_app/features/home/domain/entities/home_restaurant.d
 
 class HomeFeedContent {
   HomeFeedContent({
+    required this.deliveryAddress,
     required List<HomeCategory> categories,
     required this.promotion,
     required List<HomeRestaurant> featuredRestaurants,
-  })  : categories = List.unmodifiable(categories),
-        featuredRestaurants = List.unmodifiable(featuredRestaurants);
+  }) : categories = List.unmodifiable(categories),
+       featuredRestaurants = List.unmodifiable(featuredRestaurants);
 
+  final String deliveryAddress;
   final List<HomeCategory> categories;
   final HomePromotion promotion;
   final List<HomeRestaurant> featuredRestaurants;
 }
 
 final homeFeedFixtureContent = HomeFeedContent(
+  deliveryAddress: 'Rua das Flores, 42',
   categories: const [
     HomeCategory(id: 'all'),
     HomeCategory(id: 'burgers'),

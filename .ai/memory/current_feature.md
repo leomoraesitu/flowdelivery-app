@@ -10,7 +10,7 @@ Planned / Approved
 
 ## Current Step
 
-Execute only Task 5 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after explicit implementation approval.
+Execute only Task 6 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after explicit implementation approval.
 
 ## Completed
 
@@ -20,6 +20,7 @@ Execute only Task 5 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after e
 - Task 2 completed — typed local Home feed fixtures and a read-only Riverpod provider now expose deterministic category, promotion, and featured-restaurant content without adding repository/datasource abstractions.
 - Task 3 completed — `/home` is now the centralized protected authenticated destination, `/` is a root entry redirect, unauthenticated access to `/home` returns to sign-in, and reset-password recovery behavior remains unchanged.
 - Task 4 completed — Home copy now lives in ARB catalogs with generated `AppLocalizations` accessors for address, search, categories, promo banner, featured section, restaurant metadata, and bottom navigation labels.
+- Task 5 completed — `/home` now renders the approved static Home feed UI with responsive layout, localized presentation copy, semantic theme tokens, decorative asset fallbacks, and focused provider/router/guard validation.
 - Sprint 2 project-management artifact generated in `docs/project-management/SPRINT_2.md`.
 - Real Trello story `[FEAT] Home restaurant feed static UI` created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Localization Guard, and Theme Guard parity verified (`https://trello.com/c/X3jAdpd2`).
 - Home remains presentation-first: Supabase schema, repository, datasource, remote loading, search behavior, filters, and destination navigation are deferred.
@@ -107,7 +108,7 @@ Execute only Task 5 from `.ai/plans/2026-06-01-home-static-feed-plan.md` after e
 
 ## Pending
 
-- Execute Task 5 only after explicit approval: build the Home page UI with semantic theme tokens and localized copy.
+- Execute Task 6 only after explicit approval: add focused Home widget coverage for the approved static feed contract.
 - Keep the Home implementation incremental and limited to the approved static restaurant-feed slice.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 - Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.
@@ -147,3 +148,6 @@ Scalable i18n pipeline validation:
 - Dart MCP `add_roots` executed before Dart validation.
 - `test/app/l10n/no_hardcoded_ui_strings_test.dart`, `test/app/l10n/arb_catalog_parity_test.dart`, and `test/app/l10n/generated_localizations_freshness_test.dart`: 9 tests passed.
 - Dart MCP `analyze_files` on updated i18n guard tests: no errors.
+Home static UI validation:
+- `flutter analyze` on updated Home fixture/presentation/router test files: no issues.
+- `flutter test test/features/home/presentation/home_feed_providers_test.dart test/app/routes/app_router_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: all tests passed.
