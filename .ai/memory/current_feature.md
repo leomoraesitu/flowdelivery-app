@@ -10,7 +10,7 @@ In Progress
 
 ## Current Step
 
-Execute only Task 2 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
+Execute only Task 4 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after explicit implementation approval.
 
 ## Completed
 
@@ -32,6 +32,7 @@ Execute only Task 2 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 - Real Trello story `[FEAT] Home remote feed foundation` created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, and Theme Guard checklists (`https://trello.com/c/bzxIa3wx`).
 - Sprint 3 Task 1 completed — `HomeFeedContent` was promoted into the Home domain layer, `HomeRepository` now defines the feed contract, and the static Home provider reads through that repository boundary while keeping the validated UI behavior unchanged.
 - Sprint 3 Task 2 completed — the Home remote feed Supabase foundation now has a migration for `restaurant_categories`, `restaurants`, `restaurant_category_links`, and `home_promotions`, with explicit `authenticated`/`service_role` `SELECT` grants, RLS read policies, and development seed data aligned with the current Home contract.
+- Sprint 3 Task 3 completed — Home remote DTOs now parse Supabase rows into typed category, promotion, and restaurant payloads, and a dedicated Supabase datasource owns the Home feed queries, row orchestration, category-link aggregation, and explicit Home remote exceptions.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -116,7 +117,7 @@ Execute only Task 2 from `.ai/plans/2026-06-01-home-remote-feed-plan.md` after e
 
 ## Pending / Deferred
 
-- Execute Task 3 only after explicit approval: add Home remote DTOs and the Supabase datasource.
+- Execute Task 4 only after explicit approval: implement the Home repository and async Riverpod wiring.
 - Keep the Home implementation incremental and limited to the approved remote-feed foundation slice.
 - Keep profile/address persistence out of the remote feed slice; the delivery-address placeholder remains local.
 - Keep search, filtering, restaurant details, destination navigation, Storage-backed media, and Realtime out of scope until separate approved slices exist.
@@ -172,3 +173,6 @@ Sprint 2 closure validation:
 - `flutter test test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart`: all tests passed.
 - Sprint 3 Task 2 validation:
 - Transaction-scoped Supabase SQL smoke test confirmed the new Home tables, authenticated read policies, `SELECT`-only grants for `authenticated` and `service_role`, and development seed counts (`5` categories, `4` restaurants, `8` links, `1` promotion) without persisting changes to the shared project.
+- Sprint 3 Task 3 validation:
+- `dart analyze lib/features/home/data/dtos lib/features/home/data/datasources test/features/home/data`: no issues.
+- `flutter test test/features/home/data/home_remote_datasource_test.dart`: all tests passed.
