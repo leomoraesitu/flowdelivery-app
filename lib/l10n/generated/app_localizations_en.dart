@@ -183,4 +183,68 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authTabReports => 'Reports';
+
+  @override
+  String get homeDeliveryAddressLabel => 'Deliver to';
+
+  @override
+  String homeDeliveryAddressValue(String address) {
+    return '$address';
+  }
+
+  @override
+  String get homeSearchHint => 'Search for dishes or restaurants';
+
+  @override
+  String get homeCategoryAll => 'All';
+
+  @override
+  String get homeCategoryBurgers => 'Burgers';
+
+  @override
+  String get homeCategoryPizza => 'Pizza';
+
+  @override
+  String get homeCategorySushi => 'Sushi';
+
+  @override
+  String get homeCategoryHealthy => 'Healthy';
+
+  @override
+  String get homeBannerTitle => 'Deals for your next order';
+
+  @override
+  String homeBannerDiscountValue(int discountPercentage) {
+    return '$discountPercentage% OFF';
+  }
+
+  @override
+  String get homeBannerFreeDeliveryBadge => 'Free delivery';
+
+  @override
+  String get homeFeaturedSectionTitle => 'Featured restaurants';
+
+  @override
+  String get homeSeeAllAction => 'See all';
+
+  @override
+  String homeRestaurantRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  ) {
+    return '$rating • $minMinutes-$maxMinutes min';
+  }
+
+  @override
+  String get homeBottomNavHome => 'Home';
+
+  @override
+  String get homeBottomNavBrowse => 'Browse';
+
+  @override
+  String get homeBottomNavOrders => 'Orders';
+
+  @override
+  String get homeBottomNavAccount => 'Account';
 }

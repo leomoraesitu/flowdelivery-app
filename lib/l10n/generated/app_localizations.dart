@@ -410,6 +410,118 @@ abstract class AppLocalizations {
   /// In pt_BR, this message translates to:
   /// **'Relatorios'**
   String get authTabReports;
+
+  /// Label shown above the current delivery address in the Home header.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Entregar em'**
+  String get homeDeliveryAddressLabel;
+
+  /// Current delivery address shown in the Home header.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{address}'**
+  String homeDeliveryAddressValue(String address);
+
+  /// Hint text shown in the Home search field.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Buscar pratos ou restaurantes'**
+  String get homeSearchHint;
+
+  /// Label for the all category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Todos'**
+  String get homeCategoryAll;
+
+  /// Label for the burgers category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Hamburgueres'**
+  String get homeCategoryBurgers;
+
+  /// Label for the pizza category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Pizza'**
+  String get homeCategoryPizza;
+
+  /// Label for the sushi category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Sushi'**
+  String get homeCategorySushi;
+
+  /// Label for the healthy category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Saudavel'**
+  String get homeCategoryHealthy;
+
+  /// Title shown in the Home promotion banner.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Ofertas para o seu proximo pedido'**
+  String get homeBannerTitle;
+
+  /// Discount label shown in the Home promotion banner.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{discountPercentage}% OFF'**
+  String homeBannerDiscountValue(int discountPercentage);
+
+  /// Badge shown when the Home promotion includes free delivery.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Entrega gratis'**
+  String get homeBannerFreeDeliveryBadge;
+
+  /// Section title shown above featured restaurants on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Restaurantes em destaque'**
+  String get homeFeaturedSectionTitle;
+
+  /// Action label used to reveal the complete section content on Home.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Ver todos'**
+  String get homeSeeAllAction;
+
+  /// Compact restaurant metadata string with rating and delivery time range.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{rating} • {minMinutes}-{maxMinutes} min'**
+  String homeRestaurantRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  );
+
+  /// Bottom navigation label for the Home destination.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Home'**
+  String get homeBottomNavHome;
+
+  /// Bottom navigation label for the browse destination.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Buscar'**
+  String get homeBottomNavBrowse;
+
+  /// Bottom navigation label for the orders destination.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Pedidos'**
+  String get homeBottomNavOrders;
+
+  /// Bottom navigation label for the account destination.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Conta'**
+  String get homeBottomNavAccount;
 }
 
 class _AppLocalizationsDelegate

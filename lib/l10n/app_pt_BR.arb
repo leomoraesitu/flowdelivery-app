@@ -207,5 +207,103 @@
   "authTabReports": "Relatorios",
   "@authTabReports": {
     "description": "Placeholder tab label for reports."
+  },
+  "homeDeliveryAddressLabel": "Entregar em",
+  "@homeDeliveryAddressLabel": {
+    "description": "Label shown above the current delivery address in the Home header."
+  },
+  "homeDeliveryAddressValue": "{address}",
+  "@homeDeliveryAddressValue": {
+    "description": "Current delivery address shown in the Home header.",
+    "placeholders": {
+      "address": {
+        "type": "String",
+        "example": "Rua das Flores, 42"
+      }
+    }
+  },
+  "homeSearchHint": "Buscar pratos ou restaurantes",
+  "@homeSearchHint": {
+    "description": "Hint text shown in the Home search field."
+  },
+  "homeCategoryAll": "Todos",
+  "@homeCategoryAll": {
+    "description": "Label for the all category chip on the Home feed."
+  },
+  "homeCategoryBurgers": "Hamburgueres",
+  "@homeCategoryBurgers": {
+    "description": "Label for the burgers category chip on the Home feed."
+  },
+  "homeCategoryPizza": "Pizza",
+  "@homeCategoryPizza": {
+    "description": "Label for the pizza category chip on the Home feed."
+  },
+  "homeCategorySushi": "Sushi",
+  "@homeCategorySushi": {
+    "description": "Label for the sushi category chip on the Home feed."
+  },
+  "homeCategoryHealthy": "Saudavel",
+  "@homeCategoryHealthy": {
+    "description": "Label for the healthy category chip on the Home feed."
+  },
+  "homeBannerTitle": "Ofertas para o seu proximo pedido",
+  "@homeBannerTitle": {
+    "description": "Title shown in the Home promotion banner."
+  },
+  "homeBannerDiscountValue": "{discountPercentage}% OFF",
+  "@homeBannerDiscountValue": {
+    "description": "Discount label shown in the Home promotion banner.",
+    "placeholders": {
+      "discountPercentage": {
+        "type": "int",
+        "example": "30"
+      }
+    }
+  },
+  "homeBannerFreeDeliveryBadge": "Entrega gratis",
+  "@homeBannerFreeDeliveryBadge": {
+    "description": "Badge shown when the Home promotion includes free delivery."
+  },
+  "homeFeaturedSectionTitle": "Restaurantes em destaque",
+  "@homeFeaturedSectionTitle": {
+    "description": "Section title shown above featured restaurants on the Home feed."
+  },
+  "homeSeeAllAction": "Ver todos",
+  "@homeSeeAllAction": {
+    "description": "Action label used to reveal the complete section content on Home."
+  },
+  "homeRestaurantRatingAndDelivery": "{rating} • {minMinutes}-{maxMinutes} min",
+  "@homeRestaurantRatingAndDelivery": {
+    "description": "Compact restaurant metadata string with rating and delivery time range.",
+    "placeholders": {
+      "rating": {
+        "type": "double",
+        "example": "4.8"
+      },
+      "minMinutes": {
+        "type": "int",
+        "example": "25"
+      },
+      "maxMinutes": {
+        "type": "int",
+        "example": "35"
+      }
+    }
+  },
+  "homeBottomNavHome": "Home",
+  "@homeBottomNavHome": {
+    "description": "Bottom navigation label for the Home destination."
+  },
+  "homeBottomNavBrowse": "Buscar",
+  "@homeBottomNavBrowse": {
+    "description": "Bottom navigation label for the browse destination."
+  },
+  "homeBottomNavOrders": "Pedidos",
+  "@homeBottomNavOrders": {
+    "description": "Bottom navigation label for the orders destination."
+  },
+  "homeBottomNavAccount": "Conta",
+  "@homeBottomNavAccount": {
+    "description": "Bottom navigation label for the account destination."
   }
 }

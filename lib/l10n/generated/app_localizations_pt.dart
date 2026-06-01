@@ -186,6 +186,70 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get authTabReports => 'Relatorios';
+
+  @override
+  String get homeDeliveryAddressLabel => 'Entregar em';
+
+  @override
+  String homeDeliveryAddressValue(String address) {
+    return '$address';
+  }
+
+  @override
+  String get homeSearchHint => 'Buscar pratos ou restaurantes';
+
+  @override
+  String get homeCategoryAll => 'Todos';
+
+  @override
+  String get homeCategoryBurgers => 'Hamburgueres';
+
+  @override
+  String get homeCategoryPizza => 'Pizza';
+
+  @override
+  String get homeCategorySushi => 'Sushi';
+
+  @override
+  String get homeCategoryHealthy => 'Saudavel';
+
+  @override
+  String get homeBannerTitle => 'Ofertas para o seu proximo pedido';
+
+  @override
+  String homeBannerDiscountValue(int discountPercentage) {
+    return '$discountPercentage% OFF';
+  }
+
+  @override
+  String get homeBannerFreeDeliveryBadge => 'Entrega gratis';
+
+  @override
+  String get homeFeaturedSectionTitle => 'Restaurantes em destaque';
+
+  @override
+  String get homeSeeAllAction => 'Ver todos';
+
+  @override
+  String homeRestaurantRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  ) {
+    return '$rating • $minMinutes-$maxMinutes min';
+  }
+
+  @override
+  String get homeBottomNavHome => 'Home';
+
+  @override
+  String get homeBottomNavBrowse => 'Buscar';
+
+  @override
+  String get homeBottomNavOrders => 'Pedidos';
+
+  @override
+  String get homeBottomNavAccount => 'Conta';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -370,4 +434,68 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get authTabReports => 'Relatorios';
+
+  @override
+  String get homeDeliveryAddressLabel => 'Entregar em';
+
+  @override
+  String homeDeliveryAddressValue(String address) {
+    return '$address';
+  }
+
+  @override
+  String get homeSearchHint => 'Buscar pratos ou restaurantes';
+
+  @override
+  String get homeCategoryAll => 'Todos';
+
+  @override
+  String get homeCategoryBurgers => 'Hamburgueres';
+
+  @override
+  String get homeCategoryPizza => 'Pizza';
+
+  @override
+  String get homeCategorySushi => 'Sushi';
+
+  @override
+  String get homeCategoryHealthy => 'Saudavel';
+
+  @override
+  String get homeBannerTitle => 'Ofertas para o seu proximo pedido';
+
+  @override
+  String homeBannerDiscountValue(int discountPercentage) {
+    return '$discountPercentage% OFF';
+  }
+
+  @override
+  String get homeBannerFreeDeliveryBadge => 'Entrega gratis';
+
+  @override
+  String get homeFeaturedSectionTitle => 'Restaurantes em destaque';
+
+  @override
+  String get homeSeeAllAction => 'Ver todos';
+
+  @override
+  String homeRestaurantRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  ) {
+    return '$rating • $minMinutes-$maxMinutes min';
+  }
+
+  @override
+  String get homeBottomNavHome => 'Home';
+
+  @override
+  String get homeBottomNavBrowse => 'Buscar';
+
+  @override
+  String get homeBottomNavOrders => 'Pedidos';
+
+  @override
+  String get homeBottomNavAccount => 'Conta';
 }
