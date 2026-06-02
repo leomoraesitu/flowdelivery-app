@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
-  const HomePage({super.key});
+  const HomePage({this.onRestaurantSelected, super.key});
+
+  final ValueChanged<String>? onRestaurantSelected;
 
   static const double _desktopContentMaxWidth = 880;
 
@@ -36,7 +38,9 @@ class HomePage extends ConsumerWidget {
                           logoAssetPath: viewData.promotion.imageAssetPath,
                           searchQuery: viewData.discoveryState.searchQuery,
                           onSearchChanged: ref
-                              .read(homeFeedDiscoveryControllerProvider.notifier)
+                              .read(
+                                homeFeedDiscoveryControllerProvider.notifier,
+                              )
                               .setSearchQuery,
                         ),
                         SizedBox(height: AppSpacing.xl),
@@ -100,6 +104,7 @@ class HomePage extends ConsumerWidget {
                       HomeFeedSections(
                         viewData: viewData,
                         availableWidth: constraints.maxWidth,
+                        onRestaurantSelected: onRestaurantSelected,
                         onCategorySelected: ref
                             .read(homeFeedDiscoveryControllerProvider.notifier)
                             .selectCategory,
@@ -266,10 +271,7 @@ class _HomeFeedStateCard extends StatelessWidget {
               color: colorScheme.onSurfaceVariant,
             ),
           ),
-          if (action != null) ...[
-            SizedBox(height: AppSpacing.lg),
-            action!,
-          ],
+          if (action != null) ...[SizedBox(height: AppSpacing.lg), action!],
         ],
       ),
     );

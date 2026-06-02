@@ -11,12 +11,14 @@ class HomeFeedSections extends StatelessWidget {
     required this.viewData,
     required this.availableWidth,
     required this.onCategorySelected,
+    this.onRestaurantSelected,
     super.key,
   });
 
   final HomeFeedViewData viewData;
   final double availableWidth;
   final ValueChanged<String> onCategorySelected;
+  final ValueChanged<String>? onRestaurantSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,10 @@ class HomeFeedSections extends StatelessWidget {
           ],
         ),
         SizedBox(height: AppSpacing.md),
-        _RestaurantGrid(restaurants: viewData.visibleRestaurants),
+        _RestaurantGrid(
+          restaurants: viewData.visibleRestaurants,
+          onRestaurantSelected: onRestaurantSelected,
+        ),
       ],
     );
   }
@@ -246,9 +251,10 @@ class _BannerPill extends StatelessWidget {
 }
 
 class _RestaurantGrid extends StatelessWidget {
-  const _RestaurantGrid({required this.restaurants});
+  const _RestaurantGrid({required this.restaurants, this.onRestaurantSelected});
 
   final List<HomeRestaurant> restaurants;
+  final ValueChanged<String>? onRestaurantSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -263,16 +269,20 @@ class _RestaurantGrid extends StatelessWidget {
         mainAxisSpacing: AppSpacing.md,
       ),
       itemBuilder: (context, index) {
-        return _RestaurantCard(restaurant: restaurants[index]);
+        return _RestaurantCard(
+          restaurant: restaurants[index],
+          onSelected: onRestaurantSelected,
+        );
       },
     );
   }
 }
 
 class _RestaurantCard extends StatelessWidget {
-  const _RestaurantCard({required this.restaurant});
+  const _RestaurantCard({required this.restaurant, this.onSelected});
 
   final HomeRestaurant restaurant;
+  final ValueChanged<String>? onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -283,56 +293,59 @@ class _RestaurantCard extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAlias,
       elevation: 0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              color: colorScheme.surfaceContainerHighest,
-              padding: EdgeInsets.all(AppSpacing.xl),
-              child: ExcludeSemantics(
-                child: Image.asset(
-                  restaurant.imageAssetPath,
-                  fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(
-                      Icons.storefront_outlined,
-                      color: colorScheme.primary,
-                      size: AppSizes.iconLg,
-                    );
-                  },
+      child: InkWell(
+        onTap: onSelected == null ? null : () => onSelected!(restaurant.id),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                color: colorScheme.surfaceContainerHighest,
+                padding: EdgeInsets.all(AppSpacing.xl),
+                child: ExcludeSemantics(
+                  child: Image.asset(
+                    restaurant.imageAssetPath,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(
+                        Icons.storefront_outlined,
+                        color: colorScheme.primary,
+                        size: AppSizes.iconLg,
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(AppSpacing.md),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  restaurant.name,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
+            Padding(
+              padding: EdgeInsets.all(AppSpacing.md),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    restaurant.name,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-                SizedBox(height: AppSpacing.xs),
-                Text(
-                  l10n.homeRestaurantRatingAndDelivery(
-                    restaurant.rating,
-                    restaurant.deliveryTimeMinMinutes,
-                    restaurant.deliveryTimeMaxMinutes,
+                  SizedBox(height: AppSpacing.xs),
+                  Text(
+                    l10n.homeRestaurantRatingAndDelivery(
+                      restaurant.rating,
+                      restaurant.deliveryTimeMinMinutes,
+                      restaurant.deliveryTimeMaxMinutes,
+                    ),
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: colorScheme.primary,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

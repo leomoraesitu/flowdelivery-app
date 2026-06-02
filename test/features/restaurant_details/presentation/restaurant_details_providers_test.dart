@@ -1,4 +1,6 @@
 import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_details.dart';
+import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_category.dart';
+import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_item.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/repositories/restaurant_details_repository.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/providers/restaurant_details_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -81,6 +83,65 @@ void main() {
       );
     });
   });
+
+  group('restaurantDetailsViewDataProvider', () {
+    test(
+      'defaults to the first category and exposes all items for it',
+      () async {
+        final container = ProviderContainer(
+          overrides: [
+            restaurantDetailsRepositoryProvider.overrideWithValue(
+              _FakeRestaurantDetailsRepository(),
+            ),
+          ],
+        );
+        addTearDown(container.dispose);
+
+        final viewData = await container.read(
+          restaurantDetailsViewDataProvider('burger_artisan_collective').future,
+        );
+
+        expect(viewData.details, _details);
+        expect(viewData.selectedCategoryId, 'popular');
+        expect(viewData.visibleItems.map((item) => item.id).toList(), [
+          'signature_truffle',
+          'spicy_nashville_chicken',
+          'sweet_potato_crisp',
+        ]);
+      },
+    );
+
+    test('filters visible items by the selected category', () async {
+      final container = ProviderContainer(
+        overrides: [
+          restaurantDetailsRepositoryProvider.overrideWithValue(
+            _FakeRestaurantDetailsRepository(),
+          ),
+        ],
+      );
+      addTearDown(container.dispose);
+      await container.read(
+        restaurantDetailsViewDataProvider('burger_artisan_collective').future,
+      );
+
+      container
+          .read(
+            restaurantDetailsSelectedCategoryProvider(
+              'burger_artisan_collective',
+            ).notifier,
+          )
+          .selectCategory('sides');
+
+      final viewData = await container.read(
+        restaurantDetailsViewDataProvider('burger_artisan_collective').future,
+      );
+
+      expect(viewData.selectedCategoryId, 'sides');
+      expect(viewData.visibleItems.map((item) => item.id).toList(), [
+        'sweet_potato_crisp',
+      ]);
+    });
+  });
 }
 
 class _FakeRestaurantDetailsRepository implements RestaurantDetailsRepository {
@@ -101,6 +162,35 @@ final _details = RestaurantDetails(
   deliveryTimeMinMinutes: 25,
   deliveryTimeMaxMinutes: 35,
   cuisine: 'american',
-  categories: const [],
-  items: const [],
+  categories: const [
+    RestaurantMenuCategory(id: 'popular'),
+    RestaurantMenuCategory(id: 'burgers'),
+    RestaurantMenuCategory(id: 'sides'),
+  ],
+  items: const [
+    RestaurantMenuItem(
+      id: 'signature_truffle',
+      categoryId: 'burgers',
+      name: 'The Signature Truffle',
+      description: 'Wagyu beef with truffle aioli.',
+      imageAssetPath: 'assets/images/signature-truffle.png',
+      priceInCents: 1850,
+    ),
+    RestaurantMenuItem(
+      id: 'spicy_nashville_chicken',
+      categoryId: 'burgers',
+      name: 'Spicy Nashville Chicken',
+      description: 'Crispy chicken breast with cayenne glaze.',
+      imageAssetPath: 'assets/images/spicy-nashville-chicken.png',
+      priceInCents: 1400,
+    ),
+    RestaurantMenuItem(
+      id: 'sweet_potato_crisp',
+      categoryId: 'sides',
+      name: 'Sweet Potato Crisp',
+      description: 'Hand-cut sweet potato fries.',
+      imageAssetPath: 'assets/images/sweet-potato-crisp.png',
+      priceInCents: 650,
+    ),
+  ],
 );
