@@ -2,7 +2,7 @@ import 'package:flowdelivery_app/features/restaurant_details/domain/entities/res
 import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_item.dart';
 
 class RestaurantDetails {
-  RestaurantDetails({
+  const RestaurantDetails({
     required this.id,
     required this.name,
     required this.imageAssetPath,
@@ -10,10 +10,9 @@ class RestaurantDetails {
     required this.deliveryTimeMinMinutes,
     required this.deliveryTimeMaxMinutes,
     required this.cuisine,
-    required List<RestaurantMenuCategory> categories,
-    required List<RestaurantMenuItem> items,
-  }) : categories = List.unmodifiable(categories),
-       items = List.unmodifiable(items);
+    required this.categories,
+    required this.items,
+  });
 
   final String id;
   final String name;

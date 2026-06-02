@@ -347,6 +347,45 @@ void main() {
       navigationBar = tester.widget<NavigationBar>(find.byType(NavigationBar));
       expect(navigationBar.selectedIndex, 0);
     });
+
+    testWidgets(
+      'triggers onRestaurantSelected callback when a restaurant card is tapped',
+      (tester) async {
+        String? selectedRestaurantId;
+
+        await tester.pumpWidget(
+          ProviderScope(
+            child: MaterialApp(
+              theme: _homePageTestTheme,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+              home: HomePage(
+                onRestaurantSelected: (id) => selectedRestaurantId = id,
+              ),
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        final restaurant = homeFeedFixtureContent.featuredRestaurants.first;
+        final restaurantFinder = find.text(restaurant.name);
+        await tester.scrollUntilVisible(
+          restaurantFinder,
+          200,
+          scrollable: find.byType(Scrollable).first,
+        );
+        await tester.tap(restaurantFinder);
+        await tester.pumpAndSettle();
+
+        expect(selectedRestaurantId, restaurant.id);
+      },
+    );
   });
 }
 
