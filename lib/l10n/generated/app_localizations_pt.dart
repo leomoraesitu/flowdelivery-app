@@ -267,6 +267,16 @@ class AppLocalizationsPt extends AppLocalizations {
       'Volte em instantes para conferir novos restaurantes e ofertas.';
 
   @override
+  String get homeDiscoveryEmptyStateTitle => 'Nenhum restaurante encontrado';
+
+  @override
+  String get homeDiscoveryEmptyStateMessage =>
+      'Tente ajustar sua busca ou limpar os filtros para ver mais opcoes.';
+
+  @override
+  String get homeDiscoveryClearFiltersAction => 'Limpar filtros';
+
+  @override
   String get homeBottomNavHome => 'Home';
 
   @override
@@ -540,6 +550,16 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get homeEmptyStateMessage =>
       'Volte em instantes para conferir novos restaurantes e ofertas.';
+
+  @override
+  String get homeDiscoveryEmptyStateTitle => 'Nenhum restaurante encontrado';
+
+  @override
+  String get homeDiscoveryEmptyStateMessage =>
+      'Tente ajustar sua busca ou limpar os filtros para ver mais opcoes.';
+
+  @override
+  String get homeDiscoveryClearFiltersAction => 'Limpar filtros';
 
   @override
   String get homeBottomNavHome => 'Home';

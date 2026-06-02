@@ -49,6 +49,42 @@ class HomePage extends ConsumerWidget {
                     );
                   }
 
+                  if (viewData.visibleRestaurants.isEmpty) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HomeFeedHeader(
+                          deliveryAddress: viewData.deliveryAddress,
+                          logoAssetPath: viewData.promotion.imageAssetPath,
+                          searchQuery: viewData.discoveryState.searchQuery,
+                          onSearchChanged: ref
+                              .read(
+                                homeFeedDiscoveryControllerProvider.notifier,
+                              )
+                              .setSearchQuery,
+                        ),
+                        SizedBox(height: AppSpacing.xl),
+                        _HomeFeedStateCard(
+                          icon: Icons.search_off_outlined,
+                          title: l10n.homeDiscoveryEmptyStateTitle,
+                          message: l10n.homeDiscoveryEmptyStateMessage,
+                          action: FilledButton.icon(
+                            onPressed: ref
+                                .read(
+                                  homeFeedDiscoveryControllerProvider.notifier,
+                                )
+                                .reset,
+                            icon: const Icon(
+                              Icons.filter_alt_off_outlined,
+                              size: AppSizes.iconLg,
+                            ),
+                            label: Text(l10n.homeDiscoveryClearFiltersAction),
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

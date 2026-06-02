@@ -38,6 +38,10 @@ class HomeFeedDiscoveryController extends Notifier<HomeFeedDiscoveryState> {
       searchQuery: query,
     );
   }
+
+  void reset() {
+    state = const HomeFeedDiscoveryState();
+  }
 }
 
 class HomeFeedViewData {

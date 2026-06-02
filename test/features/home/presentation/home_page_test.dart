@@ -145,6 +145,45 @@ void main() {
     });
 
     testWidgets(
+      'renders localized discovery empty results and clears active filters',
+      (tester) async {
+        await tester.pumpWidget(_buildTestApp());
+        await tester.pumpAndSettle();
+
+        await tester.enterText(find.byType(TextField), 'impossivel');
+        await tester.pumpAndSettle();
+
+        final context = tester.element(find.byType(HomePage));
+        final l10n = AppLocalizations.of(context);
+
+        expect(find.text(l10n.homeDiscoveryEmptyStateTitle), findsOneWidget);
+        expect(find.text(l10n.homeDiscoveryEmptyStateMessage), findsOneWidget);
+        expect(
+          find.widgetWithText(
+            FilledButton,
+            l10n.homeDiscoveryClearFiltersAction,
+          ),
+          findsOneWidget,
+        );
+
+        await tester.tap(
+          find.widgetWithText(
+            FilledButton,
+            l10n.homeDiscoveryClearFiltersAction,
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        expect(find.text('Burger Artisan Collective'), findsOneWidget);
+        expect(find.text(l10n.homeDiscoveryEmptyStateTitle), findsNothing);
+        expect(
+          tester.widget<TextField>(find.byType(TextField)).controller?.text,
+          isEmpty,
+        );
+      },
+    );
+
+    testWidgets(
       'category chip selection updates discovery state and selected UI deterministically',
       (tester) async {
         await tester.pumpWidget(_buildTestApp());

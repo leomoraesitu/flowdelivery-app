@@ -547,6 +547,24 @@ abstract class AppLocalizations {
   /// **'Volte em instantes para conferir novos restaurantes e ofertas.'**
   String get homeEmptyStateMessage;
 
+  /// Title shown when active Home discovery filters produce no restaurant matches.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nenhum restaurante encontrado'**
+  String get homeDiscoveryEmptyStateTitle;
+
+  /// Body copy shown when active Home discovery filters produce no restaurant matches.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tente ajustar sua busca ou limpar os filtros para ver mais opcoes.'**
+  String get homeDiscoveryEmptyStateMessage;
+
+  /// Button label that resets active Home discovery filters.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Limpar filtros'**
+  String get homeDiscoveryClearFiltersAction;
+
   /// Bottom navigation label for the Home destination.
   ///
   /// In pt_BR, this message translates to:

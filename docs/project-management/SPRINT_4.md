@@ -14,7 +14,7 @@ Reference prototype:
 
 ## Status
 
-Planned / Approved.
+In Progress.
 
 Sprint 4 starts from the validated Sprint 3 remote-feed baseline and is limited to interactive search/category discovery on the authenticated Home feed.
 
@@ -34,21 +34,21 @@ Make the Home feed discoverable through search and category selection without op
 
 ## Backlog
 
-- [ ] Define discovery state ownership and derived feed contract.
-- [ ] Implement search and category filtering logic.
-- [ ] Wire Home discovery interactions in the UI.
-- [ ] Add localized discovery empty-results feedback.
+- [x] Define discovery state ownership and derived feed contract.
+- [x] Implement search and category filtering logic.
+- [x] Wire Home discovery interactions in the UI.
+- [x] Add localized discovery empty-results feedback.
 - [ ] Add focused discovery regression coverage.
 - [ ] Reconcile docs, memory, and Trello after validation.
 
 ## Acceptance Criteria
 
 - [ ] `/home` keeps its protected authenticated route contract.
-- [ ] Search and category selection work against the validated remote Home feed foundation.
-- [ ] Discovery state ownership lives outside widgets and outside Supabase/datasource code.
-- [ ] The default Home success state remains equivalent to Sprint 3 when no discovery filters are active.
-- [ ] Discovery empty-results feedback is localized through ARB catalogs and `AppLocalizations`.
-- [ ] Presentation styling for discovery interactions uses semantic theme APIs and app tokens only.
+- [x] Search and category selection work against the validated remote Home feed foundation.
+- [x] Discovery state ownership lives outside widgets and outside Supabase/datasource code.
+- [x] The default Home success state remains equivalent to Sprint 3 when no discovery filters are active.
+- [x] Discovery empty-results feedback is localized through ARB catalogs and `AppLocalizations`.
+- [x] Presentation styling for discovery interactions uses semantic theme APIs and app tokens only.
 - [ ] Focused provider, widget, localization guard, theme guard, router, and governance validation pass.
 - [ ] Trello checklist state reflects implementation evidence only.
 
@@ -58,25 +58,25 @@ Make the Home feed discoverable through search and category selection without op
 - [x] Existing Riverpod, GoRouter, localization, and theme guardrails.
 - [x] Existing Home remote datasource/repository/provider/widget coverage.
 - [x] Approved plan: `.ai/plans/2026-06-01-home-discovery-interactions-plan.md`.
-- [ ] Implementation approval for Task 1.
+- [x] Implementation approval for Task 1.
 
 ## Localization Guard Checklist
 
-- [ ] Every new user-facing string has an ARB key.
-- [ ] UI reads strings through `AppLocalizations`.
-- [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`.
-- [ ] ARB catalog parity guard remains green after copy changes.
-- [ ] New placeholders are declared in template metadata and preserved across translated catalogs.
-- [ ] New placeholders and route placeholders are covered by the guard tests.
-- [ ] Generated localization freshness guard remains green after ARB changes.
+- [x] Every new user-facing string has an ARB key.
+- [x] UI reads strings through `AppLocalizations`.
+- [x] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`.
+- [x] ARB catalog parity guard remains green after copy changes.
+- [x] New placeholders are declared in template metadata and preserved across translated catalogs.
+- [x] New placeholders and route placeholders are covered by the guard tests.
+- [x] Generated localization freshness guard remains green after ARB changes.
 
 ## Theme Guard Checklist
 
-- [ ] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`).
-- [ ] No `Color(0x...)` hardcoded values exist in feature presentation code.
-- [ ] No direct `AppLightColors` or `AppDarkColors` usage exists outside `lib/app/theme`.
-- [ ] No direct `Colors.*` usage exists in feature presentation when semantic `ColorScheme` roles apply.
-- [ ] Visual hardcoded guard test remains green after UI changes.
+- [x] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`).
+- [x] No `Color(0x...)` hardcoded values exist in feature presentation code.
+- [x] No direct `AppLightColors` or `AppDarkColors` usage exists outside `lib/app/theme`.
+- [x] No direct `Colors.*` usage exists in feature presentation when semantic `ColorScheme` roles apply.
+- [x] Visual hardcoded guard test remains green after UI changes.
 
 ## Validation Plan
 
@@ -95,6 +95,9 @@ Make the Home feed discoverable through search and category selection without op
 - Keep category labels localized in ARB and use stable category IDs/slugs for selection/filtering.
 - Keep discovery state in Riverpod and keep widgets free of filtering algorithms.
 - Preserve the local delivery-address placeholder until a dedicated profile/address slice exists.
+- Task 4 keeps remote-empty and discovery-no-match states distinct. The localized clear-filters action resets Riverpod discovery state and the visible search field.
+- Real Trello story: `https://trello.com/c/5EUe5qOp`.
+- Trello parity after Task 4 remains intentionally partial until Tasks 5-6 complete the slice.
 
 ## Risks
 

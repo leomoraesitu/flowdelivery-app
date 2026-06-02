@@ -10,7 +10,7 @@ In Progress
 
 ## Current Step
 
-Wait for explicit approval before executing Task 4 from `.ai/plans/2026-06-01-home-discovery-interactions-plan.md`.
+Wait for explicit approval before executing Task 5 from `.ai/plans/2026-06-01-home-discovery-interactions-plan.md`.
 
 ## Completed
 
@@ -43,6 +43,8 @@ Wait for explicit approval before executing Task 4 from `.ai/plans/2026-06-01-ho
 - Sprint 4 Task 1 completed — Home discovery state ownership now lives in Riverpod through a dedicated discovery controller, and presentation can read a derived Home feed view contract that preserves the current unfiltered success behavior while decoupling widgets from future filter logic.
 - Sprint 4 Task 2 completed — the derived Home discovery provider now applies deterministic category filtering plus normalized search matching over the existing remote feed aggregate, while keeping the default state behavior equivalent to the validated Sprint 3 success path.
 - Sprint 4 Task 3 completed — the existing Home search input and category chips now drive the approved Riverpod discovery-state owner, the rendered restaurant set updates from the derived filtered feed contract, and the current successful Home layout remains structurally aligned with the approved prototype.
+- Sprint 4 Task 4 completed — Home discovery now distinguishes a remote feed with content from an active search/filter combination with no matches, renders localized recovery feedback through ARB/AppLocalizations, and exposes a clear-filters action that resets the Riverpod discovery state plus the visible search field.
+- Sprint 4 real Trello story `[FEAT] Home discovery interactions` was partially synchronized after Task 4 validation (`https://trello.com/c/5EUe5qOp`): Scope is `5/6`, Validation is `7/8`, Localization Guard is `7/7`, Theme Guard is `5/5`, Acceptance Criteria is `5/8`, and Dependencies is `6/6`; remaining global completion items stay open for Tasks 5-6.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -128,7 +130,7 @@ Wait for explicit approval before executing Task 4 from `.ai/plans/2026-06-01-ho
 ## Pending / Deferred
 
 - The Home remote-feed foundation slice is complete; future Home work requires a new explicitly approved slice.
-- Wait for explicit approval before executing Sprint 4 Task 4: add the localized discovery empty-results feedback only if the interactive Home UX now requires a distinct no-match state.
+- Wait for explicit approval before executing Sprint 4 Task 5: add the remaining focused discovery regression coverage, including combined search + category filtering and the applicable router/governance validation.
 - Keep the Home implementation incremental and limited to the approved discovery-interactions slice.
 - Keep profile/address persistence out of the discovery slice; the delivery-address placeholder remains local.
 - Keep restaurant details, destination navigation, ranking, pagination, Storage-backed media, and Realtime out of scope until separate approved slices exist.
@@ -208,3 +210,10 @@ Sprint 2 closure validation:
 - Sprint 4 Task 3 validation:
 - `dart analyze lib/features/home/presentation/pages/home_page.dart lib/features/home/presentation/widgets/home_feed_header.dart lib/features/home/presentation/widgets/home_feed_sections.dart test/features/home/presentation/home_page_test.dart`: no issues.
 - `flutter test test/features/home/presentation/home_page_test.dart`: all tests passed.
+- Sprint 4 Task 4 validation:
+- TDD RED confirmed before implementation: the new Home widget test failed because the localized discovery empty-results card did not exist yet.
+- `flutter gen-l10n`: generated localizations refreshed for the Home discovery empty-results title, message, and clear-filters action.
+- Dart MCP `analyze_files` on the touched Home presentation/provider files, generated localizations, and focused Home widget test: no errors.
+- Dart MCP `run_tests` for `test/features/home/presentation/home_page_test.dart`, the three localization guards, and `test/app/theme/no_hardcoded_visual_values_test.dart`: 19 tests passed.
+- `git diff --check`: no errors.
+- Real Trello parity check executed for `[FEAT] Home discovery interactions` (`https://trello.com/c/5EUe5qOp`) after Task 4; only evidence-backed checklist items were completed and a validation comment was added.

@@ -322,6 +322,18 @@
   "@homeEmptyStateMessage": {
     "description": "Body copy shown when the Home remote feed loads without featured restaurants."
   },
+  "homeDiscoveryEmptyStateTitle": "Nenhum restaurante encontrado",
+  "@homeDiscoveryEmptyStateTitle": {
+    "description": "Title shown when active Home discovery filters produce no restaurant matches."
+  },
+  "homeDiscoveryEmptyStateMessage": "Tente ajustar sua busca ou limpar os filtros para ver mais opcoes.",
+  "@homeDiscoveryEmptyStateMessage": {
+    "description": "Body copy shown when active Home discovery filters produce no restaurant matches."
+  },
+  "homeDiscoveryClearFiltersAction": "Limpar filtros",
+  "@homeDiscoveryClearFiltersAction": {
+    "description": "Button label that resets active Home discovery filters."
+  },
   "homeBottomNavHome": "Home",
   "@homeBottomNavHome": {
     "description": "Bottom navigation label for the Home destination."

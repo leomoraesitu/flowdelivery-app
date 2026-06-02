@@ -264,6 +264,16 @@ class AppLocalizationsEn extends AppLocalizations {
       'Check back in a moment for new restaurants and offers.';
 
   @override
+  String get homeDiscoveryEmptyStateTitle => 'No restaurants found';
+
+  @override
+  String get homeDiscoveryEmptyStateMessage =>
+      'Try adjusting your search or clearing the filters to see more options.';
+
+  @override
+  String get homeDiscoveryClearFiltersAction => 'Clear filters';
+
+  @override
   String get homeBottomNavHome => 'Home';
 
   @override

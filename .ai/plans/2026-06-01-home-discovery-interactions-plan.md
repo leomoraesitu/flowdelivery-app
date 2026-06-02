@@ -77,6 +77,20 @@ This keeps:
 - Existing: Home remote datasource/repository/provider/widget test coverage
 - New packages: none
 
+## Current Progress
+
+- [x] Task 1 completed — discovery state ownership and derived feed contract.
+- [x] Task 2 completed — deterministic search and category filtering logic.
+- [x] Task 3 completed — Home search input and category chips wired to Riverpod discovery state.
+- [x] Task 4 completed — localized discovery no-match feedback and clear-filters recovery action.
+- [ ] Task 5 pending — focused discovery regression coverage and applicable router/guard validation.
+- [ ] Task 6 pending — final docs, memory, and Trello reconciliation after full slice validation.
+
+Real Trello story:
+
+- `[FEAT] Home discovery interactions`: `https://trello.com/c/5EUe5qOp`
+- Task 4 parity remains intentionally partial until Tasks 5-6 complete the slice.
+
 ## Implementation Tasks
 
 ### Task 1: Define Discovery State Ownership and Derived Feed Contract
@@ -92,10 +106,10 @@ Files:
 
 Checklist:
 
-- [ ] Introduce explicit discovery state ownership for selected category and search query.
-- [ ] Expose a derived filtered feed/view model contract for presentation.
-- [ ] Keep filtering logic out of widgets.
-- [ ] Preserve the current Home success rendering path when discovery state is at its default values.
+- [x] Introduce explicit discovery state ownership for selected category and search query.
+- [x] Expose a derived filtered feed/view model contract for presentation.
+- [x] Keep filtering logic out of widgets.
+- [x] Preserve the current Home success rendering path when discovery state is at its default values.
 
 Validation:
 
@@ -121,10 +135,10 @@ Files:
 
 Checklist:
 
-- [ ] Filter featured restaurants by selected category using stable category IDs/slugs.
-- [ ] Filter featured restaurants by normalized search query.
-- [ ] Keep the default state equivalent to the validated Sprint 3 success state.
-- [ ] Keep provider behavior deterministic for combined search + category filtering.
+- [x] Filter featured restaurants by selected category using stable category IDs/slugs.
+- [x] Filter featured restaurants by normalized search query.
+- [x] Keep the default state equivalent to the validated Sprint 3 success state.
+- [x] Keep provider behavior deterministic for combined search + category filtering.
 
 Validation:
 
@@ -151,10 +165,10 @@ Files:
 
 Checklist:
 
-- [ ] Search input updates the approved discovery-state owner.
-- [ ] Category chip selection updates the approved discovery-state owner.
-- [ ] Selected-category UI remains deterministic and theme-safe.
-- [ ] The successful Home layout remains structurally aligned with the approved prototype.
+- [x] Search input updates the approved discovery-state owner.
+- [x] Category chip selection updates the approved discovery-state owner.
+- [x] Selected-category UI remains deterministic and theme-safe.
+- [x] The successful Home layout remains structurally aligned with the approved prototype.
 
 Validation:
 
@@ -184,28 +198,28 @@ Files:
 
 Checklist:
 
-- [ ] Render a localized empty-results state for the active discovery query.
-- [ ] Add a localized clear/reset affordance if required by the approved UX.
-- [ ] Keep Sprint 3 remote-loading, remote-empty, and remote-error states intact.
-- [ ] Continue using semantic theme roles and app tokens only.
+- [x] Render a localized empty-results state for the active discovery query.
+- [x] Add a localized clear/reset affordance if required by the approved UX.
+- [x] Keep Sprint 3 remote-loading, remote-empty, and remote-error states intact.
+- [x] Continue using semantic theme roles and app tokens only.
 
 Localization Guard:
 
-- [ ] Every new user-facing string has an ARB key.
-- [ ] UI reads strings through `AppLocalizations`.
-- [ ] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`.
-- [ ] ARB catalog parity guard remains green after copy changes.
-- [ ] New placeholders are declared in template metadata and preserved across translated catalogs.
-- [ ] New placeholders and route placeholders are covered by the guard tests.
-- [ ] Generated localization freshness guard remains green after ARB changes.
+- [x] Every new user-facing string has an ARB key.
+- [x] UI reads strings through `AppLocalizations`.
+- [x] No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`.
+- [x] ARB catalog parity guard remains green after copy changes.
+- [x] New placeholders are declared in template metadata and preserved across translated catalogs.
+- [x] New placeholders and route placeholders are covered by the guard tests.
+- [x] Generated localization freshness guard remains green after ARB changes.
 
 Theme Guard:
 
-- [ ] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`).
-- [ ] No `Color(0x...)` hardcoded values in feature presentation code.
-- [ ] No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`.
-- [ ] No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist.
-- [ ] Visual hardcoded guard test remains green after UI changes.
+- [x] UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`).
+- [x] No `Color(0x...)` hardcoded values in feature presentation code.
+- [x] No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`.
+- [x] No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist.
+- [x] Visual hardcoded guard test remains green after UI changes.
 
 Validation:
 
@@ -217,6 +231,15 @@ Commit:
 ```text
 feat(home): add discovery empty results state
 ```
+
+Validated evidence:
+
+- TDD RED confirmed before implementation: the focused Home widget test failed because the localized discovery empty-results card did not exist yet.
+- `flutter gen-l10n` refreshed generated localization accessors for the new title, message, and clear-filters action.
+- Dart MCP `analyze_files` on touched Home presentation/provider files, generated localizations, and the focused widget test: no errors.
+- Dart MCP `run_tests` for Home page coverage, localization guards, and Theme Guard: 19 tests passed.
+- `git diff --check`: no errors.
+- Real Trello parity verified after Task 4; only evidence-backed checklist items were completed and a validation comment was added.
 
 ### Task 5: Add Focused Discovery Regression Coverage
 
@@ -284,11 +307,11 @@ docs(home): record discovery validation
 ## Acceptance Criteria
 
 - [ ] `/home` keeps its protected authenticated route contract.
-- [ ] Search and category selection work against the validated remote Home feed foundation.
-- [ ] Discovery state ownership lives outside widgets and outside Supabase/datasource code.
-- [ ] The default Home success state remains equivalent to Sprint 3 when no discovery filters are active.
-- [ ] Discovery empty-results feedback is localized through ARB + `AppLocalizations`.
-- [ ] Presentation styling for discovery interactions uses semantic theme APIs and app tokens only.
+- [x] Search and category selection work against the validated remote Home feed foundation.
+- [x] Discovery state ownership lives outside widgets and outside Supabase/datasource code.
+- [x] The default Home success state remains equivalent to Sprint 3 when no discovery filters are active.
+- [x] Discovery empty-results feedback is localized through ARB + `AppLocalizations`.
+- [x] Presentation styling for discovery interactions uses semantic theme APIs and app tokens only.
 - [ ] Focused provider, widget, localization guard, theme guard, router, and documentation/Trello parity validation pass.
 
 ## Risks
