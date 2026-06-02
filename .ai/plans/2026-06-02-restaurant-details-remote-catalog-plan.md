@@ -70,6 +70,7 @@ This avoids loading full menus in the Home feed and keeps Supabase queries out o
 - [x] Task 3 completed — typed DTOs and remote datasource with focused tests.
 - [x] Task 4 completed — domain repository contract and DTO-to-domain mapping with focused tests.
 - [x] Task 5 completed — Riverpod family loading, local category-selection state, and app composition with focused tests.
+- [x] Task 6 completed — localized restaurant-details copy and generated `AppLocalizations` accessors with guard validation.
 
 ## Implementation Tasks
 
@@ -290,6 +291,15 @@ Applicable skills:
 
 - `flutter-setup-localization`
 - `dart-run-static-analysis`
+
+Validated evidence:
+
+- Added feature-prefixed ARB keys for back navigation, loading, error, retry, empty state, menu section, seed categories, metadata, and accessibility labels across `pt_BR`, `pt`, and `en`.
+- Added template descriptions and typed placeholder metadata for restaurant metadata, menu semantics, and category-filter semantics.
+- `flutter gen-l10n` refreshed the generated `AppLocalizations` accessors after correcting the ICU apostrophe escape in the English empty-state message.
+- Dart MCP `run_tests` for hardcoded-copy, ARB catalog parity, and generated localization freshness guards: 9 tests passed.
+- Dart MCP `analyze_files` on generated localization artifacts and guard tests: no errors.
+- `git diff --check`: no errors.
 
 ### Task 7: Add Restaurant Details UI and Home Entry Point
 

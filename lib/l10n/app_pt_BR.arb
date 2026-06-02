@@ -334,6 +334,100 @@
   "@homeDiscoveryClearFiltersAction": {
     "description": "Button label that resets active Home discovery filters."
   },
+  "restaurantDetailsBackAction": "Voltar",
+  "@restaurantDetailsBackAction": {
+    "description": "Tooltip and semantic label for the restaurant-details back navigation action."
+  },
+  "restaurantDetailsLoadingStateTitle": "Carregando restaurante",
+  "@restaurantDetailsLoadingStateTitle": {
+    "description": "Title shown while restaurant details and catalog are loading."
+  },
+  "restaurantDetailsLoadingStateMessage": "Estamos buscando o cardapio e os detalhes mais recentes para voce.",
+  "@restaurantDetailsLoadingStateMessage": {
+    "description": "Body copy shown while restaurant details and catalog are loading."
+  },
+  "restaurantDetailsLoadingStateSemanticLabel": "Carregando detalhes e cardapio do restaurante",
+  "@restaurantDetailsLoadingStateSemanticLabel": {
+    "description": "Semantic label announced for the restaurant-details loading indicator."
+  },
+  "restaurantDetailsErrorStateTitle": "Nao foi possivel carregar o restaurante",
+  "@restaurantDetailsErrorStateTitle": {
+    "description": "Title shown when restaurant details or catalog loading fails."
+  },
+  "restaurantDetailsErrorStateMessage": "Tente novamente para atualizar os detalhes e o cardapio.",
+  "@restaurantDetailsErrorStateMessage": {
+    "description": "Body copy shown when restaurant details or catalog loading fails."
+  },
+  "restaurantDetailsRetryAction": "Tentar novamente",
+  "@restaurantDetailsRetryAction": {
+    "description": "Retry button label shown after restaurant-details loading failure."
+  },
+  "restaurantDetailsEmptyStateTitle": "Cardapio indisponivel agora",
+  "@restaurantDetailsEmptyStateTitle": {
+    "description": "Title shown when the restaurant catalog loads without menu items."
+  },
+  "restaurantDetailsEmptyStateMessage": "Volte em instantes para conferir as opcoes deste restaurante.",
+  "@restaurantDetailsEmptyStateMessage": {
+    "description": "Body copy shown when the restaurant catalog loads without menu items."
+  },
+  "restaurantDetailsMenuSectionTitle": "Cardapio",
+  "@restaurantDetailsMenuSectionTitle": {
+    "description": "Section title shown above the restaurant menu categories and items."
+  },
+  "restaurantDetailsCategoryPopular": "Populares",
+  "@restaurantDetailsCategoryPopular": {
+    "description": "Label for the popular restaurant-menu category."
+  },
+  "restaurantDetailsCategoryBurgers": "Hamburgueres",
+  "@restaurantDetailsCategoryBurgers": {
+    "description": "Label for the burgers restaurant-menu category."
+  },
+  "restaurantDetailsCategorySides": "Acompanhamentos",
+  "@restaurantDetailsCategorySides": {
+    "description": "Label for the sides restaurant-menu category."
+  },
+  "restaurantDetailsCategoryDrinks": "Bebidas",
+  "@restaurantDetailsCategoryDrinks": {
+    "description": "Label for the drinks restaurant-menu category."
+  },
+  "restaurantDetailsRatingAndDelivery": "{rating} • {minMinutes}-{maxMinutes} min",
+  "@restaurantDetailsRatingAndDelivery": {
+    "description": "Compact restaurant-details metadata string with rating and delivery time range.",
+    "placeholders": {
+      "rating": {
+        "type": "double",
+        "example": "4.8"
+      },
+      "minMinutes": {
+        "type": "int",
+        "example": "25"
+      },
+      "maxMinutes": {
+        "type": "int",
+        "example": "35"
+      }
+    }
+  },
+  "restaurantDetailsMenuSemanticLabel": "Cardapio de {restaurantName}",
+  "@restaurantDetailsMenuSemanticLabel": {
+    "description": "Semantic label announced for the restaurant menu section.",
+    "placeholders": {
+      "restaurantName": {
+        "type": "String",
+        "example": "Burger Artisan Collective"
+      }
+    }
+  },
+  "restaurantDetailsCategoryFilterSemanticLabel": "Filtrar cardapio por {categoryName}",
+  "@restaurantDetailsCategoryFilterSemanticLabel": {
+    "description": "Semantic label announced for a restaurant-menu category filter.",
+    "placeholders": {
+      "categoryName": {
+        "type": "String",
+        "example": "Hamburgueres"
+      }
+    }
+  },
   "homeBottomNavHome": "Home",
   "@homeBottomNavHome": {
     "description": "Bottom navigation label for the Home destination."

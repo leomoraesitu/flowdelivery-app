@@ -565,6 +565,112 @@ abstract class AppLocalizations {
   /// **'Limpar filtros'**
   String get homeDiscoveryClearFiltersAction;
 
+  /// Tooltip and semantic label for the restaurant-details back navigation action.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Voltar'**
+  String get restaurantDetailsBackAction;
+
+  /// Title shown while restaurant details and catalog are loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando restaurante'**
+  String get restaurantDetailsLoadingStateTitle;
+
+  /// Body copy shown while restaurant details and catalog are loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Estamos buscando o cardapio e os detalhes mais recentes para voce.'**
+  String get restaurantDetailsLoadingStateMessage;
+
+  /// Semantic label announced for the restaurant-details loading indicator.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando detalhes e cardapio do restaurante'**
+  String get restaurantDetailsLoadingStateSemanticLabel;
+
+  /// Title shown when restaurant details or catalog loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nao foi possivel carregar o restaurante'**
+  String get restaurantDetailsErrorStateTitle;
+
+  /// Body copy shown when restaurant details or catalog loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tente novamente para atualizar os detalhes e o cardapio.'**
+  String get restaurantDetailsErrorStateMessage;
+
+  /// Retry button label shown after restaurant-details loading failure.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tentar novamente'**
+  String get restaurantDetailsRetryAction;
+
+  /// Title shown when the restaurant catalog loads without menu items.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Cardapio indisponivel agora'**
+  String get restaurantDetailsEmptyStateTitle;
+
+  /// Body copy shown when the restaurant catalog loads without menu items.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Volte em instantes para conferir as opcoes deste restaurante.'**
+  String get restaurantDetailsEmptyStateMessage;
+
+  /// Section title shown above the restaurant menu categories and items.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Cardapio'**
+  String get restaurantDetailsMenuSectionTitle;
+
+  /// Label for the popular restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Populares'**
+  String get restaurantDetailsCategoryPopular;
+
+  /// Label for the burgers restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Hamburgueres'**
+  String get restaurantDetailsCategoryBurgers;
+
+  /// Label for the sides restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Acompanhamentos'**
+  String get restaurantDetailsCategorySides;
+
+  /// Label for the drinks restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Bebidas'**
+  String get restaurantDetailsCategoryDrinks;
+
+  /// Compact restaurant-details metadata string with rating and delivery time range.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{rating} • {minMinutes}-{maxMinutes} min'**
+  String restaurantDetailsRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  );
+
+  /// Semantic label announced for the restaurant menu section.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Cardapio de {restaurantName}'**
+  String restaurantDetailsMenuSemanticLabel(String restaurantName);
+
+  /// Semantic label announced for a restaurant-menu category filter.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Filtrar cardapio por {categoryName}'**
+  String restaurantDetailsCategoryFilterSemanticLabel(String categoryName);
+
   /// Bottom navigation label for the Home destination.
   ///
   /// In pt_BR, this message translates to:

@@ -6,7 +6,7 @@ Restaurant Details Remote Catalog
 
 ## Active Status
 
-In progress. Sprint 5 Tasks 1-5 completed. Awaiting explicit Task 6 implementation approval.
+In progress. Sprint 5 Tasks 1-6 completed. Awaiting explicit Task 7 implementation approval.
 
 ## Active Scope
 
@@ -37,7 +37,9 @@ In progress. Sprint 5 Tasks 1-5 completed. Awaiting explicit Task 6 implementati
 - Sprint 5 Task 5 completed — Riverpod now exposes restaurant-details loading by stable restaurant ID through `FutureProvider.family`, owns selected menu-category state independently per restaurant through `NotifierProvider.family`, and composes the Supabase datasource plus repository at the app boundary.
 - Task 5 followed TDD: the focused provider test failed first because the provider file was absent, then passed with 3 tests after the minimal implementation.
 - Dart MCP restaurant-details domain/data/provider regression validation passed with 10 tests, focused analysis reported no errors, and `git diff --check` remained clean.
-- Next implementation step requires explicit approval for Task 6: add localized restaurant-details copy through ARB + `AppLocalizations`.
+- Sprint 5 Task 6 completed — restaurant-details back navigation, async states, retry, empty state, menu section, seed categories, metadata, and accessibility copy now live in ARB catalogs with generated `AppLocalizations` accessors.
+- Task 6 Localization Guard passed: hardcoded-copy, ARB catalog parity, and generated freshness suites reported 9 passing tests; generated localization analysis reported no errors and `git diff --check` remained clean.
+- Next implementation step requires explicit approval for Task 7: add restaurant-details UI and Home entry point with mandatory Localization Guard and Theme Guard validation.
 
 ## Feature
 

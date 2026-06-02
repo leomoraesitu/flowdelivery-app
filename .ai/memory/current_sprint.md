@@ -6,7 +6,7 @@ Sprint 5 - Restaurant Details Remote Catalog
 
 ## Active Status
 
-In progress. Tasks 1-5 completed. Awaiting explicit Task 6 implementation approval.
+In progress. Tasks 1-6 completed. Awaiting explicit Task 7 implementation approval.
 
 ## Active Focus
 
@@ -37,9 +37,10 @@ In progress. Tasks 1-5 completed. Awaiting explicit Task 6 implementation approv
 - Task 3 completed — typed remote DTOs and Supabase datasource with filtered restaurant-ID queries, deterministic ordering, payload orchestration, and explicit remote exceptions.
 - Task 4 completed — domain repository contract and DTO-to-domain mapping boundary.
 - Task 5 completed — Riverpod family loading by stable restaurant ID, per-restaurant local category-selection state, and app-boundary composition.
-- Restaurant-details domain/data/provider regression validation passed with 10 tests, focused analysis reported no errors, and `git diff --check` remained clean.
+- Task 6 completed — restaurant-details copy now lives in ARB catalogs with generated `AppLocalizations` accessors for async states, menu labels, metadata, navigation, and accessibility.
+- Restaurant-details domain/data/provider regression validation passed with 10 tests; Localization Guard validation passed with 9 tests; focused analysis reported no errors; and `git diff --check` remained clean.
 - Real Trello story is active in `🚧 In Progress`: `https://trello.com/c/1cBjEupB`.
-- Next implementation step requires explicit approval for Task 6: add localized restaurant-details copy through ARB + `AppLocalizations`.
+- Next implementation step requires explicit approval for Task 7: add restaurant-details UI and Home entry point with mandatory Localization Guard and Theme Guard validation.
 
 ## Sprint
 

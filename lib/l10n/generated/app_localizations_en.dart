@@ -274,6 +274,72 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeDiscoveryClearFiltersAction => 'Clear filters';
 
   @override
+  String get restaurantDetailsBackAction => 'Back';
+
+  @override
+  String get restaurantDetailsLoadingStateTitle => 'Loading restaurant';
+
+  @override
+  String get restaurantDetailsLoadingStateMessage =>
+      'We are fetching the latest menu and restaurant details for you.';
+
+  @override
+  String get restaurantDetailsLoadingStateSemanticLabel =>
+      'Loading restaurant details and menu';
+
+  @override
+  String get restaurantDetailsErrorStateTitle =>
+      'Could not load the restaurant';
+
+  @override
+  String get restaurantDetailsErrorStateMessage =>
+      'Try again to refresh the restaurant details and menu.';
+
+  @override
+  String get restaurantDetailsRetryAction => 'Try again';
+
+  @override
+  String get restaurantDetailsEmptyStateTitle => 'Menu unavailable right now';
+
+  @override
+  String get restaurantDetailsEmptyStateMessage =>
+      'Check back in a moment for this restaurant\'s options.';
+
+  @override
+  String get restaurantDetailsMenuSectionTitle => 'Menu';
+
+  @override
+  String get restaurantDetailsCategoryPopular => 'Popular';
+
+  @override
+  String get restaurantDetailsCategoryBurgers => 'Burgers';
+
+  @override
+  String get restaurantDetailsCategorySides => 'Sides';
+
+  @override
+  String get restaurantDetailsCategoryDrinks => 'Drinks';
+
+  @override
+  String restaurantDetailsRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  ) {
+    return '$rating • $minMinutes-$maxMinutes min';
+  }
+
+  @override
+  String restaurantDetailsMenuSemanticLabel(String restaurantName) {
+    return '$restaurantName menu';
+  }
+
+  @override
+  String restaurantDetailsCategoryFilterSemanticLabel(String categoryName) {
+    return 'Filter menu by $categoryName';
+  }
+
+  @override
   String get homeBottomNavHome => 'Home';
 
   @override

@@ -14,7 +14,7 @@ Reference prototype:
 
 ## Status
 
-In progress. Tasks 1-5 completed. Awaiting explicit Task 6 implementation approval.
+In progress. Tasks 1-6 completed. Awaiting explicit Task 7 implementation approval.
 
 ## Sprint Goal
 
@@ -40,7 +40,7 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - [x] Wire async Riverpod composition.
 - [ ] Add protected restaurant-details route.
 - [ ] Add restaurant-details UI and Home entry point.
-- [ ] Add localized restaurant-details copy.
+- [x] Add localized restaurant-details copy.
 - [ ] Add focused regression coverage.
 - [ ] Reconcile docs, memory, and Trello after validation.
 
@@ -60,6 +60,8 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - Task 5 completed — Riverpod now exposes restaurant-details loading by stable restaurant ID, owns selected category state independently per restaurant, and composes the Supabase datasource plus repository at the app boundary.
 - Task 5 followed TDD: the focused provider test failed first because the provider file was absent, then passed with 3 tests after the minimal implementation.
 - Dart MCP restaurant-details domain/data/provider regression validation passed with 10 tests, focused analysis reported no errors, and `git diff --check` remained clean.
+- Task 6 completed — restaurant-details copy now lives in ARB catalogs with generated `AppLocalizations` accessors for navigation, async states, retry, empty state, menu labels, metadata, and accessibility.
+- Task 6 Localization Guard passed: hardcoded-copy, ARB catalog parity, and generated freshness suites reported 9 passing tests; generated localization analysis reported no errors and `git diff --check` remained clean.
 
 ## Acceptance Criteria
 
@@ -81,7 +83,8 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - [x] Explicit implementation approval for Tasks 1-3.
 - [x] Explicit implementation approval for Task 4.
 - [x] Explicit implementation approval for Task 5.
-- [ ] Explicit implementation approval for Task 6.
+- [x] Explicit implementation approval for Task 6.
+- [ ] Explicit implementation approval for Task 7.
 
 ## Localization Guard Checklist
 

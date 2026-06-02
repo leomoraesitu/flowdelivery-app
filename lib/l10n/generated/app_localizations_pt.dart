@@ -277,6 +277,72 @@ class AppLocalizationsPt extends AppLocalizations {
   String get homeDiscoveryClearFiltersAction => 'Limpar filtros';
 
   @override
+  String get restaurantDetailsBackAction => 'Voltar';
+
+  @override
+  String get restaurantDetailsLoadingStateTitle => 'Carregando restaurante';
+
+  @override
+  String get restaurantDetailsLoadingStateMessage =>
+      'Estamos buscando o cardapio e os detalhes mais recentes para voce.';
+
+  @override
+  String get restaurantDetailsLoadingStateSemanticLabel =>
+      'Carregando detalhes e cardapio do restaurante';
+
+  @override
+  String get restaurantDetailsErrorStateTitle =>
+      'Nao foi possivel carregar o restaurante';
+
+  @override
+  String get restaurantDetailsErrorStateMessage =>
+      'Tente novamente para atualizar os detalhes e o cardapio.';
+
+  @override
+  String get restaurantDetailsRetryAction => 'Tentar novamente';
+
+  @override
+  String get restaurantDetailsEmptyStateTitle => 'Cardapio indisponivel agora';
+
+  @override
+  String get restaurantDetailsEmptyStateMessage =>
+      'Volte em instantes para conferir as opcoes deste restaurante.';
+
+  @override
+  String get restaurantDetailsMenuSectionTitle => 'Cardapio';
+
+  @override
+  String get restaurantDetailsCategoryPopular => 'Populares';
+
+  @override
+  String get restaurantDetailsCategoryBurgers => 'Hamburgueres';
+
+  @override
+  String get restaurantDetailsCategorySides => 'Acompanhamentos';
+
+  @override
+  String get restaurantDetailsCategoryDrinks => 'Bebidas';
+
+  @override
+  String restaurantDetailsRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  ) {
+    return '$rating • $minMinutes-$maxMinutes min';
+  }
+
+  @override
+  String restaurantDetailsMenuSemanticLabel(String restaurantName) {
+    return 'Cardapio de $restaurantName';
+  }
+
+  @override
+  String restaurantDetailsCategoryFilterSemanticLabel(String categoryName) {
+    return 'Filtrar cardapio por $categoryName';
+  }
+
+  @override
   String get homeBottomNavHome => 'Home';
 
   @override
@@ -560,6 +626,72 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get homeDiscoveryClearFiltersAction => 'Limpar filtros';
+
+  @override
+  String get restaurantDetailsBackAction => 'Voltar';
+
+  @override
+  String get restaurantDetailsLoadingStateTitle => 'Carregando restaurante';
+
+  @override
+  String get restaurantDetailsLoadingStateMessage =>
+      'Estamos buscando o cardapio e os detalhes mais recentes para voce.';
+
+  @override
+  String get restaurantDetailsLoadingStateSemanticLabel =>
+      'Carregando detalhes e cardapio do restaurante';
+
+  @override
+  String get restaurantDetailsErrorStateTitle =>
+      'Nao foi possivel carregar o restaurante';
+
+  @override
+  String get restaurantDetailsErrorStateMessage =>
+      'Tente novamente para atualizar os detalhes e o cardapio.';
+
+  @override
+  String get restaurantDetailsRetryAction => 'Tentar novamente';
+
+  @override
+  String get restaurantDetailsEmptyStateTitle => 'Cardapio indisponivel agora';
+
+  @override
+  String get restaurantDetailsEmptyStateMessage =>
+      'Volte em instantes para conferir as opcoes deste restaurante.';
+
+  @override
+  String get restaurantDetailsMenuSectionTitle => 'Cardapio';
+
+  @override
+  String get restaurantDetailsCategoryPopular => 'Populares';
+
+  @override
+  String get restaurantDetailsCategoryBurgers => 'Hamburgueres';
+
+  @override
+  String get restaurantDetailsCategorySides => 'Acompanhamentos';
+
+  @override
+  String get restaurantDetailsCategoryDrinks => 'Bebidas';
+
+  @override
+  String restaurantDetailsRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  ) {
+    return '$rating • $minMinutes-$maxMinutes min';
+  }
+
+  @override
+  String restaurantDetailsMenuSemanticLabel(String restaurantName) {
+    return 'Cardapio de $restaurantName';
+  }
+
+  @override
+  String restaurantDetailsCategoryFilterSemanticLabel(String categoryName) {
+    return 'Filtrar cardapio por $categoryName';
+  }
 
   @override
   String get homeBottomNavHome => 'Home';
