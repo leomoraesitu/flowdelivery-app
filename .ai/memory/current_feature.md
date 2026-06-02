@@ -6,7 +6,7 @@ Restaurant Details Remote Catalog
 
 ## Active Status
 
-Planned. Architecture approved. Awaiting explicit Sprint 5 Task 1 implementation approval.
+In progress. Sprint 5 Tasks 1-3 completed. Awaiting explicit Task 4 implementation approval.
 
 ## Active Scope
 
@@ -28,7 +28,10 @@ Planned. Architecture approved. Awaiting explicit Sprint 5 Task 1 implementation
 - Sprint 5 Task 2 completed — `supabase/migrations/20260602120000_restaurant_details_remote_catalog.sql` adds normalized read-only menu categories and items with constraints, indexes, explicit grants, RLS, authenticated read policies, and deterministic seeds.
 - Task 2 transaction-scoped Supabase MCP smoke test passed and rolled back cleanly: 4 categories, 4 items, RLS enabled, authenticated read policies present, `anon` denied, and authenticated writes denied.
 - The shared remote Supabase project remains unchanged after validation.
-- Next implementation step requires explicit approval for Task 3: add DTOs and the remote datasource.
+- Sprint 5 Task 3 completed — typed DTOs parse restaurant, menu-category, and menu-item rows, while the Supabase datasource owns filtered queries, deterministic ordering, payload orchestration, and explicit remote exceptions.
+- Task 3 followed TDD: the focused datasource test failed first because the DTO and datasource files were absent, then passed with 3 tests after the minimal implementation.
+- Dart MCP focused analysis reported no errors and `git diff --check` remained clean.
+- Next implementation step requires explicit approval for Task 4: add repository mapping.
 
 ## Feature
 

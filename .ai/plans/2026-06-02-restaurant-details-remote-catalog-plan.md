@@ -67,6 +67,7 @@ This avoids loading full menus in the Home feed and keeps Supabase queries out o
 - [x] Slice boundary approved: restaurant details plus remote catalog only.
 - [x] Task 1 completed — immutable restaurant-details domain contracts and focused tests.
 - [x] Task 2 completed — read-only remote catalog schema, grants, RLS, policies, and deterministic seeds.
+- [x] Task 3 completed — typed DTOs and remote datasource with focused tests.
 
 ## Implementation Tasks
 
@@ -168,6 +169,15 @@ Applicable skills:
 - `flutter-implement-json-serialization`
 - `dart-add-unit-test`
 - `dart-run-static-analysis`
+
+Validated evidence:
+
+- TDD RED confirmed before implementation: the focused datasource test failed because the DTO and datasource files were absent.
+- Added typed restaurant, menu-category, and menu-item DTOs plus an immutable remote payload.
+- Added a Supabase datasource that loads details by restaurant ID, filters category and item queries, preserves deterministic ordering, and translates missing or malformed data into explicit remote exceptions.
+- Dart MCP `run_tests` for `test/features/restaurant_details/data/restaurant_details_remote_datasource_test.dart`: 3 tests passed.
+- Dart MCP `analyze_files` on the DTO, datasource, and focused test files: no errors.
+- `git diff --check`: no errors.
 
 ### Task 4: Add Repository Mapping
 

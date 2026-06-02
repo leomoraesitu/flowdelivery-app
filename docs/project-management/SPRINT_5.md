@@ -14,7 +14,7 @@ Reference prototype:
 
 ## Status
 
-Planned. Architecture approved. Awaiting explicit Task 1 implementation approval.
+In progress. Tasks 1-3 completed. Awaiting explicit Task 4 implementation approval.
 
 ## Sprint Goal
 
@@ -35,7 +35,7 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 
 - [x] Define immutable restaurant-details domain contracts.
 - [x] Add remote catalog schema.
-- [ ] Add DTOs and remote datasource.
+- [x] Add DTOs and remote datasource.
 - [ ] Add repository mapping.
 - [ ] Wire async Riverpod composition.
 - [ ] Add protected restaurant-details route.
@@ -51,6 +51,9 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - Focused Dart MCP validation passed with 3 domain tests, no analyze errors, and a clean `git diff --check`.
 - Task 2 completed — versioned Supabase migration now adds read-only menu categories and items with explicit grants, RLS, policies, indexes, constraints, and deterministic seeds.
 - Transaction-scoped Supabase MCP smoke validation passed and rolled back cleanly: 4 categories, 4 items, RLS enabled, authenticated read policies present, `anon` denied, and authenticated writes denied.
+- Task 3 completed — typed DTOs now parse restaurant, menu-category, and menu-item rows, while the Supabase datasource owns filtered queries by restaurant ID, deterministic ordering, payload orchestration, and explicit remote exceptions.
+- Task 3 followed TDD: the focused datasource test failed first because the DTO and datasource files were absent, then passed with 3 tests after the minimal implementation.
+- Dart MCP focused analysis reported no errors and `git diff --check` remained clean.
 
 ## Acceptance Criteria
 
@@ -69,7 +72,8 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - [x] Existing restaurants table and stable Home restaurant IDs.
 - [x] Existing Riverpod, GoRouter, Supabase, localization, and theme foundations.
 - [x] Approved architecture and technical plan.
-- [ ] Explicit implementation approval for Task 1.
+- [x] Explicit implementation approval for Tasks 1-3.
+- [ ] Explicit implementation approval for Task 4.
 
 ## Localization Guard Checklist
 
