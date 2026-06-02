@@ -1,5 +1,35 @@
 # Current Sprint
 
+## Active Sprint
+
+Sprint 5 - Restaurant Details Remote Catalog
+
+## Active Status
+
+Planned. Architecture approved. Awaiting explicit Task 1 implementation approval.
+
+## Active Focus
+
+- protected `/restaurants/:restaurantId` route opened from Home restaurant cards
+- dedicated `restaurant_details` Clean Architecture feature
+- Supabase-backed read-only menu categories and items
+- async Riverpod loading by stable restaurant ID
+- local menu-category filtering
+- localized and theme-safe details UI aligned with `docs/ux/prototypes/restaurant-details.png`
+
+## Active Out of Scope
+
+- product-details route
+- product customization, variants, add-ons, quantity, and special instructions
+- favorite and share behavior
+- cart, checkout, orders, account, and persisted profile/address data
+- Storage media, Realtime, pagination, ranking, and recommendations
+
+## Active Plan
+
+- `.ai/plans/2026-06-02-restaurant-details-remote-catalog-plan.md`
+- `docs/project-management/SPRINT_5.md`
+
 ## Sprint
 
 Sprint 4 — Home Discovery Interactions

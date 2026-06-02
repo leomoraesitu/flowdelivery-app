@@ -1,5 +1,25 @@
 # Current Feature
 
+## Active Feature
+
+Restaurant Details Remote Catalog
+
+## Active Status
+
+Planned. Architecture approved. Awaiting explicit Sprint 5 Task 1 implementation approval.
+
+## Active Scope
+
+- Add protected `/restaurants/:restaurantId` navigation from Home.
+- Load restaurant details and a read-only remote catalog on demand.
+- Add menu-category filtering over the loaded catalog.
+- Keep product details, customization, cart, favorites, sharing, Storage, Realtime, and persisted address data deferred.
+
+## Active Plan
+
+- `.ai/plans/2026-06-02-restaurant-details-remote-catalog-plan.md`
+- `docs/project-management/SPRINT_5.md`
+
 ## Feature
 
 Home Discovery Interactions
