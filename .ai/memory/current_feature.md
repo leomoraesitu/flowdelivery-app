@@ -6,7 +6,7 @@ Restaurant Details Remote Catalog
 
 ## Active Status
 
-In progress. Sprint 5 Tasks 1-3 completed. Awaiting explicit Task 4 implementation approval.
+In progress. Sprint 5 Tasks 1-4 completed. Awaiting explicit Task 5 implementation approval.
 
 ## Active Scope
 
@@ -31,7 +31,10 @@ In progress. Sprint 5 Tasks 1-3 completed. Awaiting explicit Task 4 implementati
 - Sprint 5 Task 3 completed — typed DTOs parse restaurant, menu-category, and menu-item rows, while the Supabase datasource owns filtered queries, deterministic ordering, payload orchestration, and explicit remote exceptions.
 - Task 3 followed TDD: the focused datasource test failed first because the DTO and datasource files were absent, then passed with 3 tests after the minimal implementation.
 - Dart MCP focused analysis reported no errors and `git diff --check` remained clean.
-- Next implementation step requires explicit approval for Task 4: add repository mapping.
+- Sprint 5 Task 4 completed — the domain repository contract now exposes restaurant-details loading by stable restaurant ID, while the data-layer implementation maps remote DTOs into immutable domain entities.
+- Task 4 followed TDD: the focused repository test failed first because the implementation file was absent, then passed after the minimal mapping boundary was added.
+- Dart MCP restaurant-details data regression validation passed with 4 tests, focused analysis reported no errors, and `git diff --check` remained clean.
+- Next implementation step requires explicit approval for Task 5: wire Riverpod composition.
 
 ## Feature
 

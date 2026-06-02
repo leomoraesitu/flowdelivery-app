@@ -68,6 +68,7 @@ This avoids loading full menus in the Home feed and keeps Supabase queries out o
 - [x] Task 1 completed — immutable restaurant-details domain contracts and focused tests.
 - [x] Task 2 completed — read-only remote catalog schema, grants, RLS, policies, and deterministic seeds.
 - [x] Task 3 completed — typed DTOs and remote datasource with focused tests.
+- [x] Task 4 completed — domain repository contract and DTO-to-domain mapping with focused tests.
 
 ## Implementation Tasks
 
@@ -205,6 +206,15 @@ Applicable skills:
 
 - `dart-add-unit-test`
 - `dart-run-static-analysis`
+
+Validated evidence:
+
+- TDD RED confirmed before implementation: the focused repository test failed because the repository implementation file was absent.
+- Added a domain-oriented `RestaurantDetailsRepository` contract and a data-layer implementation that forwards the selected restaurant ID and maps remote DTOs into immutable restaurant-details entities.
+- Dart MCP `run_tests` for the focused repository test: 1 test passed.
+- Dart MCP `run_tests` for the restaurant-details datasource and repository suites: 4 tests passed.
+- Dart MCP `analyze_files` on the repository contract, implementation, and focused test: no errors.
+- `git diff --check`: no errors.
 
 ### Task 5: Wire Riverpod Composition
 

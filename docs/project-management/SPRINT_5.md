@@ -14,7 +14,7 @@ Reference prototype:
 
 ## Status
 
-In progress. Tasks 1-3 completed. Awaiting explicit Task 4 implementation approval.
+In progress. Tasks 1-4 completed. Awaiting explicit Task 5 implementation approval.
 
 ## Sprint Goal
 
@@ -36,7 +36,7 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - [x] Define immutable restaurant-details domain contracts.
 - [x] Add remote catalog schema.
 - [x] Add DTOs and remote datasource.
-- [ ] Add repository mapping.
+- [x] Add repository mapping.
 - [ ] Wire async Riverpod composition.
 - [ ] Add protected restaurant-details route.
 - [ ] Add restaurant-details UI and Home entry point.
@@ -54,6 +54,9 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - Task 3 completed — typed DTOs now parse restaurant, menu-category, and menu-item rows, while the Supabase datasource owns filtered queries by restaurant ID, deterministic ordering, payload orchestration, and explicit remote exceptions.
 - Task 3 followed TDD: the focused datasource test failed first because the DTO and datasource files were absent, then passed with 3 tests after the minimal implementation.
 - Dart MCP focused analysis reported no errors and `git diff --check` remained clean.
+- Task 4 completed — the domain repository contract now exposes loading by stable restaurant ID, while its data-layer implementation maps remote DTOs into immutable restaurant-details entities.
+- Task 4 followed TDD: the focused repository test failed first because the implementation file was absent, then passed after the minimal mapping boundary was added.
+- Dart MCP restaurant-details data regression validation passed with 4 tests, focused analysis reported no errors, and `git diff --check` remained clean.
 
 ## Acceptance Criteria
 
@@ -73,7 +76,8 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - [x] Existing Riverpod, GoRouter, Supabase, localization, and theme foundations.
 - [x] Approved architecture and technical plan.
 - [x] Explicit implementation approval for Tasks 1-3.
-- [ ] Explicit implementation approval for Task 4.
+- [x] Explicit implementation approval for Task 4.
+- [ ] Explicit implementation approval for Task 5.
 
 ## Localization Guard Checklist
 
