@@ -83,13 +83,13 @@ This keeps:
 - [x] Task 2 completed — deterministic search and category filtering logic.
 - [x] Task 3 completed — Home search input and category chips wired to Riverpod discovery state.
 - [x] Task 4 completed — localized discovery no-match feedback and clear-filters recovery action.
-- [ ] Task 5 pending — focused discovery regression coverage and applicable router/guard validation.
-- [ ] Task 6 pending — final docs, memory, and Trello reconciliation after full slice validation.
+- [x] Task 5 completed — focused discovery regression coverage and router/guard validation.
+- [x] Task 6 completed — final docs, memory, and Trello reconciliation after full slice validation.
 
 Real Trello story:
 
 - `[FEAT] Home discovery interactions`: `https://trello.com/c/5EUe5qOp`
-- Task 4 parity remains intentionally partial until Tasks 5-6 complete the slice.
+- Final parity verified after Tasks 5-6; all real Trello checklist items are complete.
 
 ## Implementation Tasks
 
@@ -256,11 +256,11 @@ Files:
 
 Checklist:
 
-- [ ] Verify the default state still renders the validated remote Home feed.
-- [ ] Verify category filtering changes the rendered restaurant set deterministically.
-- [ ] Verify search filtering changes the rendered restaurant set deterministically.
-- [ ] Verify combined search + category filtering and localized empty-results behavior.
-- [ ] Keep provider tests independent from widget layout assertions.
+- [x] Verify the default state still renders the validated remote Home feed.
+- [x] Verify category filtering changes the rendered restaurant set deterministically.
+- [x] Verify search filtering changes the rendered restaurant set deterministically.
+- [x] Verify combined search + category filtering and localized empty-results behavior.
+- [x] Keep provider tests independent from widget layout assertions.
 
 Validation:
 
@@ -272,6 +272,15 @@ Commit:
 ```text
 test(home): cover discovery interactions
 ```
+
+Validated evidence:
+
+- Added direct provider regression coverage for `reset()` after combined filters produce no matches.
+- Expanded the Home widget regression to prove combined category + search no-match feedback and recovery of restaurants, empty search field, and selected `Todos` chip.
+- Dart MCP `analyze_files` on the touched Home tests: no errors.
+- Dart MCP `run_tests` for Home provider, async-provider, and widget suites: 22 tests passed.
+- Dart MCP consolidated regression matrix for Home suites, router, localization guards, Theme Guard, and Trello Guard: 41 tests passed.
+- `git diff --check`: no errors.
 
 ### Task 6: Reconcile Documentation, Memory, and Trello After Validation
 
@@ -288,10 +297,10 @@ Files:
 
 Checklist:
 
-- [ ] Record completed tasks and validation evidence.
-- [ ] Keep deferred details/navigation/pagination/profile scope explicit.
-- [ ] Confirm Trello checklist state matches validated implementation only.
-- [ ] Add a Trello evidence comment after real-card parity verification.
+- [x] Record completed tasks and validation evidence.
+- [x] Keep deferred details/navigation/pagination/profile scope explicit.
+- [x] Confirm Trello checklist state matches validated implementation only.
+- [x] Add a Trello evidence comment after real-card parity verification.
 
 Validation:
 
@@ -306,13 +315,13 @@ docs(home): record discovery validation
 
 ## Acceptance Criteria
 
-- [ ] `/home` keeps its protected authenticated route contract.
+- [x] `/home` keeps its protected authenticated route contract.
 - [x] Search and category selection work against the validated remote Home feed foundation.
 - [x] Discovery state ownership lives outside widgets and outside Supabase/datasource code.
 - [x] The default Home success state remains equivalent to Sprint 3 when no discovery filters are active.
 - [x] Discovery empty-results feedback is localized through ARB + `AppLocalizations`.
 - [x] Presentation styling for discovery interactions uses semantic theme APIs and app tokens only.
-- [ ] Focused provider, widget, localization guard, theme guard, router, and documentation/Trello parity validation pass.
+- [x] Focused provider, widget, localization guard, theme guard, router, and documentation/Trello parity validation pass.
 
 ## Risks
 

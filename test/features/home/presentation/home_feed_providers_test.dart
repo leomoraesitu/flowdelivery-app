@@ -286,6 +286,41 @@ void main() {
         equals(['roma_pizza']),
       );
     });
+
+    test('resets combined discovery filters to the full feed baseline', () async {
+      final expectedContent = buildDiscoveryContent();
+      final container = ProviderContainer(
+        overrides: [
+          homeRepositoryProvider.overrideWithValue(
+            _TestHomeRepository(expectedContent),
+          ),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      await container.read(homeFeedAsyncProvider.future);
+
+      final controller = container.read(
+        homeFeedDiscoveryControllerProvider.notifier,
+      );
+      controller.selectCategory('pizza');
+      controller.setSearchQuery('sushi');
+
+      expect(container.read(homeFeedViewProvider).visibleRestaurants, isEmpty);
+
+      controller.reset();
+
+      final viewData = container.read(homeFeedViewProvider);
+
+      expect(viewData.discoveryState.selectedCategoryId, homeAllCategoryId);
+      expect(viewData.discoveryState.searchQuery, isEmpty);
+      expect(
+        viewData.visibleRestaurants.map((restaurant) => restaurant.id).toList(),
+        expectedContent.featuredRestaurants
+            .map((restaurant) => restaurant.id)
+            .toList(),
+      );
+    });
   });
 }
 

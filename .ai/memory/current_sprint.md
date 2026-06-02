@@ -6,7 +6,7 @@ Sprint 4 — Home Discovery Interactions
 
 ## Status
 
-In Progress.
+Completed.
 
 Sprint 4 starts from the validated remote-feed baseline and is limited to interactive search/category discovery on the authenticated Home feed.
 
@@ -50,6 +50,9 @@ Sprint 4 starts from the validated remote-feed baseline and is limited to intera
 - Sprint 4 real Trello story is active with Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, and Theme Guard checklists: `https://trello.com/c/5EUe5qOp`.
 - Sprint 4 Tasks 1-4 are validated. Task 4 added localized discovery no-match feedback and a clear-filters action that resets Riverpod discovery state plus the visible search field.
 - Sprint 4 Trello parity after Task 4 is intentionally partial: Scope `5/6`, Validation `7/8`, Localization Guard `7/7`, Theme Guard `5/5`, Acceptance Criteria `5/8`, and Dependencies `6/6`. Global completion items remain open for Tasks 5-6.
+- Sprint 4 Task 5 is validated: provider reset regression plus combined category/search no-match widget recovery are covered, focused Home suites passed with 22 tests, and the consolidated router/guard matrix passed with 41 tests.
+- Sprint 4 Task 6 is complete: docs, plan, memory, technical-debt monitoring, and the real Trello story were reconciled after validation.
+- Sprint 4 final real Trello parity is complete for `https://trello.com/c/5EUe5qOp`: Scope `6/6`, Validation `8/8`, Localization Guard `7/7`, Theme Guard `5/5`, Acceptance Criteria `8/8`, and Dependencies `6/6`.
 - Use `.codex/workflows/` for repeatable execution.
 - Use `.ai/context/` as project context.
 - Use `.ai/agents/` for role-specific behavior.

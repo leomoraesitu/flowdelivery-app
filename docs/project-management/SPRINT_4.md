@@ -14,7 +14,7 @@ Reference prototype:
 
 ## Status
 
-In Progress.
+Completed.
 
 Sprint 4 starts from the validated Sprint 3 remote-feed baseline and is limited to interactive search/category discovery on the authenticated Home feed.
 
@@ -38,19 +38,19 @@ Make the Home feed discoverable through search and category selection without op
 - [x] Implement search and category filtering logic.
 - [x] Wire Home discovery interactions in the UI.
 - [x] Add localized discovery empty-results feedback.
-- [ ] Add focused discovery regression coverage.
-- [ ] Reconcile docs, memory, and Trello after validation.
+- [x] Add focused discovery regression coverage.
+- [x] Reconcile docs, memory, and Trello after validation.
 
 ## Acceptance Criteria
 
-- [ ] `/home` keeps its protected authenticated route contract.
+- [x] `/home` keeps its protected authenticated route contract.
 - [x] Search and category selection work against the validated remote Home feed foundation.
 - [x] Discovery state ownership lives outside widgets and outside Supabase/datasource code.
 - [x] The default Home success state remains equivalent to Sprint 3 when no discovery filters are active.
 - [x] Discovery empty-results feedback is localized through ARB catalogs and `AppLocalizations`.
 - [x] Presentation styling for discovery interactions uses semantic theme APIs and app tokens only.
-- [ ] Focused provider, widget, localization guard, theme guard, router, and governance validation pass.
-- [ ] Trello checklist state reflects implementation evidence only.
+- [x] Focused provider, widget, localization guard, theme guard, router, and governance validation pass.
+- [x] Trello checklist state reflects implementation evidence only.
 
 ## Dependencies
 
@@ -97,7 +97,9 @@ Make the Home feed discoverable through search and category selection without op
 - Preserve the local delivery-address placeholder until a dedicated profile/address slice exists.
 - Task 4 keeps remote-empty and discovery-no-match states distinct. The localized clear-filters action resets Riverpod discovery state and the visible search field.
 - Real Trello story: `https://trello.com/c/5EUe5qOp`.
-- Trello parity after Task 4 remains intentionally partial until Tasks 5-6 complete the slice.
+- Task 5 adds direct provider reset coverage and combined category/search no-match widget recovery coverage.
+- Consolidated Task 5 validation passed with 41 tests across Home providers/widgets, router, Localization Guard, Theme Guard, and Trello Guard.
+- Final Trello parity is complete: Scope `6/6`, Validation `8/8`, Localization Guard `7/7`, Theme Guard `5/5`, Acceptance Criteria `8/8`, and Dependencies `6/6`.
 
 ## Risks
 

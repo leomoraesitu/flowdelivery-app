@@ -150,11 +150,12 @@ void main() {
         await tester.pumpWidget(_buildTestApp());
         await tester.pumpAndSettle();
 
-        await tester.enterText(find.byType(TextField), 'impossivel');
-        await tester.pumpAndSettle();
-
         final context = tester.element(find.byType(HomePage));
         final l10n = AppLocalizations.of(context);
+
+        await tester.tap(find.widgetWithText(ChoiceChip, l10n.homeCategoryPizza));
+        await tester.enterText(find.byType(TextField), 'japanese');
+        await tester.pumpAndSettle();
 
         expect(find.text(l10n.homeDiscoveryEmptyStateTitle), findsOneWidget);
         expect(find.text(l10n.homeDiscoveryEmptyStateMessage), findsOneWidget);
@@ -179,6 +180,14 @@ void main() {
         expect(
           tester.widget<TextField>(find.byType(TextField)).controller?.text,
           isEmpty,
+        );
+        expect(
+          tester
+              .widget<ChoiceChip>(
+                find.widgetWithText(ChoiceChip, l10n.homeCategoryAll),
+              )
+              .selected,
+          isTrue,
         );
       },
     );

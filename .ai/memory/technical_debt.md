@@ -125,6 +125,7 @@ Notes:
 - Home is now the selected first presentation slice through `.ai/plans/2026-06-01-home-static-feed-plan.md`.
 - Home presentation now exists and the discovery empty-results UI introduced in Sprint 4 Task 4 remains on semantic theme APIs and app tokens.
 - Sprint 4 Task 4 validation kept `test/app/theme/no_hardcoded_visual_values_test.dart` green; keep this debt in monitoring for future Home, feed, and cart UI slices.
+- Sprint 4 closed with the consolidated router/guard regression matrix green (41 tests), so Home remains a validated Theme Guard baseline for future presentation increments.
 
 ### Reduce manual synchronization between docs and Trello artifacts
 
@@ -145,6 +146,7 @@ Notes:
 - Follow-up validation (2026-05-27): `flutter test test/app/project_management/trello_guard_checklists_test.dart` passed (2 tests).
 - This debt remains `Reduced / Monitoring` because the repo can guard versioned artifacts, but cannot prove external Trello state without MCP/API access and human-supervised validation.
 - Sprint 4 Task 4 external parity was verified against `[FEAT] Home discovery interactions` (`https://trello.com/c/5EUe5qOp`) after local validation. Only evidence-backed items were completed; Task 5 regression coverage and Task 6 final reconciliation remain open.
+- Sprint 4 final parity was rechecked after Task 5 validation and Task 6 reconciliation. The real card now has Scope `6/6`, Validation `8/8`, Localization Guard `7/7`, Theme Guard `5/5`, Acceptance Criteria `8/8`, and Dependencies `6/6`, with a final evidence comment recorded.
 
 ## Rules
 
