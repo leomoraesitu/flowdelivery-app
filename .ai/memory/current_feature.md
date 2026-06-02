@@ -6,7 +6,7 @@ Restaurant Details Remote Catalog
 
 ## Active Status
 
-In progress. Sprint 5 Tasks 1-6 completed. Awaiting explicit Task 7 implementation approval.
+Completed. Sprint 5 is closed. Wait for an explicitly approved next feature slice before implementation.
 
 ## Active Scope
 
@@ -23,23 +23,16 @@ In progress. Sprint 5 Tasks 1-6 completed. Awaiting explicit Task 7 implementati
 ## Active Progress
 
 - Sprint 5 Task 1 completed — immutable `RestaurantDetails`, `RestaurantMenuCategory`, and `RestaurantMenuItem` domain contracts define the read-only restaurant catalog boundary without Flutter or Supabase dependencies.
-- Task 1 followed TDD: the focused domain test failed first because the entity files were absent, then passed with 3 tests after the minimal implementation.
-- Dart MCP focused analysis reported no errors and `git diff --check` remained clean.
 - Sprint 5 Task 2 completed — `supabase/migrations/20260602120000_restaurant_details_remote_catalog.sql` adds normalized read-only menu categories and items with constraints, indexes, explicit grants, RLS, authenticated read policies, and deterministic seeds.
-- Task 2 transaction-scoped Supabase MCP smoke test passed and rolled back cleanly: 4 categories, 4 items, RLS enabled, authenticated read policies present, `anon` denied, and authenticated writes denied.
-- The shared remote Supabase project remains unchanged after validation.
 - Sprint 5 Task 3 completed — typed DTOs parse restaurant, menu-category, and menu-item rows, while the Supabase datasource owns filtered queries, deterministic ordering, payload orchestration, and explicit remote exceptions.
-- Task 3 followed TDD: the focused datasource test failed first because the DTO and datasource files were absent, then passed with 3 tests after the minimal implementation.
-- Dart MCP focused analysis reported no errors and `git diff --check` remained clean.
 - Sprint 5 Task 4 completed — the domain repository contract now exposes restaurant-details loading by stable restaurant ID, while the data-layer implementation maps remote DTOs into immutable domain entities.
-- Task 4 followed TDD: the focused repository test failed first because the implementation file was absent, then passed after the minimal mapping boundary was added.
-- Dart MCP restaurant-details data regression validation passed with 4 tests, focused analysis reported no errors, and `git diff --check` remained clean.
 - Sprint 5 Task 5 completed — Riverpod now exposes restaurant-details loading by stable restaurant ID through `FutureProvider.family`, owns selected menu-category state independently per restaurant through `NotifierProvider.family`, and composes the Supabase datasource plus repository at the app boundary.
-- Task 5 followed TDD: the focused provider test failed first because the provider file was absent, then passed with 3 tests after the minimal implementation.
-- Dart MCP restaurant-details domain/data/provider regression validation passed with 10 tests, focused analysis reported no errors, and `git diff --check` remained clean.
 - Sprint 5 Task 6 completed — restaurant-details back navigation, async states, retry, empty state, menu section, seed categories, metadata, and accessibility copy now live in ARB catalogs with generated `AppLocalizations` accessors.
-- Task 6 Localization Guard passed: hardcoded-copy, ARB catalog parity, and generated freshness suites reported 9 passing tests; generated localization analysis reported no errors and `git diff --check` remained clean.
-- Next implementation step requires explicit approval for Task 7: add restaurant-details UI and Home entry point with mandatory Localization Guard and Theme Guard validation.
+- Sprint 5 Task 7 completed — restaurant-details presentation now renders localized loading, error, empty, and success states; Riverpod derives deterministic local category filtering outside widgets; and Home restaurant cards expose optional stable-ID callbacks for Task 8 route wiring.
+- Sprint 5 Task 8 completed — `GoRouter` now owns the protected `/restaurants/:restaurantId` deep link, routes authenticated users into `RestaurantDetailsPage`, redirects unauthenticated deep links to sign-in, and wires Home card selection through the centralized router policy.
+- Sprint 5 Task 9 completed — focused UI regression coverage for restaurant-details browsing and Home navigation; domain entities promoted to `const` for immutable fixtures; Tasks 7-9 committed task-by-task (`0ee841a`, `a123a29`, `d0590fd`); matrix passed with 49 tests.
+- Sprint 5 Task 10 completed — Sprint 5 docs, plan, feature/sprint memory, and the real Trello card were reconciled after verified parity; six previously-incomplete card items were completed against real evidence and the card moved to `🎉 Done`.
+- Real Trello story closed with validated implementation evidence: `https://trello.com/c/1cBjEupB`.
 
 ## Feature
 

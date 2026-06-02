@@ -6,7 +6,7 @@ Sprint 5 - Restaurant Details Remote Catalog
 
 ## Active Status
 
-In progress. Tasks 1-6 completed. Awaiting explicit Task 7 implementation approval.
+Closed.
 
 ## Active Focus
 
@@ -38,9 +38,11 @@ In progress. Tasks 1-6 completed. Awaiting explicit Task 7 implementation approv
 - Task 4 completed — domain repository contract and DTO-to-domain mapping boundary.
 - Task 5 completed — Riverpod family loading by stable restaurant ID, per-restaurant local category-selection state, and app-boundary composition.
 - Task 6 completed — restaurant-details copy now lives in ARB catalogs with generated `AppLocalizations` accessors for async states, menu labels, metadata, navigation, and accessibility.
-- Restaurant-details domain/data/provider regression validation passed with 10 tests; Localization Guard validation passed with 9 tests; focused analysis reported no errors; and `git diff --check` remained clean.
-- Real Trello story is active in `🚧 In Progress`: `https://trello.com/c/1cBjEupB`.
-- Next implementation step requires explicit approval for Task 7: add restaurant-details UI and Home entry point with mandatory Localization Guard and Theme Guard validation.
+- Task 7 completed — localized restaurant-details UI, derived local category filtering, semantic presentation tokens, and delegable Home restaurant-card stable-ID callbacks.
+- Task 8 completed — protected restaurant-details routing now lives in centralized `GoRouter`, authenticated users can reach `/restaurants/:restaurantId` from Home, and unauthenticated deep links redirect to sign-in.
+- Task 9 completed — focused UI regression coverage for restaurant-details browsing and Home navigation; Tasks 7-9 committed task-by-task (`0ee841a`, `a123a29`, `d0590fd`); consolidated guard matrix passed with 49 tests.
+- Task 10 completed — Sprint 5 docs, plan, feature/sprint memory, and the real Trello card were reconciled after verified parity. Six previously-incomplete card items were completed against real evidence; the card is fully checked and moved to `🎉 Done`.
+- Real Trello story closed with validated implementation evidence: `https://trello.com/c/1cBjEupB`.
 
 ## Sprint
 

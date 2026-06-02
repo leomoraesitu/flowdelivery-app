@@ -71,6 +71,10 @@ This avoids loading full menus in the Home feed and keeps Supabase queries out o
 - [x] Task 4 completed — domain repository contract and DTO-to-domain mapping with focused tests.
 - [x] Task 5 completed — Riverpod family loading, local category-selection state, and app composition with focused tests.
 - [x] Task 6 completed — localized restaurant-details copy and generated `AppLocalizations` accessors with guard validation.
+- [x] Task 7 completed — restaurant-details UI, derived local filtering, and delegable Home card entry callbacks with guard validation.
+- [x] Task 8 completed — protected restaurant-details route, Home callback wiring, and focused router coverage with guard validation.
+- [x] Task 9 completed — focused restaurant-details and Home navigation regression coverage with `const` entity fixtures and a green guard matrix.
+- [x] Task 10 completed — docs, memory, plan checklists, and the real Trello card reconciled after verified parity.
 
 ## Implementation Tasks
 
@@ -277,10 +281,10 @@ Responsibilities:
 
 Localization Guard:
 
-- [ ] Every new user-facing string has an ARB key.
-- [ ] UI reads strings through `AppLocalizations`.
-- [ ] Template descriptions and placeholder metadata are complete.
-- [ ] Catalog parity and generated freshness guards remain green.
+- [x] Every new user-facing string has an ARB key.
+- [x] UI reads strings through `AppLocalizations`.
+- [x] Template descriptions and placeholder metadata are complete.
+- [x] Catalog parity and generated freshness guards remain green.
 
 Validation:
 
@@ -322,17 +326,17 @@ Responsibilities:
 
 Localization Guard:
 
-- [ ] Add ARB keys for every new user-facing string in a separate localization step.
-- [ ] UI reads strings through `AppLocalizations`.
-- [ ] No hardcoded copy exists in presentation.
-- [ ] Localization guard tests remain green.
+- [x] Add ARB keys for every new user-facing string in a separate localization step.
+- [x] UI reads strings through `AppLocalizations`.
+- [x] No hardcoded copy exists in presentation.
+- [x] Localization guard tests remain green.
 
 Theme Guard:
 
-- [ ] Use `Theme.of(context)` and app tokens.
-- [ ] No `Color(0x...)` exists in presentation.
-- [ ] No direct `AppLightColors` or `AppDarkColors` usage exists outside theme.
-- [ ] Visual guard test remains green.
+- [x] Use `Theme.of(context)` and app tokens.
+- [x] No `Color(0x...)` exists in presentation.
+- [x] No direct `AppLightColors` or `AppDarkColors` usage exists outside theme.
+- [x] Visual guard test remains green.
 
 Validation:
 
@@ -344,6 +348,18 @@ Applicable skills:
 - `flutter-add-widget-test`
 - `flutter-build-responsive-layout`
 - `dart-run-static-analysis`
+
+Validated evidence:
+
+- TDD RED confirmed before implementation: the focused provider test failed because the derived restaurant-details view-data provider did not exist.
+- Added derived Riverpod view data that defaults to the first menu category, treats `popular` as the aggregate view, and filters specific categories deterministically outside widgets.
+- Added responsive restaurant-details loading, error, empty, and success UI with localized `AppLocalizations` copy, semantic labels, theme APIs, and app tokens.
+- Added semantic `AppSizes` tokens for the new hero height, menu thumbnail, and medium content-width constraints instead of hardcoded presentation values.
+- Added optional Home restaurant-card selection callbacks that delegate stable IDs; actual GoRouter wiring remains intentionally deferred to Task 8 with the protected route.
+- Kept product taps, favorites, sharing, and cart behavior out of scope.
+- Dart MCP `run_tests` for Home widget regression, restaurant-details domain/data/provider suites, Localization Guard, and Theme Guard: 31 tests passed.
+- Dart MCP `analyze_files` on the touched theme, Home, restaurant-details presentation, and focused provider-test files: no errors.
+- `git diff --check`: no errors.
 
 ### Task 8: Add Protected Restaurant Details Route
 
@@ -374,6 +390,15 @@ Validation:
 
 - Run focused router tests.
 - Run focused analyze.
+
+Validated evidence:
+
+- `GoRouter` now owns `/restaurants/:restaurantId` as a protected deep link and uses the route parameter to build `RestaurantDetailsPage`.
+- Authenticated Home selection is wired through the centralized router policy via the existing `HomePage` callback hook.
+- Unauthenticated deep links to restaurant details redirect to sign-in alongside the existing protected Home route.
+- Dart MCP `run_tests` for `test/app/routes/app_router_test.dart`: 9 tests passed.
+- Dart MCP `analyze_files` on `lib/app/routes/app_routes.dart`, `lib/app/routes/app_router.dart`, and `test/app/routes/app_router_test.dart`: no errors.
+- `git diff --check`: no errors.
 
 Applicable skills:
 
@@ -408,6 +433,15 @@ Applicable skills:
 - `flutter-add-widget-test`
 - `dart-run-static-analysis`
 
+Validated evidence:
+
+- Added `test/features/restaurant_details/presentation/restaurant_details_page_test.dart` covering loading, retryable error, empty, success, category filtering, and back-navigation states.
+- Added `test/features/restaurant_details/restaurant_details_fixtures.dart` as a shared `const` fixture, which required promoting `RestaurantDetails` to a `const` constructor; `const` list literals remain unmodifiable, so the Task 1 domain immutability test stays green.
+- Extended `test/features/home/presentation/home_page_test.dart` to cover navigation when a restaurant card is tapped while preserving Home discovery regressions.
+- Committed task-by-task: `0ee841a` (Task 7 UI), `a123a29` (Task 8 route), `d0590fd` (Task 9 coverage).
+- Consolidated `flutter test` across restaurant-details, Home widget, router, localization guards, Theme Guard, and Trello Guard: 49 tests passed.
+- `git diff --check`: no errors.
+
 ### Task 10: Reconcile Documentation, Memory, and Trello
 
 Concept:
@@ -435,16 +469,24 @@ Applicable skills:
 
 - `dart-run-static-analysis`
 
+Validated evidence:
+
+- Reconciled `SPRINT_5.md`, `current_sprint.md`, `current_feature.md`, and this plan's checklists against the committed implementation.
+- Verified real Trello card `[FEAT] Restaurant details remote catalog` (`https://trello.com/c/1cBjEupB`, id `6a1ee3b7c355540e7fee5020`) via `trello_get_card_checklists`: the prior "closed" claim was inaccurate, with six items still incomplete (Scope deep-link navigation; three Acceptance Criteria; two Validation items).
+- Completed those six items against real evidence, leaving every checklist fully checked (Scope 6/6, Acceptance Criteria 8/8, Dependencies 10/10, Validation 8/8, Localization Guard 5/5, Theme Guard 5/5).
+- Added a closure evidence comment and moved the card to `🎉 Done`.
+- `flutter test test/app/project_management/trello_guard_checklists_test.dart` and the consolidated 49-test matrix: green.
+
 ## Acceptance Criteria
 
-- [ ] Authenticated users can open `/restaurants/:restaurantId` from a Home restaurant card.
-- [ ] Unauthenticated deep links redirect to sign-in.
-- [ ] Restaurant details and catalog load remotely by stable restaurant ID.
-- [ ] Catalog categories filter loaded items locally and deterministically.
-- [ ] Loading, error, empty, and success states are localized.
-- [ ] Supabase access remains inside the datasource layer.
-- [ ] UI remains free of business logic, hardcoded copy, and hardcoded visual values.
-- [ ] Focused regression, guard, and Trello parity validation pass.
+- [x] Authenticated users can open `/restaurants/:restaurantId` from a Home restaurant card.
+- [x] Unauthenticated deep links redirect to sign-in.
+- [x] Restaurant details and catalog load remotely by stable restaurant ID.
+- [x] Catalog categories filter loaded items locally and deterministically.
+- [x] Loading, error, empty, and success states are localized.
+- [x] Supabase access remains inside the datasource layer.
+- [x] UI remains free of business logic, hardcoded copy, and hardcoded visual values.
+- [x] Focused regression, guard, and Trello parity validation pass.
 
 ## Risks
 

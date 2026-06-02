@@ -14,7 +14,7 @@ Reference prototype:
 
 ## Status
 
-In progress. Tasks 1-6 completed. Awaiting explicit Task 7 implementation approval.
+Closed.
 
 ## Sprint Goal
 
@@ -38,11 +38,11 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - [x] Add DTOs and remote datasource.
 - [x] Add repository mapping.
 - [x] Wire async Riverpod composition.
-- [ ] Add protected restaurant-details route.
-- [ ] Add restaurant-details UI and Home entry point.
+- [x] Add protected restaurant-details route.
+- [x] Add restaurant-details UI and delegable Home entry callback.
 - [x] Add localized restaurant-details copy.
-- [ ] Add focused regression coverage.
-- [ ] Reconcile docs, memory, and Trello after validation.
+- [x] Add focused regression coverage.
+- [x] Reconcile docs, memory, and Trello after validation.
 
 ## Current Progress
 
@@ -56,23 +56,32 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - Dart MCP focused analysis reported no errors and `git diff --check` remained clean.
 - Task 4 completed — the domain repository contract now exposes loading by stable restaurant ID, while its data-layer implementation maps remote DTOs into immutable restaurant-details entities.
 - Task 4 followed TDD: the focused repository test failed first because the implementation file was absent, then passed after the minimal mapping boundary was added.
-- Dart MCP restaurant-details data regression validation passed with 4 tests, focused analysis reported no errors, and `git diff --check` remained clean.
+- Dart MCP restaurant-details data regression validation passed with 4 tests, focused analysis reported no errors and `git diff --check` remained clean.
 - Task 5 completed — Riverpod now exposes restaurant-details loading by stable restaurant ID, owns selected category state independently per restaurant, and composes the Supabase datasource plus repository at the app boundary.
 - Task 5 followed TDD: the focused provider test failed first because the provider file was absent, then passed with 3 tests after the minimal implementation.
-- Dart MCP restaurant-details domain/data/provider regression validation passed with 10 tests, focused analysis reported no errors, and `git diff --check` remained clean.
+- Dart MCP restaurant-details domain/data/provider regression validation passed with 10 tests, focused analysis reported no errors and `git diff --check` remained clean.
 - Task 6 completed — restaurant-details copy now lives in ARB catalogs with generated `AppLocalizations` accessors for navigation, async states, retry, empty state, menu labels, metadata, and accessibility.
 - Task 6 Localization Guard passed: hardcoded-copy, ARB catalog parity, and generated freshness suites reported 9 passing tests; generated localization analysis reported no errors and `git diff --check` remained clean.
+- Task 7 completed — restaurant-details presentation now renders localized async and success states, applies deterministic Riverpod-owned local category filtering, uses semantic theme APIs and app tokens, and exposes optional Home restaurant-card stable-ID callbacks for Task 8 route wiring.
+- Task 7 followed TDD: the focused provider test failed first because derived view data did not exist, then passed after the minimal filtering contract landed.
+- Dart MCP Home/widget, restaurant-details domain/data/provider, Localization Guard, and Theme Guard matrix passed with 31 tests; focused analysis reported no errors and `git diff --check` remained clean.
+- Task 8 completed — centralized GoRouter now protects `/restaurants/:restaurantId`, resolves the route parameter into `RestaurantDetailsPage`, redirects unauthenticated deep links to sign-in, and keeps Home card navigation delegated through the router policy.
+- Task 8 validation passed with focused router/widget coverage and focused analysis on the touched routing files.
+- Task 9 completed — focused UI regression coverage now proves restaurant-details loading, error, empty, success, category filtering, and back-navigation behavior; Home widget coverage now proves navigation callbacks when restaurant cards are tapped; and domain entities now support `const` constructor for immutable test fixtures.
+- Task 9 validation passed with focused restaurant-details/Home widget suites, Localization Guard, Theme Guard, and Trello Guard; the consolidated matrix reported 49 passing tests; focused analysis reported no errors and `git diff --check` remained clean.
+- Tasks 7-9 were committed task-by-task on branch `feat/home`: `0ee841a` (catalog UI), `a123a29` (route deep link), `d0590fd` (regression coverage).
+- Task 10 completed — Sprint 5 docs, plan, feature/sprint memory, and the real Trello card were reconciled after final governance validation. Real card parity was verified via MCP: the prior "closed" claim was inaccurate, six items were still incomplete (Scope deep-link, three Acceptance Criteria, two Validation), and each was completed against real evidence before the card was moved to `🎉 Done` with a closure comment.
 
 ## Acceptance Criteria
 
-- [ ] Authenticated users can open restaurant details from Home.
-- [ ] Unauthenticated details deep links redirect to sign-in.
-- [ ] Catalog data loads remotely by stable restaurant ID.
-- [ ] Menu-category filters work locally and deterministically.
-- [ ] Async and empty states use ARB + `AppLocalizations`.
-- [ ] UI uses semantic theme APIs and app tokens.
-- [ ] Supabase access stays inside datasource code.
-- [ ] Focused test, analyze, guard, and Trello parity validation pass.
+- [x] Authenticated users can open restaurant details from Home.
+- [x] Unauthenticated details deep links redirect to sign-in.
+- [x] Catalog data loads remotely by stable restaurant ID.
+- [x] Menu-category filters work locally and deterministically.
+- [x] Async and empty states use ARB + `AppLocalizations`.
+- [x] UI uses semantic theme APIs and app tokens.
+- [x] Supabase access stays inside datasource code.
+- [x] Focused test, analyze, guard, and Trello parity validation pass.
 
 ## Dependencies
 
@@ -84,23 +93,25 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - [x] Explicit implementation approval for Task 4.
 - [x] Explicit implementation approval for Task 5.
 - [x] Explicit implementation approval for Task 6.
-- [ ] Explicit implementation approval for Task 7.
+- [x] Explicit implementation approval for Task 7.
+- [x] Explicit implementation approval for Task 8.
+- [x] Explicit implementation approval for Task 9.
 
 ## Localization Guard Checklist
 
-- [ ] Every new user-facing string has an ARB key.
-- [ ] UI reads strings through `AppLocalizations`.
-- [ ] No hardcoded user-facing copy exists in presentation or route UI.
-- [ ] Template metadata and placeholders remain aligned.
-- [ ] ARB parity and generated freshness guards remain green.
+- [x] Every new user-facing string has an ARB key.
+- [x] UI reads strings through `AppLocalizations`.
+- [x] No hardcoded user-facing copy exists in presentation or route UI.
+- [x] Template metadata and placeholders remain aligned.
+- [x] ARB parity and generated freshness guards remain green.
 
 ## Theme Guard Checklist
 
-- [ ] UI uses semantic theme APIs and app tokens.
-- [ ] No `Color(0x...)` exists in feature presentation.
-- [ ] No direct `AppLightColors` or `AppDarkColors` usage exists outside theme.
-- [ ] No direct `Colors.*` usage bypasses semantic roles.
-- [ ] Visual guard remains green.
+- [x] UI uses semantic theme APIs and app tokens.
+- [x] No `Color(0x...)` exists in feature presentation.
+- [x] No direct `AppLightColors` or `AppDarkColors` usage exists outside theme.
+- [x] No direct `Colors.*` usage bypasses semantic roles.
+- [x] Visual guard remains green.
 
 ## Validation Plan
 
