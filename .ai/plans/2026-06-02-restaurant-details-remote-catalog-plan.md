@@ -69,6 +69,7 @@ This avoids loading full menus in the Home feed and keeps Supabase queries out o
 - [x] Task 2 completed — read-only remote catalog schema, grants, RLS, policies, and deterministic seeds.
 - [x] Task 3 completed — typed DTOs and remote datasource with focused tests.
 - [x] Task 4 completed — domain repository contract and DTO-to-domain mapping with focused tests.
+- [x] Task 5 completed — Riverpod family loading, local category-selection state, and app composition with focused tests.
 
 ## Implementation Tasks
 
@@ -243,6 +244,17 @@ Applicable skills:
 
 - `dart-add-unit-test`
 - `dart-run-static-analysis`
+
+Validated evidence:
+
+- TDD RED confirmed before implementation: the focused provider test failed because the restaurant-details provider file was absent.
+- Added an abstract repository provider, a `FutureProvider.family` that loads details by stable restaurant ID, and a `NotifierProvider.family` that owns category selection independently per restaurant.
+- Added app-boundary composition for the Supabase datasource, repository implementation, and feature repository override.
+- Kept catalog filtering deferred until the presentation contract lands; widgets will not own category state.
+- Dart MCP `run_tests` for the focused provider suite: 3 tests passed.
+- Dart MCP `run_tests` for the restaurant-details domain, datasource, repository, and provider suites: 10 tests passed.
+- Dart MCP `analyze_files` on the touched provider, composition-root, and focused test files: no errors.
+- `git diff --check`: no errors.
 
 ### Task 6: Add Localized Restaurant Details Copy
 
