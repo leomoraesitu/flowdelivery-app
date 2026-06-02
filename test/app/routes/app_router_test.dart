@@ -10,6 +10,12 @@ import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.d
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/viewmodels/auth_view_model.dart';
 import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
+import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_details.dart';
+import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_category.dart';
+import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_item.dart';
+import 'package:flowdelivery_app/features/restaurant_details/domain/repositories/restaurant_details_repository.dart';
+import 'package:flowdelivery_app/features/restaurant_details/presentation/pages/restaurant_details_page.dart';
+import 'package:flowdelivery_app/features/restaurant_details/presentation/providers/restaurant_details_providers.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -52,6 +58,35 @@ class _FakeAuthRepository implements AuthRepository {
   Future<void> updatePassword({required String password}) async {}
 }
 
+class _FakeRestaurantDetailsRepository implements RestaurantDetailsRepository {
+  @override
+  Future<RestaurantDetails> getRestaurantDetails(String restaurantId) async {
+    return RestaurantDetails(
+      id: restaurantId,
+      name: 'Burgers & Co',
+      imageAssetPath: 'assets/images/restaurants/burgers_and_co.png',
+      rating: 4.8,
+      deliveryTimeMinMinutes: 20,
+      deliveryTimeMaxMinutes: 35,
+      cuisine: 'Burgers',
+      categories: const [
+        RestaurantMenuCategory(id: 'popular'),
+        RestaurantMenuCategory(id: 'sides'),
+      ],
+      items: const [
+        RestaurantMenuItem(
+          id: 'burger-1',
+          categoryId: 'popular',
+          name: 'Classic Burger',
+          description: 'Beef, cheese, and house sauce.',
+          imageAssetPath: 'assets/images/menu/classic_burger.png',
+          priceInCents: 2890,
+        ),
+      ],
+    );
+  }
+}
+
 void main() {
   testWidgets('redirects unauthenticated users to sign-in route', (
     tester,
@@ -91,6 +126,48 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(ForgotPasswordPage), findsOneWidget);
+  });
+
+  testWidgets('redirects unauthenticated users away from restaurant details route', (
+    tester,
+  ) async {
+    late GoRouter router;
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(_FakeAuthRepository()),
+          restaurantDetailsRepositoryProvider.overrideWithValue(
+            _FakeRestaurantDetailsRepository(),
+          ),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            router = ref.watch(appRouterProvider);
+            return MaterialApp.router(
+              routerConfig: router,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
+        ),
+      ),
+    );
+
+    router.goNamed(
+      AppRoutes.restaurantDetailsName,
+      pathParameters: {'restaurantId': 'restaurant-123'},
+    );
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, AppRoutes.signInPath);
+    expect(find.byType(SignInPage), findsOneWidget);
   });
 
   testWidgets('allows unauthenticated users to reach reset-password route', (
@@ -163,6 +240,58 @@ void main() {
 
     expect(router.state.uri.path, AppRoutes.signInPath);
     expect(find.byType(SignInPage), findsOneWidget);
+  });
+
+  testWidgets('allows authenticated users to open restaurant details route', (
+    tester,
+  ) async {
+    late GoRouter router;
+    final fakeRepository = _FakeAuthRepository();
+    final authViewModel = AuthViewModel(authRepository: fakeRepository);
+
+    await authViewModel.signInWithEmailAndPassword(
+      email: 'user@example.com',
+      password: 'password123',
+    );
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(fakeRepository),
+          authViewModelProvider.overrideWith((ref) => authViewModel),
+          restaurantDetailsRepositoryProvider.overrideWithValue(
+            _FakeRestaurantDetailsRepository(),
+          ),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            router = ref.watch(appRouterProvider);
+            return MaterialApp.router(
+              routerConfig: router,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
+        ),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    router.goNamed(
+      AppRoutes.restaurantDetailsName,
+      pathParameters: {'restaurantId': 'restaurant-123'},
+    );
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, '/restaurants/restaurant-123');
+    expect(find.byType(RestaurantDetailsPage), findsOneWidget);
   });
 
   testWidgets('keeps authenticated recovery sessions on reset-password route', (

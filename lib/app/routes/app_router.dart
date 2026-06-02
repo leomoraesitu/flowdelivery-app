@@ -6,6 +6,7 @@ import 'package:flowdelivery_app/features/auth/presentation/pages/sign_up_page.d
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/state/auth_state.dart';
 import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
+import 'package:flowdelivery_app/features/restaurant_details/presentation/pages/restaurant_details_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,7 +25,21 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.homePath,
         name: AppRoutes.homeName,
-        builder: (context, state) => const HomePage(),
+        builder: (context, state) => HomePage(
+          onRestaurantSelected: (restaurantId) {
+            context.goNamed(
+              AppRoutes.restaurantDetailsName,
+              pathParameters: {'restaurantId': restaurantId},
+            );
+          },
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.restaurantDetailsPath,
+        name: AppRoutes.restaurantDetailsName,
+        builder: (context, state) => RestaurantDetailsPage(
+          restaurantId: state.pathParameters['restaurantId']!,
+        ),
       ),
       GoRoute(
         path: AppRoutes.signInPath,
@@ -55,7 +70,9 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           currentPath == AppRoutes.signUpPath ||
           currentPath == AppRoutes.forgotPasswordPath ||
           currentPath == AppRoutes.resetPasswordPath;
-      final isProtectedRoute = currentPath == AppRoutes.homePath;
+      final isProtectedRoute =
+          currentPath == AppRoutes.homePath ||
+          currentPath.startsWith('${AppRoutes.restaurantDetailsBasePath}/');
 
       if (authStatus == AuthStatus.loading) {
         return null;
