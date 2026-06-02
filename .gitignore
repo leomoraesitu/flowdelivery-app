@@ -46,3 +46,6 @@ app.*.map.json
 
 # Local runtime defines (secrets)
 .vscode/supabase.local.json
+
+# Gemini settings (contains secrets)
+.gemini/settings.json
