@@ -25,7 +25,10 @@ Planned. Architecture approved. Awaiting explicit Sprint 5 Task 1 implementation
 - Sprint 5 Task 1 completed — immutable `RestaurantDetails`, `RestaurantMenuCategory`, and `RestaurantMenuItem` domain contracts define the read-only restaurant catalog boundary without Flutter or Supabase dependencies.
 - Task 1 followed TDD: the focused domain test failed first because the entity files were absent, then passed with 3 tests after the minimal implementation.
 - Dart MCP focused analysis reported no errors and `git diff --check` remained clean.
-- Next implementation step requires explicit approval for Task 2: add the remote catalog schema.
+- Sprint 5 Task 2 completed — `supabase/migrations/20260602120000_restaurant_details_remote_catalog.sql` adds normalized read-only menu categories and items with constraints, indexes, explicit grants, RLS, authenticated read policies, and deterministic seeds.
+- Task 2 transaction-scoped Supabase MCP smoke test passed and rolled back cleanly: 4 categories, 4 items, RLS enabled, authenticated read policies present, `anon` denied, and authenticated writes denied.
+- The shared remote Supabase project remains unchanged after validation.
+- Next implementation step requires explicit approval for Task 3: add DTOs and the remote datasource.
 
 ## Feature
 

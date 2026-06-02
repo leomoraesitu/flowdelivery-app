@@ -34,7 +34,7 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 ## Backlog
 
 - [x] Define immutable restaurant-details domain contracts.
-- [ ] Add remote catalog schema.
+- [x] Add remote catalog schema.
 - [ ] Add DTOs and remote datasource.
 - [ ] Add repository mapping.
 - [ ] Wire async Riverpod composition.
@@ -49,6 +49,8 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - Task 1 completed — immutable `RestaurantDetails`, `RestaurantMenuCategory`, and `RestaurantMenuItem` value models now define the read-only catalog domain boundary.
 - TDD RED was observed before implementation because the three entity files were absent.
 - Focused Dart MCP validation passed with 3 domain tests, no analyze errors, and a clean `git diff --check`.
+- Task 2 completed — versioned Supabase migration now adds read-only menu categories and items with explicit grants, RLS, policies, indexes, constraints, and deterministic seeds.
+- Transaction-scoped Supabase MCP smoke validation passed and rolled back cleanly: 4 categories, 4 items, RLS enabled, authenticated read policies present, `anon` denied, and authenticated writes denied.
 
 ## Acceptance Criteria
 

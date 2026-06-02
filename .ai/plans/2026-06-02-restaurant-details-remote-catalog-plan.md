@@ -66,6 +66,7 @@ This avoids loading full menus in the Home feed and keeps Supabase queries out o
 - [x] Architecture approved.
 - [x] Slice boundary approved: restaurant details plus remote catalog only.
 - [x] Task 1 completed — immutable restaurant-details domain contracts and focused tests.
+- [x] Task 2 completed — read-only remote catalog schema, grants, RLS, policies, and deterministic seeds.
 
 ## Implementation Tasks
 
@@ -129,6 +130,15 @@ Applicable skills:
 
 - `supabase`
 - `supabase-postgres-best-practices`
+
+Validated evidence:
+
+- Supabase CLI is not installed locally, so the migration file was created manually using the existing repository timestamp pattern.
+- Official Supabase changelog and documentation were checked before implementation; explicit Data API grants remain required for new tables, separately from RLS.
+- Added `restaurant_menu_categories` and `restaurant_menu_items` with constraints, indexes, explicit `authenticated`/`service_role` `SELECT` grants, authenticated read policies, and deterministic seeds.
+- Transaction-scoped Supabase MCP smoke test passed with 4 categories, 4 items, RLS enabled on both tables, 2 authenticated `SELECT` policies, no `anon` reads, and no authenticated write grants.
+- The smoke test finished with `ROLLBACK`; the shared remote project remains unchanged.
+- Local whitespace review and `git diff --check` passed.
 
 ### Task 3: Add DTOs and Remote Datasource
 
