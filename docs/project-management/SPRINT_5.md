@@ -33,7 +33,7 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 
 ## Backlog
 
-- [ ] Define immutable restaurant-details domain contracts.
+- [x] Define immutable restaurant-details domain contracts.
 - [ ] Add remote catalog schema.
 - [ ] Add DTOs and remote datasource.
 - [ ] Add repository mapping.
@@ -43,6 +43,12 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - [ ] Add localized restaurant-details copy.
 - [ ] Add focused regression coverage.
 - [ ] Reconcile docs, memory, and Trello after validation.
+
+## Current Progress
+
+- Task 1 completed — immutable `RestaurantDetails`, `RestaurantMenuCategory`, and `RestaurantMenuItem` value models now define the read-only catalog domain boundary.
+- TDD RED was observed before implementation because the three entity files were absent.
+- Focused Dart MCP validation passed with 3 domain tests, no analyze errors, and a clean `git diff --check`.
 
 ## Acceptance Criteria
 

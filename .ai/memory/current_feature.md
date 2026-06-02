@@ -20,6 +20,13 @@ Planned. Architecture approved. Awaiting explicit Sprint 5 Task 1 implementation
 - `.ai/plans/2026-06-02-restaurant-details-remote-catalog-plan.md`
 - `docs/project-management/SPRINT_5.md`
 
+## Active Progress
+
+- Sprint 5 Task 1 completed — immutable `RestaurantDetails`, `RestaurantMenuCategory`, and `RestaurantMenuItem` domain contracts define the read-only restaurant catalog boundary without Flutter or Supabase dependencies.
+- Task 1 followed TDD: the focused domain test failed first because the entity files were absent, then passed with 3 tests after the minimal implementation.
+- Dart MCP focused analysis reported no errors and `git diff --check` remained clean.
+- Next implementation step requires explicit approval for Task 2: add the remote catalog schema.
+
 ## Feature
 
 Home Discovery Interactions

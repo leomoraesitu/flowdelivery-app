@@ -65,7 +65,7 @@ This avoids loading full menus in the Home feed and keeps Supabase queries out o
 
 - [x] Architecture approved.
 - [x] Slice boundary approved: restaurant details plus remote catalog only.
-- [ ] Task 1 approved for implementation.
+- [x] Task 1 completed — immutable restaurant-details domain contracts and focused tests.
 
 ## Implementation Tasks
 
@@ -88,13 +88,22 @@ Responsibilities:
 
 Validation:
 
-- Add focused domain tests in a later dedicated test task.
+- Run focused domain tests.
 - Run focused analyze on the new domain files.
 
 Applicable skills:
 
 - `dart-add-unit-test`
 - `dart-run-static-analysis`
+
+Validated evidence:
+
+- TDD RED confirmed before implementation: the focused domain test failed because the three restaurant-details entity files did not exist yet.
+- Added `RestaurantDetails`, `RestaurantMenuCategory`, and `RestaurantMenuItem` as Flutter-free and Supabase-free value models.
+- `RestaurantDetails` defensively exposes immutable category and item collections.
+- Dart MCP `run_tests` for `test/features/restaurant_details/domain/restaurant_details_domain_test.dart`: 3 tests passed.
+- Dart MCP `analyze_files` on the three entities and focused domain test: no errors.
+- `git diff --check`: no errors.
 
 ### Task 2: Add Remote Catalog Schema
 
