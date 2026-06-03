@@ -148,6 +148,20 @@ Notes:
 - Sprint 4 Task 4 external parity was verified against `[FEAT] Home discovery interactions` (`https://trello.com/c/5EUe5qOp`) after local validation. Only evidence-backed items were completed; Task 5 regression coverage and Task 6 final reconciliation remain open.
 - Sprint 4 final parity was rechecked after Task 5 validation and Task 6 reconciliation. The real card now has Scope `6/6`, Validation `8/8`, Localization Guard `7/7`, Theme Guard `5/5`, Acceptance Criteria `8/8`, and Dependencies `6/6`, with a final evidence comment recorded.
 
+### Product details slice — seed coverage and accepted minor debts (Sprint 6)
+
+Status:
+Planned Scope / Monitoring
+
+Impact:
+Low
+
+Notes:
+- Partial catalog seed: only `burger_artisan_collective` has rows in `restaurant_menu_items`, so product deep links for other restaurants resolve to the localized not-found state. This is by-design demo behavior, not a regression — classified as Planned Scope. Promote to a product slice when broader seed/data is approved.
+- Finding D (accepted): price formatting (`_formatPrice`, `NumberFormat` by locale) is duplicated between `lib/features/restaurant_details/presentation/widgets/restaurant_details_sections.dart` and `lib/features/product_details/presentation/widgets/product_details_sections.dart`. Extract to `lib/shared/` only if a third consumer appears, to avoid premature refactor.
+- Finding C (accepted): the route `restaurantId` in `/restaurants/:restaurantId/products/:productId` is used only for back navigation/protection; the product loads by `productId` (PK) alone, so a mismatched `restaurantId` still resolves the product. No cross-integrity validation in this read-only slice.
+- Reclassify the seed item to Technical Debt only if not-found-on-real-data starts affecting approved demo/QA scope.
+
 ## Rules
 
 - Do not fix unrelated debt during feature work without confirmation.

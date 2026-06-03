@@ -33,34 +33,15 @@ Sprint 6 is closed (2026-06-03). The dedicated `product_details` feature ships a
 - `docs/project-management/SPRINT_6.md`
 - Real Trello story (Done): `https://trello.com/c/8amTB8F3`
 
-## Active Scope
+## Next Steps
 
-- Add protected `/restaurants/:restaurantId` navigation from Home.
-- Load restaurant details and a read-only remote catalog on demand.
-- Add menu-category filtering over the loaded catalog.
-- Keep product details, customization, cart, favorites, sharing, Storage, Realtime, and persisted address data deferred.
+- Open a PR for `feat/home` into `main` or explicitly select the next approved slice before new implementation.
+- Candidate next slice: broad catalog seed expansion for demo coverage, or begin cart/checkout planning.
+- Keep customization, variants/add-ons, quantity, special instructions, favorites, sharing, Storage-backed media, Realtime, and persisted profile/address out of scope until separately approved.
 
-## Active Plan
+## Previous Closed Feature
 
-- `.ai/plans/2026-06-02-restaurant-details-remote-catalog-plan.md`
-- `docs/project-management/SPRINT_5.md`
-
-## Active Progress
-
-- Sprint 5 Task 1 completed — immutable `RestaurantDetails`, `RestaurantMenuCategory`, and `RestaurantMenuItem` domain contracts define the read-only restaurant catalog boundary without Flutter or Supabase dependencies.
-- Sprint 5 Task 2 completed — `supabase/migrations/20260602120000_restaurant_details_remote_catalog.sql` adds normalized read-only menu categories and items with constraints, indexes, explicit grants, RLS, authenticated read policies, and deterministic seeds.
-- Sprint 5 Task 3 completed — typed DTOs parse restaurant, menu-category, and menu-item rows, while the Supabase datasource owns filtered queries, deterministic ordering, payload orchestration, and explicit remote exceptions.
-- Sprint 5 Task 4 completed — the domain repository contract now exposes restaurant-details loading by stable restaurant ID, while the data-layer implementation maps remote DTOs into immutable domain entities.
-- Sprint 5 Task 5 completed — Riverpod now exposes restaurant-details loading by stable restaurant ID through `FutureProvider.family`, owns selected menu-category state independently per restaurant through `NotifierProvider.family`, and composes the Supabase datasource plus repository at the app boundary.
-- Sprint 5 Task 6 completed — restaurant-details back navigation, async states, retry, empty state, menu section, seed categories, metadata, and accessibility copy now live in ARB catalogs with generated `AppLocalizations` accessors.
-- Sprint 5 Task 7 completed — restaurant-details presentation now renders localized loading, error, empty, and success states; Riverpod derives deterministic local category filtering outside widgets; and Home restaurant cards expose optional stable-ID callbacks for Task 8 route wiring.
-- Sprint 5 Task 8 completed — `GoRouter` now owns the protected `/restaurants/:restaurantId` deep link, routes authenticated users into `RestaurantDetailsPage`, redirects unauthenticated deep links to sign-in, and wires Home card selection through the centralized router policy.
-- Sprint 5 Task 9 completed — focused UI regression coverage for restaurant-details browsing and Home navigation; domain entities promoted to `const` for immutable fixtures; Tasks 7-9 committed task-by-task (`0ee841a`, `a123a29`, `d0590fd`); matrix passed with 49 tests.
-- Sprint 5 Task 10 completed — Sprint 5 docs, plan, feature/sprint memory, and the real Trello card were reconciled after verified parity; six previously-incomplete card items were completed against real evidence and the card moved to `🎉 Done`.
-- Real Trello story closed with validated implementation evidence: `https://trello.com/c/1cBjEupB`.
-- 2026-06-02 post-sprint remote deployment — both versioned migrations (`home_remote_feed_foundation`, `restaurant_details_remote_catalog`) were applied to the live project `flowdelivery-app` (ref `kvbahsdjmhpukzmdttvq`) via Supabase MCP `apply_migration`; previously the remote project had zero migrations/tables and the app was rendering Home from the fixture fallback only.
-- All six `public` tables now exist with RLS enabled and deterministic seed counts (categories 5, restaurants 4, links 8, promotions 1, menu categories 4, menu items 4); security advisors reported no missing-RLS issues on the new tables.
-- Catalog seed coverage is partial by design: only `burger_artisan_collective` has menu items, so other restaurants resolve to the localized empty catalog state. Deployment runbook recorded in `docs/setup/SUPABASE_SETUP.md` and governance evidence in `docs/project-management/SPRINT_5.md`.
+Sprint 5 - Restaurant Details Remote Catalog is closed and remains documented in `.ai/plans/2026-06-02-restaurant-details-remote-catalog-plan.md`, `docs/project-management/SPRINT_5.md`, and the real Trello story `https://trello.com/c/1cBjEupB`.
 
 ## Feature
 
