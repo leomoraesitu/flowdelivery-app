@@ -443,5 +443,61 @@
   "homeBottomNavAccount": "Conta",
   "@homeBottomNavAccount": {
     "description": "Bottom navigation label for the account destination."
+  },
+  "productDetailsBackAction": "Voltar",
+  "@productDetailsBackAction": {
+    "description": "Tooltip and semantic label for the product-details back navigation action."
+  },
+  "productDetailsLoadingStateTitle": "Carregando produto",
+  "@productDetailsLoadingStateTitle": {
+    "description": "Title shown while product details are loading."
+  },
+  "productDetailsLoadingStateMessage": "Estamos buscando os detalhes mais recentes deste produto.",
+  "@productDetailsLoadingStateMessage": {
+    "description": "Body copy shown while product details are loading."
+  },
+  "productDetailsLoadingStateSemanticLabel": "Carregando detalhes do produto",
+  "@productDetailsLoadingStateSemanticLabel": {
+    "description": "Semantic label announced for the product-details loading indicator."
+  },
+  "productDetailsErrorStateTitle": "Nao foi possivel carregar o produto",
+  "@productDetailsErrorStateTitle": {
+    "description": "Title shown when product details loading fails."
+  },
+  "productDetailsErrorStateMessage": "Tente novamente para atualizar os detalhes do produto.",
+  "@productDetailsErrorStateMessage": {
+    "description": "Body copy shown when product details loading fails."
+  },
+  "productDetailsRetryAction": "Tentar novamente",
+  "@productDetailsRetryAction": {
+    "description": "Retry button label shown after product-details loading failure."
+  },
+  "productDetailsNotFoundStateTitle": "Produto indisponivel",
+  "@productDetailsNotFoundStateTitle": {
+    "description": "Title shown when the requested product does not exist."
+  },
+  "productDetailsNotFoundStateMessage": "Este produto nao esta disponivel neste restaurante.",
+  "@productDetailsNotFoundStateMessage": {
+    "description": "Body copy shown when the requested product does not exist."
+  },
+  "productDetailsImageSemanticLabel": "Imagem de {productName}",
+  "@productDetailsImageSemanticLabel": {
+    "description": "Semantic label for the product hero image.",
+    "placeholders": {
+      "productName": {
+        "type": "String",
+        "example": "The Signature Truffle"
+      }
+    }
+  },
+  "productDetailsPriceSemanticLabel": "Preco {price}",
+  "@productDetailsPriceSemanticLabel": {
+    "description": "Semantic label announcing the product price.",
+    "placeholders": {
+      "price": {
+        "type": "String",
+        "example": "R$ 18,50"
+      }
+    }
   }
 }

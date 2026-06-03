@@ -97,5 +97,16 @@
   "homeBottomNavHome": "Home",
   "homeBottomNavBrowse": "Buscar",
   "homeBottomNavOrders": "Pedidos",
-  "homeBottomNavAccount": "Conta"
+  "homeBottomNavAccount": "Conta",
+  "productDetailsBackAction": "Voltar",
+  "productDetailsLoadingStateTitle": "Carregando produto",
+  "productDetailsLoadingStateMessage": "Estamos buscando os detalhes mais recentes deste produto.",
+  "productDetailsLoadingStateSemanticLabel": "Carregando detalhes do produto",
+  "productDetailsErrorStateTitle": "Nao foi possivel carregar o produto",
+  "productDetailsErrorStateMessage": "Tente novamente para atualizar os detalhes do produto.",
+  "productDetailsRetryAction": "Tentar novamente",
+  "productDetailsNotFoundStateTitle": "Produto indisponivel",
+  "productDetailsNotFoundStateMessage": "Este produto nao esta disponivel neste restaurante.",
+  "productDetailsImageSemanticLabel": "Imagem de {productName}",
+  "productDetailsPriceSemanticLabel": "Preco {price}"
 }

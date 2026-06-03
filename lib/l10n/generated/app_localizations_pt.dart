@@ -353,6 +353,48 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get homeBottomNavAccount => 'Conta';
+
+  @override
+  String get productDetailsBackAction => 'Voltar';
+
+  @override
+  String get productDetailsLoadingStateTitle => 'Carregando produto';
+
+  @override
+  String get productDetailsLoadingStateMessage =>
+      'Estamos buscando os detalhes mais recentes deste produto.';
+
+  @override
+  String get productDetailsLoadingStateSemanticLabel =>
+      'Carregando detalhes do produto';
+
+  @override
+  String get productDetailsErrorStateTitle =>
+      'Nao foi possivel carregar o produto';
+
+  @override
+  String get productDetailsErrorStateMessage =>
+      'Tente novamente para atualizar os detalhes do produto.';
+
+  @override
+  String get productDetailsRetryAction => 'Tentar novamente';
+
+  @override
+  String get productDetailsNotFoundStateTitle => 'Produto indisponivel';
+
+  @override
+  String get productDetailsNotFoundStateMessage =>
+      'Este produto nao esta disponivel neste restaurante.';
+
+  @override
+  String productDetailsImageSemanticLabel(String productName) {
+    return 'Imagem de $productName';
+  }
+
+  @override
+  String productDetailsPriceSemanticLabel(String price) {
+    return 'Preco $price';
+  }
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -704,4 +746,46 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get homeBottomNavAccount => 'Conta';
+
+  @override
+  String get productDetailsBackAction => 'Voltar';
+
+  @override
+  String get productDetailsLoadingStateTitle => 'Carregando produto';
+
+  @override
+  String get productDetailsLoadingStateMessage =>
+      'Estamos buscando os detalhes mais recentes deste produto.';
+
+  @override
+  String get productDetailsLoadingStateSemanticLabel =>
+      'Carregando detalhes do produto';
+
+  @override
+  String get productDetailsErrorStateTitle =>
+      'Nao foi possivel carregar o produto';
+
+  @override
+  String get productDetailsErrorStateMessage =>
+      'Tente novamente para atualizar os detalhes do produto.';
+
+  @override
+  String get productDetailsRetryAction => 'Tentar novamente';
+
+  @override
+  String get productDetailsNotFoundStateTitle => 'Produto indisponivel';
+
+  @override
+  String get productDetailsNotFoundStateMessage =>
+      'Este produto nao esta disponivel neste restaurante.';
+
+  @override
+  String productDetailsImageSemanticLabel(String productName) {
+    return 'Imagem de $productName';
+  }
+
+  @override
+  String productDetailsPriceSemanticLabel(String price) {
+    return 'Preco $price';
+  }
 }

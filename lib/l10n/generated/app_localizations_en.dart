@@ -350,4 +350,45 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeBottomNavAccount => 'Account';
+
+  @override
+  String get productDetailsBackAction => 'Back';
+
+  @override
+  String get productDetailsLoadingStateTitle => 'Loading product';
+
+  @override
+  String get productDetailsLoadingStateMessage =>
+      'We are fetching the latest details for this product.';
+
+  @override
+  String get productDetailsLoadingStateSemanticLabel =>
+      'Loading product details';
+
+  @override
+  String get productDetailsErrorStateTitle => 'Could not load the product';
+
+  @override
+  String get productDetailsErrorStateMessage =>
+      'Try again to refresh the product details.';
+
+  @override
+  String get productDetailsRetryAction => 'Try again';
+
+  @override
+  String get productDetailsNotFoundStateTitle => 'Product unavailable';
+
+  @override
+  String get productDetailsNotFoundStateMessage =>
+      'This product is not available at this restaurant.';
+
+  @override
+  String productDetailsImageSemanticLabel(String productName) {
+    return '$productName image';
+  }
+
+  @override
+  String productDetailsPriceSemanticLabel(String price) {
+    return 'Price $price';
+  }
 }

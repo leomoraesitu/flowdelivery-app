@@ -694,6 +694,72 @@ abstract class AppLocalizations {
   /// In pt_BR, this message translates to:
   /// **'Conta'**
   String get homeBottomNavAccount;
+
+  /// Tooltip and semantic label for the product-details back navigation action.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Voltar'**
+  String get productDetailsBackAction;
+
+  /// Title shown while product details are loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando produto'**
+  String get productDetailsLoadingStateTitle;
+
+  /// Body copy shown while product details are loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Estamos buscando os detalhes mais recentes deste produto.'**
+  String get productDetailsLoadingStateMessage;
+
+  /// Semantic label announced for the product-details loading indicator.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando detalhes do produto'**
+  String get productDetailsLoadingStateSemanticLabel;
+
+  /// Title shown when product details loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nao foi possivel carregar o produto'**
+  String get productDetailsErrorStateTitle;
+
+  /// Body copy shown when product details loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tente novamente para atualizar os detalhes do produto.'**
+  String get productDetailsErrorStateMessage;
+
+  /// Retry button label shown after product-details loading failure.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tentar novamente'**
+  String get productDetailsRetryAction;
+
+  /// Title shown when the requested product does not exist.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Produto indisponivel'**
+  String get productDetailsNotFoundStateTitle;
+
+  /// Body copy shown when the requested product does not exist.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Este produto nao esta disponivel neste restaurante.'**
+  String get productDetailsNotFoundStateMessage;
+
+  /// Semantic label for the product hero image.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Imagem de {productName}'**
+  String productDetailsImageSemanticLabel(String productName);
+
+  /// Semantic label announcing the product price.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Preco {price}'**
+  String productDetailsPriceSemanticLabel(String price);
 }
 
 class _AppLocalizationsDelegate

@@ -97,5 +97,16 @@
   "homeBottomNavHome": "Home",
   "homeBottomNavBrowse": "Browse",
   "homeBottomNavOrders": "Orders",
-  "homeBottomNavAccount": "Account"
+  "homeBottomNavAccount": "Account",
+  "productDetailsBackAction": "Back",
+  "productDetailsLoadingStateTitle": "Loading product",
+  "productDetailsLoadingStateMessage": "We are fetching the latest details for this product.",
+  "productDetailsLoadingStateSemanticLabel": "Loading product details",
+  "productDetailsErrorStateTitle": "Could not load the product",
+  "productDetailsErrorStateMessage": "Try again to refresh the product details.",
+  "productDetailsRetryAction": "Try again",
+  "productDetailsNotFoundStateTitle": "Product unavailable",
+  "productDetailsNotFoundStateMessage": "This product is not available at this restaurant.",
+  "productDetailsImageSemanticLabel": "{productName} image",
+  "productDetailsPriceSemanticLabel": "Price {price}"
 }
