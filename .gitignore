@@ -49,3 +49,7 @@ app.*.map.json
 
 # Gemini settings (contains secrets)
 .gemini/settings.json
+
+# Claude Code: junction to .agents/skills (source of truth lives there) + local settings
+.claude/skills/
+.claude/settings.local.json
