@@ -31,9 +31,11 @@ Supabase (restaurant_menu_items, existing table)
 Layers and responsibilities:
 
 - Domain: immutable `ProductDetails` value model; no Flutter, no Supabase.
-- Data: typed DTO parsing of a single `restaurant_menu_items` row; datasource owns the filtered query and explicit remote exceptions; repository maps DTO → domain.
-- Presentation: Riverpod family loads by product ID; UI renders localized loading/error/empty(not-found)/success states with semantic theme tokens; the catalog product card only delegates a stable product ID.
+- Data: typed DTO parsing of a single `restaurant_menu_items` row; datasource owns the filtered query and a nullable single-row loader (null when the row is absent); explicit remote exceptions are reserved for genuine remote/parsing failures, not the expected missing-row case; repository maps DTO → domain.
+- Presentation: Riverpod family loads by product ID; the provider value type is nullable so a `null` result renders the localized not-found state while an `AsyncError` renders the error state; UI renders localized loading/error/not-found/success states with semantic theme tokens; the catalog product card only delegates a stable product ID.
 - App: composition root wires datasource + repository + provider override; centralized GoRouter owns the nested protected route.
+
+Not-found contract (decision 2026-06-03): missing products are the common case because only `burger_artisan_collective` is seeded. The repository returns `Future<ProductDetails?>` — `null` means "no such product" (rendered as the localized not-found state), and exceptions are reserved for real remote/parsing failures (rendered as the error state). This keeps not-found out of exception-based control flow and lets the UI branch on `value == null` vs `AsyncError`.
 
 ## Governance Cross-Check (2026-06-02)
 
@@ -51,6 +53,8 @@ This plan was validated against `.ai/context/*`, `.ai/agents/architect|senior_fl
 - Load on demand by `productId` rather than reusing the already-loaded `RestaurantDetails.items`. This supports cold deep links and keeps the feature self-contained, at the cost of one extra single-row query. `productId` is the primary key of `restaurant_menu_items`, so a single-ID filter is sufficient and deterministic.
 - No new migration. The slice reuses `restaurant_menu_items`. Broad catalog seed coverage (only `burger_artisan_collective` currently has items) stays a separate future data slice; other products resolve to the localized not-found/empty state, which is correct behavior.
 - Keep restaurant-name display optional/deferred to avoid a second join and scope creep; the product surface focuses on the product itself plus back navigation.
+- The route `restaurantId` is used only for back navigation and route protection; the product load filters by `productId` (primary key) alone. Cross-integrity validation (route `restaurantId` vs the product's real `restaurant_id`) is intentionally out of scope for this read-only slice; a mismatched deep link still resolves the product, and back navigation uses the route `restaurantId`. (Finding C, accepted low risk.)
+- Price formatting is duplicated from `restaurant_details_sections.dart` (`_formatPrice`, `NumberFormat` by locale) rather than extracted to `lib/shared/` now, to avoid a premature refactor outside this slice's scope. (Finding D, accepted; revisit if a third consumer appears.)
 
 ## Dependencies
 
@@ -62,8 +66,8 @@ This plan was validated against `.ai/context/*`, `.ai/agents/architect|senior_fl
 
 ## Current Progress
 
-- [ ] Architecture approved.
-- [ ] Slice boundary approved: read-only product details only.
+- [x] Architecture approved (reviewed and refined 2026-06-03; Findings A/B/C/D resolved).
+- [x] Slice boundary approved: read-only product details only.
 - [ ] Task 1 — immutable product-details domain contract and focused tests.
 - [ ] Task 2 — typed DTO and remote datasource with focused tests.
 - [ ] Task 3 — domain repository contract and DTO-to-domain mapping with focused tests.
@@ -107,8 +111,8 @@ Files:
 Responsibilities:
 
 - Parse a single `restaurant_menu_items` row into a typed DTO.
-- Query the product by `id` (primary key) with an injectable row loader for tests.
-- Return an explicit `ProductDetailsRemoteException` for missing or malformed data.
+- Query the product by `id` (primary key) with `maybeSingle()`, exposing an injectable nullable single-row loader for tests (mirrors `_selectMaybeSingleRow` in `restaurant_details_remote_datasource.dart`).
+- Return `null` for an absent row (the expected not-found case), and raise an explicit `ProductDetailsRemoteException` only for malformed rows or `PostgrestException`/`FormatException` failures. The datasource method returns a nullable DTO/payload.
 
 Validation: focused datasource tests; focused analyze.
 
@@ -126,8 +130,8 @@ Files:
 
 Responsibilities:
 
-- Define `getProductDetails(productId)`.
-- Map the remote DTO into the immutable `ProductDetails` entity.
+- Define `Future<ProductDetails?> getProductDetails(String productId)` — `null` propagates the not-found case from the datasource.
+- Map the remote DTO into the immutable `ProductDetails` entity when present; pass through `null` unchanged.
 
 Validation: focused repository tests; focused analyze.
 
@@ -145,8 +149,8 @@ Files:
 
 Responsibilities:
 
-- Compose datasource and repository at the app boundary and override the feature repository provider.
-- Expose `FutureProvider.family<ProductDetails, String>` keyed by product ID.
+- Compose datasource and repository at the app boundary and override the feature repository provider (mirrors `appRestaurantDetailsRepositoryProvider` and its override in `app_providers.dart`).
+- Expose `FutureProvider.family<ProductDetails?, String>` keyed by product ID; the nullable value type carries the not-found case to presentation.
 
 Validation: focused provider tests; focused analyze.
 
@@ -191,8 +195,8 @@ Files:
 
 Responsibilities:
 
-- Render product image, name, price, description, loading, error, and not-found states with functional back navigation.
-- Add an optional product-card selection callback in the catalog that delegates a stable product ID.
+- Render product image, name, price, description, loading, error, and not-found states with functional back navigation. The not-found state is rendered when the provider value is `null`; the error state is rendered on `AsyncError`.
+- Add an optional `ValueChanged<String>? onProductSelected` callback in the catalog `RestaurantDetailsSections` (threaded down to `_MenuItemList`/`_MenuItemCard`) that delegates a stable product ID. This task stays at 3 files and does NOT modify `restaurant_details_page.dart`; threading the callback from the page is deferred to Task 7 to keep file count within the guardrail.
 - Keep add-to-cart, quantity, customization, favorites, and sharing out of scope.
 
 Localization Guard:
@@ -217,18 +221,19 @@ Applicable skills: `flutter-add-widget-test`, `flutter-build-responsive-layout`,
 
 Concept: Treat product details as an authenticated nested deep link under the restaurant route.
 
-Files:
+Files (4 — exceeds the 3-file guardrail, so this task requires explicit confirmation before implementation):
 
 - Modify `lib/app/routes/app_routes.dart`
 - Modify `lib/app/routes/app_router.dart`
+- Modify `lib/features/restaurant_details/presentation/pages/restaurant_details_page.dart`
 - Modify `test/app/routes/app_router_test.dart`
 
 Responsibilities:
 
-- Add `/restaurants/:restaurantId/products/:productId` name and path.
-- Build `ProductDetailsPage` from the route parameters.
-- Wire the restaurant-details catalog product callback to navigate.
-- Confirm unauthenticated access redirects to sign-in (path already starts with `/restaurants/`, so existing protection applies; add explicit test coverage).
+- Add `/restaurants/:restaurantId/products/:productId` name and path constants in `AppRoutes`.
+- Add a flat `GoRoute` that builds `ProductDetailsPage` from `restaurantId` and `productId` path parameters (matches the existing flat route style; no `routes:` children needed).
+- Thread the catalog product callback router → page → sections: give `RestaurantDetailsPage` an `onProductSelected` parameter (mirrors `HomePage.onRestaurantSelected`) and have the router pass a callback that `goNamed`s the product route with `{restaurantId, productId}`.
+- Confirm unauthenticated access redirects to sign-in. The path already starts with `/restaurants/`, so the existing `isProtectedRoute` classifier in `app_router.dart` (`currentPath.startsWith('${AppRoutes.restaurantDetailsBasePath}/')`) covers it without new redirect logic; add explicit test coverage to pin this.
 
 Localization Guard:
 
