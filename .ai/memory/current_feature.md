@@ -6,7 +6,16 @@ Restaurant Details Remote Catalog
 
 ## Active Status
 
-Completed. Sprint 5 is closed. Wait for an explicitly approved next feature slice before implementation.
+Sprint 5 is closed. Sprint 6 (Product Details Read-Only) planning is approved and registered; await explicit per-task implementation approval before writing code.
+
+## Next Slice Planning
+
+- Sprint 6 direction approved by the user: Product Details (read-only) closes the MVP "product browsing" area.
+- Technical plan registered in `.ai/plans/2026-06-02-product-details-read-only-plan.md` (9 incremental tasks, no new migration, reuses `restaurant_menu_items`).
+- Governance artifact registered in `docs/project-management/SPRINT_6.md` (status: Planned).
+- Real Trello story created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, and Theme Guard checklists: `https://trello.com/c/8amTB8F3`.
+- Architecture: dedicated `product_details` feature mirroring `restaurant_details`; nested protected route `/restaurants/:restaurantId/products/:productId`; on-demand load by stable product ID so cold deep links work.
+- Broad catalog seed expansion stays out of scope; only `burger_artisan_collective` currently has products, so other products resolve to the localized not-found/empty state.
 
 ## Active Scope
 

@@ -2,9 +2,26 @@
 
 ## Active Sprint
 
-Sprint 5 - Restaurant Details Remote Catalog
+Sprint 6 - Product Details Read-Only (Planned)
 
 ## Active Status
+
+Planned. Technical plan, governance doc, and real Trello card are registered; awaiting explicit per-task implementation approval before coding. Sprint 5 is closed.
+
+## Next Sprint Planning
+
+- Sprint 6 goal: protected read-only product surface opened from the restaurant catalog, loaded on demand by stable product ID, reusing `restaurant_menu_items` (no new migration).
+- Plan: `.ai/plans/2026-06-02-product-details-read-only-plan.md`.
+- Governance: `docs/project-management/SPRINT_6.md` (status Planned).
+- Real Trello story in `✅ Ready`: `https://trello.com/c/8amTB8F3` (Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, Theme Guard).
+- Nested route `/restaurants/:restaurantId/products/:productId`; dedicated `product_details` feature mirroring `restaurant_details`.
+- Out of scope: cart, customization, quantity, favorites, sharing, broad catalog seed expansion.
+
+## Previous Sprint
+
+Sprint 5 - Restaurant Details Remote Catalog
+
+## Active Status (Sprint 5)
 
 Closed.
 
