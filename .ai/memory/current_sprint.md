@@ -2,11 +2,11 @@
 
 ## Active Sprint
 
-Sprint 7 - Catalog Demo Coverage (Planned / Approved)
+Sprint 7 - Catalog Demo Coverage (In Progress)
 
 ## Active Status
 
-Planned and approved (2026-06-03). Implementation has not started. Sprint 7 focuses on deterministic catalog demo seed coverage for the existing Home restaurants, preserving the validated read-only browsing architecture from Sprints 5 and 6.
+In progress (2026-06-03). Tasks 1-2 are complete. Sprint 7 focuses on deterministic catalog demo seed coverage for the existing Home restaurants, preserving the validated read-only browsing architecture from Sprints 5 and 6. The local seed migration has passed rollback smoke validation but has not been applied permanently yet.
 
 ## Sprint 7 Goal
 
@@ -28,11 +28,18 @@ Make Home -> restaurant details -> product details feel complete for every exist
 
 ## Sprint 7 Backlog
 
-- [ ] Task 1 — audit current seed baseline and expected target counts.
-- [ ] Task 2 — add deterministic catalog demo seed migration.
+- [x] Task 1 — audit current seed baseline and expected target counts.
+- [x] Task 2 — add deterministic catalog demo seed migration.
 - [ ] Task 3 — validate Supabase read contracts, RLS/grants, and datasource compatibility.
 - [ ] Task 4 — add focused multi-restaurant catalog/product regression coverage.
 - [ ] Task 5 — reconcile docs, memory, technical debt, and Trello after validation.
+
+## Sprint 7 Progress
+
+- Task 1 completed — local migrations and Supabase MCP read-only queries confirmed all four existing Home restaurants are present, while only `burger_artisan_collective` has current menu coverage (4 categories and 4 items).
+- Task 2 completed — `supabase/migrations/20260603183000_catalog_demo_coverage.sql` now adds deterministic idempotent seeds for `pasta_roma`, `sushi_zen`, and `taco_harbor` (9 categories and 12 items total).
+- Task 2 validation passed — `git diff --check` reported no errors; Supabase MCP executed the migration SQL in a rollback transaction without persisting data; post-rollback checks confirmed the remote baseline stayed unchanged.
+- Real Trello card `https://trello.com/c/TLHgmJ02` was updated with evidence for Tasks 1-2. Implementation-dependent validation/acceptance items remain open until Task 3.
 
 ## Sprint 7 Out of Scope
 

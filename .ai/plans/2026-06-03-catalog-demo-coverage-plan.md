@@ -73,11 +73,18 @@ No app feature boundary should change unless validation proves a real mismatch i
 ## Current Progress
 
 - [x] Sprint 7 direction approved by user: `Catalog Demo Coverage`.
-- [ ] Task 1 - audit current seed baseline and expected counts.
-- [ ] Task 2 - add deterministic catalog seed migration.
+- [x] Task 1 - audit current seed baseline and expected counts (remote Supabase read-only SELECT confirmed 4 Home restaurants; only `burger_artisan_collective` has 4 menu categories and 4 menu items, 2026-06-03).
+- [x] Task 2 - add deterministic catalog seed migration (`supabase/migrations/20260603183000_catalog_demo_coverage.sql`; 9 categories + 12 items for `pasta_roma`, `sushi_zen`, and `taco_harbor`; rollback smoke passed without persisting data, 2026-06-03).
 - [ ] Task 3 - validate SQL, RLS/read-only behavior, and datasource compatibility.
 - [ ] Task 4 - add or update focused regression coverage for multi-restaurant catalog/product loading.
 - [ ] Task 5 - reconcile docs, memory, technical debt, and Trello after validation.
+
+## Validation Evidence
+
+- Task 1: Supabase MCP read-only queries on project `kvbahsdjmhpukzmdttvq` confirmed existing restaurant IDs `burger_artisan_collective`, `pasta_roma`, `sushi_zen`, and `taco_harbor`; menu coverage exists only for `burger_artisan_collective` with 4 categories and 4 items.
+- Task 2: `git diff --check` passed after creating `supabase/migrations/20260603183000_catalog_demo_coverage.sql`.
+- Task 2: Supabase MCP rollback smoke executed the migration SQL inside `begin ... rollback` without errors; post-rollback checks confirmed remote baseline remained unchanged (`burger_artisan_collective` still 4 categories/4 items; new Sprint 7 item IDs count 0).
+- Trello: real card `https://trello.com/c/TLHgmJ02` was updated with Task 1 and Task 2 evidence; implementation-dependent acceptance/validation checklist items remain open until Task 3 applies or validates the data path definitively.
 
 ## Implementation Tasks
 

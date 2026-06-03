@@ -10,7 +10,7 @@ Reference plan:
 
 ## Status
 
-Planned / Approved.
+In Progress.
 
 ## Sprint Goal
 
@@ -31,15 +31,22 @@ Make Home -> restaurant details -> product details feel complete for every exist
 
 ## Backlog
 
-- [ ] Audit current seed baseline and expected target counts.
-- [ ] Add deterministic catalog demo seed migration.
+- [x] Audit current seed baseline and expected target counts.
+- [x] Add deterministic catalog demo seed migration.
 - [ ] Validate Supabase read contracts, RLS, grants, and datasource compatibility.
 - [ ] Add focused multi-restaurant catalog/product regression coverage.
 - [ ] Reconcile docs, memory, technical debt, and Trello after validation.
 
+## Current Progress
+
+- Task 1 completed — local migrations and remote Supabase read-only queries confirmed the seed baseline: all four Home restaurants exist, while only `burger_artisan_collective` currently has menu coverage (4 categories and 4 items). The Sprint 7 target remains valid: add at least 3 categories and 4 menu items for each of `pasta_roma`, `sushi_zen`, and `taco_harbor`.
+- Task 2 completed — `supabase/migrations/20260603183000_catalog_demo_coverage.sql` adds deterministic idempotent seeds for the three unseeded restaurants: 9 menu categories and 12 menu items total, preserving the existing `burger_artisan_collective` rows and existing table/grant/RLS contracts.
+- Task 2 validation passed — `git diff --check` reported no errors; Supabase MCP executed the migration SQL inside a rollback transaction without persisting data; post-rollback checks confirmed the remote baseline remained unchanged.
+- Real Trello card `https://trello.com/c/TLHgmJ02` was updated with Task 1 and Task 2 evidence. Final acceptance/validation items remain incomplete until Task 3 validates or applies the read contracts definitively.
+
 ## Acceptance Criteria
 
-- [ ] Existing `burger_artisan_collective` behavior remains unchanged.
+- [ ] Existing `burger_artisan_collective` behavior remains unchanged after definitive validation/application.
 - [ ] `pasta_roma`, `sushi_zen`, and `taco_harbor` each have non-empty menu categories and menu items.
 - [ ] Restaurant details can render a non-empty catalog for each existing Home restaurant.
 - [ ] Product details can load seeded products from non-burger restaurants by stable product ID.
