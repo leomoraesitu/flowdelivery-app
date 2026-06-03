@@ -11,12 +11,14 @@ class RestaurantDetailsSections extends StatelessWidget {
     required this.viewData,
     required this.onBack,
     required this.onCategorySelected,
+    this.onProductSelected,
     super.key,
   });
 
   final RestaurantDetailsViewData viewData;
   final VoidCallback onBack;
   final ValueChanged<String> onCategorySelected;
+  final ValueChanged<String>? onProductSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +68,10 @@ class RestaurantDetailsSections extends StatelessWidget {
           onCategorySelected: onCategorySelected,
         ),
         SizedBox(height: AppSpacing.lg),
-        _MenuItemList(items: viewData.visibleItems),
+        _MenuItemList(
+          items: viewData.visibleItems,
+          onProductSelected: onProductSelected,
+        ),
       ],
     );
   }
@@ -304,9 +309,10 @@ class _CategoryScroller extends StatelessWidget {
 }
 
 class _MenuItemList extends StatelessWidget {
-  const _MenuItemList({required this.items});
+  const _MenuItemList({required this.items, this.onProductSelected});
 
   final List<RestaurantMenuItem> items;
+  final ValueChanged<String>? onProductSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -315,79 +321,90 @@ class _MenuItemList extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: items.length,
       separatorBuilder: (context, index) => SizedBox(height: AppSpacing.md),
-      itemBuilder: (context, index) => _MenuItemCard(item: items[index]),
+      itemBuilder: (context, index) => _MenuItemCard(
+        item: items[index],
+        onProductSelected: onProductSelected,
+      ),
     );
   }
 }
 
 class _MenuItemCard extends StatelessWidget {
-  const _MenuItemCard({required this.item});
+  const _MenuItemCard({required this.item, this.onProductSelected});
 
   final RestaurantMenuItem item;
+  final ValueChanged<String>? onProductSelected;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final onProductSelected = this.onProductSelected;
 
     return Card(
       elevation: 0,
-      child: Padding(
-        padding: EdgeInsets.all(AppSpacing.md),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.name,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  SizedBox(height: AppSpacing.xs),
-                  Text(
-                    item.description,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                  SizedBox(height: AppSpacing.sm),
-                  Text(
-                    _formatPrice(context, item.priceInCents),
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      color: colorScheme.primary,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(width: AppSpacing.md),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(AppRadius.lg),
-              child: SizedBox.square(
-                dimension: AppSizes.menuItemThumbnail,
-                child: Image.asset(
-                  item.imageAssetPath,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return ColoredBox(
-                      color: colorScheme.surfaceContainerHighest,
-                      child: Icon(
-                        Icons.fastfood_outlined,
-                        color: colorScheme.primary,
-                        size: AppSizes.iconLg,
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onProductSelected == null
+            ? null
+            : () => onProductSelected(item.id),
+        child: Padding(
+          padding: EdgeInsets.all(AppSpacing.md),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.name,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
                       ),
-                    );
-                  },
+                    ),
+                    SizedBox(height: AppSpacing.xs),
+                    Text(
+                      item.description,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                    SizedBox(height: AppSpacing.sm),
+                    Text(
+                      _formatPrice(context, item.priceInCents),
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: colorScheme.primary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+              SizedBox(width: AppSpacing.md),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(AppRadius.lg),
+                child: SizedBox.square(
+                  dimension: AppSizes.menuItemThumbnail,
+                  child: Image.asset(
+                    item.imageAssetPath,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return ColoredBox(
+                        color: colorScheme.surfaceContainerHighest,
+                        child: Icon(
+                          Icons.fastfood_outlined,
+                          color: colorScheme.primary,
+                          size: AppSizes.iconLg,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

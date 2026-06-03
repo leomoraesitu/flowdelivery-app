@@ -8,9 +8,11 @@ final productDetailsRepositoryProvider = Provider<ProductDetailsRepository>((
   throw StateError('Product details repository was not configured.');
 });
 
-final productDetailsProvider =
-    FutureProvider.family<ProductDetails?, String>((ref, productId) {
-      return ref
-          .watch(productDetailsRepositoryProvider)
-          .getProductDetails(productId);
-    });
+final productDetailsProvider = FutureProvider.family<ProductDetails?, String>((
+  ref,
+  productId,
+) {
+  return ref
+      .watch(productDetailsRepositoryProvider)
+      .getProductDetails(productId);
+});
