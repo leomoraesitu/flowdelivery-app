@@ -87,7 +87,7 @@ This plan was validated against `.ai/context/*`, `.ai/agents/architect|senior_fl
 
 - [x] Architecture approved (reviewed and refined 2026-06-03; Findings A/B/C/D resolved).
 - [x] Slice boundary approved: read-only product details only.
-- [ ] Task 1 — immutable product-details domain contract and focused tests.
+- [x] Task 1 — immutable product-details domain contract and focused tests (analyze clean; 3 domain tests pass, 2026-06-03).
 - [ ] Task 2 — typed DTO and remote datasource with focused tests.
 - [ ] Task 3 — domain repository contract and DTO-to-domain mapping with focused tests.
 - [ ] Task 4 — Riverpod family loading and app composition with focused tests.
