@@ -90,7 +90,7 @@ This plan was validated against `.ai/context/*`, `.ai/agents/architect|senior_fl
 - [x] Task 1 — immutable product-details domain contract and focused tests (analyze clean; 3 domain tests pass, 2026-06-03).
 - [x] Task 2 — typed DTO and remote datasource with focused tests (analyze clean; 3 datasource tests pass incl. null not-found, 2026-06-03).
 - [x] Task 3 — domain repository contract and DTO-to-domain mapping with focused tests (analyze clean; 2 repository tests pass incl. null propagation, 2026-06-03).
-- [ ] Task 4 — Riverpod family loading and app composition with focused tests.
+- [x] Task 4 — Riverpod family loading and app composition with focused tests (analyze clean; full product_details suite 10/10, 2026-06-03).
 - [ ] Task 5 — localized product-details copy and generated `AppLocalizations` accessors with guard validation.
 - [ ] Task 6 — product-details UI and delegable catalog product-card entry callback with guard validation.
 - [ ] Task 7 — protected nested product-details route and focused router coverage.

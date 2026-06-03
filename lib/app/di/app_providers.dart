@@ -12,6 +12,11 @@ import 'package:flowdelivery_app/features/home/data/repositories/home_repository
 import 'package:flowdelivery_app/features/home/domain/repositories/home_repository.dart';
 import 'package:flowdelivery_app/features/home/presentation/providers/home_feed_providers.dart'
     as home_presentation;
+import 'package:flowdelivery_app/features/product_details/data/datasources/product_details_remote_datasource.dart';
+import 'package:flowdelivery_app/features/product_details/data/repositories/product_details_repository_impl.dart';
+import 'package:flowdelivery_app/features/product_details/domain/repositories/product_details_repository.dart';
+import 'package:flowdelivery_app/features/product_details/presentation/providers/product_details_providers.dart'
+    as product_details_presentation;
 import 'package:flowdelivery_app/features/restaurant_details/data/datasources/restaurant_details_remote_datasource.dart';
 import 'package:flowdelivery_app/features/restaurant_details/data/repositories/restaurant_details_repository_impl.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/repositories/restaurant_details_repository.dart';
@@ -69,6 +74,21 @@ final appRestaurantDetailsRepositoryProvider =
       );
     });
 
+final appProductDetailsRemoteDatasourceProvider =
+    Provider<ProductDetailsRemoteDatasource>((ref) {
+      return SupabaseProductDetailsRemoteDatasource(
+        client: ref.watch(supabaseClientProvider),
+      );
+    });
+
+final appProductDetailsRepositoryProvider = Provider<ProductDetailsRepository>((
+  ref,
+) {
+  return ProductDetailsRepositoryImpl(
+    datasource: ref.watch(appProductDetailsRemoteDatasourceProvider),
+  );
+});
+
 final appProviderOverrides = [
   auth_presentation.authRepositoryProvider.overrideWith((ref) {
     return ref.watch(appAuthRepositoryProvider);
@@ -80,4 +100,9 @@ final appProviderOverrides = [
       .overrideWith((ref) {
         return ref.watch(appRestaurantDetailsRepositoryProvider);
       }),
+  product_details_presentation.productDetailsRepositoryProvider.overrideWith((
+    ref,
+  ) {
+    return ref.watch(appProductDetailsRepositoryProvider);
+  }),
 ];
