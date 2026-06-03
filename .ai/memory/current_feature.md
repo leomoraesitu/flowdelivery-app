@@ -2,20 +2,36 @@
 
 ## Active Feature
 
-Restaurant Details Remote Catalog
+Product Details Read-Only (Sprint 6 — Closed)
 
 ## Active Status
 
-Sprint 5 is closed. Sprint 6 (Product Details Read-Only) planning is approved and registered; await explicit per-task implementation approval before writing code.
+Sprint 6 is closed (2026-06-03). The dedicated `product_details` feature ships a protected read-only product surface opened from the restaurant catalog; all 9 tasks were implemented and validated task-by-task and the real Trello card is in `🎉 Done`. Sprint 5 remains closed.
 
-## Next Slice Planning
+## Sprint 6 Completed Work
 
-- Sprint 6 direction approved by the user: Product Details (read-only) closes the MVP "product browsing" area.
-- Technical plan registered in `.ai/plans/2026-06-02-product-details-read-only-plan.md` (9 incremental tasks, no new migration, reuses `restaurant_menu_items`).
-- Governance artifact registered in `docs/project-management/SPRINT_6.md` (status: Planned).
-- Real Trello story created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, and Theme Guard checklists: `https://trello.com/c/8amTB8F3`.
-- Architecture: dedicated `product_details` feature mirroring `restaurant_details`; nested protected route `/restaurants/:restaurantId/products/:productId`; on-demand load by stable product ID so cold deep links work.
-- Broad catalog seed expansion stays out of scope; only `burger_artisan_collective` currently has products, so other products resolve to the localized not-found/empty state.
+- Task 1 — immutable `ProductDetails` domain entity (Flutter/Supabase-free, value equality).
+- Task 2 — `ProductDetailsDto` + Supabase datasource: query by `id` (PK) with `maybeSingle()`, nullable loader, `null` for not-found, `ProductDetailsRemoteException` only for malformed/Postgrest/Format failures.
+- Task 3 — `ProductDetailsRepository` returning `Future<ProductDetails?>`; impl maps DTO→entity and propagates `null`.
+- Task 4 — `productDetailsProvider` (`FutureProvider.family<ProductDetails?, String>`) + app composition/override mirroring `restaurant_details`.
+- Task 5 — 11 localized `productDetails*` ARB keys (pt_BR template + pt/en) and regenerated `AppLocalizations`.
+- Task 6 — `ProductDetailsPage` + sections (hero/back, name, semantic price, description; loading/error/not-found/success); catalog menu card gained optional `onProductSelected`.
+- Task 7 — protected nested route `/restaurants/:restaurantId/products/:productId` and router→page→sections callback threading; auth-open + unauth-redirect router tests.
+- Task 8 — focused product UI widget tests (5 states) + catalog card-tap delegation test; consolidated matrix 45/45.
+- Task 9 — docs/memory/Trello reconciled; card moved to `🎉 Done`.
+
+## Architecture Notes (Sprint 6)
+
+- No new migration; reuses `restaurant_menu_items`.
+- No dedicated ViewModel (read-only single load, per ADR-003).
+- Not-found is modeled as `ProductDetails?` (`null`), keeping it out of exception-based control flow (Finding A).
+- Route `restaurantId` is used only for back navigation/protection; product loads by `productId` alone (Finding C, accepted).
+
+## Active Plan
+
+- `.ai/plans/2026-06-02-product-details-read-only-plan.md`
+- `docs/project-management/SPRINT_6.md`
+- Real Trello story (Done): `https://trello.com/c/8amTB8F3`
 
 ## Active Scope
 

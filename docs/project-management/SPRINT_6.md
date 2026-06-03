@@ -14,7 +14,18 @@ Reference prototype:
 
 ## Status
 
-Planned. Awaiting per-task implementation approval.
+Completed (2026-06-03). All 9 tasks implemented and validated task-by-task; the real Trello card is fully checked and moved to `🎉 Done` (https://trello.com/c/8amTB8F3). No new migration was required; the feature reuses `restaurant_menu_items`.
+
+## Delivery Evidence
+
+- Consolidated regression matrix: 45 tests green (product_details domain/datasource/repository/provider + 5 page widget tests; restaurant_details widget regression incl. catalog card-tap delegation; router 11; Localization Guard; Theme Guard; Trello Guard).
+- `flutter analyze` clean on all touched files; `flutter gen-l10n` refreshed for 11 `productDetails*` keys.
+- Task commits on `feat/home`: `3d98b99` (domain), `c57cb34` (datasource), `d25ada2` (repository), `bd1a704` (providers), `f02c46e` (localized copy), `b857954` (UI), `bf95ef7` (route), `d22423b` (tests).
+- Not-found contract (Finding A): repository returns `ProductDetails?`; `null` → localized not-found state, exceptions → error state.
+
+## Demo Data Follow-up
+
+Only `burger_artisan_collective` is seeded in `restaurant_menu_items`, so products from other restaurants resolve to the localized not-found state by design. Broad catalog seed expansion remains a separate future data slice (out of scope here).
 
 ## Sprint Goal
 
@@ -32,49 +43,49 @@ Make catalog product cards navigable and expose a protected read-only product su
 
 ## Backlog
 
-- [ ] Define immutable product-details domain contract.
-- [ ] Add DTO and remote datasource.
-- [ ] Add repository mapping.
-- [ ] Wire async Riverpod composition.
-- [ ] Add localized product-details copy.
-- [ ] Add product-details UI and delegable catalog entry callback.
-- [ ] Add protected nested product-details route.
-- [ ] Add focused regression coverage.
-- [ ] Reconcile docs, memory, and Trello after validation.
+- [x] Define immutable product-details domain contract.
+- [x] Add DTO and remote datasource.
+- [x] Add repository mapping.
+- [x] Wire async Riverpod composition.
+- [x] Add localized product-details copy.
+- [x] Add product-details UI and delegable catalog entry callback.
+- [x] Add protected nested product-details route.
+- [x] Add focused regression coverage.
+- [x] Reconcile docs, memory, and Trello after validation.
 
 ## Acceptance Criteria
 
-- [ ] Authenticated users can open a product from the restaurant catalog.
-- [ ] Unauthenticated product deep links redirect to sign-in.
-- [ ] Product data loads remotely by stable product ID.
-- [ ] Loading, error, not-found, and success states use ARB + `AppLocalizations`.
-- [ ] UI uses semantic theme APIs and app tokens.
-- [ ] Supabase access stays inside datasource code.
-- [ ] Focused test, analyze, guard, and Trello parity validation pass.
+- [x] Authenticated users can open a product from the restaurant catalog.
+- [x] Unauthenticated product deep links redirect to sign-in.
+- [x] Product data loads remotely by stable product ID.
+- [x] Loading, error, not-found, and success states use ARB + `AppLocalizations`.
+- [x] UI uses semantic theme APIs and app tokens.
+- [x] Supabase access stays inside datasource code.
+- [x] Focused test, analyze, guard, and Trello parity validation pass.
 
 ## Dependencies
 
-- [ ] Sprint 5 restaurant details remote catalog completed and validated.
-- [ ] Existing `restaurant_menu_items` table deployed remotely.
-- [ ] Existing Riverpod, GoRouter, Supabase, localization, and theme foundations.
-- [ ] Approved architecture and technical plan.
-- [ ] Explicit per-task implementation approval.
+- [x] Sprint 5 restaurant details remote catalog completed and validated.
+- [x] Existing `restaurant_menu_items` table deployed remotely.
+- [x] Existing Riverpod, GoRouter, Supabase, localization, and theme foundations.
+- [x] Approved architecture and technical plan.
+- [x] Explicit per-task implementation approval.
 
 ## Localization Guard Checklist
 
-- [ ] Every new user-facing string has an ARB key.
-- [ ] UI reads strings through `AppLocalizations`.
-- [ ] No hardcoded user-facing copy exists in presentation or route UI.
-- [ ] Template metadata and placeholders remain aligned.
-- [ ] ARB parity and generated freshness guards remain green.
+- [x] Every new user-facing string has an ARB key.
+- [x] UI reads strings through `AppLocalizations`.
+- [x] No hardcoded user-facing copy exists in presentation or route UI.
+- [x] Template metadata and placeholders remain aligned.
+- [x] ARB parity and generated freshness guards remain green.
 
 ## Theme Guard Checklist
 
-- [ ] UI uses semantic theme APIs and app tokens.
-- [ ] No `Color(0x...)` exists in feature presentation.
-- [ ] No direct `AppLightColors` or `AppDarkColors` usage exists outside theme.
-- [ ] No direct `Colors.*` usage bypasses semantic roles.
-- [ ] Visual guard remains green.
+- [x] UI uses semantic theme APIs and app tokens.
+- [x] No `Color(0x...)` exists in feature presentation.
+- [x] No direct `AppLightColors` or `AppDarkColors` usage exists outside theme.
+- [x] No direct `Colors.*` usage bypasses semantic roles.
+- [x] Visual guard remains green.
 
 ## Validation Plan
 

@@ -2,20 +2,22 @@
 
 ## Active Sprint
 
-Sprint 6 - Product Details Read-Only (Planned)
+Sprint 6 - Product Details Read-Only (Closed)
 
 ## Active Status
 
-Planned. Technical plan, governance doc, and real Trello card are registered; awaiting explicit per-task implementation approval before coding. Sprint 5 is closed.
+Closed (2026-06-03). All 9 tasks implemented and validated task-by-task; the real Trello card is fully checked and moved to `🎉 Done`. Consolidated regression matrix passed (45 tests). No new migration was needed; the feature reuses `restaurant_menu_items`.
 
-## Next Sprint Planning
+## Sprint 6 Outcome
 
-- Sprint 6 goal: protected read-only product surface opened from the restaurant catalog, loaded on demand by stable product ID, reusing `restaurant_menu_items` (no new migration).
-- Plan: `.ai/plans/2026-06-02-product-details-read-only-plan.md`.
-- Governance: `docs/project-management/SPRINT_6.md` (status Planned).
-- Real Trello story in `✅ Ready`: `https://trello.com/c/8amTB8F3` (Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, Theme Guard).
-- Nested route `/restaurants/:restaurantId/products/:productId`; dedicated `product_details` feature mirroring `restaurant_details`.
-- Out of scope: cart, customization, quantity, favorites, sharing, broad catalog seed expansion.
+- Protected nested route `/restaurants/:restaurantId/products/:productId` opens a read-only product surface from the restaurant catalog, loaded on demand by stable product ID through a `FutureProvider.family<ProductDetails?, String>`.
+- Dedicated `product_details` Clean Architecture feature (domain/data/presentation) mirroring `restaurant_details`; no dedicated ViewModel (read-only single load, per ADR-003).
+- Not-found contract (Finding A): repository returns `ProductDetails?` — `null` renders the localized not-found state, exceptions render the error state; no exception-based control flow.
+- Localized states (loading/error/not-found/success) via ARB + `AppLocalizations` (11 `productDetails*` keys); semantic theme APIs/tokens only.
+- Commits `3d98b99`, `c57cb34`, `d25ada2`, `bd1a704`, `f02c46e`, `b857954`, `bf95ef7`, `d22423b` plus planning/docs commits on `feat/home`.
+- Real Trello story closed with validated evidence: `https://trello.com/c/8amTB8F3`.
+- Plan: `.ai/plans/2026-06-02-product-details-read-only-plan.md`. Governance: `docs/project-management/SPRINT_6.md`.
+- Deferred (unchanged): cart, customization, quantity, variants/add-ons, favorites, sharing, Storage, Realtime, broad catalog seed expansion. Only `burger_artisan_collective` is seeded, so other products resolve to the localized not-found state by design.
 
 ## Previous Sprint
 
