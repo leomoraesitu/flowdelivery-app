@@ -21,6 +21,7 @@ Widget _buildTestApp({
   required String restaurantId,
   List overrides = const [],
   VoidCallback? onBack,
+  ValueChanged<String>? onProductSelected,
 }) {
   return ProviderScope(
     overrides: overrides.cast(),
@@ -37,6 +38,7 @@ Widget _buildTestApp({
       home: RestaurantDetailsPage(
         restaurantId: restaurantId,
         onBack: onBack,
+        onProductSelected: onProductSelected,
       ),
     ),
   );
@@ -65,7 +67,10 @@ void main() {
       final context = tester.element(find.byType(RestaurantDetailsPage));
       final l10n = AppLocalizations.of(context);
 
-      expect(find.text(l10n.restaurantDetailsLoadingStateTitle), findsOneWidget);
+      expect(
+        find.text(l10n.restaurantDetailsLoadingStateTitle),
+        findsOneWidget,
+      );
       expect(
         find.text(l10n.restaurantDetailsLoadingStateMessage),
         findsOneWidget,
@@ -86,9 +91,9 @@ void main() {
           restaurantId: restaurantId,
           overrides: [
             restaurantDetailsProvider(restaurantId).overrideWith((ref) async {
-                callCount++;
-                throw Exception('boom');
-              }),
+              callCount++;
+              throw Exception('boom');
+            }),
           ],
         ),
       );
@@ -98,7 +103,10 @@ void main() {
       final l10n = AppLocalizations.of(context);
 
       expect(find.text(l10n.restaurantDetailsErrorStateTitle), findsOneWidget);
-      expect(find.text(l10n.restaurantDetailsErrorStateMessage), findsOneWidget);
+      expect(
+        find.text(l10n.restaurantDetailsErrorStateMessage),
+        findsOneWidget,
+      );
       expect(
         find.widgetWithText(FilledButton, l10n.restaurantDetailsRetryAction),
         findsOneWidget,
@@ -145,7 +153,10 @@ void main() {
       final l10n = AppLocalizations.of(context);
 
       expect(find.text(l10n.restaurantDetailsEmptyStateTitle), findsOneWidget);
-      expect(find.text(l10n.restaurantDetailsEmptyStateMessage), findsOneWidget);
+      expect(
+        find.text(l10n.restaurantDetailsEmptyStateMessage),
+        findsOneWidget,
+      );
     });
 
     testWidgets(
@@ -166,7 +177,10 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(find.text(restaurantDetailsFixture.name), findsOneWidget);
-        expect(find.byType(ChoiceChip), findsNWidgets(3)); // Popular, Burgers, Sides
+        expect(
+          find.byType(ChoiceChip),
+          findsNWidgets(3),
+        ); // Popular, Burgers, Sides
 
         for (final item in restaurantDetailsFixture.items) {
           expect(find.text(item.name), findsOneWidget);
@@ -239,6 +253,32 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(backTapped, isTrue);
+    });
+
+    testWidgets('delegates a stable product id when a menu card is tapped', (
+      tester,
+    ) async {
+      String? selectedProductId;
+
+      await tester.pumpWidget(
+        _buildTestApp(
+          restaurantId: restaurantId,
+          onProductSelected: (productId) => selectedProductId = productId,
+          overrides: [
+            restaurantDetailsRepositoryProvider.overrideWithValue(
+              _FakeRestaurantDetailsRepository(
+                () async => restaurantDetailsFixture,
+              ),
+            ),
+          ],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('The Signature Truffle'));
+      await tester.pumpAndSettle();
+
+      expect(selectedProductId, 'signature_truffle');
     });
   });
 }

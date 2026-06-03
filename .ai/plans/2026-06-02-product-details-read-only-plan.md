@@ -94,7 +94,7 @@ This plan was validated against `.ai/context/*`, `.ai/agents/architect|senior_fl
 - [x] Task 5 — localized product-details copy and generated `AppLocalizations` accessors with guard validation (11 keys across pt_BR/pt/en; gen-l10n refreshed; 9 l10n guard tests pass, 2026-06-03).
 - [x] Task 6 — product-details UI and delegable catalog product-card entry callback with guard validation (analyze clean; Theme + hardcoded-copy guards green; restaurant_details regression 6/6, 2026-06-03).
 - [x] Task 7 — protected nested product-details route and focused router coverage (4 files, guardrail confirmed; analyze clean; 11 router tests pass incl. auth open + unauth redirect, 2026-06-03).
-- [ ] Task 8 — focused product-details and catalog navigation regression coverage.
+- [x] Task 8 — focused product-details and catalog navigation regression coverage (consolidated matrix 45/45: product UI states, catalog card tap, router, l10n/theme/trello guards, analyze clean, 2026-06-03).
 - [ ] Task 9 — docs, memory, plan checklists, and the real Trello card reconciled after verified parity.
 
 ## Implementation Tasks
