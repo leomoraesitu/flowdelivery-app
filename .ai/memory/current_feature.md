@@ -2,11 +2,44 @@
 
 ## Active Feature
 
-Product Details Read-Only (Sprint 6 — Closed)
+Catalog Demo Coverage (Sprint 7 — Planned / Approved)
 
 ## Active Status
 
-Sprint 6 is closed (2026-06-03). The dedicated `product_details` feature ships a protected read-only product surface opened from the restaurant catalog; all 9 tasks were implemented and validated task-by-task and the real Trello card is in `🎉 Done`. Sprint 5 remains closed.
+Sprint 7 is planned and approved (2026-06-03). The next slice expands deterministic catalog seed coverage for the existing Home restaurants so the validated read-only browsing flow works convincingly across `burger_artisan_collective`, `pasta_roma`, `sushi_zen`, and `taco_harbor`. No implementation has started yet.
+
+## Sprint 7 Planned Work
+
+- Task 1 — audit current seed baseline and expected target counts.
+- Task 2 — add a dedicated catalog demo seed migration for `pasta_roma`, `sushi_zen`, and `taco_harbor`.
+- Task 3 — validate Supabase read contracts, RLS/grants, and datasource compatibility.
+- Task 4 — add focused multi-restaurant catalog/product regression coverage where existing tests do not prove the expanded data path.
+- Task 5 — reconcile docs, memory, technical debt, and Trello after validation evidence exists.
+
+## Architecture Notes (Sprint 7)
+
+- Data-readiness slice only; no new runtime UI behavior is planned.
+- Use a new migration rather than editing already-applied Sprint 5/6 migrations.
+- Reuse existing `restaurant_menu_categories` and `restaurant_menu_items` table contracts.
+- Keep placeholder asset paths until a Storage-backed media slice is separately approved.
+- Keep cart, checkout, customization, variants/add-ons, quantity, favorites, sharing, Storage, and Realtime out of scope.
+
+## Active Plan
+
+- `.ai/plans/2026-06-03-catalog-demo-coverage-plan.md`
+- `docs/project-management/SPRINT_7.md`
+
+## Next Steps
+
+- Execute Sprint 7 Task 1 only after explicit implementation approval.
+- Keep the implementation data-first and reversible.
+- Validate with focused SQL/test evidence before updating completion records or Trello.
+
+## Previous Closed Feature
+
+Product Details Read-Only (Sprint 6) is closed and remains documented in `.ai/plans/2026-06-02-product-details-read-only-plan.md`, `docs/project-management/SPRINT_6.md`, and the real Trello story `https://trello.com/c/8amTB8F3`.
+
+## Sprint 6 Completed Work
 
 ## Sprint 6 Completed Work
 
@@ -27,19 +60,13 @@ Sprint 6 is closed (2026-06-03). The dedicated `product_details` feature ships a
 - Not-found is modeled as `ProductDetails?` (`null`), keeping it out of exception-based control flow (Finding A).
 - Route `restaurantId` is used only for back navigation/protection; product loads by `productId` alone (Finding C, accepted).
 
-## Active Plan
+## Sprint 6 Plan
 
 - `.ai/plans/2026-06-02-product-details-read-only-plan.md`
 - `docs/project-management/SPRINT_6.md`
 - Real Trello story (Done): `https://trello.com/c/8amTB8F3`
 
-## Next Steps
-
-- Open a PR for `feat/home` into `main` or explicitly select the next approved slice before new implementation.
-- Candidate next slice: broad catalog seed expansion for demo coverage, or begin cart/checkout planning.
-- Keep customization, variants/add-ons, quantity, special instructions, favorites, sharing, Storage-backed media, Realtime, and persisted profile/address out of scope until separately approved.
-
-## Previous Closed Feature
+## Previous Closed Feature (Sprint 5)
 
 Sprint 5 - Restaurant Details Remote Catalog is closed and remains documented in `.ai/plans/2026-06-02-restaurant-details-remote-catalog-plan.md`, `docs/project-management/SPRINT_5.md`, and the real Trello story `https://trello.com/c/1cBjEupB`.
 

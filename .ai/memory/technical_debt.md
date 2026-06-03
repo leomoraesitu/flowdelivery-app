@@ -148,19 +148,20 @@ Notes:
 - Sprint 4 Task 4 external parity was verified against `[FEAT] Home discovery interactions` (`https://trello.com/c/5EUe5qOp`) after local validation. Only evidence-backed items were completed; Task 5 regression coverage and Task 6 final reconciliation remain open.
 - Sprint 4 final parity was rechecked after Task 5 validation and Task 6 reconciliation. The real card now has Scope `6/6`, Validation `8/8`, Localization Guard `7/7`, Theme Guard `5/5`, Acceptance Criteria `8/8`, and Dependencies `6/6`, with a final evidence comment recorded.
 
-### Product details slice — seed coverage and accepted minor debts (Sprint 6)
+### Product details slice — seed coverage and accepted minor debts (Sprint 6 / Sprint 7)
 
 Status:
-Planned Scope / Monitoring
+Selected Planned Slice / Monitoring
 
 Impact:
 Low
 
 Notes:
 - Partial catalog seed: only `burger_artisan_collective` has rows in `restaurant_menu_items`, so product deep links for other restaurants resolve to the localized not-found state. This is by-design demo behavior, not a regression — classified as Planned Scope. Promote to a product slice when broader seed/data is approved.
+- Sprint 7 has been approved as `Catalog Demo Coverage` to address the seed coverage item through deterministic data expansion for `pasta_roma`, `sushi_zen`, and `taco_harbor`. Keep this item in monitoring until the migration, SQL smoke validation, focused regression coverage, and documentation reconciliation are complete.
 - Finding D (accepted): price formatting (`_formatPrice`, `NumberFormat` by locale) is duplicated between `lib/features/restaurant_details/presentation/widgets/restaurant_details_sections.dart` and `lib/features/product_details/presentation/widgets/product_details_sections.dart`. Extract to `lib/shared/` only if a third consumer appears, to avoid premature refactor.
 - Finding C (accepted): the route `restaurantId` in `/restaurants/:restaurantId/products/:productId` is used only for back navigation/protection; the product loads by `productId` (PK) alone, so a mismatched `restaurantId` still resolves the product. No cross-integrity validation in this read-only slice.
-- Reclassify the seed item to Technical Debt only if not-found-on-real-data starts affecting approved demo/QA scope.
+- After Sprint 7 validation, reclassify the seed item to resolved/monitoring if all existing seeded restaurants have non-empty catalogs and product details coverage. Reclassify to Technical Debt only if not-found-on-real-data starts affecting approved demo/QA scope after Sprint 7.
 
 ## Rules
 

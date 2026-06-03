@@ -2,9 +2,52 @@
 
 ## Active Sprint
 
-Sprint 6 - Product Details Read-Only (Closed)
+Sprint 7 - Catalog Demo Coverage (Planned / Approved)
 
 ## Active Status
+
+Planned and approved (2026-06-03). Implementation has not started. Sprint 7 focuses on deterministic catalog demo seed coverage for the existing Home restaurants, preserving the validated read-only browsing architecture from Sprints 5 and 6.
+
+## Sprint 7 Goal
+
+Make Home -> restaurant details -> product details feel complete for every existing seeded restaurant, without adding cart, checkout, customization, Storage, Realtime, or new UI behavior.
+
+## Sprint 7 Scope
+
+- add deterministic menu categories and items for `pasta_roma`, `sushi_zen`, and `taco_harbor`;
+- preserve existing `burger_artisan_collective` behavior;
+- keep seed changes idempotent and deployable through a new migration;
+- validate Supabase read-only access, RLS/grants, and existing datasource/repository compatibility;
+- add focused multi-restaurant regression coverage where needed;
+- reconcile docs, memory, technical debt, and Trello only after validation.
+
+## Sprint 7 Plan
+
+- `.ai/plans/2026-06-03-catalog-demo-coverage-plan.md`
+- `docs/project-management/SPRINT_7.md`
+
+## Sprint 7 Backlog
+
+- [ ] Task 1 — audit current seed baseline and expected target counts.
+- [ ] Task 2 — add deterministic catalog demo seed migration.
+- [ ] Task 3 — validate Supabase read contracts, RLS/grants, and datasource compatibility.
+- [ ] Task 4 — add focused multi-restaurant catalog/product regression coverage.
+- [ ] Task 5 — reconcile docs, memory, technical debt, and Trello after validation.
+
+## Sprint 7 Out of Scope
+
+- Cart, checkout, orders, quantity, variants, add-ons, and special instructions.
+- Favorites and sharing behavior.
+- Persisted profile/address data.
+- Storage-backed media.
+- Realtime, ranking, pagination, recommendations, and analytics.
+- New restaurants or Home taxonomy changes unless separately approved.
+
+## Previous Sprint
+
+Sprint 6 - Product Details Read-Only (Closed)
+
+## Previous Sprint Status
 
 Closed (2026-06-03). All 9 tasks implemented and validated task-by-task; the real Trello card is fully checked and moved to `🎉 Done`. Consolidated regression matrix passed (45 tests). No new migration was needed; the feature reuses `restaurant_menu_items`.
 
@@ -19,11 +62,11 @@ Closed (2026-06-03). All 9 tasks implemented and validated task-by-task; the rea
 - Plan: `.ai/plans/2026-06-02-product-details-read-only-plan.md`. Governance: `docs/project-management/SPRINT_6.md`.
 - Deferred (unchanged): cart, customization, quantity, variants/add-ons, favorites, sharing, Storage, Realtime, broad catalog seed expansion. Only `burger_artisan_collective` is seeded, so other products resolve to the localized not-found state by design.
 
-## Previous Sprint
+## Earlier Sprint
 
 Sprint 5 - Restaurant Details Remote Catalog
 
-## Active Status (Sprint 5)
+## Status (Sprint 5)
 
 Closed.
 
