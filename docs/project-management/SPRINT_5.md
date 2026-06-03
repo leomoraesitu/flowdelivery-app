@@ -72,6 +72,15 @@ Make restaurant cards navigable and expose a protected read-only menu without ex
 - Tasks 7-9 were committed task-by-task on branch `feat/home`: `0ee841a` (catalog UI), `a123a29` (route deep link), `d0590fd` (regression coverage).
 - Task 10 completed — Sprint 5 docs, plan, feature/sprint memory, and the real Trello card were reconciled after final governance validation. Real card parity was verified via MCP: the prior "closed" claim was inaccurate, six items were still incomplete (Scope deep-link, three Acceptance Criteria, two Validation), and each was completed against real evidence before the card was moved to `🎉 Done` with a closure comment.
 
+## Post-Sprint Remote Deployment
+
+- 2026-06-02 — both versioned migrations were applied to the active remote project `flowdelivery-app` (ref `kvbahsdjmhpukzmdttvq`) via Supabase MCP `apply_migration`. Until this point the remote project had zero migrations and zero `public` tables, so the app was rendering Home from the local fixture fallback and restaurant details could not load.
+- `list_migrations` now reports `home_remote_feed_foundation` and `restaurant_details_remote_catalog`.
+- `list_tables` confirms all six `public` tables exist with RLS enabled and seed counts matching the deterministic fixtures: categories 5, restaurants 4, links 8, promotions 1, menu categories 4, menu items 4.
+- Security advisors reported no missing-RLS issues on the new tables; the only open advisory is the unrelated Auth `auth_leaked_password_protection` warning.
+- Catalog seed coverage is partial by design: only `burger_artisan_collective` has menu items, so the other restaurants resolve to the localized empty catalog state.
+- Deployment runbook recorded in `docs/setup/SUPABASE_SETUP.md` under "Remote Schema Deployment".
+
 ## Acceptance Criteria
 
 - [x] Authenticated users can open restaurant details from Home.

@@ -33,6 +33,9 @@ Completed. Sprint 5 is closed. Wait for an explicitly approved next feature slic
 - Sprint 5 Task 9 completed — focused UI regression coverage for restaurant-details browsing and Home navigation; domain entities promoted to `const` for immutable fixtures; Tasks 7-9 committed task-by-task (`0ee841a`, `a123a29`, `d0590fd`); matrix passed with 49 tests.
 - Sprint 5 Task 10 completed — Sprint 5 docs, plan, feature/sprint memory, and the real Trello card were reconciled after verified parity; six previously-incomplete card items were completed against real evidence and the card moved to `🎉 Done`.
 - Real Trello story closed with validated implementation evidence: `https://trello.com/c/1cBjEupB`.
+- 2026-06-02 post-sprint remote deployment — both versioned migrations (`home_remote_feed_foundation`, `restaurant_details_remote_catalog`) were applied to the live project `flowdelivery-app` (ref `kvbahsdjmhpukzmdttvq`) via Supabase MCP `apply_migration`; previously the remote project had zero migrations/tables and the app was rendering Home from the fixture fallback only.
+- All six `public` tables now exist with RLS enabled and deterministic seed counts (categories 5, restaurants 4, links 8, promotions 1, menu categories 4, menu items 4); security advisors reported no missing-RLS issues on the new tables.
+- Catalog seed coverage is partial by design: only `burger_artisan_collective` has menu items, so other restaurants resolve to the localized empty catalog state. Deployment runbook recorded in `docs/setup/SUPABASE_SETUP.md` and governance evidence in `docs/project-management/SPRINT_5.md`.
 
 ## Feature
 

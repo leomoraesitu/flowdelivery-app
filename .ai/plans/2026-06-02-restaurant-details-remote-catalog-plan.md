@@ -477,6 +477,16 @@ Validated evidence:
 - Added a closure evidence comment and moved the card to `🎉 Done`.
 - `flutter test test/app/project_management/trello_guard_checklists_test.dart` and the consolidated 49-test matrix: green.
 
+## Post-Sprint Remote Deployment
+
+The implementation was validated against transaction-scoped smoke tests during the sprint, but the shared remote project was left unchanged. On 2026-06-02, both migrations were applied to the live project so the app can exercise the remote path end-to-end:
+
+- Applied `home_remote_feed_foundation` then `restaurant_details_remote_catalog` to `flowdelivery-app` (ref `kvbahsdjmhpukzmdttvq`) via Supabase MCP `apply_migration`.
+- `list_migrations` and `list_tables` confirm both migrations and all six RLS-enabled `public` tables with deterministic seed counts (categories 5, restaurants 4, links 8, promotions 1, menu categories 4, menu items 4).
+- Security advisors reported no missing-RLS issues on the new tables.
+- Seed coverage is partial by design: only `burger_artisan_collective` carries menu items; other restaurants resolve to the localized empty catalog state.
+- Runbook recorded in `docs/setup/SUPABASE_SETUP.md` ("Remote Schema Deployment"); governance evidence in `docs/project-management/SPRINT_5.md` ("Post-Sprint Remote Deployment").
+
 ## Acceptance Criteria
 
 - [x] Authenticated users can open `/restaurants/:restaurantId` from a Home restaurant card.

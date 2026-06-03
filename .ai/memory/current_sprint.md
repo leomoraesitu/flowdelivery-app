@@ -43,6 +43,7 @@ Closed.
 - Task 9 completed — focused UI regression coverage for restaurant-details browsing and Home navigation; Tasks 7-9 committed task-by-task (`0ee841a`, `a123a29`, `d0590fd`); consolidated guard matrix passed with 49 tests.
 - Task 10 completed — Sprint 5 docs, plan, feature/sprint memory, and the real Trello card were reconciled after verified parity. Six previously-incomplete card items were completed against real evidence; the card is fully checked and moved to `🎉 Done`.
 - Real Trello story closed with validated implementation evidence: `https://trello.com/c/1cBjEupB`.
+- 2026-06-02 post-sprint remote deployment — both versioned migrations were applied to the live project `flowdelivery-app` (ref `kvbahsdjmhpukzmdttvq`) via Supabase MCP `apply_migration`. `list_migrations`/`list_tables` confirm both migrations and all six RLS-enabled `public` tables with deterministic seed counts (categories 5, restaurants 4, links 8, promotions 1, menu categories 4, menu items 4). Catalog seeds cover only `burger_artisan_collective`; other restaurants resolve to the localized empty catalog state. Runbook in `docs/setup/SUPABASE_SETUP.md`; governance evidence in `docs/project-management/SPRINT_5.md`.
 
 ## Sprint
 

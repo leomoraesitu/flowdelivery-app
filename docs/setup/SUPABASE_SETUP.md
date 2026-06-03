@@ -105,6 +105,44 @@ uninitialized SDK is treated as a startup wiring error.
 
 Sprint 0 documents the setup contract. Schema migrations and policies can be created in later tasks.
 
+## Remote Schema Deployment
+
+The repository keeps versioned migrations under `supabase/migrations/`. As of
+2026-06-02 the following migrations are applied to the active remote project
+`flowdelivery-app` (ref `kvbahsdjmhpukzmdttvq`, region `us-west-2`):
+
+```text
+home_remote_feed_foundation        (restaurant_categories, restaurants,
+                                    restaurant_category_links, home_promotions)
+restaurant_details_remote_catalog  (restaurant_menu_categories,
+                                    restaurant_menu_items)
+```
+
+Deployment facts recorded after applying both migrations via the Supabase MCP
+`apply_migration` tool:
+
+- Both migrations succeeded and are listed by `list_migrations`.
+- All six `public` tables exist with Row Level Security enabled.
+- Seed counts match the deterministic fixtures: `restaurant_categories` 5,
+  `restaurants` 4, `restaurant_category_links` 8, `home_promotions` 1,
+  `restaurant_menu_categories` 4, `restaurant_menu_items` 4.
+- Security advisors reported no missing-RLS issues on the new tables. The only
+  open advisory is an unrelated Auth-level `auth_leaked_password_protection`
+  warning.
+
+Read access is restricted to the `authenticated` role through explicit grants
+and authenticated read policies, so the app must be signed in before the Home
+feed and restaurant details load remote data.
+
+Catalog seed coverage is intentionally partial: only
+`burger_artisan_collective` has menu categories and items. The other seeded
+restaurants (`pasta_roma`, `sushi_zen`, `taco_harbor`) resolve to the localized
+empty catalog state until additional menu seeds are added.
+
+Migration application order matters: apply `home_remote_feed_foundation` before
+`restaurant_details_remote_catalog`, because the catalog tables reference
+`public.restaurants`.
+
 ## Manual QA - Recovery Email Deliverability (Non-local Mailbox)
 
 Use this checklist when validating password-recovery email delivery in a QA
