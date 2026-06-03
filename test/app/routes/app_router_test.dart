@@ -10,6 +10,10 @@ import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.d
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/viewmodels/auth_view_model.dart';
 import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
+import 'package:flowdelivery_app/features/product_details/domain/entities/product_details.dart';
+import 'package:flowdelivery_app/features/product_details/domain/repositories/product_details_repository.dart';
+import 'package:flowdelivery_app/features/product_details/presentation/pages/product_details_page.dart';
+import 'package:flowdelivery_app/features/product_details/presentation/providers/product_details_providers.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_details.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_category.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_item.dart';
@@ -87,6 +91,21 @@ class _FakeRestaurantDetailsRepository implements RestaurantDetailsRepository {
   }
 }
 
+class _FakeProductDetailsRepository implements ProductDetailsRepository {
+  @override
+  Future<ProductDetails?> getProductDetails(String productId) async {
+    return ProductDetails(
+      id: productId,
+      restaurantId: 'restaurant-123',
+      categoryId: 'popular',
+      name: 'Classic Burger',
+      description: 'Beef, cheese, and house sauce.',
+      imageAssetPath: 'assets/images/menu/classic_burger.png',
+      priceInCents: 2890,
+    );
+  }
+}
+
 void main() {
   testWidgets('redirects unauthenticated users to sign-in route', (
     tester,
@@ -128,47 +147,48 @@ void main() {
     expect(find.byType(ForgotPasswordPage), findsOneWidget);
   });
 
-  testWidgets('redirects unauthenticated users away from restaurant details route', (
-    tester,
-  ) async {
-    late GoRouter router;
+  testWidgets(
+    'redirects unauthenticated users away from restaurant details route',
+    (tester) async {
+      late GoRouter router;
 
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          authRepositoryProvider.overrideWithValue(_FakeAuthRepository()),
-          restaurantDetailsRepositoryProvider.overrideWithValue(
-            _FakeRestaurantDetailsRepository(),
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            authRepositoryProvider.overrideWithValue(_FakeAuthRepository()),
+            restaurantDetailsRepositoryProvider.overrideWithValue(
+              _FakeRestaurantDetailsRepository(),
+            ),
+          ],
+          child: Consumer(
+            builder: (context, ref, child) {
+              router = ref.watch(appRouterProvider);
+              return MaterialApp.router(
+                routerConfig: router,
+                locale: const Locale('pt', 'BR'),
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: AppLocalizations.supportedLocales,
+              );
+            },
           ),
-        ],
-        child: Consumer(
-          builder: (context, ref, child) {
-            router = ref.watch(appRouterProvider);
-            return MaterialApp.router(
-              routerConfig: router,
-              locale: const Locale('pt', 'BR'),
-              localizationsDelegates: const [
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: AppLocalizations.supportedLocales,
-            );
-          },
         ),
-      ),
-    );
+      );
 
-    router.goNamed(
-      AppRoutes.restaurantDetailsName,
-      pathParameters: {'restaurantId': 'restaurant-123'},
-    );
-    await tester.pumpAndSettle();
+      router.goNamed(
+        AppRoutes.restaurantDetailsName,
+        pathParameters: {'restaurantId': 'restaurant-123'},
+      );
+      await tester.pumpAndSettle();
 
-    expect(router.state.uri.path, AppRoutes.signInPath);
-    expect(find.byType(SignInPage), findsOneWidget);
-  });
+      expect(router.state.uri.path, AppRoutes.signInPath);
+      expect(find.byType(SignInPage), findsOneWidget);
+    },
+  );
 
   testWidgets('allows unauthenticated users to reach reset-password route', (
     tester,
@@ -293,6 +313,107 @@ void main() {
     expect(router.state.uri.path, '/restaurants/restaurant-123');
     expect(find.byType(RestaurantDetailsPage), findsOneWidget);
   });
+
+  testWidgets('allows authenticated users to open product details route', (
+    tester,
+  ) async {
+    late GoRouter router;
+    final fakeRepository = _FakeAuthRepository();
+    final authViewModel = AuthViewModel(authRepository: fakeRepository);
+
+    await authViewModel.signInWithEmailAndPassword(
+      email: 'user@example.com',
+      password: 'password123',
+    );
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(fakeRepository),
+          authViewModelProvider.overrideWith((ref) => authViewModel),
+          productDetailsRepositoryProvider.overrideWithValue(
+            _FakeProductDetailsRepository(),
+          ),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            router = ref.watch(appRouterProvider);
+            return MaterialApp.router(
+              routerConfig: router,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
+        ),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    router.goNamed(
+      AppRoutes.productDetailsName,
+      pathParameters: {
+        'restaurantId': 'restaurant-123',
+        'productId': 'burger-1',
+      },
+    );
+    await tester.pumpAndSettle();
+
+    expect(
+      router.state.uri.path,
+      '/restaurants/restaurant-123/products/burger-1',
+    );
+    expect(find.byType(ProductDetailsPage), findsOneWidget);
+  });
+
+  testWidgets(
+    'redirects unauthenticated users away from product details route',
+    (tester) async {
+      late GoRouter router;
+
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            authRepositoryProvider.overrideWithValue(_FakeAuthRepository()),
+          ],
+          child: Consumer(
+            builder: (context, ref, child) {
+              router = ref.watch(appRouterProvider);
+              return MaterialApp.router(
+                routerConfig: router,
+                locale: const Locale('pt', 'BR'),
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: AppLocalizations.supportedLocales,
+              );
+            },
+          ),
+        ),
+      );
+
+      router.goNamed(
+        AppRoutes.productDetailsName,
+        pathParameters: {
+          'restaurantId': 'restaurant-123',
+          'productId': 'burger-1',
+        },
+      );
+      await tester.pumpAndSettle();
+
+      expect(router.state.uri.path, AppRoutes.signInPath);
+      expect(find.byType(SignInPage), findsOneWidget);
+    },
+  );
 
   testWidgets('keeps authenticated recovery sessions on reset-password route', (
     tester,

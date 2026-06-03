@@ -9,11 +9,13 @@ class RestaurantDetailsPage extends ConsumerWidget {
   const RestaurantDetailsPage({
     required this.restaurantId,
     this.onBack,
+    this.onProductSelected,
     super.key,
   });
 
   final String restaurantId;
   final VoidCallback? onBack;
+  final ValueChanged<String>? onProductSelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -51,6 +53,7 @@ class RestaurantDetailsPage extends ConsumerWidget {
                           ).notifier,
                         )
                         .selectCategory,
+                    onProductSelected: onProductSelected,
                   );
                 },
                 error: (error, stackTrace) {
