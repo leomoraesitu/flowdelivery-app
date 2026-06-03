@@ -38,6 +38,45 @@ void main() {
       );
     });
 
+    test(
+      'parses a seeded non-burger product from a Supabase row payload',
+      () async {
+        final datasource = SupabaseProductDetailsRemoteDatasource(
+          client: _testClient,
+          productRowLoader: (_) async => {
+            'id': 'sushi_zen_omakase_sampler',
+            'restaurant_id': 'sushi_zen',
+            'category_id': 'popular',
+            'name': 'Omakase Sampler',
+            'description':
+                'Chef-selected nigiri and rolls with seasonal garnish and soy.',
+            'image_asset_path':
+                'assets/images/branding/logo-flowdelivery-light.png',
+            'price_in_cents': 2490,
+          },
+        );
+
+        final product = await datasource.getProductDetails(
+          'sushi_zen_omakase_sampler',
+        );
+
+        expect(
+          product,
+          const ProductDetailsDto(
+            id: 'sushi_zen_omakase_sampler',
+            restaurantId: 'sushi_zen',
+            categoryId: 'popular',
+            name: 'Omakase Sampler',
+            description:
+                'Chef-selected nigiri and rolls with seasonal garnish and soy.',
+            imageAssetPath:
+                'assets/images/branding/logo-flowdelivery-light.png',
+            priceInCents: 2490,
+          ),
+        );
+      },
+    );
+
     test('returns null when the product does not exist', () async {
       final datasource = SupabaseProductDetailsRemoteDatasource(
         client: _testClient,

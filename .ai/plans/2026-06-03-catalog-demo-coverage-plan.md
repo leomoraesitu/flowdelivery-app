@@ -76,7 +76,7 @@ No app feature boundary should change unless validation proves a real mismatch i
 - [x] Task 1 - audit current seed baseline and expected counts (remote Supabase read-only SELECT confirmed 4 Home restaurants; only `burger_artisan_collective` has 4 menu categories and 4 menu items, 2026-06-03).
 - [x] Task 2 - add deterministic catalog seed migration (`supabase/migrations/20260603183000_catalog_demo_coverage.sql`; 9 categories + 12 items for `pasta_roma`, `sushi_zen`, and `taco_harbor`; rollback smoke passed without persisting data, 2026-06-03).
 - [x] Task 3 - validate SQL, RLS/read-only behavior, and datasource compatibility.
-- [ ] Task 4 - add or update focused regression coverage for multi-restaurant catalog/product loading.
+- [x] Task 4 - add or update focused regression coverage for multi-restaurant catalog/product loading.
 - [ ] Task 5 - reconcile docs, memory, technical debt, and Trello after validation.
 
 ## Validation Evidence
@@ -90,6 +90,7 @@ No app feature boundary should change unless validation proves a real mismatch i
 - Task 3: Datasource-shaped SQL confirmed categories/items load by `restaurant_id` and a seeded non-burger product (`sushi_zen_omakase_sampler`) loads by `id` with the columns expected by the existing datasources.
 - Task 3: Supabase security advisors reported no new table/RLS issue; the only warning remains the unrelated Auth-level `auth_leaked_password_protection` advisory.
 - Trello: real card `https://trello.com/c/TLHgmJ02` was updated with Task 1 and Task 2 evidence; Task 3 evidence still needs real-card reconciliation in the governance task after focused regression coverage exists.
+- Task 4: Focused datasource regression coverage added for a non-burger `pasta_roma` restaurant catalog and the seeded non-burger product `sushi_zen_omakase_sampler`; the focused datasource test matrix passed with 8 tests, and Dart MCP analysis reported no errors for the touched test files.
 
 ## Implementation Tasks
 

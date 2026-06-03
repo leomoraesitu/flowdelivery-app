@@ -6,14 +6,14 @@ Catalog Demo Coverage (Sprint 7 — Planned / Approved)
 
 ## Active Status
 
-Sprint 7 is in progress (2026-06-03). The slice expands deterministic catalog seed coverage for the existing Home restaurants so the validated read-only browsing flow works convincingly across `burger_artisan_collective`, `pasta_roma`, `sushi_zen`, and `taco_harbor`. Tasks 1-3 are complete; the new seed migration has been applied permanently to the active remote Supabase project and read-only contracts passed focused validation.
+Sprint 7 is in progress (2026-06-03). The slice expands deterministic catalog seed coverage for the existing Home restaurants so the validated read-only browsing flow works convincingly across `burger_artisan_collective`, `pasta_roma`, `sushi_zen`, and `taco_harbor`. Tasks 1-4 are complete; the new seed migration has been applied permanently to the active remote Supabase project, read-only contracts passed focused validation, and datasource regression coverage now proves non-burger catalog/product parsing.
 
 ## Sprint 7 Planned Work
 
 - Task 1 — audit current seed baseline and expected target counts. Completed: remote baseline confirmed 4 Home restaurants, with menu coverage only for `burger_artisan_collective` (4 categories, 4 items).
 - Task 2 — add a dedicated catalog demo seed migration for `pasta_roma`, `sushi_zen`, and `taco_harbor`. Completed: `supabase/migrations/20260603183000_catalog_demo_coverage.sql` adds 9 categories and 12 items and passed rollback smoke validation.
 - Task 3 — validate Supabase read contracts, RLS/grants, and datasource compatibility. Completed: remote migration `catalog_demo_coverage` applied, all four Home restaurants now have non-empty menu data, RLS/grants remain read-only for `authenticated` and denied to `anon`, and datasource-shaped queries load categories/items by `restaurant_id` plus product details by `id`.
-- Task 4 — add focused multi-restaurant catalog/product regression coverage where existing tests do not prove the expanded data path.
+- Task 4 — add focused multi-restaurant catalog/product regression coverage where existing tests do not prove the expanded data path. Completed: datasource tests now cover a non-burger `pasta_roma` restaurant catalog and the seeded non-burger product `sushi_zen_omakase_sampler`.
 - Task 5 — reconcile docs, memory, technical debt, and Trello after validation evidence exists.
 
 ## Architecture Notes (Sprint 7)
@@ -31,7 +31,7 @@ Sprint 7 is in progress (2026-06-03). The slice expands deterministic catalog se
 
 ## Next Steps
 
-- Execute Sprint 7 Task 4 next: add focused multi-restaurant catalog/product regression coverage where existing tests do not prove the expanded data path.
+- Execute Sprint 7 Task 5 next: reconcile docs, memory, technical debt, and Trello after validation evidence exists.
 - Keep the implementation data-first and reversible.
 - Do not mark final acceptance criteria complete until focused regression coverage and governance reconciliation are complete.
 

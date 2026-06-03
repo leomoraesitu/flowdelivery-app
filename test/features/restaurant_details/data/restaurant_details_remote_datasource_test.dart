@@ -89,6 +89,115 @@ void main() {
       ]);
     });
 
+    test('aggregates a non-burger restaurant catalog from seeded payloads', () async {
+      final datasource = SupabaseRestaurantDetailsRemoteDatasource(
+        client: _testClient,
+        restaurantRowLoader: (_) async => {
+          'id': 'pasta_roma',
+          'name': 'Pasta Roma',
+          'image_asset_path':
+              'assets/images/branding/logo-flowdelivery-light.png',
+          'rating': 4.7,
+          'delivery_time_min_minutes': 30,
+          'delivery_time_max_minutes': 40,
+          'cuisine': 'italian',
+        },
+        categoryRowsLoader: (_) async => [
+          {'restaurant_id': 'pasta_roma', 'id': 'popular', 'sort_order': 0},
+          {'restaurant_id': 'pasta_roma', 'id': 'pastas', 'sort_order': 1},
+          {'restaurant_id': 'pasta_roma', 'id': 'salads', 'sort_order': 2},
+        ],
+        itemRowsLoader: (_) async => [
+          {
+            'id': 'pasta_roma_truffle_tagliatelle',
+            'restaurant_id': 'pasta_roma',
+            'category_id': 'pastas',
+            'name': 'Truffle Tagliatelle',
+            'description':
+                'Fresh tagliatelle with parmesan cream, mushrooms, and truffle oil.',
+            'image_asset_path':
+                'assets/images/branding/logo-flowdelivery-light.png',
+            'price_in_cents': 1720,
+            'sort_order': 0,
+          },
+          {
+            'id': 'pasta_roma_pomodoro_rigatoni',
+            'restaurant_id': 'pasta_roma',
+            'category_id': 'pastas',
+            'name': 'Pomodoro Rigatoni',
+            'description':
+                'Rigatoni tossed with San Marzano tomato sauce, garlic, and basil.',
+            'image_asset_path':
+                'assets/images/branding/logo-flowdelivery-light.png',
+            'price_in_cents': 1390,
+            'sort_order': 1,
+          },
+          {
+            'id': 'pasta_roma_nonna_lasagna',
+            'restaurant_id': 'pasta_roma',
+            'category_id': 'popular',
+            'name': 'Nonna Lasagna',
+            'description':
+                'Layered pasta with slow-cooked beef ragu, mozzarella, and basil.',
+            'image_asset_path':
+                'assets/images/branding/logo-flowdelivery-light.png',
+            'price_in_cents': 1680,
+            'sort_order': 0,
+          },
+          {
+            'id': 'pasta_roma_caprese_salad',
+            'restaurant_id': 'pasta_roma',
+            'category_id': 'salads',
+            'name': 'Caprese Salad',
+            'description':
+                'Fresh mozzarella, tomatoes, basil, olive oil, and balsamic glaze.',
+            'image_asset_path':
+                'assets/images/branding/logo-flowdelivery-light.png',
+            'price_in_cents': 980,
+            'sort_order': 0,
+          },
+        ],
+      );
+
+      final payload = await datasource.getRestaurantDetails('pasta_roma');
+
+      expect(
+        payload.restaurant,
+        const RestaurantDetailsDto(
+          id: 'pasta_roma',
+          name: 'Pasta Roma',
+          imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+          rating: 4.7,
+          deliveryTimeMinMinutes: 30,
+          deliveryTimeMaxMinutes: 40,
+          cuisine: 'italian',
+        ),
+      );
+      expect(payload.categories, const [
+        RestaurantMenuCategoryDto(
+          restaurantId: 'pasta_roma',
+          id: 'popular',
+          sortOrder: 0,
+        ),
+        RestaurantMenuCategoryDto(
+          restaurantId: 'pasta_roma',
+          id: 'pastas',
+          sortOrder: 1,
+        ),
+        RestaurantMenuCategoryDto(
+          restaurantId: 'pasta_roma',
+          id: 'salads',
+          sortOrder: 2,
+        ),
+      ]);
+      expect(payload.items.map((item) => item.id), [
+        'pasta_roma_truffle_tagliatelle',
+        'pasta_roma_pomodoro_rigatoni',
+        'pasta_roma_nonna_lasagna',
+        'pasta_roma_caprese_salad',
+      ]);
+    });
+
     test('throws a remote exception when the restaurant does not exist', () {
       final datasource = SupabaseRestaurantDetailsRemoteDatasource(
         client: _testClient,
