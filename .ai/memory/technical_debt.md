@@ -151,18 +151,18 @@ Notes:
 ### Product details slice — seed coverage and accepted minor debts (Sprint 6 / Sprint 7)
 
 Status:
-Selected Planned Slice / Monitoring
+Resolved / Monitoring
 
 Impact:
 Low
 
 Notes:
-- Partial catalog seed: only `burger_artisan_collective` has rows in `restaurant_menu_items`, so product deep links for other restaurants resolve to the localized not-found state. This is by-design demo behavior, not a regression — classified as Planned Scope. Promote to a product slice when broader seed/data is approved.
-- Sprint 7 has been approved as `Catalog Demo Coverage` to address the seed coverage item through deterministic data expansion for `pasta_roma`, `sushi_zen`, and `taco_harbor`. Keep this item in monitoring until the migration, SQL smoke validation, focused regression coverage, and documentation reconciliation are complete.
-- Sprint 7 Tasks 1-2 are complete: the baseline was audited against remote Supabase and `supabase/migrations/20260603183000_catalog_demo_coverage.sql` was created with deterministic idempotent seeds for the three unseeded restaurants. Rollback smoke validation passed, but the data has not been applied permanently yet, so the item remains active monitoring.
+- Partial catalog seed is resolved for the existing Home restaurants. Sprint 7 applied deterministic catalog seeds for `pasta_roma`, `sushi_zen`, and `taco_harbor`, while preserving `burger_artisan_collective`.
+- Final remote counts are 13 menu categories and 16 menu items: `burger_artisan_collective` remains 4 categories/4 items; `pasta_roma`, `sushi_zen`, and `taco_harbor` each have 3 categories and 4 items.
+- Focused datasource regression coverage validates a non-burger `pasta_roma` catalog payload and seeded non-burger product `sushi_zen_omakase_sampler`; governance/Trello evidence was reconciled when Sprint 7 closed.
 - Finding D (accepted): price formatting (`_formatPrice`, `NumberFormat` by locale) is duplicated between `lib/features/restaurant_details/presentation/widgets/restaurant_details_sections.dart` and `lib/features/product_details/presentation/widgets/product_details_sections.dart`. Extract to `lib/shared/` only if a third consumer appears, to avoid premature refactor.
 - Finding C (accepted): the route `restaurantId` in `/restaurants/:restaurantId/products/:productId` is used only for back navigation/protection; the product loads by `productId` (PK) alone, so a mismatched `restaurantId` still resolves the product. No cross-integrity validation in this read-only slice.
-- After Sprint 7 validation, reclassify the seed item to resolved/monitoring if all existing seeded restaurants have non-empty catalogs and product details coverage. Reclassify to Technical Debt only if not-found-on-real-data starts affecting approved demo/QA scope after Sprint 7.
+- Reclassify to Technical Debt only if not-found-on-real-data starts affecting approved demo/QA scope after future catalog changes.
 
 ## Rules
 

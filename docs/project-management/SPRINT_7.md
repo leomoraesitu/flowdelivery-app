@@ -10,7 +10,7 @@ Reference plan:
 
 ## Status
 
-In Progress.
+Closed (2026-06-03).
 
 ## Sprint Goal
 
@@ -34,8 +34,8 @@ Make Home -> restaurant details -> product details feel complete for every exist
 - [x] Audit current seed baseline and expected target counts.
 - [x] Add deterministic catalog demo seed migration.
 - [x] Validate Supabase read contracts, RLS, grants, and datasource compatibility.
-- [ ] Add focused multi-restaurant catalog/product regression coverage.
-- [ ] Reconcile docs, memory, technical debt, and Trello after validation.
+- [x] Add focused multi-restaurant catalog/product regression coverage.
+- [x] Reconcile docs, memory, technical debt, and Trello after validation.
 
 ## Current Progress
 
@@ -45,17 +45,20 @@ Make Home -> restaurant details -> product details feel complete for every exist
 - Task 3 completed — Supabase MCP applied remote migration `catalog_demo_coverage` to project `kvbahsdjmhpukzmdttvq`; migration history now includes `20260603184708 catalog_demo_coverage`.
 - Task 3 validation passed — remote catalog counts are now 13 categories and 16 items; every existing Home restaurant has non-empty catalog data, `burger_artisan_collective` remains 4 categories/4 items, RLS remains enabled, `authenticated` retains read-only access, `anon` remains denied, and datasource-shaped queries load categories/items by `restaurant_id` plus a seeded non-burger product by `id`.
 - Task 3 security validation passed — Supabase security advisors reported no new table/RLS issue; the only warning remains the unrelated Auth-level `auth_leaked_password_protection` advisory.
-- Real Trello card `https://trello.com/c/TLHgmJ02` was updated with Task 1 and Task 2 evidence. Task 3 evidence still needs real-card reconciliation in the governance task after focused regression coverage exists.
+- Task 4 completed — focused datasource regression coverage now proves a non-burger `pasta_roma` catalog payload and seeded non-burger product `sushi_zen_omakase_sampler` parse through the existing datasource contracts.
+- Task 4 validation passed — Dart MCP `run_tests` for the restaurant-details and product-details datasource suites passed with 8 tests; Dart MCP `analyze_files` reported no errors for the touched test files.
+- Task 5 completed — docs, feature/sprint memory, technical-debt monitoring, and the real Trello card were reconciled after final validation evidence.
+- Task 5 validation passed — transaction-scoped Supabase read confirmed final catalog counts (13 categories, 16 items); Trello Guard passed; `git diff --check` reported no errors; real Trello checklist parity was confirmed and the card was moved to `🎉 Done`.
 
 ## Acceptance Criteria
 
 - [x] Existing `burger_artisan_collective` behavior remains unchanged after definitive validation/application.
 - [x] `pasta_roma`, `sushi_zen`, and `taco_harbor` each have non-empty menu categories and menu items.
-- [ ] Restaurant details can render a non-empty catalog for each existing Home restaurant.
-- [ ] Product details can load seeded products from non-burger restaurants by stable product ID.
+- [x] Restaurant details can render a non-empty catalog for each existing Home restaurant.
+- [x] Product details can load seeded products from non-burger restaurants by stable product ID.
 - [x] Supabase access remains read-only for authenticated clients and denied to `anon` as designed.
-- [ ] No cart, checkout, customization, variants, add-ons, quantity, favorites, sharing, Storage, or Realtime behavior is introduced.
-- [ ] Focused tests, SQL smoke validation, and guard checks pass.
+- [x] No cart, checkout, customization, variants, add-ons, quantity, favorites, sharing, Storage, or Realtime behavior is introduced.
+- [x] Focused tests, SQL smoke validation, and guard checks pass.
 
 ## Dependencies
 
@@ -68,15 +71,15 @@ Make Home -> restaurant details -> product details feel complete for every exist
 
 ## Localization Guard Checklist
 
-- [ ] No new user-facing copy is expected.
-- [ ] If copy becomes necessary, every string must be added through ARB + `AppLocalizations`.
-- [ ] Hardcoded-copy, ARB parity, and generated freshness guards remain green if localization changes.
+- [x] No new user-facing copy is expected.
+- [x] If copy becomes necessary, every string must be added through ARB + `AppLocalizations`.
+- [x] Hardcoded-copy, ARB parity, and generated freshness guards remain green if localization changes.
 
 ## Theme Guard Checklist
 
-- [ ] No visual changes are expected.
-- [ ] If UI changes become necessary, use semantic theme APIs and app tokens.
-- [ ] Visual hardcoded guard remains green if presentation files change.
+- [x] No visual changes are expected.
+- [x] If UI changes become necessary, use semantic theme APIs and app tokens.
+- [x] Visual hardcoded guard remains green if presentation files change.
 
 ## Validation Plan
 

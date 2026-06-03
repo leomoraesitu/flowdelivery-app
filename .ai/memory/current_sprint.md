@@ -2,11 +2,11 @@
 
 ## Active Sprint
 
-Sprint 7 - Catalog Demo Coverage (In Progress)
+Sprint 7 - Catalog Demo Coverage (Closed)
 
 ## Active Status
 
-In progress (2026-06-03). Tasks 1-2 are complete. Sprint 7 focuses on deterministic catalog demo seed coverage for the existing Home restaurants, preserving the validated read-only browsing architecture from Sprints 5 and 6. The local seed migration has passed rollback smoke validation but has not been applied permanently yet.
+Closed (2026-06-03). Sprint 7 expanded deterministic catalog demo seed coverage for the existing Home restaurants while preserving the validated read-only browsing architecture from Sprints 5 and 6. The remote Supabase project now has catalog coverage for all four existing Home restaurants, focused datasource regressions cover non-burger catalog/product parsing, and the real Trello card is reconciled.
 
 ## Sprint 7 Goal
 
@@ -30,16 +30,20 @@ Make Home -> restaurant details -> product details feel complete for every exist
 
 - [x] Task 1 — audit current seed baseline and expected target counts.
 - [x] Task 2 — add deterministic catalog demo seed migration.
-- [ ] Task 3 — validate Supabase read contracts, RLS/grants, and datasource compatibility.
-- [ ] Task 4 — add focused multi-restaurant catalog/product regression coverage.
-- [ ] Task 5 — reconcile docs, memory, technical debt, and Trello after validation.
+- [x] Task 3 — validate Supabase read contracts, RLS/grants, and datasource compatibility.
+- [x] Task 4 — add focused multi-restaurant catalog/product regression coverage.
+- [x] Task 5 — reconcile docs, memory, technical debt, and Trello after validation.
 
 ## Sprint 7 Progress
 
 - Task 1 completed — local migrations and Supabase MCP read-only queries confirmed all four existing Home restaurants are present, while only `burger_artisan_collective` has current menu coverage (4 categories and 4 items).
 - Task 2 completed — `supabase/migrations/20260603183000_catalog_demo_coverage.sql` now adds deterministic idempotent seeds for `pasta_roma`, `sushi_zen`, and `taco_harbor` (9 categories and 12 items total).
 - Task 2 validation passed — `git diff --check` reported no errors; Supabase MCP executed the migration SQL in a rollback transaction without persisting data; post-rollback checks confirmed the remote baseline stayed unchanged.
-- Real Trello card `https://trello.com/c/TLHgmJ02` was updated with evidence for Tasks 1-2. Implementation-dependent validation/acceptance items remain open until Task 3.
+- Task 3 completed — remote migration `catalog_demo_coverage` was applied to project `kvbahsdjmhpukzmdttvq`; RLS/grants remained read-only for `authenticated` and denied to `anon`; datasource-shaped reads returned categories/items by `restaurant_id` and product details by `id`.
+- Task 4 completed — datasource regression coverage now covers a non-burger `pasta_roma` catalog payload and the seeded non-burger product `sushi_zen_omakase_sampler`.
+- Task 5 completed — docs, memory, technical debt, and Trello were reconciled after final validation evidence.
+- Final validation — transaction-scoped Supabase read confirmed final catalog counts (13 categories, 16 items); Dart MCP datasource tests passed with 8 tests; Dart MCP analysis reported no errors; Trello Guard passed; `git diff --check` passed.
+- Real Trello card `https://trello.com/c/TLHgmJ02` is reconciled with validated evidence and moved to `🎉 Done`.
 
 ## Sprint 7 Out of Scope
 

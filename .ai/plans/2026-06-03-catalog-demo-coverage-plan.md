@@ -77,7 +77,7 @@ No app feature boundary should change unless validation proves a real mismatch i
 - [x] Task 2 - add deterministic catalog seed migration (`supabase/migrations/20260603183000_catalog_demo_coverage.sql`; 9 categories + 12 items for `pasta_roma`, `sushi_zen`, and `taco_harbor`; rollback smoke passed without persisting data, 2026-06-03).
 - [x] Task 3 - validate SQL, RLS/read-only behavior, and datasource compatibility.
 - [x] Task 4 - add or update focused regression coverage for multi-restaurant catalog/product loading.
-- [ ] Task 5 - reconcile docs, memory, technical debt, and Trello after validation.
+- [x] Task 5 - reconcile docs, memory, technical debt, and Trello after validation.
 
 ## Validation Evidence
 
@@ -91,6 +91,7 @@ No app feature boundary should change unless validation proves a real mismatch i
 - Task 3: Supabase security advisors reported no new table/RLS issue; the only warning remains the unrelated Auth-level `auth_leaked_password_protection` advisory.
 - Trello: real card `https://trello.com/c/TLHgmJ02` was updated with Task 1 and Task 2 evidence; Task 3 evidence still needs real-card reconciliation in the governance task after focused regression coverage exists.
 - Task 4: Focused datasource regression coverage added for a non-burger `pasta_roma` restaurant catalog and the seeded non-burger product `sushi_zen_omakase_sampler`; the focused datasource test matrix passed with 8 tests, and Dart MCP analysis reported no errors for the touched test files.
+- Task 5: Governance reconciliation completed after final validation. A transaction-scoped Supabase read confirmed final catalog counts (13 categories, 16 items); focused datasource tests remained green (8 tests); Trello Guard passed; `git diff --check` passed; the real Trello card `https://trello.com/c/TLHgmJ02` reached checklist parity and was moved to `🎉 Done`.
 
 ## Implementation Tasks
 
@@ -290,14 +291,14 @@ Applicable skills:
 
 ## Acceptance Criteria
 
-- [ ] Existing `burger_artisan_collective` catalog behavior remains unchanged.
-- [ ] `pasta_roma`, `sushi_zen`, and `taco_harbor` each have deterministic menu categories and items.
-- [ ] Restaurant details loads non-empty catalogs for all existing restaurants.
-- [ ] Product details loads seeded non-burger products by stable product ID.
-- [ ] Supabase remains read-only for authenticated clients and inaccessible to `anon` where previously denied.
-- [ ] No new UI copy, hardcoded visual values, or business logic is introduced without guard validation.
-- [ ] Focused tests and SQL smoke validation pass.
-- [ ] Docs, memory, technical debt, and Trello evidence are reconciled only after validation.
+- [x] Existing `burger_artisan_collective` catalog behavior remains unchanged.
+- [x] `pasta_roma`, `sushi_zen`, and `taco_harbor` each have deterministic menu categories and items.
+- [x] Restaurant details loads non-empty catalogs for all existing restaurants.
+- [x] Product details loads seeded non-burger products by stable product ID.
+- [x] Supabase remains read-only for authenticated clients and inaccessible to `anon` where previously denied.
+- [x] No new UI copy, hardcoded visual values, or business logic is introduced without guard validation.
+- [x] Focused tests and SQL smoke validation pass.
+- [x] Docs, memory, technical debt, and Trello evidence are reconciled only after validation.
 
 ## Risks
 
