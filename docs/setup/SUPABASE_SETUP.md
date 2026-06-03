@@ -108,7 +108,7 @@ Sprint 0 documents the setup contract. Schema migrations and policies can be cre
 ## Remote Schema Deployment
 
 The repository keeps versioned migrations under `supabase/migrations/`. As of
-2026-06-02 the following migrations are applied to the active remote project
+2026-06-03 the following migrations are applied to the active remote project
 `flowdelivery-app` (ref `kvbahsdjmhpukzmdttvq`, region `us-west-2`):
 
 ```text
@@ -116,16 +116,18 @@ home_remote_feed_foundation        (restaurant_categories, restaurants,
                                     restaurant_category_links, home_promotions)
 restaurant_details_remote_catalog  (restaurant_menu_categories,
                                     restaurant_menu_items)
+catalog_demo_coverage              (deterministic menu categories/items for
+                                    pasta_roma, sushi_zen, and taco_harbor)
 ```
 
-Deployment facts recorded after applying both migrations via the Supabase MCP
+Deployment facts recorded after applying migrations via the Supabase MCP
 `apply_migration` tool:
 
-- Both migrations succeeded and are listed by `list_migrations`.
+- The migrations succeeded and are listed by `list_migrations`.
 - All six `public` tables exist with Row Level Security enabled.
 - Seed counts match the deterministic fixtures: `restaurant_categories` 5,
   `restaurants` 4, `restaurant_category_links` 8, `home_promotions` 1,
-  `restaurant_menu_categories` 4, `restaurant_menu_items` 4.
+  `restaurant_menu_categories` 13, `restaurant_menu_items` 16.
 - Security advisors reported no missing-RLS issues on the new tables. The only
   open advisory is an unrelated Auth-level `auth_leaked_password_protection`
   warning.
@@ -134,10 +136,9 @@ Read access is restricted to the `authenticated` role through explicit grants
 and authenticated read policies, so the app must be signed in before the Home
 feed and restaurant details load remote data.
 
-Catalog seed coverage is intentionally partial: only
-`burger_artisan_collective` has menu categories and items. The other seeded
-restaurants (`pasta_roma`, `sushi_zen`, `taco_harbor`) resolve to the localized
-empty catalog state until additional menu seeds are added.
+Catalog seed coverage now exists for all seeded Home restaurants:
+`burger_artisan_collective` has 4 categories and 4 items; `pasta_roma`,
+`sushi_zen`, and `taco_harbor` each have 3 categories and 4 items.
 
 Migration application order matters: apply `home_remote_feed_foundation` before
 `restaurant_details_remote_catalog`, because the catalog tables reference
