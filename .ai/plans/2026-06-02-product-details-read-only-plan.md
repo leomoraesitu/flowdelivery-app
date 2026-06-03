@@ -8,6 +8,25 @@ Reference prototype:
 
 - `docs/ux/prototypes/product-details.png`
 
+## Prototype Scope Mapping
+
+`product-details.png` depicts a full commerce/customization surface. This read-only slice renders only the upper, informational portion; every interactive commerce element is deferred. This table locks Task 6 against visual-parity scope creep — do not implement deferred rows just because they appear in the prototype.
+
+| Prototype element | This slice | Notes |
+| --- | --- | --- |
+| Hero image + back button | In scope (Task 6) | Reuse `restaurant_details` hero/back patterns and tokens. |
+| Product name + price | In scope | From `ProductDetails.name` / `priceInCents`. |
+| Description | In scope | From `ProductDetails.description`. |
+| Loading / error / not-found states | In scope | `null` → not-found, `AsyncError` → error. |
+| Favorite (❤) + Share icons | Deferred | Favorites and sharing are out of scope. |
+| "Choice of Protein" (required radios) | Deferred | Variants need a `product_options`-style table that does not exist; no new migration in this slice. |
+| "Add-ons" (priced checkboxes) | Deferred | Add-ons need the same missing table. |
+| "Special Instructions" field | Deferred | Order/customization state is out of scope. |
+| Quantity stepper (− 1 +) | Deferred | Quantity is out of scope. |
+| "Add to Cart • $XX" button | Deferred | Cart is out of scope. |
+
+Data implication: `ProductDetails` (id, restaurantId, categoryId, name, description, imageAssetPath, priceInCents) covers only the in-scope rows above. Protein/add-on options are intentionally unmodeled because no backing table exists and no migration is planned here.
+
 ## Architectural Context
 
 `product_details` is a dedicated Clean Architecture feature that mirrors the validated `restaurant_details` slice. Because the route is an authenticated deep link, the product must be loaded on demand by stable ID — the page cannot assume the restaurant catalog is already cached (cold start, web URL, app restart).
