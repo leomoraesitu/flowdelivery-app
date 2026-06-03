@@ -35,6 +35,16 @@ Layers and responsibilities:
 - Presentation: Riverpod family loads by product ID; UI renders localized loading/error/empty(not-found)/success states with semantic theme tokens; the catalog product card only delegates a stable product ID.
 - App: composition root wires datasource + repository + provider override; centralized GoRouter owns the nested protected route.
 
+## Governance Cross-Check (2026-06-02)
+
+This plan was validated against `.ai/context/*`, `.ai/agents/architect|senior_flutter_engineer/*`, ADRs `001-004`, and `.agents/skills/*`. Intentional divergences from illustrative docs are recorded here because the architect rule treats repository code as more authoritative than generated docs and requires calling out doc/implementation inconsistencies.
+
+- Folder convention follows the existing `restaurant_details` feature, not ADR-003's illustrative tree: `data/dtos/` (not `data/dto/`), `domain/entities/` (not `domain/models/`), `presentation/providers/` (no separate `viewmodels/` or `presentation/states/`). The codebase is the source of truth.
+- No dedicated ViewModel class. The slice is a read-only single load with no mutable orchestration (no category/quantity state), so a `FutureProvider.family` is sufficient and mirrors `restaurant_details`. ADR-003 explicitly warns against adding layers that do not remove real complexity.
+- Feature is named `product_details` (slice naming, following the `restaurant_details` precedent) rather than the `products` domain label in `architecture.md`.
+- No cross-feature coupling: `restaurant_details` only exposes an optional product-card callback that emits a stable `productId` string; navigation to `product_details` is wired in the app-layer router. `restaurant_details` must not import `product_details`, mirroring how Home delegates `restaurantId`.
+- Skills confirmed present in `.agents/skills/`: `dart-add-unit-test`, `dart-run-static-analysis`, `flutter-implement-json-serialization`, `flutter-setup-localization`, `flutter-add-widget-test`, `flutter-build-responsive-layout`, `flutter-setup-declarative-routing`, plus `flutter-apply-architecture-best-practices` for the architecture framing.
+
 ## Key Decisions and Tradeoffs
 
 - Nested route `/restaurants/:restaurantId/products/:productId` over a flat `/products/:productId`. The product lives inside a restaurant context, back-navigation is natural, and the path already starts with `/restaurants/` so the existing protected-route classifier in `app_router.dart` covers it without new redirect logic. Tradeoff: the page receives both IDs, but only `productId` keys the data load.
@@ -82,7 +92,7 @@ Responsibilities:
 
 Validation: focused domain test; focused analyze.
 
-Applicable skills: `dart-add-unit-test`, `dart-run-static-analysis`.
+Applicable skills: `flutter-apply-architecture-best-practices`, `dart-add-unit-test`, `dart-run-static-analysis`.
 
 ### Task 2: Add DTO and Remote Datasource
 
