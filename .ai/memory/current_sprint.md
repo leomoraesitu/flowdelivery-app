@@ -2,11 +2,85 @@
 
 ## Active Sprint
 
-Sprint 7 - Catalog Demo Coverage (Closed)
+Sprint 8 - Storage-Backed Catalog Media (Planned)
 
 ## Active Status
 
-Closed (2026-06-03). Sprint 7 expanded deterministic catalog demo seed coverage for the existing Home restaurants while preserving the validated read-only browsing architecture from Sprints 5 and 6. The remote Supabase project now has catalog coverage for all four existing Home restaurants, focused datasource regressions cover non-burger catalog/product parsing, and the real Trello card is reconciled.
+Planned on 2026-06-08 after architecture and media direction approval.
+Implementation has not started and remains blocked until explicit approval for
+each task.
+
+## Sprint 8 Goal
+
+Make Home -> restaurant details -> product details visually credible for all
+existing seeded entries by serving 4 restaurant covers and 16 product images
+from a public-read Supabase Storage bucket.
+
+## Sprint 8 Scope
+
+- AI-generate and review 20 realistic food-photography WebPs;
+- use 16:9 for restaurant covers and 1:1 for product images;
+- keep generated files versioned under `supabase/seed-assets/catalog/`, outside
+  the Flutter asset bundle;
+- create public bucket `catalog-media` with constrained catalog media settings;
+- keep Storage mutations outside Flutter;
+- update existing database rows to stable Storage object paths;
+- resolve public URLs in a shared data-layer service;
+- render local assets and remote images through a shared presentation widget;
+- integrate Home, restaurant details, and product details;
+- validate security, remote parity, loading/error behavior, guards, and the
+  complete read-only flow.
+
+## Sprint 8 Plan
+
+- `.ai/plans/2026-06-08-storage-backed-catalog-media-plan.md`
+- `docs/project-management/SPRINT_8.md`
+
+## Sprint 8 Backlog
+
+- [ ] Task 1 — lock the 20-object media manifest.
+- [ ] Task 2 — generate, curate, optimize, and version the media.
+- [ ] Task 3 — create and validate the Storage foundation.
+- [ ] Task 4 — upload and verify all objects.
+- [ ] Task 5 — migrate database rows to stable Storage paths.
+- [ ] Task 6 — add and compose the shared public-media resolver.
+- [ ] Task 7 — wire resolution into the three remote datasources.
+- [ ] Task 8 — add the shared renderer and update presentation.
+- [ ] Task 9 — validate the complete media flow and regressions.
+- [ ] Task 10 — reconcile governance and technical debt.
+
+## Sprint 8 Out of Scope
+
+- Home promotion media.
+- In-app upload/update/delete, private media, signed URLs, or service-role usage
+  in Flutter.
+- Responsive variants, transformations, blur hashes, or external CDN.
+- Renaming `image_asset_path`/`imageAssetPath`.
+- New restaurants/products or changes to catalog copy, pricing, taxonomy, and
+  navigation.
+- Cart, checkout, orders, customization, quantity, variants, add-ons,
+  favorites, sharing, Realtime, recommendations, and analytics.
+
+## Sprint 8 Risks
+
+- AI visual artifacts or inconsistent photography.
+- Repository growth if WebP optimization limits are not enforced.
+- CDN/browser cache staleness when replacing unchanged object URLs.
+- Transitional naming debt in `image_asset_path`.
+- Network loading/failure regressions across three presentation surfaces.
+- Drift between versioned manifest, Storage objects, and database paths.
+
+## Previous Sprint
+
+Sprint 7 - Catalog Demo Coverage (Closed)
+
+## Previous Sprint Status
+
+Closed (2026-06-03). Sprint 7 expanded deterministic catalog demo seed coverage
+for all four existing Home restaurants while preserving the validated read-only
+browsing architecture. The remote project has 13 menu categories and 16 menu
+items, focused datasource regressions cover non-burger payloads, and the real
+Trello card is reconciled.
 
 ## Sprint 7 Goal
 
@@ -54,7 +128,7 @@ Make Home -> restaurant details -> product details feel complete for every exist
 - Realtime, ranking, pagination, recommendations, and analytics.
 - New restaurants or Home taxonomy changes unless separately approved.
 
-## Previous Sprint
+## Earlier Sprint
 
 Sprint 6 - Product Details Read-Only (Closed)
 
@@ -98,7 +172,7 @@ Closed.
 - cart, checkout, orders, account, and persisted profile/address data
 - Storage media, Realtime, pagination, ranking, and recommendations
 
-## Active Plan
+## Sprint 5 Plan
 
 - `.ai/plans/2026-06-02-restaurant-details-remote-catalog-plan.md`
 - `docs/project-management/SPRINT_5.md`

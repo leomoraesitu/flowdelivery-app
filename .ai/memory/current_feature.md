@@ -2,11 +2,79 @@
 
 ## Active Feature
 
-Catalog Demo Coverage (Sprint 7 — Closed)
+Storage-Backed Catalog Media (Sprint 8 — Planned)
 
 ## Active Status
 
-Sprint 7 is closed (2026-06-03). The slice expanded deterministic catalog seed coverage for the existing Home restaurants so the validated read-only browsing flow works convincingly across `burger_artisan_collective`, `pasta_roma`, `sushi_zen`, and `taco_harbor`. The seed migration was applied permanently to the active remote Supabase project, read-only contracts passed focused validation, datasource regression coverage proves non-burger catalog/product parsing, and governance/Trello evidence was reconciled.
+Sprint 8 architecture and scope were approved on 2026-06-08. The planned slice
+will replace placeholder branding with 4 AI-generated restaurant covers and 16
+AI-generated product images served from a public-read Supabase Storage bucket.
+Implementation has not started and remains blocked until explicit approval for
+the next task.
+
+## Sprint 8 Planned Work
+
+- Task 1 — lock a deterministic 20-object media manifest against existing remote
+  restaurant/product IDs.
+- Task 2 — generate, review, optimize, and version realistic WebP media outside
+  the Flutter asset bundle.
+- Task 3 — create and validate the public-read `catalog-media` Storage
+  foundation without client mutation policies.
+- Task 4 — upload and verify all manifest objects.
+- Task 5 — update existing restaurant/product rows to stable Storage object
+  paths through a new migration.
+- Task 6 — add a shared data-layer public-media resolver and app composition.
+- Task 7 — resolve paths in Home, restaurant-details, and product-details remote
+  datasources.
+- Task 8 — add a shared asset/network renderer and update existing presentation
+  surfaces.
+- Task 9 — validate Storage, database, datasource, widget, security, guard, and
+  browsing-flow contracts.
+- Task 10 — reconcile docs, memory, technical debt, and Trello after evidence
+  exists.
+
+## Architecture Notes (Sprint 8)
+
+- Public bucket `catalog-media` is appropriate only for public catalog content.
+- Postgres stores stable object paths, not complete public URLs.
+- Existing `image_asset_path`/`imageAssetPath` names remain unchanged to avoid an
+  unrelated cross-feature contract rename.
+- A shared data-layer resolver owns bucket/public-URL knowledge.
+- Widgets do not call Supabase and use a shared asset/network renderer.
+- Generated files live under `supabase/seed-assets/catalog/`, not
+  `assets/images/`, so they are not bundled into Flutter.
+- Upload/update/delete remain administrative; Flutter stays read-only.
+- Home promotion media, private media, signed URLs, image editing, variants,
+  transformations, and external CDN remain out of scope.
+
+## Active Plan
+
+- `.ai/plans/2026-06-08-storage-backed-catalog-media-plan.md`
+- `docs/project-management/SPRINT_8.md`
+
+## Next Steps
+
+- Await explicit approval for Sprint 8 Task 1.
+- Do not generate or upload media before the manifest is validated against the
+  remote IDs.
+- Do not alter runtime code, Storage, database rows, or Trello until the
+  corresponding task is approved and its prerequisite evidence exists.
+
+## Previous Closed Feature
+
+Catalog Demo Coverage (Sprint 7) is closed and remains documented in
+`.ai/plans/2026-06-03-catalog-demo-coverage-plan.md`,
+`docs/project-management/SPRINT_7.md`, and the real Trello story
+`https://trello.com/c/TLHgmJ02`.
+
+## Sprint 7 Outcome
+
+Sprint 7 closed on 2026-06-03. It expanded deterministic catalog seed coverage
+for `burger_artisan_collective`, `pasta_roma`, `sushi_zen`, and `taco_harbor`;
+the migration was applied to the active remote Supabase project, read-only
+contracts passed focused validation, datasource regression coverage proves
+non-burger catalog/product parsing, and governance/Trello evidence was
+reconciled.
 
 ## Sprint 7 Planned Work
 
@@ -24,12 +92,12 @@ Sprint 7 is closed (2026-06-03). The slice expanded deterministic catalog seed c
 - Keep placeholder asset paths until a Storage-backed media slice is separately approved.
 - Keep cart, checkout, customization, variants/add-ons, quantity, favorites, sharing, Storage, and Realtime out of scope.
 
-## Active Plan
+## Sprint 7 Plan
 
 - `.ai/plans/2026-06-03-catalog-demo-coverage-plan.md`
 - `docs/project-management/SPRINT_7.md`
 
-## Next Steps
+## Sprint 7 Closure Notes
 
 - Sprint 7 is closed. Wait for an explicitly approved next slice before implementation.
 - Keep future catalog/media work data-first and scoped through a new approved plan.
