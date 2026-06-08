@@ -145,7 +145,7 @@ the app.
 - [x] Task 2 - generate, review, optimize, and version the media files.
 - [x] Task 3 - create and validate the public-read Storage foundation.
 - [x] Task 4 - upload and verify the deterministic object set.
-- [ ] Task 5 - migrate database rows to Storage object paths.
+- [x] Task 5 - migrate database rows to Storage object paths.
 - [ ] Task 6 - add the shared data-layer public-media resolver.
 - [ ] Task 7 - wire the resolver into the three remote datasources.
 - [ ] Task 8 - add the shared asset/network renderer and update presentation.
@@ -368,6 +368,18 @@ Applicable skills:
 - `supabase`
 - `supabase-postgres-best-practices`
 - `fd-supabase-architect`
+
+Task 5 evidence (2026-06-08):
+
+- Transaction-scoped remote smoke completed without exception and `ROLLBACK`
+  preserved all 4 restaurant and 16 product placeholder paths.
+- Applied remote migration `catalog_media_paths` after validating all target
+  rows, product ownership, and the 20 required Storage objects.
+- Exact post-migration parity is 4/4 restaurant paths and 16/16 product paths,
+  with zero target rows retaining the branding placeholder.
+- `weekend_pizza_party` remains unchanged on its bundled asset path.
+- Security advisors reported no new issue; the unrelated existing
+  `auth_leaked_password_protection` warning remains open.
 
 ### Task 6: Add a Shared Public-Media Resolver
 
