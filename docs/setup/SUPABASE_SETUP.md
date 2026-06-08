@@ -161,6 +161,27 @@ a service-role or secret key to Flutter configuration, source code, or assets.
 Public download smoke testing requires at least one uploaded object and is
 performed with the deterministic manifest upload task.
 
+### Catalog Media Deployment
+
+Authenticate the Supabase CLI outside the Flutter runtime, link the intended
+project, and upload each file to the exact `objectPath` recorded in
+`supabase/seed-assets/catalog/manifest.json`.
+
+Use `image/webp` as the content type and keep overwrite disabled. On Windows,
+prefer one upload per manifest entry because recursive CLI uploads may convert
+path separators into invalid Storage object keys.
+
+After upload, validate:
+
+- exactly 20 objects: 4 under `restaurants/` and 16 under `products/`;
+- remote object paths, MIME types, and byte sizes match the manifest;
+- every public URL returns HTTP 200 with `image/webp`;
+- every downloaded object's SHA-256 matches the reviewed local file;
+- a duplicate upload returns a conflict instead of replacing an object.
+
+Remove local CLI link artifacts after deployment. Authentication tokens belong
+to the user's CLI profile, never to the repository or Flutter configuration.
+
 ## Manual QA - Recovery Email Deliverability (Non-local Mailbox)
 
 Use this checklist when validating password-recovery email delivery in a QA

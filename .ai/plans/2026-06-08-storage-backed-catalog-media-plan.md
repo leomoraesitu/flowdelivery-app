@@ -144,7 +144,7 @@ the app.
 - [x] Task 1 - audit IDs, current image contracts, and lock the 20-object manifest.
 - [x] Task 2 - generate, review, optimize, and version the media files.
 - [x] Task 3 - create and validate the public-read Storage foundation.
-- [ ] Task 4 - upload and verify the deterministic object set.
+- [x] Task 4 - upload and verify the deterministic object set.
 - [ ] Task 5 - migrate database rows to Storage object paths.
 - [ ] Task 6 - add the shared data-layer public-media resolver.
 - [ ] Task 7 - wire the resolver into the three remote datasources.
@@ -323,6 +323,19 @@ Applicable skills:
 
 - `supabase`
 - `fd-supabase-architect`
+
+Task 4 evidence (2026-06-08):
+
+- Uploaded exactly 20 manifest objects to remote bucket `catalog-media`: 4
+  restaurant covers and 16 product images totaling 3,844,394 bytes.
+- Remote `storage.objects` paths, MIME types, and byte sizes match the
+  versioned manifest.
+- Publicly downloaded all 20 objects and verified HTTP success, `image/webp`,
+  byte size, and SHA-256 with `errors=0`.
+- A duplicate upload returned `409 Duplicate`, confirming overwrite remained
+  disabled and the existing object was preserved.
+- Security advisors reported no new issue; the unrelated existing
+  `auth_leaked_password_protection` warning remains open.
 
 ### Task 5: Point Catalog Rows to Storage Paths
 
