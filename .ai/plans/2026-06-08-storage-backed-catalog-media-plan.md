@@ -142,7 +142,7 @@ the app.
 - [x] Visual direction approved: realistic food photography.
 - [x] Aspect ratios approved: restaurant 16:9 and product 1:1.
 - [x] Task 1 - audit IDs, current image contracts, and lock the 20-object manifest.
-- [ ] Task 2 - generate, review, optimize, and version the media files.
+- [x] Task 2 - generate, review, optimize, and version the media files.
 - [ ] Task 3 - create and validate the public-read Storage foundation.
 - [ ] Task 4 - upload and verify the deterministic object set.
 - [ ] Task 5 - migrate database rows to Storage object paths.
@@ -231,6 +231,18 @@ Applicable skills:
 
 - `imagegen`
 - `fd-ux-reviewer`
+
+Task 2 evidence (2026-06-08):
+
+- Generated and manually reviewed 20 realistic catalog images with no visible
+  text, logos, watermarks, malformed food, or misleading product identity.
+- Versioned 4 restaurant covers at 1600x900 and 16 product images at 1200x1200,
+  all encoded as WebP at quality 86 outside the Flutter asset bundle.
+- Final files total 3,844,394 bytes, ranging from 89,032 to 270,636 bytes.
+- `manifest.json` records the verified byte size and SHA-256 checksum for every
+  file; automated path, count, MIME, dimension, size, and checksum parity passed.
+- Final cropped/compressed WebPs passed contact-sheet review and
+  `git diff --check`.
 
 ### Task 3: Add the Storage Foundation
 

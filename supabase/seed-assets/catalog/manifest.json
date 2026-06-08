@@ -27,7 +27,9 @@
       "width": 1600,
       "height": 900,
       "mimeType": "image/webp",
-      "promptBrief": "Wide restaurant cover for a modern American artisan burger kitchen, a premium truffle cheeseburger with golden fries on a dark neutral table, warm natural daylight, inviting casual dining atmosphere, realistic food photography."
+      "promptBrief": "Wide restaurant cover for a modern American artisan burger kitchen, a premium truffle cheeseburger with golden fries on a dark neutral table, warm natural daylight, inviting casual dining atmosphere, realistic food photography.",
+      "byteSize": 149662,
+      "sha256": "1447db5ee69163ad12abf440b09b10eaf8bfc95efdb26d103fabee13504102b7"
     },
     {
       "kind": "restaurantCover",
@@ -38,7 +40,9 @@
       "width": 1600,
       "height": 900,
       "mimeType": "image/webp",
-      "promptBrief": "Wide restaurant cover for a welcoming Italian trattoria, handmade pasta, tomato sauce, basil, parmesan, and rustic tableware arranged naturally, soft window daylight, realistic food photography."
+      "promptBrief": "Wide restaurant cover for a welcoming Italian trattoria, handmade pasta, tomato sauce, basil, parmesan, and rustic tableware arranged naturally, soft window daylight, realistic food photography.",
+      "byteSize": 204850,
+      "sha256": "82dc7427134eb54e66bd3847668fc27205637dfa194dac19e80bc8be57851a87"
     },
     {
       "kind": "restaurantCover",
@@ -49,7 +53,9 @@
       "width": 1600,
       "height": 900,
       "mimeType": "image/webp",
-      "promptBrief": "Wide restaurant cover for a refined Japanese sushi bar, assorted nigiri and maki on simple ceramic plates with restrained seasonal garnish, bright natural daylight, clean realistic food photography."
+      "promptBrief": "Wide restaurant cover for a refined Japanese sushi bar, assorted nigiri and maki on simple ceramic plates with restrained seasonal garnish, bright natural daylight, clean realistic food photography.",
+      "byteSize": 153372,
+      "sha256": "f7cdf063ed8ff71cbd8cec0f09738392a62a39fed3f5a9df3092aa0385c465a4"
     },
     {
       "kind": "restaurantCover",
@@ -60,7 +66,9 @@
       "width": 1600,
       "height": 900,
       "mimeType": "image/webp",
-      "promptBrief": "Wide restaurant cover for a lively coastal Mexican taqueria, colorful assortment of tacos with lime, salsa, cilantro, and grilled ingredients on a bright table, natural daylight, realistic food photography."
+      "promptBrief": "Wide restaurant cover for a lively coastal Mexican taqueria, colorful assortment of tacos with lime, salsa, cilantro, and grilled ingredients on a bright table, natural daylight, realistic food photography.",
+      "byteSize": 270636,
+      "sha256": "c8545bfc0fdb83b29de813844925a24fc2a9119228c46baca937141302dd402e"
     },
     {
       "kind": "product",
@@ -71,7 +79,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of a premium Wagyu beef burger with aged cheddar, caramelized onions, and black truffle aioli in a toasted artisan bun, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of a premium Wagyu beef burger with aged cheddar, caramelized onions, and black truffle aioli in a toasted artisan bun, natural daylight, realistic texture.",
+      "byteSize": 212858,
+      "sha256": "8ff236ce3e8d381aec1cdd99fdfadcbd798a84ad9ab9c49b357ea49918403fbc"
     },
     {
       "kind": "product",
@@ -82,7 +92,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of a crispy Nashville hot chicken sandwich with cayenne glaze, creamy slaw, and pickles in a soft bun, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of a crispy Nashville hot chicken sandwich with cayenne glaze, creamy slaw, and pickles in a soft bun, natural daylight, realistic texture.",
+      "byteSize": 191222,
+      "sha256": "c58da91af0a763e3bd3f2cadf3c06ef953fbf43e4abc23109e63ce4b7a3e0845"
     },
     {
       "kind": "product",
@@ -93,7 +105,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of crisp hand-cut sweet potato fries with a small bowl of maple chipotle dipping sauce, simple ceramic serving dish, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of crisp hand-cut sweet potato fries with a small bowl of maple chipotle dipping sauce, simple ceramic serving dish, natural daylight, realistic texture.",
+      "byteSize": 179794,
+      "sha256": "f20e0d5424b611fdb4e38d90b37d0aa73f2e2c46bc020647ba1e2ade093ded52"
     },
     {
       "kind": "product",
@@ -104,7 +118,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of a thick vanilla bean milkshake in a clear chilled glass, subtle vanilla specks and restrained cream topping, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of a thick vanilla bean milkshake in a clear chilled glass, subtle vanilla specks and restrained cream topping, natural daylight, realistic texture.",
+      "byteSize": 89032,
+      "sha256": "a059453f894e46dc16e9bba0eb5d1448fe8185005be1038610c6a2f6a114f54e"
     },
     {
       "kind": "product",
@@ -115,7 +131,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of a generous slice of layered lasagna with slow-cooked beef ragu, melted mozzarella, tomato sauce, and fresh basil, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of a generous slice of layered lasagna with slow-cooked beef ragu, melted mozzarella, tomato sauce, and fresh basil, natural daylight, realistic texture.",
+      "byteSize": 158202,
+      "sha256": "61272ac03b5b81bd4881bd56bd4a3ee8f7bc8af7522657fa8ea20f997a61a11e"
     },
     {
       "kind": "product",
@@ -126,7 +144,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of fresh tagliatelle coated in parmesan cream with sauteed mushrooms, shaved parmesan, and a restrained truffle oil finish, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of fresh tagliatelle coated in parmesan cream with sauteed mushrooms, shaved parmesan, and a restrained truffle oil finish, natural daylight, realistic texture.",
+      "byteSize": 175546,
+      "sha256": "05da9b98c883ea1737c25999439a088345e219b34f23a320517c2f962a28b4f9"
     },
     {
       "kind": "product",
@@ -137,7 +157,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of rigatoni in glossy San Marzano tomato sauce with garlic, fresh basil, and a light parmesan finish, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of rigatoni in glossy San Marzano tomato sauce with garlic, fresh basil, and a light parmesan finish, natural daylight, realistic texture.",
+      "byteSize": 238132,
+      "sha256": "8a07654db5c71e28268fdeb09d33b5864fd0d671c7d591d8dbf3ef20d321a9f7"
     },
     {
       "kind": "product",
@@ -148,7 +170,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of a Caprese salad with ripe tomato slices, fresh mozzarella, basil leaves, olive oil, and balsamic glaze, bright natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of a Caprese salad with ripe tomato slices, fresh mozzarella, basil leaves, olive oil, and balsamic glaze, bright natural daylight, realistic texture.",
+      "byteSize": 191012,
+      "sha256": "52b8906d1c138a815f24ce8df87dbc9fdfcb8458690225d2ca0b593847dac143"
     },
     {
       "kind": "product",
@@ -159,7 +183,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of a chef-selected omakase assortment with elegant nigiri and sliced maki, seasonal garnish, soy dish, and simple Japanese ceramics, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of a chef-selected omakase assortment with elegant nigiri and sliced maki, seasonal garnish, soy dish, and simple Japanese ceramics, natural daylight, realistic texture.",
+      "byteSize": 192148,
+      "sha256": "1f264d76797408cb62f83b5662e4095e388815a77e4048509b252ec287fcd54c"
     },
     {
       "kind": "product",
@@ -170,7 +196,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of neatly cut salmon avocado sushi rolls with cucumber, sesame, and seasoned rice on a simple ceramic plate, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of neatly cut salmon avocado sushi rolls with cucumber, sesame, and seasoned rice on a simple ceramic plate, natural daylight, realistic texture.",
+      "byteSize": 173776,
+      "sha256": "0795c7db43d7d484be2ea9af142076594f71c82abaec661eb9665aadea5bbeee"
     },
     {
       "kind": "product",
@@ -181,7 +209,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of spicy tuna sushi rolls with chili mayo, scallions, cucumber, and toasted sesame, clean Japanese plating, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of spicy tuna sushi rolls with chili mayo, scallions, cucumber, and toasted sesame, clean Japanese plating, natural daylight, realistic texture.",
+      "byteSize": 194596,
+      "sha256": "1f7bbf4e89fa0fbb67f26947328fd56cf286775f61911eff28c3604f0d0c41a6"
     },
     {
       "kind": "product",
@@ -192,7 +222,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of a chirashi bowl with assorted fresh sashimi arranged over seasoned rice, nori, cucumber, and pickled ginger, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of a chirashi bowl with assorted fresh sashimi arranged over seasoned rice, nori, cucumber, and pickled ginger, natural daylight, realistic texture.",
+      "byteSize": 189644,
+      "sha256": "0577244f67c733660964efbb0fc6d42719c0ac61ac2127c575154d9b0da5275f"
     },
     {
       "kind": "product",
@@ -203,7 +235,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of three al pastor tacos with marinated pork, grilled pineapple, cilantro, onion, and warm corn tortillas, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of three al pastor tacos with marinated pork, grilled pineapple, cilantro, onion, and warm corn tortillas, natural daylight, realistic texture.",
+      "byteSize": 240748,
+      "sha256": "9c8442dca2a36a6c242a807b2d6d7b1b6a24703e9a69ba294f721bce1942cfd7"
     },
     {
       "kind": "product",
@@ -214,7 +248,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of Baja shrimp tacos with crisp shrimp, cabbage slaw, lime crema, and pico de gallo in corn tortillas, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of Baja shrimp tacos with crisp shrimp, cabbage slaw, lime crema, and pico de gallo in corn tortillas, natural daylight, realistic texture.",
+      "byteSize": 202756,
+      "sha256": "46a6d73ce33b44f6977be787312040296b90ae8add2bd805d56601cc41c0d617"
     },
     {
       "kind": "product",
@@ -225,7 +261,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of carne asada tacos with grilled steak, salsa verde, onion, cilantro, and warm corn tortillas, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of carne asada tacos with grilled steak, salsa verde, onion, cilantro, and warm corn tortillas, natural daylight, realistic texture.",
+      "byteSize": 246698,
+      "sha256": "81457e5d479fdd0c30118c3f6777e9e61b465755263adb4228f5c817594adc18"
     },
     {
       "kind": "product",
@@ -236,7 +274,9 @@
       "width": 1200,
       "height": 1200,
       "mimeType": "image/webp",
-      "promptBrief": "Square close food photograph of Mexican street corn served in a cup with cotija cheese, chili, lime crema, cilantro, and a lime wedge, natural daylight, realistic texture."
+      "promptBrief": "Square close food photograph of Mexican street corn served in a cup with cotija cheese, chili, lime crema, cilantro, and a lime wedge, natural daylight, realistic texture.",
+      "byteSize": 189710,
+      "sha256": "d1e73cfdab813c6aed648f3973d855d3846445e6870a6653d57a3d943d92ef75"
     }
   ]
 }
