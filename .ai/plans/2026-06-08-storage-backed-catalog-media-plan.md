@@ -141,7 +141,7 @@ the app.
 - [x] Source approved: AI-generated media.
 - [x] Visual direction approved: realistic food photography.
 - [x] Aspect ratios approved: restaurant 16:9 and product 1:1.
-- [ ] Task 1 - audit IDs, current image contracts, and lock the 20-object manifest.
+- [x] Task 1 - audit IDs, current image contracts, and lock the 20-object manifest.
 - [ ] Task 2 - generate, review, optimize, and version the media files.
 - [ ] Task 3 - create and validate the public-read Storage foundation.
 - [ ] Task 4 - upload and verify the deterministic object set.
@@ -184,6 +184,21 @@ Applicable skills:
 - `supabase`
 - `fd-supabase-architect`
 - `fd-product-owner`
+
+Task 1 evidence (2026-06-08):
+
+- Remote read-only Supabase query on project `kvbahsdjmhpukzmdttvq`
+  confirmed exactly 4 target restaurant IDs and 16 target product IDs.
+- The same query confirmed `weekend_pizza_party` as the Home promotion ID; it
+  is explicitly excluded from the catalog-media target set.
+- `supabase/seed-assets/catalog/manifest.json` records 20 unique media entries:
+  4 restaurant covers at 1600x900 (16:9) and 16 product images at 1200x1200
+  (1:1), all using `image/webp`.
+- Object paths are deterministic and limited to:
+  `restaurants/<restaurant-id>/cover.webp` and
+  `products/<restaurant-id>/<product-id>.webp`.
+- Individual prompt briefs are aligned with versioned restaurant cuisines and
+  product descriptions.
 
 ### Task 2: Generate and Curate the WebP Media
 

@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "bucket": "catalog-media",
+  "generatedAt": "2026-06-08",
+  "style": {
+    "medium": "realistic food photography",
+    "lighting": "soft natural daylight",
+    "composition": "single clear subject, appetizing, editorial but believable",
+    "restrictions": [
+      "no visible text",
+      "no logos",
+      "no watermarks",
+      "no people",
+      "no malformed food or tableware"
+    ]
+  },
+  "excludedEntityIds": [
+    "weekend_pizza_party"
+  ],
+  "media": [
+    {
+      "kind": "restaurantCover",
+      "entityId": "burger_artisan_collective",
+      "restaurantId": "burger_artisan_collective",
+      "objectPath": "restaurants/burger_artisan_collective/cover.webp",
+      "aspectRatio": "16:9",
+      "width": 1600,
+      "height": 900,
+      "mimeType": "image/webp",
+      "promptBrief": "Wide restaurant cover for a modern American artisan burger kitchen, a premium truffle cheeseburger with golden fries on a dark neutral table, warm natural daylight, inviting casual dining atmosphere, realistic food photography."
+    },
+    {
+      "kind": "restaurantCover",
+      "entityId": "pasta_roma",
+      "restaurantId": "pasta_roma",
+      "objectPath": "restaurants/pasta_roma/cover.webp",
+      "aspectRatio": "16:9",
+      "width": 1600,
+      "height": 900,
+      "mimeType": "image/webp",
+      "promptBrief": "Wide restaurant cover for a welcoming Italian trattoria, handmade pasta, tomato sauce, basil, parmesan, and rustic tableware arranged naturally, soft window daylight, realistic food photography."
+    },
+    {
+      "kind": "restaurantCover",
+      "entityId": "sushi_zen",
+      "restaurantId": "sushi_zen",
+      "objectPath": "restaurants/sushi_zen/cover.webp",
+      "aspectRatio": "16:9",
+      "width": 1600,
+      "height": 900,
+      "mimeType": "image/webp",
+      "promptBrief": "Wide restaurant cover for a refined Japanese sushi bar, assorted nigiri and maki on simple ceramic plates with restrained seasonal garnish, bright natural daylight, clean realistic food photography."
+    },
+    {
+      "kind": "restaurantCover",
+      "entityId": "taco_harbor",
+      "restaurantId": "taco_harbor",
+      "objectPath": "restaurants/taco_harbor/cover.webp",
+      "aspectRatio": "16:9",
+      "width": 1600,
+      "height": 900,
+      "mimeType": "image/webp",
+      "promptBrief": "Wide restaurant cover for a lively coastal Mexican taqueria, colorful assortment of tacos with lime, salsa, cilantro, and grilled ingredients on a bright table, natural daylight, realistic food photography."
+    },
+    {
+      "kind": "product",
+      "entityId": "signature_truffle",
+      "restaurantId": "burger_artisan_collective",
+      "objectPath": "products/burger_artisan_collective/signature_truffle.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of a premium Wagyu beef burger with aged cheddar, caramelized onions, and black truffle aioli in a toasted artisan bun, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "spicy_nashville_chicken",
+      "restaurantId": "burger_artisan_collective",
+      "objectPath": "products/burger_artisan_collective/spicy_nashville_chicken.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of a crispy Nashville hot chicken sandwich with cayenne glaze, creamy slaw, and pickles in a soft bun, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "sweet_potato_crisp",
+      "restaurantId": "burger_artisan_collective",
+      "objectPath": "products/burger_artisan_collective/sweet_potato_crisp.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of crisp hand-cut sweet potato fries with a small bowl of maple chipotle dipping sauce, simple ceramic serving dish, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "artisan_milkshake",
+      "restaurantId": "burger_artisan_collective",
+      "objectPath": "products/burger_artisan_collective/artisan_milkshake.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of a thick vanilla bean milkshake in a clear chilled glass, subtle vanilla specks and restrained cream topping, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "pasta_roma_nonna_lasagna",
+      "restaurantId": "pasta_roma",
+      "objectPath": "products/pasta_roma/pasta_roma_nonna_lasagna.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of a generous slice of layered lasagna with slow-cooked beef ragu, melted mozzarella, tomato sauce, and fresh basil, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "pasta_roma_truffle_tagliatelle",
+      "restaurantId": "pasta_roma",
+      "objectPath": "products/pasta_roma/pasta_roma_truffle_tagliatelle.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of fresh tagliatelle coated in parmesan cream with sauteed mushrooms, shaved parmesan, and a restrained truffle oil finish, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "pasta_roma_pomodoro_rigatoni",
+      "restaurantId": "pasta_roma",
+      "objectPath": "products/pasta_roma/pasta_roma_pomodoro_rigatoni.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of rigatoni in glossy San Marzano tomato sauce with garlic, fresh basil, and a light parmesan finish, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "pasta_roma_caprese_salad",
+      "restaurantId": "pasta_roma",
+      "objectPath": "products/pasta_roma/pasta_roma_caprese_salad.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of a Caprese salad with ripe tomato slices, fresh mozzarella, basil leaves, olive oil, and balsamic glaze, bright natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "sushi_zen_omakase_sampler",
+      "restaurantId": "sushi_zen",
+      "objectPath": "products/sushi_zen/sushi_zen_omakase_sampler.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of a chef-selected omakase assortment with elegant nigiri and sliced maki, seasonal garnish, soy dish, and simple Japanese ceramics, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "sushi_zen_salmon_avocado_roll",
+      "restaurantId": "sushi_zen",
+      "objectPath": "products/sushi_zen/sushi_zen_salmon_avocado_roll.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of neatly cut salmon avocado sushi rolls with cucumber, sesame, and seasoned rice on a simple ceramic plate, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "sushi_zen_spicy_tuna_roll",
+      "restaurantId": "sushi_zen",
+      "objectPath": "products/sushi_zen/sushi_zen_spicy_tuna_roll.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of spicy tuna sushi rolls with chili mayo, scallions, cucumber, and toasted sesame, clean Japanese plating, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "sushi_zen_chirashi_bowl",
+      "restaurantId": "sushi_zen",
+      "objectPath": "products/sushi_zen/sushi_zen_chirashi_bowl.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of a chirashi bowl with assorted fresh sashimi arranged over seasoned rice, nori, cucumber, and pickled ginger, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "taco_harbor_al_pastor",
+      "restaurantId": "taco_harbor",
+      "objectPath": "products/taco_harbor/taco_harbor_al_pastor.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of three al pastor tacos with marinated pork, grilled pineapple, cilantro, onion, and warm corn tortillas, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "taco_harbor_shrimp_tacos",
+      "restaurantId": "taco_harbor",
+      "objectPath": "products/taco_harbor/taco_harbor_shrimp_tacos.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of Baja shrimp tacos with crisp shrimp, cabbage slaw, lime crema, and pico de gallo in corn tortillas, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "taco_harbor_carne_asada_tacos",
+      "restaurantId": "taco_harbor",
+      "objectPath": "products/taco_harbor/taco_harbor_carne_asada_tacos.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of carne asada tacos with grilled steak, salsa verde, onion, cilantro, and warm corn tortillas, natural daylight, realistic texture."
+    },
+    {
+      "kind": "product",
+      "entityId": "taco_harbor_elote_cup",
+      "restaurantId": "taco_harbor",
+      "objectPath": "products/taco_harbor/taco_harbor_elote_cup.webp",
+      "aspectRatio": "1:1",
+      "width": 1200,
+      "height": 1200,
+      "mimeType": "image/webp",
+      "promptBrief": "Square close food photograph of Mexican street corn served in a cup with cotija cheese, chili, lime crema, cilantro, and a lime wedge, natural daylight, realistic texture."
+    }
+  ]
+}
