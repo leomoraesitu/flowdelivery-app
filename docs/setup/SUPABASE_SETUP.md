@@ -144,6 +144,23 @@ Migration application order matters: apply `home_remote_feed_foundation` before
 `restaurant_details_remote_catalog`, because the catalog tables reference
 `public.restaurants`.
 
+## Catalog Media Storage
+
+The public `catalog-media` bucket stores non-sensitive restaurant and product
+catalog images. Its versioned foundation enforces:
+
+- public object downloads;
+- `image/webp` as the only allowed MIME type;
+- a `1 MiB` per-file limit;
+- no `INSERT`, `UPDATE`, or `DELETE` policy for `anon` or `authenticated`.
+
+Catalog media uploads and replacements are administrative deployment
+operations. Use approved Supabase tooling outside the Flutter client. Never add
+a service-role or secret key to Flutter configuration, source code, or assets.
+
+Public download smoke testing requires at least one uploaded object and is
+performed with the deterministic manifest upload task.
+
 ## Manual QA - Recovery Email Deliverability (Non-local Mailbox)
 
 Use this checklist when validating password-recovery email delivery in a QA

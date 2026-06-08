@@ -143,7 +143,7 @@ the app.
 - [x] Aspect ratios approved: restaurant 16:9 and product 1:1.
 - [x] Task 1 - audit IDs, current image contracts, and lock the 20-object manifest.
 - [x] Task 2 - generate, review, optimize, and version the media files.
-- [ ] Task 3 - create and validate the public-read Storage foundation.
+- [x] Task 3 - create and validate the public-read Storage foundation.
 - [ ] Task 4 - upload and verify the deterministic object set.
 - [ ] Task 5 - migrate database rows to Storage object paths.
 - [ ] Task 6 - add the shared data-layer public-media resolver.
@@ -279,6 +279,19 @@ Applicable skills:
 - `supabase-postgres-best-practices`
 - `fd-supabase-architect`
 - `fd-security-engineer`
+
+Task 3 evidence (2026-06-08):
+
+- Applied remote migration `catalog_media_storage_foundation` to project
+  `kvbahsdjmhpukzmdttvq`.
+- `storage.buckets` confirms `catalog-media` is public, allows only
+  `image/webp`, and limits each object to 1,048,576 bytes.
+- `storage.objects` retains RLS and has zero object policies, including zero
+  mutation policies; client `INSERT`, `UPDATE`, and `DELETE` remain denied.
+- Security advisors reported no new issue; the existing unrelated
+  `auth_leaked_password_protection` warning remains open.
+- Public download smoke is deferred to Task 4 because no object has been
+  uploaded yet.
 
 ### Task 4: Upload and Verify the Object Set
 
