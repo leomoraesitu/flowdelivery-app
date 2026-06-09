@@ -1,5 +1,6 @@
 import 'package:flowdelivery_app/features/restaurant_details/data/datasources/restaurant_details_remote_datasource.dart';
 import 'package:flowdelivery_app/features/restaurant_details/data/dtos/restaurant_details_dtos.dart';
+import 'package:flowdelivery_app/shared/data/media/public_media_url_resolver.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -8,11 +9,12 @@ void main() {
     test('aggregates typed DTOs from Supabase table payloads', () async {
       final datasource = SupabaseRestaurantDetailsRemoteDatasource(
         client: _testClient,
+        mediaUrlResolver: _mediaUrlResolver,
         restaurantRowLoader: (_) async => {
           'id': 'burger_artisan_collective',
           'name': 'Burger Artisan Collective',
           'image_asset_path':
-              'assets/images/branding/logo-flowdelivery-light.png',
+              'restaurants/burger_artisan_collective/cover.webp',
           'rating': 4.8,
           'delivery_time_min_minutes': 25,
           'delivery_time_max_minutes': 35,
@@ -39,7 +41,7 @@ void main() {
             'description':
                 'Wagyu beef, black truffle aioli, aged cheddar, and caramelized onions.',
             'image_asset_path':
-                'assets/images/branding/logo-flowdelivery-light.png',
+                'products/burger_artisan_collective/signature_truffle.webp',
             'price_in_cents': 1850,
             'sort_order': 0,
           },
@@ -55,7 +57,9 @@ void main() {
         const RestaurantDetailsDto(
           id: 'burger_artisan_collective',
           name: 'Burger Artisan Collective',
-          imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+          imageAssetPath:
+              'https://example.supabase.co/storage/v1/object/public/'
+              'catalog-media/restaurants/burger_artisan_collective/cover.webp',
           rating: 4.8,
           deliveryTimeMinMinutes: 25,
           deliveryTimeMaxMinutes: 35,
@@ -82,7 +86,10 @@ void main() {
           name: 'The Signature Truffle',
           description:
               'Wagyu beef, black truffle aioli, aged cheddar, and caramelized onions.',
-          imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+          imageAssetPath:
+              'https://example.supabase.co/storage/v1/object/public/'
+              'catalog-media/products/burger_artisan_collective/'
+              'signature_truffle.webp',
           priceInCents: 1850,
           sortOrder: 0,
         ),
@@ -92,6 +99,7 @@ void main() {
     test('aggregates a non-burger restaurant catalog from seeded payloads', () async {
       final datasource = SupabaseRestaurantDetailsRemoteDatasource(
         client: _testClient,
+        mediaUrlResolver: _mediaUrlResolver,
         restaurantRowLoader: (_) async => {
           'id': 'pasta_roma',
           'name': 'Pasta Roma',
@@ -201,6 +209,7 @@ void main() {
     test('throws a remote exception when the restaurant does not exist', () {
       final datasource = SupabaseRestaurantDetailsRemoteDatasource(
         client: _testClient,
+        mediaUrlResolver: _mediaUrlResolver,
         restaurantRowLoader: (_) async => null,
         categoryRowsLoader: (_) async => const [],
         itemRowsLoader: (_) async => const [],
@@ -221,6 +230,7 @@ void main() {
     test('throws a remote exception when a row payload is malformed', () {
       final datasource = SupabaseRestaurantDetailsRemoteDatasource(
         client: _testClient,
+        mediaUrlResolver: _mediaUrlResolver,
         restaurantRowLoader: (_) async => {
           'id': 'burger_artisan_collective',
           'name': 'Burger Artisan Collective',
@@ -246,6 +256,29 @@ void main() {
         ),
       );
     });
+
+    test('maps media resolution failures to the remote exception', () {
+      final datasource = SupabaseRestaurantDetailsRemoteDatasource(
+        client: _testClient,
+        mediaUrlResolver: _mediaUrlResolver,
+        restaurantRowLoader: (_) async => {
+          'id': 'burger_artisan_collective',
+          'name': 'Burger Artisan Collective',
+          'image_asset_path': 'unsupported/cover.webp',
+          'rating': 4.8,
+          'delivery_time_min_minutes': 25,
+          'delivery_time_max_minutes': 35,
+          'cuisine': 'american',
+        },
+        categoryRowsLoader: (_) async => const [],
+        itemRowsLoader: (_) async => const [],
+      );
+
+      expect(
+        datasource.getRestaurantDetails('burger_artisan_collective'),
+        throwsA(isA<RestaurantDetailsRemoteException>()),
+      );
+    });
   });
 }
 
@@ -253,3 +286,5 @@ final _testClient = SupabaseClient(
   'https://example.supabase.co',
   'test-anon-key',
 );
+
+final _mediaUrlResolver = SupabasePublicMediaUrlResolver(client: _testClient);

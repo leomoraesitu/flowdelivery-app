@@ -147,7 +147,7 @@ the app.
 - [x] Task 4 - upload and verify the deterministic object set.
 - [x] Task 5 - migrate database rows to Storage object paths.
 - [x] Task 6 - add the shared data-layer public-media resolver.
-- [ ] Task 7 - wire the resolver into the three remote datasources.
+- [x] Task 7 - wire the resolver into the three remote datasources.
 - [ ] Task 8 - add the shared asset/network renderer and update presentation.
 - [ ] Task 9 - run focused and end-to-end validation.
 - [ ] Task 10 - reconcile Sprint 8 governance and technical debt.
@@ -465,6 +465,19 @@ Applicable skills:
 - `dart-run-static-analysis`
 - `fd-architect`
 - `fd-supabase-architect`
+
+Task 7 evidence (2026-06-08):
+
+- Injected the shared resolver into Home, restaurant-details, and
+  product-details Supabase datasources through app-level Riverpod composition.
+- Restaurant and product rows now resolve `image_asset_path` before DTO parsing;
+  Home promotion paths remain unchanged.
+- Resolver failures map to each feature's existing remote exception contract,
+  while malformed rows and not-found behavior remain intact.
+- TDD RED was observed for the missing constructor dependency; the focused
+  datasource suite then passed 14 tests.
+- The combined resolver and datasource regression suite passed 20 tests, and
+  Dart MCP focused analysis returned `No errors`.
 
 ### Task 8: Render Local and Remote Media Consistently
 

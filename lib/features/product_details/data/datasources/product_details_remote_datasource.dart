@@ -1,4 +1,5 @@
 import 'package:flowdelivery_app/features/product_details/data/dtos/product_details_dto.dart';
+import 'package:flowdelivery_app/shared/data/media/public_media_url_resolver.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 typedef ProductDetailsRemoteSingleRowLoader =
@@ -25,13 +26,16 @@ class SupabaseProductDetailsRemoteDatasource
     implements ProductDetailsRemoteDatasource {
   const SupabaseProductDetailsRemoteDatasource({
     required SupabaseClient client,
+    required PublicMediaUrlResolver mediaUrlResolver,
     ProductDetailsRemoteSingleRowLoader? productRowLoader,
   }) : _client = client,
+       _mediaUrlResolver = mediaUrlResolver,
        _productRowLoader = productRowLoader;
 
   static const _menuItemsTable = 'restaurant_menu_items';
 
   final SupabaseClient _client;
+  final PublicMediaUrlResolver _mediaUrlResolver;
   final ProductDetailsRemoteSingleRowLoader? _productRowLoader;
 
   @override
@@ -42,11 +46,15 @@ class SupabaseProductDetailsRemoteDatasource
         return null;
       }
 
-      return ProductDetailsDto.fromRow(row);
+      return ProductDetailsDto.fromRow(_resolveMediaPath(row));
     } on PostgrestException catch (error) {
       throw ProductDetailsRemoteException(message: error.message);
     } on FormatException catch (error) {
       throw ProductDetailsRemoteException(message: error.message);
+    } on PublicMediaResolutionFailure catch (error) {
+      throw ProductDetailsRemoteException(
+        message: 'Public media resolution failed: ${error.code.name}.',
+      );
     }
   }
 
@@ -93,5 +101,14 @@ class SupabaseProductDetailsRemoteDatasource
     }
 
     return Map<String, Object?>.from(response);
+  }
+
+  Map<String, Object?> _resolveMediaPath(Map<String, Object?> row) {
+    final storedPath = row['image_asset_path'];
+    if (storedPath is! String) {
+      return row;
+    }
+
+    return {...row, 'image_asset_path': _mediaUrlResolver.resolve(storedPath)};
   }
 }

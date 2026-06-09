@@ -1,4 +1,5 @@
 import 'package:flowdelivery_app/features/restaurant_details/data/dtos/restaurant_details_dtos.dart';
+import 'package:flowdelivery_app/shared/data/media/public_media_url_resolver.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 typedef RestaurantDetailsRemoteRowsLoader =
@@ -25,10 +26,12 @@ class SupabaseRestaurantDetailsRemoteDatasource
     implements RestaurantDetailsRemoteDatasource {
   const SupabaseRestaurantDetailsRemoteDatasource({
     required SupabaseClient client,
+    required PublicMediaUrlResolver mediaUrlResolver,
     RestaurantDetailsRemoteSingleRowLoader? restaurantRowLoader,
     RestaurantDetailsRemoteRowsLoader? categoryRowsLoader,
     RestaurantDetailsRemoteRowsLoader? itemRowsLoader,
   }) : _client = client,
+       _mediaUrlResolver = mediaUrlResolver,
        _restaurantRowLoader = restaurantRowLoader,
        _categoryRowsLoader = categoryRowsLoader,
        _itemRowsLoader = itemRowsLoader;
@@ -38,6 +41,7 @@ class SupabaseRestaurantDetailsRemoteDatasource
   static const _menuItemsTable = 'restaurant_menu_items';
 
   final SupabaseClient _client;
+  final PublicMediaUrlResolver _mediaUrlResolver;
   final RestaurantDetailsRemoteSingleRowLoader? _restaurantRowLoader;
   final RestaurantDetailsRemoteRowsLoader? _categoryRowsLoader;
   final RestaurantDetailsRemoteRowsLoader? _itemRowsLoader;
@@ -56,18 +60,25 @@ class SupabaseRestaurantDetailsRemoteDatasource
       }
 
       return RestaurantDetailsRemotePayload(
-        restaurant: RestaurantDetailsDto.fromRow(restaurantRow),
+        restaurant: RestaurantDetailsDto.fromRow(
+          _resolveMediaPath(restaurantRow),
+        ),
         categories: (await _loadCategoryRows(
           restaurantId,
         )).map(RestaurantMenuCategoryDto.fromRow).toList(growable: false),
-        items: (await _loadItemRows(
-          restaurantId,
-        )).map(RestaurantMenuItemDto.fromRow).toList(growable: false),
+        items: (await _loadItemRows(restaurantId))
+            .map(_resolveMediaPath)
+            .map(RestaurantMenuItemDto.fromRow)
+            .toList(growable: false),
       );
     } on PostgrestException catch (error) {
       throw RestaurantDetailsRemoteException(message: error.message);
     } on FormatException catch (error) {
       throw RestaurantDetailsRemoteException(message: error.message);
+    } on PublicMediaResolutionFailure catch (error) {
+      throw RestaurantDetailsRemoteException(
+        message: 'Public media resolution failed: ${error.code.name}.',
+      );
     }
   }
 
@@ -181,5 +192,14 @@ class SupabaseRestaurantDetailsRemoteDatasource
     }
 
     return Map<String, Object?>.from(row);
+  }
+
+  Map<String, Object?> _resolveMediaPath(Map<String, Object?> row) {
+    final storedPath = row['image_asset_path'];
+    if (storedPath is! String) {
+      return row;
+    }
+
+    return {...row, 'image_asset_path': _mediaUrlResolver.resolve(storedPath)};
   }
 }

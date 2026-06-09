@@ -56,6 +56,7 @@ final appAuthRepositoryProvider = Provider<AuthRepository>((ref) {
 final appHomeRemoteDatasourceProvider = Provider<HomeRemoteDatasource>((ref) {
   return SupabaseHomeRemoteDatasource(
     client: ref.watch(supabaseClientProvider),
+    mediaUrlResolver: ref.watch(appPublicMediaUrlResolverProvider),
   );
 });
 
@@ -73,6 +74,7 @@ final appRestaurantDetailsRemoteDatasourceProvider =
     Provider<RestaurantDetailsRemoteDatasource>((ref) {
       return SupabaseRestaurantDetailsRemoteDatasource(
         client: ref.watch(supabaseClientProvider),
+        mediaUrlResolver: ref.watch(appPublicMediaUrlResolverProvider),
       );
     });
 
@@ -87,6 +89,7 @@ final appProductDetailsRemoteDatasourceProvider =
     Provider<ProductDetailsRemoteDatasource>((ref) {
       return SupabaseProductDetailsRemoteDatasource(
         client: ref.watch(supabaseClientProvider),
+        mediaUrlResolver: ref.watch(appPublicMediaUrlResolverProvider),
       );
     });
 

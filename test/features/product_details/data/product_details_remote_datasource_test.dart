@@ -1,5 +1,6 @@
 import 'package:flowdelivery_app/features/product_details/data/datasources/product_details_remote_datasource.dart';
 import 'package:flowdelivery_app/features/product_details/data/dtos/product_details_dto.dart';
+import 'package:flowdelivery_app/shared/data/media/public_media_url_resolver.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -8,6 +9,7 @@ void main() {
     test('parses a typed DTO from a Supabase row payload', () async {
       final datasource = SupabaseProductDetailsRemoteDatasource(
         client: _testClient,
+        mediaUrlResolver: _mediaUrlResolver,
         productRowLoader: (_) async => {
           'id': 'signature_truffle',
           'restaurant_id': 'burger_artisan_collective',
@@ -16,7 +18,7 @@ void main() {
           'description':
               'Wagyu beef, black truffle aioli, aged cheddar, and caramelized onions.',
           'image_asset_path':
-              'assets/images/branding/logo-flowdelivery-light.png',
+              'products/burger_artisan_collective/signature_truffle.webp',
           'price_in_cents': 1850,
         },
       );
@@ -32,7 +34,10 @@ void main() {
           name: 'The Signature Truffle',
           description:
               'Wagyu beef, black truffle aioli, aged cheddar, and caramelized onions.',
-          imageAssetPath: 'assets/images/branding/logo-flowdelivery-light.png',
+          imageAssetPath:
+              'https://example.supabase.co/storage/v1/object/public/'
+              'catalog-media/products/burger_artisan_collective/'
+              'signature_truffle.webp',
           priceInCents: 1850,
         ),
       );
@@ -43,6 +48,7 @@ void main() {
       () async {
         final datasource = SupabaseProductDetailsRemoteDatasource(
           client: _testClient,
+          mediaUrlResolver: _mediaUrlResolver,
           productRowLoader: (_) async => {
             'id': 'sushi_zen_omakase_sampler',
             'restaurant_id': 'sushi_zen',
@@ -80,6 +86,7 @@ void main() {
     test('returns null when the product does not exist', () async {
       final datasource = SupabaseProductDetailsRemoteDatasource(
         client: _testClient,
+        mediaUrlResolver: _mediaUrlResolver,
         productRowLoader: (_) async => null,
       );
 
@@ -91,6 +98,7 @@ void main() {
     test('throws a remote exception when the row payload is malformed', () {
       final datasource = SupabaseProductDetailsRemoteDatasource(
         client: _testClient,
+        mediaUrlResolver: _mediaUrlResolver,
         productRowLoader: (_) async => {
           'id': 'signature_truffle',
           'restaurant_id': 'burger_artisan_collective',
@@ -115,6 +123,28 @@ void main() {
         ),
       );
     });
+
+    test('maps media resolution failures to the remote exception', () {
+      final datasource = SupabaseProductDetailsRemoteDatasource(
+        client: _testClient,
+        mediaUrlResolver: _mediaUrlResolver,
+        productRowLoader: (_) async => {
+          'id': 'signature_truffle',
+          'restaurant_id': 'burger_artisan_collective',
+          'category_id': 'burgers',
+          'name': 'The Signature Truffle',
+          'description':
+              'Wagyu beef, black truffle aioli, aged cheddar, and caramelized onions.',
+          'image_asset_path': 'unsupported/product.webp',
+          'price_in_cents': 1850,
+        },
+      );
+
+      expect(
+        datasource.getProductDetails('signature_truffle'),
+        throwsA(isA<ProductDetailsRemoteException>()),
+      );
+    });
   });
 }
 
@@ -122,3 +152,5 @@ final _testClient = SupabaseClient(
   'https://example.supabase.co',
   'test-anon-key',
 );
+
+final _mediaUrlResolver = SupabasePublicMediaUrlResolver(client: _testClient);

@@ -1,6 +1,7 @@
 import 'package:flowdelivery_app/features/home/data/dtos/home_category_dto.dart';
 import 'package:flowdelivery_app/features/home/data/dtos/home_promotion_dto.dart';
 import 'package:flowdelivery_app/features/home/data/dtos/home_restaurant_dto.dart';
+import 'package:flowdelivery_app/shared/data/media/public_media_url_resolver.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 typedef HomeRemoteRowsLoader = Future<List<Map<String, Object?>>> Function();
@@ -78,11 +79,13 @@ abstract interface class HomeRemoteDatasource {
 class SupabaseHomeRemoteDatasource implements HomeRemoteDatasource {
   const SupabaseHomeRemoteDatasource({
     required SupabaseClient client,
+    required PublicMediaUrlResolver mediaUrlResolver,
     HomeRemoteRowsLoader? categoryRowsLoader,
     HomeRemoteSingleRowLoader? promotionRowLoader,
     HomeRemoteRowsLoader? featuredRestaurantRowsLoader,
     HomeRemoteRowsLoader? restaurantCategoryLinkRowsLoader,
   }) : _client = client,
+       _mediaUrlResolver = mediaUrlResolver,
        _categoryRowsLoader = categoryRowsLoader,
        _promotionRowLoader = promotionRowLoader,
        _featuredRestaurantRowsLoader = featuredRestaurantRowsLoader,
@@ -94,6 +97,7 @@ class SupabaseHomeRemoteDatasource implements HomeRemoteDatasource {
   static const _homePromotionsTable = 'home_promotions';
 
   final SupabaseClient _client;
+  final PublicMediaUrlResolver _mediaUrlResolver;
   final HomeRemoteRowsLoader? _categoryRowsLoader;
   final HomeRemoteSingleRowLoader? _promotionRowLoader;
   final HomeRemoteRowsLoader? _featuredRestaurantRowsLoader;
@@ -107,11 +111,13 @@ class SupabaseHomeRemoteDatasource implements HomeRemoteDatasource {
           .toList(growable: false);
       final promotion = await _loadPromotion();
       final restaurants = (await _loadFeaturedRestaurantRows())
+          .map(_resolveMediaPath)
           .map(HomeRestaurantDto.fromRow)
           .toList(growable: false);
       final categoryIdsByRestaurantId = _groupCategoryIdsByRestaurantId(
-        (await _loadRestaurantCategoryLinkRows())
-            .map(_RestaurantCategoryLinkDto.fromRow),
+        (await _loadRestaurantCategoryLinkRows()).map(
+          _RestaurantCategoryLinkDto.fromRow,
+        ),
       );
 
       final restaurantsWithCategories = restaurants
@@ -131,6 +137,10 @@ class SupabaseHomeRemoteDatasource implements HomeRemoteDatasource {
       throw HomeRemoteException(message: error.message);
     } on FormatException catch (error) {
       throw HomeRemoteException(message: error.message);
+    } on PublicMediaResolutionFailure catch (error) {
+      throw HomeRemoteException(
+        message: 'Public media resolution failed: ${error.code.name}.',
+      );
     }
   }
 
@@ -250,9 +260,9 @@ class SupabaseHomeRemoteDatasource implements HomeRemoteDatasource {
       );
     }
 
-    return response.map((row) => _castRow(row, table: table)).toList(
-      growable: false,
-    );
+    return response
+        .map((row) => _castRow(row, table: table))
+        .toList(growable: false);
   }
 
   Map<String, Object?>? _castMaybeSingleRow(
@@ -288,6 +298,15 @@ class SupabaseHomeRemoteDatasource implements HomeRemoteDatasource {
     }
 
     return Map<String, Object?>.from(row);
+  }
+
+  Map<String, Object?> _resolveMediaPath(Map<String, Object?> row) {
+    final storedPath = row['image_asset_path'];
+    if (storedPath is! String) {
+      return row;
+    }
+
+    return {...row, 'image_asset_path': _mediaUrlResolver.resolve(storedPath)};
   }
 }
 
