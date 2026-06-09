@@ -146,7 +146,7 @@ the app.
 - [x] Task 3 - create and validate the public-read Storage foundation.
 - [x] Task 4 - upload and verify the deterministic object set.
 - [x] Task 5 - migrate database rows to Storage object paths.
-- [ ] Task 6 - add the shared data-layer public-media resolver.
+- [x] Task 6 - add the shared data-layer public-media resolver.
 - [ ] Task 7 - wire the resolver into the three remote datasources.
 - [ ] Task 8 - add the shared asset/network renderer and update presentation.
 - [ ] Task 9 - run focused and end-to-end validation.
@@ -416,6 +416,19 @@ Applicable skills:
 - `dart-run-static-analysis`
 - `fd-architect`
 - `fd-supabase-architect`
+
+Task 6 evidence (2026-06-08):
+
+- Added a shared resolver contract and Supabase implementation under
+  `shared/data`, with app-level Riverpod composition.
+- Local `assets/` paths remain unchanged; approved `restaurants/` and
+  `products/` paths resolve through `catalog-media`.
+- Blank and unsupported paths raise an explicit typed failure.
+- TDD RED was observed before implementation; the focused suite then passed 6
+  tests covering local passthrough, both remote prefixes, both failure modes,
+  and provider composition.
+- Dart MCP focused analysis returned `No errors`; `pubspec.lock` remained
+  unchanged and `git diff --check` passed.
 
 ### Task 7: Resolve Media in Existing Remote Datasources
 

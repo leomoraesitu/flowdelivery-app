@@ -22,7 +22,16 @@ import 'package:flowdelivery_app/features/restaurant_details/data/repositories/r
 import 'package:flowdelivery_app/features/restaurant_details/domain/repositories/restaurant_details_repository.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/providers/restaurant_details_providers.dart'
     as restaurant_details_presentation;
+import 'package:flowdelivery_app/shared/data/media/public_media_url_resolver.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final appPublicMediaUrlResolverProvider = Provider<PublicMediaUrlResolver>((
+  ref,
+) {
+  return SupabasePublicMediaUrlResolver(
+    client: ref.watch(supabaseClientProvider),
+  );
+});
 
 final appAuthRemoteDatasourceProvider = Provider<AuthRemoteDatasource>((ref) {
   return SupabaseAuthRemoteDatasource(
