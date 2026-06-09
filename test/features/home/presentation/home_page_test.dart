@@ -39,39 +39,62 @@ Widget _buildTestApp({List overrides = const []}) {
 
 void main() {
   group('HomePage', () {
-    testWidgets('renders remote feed content from the repository success path', (
-      tester,
-    ) async {
-      final remoteContent = await _loadRemoteContent();
+    testWidgets(
+      'renders remote feed content from the repository success path',
+      (tester) async {
+        final remoteContent = await _loadRemoteContent();
 
-      await tester.pumpWidget(
-        _buildTestApp(
-          overrides: [
-            homeRepositoryProvider.overrideWithValue(
-              _FakeHomeRepository(() async => remoteContent),
-            ),
-          ],
-        ),
-      );
-      await tester.pumpAndSettle();
+        await tester.pumpWidget(
+          _buildTestApp(
+            overrides: [
+              homeRepositoryProvider.overrideWithValue(
+                _FakeHomeRepository(() async => remoteContent),
+              ),
+            ],
+          ),
+        );
+        await tester.pumpAndSettle();
 
-      final context = tester.element(find.byType(HomePage));
-      final l10n = AppLocalizations.of(context);
+        final context = tester.element(find.byType(HomePage));
+        final l10n = AppLocalizations.of(context);
 
-      expect(
-        find.text(l10n.homeDeliveryAddressValue(remoteContent.deliveryAddress)),
-        findsOneWidget,
-      );
-      expect(find.text('Pizza Prime'), findsOneWidget);
-      expect(find.text('Forno Central'), findsOneWidget);
-      expect(
-        find.text(homeFeedFixtureContent.featuredRestaurants.first.name),
-        findsNothing,
-      );
-      expect(find.text(l10n.homeLoadingStateTitle), findsNothing);
-      expect(find.text(l10n.homeEmptyStateTitle), findsNothing);
-      expect(find.text(l10n.homeErrorStateTitle), findsNothing);
-    });
+        expect(
+          find.text(
+            l10n.homeDeliveryAddressValue(remoteContent.deliveryAddress),
+          ),
+          findsOneWidget,
+        );
+        expect(find.text('Pizza Prime'), findsOneWidget);
+        expect(find.text('Forno Central'), findsOneWidget);
+        expect(
+          find.text(homeFeedFixtureContent.featuredRestaurants.first.name),
+          findsNothing,
+        );
+        expect(find.text(l10n.homeLoadingStateTitle), findsNothing);
+        expect(find.text(l10n.homeEmptyStateTitle), findsNothing);
+        expect(find.text(l10n.homeErrorStateTitle), findsNothing);
+
+        final images = tester.widgetList<Image>(find.byType(Image));
+        expect(
+          images.any(
+            (image) =>
+                image.image is NetworkImage &&
+                (image.image as NetworkImage).url ==
+                    remoteContent.featuredRestaurants.first.imageAssetPath,
+          ),
+          isTrue,
+        );
+        expect(
+          images.any(
+            (image) =>
+                image.image is AssetImage &&
+                (image.image as AssetImage).assetName ==
+                    remoteContent.promotion.imageAssetPath,
+          ),
+          isTrue,
+        );
+      },
+    );
 
     testWidgets(
       'renders localized header, categories, promotion, restaurants, and selected home destination',
@@ -129,20 +152,21 @@ void main() {
       },
     );
 
-    testWidgets('search input updates discovery state and filters restaurants', (
-      tester,
-    ) async {
-      await tester.pumpWidget(_buildTestApp());
-      await tester.pumpAndSettle();
+    testWidgets(
+      'search input updates discovery state and filters restaurants',
+      (tester) async {
+        await tester.pumpWidget(_buildTestApp());
+        await tester.pumpAndSettle();
 
-      await tester.enterText(find.byType(TextField), 'japanese');
-      await tester.pumpAndSettle();
+        await tester.enterText(find.byType(TextField), 'japanese');
+        await tester.pumpAndSettle();
 
-      expect(find.text('Sushi Zen'), findsOneWidget);
-      expect(find.text('Burger Artisan Collective'), findsNothing);
-      expect(find.text('Pasta Roma'), findsNothing);
-      expect(find.text('Taco Harbor'), findsNothing);
-    });
+        expect(find.text('Sushi Zen'), findsOneWidget);
+        expect(find.text('Burger Artisan Collective'), findsNothing);
+        expect(find.text('Pasta Roma'), findsNothing);
+        expect(find.text('Taco Harbor'), findsNothing);
+      },
+    );
 
     testWidgets(
       'renders localized discovery empty results and clears active filters',
@@ -153,7 +177,9 @@ void main() {
         final context = tester.element(find.byType(HomePage));
         final l10n = AppLocalizations.of(context);
 
-        await tester.tap(find.widgetWithText(ChoiceChip, l10n.homeCategoryPizza));
+        await tester.tap(
+          find.widgetWithText(ChoiceChip, l10n.homeCategoryPizza),
+        );
         await tester.enterText(find.byType(TextField), 'japanese');
         await tester.pumpAndSettle();
 
@@ -201,7 +227,9 @@ void main() {
         final context = tester.element(find.byType(HomePage));
         final l10n = AppLocalizations.of(context);
 
-        await tester.tap(find.widgetWithText(ChoiceChip, l10n.homeCategoryHealthy));
+        await tester.tap(
+          find.widgetWithText(ChoiceChip, l10n.homeCategoryHealthy),
+        );
         await tester.pumpAndSettle();
 
         final allCategoryChip = tester.widget<ChoiceChip>(
@@ -248,38 +276,39 @@ void main() {
       completer.complete(homeFeedFixtureContent);
     });
 
-    testWidgets('renders a localized empty state when no restaurants are available', (
-      tester,
-    ) async {
-      await tester.pumpWidget(
-        _buildTestApp(
-          overrides: [
-            homeRepositoryProvider.overrideWithValue(
-              _FakeHomeRepository(
-                () async => HomeFeedContent(
-                  deliveryAddress: homeFeedFixtureContent.deliveryAddress,
-                  categories: homeFeedFixtureContent.categories,
-                  promotion: homeFeedFixtureContent.promotion,
-                  featuredRestaurants: const [],
+    testWidgets(
+      'renders a localized empty state when no restaurants are available',
+      (tester) async {
+        await tester.pumpWidget(
+          _buildTestApp(
+            overrides: [
+              homeRepositoryProvider.overrideWithValue(
+                _FakeHomeRepository(
+                  () async => HomeFeedContent(
+                    deliveryAddress: homeFeedFixtureContent.deliveryAddress,
+                    categories: homeFeedFixtureContent.categories,
+                    promotion: homeFeedFixtureContent.promotion,
+                    featuredRestaurants: const [],
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-      );
-      await tester.pumpAndSettle();
+            ],
+          ),
+        );
+        await tester.pumpAndSettle();
 
-      final context = tester.element(find.byType(HomePage));
-      final l10n = AppLocalizations.of(context);
+        final context = tester.element(find.byType(HomePage));
+        final l10n = AppLocalizations.of(context);
 
-      expect(find.text(l10n.homeEmptyStateTitle), findsOneWidget);
-      expect(find.text(l10n.homeEmptyStateMessage), findsOneWidget);
-      expect(find.text(l10n.homeDeliveryAddressLabel), findsOneWidget);
-      expect(
-        find.text(homeFeedFixtureContent.featuredRestaurants.first.name),
-        findsNothing,
-      );
-    });
+        expect(find.text(l10n.homeEmptyStateTitle), findsOneWidget);
+        expect(find.text(l10n.homeEmptyStateMessage), findsOneWidget);
+        expect(find.text(l10n.homeDeliveryAddressLabel), findsOneWidget);
+        expect(
+          find.text(homeFeedFixtureContent.featuredRestaurants.first.name),
+          findsNothing,
+        );
+      },
+    );
 
     testWidgets('renders a localized retryable error state', (tester) async {
       var callCount = 0;
@@ -288,9 +317,9 @@ void main() {
         _buildTestApp(
           overrides: [
             homeFeedAsyncProvider.overrideWith((ref) async {
-                callCount++;
-                throw Exception('boom');
-              }),
+              callCount++;
+              throw Exception('boom');
+            }),
           ],
         ),
       );
@@ -417,7 +446,7 @@ Future<HomeFeedContent> _loadRemoteContent() async {
       HomeRestaurant(
         id: 'restaurant-remote-1',
         name: 'Pizza Prime',
-        imageAssetPath: 'assets/images/restaurant.png',
+        imageAssetPath: 'https://example.com/pizza-prime.webp',
         rating: 4.9,
         deliveryTimeMinMinutes: 15,
         deliveryTimeMaxMinutes: 25,
@@ -427,7 +456,7 @@ Future<HomeFeedContent> _loadRemoteContent() async {
       HomeRestaurant(
         id: 'restaurant-remote-2',
         name: 'Forno Central',
-        imageAssetPath: 'assets/images/restaurant.png',
+        imageAssetPath: 'https://example.com/forno-central.webp',
         rating: 4.7,
         deliveryTimeMinMinutes: 20,
         deliveryTimeMaxMinutes: 30,

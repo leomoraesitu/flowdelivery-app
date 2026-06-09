@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flowdelivery_app/app/theme/app_theme.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_details.dart';
+import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_item.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/repositories/restaurant_details_repository.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/pages/restaurant_details_page.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/providers/restaurant_details_providers.dart';
@@ -187,6 +188,55 @@ void main() {
         }
       },
     );
+
+    testWidgets('renders remote restaurant and product media', (tester) async {
+      final remoteDetails = RestaurantDetails(
+        id: restaurantDetailsFixture.id,
+        name: restaurantDetailsFixture.name,
+        imageAssetPath: 'https://example.com/restaurant.webp',
+        rating: restaurantDetailsFixture.rating,
+        deliveryTimeMinMinutes: restaurantDetailsFixture.deliveryTimeMinMinutes,
+        deliveryTimeMaxMinutes: restaurantDetailsFixture.deliveryTimeMaxMinutes,
+        cuisine: restaurantDetailsFixture.cuisine,
+        categories: restaurantDetailsFixture.categories,
+        items: const [
+          RestaurantMenuItem(
+            id: 'signature_truffle',
+            categoryId: 'burgers',
+            name: 'The Signature Truffle',
+            description: 'Wagyu beef with truffle aioli.',
+            imageAssetPath: 'https://example.com/signature-truffle.webp',
+            priceInCents: 1850,
+          ),
+        ],
+      );
+
+      await tester.pumpWidget(
+        _buildTestApp(
+          restaurantId: restaurantId,
+          overrides: [
+            restaurantDetailsRepositoryProvider.overrideWithValue(
+              _FakeRestaurantDetailsRepository(() async => remoteDetails),
+            ),
+          ],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final networkUrls = tester
+          .widgetList<Image>(find.byType(Image))
+          .map((image) => image.image)
+          .whereType<NetworkImage>()
+          .map((image) => image.url);
+
+      expect(
+        networkUrls,
+        containsAll([
+          remoteDetails.imageAssetPath,
+          remoteDetails.items.single.imageAssetPath,
+        ]),
+      );
+    });
 
     testWidgets('category selection filters visible items', (tester) async {
       await tester.pumpWidget(

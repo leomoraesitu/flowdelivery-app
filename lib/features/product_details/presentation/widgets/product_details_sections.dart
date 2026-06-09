@@ -1,6 +1,7 @@
 import 'package:flowdelivery_app/app/theme/app_tokens.dart';
 import 'package:flowdelivery_app/features/product_details/domain/entities/product_details.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
+import 'package:flowdelivery_app/shared/presentation/widgets/app_media_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -191,28 +192,20 @@ class _ProductHeader extends StatelessWidget {
 
     return Stack(
       children: [
-        Semantics(
-          image: true,
-          label: imageSemanticLabel,
-          child: Container(
-            width: double.infinity,
-            height: AppSizes.restaurantHeroHeight,
-            decoration: BoxDecoration(
-              color: colorScheme.surfaceContainerHighest,
-              borderRadius: BorderRadius.circular(AppRadius.xl),
-            ),
-            padding: EdgeInsets.all(AppSpacing.xl),
-            child: Image.asset(
-              imageAssetPath,
-              fit: BoxFit.contain,
-              errorBuilder: (context, error, stackTrace) {
-                return Icon(
-                  Icons.fastfood_outlined,
-                  color: colorScheme.primary,
-                  size: AppSizes.touchTarget,
-                );
-              },
-            ),
+        Container(
+          width: double.infinity,
+          height: AppSizes.restaurantHeroHeight,
+          decoration: BoxDecoration(
+            color: colorScheme.surfaceContainerHighest,
+            borderRadius: BorderRadius.circular(AppRadius.xl),
+          ),
+          padding: EdgeInsets.all(AppSpacing.xl),
+          child: AppMediaImage(
+            source: imageAssetPath,
+            fit: BoxFit.contain,
+            semanticLabel: imageSemanticLabel,
+            fallbackIcon: Icons.fastfood_outlined,
+            fallbackIconSize: AppSizes.touchTarget,
           ),
         ),
         Positioned(

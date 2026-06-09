@@ -165,6 +165,49 @@ void main() {
       expect(find.byIcon(Icons.arrow_back), findsOneWidget);
     });
 
+    testWidgets('renders remote product media with localized semantics', (
+      tester,
+    ) async {
+      const remoteProduct = ProductDetails(
+        id: 'signature_truffle',
+        restaurantId: 'burger_artisan_collective',
+        categoryId: 'burgers',
+        name: 'The Signature Truffle',
+        description: 'Wagyu beef with truffle aioli.',
+        imageAssetPath: 'https://example.com/signature-truffle.webp',
+        priceInCents: 1850,
+      );
+
+      await tester.pumpWidget(
+        _buildTestApp(
+          productId: productId,
+          overrides: [
+            productDetailsRepositoryProvider.overrideWithValue(
+              _FakeProductDetailsRepository(() async => remoteProduct),
+            ),
+          ],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final context = tester.element(find.byType(ProductDetailsPage));
+      final expectedLabel = AppLocalizations.of(
+        context,
+      ).productDetailsImageSemanticLabel(remoteProduct.name);
+      final image = tester.widget<Image>(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Image &&
+              widget.image is NetworkImage &&
+              (widget.image as NetworkImage).url ==
+                  remoteProduct.imageAssetPath,
+        ),
+      );
+
+      expect(image.semanticLabel, expectedLabel);
+      expect(image.excludeFromSemantics, isFalse);
+    });
+
     testWidgets('triggers onBack callback when back button is tapped', (
       tester,
     ) async {

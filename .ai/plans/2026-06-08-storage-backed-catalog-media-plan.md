@@ -148,7 +148,7 @@ the app.
 - [x] Task 5 - migrate database rows to Storage object paths.
 - [x] Task 6 - add the shared data-layer public-media resolver.
 - [x] Task 7 - wire the resolver into the three remote datasources.
-- [ ] Task 8 - add the shared asset/network renderer and update presentation.
+- [x] Task 8 - add the shared asset/network renderer and update presentation.
 - [ ] Task 9 - run focused and end-to-end validation.
 - [ ] Task 10 - reconcile Sprint 8 governance and technical debt.
 
@@ -518,6 +518,22 @@ Applicable skills:
 - `dart-run-static-analysis`
 - `fd-ux-reviewer`
 
+Task 8 evidence (2026-06-09):
+
+- Added shared `AppMediaImage` presentation component with local asset and
+  HTTP(S) rendering, stable theme-safe loading/error fallback, configurable
+  context icon and size, `fit`, dimensions, and optional image semantics.
+- Replaced duplicated image rendering in Home, restaurant details, and product
+  details without exposing Supabase bucket or object-path rules to widgets.
+- Home promotion remains a local asset; restaurant covers, menu products, and
+  product details accept resolved remote URLs while local fixtures remain
+  supported.
+- TDD RED was observed for the missing shared widget, remote rendering in each
+  browsing surface, and configurable fallback icon sizing.
+- The consolidated shared-widget and page suite passed 28 tests; Theme,
+  Localization, ARB parity/freshness, and Trello guards passed 12 tests; Dart
+  MCP focused analysis returned `No errors`.
+
 ### Task 9: Validate the Complete Media Flow
 
 Concept: prove that reviewed objects, database paths, URL resolution, and all
@@ -600,9 +616,9 @@ Applicable skills:
 - [ ] All 4 restaurant rows and all 16 product rows reference valid manifest
   objects.
 - [ ] Home promotion media remains unchanged.
-- [ ] Home, restaurant details, and product details render Storage-backed images.
-- [ ] Local fixture/asset fallback continues to work.
-- [ ] Broken remote media renders a stable, theme-safe fallback without crashing.
+- [x] Home, restaurant details, and product details render Storage-backed images.
+- [x] Local fixture/asset fallback continues to work.
+- [x] Broken remote media renders a stable, theme-safe fallback without crashing.
 - [ ] Supabase remains isolated from widgets and domain entities.
 - [ ] Focused tests, security checks, guards, and the consolidated regression
   matrix pass.
@@ -611,20 +627,20 @@ Applicable skills:
 
 ## Localization Guard Checklist
 
-- [ ] No new user-facing copy is planned.
+- [x] No new user-facing copy is planned.
 - [ ] If copy becomes necessary, each string is added through ARB catalogs.
 - [ ] UI consumes `AppLocalizations`.
-- [ ] No hardcoded text is introduced in presentation.
-- [ ] Hardcoded-copy, ARB parity, and generated freshness guards remain green.
+- [x] No hardcoded text is introduced in presentation.
+- [x] Hardcoded-copy, ARB parity, and generated freshness guards remain green.
 
 ## Theme Guard Checklist
 
-- [ ] Shared loading and error fallbacks use `Theme.of(context)` and app tokens.
-- [ ] No `Color(0x...)` is introduced in presentation.
-- [ ] No direct `AppLightColors`/`AppDarkColors` usage is introduced outside
+- [x] Shared loading and error fallbacks use `Theme.of(context)` and app tokens.
+- [x] No `Color(0x...)` is introduced in presentation.
+- [x] No direct `AppLightColors`/`AppDarkColors` usage is introduced outside
   `lib/app/theme`.
-- [ ] Existing layout dimensions remain stable while network images load.
-- [ ] Visual hardcoded guard remains green.
+- [x] Existing layout dimensions remain stable while network images load.
+- [x] Visual hardcoded guard remains green.
 
 ## Risks
 

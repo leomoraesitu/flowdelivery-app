@@ -3,6 +3,7 @@ import 'package:flowdelivery_app/features/restaurant_details/domain/entities/res
 import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_item.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/providers/restaurant_details_providers.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
+import 'package:flowdelivery_app/shared/presentation/widgets/app_media_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -202,16 +203,11 @@ class _RestaurantHeader extends StatelessWidget {
           ),
           padding: EdgeInsets.all(AppSpacing.xl),
           child: ExcludeSemantics(
-            child: Image.asset(
-              imageAssetPath,
+            child: AppMediaImage(
+              source: imageAssetPath,
               fit: BoxFit.contain,
-              errorBuilder: (context, error, stackTrace) {
-                return Icon(
-                  Icons.storefront_outlined,
-                  color: colorScheme.primary,
-                  size: AppSizes.touchTarget,
-                );
-              },
+              fallbackIcon: Icons.storefront_outlined,
+              fallbackIconSize: AppSizes.touchTarget,
             ),
           ),
         ),
@@ -387,19 +383,11 @@ class _MenuItemCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.lg),
                 child: SizedBox.square(
                   dimension: AppSizes.menuItemThumbnail,
-                  child: Image.asset(
-                    item.imageAssetPath,
+                  child: AppMediaImage(
+                    source: item.imageAssetPath,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return ColoredBox(
-                        color: colorScheme.surfaceContainerHighest,
-                        child: Icon(
-                          Icons.fastfood_outlined,
-                          color: colorScheme.primary,
-                          size: AppSizes.iconLg,
-                        ),
-                      );
-                    },
+                    fallbackIcon: Icons.fastfood_outlined,
+                    fallbackIconSize: AppSizes.iconLg,
                   ),
                 ),
               ),

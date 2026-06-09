@@ -4,6 +4,7 @@ import 'package:flowdelivery_app/features/home/domain/entities/home_promotion.da
 import 'package:flowdelivery_app/features/home/domain/entities/home_restaurant.dart';
 import 'package:flowdelivery_app/features/home/presentation/providers/home_feed_providers.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
+import 'package:flowdelivery_app/shared/presentation/widgets/app_media_image.dart';
 import 'package:flutter/material.dart';
 
 class HomeFeedSections extends StatelessWidget {
@@ -197,16 +198,11 @@ class _PromotionBanner extends StatelessWidget {
               ),
               padding: EdgeInsets.all(AppSpacing.md),
               child: ExcludeSemantics(
-                child: Image.asset(
-                  promotion.imageAssetPath,
+                child: AppMediaImage(
+                  source: promotion.imageAssetPath,
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(
-                      Icons.local_offer_outlined,
-                      color: colorScheme.primary,
-                      size: AppSizes.iconLg,
-                    );
-                  },
+                  fallbackIcon: Icons.local_offer_outlined,
+                  fallbackIconSize: AppSizes.iconLg,
                 ),
               ),
             ),
@@ -304,16 +300,11 @@ class _RestaurantCard extends StatelessWidget {
                 color: colorScheme.surfaceContainerHighest,
                 padding: EdgeInsets.all(AppSpacing.xl),
                 child: ExcludeSemantics(
-                  child: Image.asset(
-                    restaurant.imageAssetPath,
+                  child: AppMediaImage(
+                    source: restaurant.imageAssetPath,
                     fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Icon(
-                        Icons.storefront_outlined,
-                        color: colorScheme.primary,
-                        size: AppSizes.iconLg,
-                      );
-                    },
+                    fallbackIcon: Icons.storefront_outlined,
+                    fallbackIconSize: AppSizes.iconLg,
                   ),
                 ),
               ),
