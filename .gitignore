@@ -44,5 +44,18 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Secrets / credentials (never commit)
+*.env
+.env
+.env.*
+key.properties
+
 # Local runtime defines (secrets)
 .vscode/supabase.local.json
+
+# Gemini settings (contains secrets)
+.gemini/
+
+# Claude Code: junction to .agents/skills (source of truth lives there) + local settings
+.claude/skills/
+.claude/settings.local.json

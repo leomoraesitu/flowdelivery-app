@@ -22,6 +22,10 @@ abstract final class AppSizes {
   static const double iconMd = 24;
   static const double iconLg = 32;
   static const double touchTarget = 48;
+  static const double menuItemThumbnail = 96;
+  static const double restaurantHeroHeight = 240;
+  static const double productHeroHeight = 480;
+  static const double contentMaxWidthMd = 760;
 }
 
 abstract final class AppDurations {

@@ -5,8 +5,9 @@ import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.d
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/state/auth_state.dart';
-import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
-import 'package:flutter/material.dart';
+import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
+import 'package:flowdelivery_app/features/product_details/presentation/pages/product_details_page.dart';
+import 'package:flowdelivery_app/features/restaurant_details/presentation/pages/restaurant_details_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,13 +15,50 @@ final appRouterProvider = Provider<GoRouter>((ref) {
   final authViewModel = ref.read(authViewModelProvider);
 
   return GoRouter(
-    initialLocation: AppRoutes.homePath,
+    initialLocation: AppRoutes.rootPath,
     refreshListenable: authViewModel,
     routes: <RouteBase>[
       GoRoute(
+        path: AppRoutes.rootPath,
+        name: AppRoutes.rootName,
+        redirect: (context, state) => AppRoutes.homePath,
+      ),
+      GoRoute(
         path: AppRoutes.homePath,
         name: AppRoutes.homeName,
-        builder: (context, state) => const _HomePlaceholderPage(),
+        builder: (context, state) => HomePage(
+          onRestaurantSelected: (restaurantId) {
+            context.pushNamed(
+              AppRoutes.restaurantDetailsName,
+              pathParameters: {'restaurantId': restaurantId},
+            );
+          },
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.restaurantDetailsPath,
+        name: AppRoutes.restaurantDetailsName,
+        builder: (context, state) {
+          final restaurantId = state.pathParameters['restaurantId']!;
+          return RestaurantDetailsPage(
+            restaurantId: restaurantId,
+            onProductSelected: (productId) {
+              context.pushNamed(
+                AppRoutes.productDetailsName,
+                pathParameters: {
+                  'restaurantId': restaurantId,
+                  'productId': productId,
+                },
+              );
+            },
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.productDetailsPath,
+        name: AppRoutes.productDetailsName,
+        builder: (context, state) =>
+            ProductDetailsPage(productId: state.pathParameters['productId']!),
       ),
       GoRoute(
         path: AppRoutes.signInPath,
@@ -51,6 +89,9 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           currentPath == AppRoutes.signUpPath ||
           currentPath == AppRoutes.forgotPasswordPath ||
           currentPath == AppRoutes.resetPasswordPath;
+      final isProtectedRoute =
+          currentPath == AppRoutes.homePath ||
+          currentPath.startsWith('${AppRoutes.restaurantDetailsBasePath}/');
 
       if (authStatus == AuthStatus.loading) {
         return null;
@@ -62,7 +103,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         return AppRoutes.homePath;
       }
 
-      if (authStatus != AuthStatus.authenticated && !isInAuthRoute) {
+      if (authStatus != AuthStatus.authenticated && isProtectedRoute) {
         return AppRoutes.signInPath;
       }
 
@@ -70,14 +111,3 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     },
   );
 });
-
-class _HomePlaceholderPage extends StatelessWidget {
-  const _HomePlaceholderPage();
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
-    return Scaffold(body: Center(child: Text(l10n.appHomePlaceholder)));
-  }
-}

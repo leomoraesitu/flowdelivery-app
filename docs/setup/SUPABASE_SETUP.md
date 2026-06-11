@@ -105,6 +105,83 @@ uninitialized SDK is treated as a startup wiring error.
 
 Sprint 0 documents the setup contract. Schema migrations and policies can be created in later tasks.
 
+## Remote Schema Deployment
+
+The repository keeps versioned migrations under `supabase/migrations/`. As of
+2026-06-03 the following migrations are applied to the active remote project
+`flowdelivery-app` (ref `kvbahsdjmhpukzmdttvq`, region `us-west-2`):
+
+```text
+home_remote_feed_foundation        (restaurant_categories, restaurants,
+                                    restaurant_category_links, home_promotions)
+restaurant_details_remote_catalog  (restaurant_menu_categories,
+                                    restaurant_menu_items)
+catalog_demo_coverage              (deterministic menu categories/items for
+                                    pasta_roma, sushi_zen, and taco_harbor)
+```
+
+Deployment facts recorded after applying migrations via the Supabase MCP
+`apply_migration` tool:
+
+- The migrations succeeded and are listed by `list_migrations`.
+- All six `public` tables exist with Row Level Security enabled.
+- Seed counts match the deterministic fixtures: `restaurant_categories` 5,
+  `restaurants` 4, `restaurant_category_links` 8, `home_promotions` 1,
+  `restaurant_menu_categories` 13, `restaurant_menu_items` 16.
+- Security advisors reported no missing-RLS issues on the new tables. The only
+  open advisory is an unrelated Auth-level `auth_leaked_password_protection`
+  warning.
+
+Read access is restricted to the `authenticated` role through explicit grants
+and authenticated read policies, so the app must be signed in before the Home
+feed and restaurant details load remote data.
+
+Catalog seed coverage now exists for all seeded Home restaurants:
+`burger_artisan_collective` has 4 categories and 4 items; `pasta_roma`,
+`sushi_zen`, and `taco_harbor` each have 3 categories and 4 items.
+
+Migration application order matters: apply `home_remote_feed_foundation` before
+`restaurant_details_remote_catalog`, because the catalog tables reference
+`public.restaurants`.
+
+## Catalog Media Storage
+
+The public `catalog-media` bucket stores non-sensitive restaurant and product
+catalog images. Its versioned foundation enforces:
+
+- public object downloads;
+- `image/webp` as the only allowed MIME type;
+- a `1 MiB` per-file limit;
+- no `INSERT`, `UPDATE`, or `DELETE` policy for `anon` or `authenticated`.
+
+Catalog media uploads and replacements are administrative deployment
+operations. Use approved Supabase tooling outside the Flutter client. Never add
+a service-role or secret key to Flutter configuration, source code, or assets.
+
+Public download smoke testing requires at least one uploaded object and is
+performed with the deterministic manifest upload task.
+
+### Catalog Media Deployment
+
+Authenticate the Supabase CLI outside the Flutter runtime, link the intended
+project, and upload each file to the exact `objectPath` recorded in
+`supabase/seed-assets/catalog/manifest.json`.
+
+Use `image/webp` as the content type and keep overwrite disabled. On Windows,
+prefer one upload per manifest entry because recursive CLI uploads may convert
+path separators into invalid Storage object keys.
+
+After upload, validate:
+
+- exactly 20 objects: 4 under `restaurants/` and 16 under `products/`;
+- remote object paths, MIME types, and byte sizes match the manifest;
+- every public URL returns HTTP 200 with `image/webp`;
+- every downloaded object's SHA-256 matches the reviewed local file;
+- a duplicate upload returns a conflict instead of replacing an object.
+
+Remove local CLI link artifacts after deployment. Authentication tokens belong
+to the user's CLI profile, never to the repository or Flutter configuration.
+
 ## Manual QA - Recovery Email Deliverability (Non-local Mailbox)
 
 Use this checklist when validating password-recovery email delivery in a QA

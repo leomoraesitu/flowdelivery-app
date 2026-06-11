@@ -410,6 +410,386 @@ abstract class AppLocalizations {
   /// In pt_BR, this message translates to:
   /// **'Relatorios'**
   String get authTabReports;
+
+  /// Label shown above the current delivery address in the Home header.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Entregar em'**
+  String get homeDeliveryAddressLabel;
+
+  /// Current delivery address shown in the Home header.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{address}'**
+  String homeDeliveryAddressValue(String address);
+
+  /// Hint text shown in the Home search field.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Buscar pratos ou restaurantes'**
+  String get homeSearchHint;
+
+  /// Label for the all category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Todos'**
+  String get homeCategoryAll;
+
+  /// Label for the burgers category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Hamburgueres'**
+  String get homeCategoryBurgers;
+
+  /// Label for the pizza category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Pizza'**
+  String get homeCategoryPizza;
+
+  /// Label for the sushi category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Sushi'**
+  String get homeCategorySushi;
+
+  /// Label for the healthy category chip on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Saudavel'**
+  String get homeCategoryHealthy;
+
+  /// Title shown in the Home promotion banner.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Ofertas para o seu proximo pedido'**
+  String get homeBannerTitle;
+
+  /// Discount label shown in the Home promotion banner.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{discountPercentage}% OFF'**
+  String homeBannerDiscountValue(int discountPercentage);
+
+  /// Badge shown when the Home promotion includes free delivery.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Entrega gratis'**
+  String get homeBannerFreeDeliveryBadge;
+
+  /// Section title shown above featured restaurants on the Home feed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Restaurantes em destaque'**
+  String get homeFeaturedSectionTitle;
+
+  /// Action label used to reveal the complete section content on Home.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Ver todos'**
+  String get homeSeeAllAction;
+
+  /// Compact restaurant metadata string with rating and delivery time range.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{rating} • {minMinutes}-{maxMinutes} min'**
+  String homeRestaurantRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  );
+
+  /// Title shown while the Home remote feed is loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando sua Home'**
+  String get homeLoadingStateTitle;
+
+  /// Body copy shown while the Home remote feed is loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Estamos buscando os restaurantes e as ofertas mais recentes para voce.'**
+  String get homeLoadingStateMessage;
+
+  /// Semantic label announced for the Home loading indicator.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando feed da Home'**
+  String get homeLoadingStateSemanticLabel;
+
+  /// Title shown when the Home remote feed fails to load.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nao foi possivel carregar sua Home'**
+  String get homeErrorStateTitle;
+
+  /// Body copy shown when the Home remote feed fails to load.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tente novamente para atualizar restaurantes e ofertas.'**
+  String get homeErrorStateMessage;
+
+  /// Retry button label shown after a Home remote feed loading failure.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tentar novamente'**
+  String get homeRetryAction;
+
+  /// Title shown when the Home remote feed loads without featured restaurants.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nada em destaque agora'**
+  String get homeEmptyStateTitle;
+
+  /// Body copy shown when the Home remote feed loads without featured restaurants.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Volte em instantes para conferir novos restaurantes e ofertas.'**
+  String get homeEmptyStateMessage;
+
+  /// Title shown when active Home discovery filters produce no restaurant matches.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nenhum restaurante encontrado'**
+  String get homeDiscoveryEmptyStateTitle;
+
+  /// Body copy shown when active Home discovery filters produce no restaurant matches.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tente ajustar sua busca ou limpar os filtros para ver mais opcoes.'**
+  String get homeDiscoveryEmptyStateMessage;
+
+  /// Button label that resets active Home discovery filters.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Limpar filtros'**
+  String get homeDiscoveryClearFiltersAction;
+
+  /// Tooltip and semantic label for the restaurant-details back navigation action.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Voltar'**
+  String get restaurantDetailsBackAction;
+
+  /// Title shown while restaurant details and catalog are loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando restaurante'**
+  String get restaurantDetailsLoadingStateTitle;
+
+  /// Body copy shown while restaurant details and catalog are loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Estamos buscando o cardapio e os detalhes mais recentes para voce.'**
+  String get restaurantDetailsLoadingStateMessage;
+
+  /// Semantic label announced for the restaurant-details loading indicator.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando detalhes e cardapio do restaurante'**
+  String get restaurantDetailsLoadingStateSemanticLabel;
+
+  /// Title shown when restaurant details or catalog loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nao foi possivel carregar o restaurante'**
+  String get restaurantDetailsErrorStateTitle;
+
+  /// Body copy shown when restaurant details or catalog loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tente novamente para atualizar os detalhes e o cardapio.'**
+  String get restaurantDetailsErrorStateMessage;
+
+  /// Retry button label shown after restaurant-details loading failure.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tentar novamente'**
+  String get restaurantDetailsRetryAction;
+
+  /// Title shown when the restaurant catalog loads without menu items.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Cardapio indisponivel agora'**
+  String get restaurantDetailsEmptyStateTitle;
+
+  /// Body copy shown when the restaurant catalog loads without menu items.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Volte em instantes para conferir as opcoes deste restaurante.'**
+  String get restaurantDetailsEmptyStateMessage;
+
+  /// Section title shown above the restaurant menu categories and items.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Cardapio'**
+  String get restaurantDetailsMenuSectionTitle;
+
+  /// Label for the popular restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Populares'**
+  String get restaurantDetailsCategoryPopular;
+
+  /// Label for the burgers restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Hamburgueres'**
+  String get restaurantDetailsCategoryBurgers;
+
+  /// Label for the sides restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Acompanhamentos'**
+  String get restaurantDetailsCategorySides;
+
+  /// Label for the drinks restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Bebidas'**
+  String get restaurantDetailsCategoryDrinks;
+
+  /// Label for the salads restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Saladas'**
+  String get restaurantDetailsCategorySalads;
+
+  /// Label for the pastas restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Massas'**
+  String get restaurantDetailsCategoryPastas;
+
+  /// Label for the rolls restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Rolls'**
+  String get restaurantDetailsCategoryRolls;
+
+  /// Label for the bowls restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Bowls'**
+  String get restaurantDetailsCategoryBowls;
+
+  /// Label for the tacos restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tacos'**
+  String get restaurantDetailsCategoryTacos;
+
+  /// Compact restaurant-details metadata string with rating and delivery time range.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{rating} • {minMinutes}-{maxMinutes} min'**
+  String restaurantDetailsRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  );
+
+  /// Semantic label announced for the restaurant menu section.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Cardapio de {restaurantName}'**
+  String restaurantDetailsMenuSemanticLabel(String restaurantName);
+
+  /// Semantic label announced for a restaurant-menu category filter.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Filtrar cardapio por {categoryName}'**
+  String restaurantDetailsCategoryFilterSemanticLabel(String categoryName);
+
+  /// Bottom navigation label for the Home destination.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Home'**
+  String get homeBottomNavHome;
+
+  /// Bottom navigation label for the browse destination.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Buscar'**
+  String get homeBottomNavBrowse;
+
+  /// Bottom navigation label for the orders destination.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Pedidos'**
+  String get homeBottomNavOrders;
+
+  /// Bottom navigation label for the account destination.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Conta'**
+  String get homeBottomNavAccount;
+
+  /// Tooltip and semantic label for the product-details back navigation action.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Voltar'**
+  String get productDetailsBackAction;
+
+  /// Title shown while product details are loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando produto'**
+  String get productDetailsLoadingStateTitle;
+
+  /// Body copy shown while product details are loading.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Estamos buscando os detalhes mais recentes deste produto.'**
+  String get productDetailsLoadingStateMessage;
+
+  /// Semantic label announced for the product-details loading indicator.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando detalhes do produto'**
+  String get productDetailsLoadingStateSemanticLabel;
+
+  /// Title shown when product details loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nao foi possivel carregar o produto'**
+  String get productDetailsErrorStateTitle;
+
+  /// Body copy shown when product details loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tente novamente para atualizar os detalhes do produto.'**
+  String get productDetailsErrorStateMessage;
+
+  /// Retry button label shown after product-details loading failure.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tentar novamente'**
+  String get productDetailsRetryAction;
+
+  /// Title shown when the requested product does not exist.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Produto indisponivel'**
+  String get productDetailsNotFoundStateTitle;
+
+  /// Body copy shown when the requested product does not exist.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Este produto nao esta disponivel neste restaurante.'**
+  String get productDetailsNotFoundStateMessage;
+
+  /// Semantic label for the product hero image.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Imagem de {productName}'**
+  String productDetailsImageSemanticLabel(String productName);
+
+  /// Semantic label announcing the product price.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Preco {price}'**
+  String productDetailsPriceSemanticLabel(String price);
 }
 
 class _AppLocalizationsDelegate
