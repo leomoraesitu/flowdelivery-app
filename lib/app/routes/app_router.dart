@@ -28,7 +28,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         name: AppRoutes.homeName,
         builder: (context, state) => HomePage(
           onRestaurantSelected: (restaurantId) {
-            context.goNamed(
+            context.pushNamed(
               AppRoutes.restaurantDetailsName,
               pathParameters: {'restaurantId': restaurantId},
             );
@@ -43,7 +43,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           return RestaurantDetailsPage(
             restaurantId: restaurantId,
             onProductSelected: (productId) {
-              context.goNamed(
+              context.pushNamed(
                 AppRoutes.productDetailsName,
                 pathParameters: {
                   'restaurantId': restaurantId,

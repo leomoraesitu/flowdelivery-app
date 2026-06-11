@@ -149,8 +149,8 @@ the app.
 - [x] Task 6 - add the shared data-layer public-media resolver.
 - [x] Task 7 - wire the resolver into the three remote datasources.
 - [x] Task 8 - add the shared asset/network renderer and update presentation.
-- [ ] Task 9 - run focused and end-to-end validation.
-- [ ] Task 10 - reconcile Sprint 8 governance and technical debt.
+- [x] Task 9 - run focused and end-to-end validation.
+- [x] Task 10 - reconcile Sprint 8 governance and technical debt.
 
 ## Implementation Tasks
 
@@ -570,6 +570,23 @@ Applicable skills:
 - `dart-run-static-analysis`
 - `flutter-add-widget-test`
 
+Task 9 evidence (2026-06-11):
+
+- Dart MCP `add_roots` completed before validation; focused analysis returned
+  `No errors`.
+- The consolidated resolver, datasource, widget, router, Localization Guard,
+  Theme Guard, and Trello Guard matrix passed 73 tests.
+- Remote read-only parity confirmed 4 restaurant paths, 16 product paths, and
+  20 WebP Storage objects; Home promotion media remains a local asset.
+- Authenticated Chrome QA validated Home, all four restaurant catalogs, and
+  representative product details at 1280x900 and 390x844.
+- All 4 restaurant covers and all 16 menu-product images were visually
+  confirmed. One delayed Tagliatelle thumbnail loaded normally after the
+  network completed; no persistent fallback, crash, overflow, or layout shift
+  was found.
+- Flutter contains no Storage mutation call or privileged credential;
+  `git diff --check` passed.
+
 ### Task 10: Reconcile Sprint 8 Governance
 
 Concept: close the sprint only after remote deployment and runtime validation
@@ -602,27 +619,51 @@ Applicable skills:
 - `fd-trello-manager`
 - `fd-code-reviewer`
 
+Task 10 evidence (2026-06-09):
+
+- Updated `docs/project-management/SPRINT_8.md` to show Sprint 8 as in
+  progress at the time, with Task 10 completed while Task 9 visual QA was still
+  open.
+- Updated `.ai/memory/current_feature.md`, `.ai/memory/current_sprint.md`, and
+  `.ai/memory/technical_debt.md` to reflect the validated runtime state and the
+  accepted cache/versioning debt for future media replacements.
+- Reconciled the real Trello card `https://trello.com/c/PXq6TWpP` against the
+  evidence available on 2026-06-09. At that point, final Task 9 evidence had not
+  yet been synced for administrative sprint closure.
+- Validation evidence already established before reconciliation: Dart MCP
+  focused suites passed, focused analysis returned `No errors`, and `git diff
+  --check` passed.
+
+Final closure evidence (2026-06-11):
+
+- Synced the completed Task 9 automated, remote-parity, security, and
+  authenticated visual-QA evidence to the real Trello card.
+- Completed the seven real card checklists and moved
+  `https://trello.com/c/PXq6TWpP` to `Done`.
+- Closed Sprint 8 governance after implementation and validation evidence were
+  complete; no additional feature step is authorized by this plan.
+
 ## Acceptance Criteria
 
-- [ ] Exactly 4 restaurant covers and 16 product images are generated, reviewed,
+- [x] Exactly 4 restaurant covers and 16 product images are generated, reviewed,
   optimized as WebP, and represented in the versioned manifest.
-- [ ] Restaurant covers are 16:9 and product images are 1:1.
-- [ ] The 20 approved files are stored under `supabase/seed-assets/catalog/` and
+- [x] Restaurant covers are 16:9 and product images are 1:1.
+- [x] The 20 approved files are stored under `supabase/seed-assets/catalog/` and
   are not included in the Flutter asset bundle.
-- [ ] Public bucket `catalog-media` serves the approved objects.
-- [ ] The Flutter client has no Storage mutation behavior and contains no
+- [x] Public bucket `catalog-media` serves the approved objects.
+- [x] The Flutter client has no Storage mutation behavior and contains no
   privileged key.
-- [ ] Postgres stores stable Storage object paths, not complete public URLs.
-- [ ] All 4 restaurant rows and all 16 product rows reference valid manifest
+- [x] Postgres stores stable Storage object paths, not complete public URLs.
+- [x] All 4 restaurant rows and all 16 product rows reference valid manifest
   objects.
-- [ ] Home promotion media remains unchanged.
+- [x] Home promotion media remains unchanged.
 - [x] Home, restaurant details, and product details render Storage-backed images.
 - [x] Local fixture/asset fallback continues to work.
 - [x] Broken remote media renders a stable, theme-safe fallback without crashing.
-- [ ] Supabase remains isolated from widgets and domain entities.
-- [ ] Focused tests, security checks, guards, and the consolidated regression
+- [x] Supabase remains isolated from widgets and domain entities.
+- [x] Focused tests, security checks, guards, and the consolidated regression
   matrix pass.
-- [ ] Docs, memory, technical debt, and Trello evidence are reconciled only after
+- [x] Docs, memory, technical debt, and Trello evidence are reconciled only after
   validation.
 
 ## Localization Guard Checklist

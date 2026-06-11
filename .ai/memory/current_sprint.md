@@ -2,13 +2,14 @@
 
 ## Active Sprint
 
-Sprint 8 - Storage-Backed Catalog Media (Planned)
+Sprint 8 - Storage-Backed Catalog Media (Closed)
 
 ## Active Status
 
-Planned on 2026-06-08 after architecture and media direction approval.
-Implementation has not started and remains blocked until explicit approval for
-each task.
+Closed on 2026-06-11. Runtime, automated validation, and authenticated
+mobile/wide visual QA are complete. All seven real Trello checklists are
+complete, final evidence is recorded, and
+`https://trello.com/c/PXq6TWpP` is in `Done`.
 
 ## Sprint 8 Goal
 
@@ -38,16 +39,16 @@ from a public-read Supabase Storage bucket.
 
 ## Sprint 8 Backlog
 
-- [ ] Task 1 — lock the 20-object media manifest.
-- [ ] Task 2 — generate, curate, optimize, and version the media.
-- [ ] Task 3 — create and validate the Storage foundation.
-- [ ] Task 4 — upload and verify all objects.
-- [ ] Task 5 — migrate database rows to stable Storage paths.
-- [ ] Task 6 — add and compose the shared public-media resolver.
-- [ ] Task 7 — wire resolution into the three remote datasources.
-- [ ] Task 8 — add the shared renderer and update presentation.
-- [ ] Task 9 — validate the complete media flow and regressions.
-- [ ] Task 10 — reconcile governance and technical debt.
+- [x] Task 1 — lock the 20-object media manifest.
+- [x] Task 2 — generate, curate, optimize, and version the media.
+- [x] Task 3 — create and validate the Storage foundation.
+- [x] Task 4 — upload and verify all objects.
+- [x] Task 5 — migrate database rows to stable Storage paths.
+- [x] Task 6 — add and compose the shared public-media resolver.
+- [x] Task 7 — wire resolution into the three remote datasources.
+- [x] Task 8 — add the shared renderer and update presentation.
+- [x] Task 9 — validate the complete media flow and regressions.
+- [x] Task 10 — reconcile governance and technical debt.
 
 ## Sprint 8 Out of Scope
 
@@ -69,6 +70,8 @@ from a public-read Supabase Storage bucket.
 - Transitional naming debt in `image_asset_path`.
 - Network loading/failure regressions across three presentation surfaces.
 - Drift between versioned manifest, Storage objects, and database paths.
+- Future replacements should prefer versioned filenames to avoid stale cache
+  behavior.
 
 ## Previous Sprint
 

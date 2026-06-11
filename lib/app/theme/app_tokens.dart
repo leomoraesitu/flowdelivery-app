@@ -24,6 +24,7 @@ abstract final class AppSizes {
   static const double touchTarget = 48;
   static const double menuItemThumbnail = 96;
   static const double restaurantHeroHeight = 240;
+  static const double productHeroHeight = 480;
   static const double contentMaxWidthMd = 760;
 }
 

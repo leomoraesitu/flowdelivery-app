@@ -321,6 +321,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get restaurantDetailsCategoryDrinks => 'Drinks';
 
   @override
+  String get restaurantDetailsCategorySalads => 'Salads';
+
+  @override
+  String get restaurantDetailsCategoryPastas => 'Pasta';
+
+  @override
+  String get restaurantDetailsCategoryRolls => 'Rolls';
+
+  @override
+  String get restaurantDetailsCategoryBowls => 'Bowls';
+
+  @override
+  String get restaurantDetailsCategoryTacos => 'Tacos';
+
+  @override
   String restaurantDetailsRatingAndDelivery(
     double rating,
     int minMinutes,

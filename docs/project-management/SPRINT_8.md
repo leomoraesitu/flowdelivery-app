@@ -11,8 +11,10 @@ Reference plan:
 
 ## Status
 
-Planned. Architecture and scope approved on 2026-06-08. Implementation remains
-blocked until explicit task approval.
+Closed on 2026-06-11. The runtime slice, automated validation, and
+authenticated mobile/wide visual QA are complete. All seven real Trello
+checklists are complete, final evidence is recorded, and
+`https://trello.com/c/PXq6TWpP` is in `Done`.
 
 ## Sprint Goal
 
@@ -52,38 +54,38 @@ catalog flow feels intentional and production-oriented.
 
 ## Backlog
 
-- [ ] Task 1 - lock the 20-object media manifest against existing remote IDs.
-- [ ] Task 2 - generate, curate, optimize, and version the 20 WebP files.
-- [ ] Task 3 - create and validate the public-read Storage foundation.
-- [ ] Task 4 - upload and verify all manifest objects.
-- [ ] Task 5 - migrate restaurant and product rows to Storage object paths.
-- [ ] Task 6 - add and compose the shared public-media resolver.
-- [ ] Task 7 - resolve media through Home, restaurant-details, and
+- [x] Task 1 - lock the 20-object media manifest against existing remote IDs.
+- [x] Task 2 - generate, curate, optimize, and version the 20 WebP files.
+- [x] Task 3 - create and validate the public-read Storage foundation.
+- [x] Task 4 - upload and verify all manifest objects.
+- [x] Task 5 - migrate restaurant and product rows to Storage object paths.
+- [x] Task 6 - add and compose the shared public-media resolver.
+- [x] Task 7 - resolve media through Home, restaurant-details, and
   product-details datasources.
-- [ ] Task 8 - add the shared asset/network renderer and update presentation.
-- [ ] Task 9 - validate the complete remote media flow and regressions.
-- [ ] Task 10 - reconcile docs, memory, technical debt, and Trello.
+- [x] Task 8 - add the shared asset/network renderer and update presentation.
+- [x] Task 9 - validate the complete remote media flow and regressions.
+- [x] Task 10 - reconcile docs, memory, technical debt, and Trello.
 
 ## Acceptance Criteria
 
-- [ ] Exactly 20 reviewed WebP files exist: 4 restaurant covers and 16 product
+- [x] Exactly 20 reviewed WebP files exist: 4 restaurant covers and 16 product
   images.
-- [ ] Restaurant covers use 16:9 and product images use 1:1.
-- [ ] Generated files are versioned outside `assets/images/` and do not increase
-  the Flutter asset bundle.
-- [ ] `catalog-media` supports public reads for approved catalog objects.
-- [ ] Flutter exposes no upload/update/delete behavior and no privileged key.
-- [ ] Database rows store stable object paths rather than complete public URLs.
-- [ ] All restaurant and product paths match the versioned manifest and existing
-  database IDs.
-- [ ] Home promotion media remains unchanged.
-- [ ] Home renders four distinct restaurant covers.
-- [ ] Restaurant details renders the four product images for each restaurant.
-- [ ] Product details renders the selected product image.
-- [ ] Local fixture assets remain supported.
-- [ ] Remote loading and failure preserve layout and show a theme-safe fallback.
-- [ ] Supabase bucket knowledge remains outside widgets and domain entities.
-- [ ] Focused tests, security checks, guards, and regression validation pass.
+- [x] Restaurant covers use 16:9 and product images use 1:1.
+- [x] Generated files are versioned outside `assets/images/` and do not
+  increase the Flutter asset bundle.
+- [x] `catalog-media` supports public reads for approved catalog objects.
+- [x] Flutter exposes no upload/update/delete behavior and no privileged key.
+- [x] Database rows store stable object paths rather than complete public URLs.
+- [x] All restaurant and product paths match the versioned manifest and
+  existing database IDs.
+- [x] Home promotion media remains unchanged.
+- [x] Home renders four distinct restaurant covers.
+- [x] Restaurant details renders the four product images for each restaurant.
+- [x] Product details renders the selected product image.
+- [x] Local fixture assets remain supported.
+- [x] Remote loading and failure preserve layout and show a theme-safe fallback.
+- [x] Supabase bucket knowledge remains outside widgets and domain entities.
+- [x] Focused tests, security checks, guards, and regression validation pass.
 
 ## Dependencies
 
@@ -93,32 +95,32 @@ catalog flow feels intentional and production-oriented.
 - [x] Architecture approved: public bucket, stable paths, shared resolver.
 - [x] Media direction approved: AI-generated realistic photography.
 - [x] Aspect ratios approved: restaurant 16:9, product 1:1.
-- [ ] Explicit approval before each implementation task.
-- [ ] Supabase MCP/CLI access for deployment and validation.
-- [ ] Human visual approval of generated media before upload.
+- [x] Explicit approval before each implementation task.
+- [x] Supabase MCP/CLI access for deployment and validation.
+- [x] Human visual approval of generated media before upload.
 
 ## Localization Guard Checklist
 
-- [ ] No new user-facing copy is expected.
-- [ ] Any necessary copy is added through ARB + `AppLocalizations`.
-- [ ] No hardcoded presentation strings are introduced.
-- [ ] Hardcoded-copy, ARB parity, and generated freshness guards remain green.
+- [x] No new user-facing copy is expected.
+- [x] Any necessary copy is added through ARB + `AppLocalizations`.
+- [x] No hardcoded presentation strings are introduced.
+- [x] Hardcoded-copy, ARB parity, and generated freshness guards remain green.
 
 ## Theme Guard Checklist
 
-- [ ] Loading and error fallbacks use semantic theme APIs and app tokens.
-- [ ] Image containers retain stable dimensions during network loading.
-- [ ] No hardcoded presentation colors are introduced.
-- [ ] Visual hardcoded guard remains green.
+- [x] Loading and error fallbacks use semantic theme APIs and app tokens.
+- [x] Image containers retain stable dimensions during network loading.
+- [x] No hardcoded presentation colors are introduced.
+- [x] Visual hardcoded guard remains green.
 
 ## Security Checklist
 
-- [ ] The bucket contains public catalog media only.
-- [ ] Flutter contains no service-role or secret key.
-- [ ] Flutter performs no Storage mutation.
-- [ ] No authenticated-client mutation policy is added for catalog media.
-- [ ] Public object access is validated separately from table RLS/grants.
-- [ ] Supabase security advisors show no new relevant issue.
+- [x] The bucket contains public catalog media only.
+- [x] Flutter contains no service-role or secret key.
+- [x] Flutter performs no Storage mutation.
+- [x] No authenticated-client mutation policy is added for catalog media.
+- [x] Public object access is validated separately from table RLS/grants.
+- [x] Supabase security advisors show no new relevant issue.
 
 ## Validation Plan
 
@@ -132,6 +134,18 @@ catalog flow feels intentional and production-oriented.
 - Localization Guard, Theme Guard, Trello Guard, and `git diff --check`;
 - manual visual QA for all 20 images on representative mobile and wide layouts.
 
+Task 9 validation evidence (2026-06-11):
+
+- Dart MCP focused analysis: `No errors`.
+- Consolidated focused matrix: 73 tests passed.
+- Remote parity: 4 restaurant paths, 16 product paths, and 20 WebP objects.
+- Authenticated Chrome QA: 1280x900 and 390x844.
+- Visual coverage: 4/4 covers, 16/16 menu images, and representative product
+  details for Burger, Pasta, Sushi, and Taco.
+- No persistent fallback, crash, overflow, or layout shift was found.
+- Real Trello closure: all seven checklists complete, final evidence comment
+  recorded, and the card moved to `Done`.
+
 ## Risks
 
 - Generated media may be inconsistent or contain visual artifacts.
@@ -141,6 +155,8 @@ catalog flow feels intentional and production-oriented.
 - Existing `image_asset_path` naming becomes transitional debt for remote paths.
 - Network loading can introduce layout shifts or weak fallback behavior.
 - Remote Storage objects can drift from the versioned manifest.
+- Future media replacements should use versioned filenames to avoid stale cache
+  behavior.
 
 ## Out of Scope
 

@@ -197,17 +197,31 @@ class _RestaurantHeader extends StatelessWidget {
         Container(
           width: double.infinity,
           height: AppSizes.restaurantHeroHeight,
+          clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: colorScheme.surfaceContainerHighest,
-            borderRadius: BorderRadius.circular(AppRadius.xl),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(AppRadius.lg),
+            ),
           ),
-          padding: EdgeInsets.all(AppSpacing.xl),
           child: ExcludeSemantics(
-            child: AppMediaImage(
-              source: imageAssetPath,
-              fit: BoxFit.contain,
-              fallbackIcon: Icons.storefront_outlined,
-              fallbackIconSize: AppSizes.touchTarget,
+            child: ShaderMask(
+              shaderCallback: (rect) => LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.black,
+                  Colors.transparent,
+                ],
+                stops: [0.8, 1.0],
+              ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height)),
+              blendMode: BlendMode.dstIn,
+              child: AppMediaImage(
+                source: imageAssetPath,
+                fit: BoxFit.cover,
+                fallbackIcon: Icons.storefront_outlined,
+                fallbackIconSize: AppSizes.touchTarget,
+              ),
             ),
           ),
         ),
@@ -215,6 +229,12 @@ class _RestaurantHeader extends StatelessWidget {
           left: AppSpacing.md,
           top: AppSpacing.md,
           child: IconButton.filledTonal(
+            style: IconButton.styleFrom(
+              backgroundColor: colorScheme.surfaceContainerHighest,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppRadius.pill),
+              ),
+            ),
             onPressed: onBack,
             tooltip: l10n.restaurantDetailsBackAction,
             icon: const Icon(Icons.arrow_back),
@@ -297,6 +317,11 @@ class _CategoryScroller extends StatelessWidget {
       'burgers' => l10n.restaurantDetailsCategoryBurgers,
       'sides' => l10n.restaurantDetailsCategorySides,
       'drinks' => l10n.restaurantDetailsCategoryDrinks,
+      'salads' => l10n.restaurantDetailsCategorySalads,
+      'pastas' => l10n.restaurantDetailsCategoryPastas,
+      'rolls' => l10n.restaurantDetailsCategoryRolls,
+      'bowls' => l10n.restaurantDetailsCategoryBowls,
+      'tacos' => l10n.restaurantDetailsCategoryTacos,
       _ => throw StateError(
         'Unsupported restaurant-details category id: ${category.id}',
       ),

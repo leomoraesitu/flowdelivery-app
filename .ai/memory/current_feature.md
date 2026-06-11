@@ -2,36 +2,37 @@
 
 ## Active Feature
 
-Storage-Backed Catalog Media (Sprint 8 — Planned)
+Storage-Backed Catalog Media (Sprint 8 — Closed)
 
 ## Active Status
 
-Sprint 8 architecture and scope were approved on 2026-06-08. The planned slice
-will replace placeholder branding with 4 AI-generated restaurant covers and 16
-AI-generated product images served from a public-read Supabase Storage bucket.
-Implementation has not started and remains blocked until explicit approval for
-the next task.
+Sprint 8 closed on 2026-06-11. The slice delivered Storage-backed catalog
+media, shared URL resolution, shared presentation rendering, focused automated
+validation, and authenticated visual QA on representative mobile and wide
+layouts. All seven real Trello checklists are complete, final evidence is
+recorded, and the card is in `Done`.
 
-## Sprint 8 Planned Work
+## Sprint 8 Progress
 
-- Task 1 — lock a deterministic 20-object media manifest against existing remote
-  restaurant/product IDs.
-- Task 2 — generate, review, optimize, and version realistic WebP media outside
-  the Flutter asset bundle.
-- Task 3 — create and validate the public-read `catalog-media` Storage
+- [x] Task 1 — lock a deterministic 20-object media manifest against existing
+  remote restaurant/product IDs.
+- [x] Task 2 — generate, review, optimize, and version realistic WebP media
+  outside the Flutter asset bundle.
+- [x] Task 3 — create and validate the public-read `catalog-media` Storage
   foundation without client mutation policies.
-- Task 4 — upload and verify all manifest objects.
-- Task 5 — update existing restaurant/product rows to stable Storage object
+- [x] Task 4 — upload and verify all manifest objects.
+- [x] Task 5 — update existing restaurant/product rows to stable Storage object
   paths through a new migration.
-- Task 6 — add a shared data-layer public-media resolver and app composition.
-- Task 7 — resolve paths in Home, restaurant-details, and product-details remote
-  datasources.
-- Task 8 — add a shared asset/network renderer and update existing presentation
-  surfaces.
-- Task 9 — validate Storage, database, datasource, widget, security, guard, and
-  browsing-flow contracts.
-- Task 10 — reconcile docs, memory, technical debt, and Trello after evidence
-  exists.
+- [x] Task 6 — add a shared data-layer public-media resolver and app
+  composition.
+- [x] Task 7 — resolve paths in Home, restaurant-details, and product-details
+  remote datasources.
+- [x] Task 8 — add a shared asset/network renderer and update existing
+  presentation surfaces.
+- [x] Task 9 — validate Storage, database, datasource, widget, security,
+  guard, and browsing-flow contracts.
+- [x] Task 10 — reconcile docs, memory, technical debt, and Trello after
+  evidence exists.
 
 ## Architecture Notes (Sprint 8)
 
@@ -47,18 +48,25 @@ the next task.
 - Home promotion media, private media, signed URLs, image editing, variants,
   transformations, and external CDN remain out of scope.
 
+## Validation Notes (Sprint 8)
+
+- Focused datasource, widget, router, guard, and analyzer validation is green.
+- The real Trello card `https://trello.com/c/PXq6TWpP` has all seven
+  checklists complete, includes final validation evidence, and is in `Done`.
+- Authenticated visual QA confirmed all 4 restaurant covers, all 16 catalog
+  product images, and representative product details at 1280x900 and 390x844.
+- The consolidated Dart MCP validation matrix passed 73 tests and focused
+  analysis returned `No errors`.
+
 ## Active Plan
 
 - `.ai/plans/2026-06-08-storage-backed-catalog-media-plan.md`
 - `docs/project-management/SPRINT_8.md`
 
-## Next Steps
+## Closure Notes
 
-- Await explicit approval for Sprint 8 Task 1.
-- Do not generate or upload media before the manifest is validated against the
-  remote IDs.
-- Do not alter runtime code, Storage, database rows, or Trello until the
-  corresponding task is approved and its prerequisite evidence exists.
+- Wait for an explicitly approved next feature before implementation.
+- Keep future media replacements versioned to avoid stale cache behavior.
 
 ## Previous Closed Feature
 

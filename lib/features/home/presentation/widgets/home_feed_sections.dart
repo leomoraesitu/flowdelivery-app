@@ -259,7 +259,7 @@ class _RestaurantGrid extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: restaurants.length,
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 320,
+        maxCrossAxisExtent: double.infinity,
         mainAxisExtent: 240,
         crossAxisSpacing: AppSpacing.md,
         mainAxisSpacing: AppSpacing.md,
@@ -298,11 +298,10 @@ class _RestaurantCard extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 color: colorScheme.surfaceContainerHighest,
-                padding: EdgeInsets.all(AppSpacing.xl),
                 child: ExcludeSemantics(
                   child: AppMediaImage(
                     source: restaurant.imageAssetPath,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                     fallbackIcon: Icons.storefront_outlined,
                     fallbackIconSize: AppSizes.iconLg,
                   ),

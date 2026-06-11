@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flowdelivery_app/app/theme/app_theme.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_details.dart';
+import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_category.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/entities/restaurant_menu_item.dart';
 import 'package:flowdelivery_app/features/restaurant_details/domain/repositories/restaurant_details_repository.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/pages/restaurant_details_page.dart';
@@ -186,6 +187,101 @@ void main() {
         for (final item in restaurantDetailsFixture.items) {
           expect(find.text(item.name), findsOneWidget);
         }
+      },
+    );
+
+    testWidgets('renders the localized salads category', (tester) async {
+      final detailsWithSalads = RestaurantDetails(
+        id: restaurantDetailsFixture.id,
+        name: restaurantDetailsFixture.name,
+        imageAssetPath: restaurantDetailsFixture.imageAssetPath,
+        rating: restaurantDetailsFixture.rating,
+        deliveryTimeMinMinutes:
+            restaurantDetailsFixture.deliveryTimeMinMinutes,
+        deliveryTimeMaxMinutes:
+            restaurantDetailsFixture.deliveryTimeMaxMinutes,
+        cuisine: restaurantDetailsFixture.cuisine,
+        categories: const [RestaurantMenuCategory(id: 'salads')],
+        items: const [
+          RestaurantMenuItem(
+            id: 'caprese_salad',
+            categoryId: 'salads',
+            name: 'Caprese Salad',
+            description: 'Tomatoes, mozzarella, basil, and olive oil.',
+            imageAssetPath: 'assets/images/caprese-salad.png',
+            priceInCents: 1250,
+          ),
+        ],
+      );
+
+      await tester.pumpWidget(
+        _buildTestApp(
+          restaurantId: restaurantId,
+          overrides: [
+            restaurantDetailsRepositoryProvider.overrideWithValue(
+              _FakeRestaurantDetailsRepository(() async => detailsWithSalads),
+            ),
+          ],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.widgetWithText(ChoiceChip, 'Saladas'), findsOneWidget);
+    });
+
+    testWidgets(
+      'renders localized labels for non-burger seeded categories',
+      (tester) async {
+        // Regression: pasta_roma/sushi_zen/taco_harbor seeds introduced the
+        // category ids below, which previously had no localized label and threw
+        // a StateError, dropping restaurant-details into the error state.
+        final detailsWithSeededCategories = RestaurantDetails(
+          id: restaurantDetailsFixture.id,
+          name: restaurantDetailsFixture.name,
+          imageAssetPath: restaurantDetailsFixture.imageAssetPath,
+          rating: restaurantDetailsFixture.rating,
+          deliveryTimeMinMinutes:
+              restaurantDetailsFixture.deliveryTimeMinMinutes,
+          deliveryTimeMaxMinutes:
+              restaurantDetailsFixture.deliveryTimeMaxMinutes,
+          cuisine: restaurantDetailsFixture.cuisine,
+          categories: const [
+            RestaurantMenuCategory(id: 'pastas'),
+            RestaurantMenuCategory(id: 'rolls'),
+            RestaurantMenuCategory(id: 'bowls'),
+            RestaurantMenuCategory(id: 'tacos'),
+          ],
+          items: const [
+            RestaurantMenuItem(
+              id: 'pasta_roma_truffle_tagliatelle',
+              categoryId: 'pastas',
+              name: 'Truffle Tagliatelle',
+              description: 'Parmesan cream, mushrooms, and truffle oil.',
+              imageAssetPath: 'assets/images/tagliatelle.png',
+              priceInCents: 1720,
+            ),
+          ],
+        );
+
+        await tester.pumpWidget(
+          _buildTestApp(
+            restaurantId: restaurantId,
+            overrides: [
+              restaurantDetailsRepositoryProvider.overrideWithValue(
+                _FakeRestaurantDetailsRepository(
+                  () async => detailsWithSeededCategories,
+                ),
+              ),
+            ],
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        expect(tester.takeException(), isNull);
+        expect(find.widgetWithText(ChoiceChip, 'Massas'), findsOneWidget);
+        expect(find.widgetWithText(ChoiceChip, 'Rolls'), findsOneWidget);
+        expect(find.widgetWithText(ChoiceChip, 'Bowls'), findsOneWidget);
+        expect(find.widgetWithText(ChoiceChip, 'Tacos'), findsOneWidget);
       },
     );
 

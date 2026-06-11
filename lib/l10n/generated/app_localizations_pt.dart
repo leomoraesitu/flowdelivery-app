@@ -324,6 +324,21 @@ class AppLocalizationsPt extends AppLocalizations {
   String get restaurantDetailsCategoryDrinks => 'Bebidas';
 
   @override
+  String get restaurantDetailsCategorySalads => 'Saladas';
+
+  @override
+  String get restaurantDetailsCategoryPastas => 'Massas';
+
+  @override
+  String get restaurantDetailsCategoryRolls => 'Rolls';
+
+  @override
+  String get restaurantDetailsCategoryBowls => 'Bowls';
+
+  @override
+  String get restaurantDetailsCategoryTacos => 'Tacos';
+
+  @override
   String restaurantDetailsRatingAndDelivery(
     double rating,
     int minMinutes,
@@ -715,6 +730,21 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get restaurantDetailsCategoryDrinks => 'Bebidas';
+
+  @override
+  String get restaurantDetailsCategorySalads => 'Saladas';
+
+  @override
+  String get restaurantDetailsCategoryPastas => 'Massas';
+
+  @override
+  String get restaurantDetailsCategoryRolls => 'Rolls';
+
+  @override
+  String get restaurantDetailsCategoryBowls => 'Bowls';
+
+  @override
+  String get restaurantDetailsCategoryTacos => 'Tacos';
 
   @override
   String restaurantDetailsRatingAndDelivery(

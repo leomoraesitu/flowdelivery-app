@@ -649,6 +649,36 @@ abstract class AppLocalizations {
   /// **'Bebidas'**
   String get restaurantDetailsCategoryDrinks;
 
+  /// Label for the salads restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Saladas'**
+  String get restaurantDetailsCategorySalads;
+
+  /// Label for the pastas restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Massas'**
+  String get restaurantDetailsCategoryPastas;
+
+  /// Label for the rolls restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Rolls'**
+  String get restaurantDetailsCategoryRolls;
+
+  /// Label for the bowls restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Bowls'**
+  String get restaurantDetailsCategoryBowls;
+
+  /// Label for the tacos restaurant-menu category.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tacos'**
+  String get restaurantDetailsCategoryTacos;
+
   /// Compact restaurant-details metadata string with rating and delivery time range.
   ///
   /// In pt_BR, this message translates to:

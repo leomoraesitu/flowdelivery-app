@@ -390,6 +390,26 @@
   "@restaurantDetailsCategoryDrinks": {
     "description": "Label for the drinks restaurant-menu category."
   },
+  "restaurantDetailsCategorySalads": "Saladas",
+  "@restaurantDetailsCategorySalads": {
+    "description": "Label for the salads restaurant-menu category."
+  },
+  "restaurantDetailsCategoryPastas": "Massas",
+  "@restaurantDetailsCategoryPastas": {
+    "description": "Label for the pastas restaurant-menu category."
+  },
+  "restaurantDetailsCategoryRolls": "Rolls",
+  "@restaurantDetailsCategoryRolls": {
+    "description": "Label for the rolls restaurant-menu category."
+  },
+  "restaurantDetailsCategoryBowls": "Bowls",
+  "@restaurantDetailsCategoryBowls": {
+    "description": "Label for the bowls restaurant-menu category."
+  },
+  "restaurantDetailsCategoryTacos": "Tacos",
+  "@restaurantDetailsCategoryTacos": {
+    "description": "Label for the tacos restaurant-menu category."
+  },
   "restaurantDetailsRatingAndDelivery": "{rating} • {minMinutes}-{maxMinutes} min",
   "@restaurantDetailsRatingAndDelivery": {
     "description": "Compact restaurant-details metadata string with rating and delivery time range.",

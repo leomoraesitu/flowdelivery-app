@@ -164,6 +164,20 @@ Notes:
 - Finding C (accepted): the route `restaurantId` in `/restaurants/:restaurantId/products/:productId` is used only for back navigation/protection; the product loads by `productId` (PK) alone, so a mismatched `restaurantId` still resolves the product. No cross-integrity validation in this read-only slice.
 - Reclassify to Technical Debt only if not-found-on-real-data starts affecting approved demo/QA scope after future catalog changes.
 
+### Storage-backed catalog media naming and cache guidance
+
+Status:
+Reduced / Monitoring
+
+Impact:
+Low
+
+Notes:
+- `image_asset_path` now stores stable Storage object paths for approved catalog media; the field name remains accepted transitional debt to avoid a broad contract rename in Sprint 8.
+- The shared resolver and shared presentation widget keep bucket/public-URL knowledge outside widgets and domain entities.
+- Future media replacements should prefer versioned filenames rather than overwriting unchanged object URLs, to reduce stale CDN/browser cache behavior.
+- Reclassify only if a dedicated contract rename or cache-busting strategy becomes necessary for a later approved media slice.
+
 ## Rules
 
 - Do not fix unrelated debt during feature work without confirmation.
