@@ -38,4 +38,30 @@ void main() {
 
     expect(redirect, 'http://localhost:3000${AppRoutes.resetPasswordPath}');
   });
+
+  test('preserves the configured-origin base path (GitHub Pages subpath)', () {
+    final redirect = buildPasswordRecoveryRedirectUrl(
+      currentUri: Uri.parse('https://leomoraesitu.github.io/flowdelivery-app/'),
+      configuredOrigin: 'https://leomoraesitu.github.io/flowdelivery-app',
+    );
+
+    expect(
+      redirect,
+      'https://leomoraesitu.github.io/flowdelivery-app'
+      '${AppRoutes.resetPasswordPath}',
+    );
+  });
+
+  test('normalizes a trailing slash in the configured base path', () {
+    final redirect = buildPasswordRecoveryRedirectUrl(
+      currentUri: Uri.parse('https://leomoraesitu.github.io/flowdelivery-app/'),
+      configuredOrigin: 'https://leomoraesitu.github.io/flowdelivery-app/',
+    );
+
+    expect(
+      redirect,
+      'https://leomoraesitu.github.io/flowdelivery-app'
+      '${AppRoutes.resetPasswordPath}',
+    );
+  });
 }

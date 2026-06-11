@@ -1,0 +1,72 @@
+name: Deploy Web to GitHub Pages
+
+# Publishes the Flutter web build to GitHub Pages on release tags.
+# Triggered by tags like v0.2.0; can also be run manually.
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+# Required for actions/deploy-pages with the GitHub Pages OIDC deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent Pages deployment; do not cancel an in-progress one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build web bundle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: beta
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build web
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          PASSWORD_RECOVERY_REDIRECT_ORIGIN: ${{ vars.PASSWORD_RECOVERY_REDIRECT_ORIGIN }}
+        run: |
+          flutter build web \
+            --release \
+            --base-href "/flowdelivery-app/" \
+            --dart-define=SUPABASE_URL="$SUPABASE_URL" \
+            --dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY" \
+            --dart-define=PASSWORD_RECOVERY_REDIRECT_ORIGIN="$PASSWORD_RECOVERY_REDIRECT_ORIGIN"
+
+      - name: Add SPA fallback for deep links
+        # GitHub Pages serves 404.html for unknown paths. With path URL
+        # strategy enabled, this lets deep links and refreshes resolve to the
+        # SPA entry point instead of a hard 404.
+        run: cp build/web/index.html build/web/404.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
