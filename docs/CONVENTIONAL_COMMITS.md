@@ -222,9 +222,9 @@ Impacto SemVer:
 
 ### Feature branches
 
-- feature/cart-flow
-- feature/auth-google-login
-- feature/order-history
+- feat/cart-flow
+- feat/auth-google-login
+- feat/order-history
 
 ### Hotfix branches
 
@@ -241,7 +241,7 @@ Impacto SemVer:
 Branch:
 
 ```text
-feature/cart-state-management
+feat/cart-state-management
 ```
 
 Commits:

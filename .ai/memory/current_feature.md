@@ -1,19 +1,198 @@
 # Current Feature
 
+## Active Feature
+
+Storage-Backed Catalog Media (Sprint 8 — Closed)
+
+## Active Status
+
+Sprint 8 closed on 2026-06-11. The slice delivered Storage-backed catalog
+media, shared URL resolution, shared presentation rendering, focused automated
+validation, and authenticated visual QA on representative mobile and wide
+layouts. All seven real Trello checklists are complete, final evidence is
+recorded, and the card is in `Done`.
+
+## Sprint 8 Progress
+
+- [x] Task 1 — lock a deterministic 20-object media manifest against existing
+  remote restaurant/product IDs.
+- [x] Task 2 — generate, review, optimize, and version realistic WebP media
+  outside the Flutter asset bundle.
+- [x] Task 3 — create and validate the public-read `catalog-media` Storage
+  foundation without client mutation policies.
+- [x] Task 4 — upload and verify all manifest objects.
+- [x] Task 5 — update existing restaurant/product rows to stable Storage object
+  paths through a new migration.
+- [x] Task 6 — add a shared data-layer public-media resolver and app
+  composition.
+- [x] Task 7 — resolve paths in Home, restaurant-details, and product-details
+  remote datasources.
+- [x] Task 8 — add a shared asset/network renderer and update existing
+  presentation surfaces.
+- [x] Task 9 — validate Storage, database, datasource, widget, security,
+  guard, and browsing-flow contracts.
+- [x] Task 10 — reconcile docs, memory, technical debt, and Trello after
+  evidence exists.
+
+## Architecture Notes (Sprint 8)
+
+- Public bucket `catalog-media` is appropriate only for public catalog content.
+- Postgres stores stable object paths, not complete public URLs.
+- Existing `image_asset_path`/`imageAssetPath` names remain unchanged to avoid an
+  unrelated cross-feature contract rename.
+- A shared data-layer resolver owns bucket/public-URL knowledge.
+- Widgets do not call Supabase and use a shared asset/network renderer.
+- Generated files live under `supabase/seed-assets/catalog/`, not
+  `assets/images/`, so they are not bundled into Flutter.
+- Upload/update/delete remain administrative; Flutter stays read-only.
+- Home promotion media, private media, signed URLs, image editing, variants,
+  transformations, and external CDN remain out of scope.
+
+## Validation Notes (Sprint 8)
+
+- Focused datasource, widget, router, guard, and analyzer validation is green.
+- The real Trello card `https://trello.com/c/PXq6TWpP` has all seven
+  checklists complete, includes final validation evidence, and is in `Done`.
+- Authenticated visual QA confirmed all 4 restaurant covers, all 16 catalog
+  product images, and representative product details at 1280x900 and 390x844.
+- The consolidated Dart MCP validation matrix passed 73 tests and focused
+  analysis returned `No errors`.
+
+## Active Plan
+
+- `.ai/plans/2026-06-08-storage-backed-catalog-media-plan.md`
+- `docs/project-management/SPRINT_8.md`
+
+## Closure Notes
+
+- Wait for an explicitly approved next feature before implementation.
+- Keep future media replacements versioned to avoid stale cache behavior.
+
+## Previous Closed Feature
+
+Catalog Demo Coverage (Sprint 7) is closed and remains documented in
+`.ai/plans/2026-06-03-catalog-demo-coverage-plan.md`,
+`docs/project-management/SPRINT_7.md`, and the real Trello story
+`https://trello.com/c/TLHgmJ02`.
+
+## Sprint 7 Outcome
+
+Sprint 7 closed on 2026-06-03. It expanded deterministic catalog seed coverage
+for `burger_artisan_collective`, `pasta_roma`, `sushi_zen`, and `taco_harbor`;
+the migration was applied to the active remote Supabase project, read-only
+contracts passed focused validation, datasource regression coverage proves
+non-burger catalog/product parsing, and governance/Trello evidence was
+reconciled.
+
+## Sprint 7 Planned Work
+
+- Task 1 — audit current seed baseline and expected target counts. Completed: remote baseline confirmed 4 Home restaurants, with menu coverage only for `burger_artisan_collective` (4 categories, 4 items).
+- Task 2 — add a dedicated catalog demo seed migration for `pasta_roma`, `sushi_zen`, and `taco_harbor`. Completed: `supabase/migrations/20260603183000_catalog_demo_coverage.sql` adds 9 categories and 12 items and passed rollback smoke validation.
+- Task 3 — validate Supabase read contracts, RLS/grants, and datasource compatibility. Completed: remote migration `catalog_demo_coverage` applied, all four Home restaurants now have non-empty menu data, RLS/grants remain read-only for `authenticated` and denied to `anon`, and datasource-shaped queries load categories/items by `restaurant_id` plus product details by `id`.
+- Task 4 — add focused multi-restaurant catalog/product regression coverage where existing tests do not prove the expanded data path. Completed: datasource tests now cover a non-burger `pasta_roma` restaurant catalog and the seeded non-burger product `sushi_zen_omakase_sampler`.
+- Task 5 — reconcile docs, memory, technical debt, and Trello after validation evidence exists. Completed: Sprint 7 docs/memory/technical debt were reconciled, Trello parity was confirmed on the real card, and the card was moved to `🎉 Done`.
+
+## Architecture Notes (Sprint 7)
+
+- Data-readiness slice only; no new runtime UI behavior is planned.
+- Use a new migration rather than editing already-applied Sprint 5/6 migrations.
+- Reuse existing `restaurant_menu_categories` and `restaurant_menu_items` table contracts.
+- Keep placeholder asset paths until a Storage-backed media slice is separately approved.
+- Keep cart, checkout, customization, variants/add-ons, quantity, favorites, sharing, Storage, and Realtime out of scope.
+
+## Sprint 7 Plan
+
+- `.ai/plans/2026-06-03-catalog-demo-coverage-plan.md`
+- `docs/project-management/SPRINT_7.md`
+
+## Sprint 7 Closure Notes
+
+- Sprint 7 is closed. Wait for an explicitly approved next slice before implementation.
+- Keep future catalog/media work data-first and scoped through a new approved plan.
+- Storage-backed media, cart/checkout/customization, variants/add-ons, quantity, favorites, sharing, ranking, pagination, recommendations, and Realtime remain deferred.
+
+## Previous Closed Feature
+
+Product Details Read-Only (Sprint 6) is closed and remains documented in `.ai/plans/2026-06-02-product-details-read-only-plan.md`, `docs/project-management/SPRINT_6.md`, and the real Trello story `https://trello.com/c/8amTB8F3`.
+
+## Sprint 6 Completed Work
+
+## Sprint 6 Completed Work
+
+- Task 1 — immutable `ProductDetails` domain entity (Flutter/Supabase-free, value equality).
+- Task 2 — `ProductDetailsDto` + Supabase datasource: query by `id` (PK) with `maybeSingle()`, nullable loader, `null` for not-found, `ProductDetailsRemoteException` only for malformed/Postgrest/Format failures.
+- Task 3 — `ProductDetailsRepository` returning `Future<ProductDetails?>`; impl maps DTO→entity and propagates `null`.
+- Task 4 — `productDetailsProvider` (`FutureProvider.family<ProductDetails?, String>`) + app composition/override mirroring `restaurant_details`.
+- Task 5 — 11 localized `productDetails*` ARB keys (pt_BR template + pt/en) and regenerated `AppLocalizations`.
+- Task 6 — `ProductDetailsPage` + sections (hero/back, name, semantic price, description; loading/error/not-found/success); catalog menu card gained optional `onProductSelected`.
+- Task 7 — protected nested route `/restaurants/:restaurantId/products/:productId` and router→page→sections callback threading; auth-open + unauth-redirect router tests.
+- Task 8 — focused product UI widget tests (5 states) + catalog card-tap delegation test; consolidated matrix 45/45.
+- Task 9 — docs/memory/Trello reconciled; card moved to `🎉 Done`.
+
+## Architecture Notes (Sprint 6)
+
+- No new migration; reuses `restaurant_menu_items`.
+- No dedicated ViewModel (read-only single load, per ADR-003).
+- Not-found is modeled as `ProductDetails?` (`null`), keeping it out of exception-based control flow (Finding A).
+- Route `restaurantId` is used only for back navigation/protection; product loads by `productId` alone (Finding C, accepted).
+
+## Sprint 6 Plan
+
+- `.ai/plans/2026-06-02-product-details-read-only-plan.md`
+- `docs/project-management/SPRINT_6.md`
+- Real Trello story (Done): `https://trello.com/c/8amTB8F3`
+
+## Previous Closed Feature (Sprint 5)
+
+Sprint 5 - Restaurant Details Remote Catalog is closed and remains documented in `.ai/plans/2026-06-02-restaurant-details-remote-catalog-plan.md`, `docs/project-management/SPRINT_5.md`, and the real Trello story `https://trello.com/c/1cBjEupB`.
+
 ## Feature
 
-[DEBT] Theme Guard future slices monitoring
+Home Discovery Interactions
 
 ## Status
 
-Reduced / Monitoring
+Completed
 
 ## Current Step
 
-Monitor Theme Guard coverage for future presentation slices and select the next approved product or governance slice before implementing more changes.
+Sprint 4 is closed. Wait for an explicitly approved next Home slice before implementation.
 
 ## Completed
 
+- Home static feed scope approved: protected `/home`, typed local fixtures, prototype-aligned UI, Riverpod wiring, ARB copy, Theme Guard, and focused tests.
+- Home technical plan generated in `.ai/plans/2026-06-01-home-static-feed-plan.md`.
+- Task 1 completed — typed local Home entities finalized as immutable value models for category, promotion, and restaurant contracts without introducing repository/datasource abstractions.
+- Task 2 completed — typed local Home feed fixtures and a read-only Riverpod provider now expose deterministic category, promotion, and featured-restaurant content without adding repository/datasource abstractions.
+- Task 3 completed — `/home` is now the centralized protected authenticated destination, `/` is a root entry redirect, unauthenticated access to `/home` returns to sign-in, and reset-password recovery behavior remains unchanged.
+- Task 4 completed — Home copy now lives in ARB catalogs with generated `AppLocalizations` accessors for address, search, categories, promo banner, featured section, restaurant metadata, and bottom navigation labels.
+- Task 5 completed — `/home` now renders the approved static Home feed UI with responsive layout, localized presentation copy, semantic theme tokens, decorative asset fallbacks, and focused provider/router/guard validation.
+- Task 6 completed — focused Home widget coverage now validates localized header/search copy, selected category state, promotion content, fixture restaurant rendering, selected Home navigation state, and deferred bottom-nav no-op behavior.
+- Task 7 completed — Sprint 2, feature memory, and sprint memory were reconciled after validation; Trello parity was verified against the real card before final closure evidence was recorded.
+- Sprint 2 project-management artifact generated in `docs/project-management/SPRINT_2.md`.
+- Real Trello story `[FEAT] Home restaurant feed static UI` is synchronized with validated implementation evidence and guard parity (`https://trello.com/c/X3jAdpd2`).
+- Home remains presentation-first: Supabase schema, repository, datasource, remote loading, search behavior, filters, and destination navigation are deferred.
+- Sprint 3 planning approved — the next Home slice is a read-only Supabase-backed remote feed foundation with explicit grants, RLS, datasource/repository boundaries, async provider wiring, and focused validation.
+- Home remote technical plan generated in `.ai/plans/2026-06-01-home-remote-feed-plan.md`.
+- Sprint 3 project-management artifact generated in `docs/project-management/SPRINT_3.md`.
+- Real Trello story `[FEAT] Home remote feed foundation` created in `✅ Ready` with Scope, Acceptance Criteria, Dependencies, Validation, Localization Guard, and Theme Guard checklists (`https://trello.com/c/bzxIa3wx`).
+- Sprint 3 Task 1 completed — `HomeFeedContent` was promoted into the Home domain layer, `HomeRepository` now defines the feed contract, and the static Home provider reads through that repository boundary while keeping the validated UI behavior unchanged.
+- Sprint 3 Task 2 completed — the Home remote feed Supabase foundation now has a migration for `restaurant_categories`, `restaurants`, `restaurant_category_links`, and `home_promotions`, with explicit `authenticated`/`service_role` `SELECT` grants, RLS read policies, and development seed data aligned with the current Home contract.
+- Sprint 3 Task 3 completed — Home remote DTOs now parse Supabase rows into typed category, promotion, and restaurant payloads, and a dedicated Supabase datasource owns the Home feed queries, row orchestration, category-link aggregation, and explicit Home remote exceptions.
+- Sprint 3 Task 4 completed — the Home repository is now asynchronous, the app composes a Supabase-backed Home datasource/repository at the composition root, and Riverpod now exposes an async Home feed provider with a fixture compatibility fallback so the validated UI remains stable while remote loading lands incrementally.
+- Sprint 3 Task 5 completed — the Home page now renders explicit async loading, error, and empty states from the remote feed provider, all new copy is localized via ARB/AppLocalizations, and the new state UI uses semantic theme APIs/tokens without hardcoded palette values.
+- Sprint 3 Task 6 completed — focused remote-feed regression coverage now proves remote success rendering in `HomePage`, preserves fixture compatibility fallback on async provider failure, and keeps datasource/repository/provider/widget coverage contract-oriented without touching production code.
+- Sprint 3 Task 7 completed — Sprint 3 docs, feature/sprint memory, and the real Trello card were reconciled after final governance validation so the slice closes with implementation evidence, deferred scope notes, and checklist parity preserved.
+- Sprint 4 planning approved — the next Home slice focuses on interactive discovery over the validated remote feed foundation, limited to search, category selection, localized empty-results behavior if needed, and focused provider/widget/guard validation.
+- Home discovery technical plan generated in `.ai/plans/2026-06-01-home-discovery-interactions-plan.md`.
+- Sprint 4 project-management artifact generated in `docs/project-management/SPRINT_4.md`.
+- Sprint 4 Task 1 completed — Home discovery state ownership now lives in Riverpod through a dedicated discovery controller, and presentation can read a derived Home feed view contract that preserves the current unfiltered success behavior while decoupling widgets from future filter logic.
+- Sprint 4 Task 2 completed — the derived Home discovery provider now applies deterministic category filtering plus normalized search matching over the existing remote feed aggregate, while keeping the default state behavior equivalent to the validated Sprint 3 success path.
+- Sprint 4 Task 3 completed — the existing Home search input and category chips now drive the approved Riverpod discovery-state owner, the rendered restaurant set updates from the derived filtered feed contract, and the current successful Home layout remains structurally aligned with the approved prototype.
+- Sprint 4 Task 4 completed — Home discovery now distinguishes a remote feed with content from an active search/filter combination with no matches, renders localized recovery feedback through ARB/AppLocalizations, and exposes a clear-filters action that resets the Riverpod discovery state plus the visible search field.
+- Sprint 4 real Trello story `[FEAT] Home discovery interactions` was partially synchronized after Task 4 validation (`https://trello.com/c/5EUe5qOp`): Scope is `5/6`, Validation is `7/8`, Localization Guard is `7/7`, Theme Guard is `5/5`, Acceptance Criteria is `5/8`, and Dependencies is `6/6`; remaining global completion items stay open for Tasks 5-6.
+- Sprint 4 Task 5 completed — focused provider regression coverage now proves discovery `reset()` restores the full-feed baseline after combined filters produce no matches, and Home widget coverage proves combined category + search no-match recovery restores restaurants, the empty search field, and the selected `Todos` chip.
+- Sprint 4 Task 6 completed — Sprint 4 docs, plan, feature/sprint memory, technical-debt monitoring notes, and the real Trello card were reconciled after the consolidated regression matrix passed; final real-card parity is complete.
 - Start Feature (teacher mode) for Theme Guard and UI/UX standardization
 - technical plan generated in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
 - Task 1 completed — visual governance audit baseline documented in `.ai/plans/2026-05-22-theme-guard-uiux-standardization-plan.md`
@@ -96,12 +275,17 @@ Monitor Theme Guard coverage for future presentation slices and select the next 
 - Post-Sprint 1 stabilization validation — focused auth suites remain green after i18n refactor (17 tests)
 - Post-Sprint 1 governance hardening — Localization Guard and Theme Guard workflows/templates aligned in project-management and Trello artifacts
 
-## Pending
+## Pending / Deferred
 
-- Select and approve the next product or governance slice before implementation.
+- The Home remote-feed foundation slice is complete; future Home work requires a new explicitly approved slice.
+- The Home discovery-interactions slice is complete; future Home work requires a new explicitly approved slice.
+- Keep the Home implementation incremental and limited to the approved discovery-interactions slice.
+- Keep profile/address persistence out of the discovery slice; the delivery-address placeholder remains local.
+- Keep restaurant details, destination navigation, ranking, pagination, Storage-backed media, and Realtime out of scope until separate approved slices exist.
 - Keep real Trello checklist item states manually aligned through the documented MCP workflow when cards are touched by active work.
 - Preserve auth UI placeholder tests when touching sign-in/sign-up shell affordances, or promote placeholders through an approved feature plan before making them interactive.
 - Keep future `home`, `feed`, and `cart` presentation slices on semantic theme APIs and app tokens from their first approved implementation task.
+- Keep explicit Data API grants and RLS paired in any future Supabase Home migration because public-table exposure must not be assumed.
 
 ## Notes
 
@@ -137,3 +321,55 @@ Scalable i18n pipeline validation:
 - Dart MCP `add_roots` executed before Dart validation.
 - `test/app/l10n/no_hardcoded_ui_strings_test.dart`, `test/app/l10n/arb_catalog_parity_test.dart`, and `test/app/l10n/generated_localizations_freshness_test.dart`: 9 tests passed.
 - Dart MCP `analyze_files` on updated i18n guard tests: no errors.
+Home static UI validation:
+- `flutter analyze` on updated Home fixture/presentation/router test files: no issues.
+- `flutter test test/features/home/presentation/home_feed_providers_test.dart test/app/routes/app_router_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: all tests passed.
+Home widget coverage validation:
+- `flutter test test/features/home/presentation/home_page_test.dart test/features/home/presentation/home_feed_providers_test.dart test/app/routes/app_router_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: all tests passed.
+- `flutter analyze test/features/home/presentation/home_page_test.dart`: no issues.
+Sprint 2 closure validation:
+- `flutter test test/app/project_management/trello_guard_checklists_test.dart`: passed.
+- Sprint 3 Task 1 validation:
+- `dart analyze lib/features/home test/features/home`: no issues.
+- `flutter test test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart`: all tests passed.
+- Sprint 3 Task 2 validation:
+- Transaction-scoped Supabase SQL smoke test confirmed the new Home tables, authenticated read policies, `SELECT`-only grants for `authenticated` and `service_role`, and development seed counts (`5` categories, `4` restaurants, `8` links, `1` promotion) without persisting changes to the shared project.
+- Sprint 3 Task 3 validation:
+- `dart analyze lib/features/home/data/dtos lib/features/home/data/datasources test/features/home/data`: no issues.
+- `flutter test test/features/home/data/home_remote_datasource_test.dart`: all tests passed.
+- Sprint 3 Task 4 validation:
+- `dart analyze lib/features/home/domain/repositories/home_repository.dart lib/features/home/data/repositories/home_repository_impl.dart lib/features/home/presentation/providers/home_feed_providers.dart lib/app/di/app_providers.dart test/features/home/data/home_repository_impl_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart test/app/routes/app_router_test.dart`: no issues.
+- `flutter test test/features/home/data/home_repository_impl_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart test/app/routes/app_router_test.dart`: all tests passed.
+- Sprint 3 Task 5 validation:
+- `flutter gen-l10n`: generated localizations refreshed for new Home async-state copy.
+- `dart analyze lib/features/home/presentation/pages/home_page.dart test/features/home/presentation/home_page_test.dart lib/l10n/generated test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/theme/no_hardcoded_visual_values_test.dart test/app/routes/app_router_test.dart`: no issues.
+- `flutter test test/features/home/presentation/home_page_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/theme/no_hardcoded_visual_values_test.dart test/app/routes/app_router_test.dart`: all tests passed.
+- Sprint 3 Task 6 validation:
+- `dart analyze test/features/home/presentation/home_page_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/data/home_repository_impl_test.dart test/features/home/data/home_remote_datasource_test.dart test/features/home/presentation/home_feed_providers_test.dart`: no issues.
+- `flutter test test/features/home/data/home_remote_datasource_test.dart test/features/home/data/home_repository_impl_test.dart test/features/home/presentation/home_feed_async_providers_test.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_page_test.dart test/app/routes/app_router_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`: all tests passed.
+- Sprint 3 Task 7 validation:
+- `flutter test test/app/project_management/trello_guard_checklists_test.dart`: passed after final documentation/Trello reconciliation.
+- Sprint 4 Task 1 validation:
+- `dart analyze lib/features/home/presentation/providers/home_feed_providers.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_feed_async_providers_test.dart`: no issues.
+- `flutter test test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_feed_async_providers_test.dart`: all tests passed.
+- Sprint 4 Task 2 validation:
+- `dart analyze lib/features/home/presentation/providers/home_feed_providers.dart test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_feed_async_providers_test.dart`: no issues.
+- `flutter test test/features/home/presentation/home_feed_providers_test.dart test/features/home/presentation/home_feed_async_providers_test.dart`: all tests passed.
+- Sprint 4 Task 3 validation:
+- `dart analyze lib/features/home/presentation/pages/home_page.dart lib/features/home/presentation/widgets/home_feed_header.dart lib/features/home/presentation/widgets/home_feed_sections.dart test/features/home/presentation/home_page_test.dart`: no issues.
+- `flutter test test/features/home/presentation/home_page_test.dart`: all tests passed.
+- Sprint 4 Task 4 validation:
+- TDD RED confirmed before implementation: the new Home widget test failed because the localized discovery empty-results card did not exist yet.
+- `flutter gen-l10n`: generated localizations refreshed for the Home discovery empty-results title, message, and clear-filters action.
+- Dart MCP `analyze_files` on the touched Home presentation/provider files, generated localizations, and focused Home widget test: no errors.
+- Dart MCP `run_tests` for `test/features/home/presentation/home_page_test.dart`, the three localization guards, and `test/app/theme/no_hardcoded_visual_values_test.dart`: 19 tests passed.
+- `git diff --check`: no errors.
+- Real Trello parity check executed for `[FEAT] Home discovery interactions` (`https://trello.com/c/5EUe5qOp`) after Task 4; only evidence-backed checklist items were completed and a validation comment was added.
+- Sprint 4 Task 5 validation:
+- Dart MCP `analyze_files` on `test/features/home/presentation/home_feed_providers_test.dart` and `test/features/home/presentation/home_page_test.dart`: no errors.
+- Dart MCP `run_tests` for Home provider, async-provider, and widget suites: 22 tests passed.
+- Dart MCP consolidated `run_tests` for Home provider/widget suites, `test/app/routes/app_router_test.dart`, localization guards, Theme Guard, and Trello Guard: 41 tests passed.
+- `git diff --check`: no errors.
+- Sprint 4 Task 6 validation:
+- Real Trello parity rechecked for `[FEAT] Home discovery interactions` (`https://trello.com/c/5EUe5qOp`); all six checklists are complete and final evidence comment was added.
+- `flutter test test/app/project_management/trello_guard_checklists_test.dart`: passed as part of the consolidated 41-test matrix.

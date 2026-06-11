@@ -122,6 +122,10 @@ Notes:
 - Post-review cleanup removed remaining non-semantic auth presentation usages (`Colors.white` and `shadow.withAlpha(30)`) in favor of `ColorScheme` semantic roles.
 - Validation follow-up (2026-05-27): `flutter test test/app/theme/no_hardcoded_visual_values_test.dart` passed.
 - Keep incremental refactors per slice and validate with focused tests plus `flutter analyze` on touched files.
+- Home is now the selected first presentation slice through `.ai/plans/2026-06-01-home-static-feed-plan.md`.
+- Home presentation now exists and the discovery empty-results UI introduced in Sprint 4 Task 4 remains on semantic theme APIs and app tokens.
+- Sprint 4 Task 4 validation kept `test/app/theme/no_hardcoded_visual_values_test.dart` green; keep this debt in monitoring for future Home, feed, and cart UI slices.
+- Sprint 4 closed with the consolidated router/guard regression matrix green (41 tests), so Home remains a validated Theme Guard baseline for future presentation increments.
 
 ### Reduce manual synchronization between docs and Trello artifacts
 
@@ -141,6 +145,38 @@ Notes:
 - Keep Trello board updates explicit, scoped to intended cards, and documented with a short card comment when they are used to close work.
 - Follow-up validation (2026-05-27): `flutter test test/app/project_management/trello_guard_checklists_test.dart` passed (2 tests).
 - This debt remains `Reduced / Monitoring` because the repo can guard versioned artifacts, but cannot prove external Trello state without MCP/API access and human-supervised validation.
+- Sprint 4 Task 4 external parity was verified against `[FEAT] Home discovery interactions` (`https://trello.com/c/5EUe5qOp`) after local validation. Only evidence-backed items were completed; Task 5 regression coverage and Task 6 final reconciliation remain open.
+- Sprint 4 final parity was rechecked after Task 5 validation and Task 6 reconciliation. The real card now has Scope `6/6`, Validation `8/8`, Localization Guard `7/7`, Theme Guard `5/5`, Acceptance Criteria `8/8`, and Dependencies `6/6`, with a final evidence comment recorded.
+
+### Product details slice — seed coverage and accepted minor debts (Sprint 6 / Sprint 7)
+
+Status:
+Resolved / Monitoring
+
+Impact:
+Low
+
+Notes:
+- Partial catalog seed is resolved for the existing Home restaurants. Sprint 7 applied deterministic catalog seeds for `pasta_roma`, `sushi_zen`, and `taco_harbor`, while preserving `burger_artisan_collective`.
+- Final remote counts are 13 menu categories and 16 menu items: `burger_artisan_collective` remains 4 categories/4 items; `pasta_roma`, `sushi_zen`, and `taco_harbor` each have 3 categories and 4 items.
+- Focused datasource regression coverage validates a non-burger `pasta_roma` catalog payload and seeded non-burger product `sushi_zen_omakase_sampler`; governance/Trello evidence was reconciled when Sprint 7 closed.
+- Finding D (accepted): price formatting (`_formatPrice`, `NumberFormat` by locale) is duplicated between `lib/features/restaurant_details/presentation/widgets/restaurant_details_sections.dart` and `lib/features/product_details/presentation/widgets/product_details_sections.dart`. Extract to `lib/shared/` only if a third consumer appears, to avoid premature refactor.
+- Finding C (accepted): the route `restaurantId` in `/restaurants/:restaurantId/products/:productId` is used only for back navigation/protection; the product loads by `productId` (PK) alone, so a mismatched `restaurantId` still resolves the product. No cross-integrity validation in this read-only slice.
+- Reclassify to Technical Debt only if not-found-on-real-data starts affecting approved demo/QA scope after future catalog changes.
+
+### Storage-backed catalog media naming and cache guidance
+
+Status:
+Reduced / Monitoring
+
+Impact:
+Low
+
+Notes:
+- `image_asset_path` now stores stable Storage object paths for approved catalog media; the field name remains accepted transitional debt to avoid a broad contract rename in Sprint 8.
+- The shared resolver and shared presentation widget keep bucket/public-URL knowledge outside widgets and domain entities.
+- Future media replacements should prefer versioned filenames rather than overwriting unchanged object URLs, to reduce stale CDN/browser cache behavior.
+- Reclassify only if a dedicated contract rename or cache-busting strategy becomes necessary for a later approved media slice.
 
 ## Rules
 

@@ -183,4 +183,227 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authTabReports => 'Reports';
+
+  @override
+  String get homeDeliveryAddressLabel => 'Deliver to';
+
+  @override
+  String homeDeliveryAddressValue(String address) {
+    return '$address';
+  }
+
+  @override
+  String get homeSearchHint => 'Search for dishes or restaurants';
+
+  @override
+  String get homeCategoryAll => 'All';
+
+  @override
+  String get homeCategoryBurgers => 'Burgers';
+
+  @override
+  String get homeCategoryPizza => 'Pizza';
+
+  @override
+  String get homeCategorySushi => 'Sushi';
+
+  @override
+  String get homeCategoryHealthy => 'Healthy';
+
+  @override
+  String get homeBannerTitle => 'Deals for your next order';
+
+  @override
+  String homeBannerDiscountValue(int discountPercentage) {
+    return '$discountPercentage% OFF';
+  }
+
+  @override
+  String get homeBannerFreeDeliveryBadge => 'Free delivery';
+
+  @override
+  String get homeFeaturedSectionTitle => 'Featured restaurants';
+
+  @override
+  String get homeSeeAllAction => 'See all';
+
+  @override
+  String homeRestaurantRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  ) {
+    return '$rating • $minMinutes-$maxMinutes min';
+  }
+
+  @override
+  String get homeLoadingStateTitle => 'Loading your home feed';
+
+  @override
+  String get homeLoadingStateMessage =>
+      'We are fetching the latest restaurants and deals for you.';
+
+  @override
+  String get homeLoadingStateSemanticLabel => 'Loading home feed';
+
+  @override
+  String get homeErrorStateTitle => 'Could not load your home feed';
+
+  @override
+  String get homeErrorStateMessage =>
+      'Try again to refresh restaurants and deals.';
+
+  @override
+  String get homeRetryAction => 'Try again';
+
+  @override
+  String get homeEmptyStateTitle => 'Nothing featured right now';
+
+  @override
+  String get homeEmptyStateMessage =>
+      'Check back in a moment for new restaurants and offers.';
+
+  @override
+  String get homeDiscoveryEmptyStateTitle => 'No restaurants found';
+
+  @override
+  String get homeDiscoveryEmptyStateMessage =>
+      'Try adjusting your search or clearing the filters to see more options.';
+
+  @override
+  String get homeDiscoveryClearFiltersAction => 'Clear filters';
+
+  @override
+  String get restaurantDetailsBackAction => 'Back';
+
+  @override
+  String get restaurantDetailsLoadingStateTitle => 'Loading restaurant';
+
+  @override
+  String get restaurantDetailsLoadingStateMessage =>
+      'We are fetching the latest menu and restaurant details for you.';
+
+  @override
+  String get restaurantDetailsLoadingStateSemanticLabel =>
+      'Loading restaurant details and menu';
+
+  @override
+  String get restaurantDetailsErrorStateTitle =>
+      'Could not load the restaurant';
+
+  @override
+  String get restaurantDetailsErrorStateMessage =>
+      'Try again to refresh the restaurant details and menu.';
+
+  @override
+  String get restaurantDetailsRetryAction => 'Try again';
+
+  @override
+  String get restaurantDetailsEmptyStateTitle => 'Menu unavailable right now';
+
+  @override
+  String get restaurantDetailsEmptyStateMessage =>
+      'Check back in a moment for this restaurant\'s options.';
+
+  @override
+  String get restaurantDetailsMenuSectionTitle => 'Menu';
+
+  @override
+  String get restaurantDetailsCategoryPopular => 'Popular';
+
+  @override
+  String get restaurantDetailsCategoryBurgers => 'Burgers';
+
+  @override
+  String get restaurantDetailsCategorySides => 'Sides';
+
+  @override
+  String get restaurantDetailsCategoryDrinks => 'Drinks';
+
+  @override
+  String get restaurantDetailsCategorySalads => 'Salads';
+
+  @override
+  String get restaurantDetailsCategoryPastas => 'Pasta';
+
+  @override
+  String get restaurantDetailsCategoryRolls => 'Rolls';
+
+  @override
+  String get restaurantDetailsCategoryBowls => 'Bowls';
+
+  @override
+  String get restaurantDetailsCategoryTacos => 'Tacos';
+
+  @override
+  String restaurantDetailsRatingAndDelivery(
+    double rating,
+    int minMinutes,
+    int maxMinutes,
+  ) {
+    return '$rating • $minMinutes-$maxMinutes min';
+  }
+
+  @override
+  String restaurantDetailsMenuSemanticLabel(String restaurantName) {
+    return '$restaurantName menu';
+  }
+
+  @override
+  String restaurantDetailsCategoryFilterSemanticLabel(String categoryName) {
+    return 'Filter menu by $categoryName';
+  }
+
+  @override
+  String get homeBottomNavHome => 'Home';
+
+  @override
+  String get homeBottomNavBrowse => 'Browse';
+
+  @override
+  String get homeBottomNavOrders => 'Orders';
+
+  @override
+  String get homeBottomNavAccount => 'Account';
+
+  @override
+  String get productDetailsBackAction => 'Back';
+
+  @override
+  String get productDetailsLoadingStateTitle => 'Loading product';
+
+  @override
+  String get productDetailsLoadingStateMessage =>
+      'We are fetching the latest details for this product.';
+
+  @override
+  String get productDetailsLoadingStateSemanticLabel =>
+      'Loading product details';
+
+  @override
+  String get productDetailsErrorStateTitle => 'Could not load the product';
+
+  @override
+  String get productDetailsErrorStateMessage =>
+      'Try again to refresh the product details.';
+
+  @override
+  String get productDetailsRetryAction => 'Try again';
+
+  @override
+  String get productDetailsNotFoundStateTitle => 'Product unavailable';
+
+  @override
+  String get productDetailsNotFoundStateMessage =>
+      'This product is not available at this restaurant.';
+
+  @override
+  String productDetailsImageSemanticLabel(String productName) {
+    return '$productName image';
+  }
+
+  @override
+  String productDetailsPriceSemanticLabel(String price) {
+    return 'Price $price';
+  }
 }
