@@ -190,6 +190,43 @@ void main() {
       },
     );
 
+    testWidgets('preselects the Populares category on first load', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _buildTestApp(
+          restaurantId: restaurantId,
+          overrides: [
+            restaurantDetailsRepositoryProvider.overrideWithValue(
+              _FakeRestaurantDetailsRepository(
+                () async => restaurantDetailsFixture,
+              ),
+            ),
+          ],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final context = tester.element(find.byType(RestaurantDetailsPage));
+      final l10n = AppLocalizations.of(context);
+
+      final popularChip = tester.widget<ChoiceChip>(
+        find.widgetWithText(
+          ChoiceChip,
+          l10n.restaurantDetailsCategoryPopular,
+        ),
+      );
+      final burgersChip = tester.widget<ChoiceChip>(
+        find.widgetWithText(
+          ChoiceChip,
+          l10n.restaurantDetailsCategoryBurgers,
+        ),
+      );
+
+      expect(popularChip.selected, isTrue);
+      expect(burgersChip.selected, isFalse);
+    });
+
     testWidgets('renders the localized salads category', (tester) async {
       final detailsWithSalads = RestaurantDetails(
         id: restaurantDetailsFixture.id,

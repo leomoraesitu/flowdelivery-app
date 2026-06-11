@@ -178,6 +178,21 @@ Notes:
 - Future media replacements should prefer versioned filenames rather than overwriting unchanged object URLs, to reduce stale CDN/browser cache behavior.
 - Reclassify only if a dedicated contract rename or cache-busting strategy becomes necessary for a later approved media slice.
 
+### PostgREST `.order()` defaults to descending — keep catalog/feed ordering explicit
+
+Status:
+Resolved / Monitoring
+
+Impact:
+Medium (before fix)
+
+Notes:
+- The Supabase/PostgREST Dart client `.order(column)` defaults to `ascending: false`. Both catalog datasources called `query.order(column)` without a direction, so `restaurant_menu_categories`/`restaurant_menu_items` (and the Home feed tables) were returned in descending `sort_order`.
+- User-visible symptom: opening a restaurant pre-selected the wrong category — `popular` (`sort_order = 0`) rendered last instead of first, so the provider default (`categories.firstOrNull`) selected the highest-`sort_order` category.
+- Fixed by passing `ascending: true` in `lib/features/restaurant_details/data/datasources/restaurant_details_remote_datasource.dart` and both `_selectRows`/`_selectMaybeSingleRow` helpers in `lib/features/home/data/datasources/home_remote_datasource.dart`.
+- Test gap (accepted): provider/widget tests inject pre-ordered fixtures and the datasource tests inject fake row loaders, so neither exercises the real `.order()` direction. A unit test would require faking the PostgREST fluent builder — disproportionate for a one-line fix. Added `preselects the Populares category on first load` widget regression to guard the provider→widget selection path; verified the datasource fix in the running app.
+- Rule of thumb for future Supabase reads: always pass `ascending:` explicitly to `.order()`; never rely on the client default.
+
 ## Rules
 
 - Do not fix unrelated debt during feature work without confirmation.

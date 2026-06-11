@@ -138,7 +138,9 @@ class SupabaseRestaurantDetailsRemoteDatasource
     }
 
     for (final column in orderBy) {
-      query = query.order(column);
+      // PostgREST's Dart `order` defaults to descending; catalog ordering
+      // (e.g. category `sort_order` 0 = "Populares" first) requires ascending.
+      query = query.order(column, ascending: true);
     }
 
     return _castRows(await query, table: table);

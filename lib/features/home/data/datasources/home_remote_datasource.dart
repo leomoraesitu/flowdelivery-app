@@ -223,7 +223,9 @@ class SupabaseHomeRemoteDatasource implements HomeRemoteDatasource {
     }
 
     for (final column in orderBy) {
-      query = query.order(column);
+      // PostgREST's Dart `order` defaults to descending; the Home feed relies on
+      // ascending `sort_order` to preserve the curated catalog ordering.
+      query = query.order(column, ascending: true);
     }
 
     final response = await query;
@@ -243,7 +245,9 @@ class SupabaseHomeRemoteDatasource implements HomeRemoteDatasource {
     }
 
     for (final column in orderBy) {
-      query = query.order(column);
+      // PostgREST's Dart `order` defaults to descending; the Home feed relies on
+      // ascending `sort_order` to preserve the curated catalog ordering.
+      query = query.order(column, ascending: true);
     }
 
     final response = await query.limit(1).maybeSingle();
