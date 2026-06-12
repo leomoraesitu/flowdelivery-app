@@ -4,7 +4,17 @@
 <img src="assets/images/branding/logo-flowdelivery-light.png" alt="FlowDelivery logo" width="240">
 </p>
 
-Portfolio-grade Flutter food delivery application built with MVVM architecture, planned Supabase backend integration, and scalable software engineering practices.
+Portfolio-grade Flutter food delivery application built with MVVM architecture, Supabase backend integration, and scalable software engineering practices.
+
+---
+
+# 🌐 Live Demo
+
+**▶️ https://leomoraesitu.github.io/flowdelivery-app/**
+
+The Flutter web build is deployed to GitHub Pages and serves the `v0.2.0` read-only catalog browsing experience: sign in, then browse the Home feed, restaurant details, and product details backed by Supabase. The deploy runs automatically on each version tag (`v*.*.*`).
+
+> Sign-in/recovery require the Supabase Auth URL allow-list to include the Pages origin. An Android APK is also published with every release under [Releases](https://github.com/leomoraesitu/flowdelivery-app/releases).
 
 ---
 
@@ -21,27 +31,7 @@ FlowDelivery is a modern delivery platform developed as a portfolio-grade softwa
 - CI/CD readiness
 - Professional engineering conventions
 
-Sprint 0 foundation and governance are complete. Sprint 1 Authentication foundation is complete and validated, including PT-BR auth localization, centralized auth i18n, and the password recovery flow.
-
----
-
-# 🎨 Prototype
-
-<p align="center">
-  <img width="160" alt="splash-onboarding" src="docs/ux/prototypes/splash-onboarding.png" />
-  <img width="160" alt="auth-screen" src="docs/ux/prototypes/auth-screen.png" />
-  <img width="160" alt="home-feed" src="docs/ux/prototypes/home-feed.png" />
-  <img width="160" alt="restaurant-details" src="docs/ux/prototypes/restaurant-details.png" />
-  <img width="160" alt="product-details" src="docs/ux/prototypes/product-details.png" />
-</p>
-
-<p align="center">
-  <img width="160" alt="cart" src="docs/ux/prototypes/cart.png" />
-  <img width="160" alt="checkout" src="docs/ux/prototypes/checkout.png" />
-  <img width="160" alt="order-tracking" src="docs/ux/prototypes/order-tracking.png" />
-  <img width="160" alt="order-history" src="docs/ux/prototypes/order-history.png" />
-  <img width="160" alt="user-profile" src="docs/ux/prototypes/user-profile.png" />
-</p>
+As of `v0.2.0`, FlowDelivery ships a validated read-only catalog browsing experience (Sprints 2-8) on top of the Sprint 1 authentication foundation: authenticated Home feed, restaurant details, product details, deterministic catalog seed coverage, and Storage-backed catalog media — all served live on the web demo above and as a release APK. PT-BR/EN localization, Theme Guard, and Localization Guard are enforced across presentation slices.
 
 ---
 
@@ -78,10 +68,10 @@ Sprint 0 foundation and governance are complete. Sprint 1 Authentication foundat
 
 ## Backend
 
-- Supabase (planned)
-- PostgreSQL (planned)
-- Authentication (implemented foundation)
-- Storage (planned)
+- Supabase (integrated)
+- PostgreSQL (integrated — catalog schema with RLS and grants)
+- Authentication (implemented)
+- Storage (integrated — public-read `catalog-media` bucket)
 - Realtime (planned)
 
 ---
@@ -369,10 +359,12 @@ flutter run
 
 ## Phase 2 — Core Features
 
-- [ ] Authentication planning
-- [ ] Home feed
-- [ ] Restaurant details
-- [ ] Product details
+- [x] Authentication
+- [x] Home feed (remote, with search and category discovery)
+- [x] Restaurant details
+- [x] Product details
+- [x] Storage-backed catalog media
+- [x] Web demo deployed to GitHub Pages
 
 ---
 

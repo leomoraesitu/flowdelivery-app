@@ -111,6 +111,12 @@ Publishing may include:
 - screenshots or demo assets
 - deployment or distribution step
 
+Web deployment is automated: pushing a `v*.*.*` tag triggers
+`.github/workflows/deploy-web.yml`, which builds the Flutter web app and
+publishes it to GitHub Pages at https://leomoraesitu.github.io/flowdelivery-app/.
+The only manual post-deploy step is keeping the Supabase Auth URL allow-list in
+sync with the Pages origin.
+
 ### 7. Post-Release Review
 
 After release:
