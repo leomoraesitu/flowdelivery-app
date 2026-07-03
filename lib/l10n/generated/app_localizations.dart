@@ -790,6 +790,132 @@ abstract class AppLocalizations {
   /// In pt_BR, this message translates to:
   /// **'Preco {price}'**
   String productDetailsPriceSemanticLabel(String price);
+
+  /// Title shown on the cart page app bar and cart icon tooltip.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Meu Carrinho'**
+  String get cartTitle;
+
+  /// Title shown when the cart has no items.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carrinho vazio'**
+  String get cartEmptyTitle;
+
+  /// Body copy shown when the cart has no items.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Adicione itens de um restaurante para comecar seu pedido.'**
+  String get cartEmptyMessage;
+
+  /// Button label on the empty cart state that navigates back to Home.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Explorar restaurantes'**
+  String get cartEmptyAction;
+
+  /// Pluralized cart item count shown near the cart badge or summary.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{count, plural, one{{count} item} other{{count} itens}}'**
+  String cartItemCount(int count);
+
+  /// Label for a cart item subtotal amount.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Subtotal'**
+  String get cartSubtotal;
+
+  /// Label for the cart total amount row.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Total'**
+  String get cartTotal;
+
+  /// Tooltip and semantic label for the clear-cart action on the cart page app bar.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Limpar carrinho'**
+  String get cartClearAction;
+
+  /// Tooltip and semantic label for removing a single item from the cart.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Remover item'**
+  String get cartRemoveItem;
+
+  /// Tooltip and semantic label for the quantity increase control.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Aumentar quantidade'**
+  String get cartIncreaseQuantity;
+
+  /// Tooltip and semantic label for the quantity decrease control.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Diminuir quantidade'**
+  String get cartDecreaseQuantity;
+
+  /// Label for the checkout call-to-action button on the cart page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Ir para o checkout'**
+  String get cartProceedToCheckout;
+
+  /// Feedback copy explaining the checkout action is not available yet.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Checkout em breve'**
+  String get cartCheckoutPlaceholder;
+
+  /// Label for the add-to-cart button on the product details page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Adicionar ao carrinho'**
+  String get cartAddToCart;
+
+  /// Semantic label for the in-cart quantity controls on the product details page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Atualizar quantidade'**
+  String get cartUpdateQuantity;
+
+  /// Label indicating the product is already in the cart.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'No carrinho'**
+  String get cartAlreadyInCart;
+
+  /// Title of the confirmation dialog shown when adding an item from a different restaurant.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Iniciar novo pedido?'**
+  String get cartDifferentRestaurantTitle;
+
+  /// Body copy of the confirmation dialog shown when adding an item from a different restaurant.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Seu carrinho tem itens de outro restaurante. Deseja limpa-lo e adicionar este item?'**
+  String get cartDifferentRestaurantMessage;
+
+  /// Confirm button label on the different-restaurant dialog that clears the cart and adds the new item.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Sim, limpar'**
+  String get cartDifferentRestaurantConfirm;
+
+  /// Cancel button label on the different-restaurant dialog that keeps the current cart.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Cancelar'**
+  String get cartDifferentRestaurantCancel;
+
+  /// Semantic label for a cart item thumbnail image.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Imagem de {name}'**
+  String cartItemImageSemanticLabel(String name);
 }
 
 class _AppLocalizationsDelegate

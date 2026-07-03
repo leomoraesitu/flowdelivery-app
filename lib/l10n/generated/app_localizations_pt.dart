@@ -410,6 +410,81 @@ class AppLocalizationsPt extends AppLocalizations {
   String productDetailsPriceSemanticLabel(String price) {
     return 'Preco $price';
   }
+
+  @override
+  String get cartTitle => 'Meu Carrinho';
+
+  @override
+  String get cartEmptyTitle => 'Carrinho vazio';
+
+  @override
+  String get cartEmptyMessage =>
+      'Adicione itens de um restaurante para comecar seu pedido.';
+
+  @override
+  String get cartEmptyAction => 'Explorar restaurantes';
+
+  @override
+  String cartItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count itens',
+      one: '$count item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cartSubtotal => 'Subtotal';
+
+  @override
+  String get cartTotal => 'Total';
+
+  @override
+  String get cartClearAction => 'Limpar carrinho';
+
+  @override
+  String get cartRemoveItem => 'Remover item';
+
+  @override
+  String get cartIncreaseQuantity => 'Aumentar quantidade';
+
+  @override
+  String get cartDecreaseQuantity => 'Diminuir quantidade';
+
+  @override
+  String get cartProceedToCheckout => 'Ir para o checkout';
+
+  @override
+  String get cartCheckoutPlaceholder => 'Checkout em breve';
+
+  @override
+  String get cartAddToCart => 'Adicionar ao carrinho';
+
+  @override
+  String get cartUpdateQuantity => 'Atualizar quantidade';
+
+  @override
+  String get cartAlreadyInCart => 'No carrinho';
+
+  @override
+  String get cartDifferentRestaurantTitle => 'Iniciar novo pedido?';
+
+  @override
+  String get cartDifferentRestaurantMessage =>
+      'Seu carrinho tem itens de outro restaurante. Deseja limpa-lo e adicionar este item?';
+
+  @override
+  String get cartDifferentRestaurantConfirm => 'Sim, limpar';
+
+  @override
+  String get cartDifferentRestaurantCancel => 'Cancelar';
+
+  @override
+  String cartItemImageSemanticLabel(String name) {
+    return 'Imagem de $name';
+  }
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -817,5 +892,80 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String productDetailsPriceSemanticLabel(String price) {
     return 'Preco $price';
+  }
+
+  @override
+  String get cartTitle => 'Meu Carrinho';
+
+  @override
+  String get cartEmptyTitle => 'Carrinho vazio';
+
+  @override
+  String get cartEmptyMessage =>
+      'Adicione itens de um restaurante para comecar seu pedido.';
+
+  @override
+  String get cartEmptyAction => 'Explorar restaurantes';
+
+  @override
+  String cartItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count itens',
+      one: '$count item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cartSubtotal => 'Subtotal';
+
+  @override
+  String get cartTotal => 'Total';
+
+  @override
+  String get cartClearAction => 'Limpar carrinho';
+
+  @override
+  String get cartRemoveItem => 'Remover item';
+
+  @override
+  String get cartIncreaseQuantity => 'Aumentar quantidade';
+
+  @override
+  String get cartDecreaseQuantity => 'Diminuir quantidade';
+
+  @override
+  String get cartProceedToCheckout => 'Ir para o checkout';
+
+  @override
+  String get cartCheckoutPlaceholder => 'Checkout em breve';
+
+  @override
+  String get cartAddToCart => 'Adicionar ao carrinho';
+
+  @override
+  String get cartUpdateQuantity => 'Atualizar quantidade';
+
+  @override
+  String get cartAlreadyInCart => 'No carrinho';
+
+  @override
+  String get cartDifferentRestaurantTitle => 'Iniciar novo pedido?';
+
+  @override
+  String get cartDifferentRestaurantMessage =>
+      'Seu carrinho tem itens de outro restaurante. Deseja limpa-lo e adicionar este item?';
+
+  @override
+  String get cartDifferentRestaurantConfirm => 'Sim, limpar';
+
+  @override
+  String get cartDifferentRestaurantCancel => 'Cancelar';
+
+  @override
+  String cartItemImageSemanticLabel(String name) {
+    return 'Imagem de $name';
   }
 }
