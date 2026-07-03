@@ -6,18 +6,31 @@ The project follows Semantic Versioning and Conventional Commits.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-03
+
 ### Added
 
+- Session-local shopping cart (Sprint 9): immutable `CartItem`/`Cart` domain aggregates with a `CartNotifier` (`Notifier<Cart>`) domain boundary — no repository/datasource; persistence deferred to the Checkout slice.
+- Protected `/cart` route and `CartPage` with localized empty/non-empty states, quantity controls (remove affordance at quantity 1), per-item subtotal, running total, and a visible-but-disabled checkout CTA with placeholder copy.
+- "Add to cart" action on product details, switching to in-cart quantity controls through a derived per-product selector (`cartItemProvider`).
+- Single-restaurant constraint enforced in the domain via the `CartAddResult` return signal, surfaced as a localized confirmation dialog.
+- Cart item-count badge (`Badge` M3, hidden at zero) on restaurant and product hero headers, navigating to `/cart`.
+- Shared `formatPriceInCents` utility in `lib/shared/utils/price_formatter.dart`, replacing duplicated price formatting in restaurant/product details sections.
+- 21 `cart*` localization keys (pt_BR template, pt, en) including an ICU plural item count.
+- Recorded cart demo gif in `docs/ux/demo/` embedded in the README.
 - GitHub Pages web deployment pipeline (`.github/workflows/deploy-web.yml`): tag-triggered (`v*.*.*`) Flutter web build with `--base-href "/flowdelivery-app/"`, Supabase dart-defines injected from Actions variables/secret, and a `404.html` SPA fallback for deep-links and refresh.
-- Live web demo published at https://leomoraesitu.github.io/flowdelivery-app/ serving the v0.2.0 read-only catalog browsing build.
+- Live web demo published at https://leomoraesitu.github.io/flowdelivery-app/ (initially serving the v0.2.0 read-only catalog build, updated to v0.3.0 with this release).
 
 ### Fixed
 
 - Password recovery redirect now preserves the GitHub Pages project subpath so reset links resolve under `/flowdelivery-app/reset-password` (covered by `test/app/routes/auth_recovery_redirect_test.dart`).
+- GitHub Pages environment now allows `v*` tag deployments (deployment branch policy), so tag-triggered deploys run without manual intervention.
 
 ### Changed
 
 - GitHub Pages deploy actions pinned to Node 24 majors (`checkout@v6`, `upload-pages-artifact@v5`, `deploy-pages@v5`).
+- AI workflow scripts converted from PowerShell to bash for macOS (PowerShell variants retained for Windows); README command loop updated accordingly.
+- README, routing conventions, and project bootstrap documentation reconciled with the implemented sprints 3-9 state (Supabase database/Storage surface, real route tree, cart status).
 
 ## [0.2.0] - 2026-06-11
 
