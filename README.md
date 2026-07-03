@@ -12,7 +12,7 @@ Portfolio-grade Flutter food delivery application built with MVVM architecture, 
 
 **▶️ https://leomoraesitu.github.io/flowdelivery-app/**
 
-The Flutter web build is deployed to GitHub Pages and serves the `v0.2.0` read-only catalog browsing experience: sign in, then browse the Home feed, restaurant details, and product details backed by Supabase. The deploy runs automatically on each version tag (`v*.*.*`).
+The Flutter web build is deployed to GitHub Pages and serves the `v0.3.0` experience: sign in, browse the Home feed, restaurant details, and product details backed by Supabase, and build an order with the session-local shopping cart. The deploy runs automatically on each version tag (`v*.*.*`).
 
 > Sign-in/recovery require the Supabase Auth URL allow-list to include the Pages origin. An Android APK is also published with every release under [Releases](https://github.com/leomoraesitu/flowdelivery-app/releases).
 
