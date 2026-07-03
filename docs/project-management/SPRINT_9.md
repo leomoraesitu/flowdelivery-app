@@ -14,11 +14,27 @@ Reference plan:
 Real Trello story:
 
 - `[FEAT] Cart — Carrinho local (Sprint 9)` — `https://trello.com/c/VFGNIm0O`
-  (board `FlowDelivery - Product Backlog`, list `🚧 In Progress`)
+  (board `FlowDelivery - Product Backlog`, list `🎉 Done`)
 
 ## Status
 
-Open. Branch: `feat/cart` (from `develop`).
+Closed (2026-07-03). All 8 tasks implemented, validated, and committed
+task-by-task on `feat/cart`. Consolidated regression matrix passed with 64
+tests. The real Trello card is fully checked and in `🎉 Done`.
+
+Task commits: `809f06a` (domain), `ae13fb3` (ARB), `2a3fecc` (CartPage UI +
+shared price formatter), `77a3c3c` (route/guard), `be94b00` (product-details
+integration), `da920ac` (badge), `a5fe3ce` (tests).
+
+Approved deviations from the plan:
+
+- PT copy without accents, matching the existing catalog convention.
+- Extra `cartClearAction` ARB key for the cart AppBar clear affordance.
+- `CartItem.restaurantName` removed — the dialog copy does not interpolate
+  it and `ProductDetailsPage` cannot source it (`ProductDetails` carries
+  only `restaurantId`).
+- Badge placed as a floating hero-header action (neither detail page has an
+  AppBar); navigation callbacks injected by the router (`onOpenCart`).
 
 ## Sprint Goal
 
@@ -59,28 +75,28 @@ to checkout.
 
 ## Backlog
 
-- [ ] Task 1 - domain: CartItem, Cart entities, and CartNotifier.
-- [ ] Task 2 - ARB copy for all cart user-facing strings.
-- [ ] Task 3 - CartPage UI (empty and non-empty states).
-- [ ] Task 4 - route `/cart` and auth guard.
-- [ ] Task 5 - integrate ProductDetailsPage with CartNotifier.
-- [ ] Task 6 - cart badge in navigation area.
-- [ ] Task 7 - validation: CartNotifier unit tests, CartPage widget tests, guards.
-- [ ] Task 8 - reconcile docs, memory, technical debt, and Trello.
+- [x] Task 1 - domain: CartItem, Cart entities, and CartNotifier.
+- [x] Task 2 - ARB copy for all cart user-facing strings.
+- [x] Task 3 - CartPage UI (empty and non-empty states).
+- [x] Task 4 - route `/cart` and auth guard.
+- [x] Task 5 - integrate ProductDetailsPage with CartNotifier.
+- [x] Task 6 - cart badge in navigation area.
+- [x] Task 7 - validation: CartNotifier unit tests, CartPage widget tests, guards.
+- [x] Task 8 - reconcile docs, memory, technical debt, and Trello.
 
 ## Acceptance Criteria
 
-- [ ] `CartItem` and `Cart` are pure Dart with value equality and no Flutter or
+- [x] `CartItem` and `Cart` are pure Dart with value equality and no Flutter or
   Supabase imports.
-- [ ] `CartNotifier` is tested in isolation without widgets.
-- [ ] Cart route `/cart` is protected; unauthenticated access redirects to sign-in.
-- [ ] `CartPage` renders the empty and non-empty states with localized copy.
-- [ ] Single-restaurant constraint is enforced with a localized confirmation dialog.
-- [ ] "Proceed to checkout" CTA is visible but disabled with placeholder copy.
-- [ ] All cart strings are in ARB files and consumed via `AppLocalizations`.
-- [ ] No hardcoded colors or spacing values in cart or updated presentation files.
-- [ ] All existing guard tests remain green.
-- [ ] Consolidated test matrix passes for all new and updated test files.
+- [x] `CartNotifier` is tested in isolation without widgets.
+- [x] Cart route `/cart` is protected; unauthenticated access redirects to sign-in.
+- [x] `CartPage` renders the empty and non-empty states with localized copy.
+- [x] Single-restaurant constraint is enforced with a localized confirmation dialog.
+- [x] "Proceed to checkout" CTA is visible but disabled with placeholder copy.
+- [x] All cart strings are in ARB files and consumed via `AppLocalizations`.
+- [x] No hardcoded colors or spacing values in cart or updated presentation files.
+- [x] All existing guard tests remain green.
+- [x] Consolidated test matrix passes for all new and updated test files.
 
 ## Out of Scope
 
@@ -102,21 +118,21 @@ to checkout.
 
 ## Localization Guard
 
-- [ ] All cart user-facing strings are defined in `app_pt_BR.arb` (template) with
+- [x] All cart user-facing strings are defined in `app_pt_BR.arb` (template) with
   `@@description`.
-- [ ] All keys are present and translated in `app_pt.arb` and `app_en.arb`.
-- [ ] Placeholder metadata is consistent across all three catalogs.
-- [ ] `flutter gen-l10n` was run after every ARB change.
-- [ ] `arb_catalog_parity_test.dart` and `generated_localizations_freshness_test.dart`
+- [x] All keys are present and translated in `app_pt.arb` and `app_en.arb`.
+- [x] Placeholder metadata is consistent across all three catalogs.
+- [x] `flutter gen-l10n` was run after every ARB change.
+- [x] `arb_catalog_parity_test.dart` and `generated_localizations_freshness_test.dart`
   are green.
-- [ ] No hardcoded user-facing strings in any cart or updated presentation file.
+- [x] No hardcoded user-facing strings in any cart or updated presentation file.
 
 ## Theme Guard
 
-- [ ] No hardcoded `Color(...)`, `Colors.*`, or hex values in cart or updated files.
-- [ ] No hardcoded numeric spacing or radius values outside app token references.
-- [ ] All interactive elements use semantic `ColorScheme` roles.
-- [ ] `no_hardcoded_visual_values_test.dart` remains green.
+- [x] No hardcoded `Color(...)`, `Colors.*`, or hex values in cart or updated files.
+- [x] No hardcoded numeric spacing or radius values outside app token references.
+- [x] All interactive elements use semantic `ColorScheme` roles.
+- [x] `no_hardcoded_visual_values_test.dart` remains green.
 
 ## Risks
 

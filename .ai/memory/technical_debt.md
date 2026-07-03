@@ -160,7 +160,7 @@ Notes:
 - Partial catalog seed is resolved for the existing Home restaurants. Sprint 7 applied deterministic catalog seeds for `pasta_roma`, `sushi_zen`, and `taco_harbor`, while preserving `burger_artisan_collective`.
 - Final remote counts are 13 menu categories and 16 menu items: `burger_artisan_collective` remains 4 categories/4 items; `pasta_roma`, `sushi_zen`, and `taco_harbor` each have 3 categories and 4 items.
 - Focused datasource regression coverage validates a non-burger `pasta_roma` catalog payload and seeded non-burger product `sushi_zen_omakase_sampler`; governance/Trello evidence was reconciled when Sprint 7 closed.
-- Finding D (accepted): price formatting (`_formatPrice`, `NumberFormat` by locale) is duplicated between `lib/features/restaurant_details/presentation/widgets/restaurant_details_sections.dart` and `lib/features/product_details/presentation/widgets/product_details_sections.dart`. Extract to `lib/shared/` only if a third consumer appears, to avoid premature refactor.
+- Finding D (resolved in Sprint 9): the cart became the third consumer of price formatting, so `formatPriceInCents` was extracted to `lib/shared/utils/price_formatter.dart` and the duplicated `_formatPrice` helpers were removed from `restaurant_details_sections.dart` and `product_details_sections.dart` (commit `2a3fecc`). Future price rendering must use the shared formatter.
 - Finding C (accepted): the route `restaurantId` in `/restaurants/:restaurantId/products/:productId` is used only for back navigation/protection; the product loads by `productId` (PK) alone, so a mismatched `restaurantId` still resolves the product. No cross-integrity validation in this read-only slice.
 - Reclassify to Technical Debt only if not-found-on-real-data starts affecting approved demo/QA scope after future catalog changes.
 
@@ -177,6 +177,28 @@ Notes:
 - The shared resolver and shared presentation widget keep bucket/public-URL knowledge outside widgets and domain entities.
 - Future media replacements should prefer versioned filenames rather than overwriting unchanged object URLs, to reduce stale CDN/browser cache behavior.
 - Reclassify only if a dedicated contract rename or cache-busting strategy becomes necessary for a later approved media slice.
+
+### Cart persistence deferred to the Checkout sprint
+
+Status:
+Planned Scope / Monitoring
+
+Impact:
+Low
+
+Notes:
+- Sprint 9 delivered the cart as session-only in-memory state by approved
+  plan decision: `CartNotifier` (`Notifier<Cart>`) owns the aggregate and
+  no `shared_preferences`/Supabase persistence exists.
+- Totals reset on restart; this is expected and documented behavior for
+  the current demo scope, not a regression.
+- Promote to implementation only inside the approved Checkout slice, where
+  session continuity has real value. Follow the session-persistence
+  classification policy above: escalate to Technical Debt only if cart
+  loss starts impacting approved demo/QA scope.
+- `CartItem.restaurantName` was removed in Sprint 9 (approved deviation);
+  if Checkout needs the restaurant name in cart/checkout copy, reintroduce
+  it with a real data source rather than an empty placeholder.
 
 ### PostgREST `.order()` defaults to descending — keep catalog/feed ordering explicit
 
