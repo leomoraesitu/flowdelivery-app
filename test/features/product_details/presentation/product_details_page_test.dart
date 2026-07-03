@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flowdelivery_app/app/theme/app_theme.dart';
+import 'package:flowdelivery_app/features/cart/presentation/providers/cart_providers.dart';
 import 'package:flowdelivery_app/features/product_details/domain/entities/product_details.dart';
 import 'package:flowdelivery_app/features/product_details/domain/repositories/product_details_repository.dart';
 import 'package:flowdelivery_app/features/product_details/presentation/pages/product_details_page.dart';
@@ -29,6 +30,7 @@ Widget _buildTestApp({
   required String productId,
   List overrides = const [],
   VoidCallback? onBack,
+  VoidCallback? onOpenCart,
 }) {
   return ProviderScope(
     overrides: overrides.cast(),
@@ -42,7 +44,11 @@ Widget _buildTestApp({
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: ProductDetailsPage(productId: productId, onBack: onBack),
+      home: ProductDetailsPage(
+        productId: productId,
+        onBack: onBack,
+        onOpenCart: onOpenCart,
+      ),
     ),
   );
 }
@@ -230,6 +236,183 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(backTapped, isTrue);
+    });
+  });
+
+  group('ProductDetailsPage cart integration', () {
+    const productId = 'signature_truffle';
+
+    const otherRestaurantProduct = ProductDetails(
+      id: 'sushi_zen_omakase_sampler',
+      restaurantId: 'sushi_zen',
+      categoryId: 'rolls',
+      name: 'Omakase Sampler',
+      description: 'Chef selection of seasonal nigiri.',
+      imageAssetPath: 'assets/images/omakase-sampler.png',
+      priceInCents: 4200,
+    );
+
+    Future<AppLocalizations> pumpSuccessPage(
+      WidgetTester tester, {
+      VoidCallback? onOpenCart,
+    }) async {
+      await tester.pumpWidget(
+        _buildTestApp(
+          productId: productId,
+          onOpenCart: onOpenCart,
+          overrides: [
+            productDetailsRepositoryProvider.overrideWithValue(
+              _FakeProductDetailsRepository(() async => _product),
+            ),
+          ],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      return AppLocalizations.of(
+        tester.element(find.byType(ProductDetailsPage)),
+      );
+    }
+
+    ProviderContainer containerOf(WidgetTester tester) {
+      return ProviderScope.containerOf(
+        tester.element(find.byType(ProductDetailsPage)),
+      );
+    }
+
+    // The cart action area sits below the tall product hero, outside the
+    // default test viewport, so scroll to it before tapping.
+    Future<void> tapVisible(WidgetTester tester, Finder finder) async {
+      await tester.ensureVisible(finder);
+      await tester.pumpAndSettle();
+      await tester.tap(finder);
+    }
+
+    testWidgets('shows the add-to-cart button when the product is not in '
+        'the cart', (tester) async {
+      final l10n = await pumpSuccessPage(tester);
+
+      expect(
+        find.widgetWithText(FilledButton, l10n.cartAddToCart),
+        findsOneWidget,
+      );
+      expect(find.text(l10n.cartAlreadyInCart), findsNothing);
+    });
+
+    testWidgets('shows quantity controls when the product is in the cart', (
+      tester,
+    ) async {
+      final l10n = await pumpSuccessPage(tester);
+
+      await tapVisible(
+        tester,
+        find.widgetWithText(FilledButton, l10n.cartAddToCart),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text(l10n.cartAlreadyInCart), findsOneWidget);
+      expect(find.byTooltip(l10n.cartIncreaseQuantity), findsOneWidget);
+      expect(
+        find.widgetWithText(FilledButton, l10n.cartAddToCart),
+        findsNothing,
+      );
+
+      await tapVisible(tester, find.byTooltip(l10n.cartIncreaseQuantity));
+      await tester.pumpAndSettle();
+
+      expect(containerOf(tester).read(cartProvider).itemCount, 2);
+      expect(find.text('2'), findsOneWidget);
+    });
+
+    testWidgets(
+      'cancelling the different-restaurant dialog keeps the current cart',
+      (tester) async {
+        final l10n = await pumpSuccessPage(tester);
+        final container = containerOf(tester);
+        container.read(cartProvider.notifier).addItem(otherRestaurantProduct);
+        await tester.pumpAndSettle();
+
+        await tapVisible(
+          tester,
+          find.widgetWithText(FilledButton, l10n.cartAddToCart),
+        );
+        await tester.pumpAndSettle();
+
+        expect(find.text(l10n.cartDifferentRestaurantTitle), findsOneWidget);
+        expect(find.text(l10n.cartDifferentRestaurantMessage), findsOneWidget);
+
+        await tester.tap(
+          find.widgetWithText(TextButton, l10n.cartDifferentRestaurantCancel),
+        );
+        await tester.pumpAndSettle();
+
+        final cart = container.read(cartProvider);
+        expect(cart.restaurantId, otherRestaurantProduct.restaurantId);
+        expect(cart.itemCount, 1);
+      },
+    );
+
+    testWidgets(
+      'confirming the different-restaurant dialog clears the cart and adds '
+      'the new item',
+      (tester) async {
+        final l10n = await pumpSuccessPage(tester);
+        final container = containerOf(tester);
+        container.read(cartProvider.notifier).addItem(otherRestaurantProduct);
+        await tester.pumpAndSettle();
+
+        await tapVisible(
+          tester,
+          find.widgetWithText(FilledButton, l10n.cartAddToCart),
+        );
+        await tester.pumpAndSettle();
+
+        await tester.tap(
+          find.widgetWithText(
+            FilledButton,
+            l10n.cartDifferentRestaurantConfirm,
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        final cart = container.read(cartProvider);
+        expect(cart.restaurantId, _product.restaurantId);
+        expect(cart.itemCount, 1);
+        expect(cart.items.first.productId, _product.id);
+        expect(find.text(l10n.cartAlreadyInCart), findsOneWidget);
+      },
+    );
+
+    testWidgets('hides the badge count on an empty cart and shows it after '
+        'items are added', (tester) async {
+      var cartOpened = false;
+      final l10n = await pumpSuccessPage(
+        tester,
+        onOpenCart: () => cartOpened = true,
+      );
+
+      final emptyBadge = tester.widget<Badge>(find.byType(Badge));
+      expect(emptyBadge.isLabelVisible, isFalse);
+
+      await tapVisible(
+        tester,
+        find.widgetWithText(FilledButton, l10n.cartAddToCart),
+      );
+      await tester.pumpAndSettle();
+      await tapVisible(tester, find.byTooltip(l10n.cartIncreaseQuantity));
+      await tester.pumpAndSettle();
+
+      final badge = tester.widget<Badge>(find.byType(Badge));
+      expect(badge.isLabelVisible, isTrue);
+      expect(
+        find.descendant(of: find.byType(Badge), matching: find.text('2')),
+        findsOneWidget,
+      );
+
+      await tapVisible(tester, find.byTooltip(l10n.cartTitle));
+      await tester.pumpAndSettle();
+
+      expect(cartOpened, isTrue);
     });
   });
 }

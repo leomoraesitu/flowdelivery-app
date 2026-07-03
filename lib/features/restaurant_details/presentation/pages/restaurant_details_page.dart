@@ -1,4 +1,5 @@
 import 'package:flowdelivery_app/app/theme/app_tokens.dart';
+import 'package:flowdelivery_app/features/cart/presentation/widgets/cart_badge_button.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/providers/restaurant_details_providers.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/widgets/restaurant_details_sections.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
@@ -10,12 +11,14 @@ class RestaurantDetailsPage extends ConsumerWidget {
     required this.restaurantId,
     this.onBack,
     this.onProductSelected,
+    this.onOpenCart,
     super.key,
   });
 
   final String restaurantId;
   final VoidCallback? onBack;
   final ValueChanged<String>? onProductSelected;
+  final VoidCallback? onOpenCart;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -54,6 +57,9 @@ class RestaurantDetailsPage extends ConsumerWidget {
                         )
                         .selectCategory,
                     onProductSelected: onProductSelected,
+                    headerAction: onOpenCart == null
+                        ? null
+                        : CartBadgeButton(onPressed: onOpenCart!),
                   );
                 },
                 error: (error, stackTrace) {

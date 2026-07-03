@@ -65,10 +65,14 @@ redirect behavior.
 
 Keep route names and paths centralized.
 
-Current initial routes:
+Current routes:
 
 ```text
-/
+/                                              (root entry redirect to /home)
+/home                                          (protected)
+/restaurants/:restaurantId                     (protected)
+/restaurants/:restaurantId/products/:productId (protected)
+/cart                                          (protected)
 /sign-in
 /sign-up
 /forgot-password
@@ -78,12 +82,11 @@ Current initial routes:
 The reset-password route is part of the password recovery completion feature. It is an auth/recovery route, not a protected app destination, and unauthenticated users can reach it while completing recovery.
 On web, password recovery redirects use path URLs so Supabase fragments do not conflict with hash-based route parsing.
 
-Expected protected routes as the MVP grows:
+`/home`, `/restaurants/...`, and `/cart` are implemented protected
+destinations gated by the centralized `isProtectedRoute` predicate in
+`app_router.dart`. Expected protected routes as the MVP grows:
 
 ```text
-/home
-/restaurants
-/cart
 /orders
 /profile
 ```
@@ -146,6 +149,11 @@ Implemented foundation:
 5. `lib/app/app.dart` uses `MaterialApp.router`.
 6. Auth redirects read auth state through the Riverpod/ViewModel flow.
 7. `/reset-password` is registered as an auth/recovery route for password recovery completion.
+8. Protected destinations `/home`, `/restaurants/:restaurantId`, the nested
+   product-details route, and `/cart` are registered and gated by the
+   centralized `isProtectedRoute` predicate; pages receive navigation
+   callbacks (`onRestaurantSelected`, `onProductSelected`, `onBack`,
+   `onOpenCart`) injected by the router instead of calling routes directly.
 
 Future expansion:
 

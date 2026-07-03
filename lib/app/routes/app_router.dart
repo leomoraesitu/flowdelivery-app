@@ -5,6 +5,7 @@ import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.d
 import 'package:flowdelivery_app/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/state/auth_state.dart';
+import 'package:flowdelivery_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
 import 'package:flowdelivery_app/features/product_details/presentation/pages/product_details_page.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/pages/restaurant_details_page.dart';
@@ -51,14 +52,24 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 },
               );
             },
+            onOpenCart: () => context.pushNamed(AppRoutes.cartName),
           );
         },
       ),
       GoRoute(
         path: AppRoutes.productDetailsPath,
         name: AppRoutes.productDetailsName,
-        builder: (context, state) =>
-            ProductDetailsPage(productId: state.pathParameters['productId']!),
+        builder: (context, state) => ProductDetailsPage(
+          productId: state.pathParameters['productId']!,
+          onOpenCart: () => context.pushNamed(AppRoutes.cartName),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.cartPath,
+        name: AppRoutes.cartName,
+        builder: (context, state) => CartPage(
+          onExploreRestaurants: () => context.goNamed(AppRoutes.homeName),
+        ),
       ),
       GoRoute(
         path: AppRoutes.signInPath,
@@ -91,6 +102,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           currentPath == AppRoutes.resetPasswordPath;
       final isProtectedRoute =
           currentPath == AppRoutes.homePath ||
+          currentPath == AppRoutes.cartPath ||
           currentPath.startsWith('${AppRoutes.restaurantDetailsBasePath}/');
 
       if (authStatus == AuthStatus.loading) {

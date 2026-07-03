@@ -519,5 +519,101 @@
         "example": "R$ 18,50"
       }
     }
+  },
+  "cartTitle": "Meu Carrinho",
+  "@cartTitle": {
+    "description": "Title shown on the cart page app bar and cart icon tooltip."
+  },
+  "cartEmptyTitle": "Carrinho vazio",
+  "@cartEmptyTitle": {
+    "description": "Title shown when the cart has no items."
+  },
+  "cartEmptyMessage": "Adicione itens de um restaurante para comecar seu pedido.",
+  "@cartEmptyMessage": {
+    "description": "Body copy shown when the cart has no items."
+  },
+  "cartEmptyAction": "Explorar restaurantes",
+  "@cartEmptyAction": {
+    "description": "Button label on the empty cart state that navigates back to Home."
+  },
+  "cartItemCount": "{count, plural, one{{count} item} other{{count} itens}}",
+  "@cartItemCount": {
+    "description": "Pluralized cart item count shown near the cart badge or summary.",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "cartSubtotal": "Subtotal",
+  "@cartSubtotal": {
+    "description": "Label for a cart item subtotal amount."
+  },
+  "cartTotal": "Total",
+  "@cartTotal": {
+    "description": "Label for the cart total amount row."
+  },
+  "cartClearAction": "Limpar carrinho",
+  "@cartClearAction": {
+    "description": "Tooltip and semantic label for the clear-cart action on the cart page app bar."
+  },
+  "cartRemoveItem": "Remover item",
+  "@cartRemoveItem": {
+    "description": "Tooltip and semantic label for removing a single item from the cart."
+  },
+  "cartIncreaseQuantity": "Aumentar quantidade",
+  "@cartIncreaseQuantity": {
+    "description": "Tooltip and semantic label for the quantity increase control."
+  },
+  "cartDecreaseQuantity": "Diminuir quantidade",
+  "@cartDecreaseQuantity": {
+    "description": "Tooltip and semantic label for the quantity decrease control."
+  },
+  "cartProceedToCheckout": "Ir para o checkout",
+  "@cartProceedToCheckout": {
+    "description": "Label for the checkout call-to-action button on the cart page."
+  },
+  "cartCheckoutPlaceholder": "Checkout em breve",
+  "@cartCheckoutPlaceholder": {
+    "description": "Feedback copy explaining the checkout action is not available yet."
+  },
+  "cartAddToCart": "Adicionar ao carrinho",
+  "@cartAddToCart": {
+    "description": "Label for the add-to-cart button on the product details page."
+  },
+  "cartUpdateQuantity": "Atualizar quantidade",
+  "@cartUpdateQuantity": {
+    "description": "Semantic label for the in-cart quantity controls on the product details page."
+  },
+  "cartAlreadyInCart": "No carrinho",
+  "@cartAlreadyInCart": {
+    "description": "Label indicating the product is already in the cart."
+  },
+  "cartDifferentRestaurantTitle": "Iniciar novo pedido?",
+  "@cartDifferentRestaurantTitle": {
+    "description": "Title of the confirmation dialog shown when adding an item from a different restaurant."
+  },
+  "cartDifferentRestaurantMessage": "Seu carrinho tem itens de outro restaurante. Deseja limpa-lo e adicionar este item?",
+  "@cartDifferentRestaurantMessage": {
+    "description": "Body copy of the confirmation dialog shown when adding an item from a different restaurant."
+  },
+  "cartDifferentRestaurantConfirm": "Sim, limpar",
+  "@cartDifferentRestaurantConfirm": {
+    "description": "Confirm button label on the different-restaurant dialog that clears the cart and adds the new item."
+  },
+  "cartDifferentRestaurantCancel": "Cancelar",
+  "@cartDifferentRestaurantCancel": {
+    "description": "Cancel button label on the different-restaurant dialog that keeps the current cart."
+  },
+  "cartItemImageSemanticLabel": "Imagem de {name}",
+  "@cartItemImageSemanticLabel": {
+    "description": "Semantic label for a cart item thumbnail image.",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "The Signature Truffle"
+      }
+    }
   }
 }

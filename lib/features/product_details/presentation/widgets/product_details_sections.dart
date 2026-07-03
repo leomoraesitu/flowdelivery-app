@@ -2,25 +2,29 @@ import 'package:flowdelivery_app/app/theme/app_tokens.dart';
 import 'package:flowdelivery_app/features/product_details/domain/entities/product_details.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 import 'package:flowdelivery_app/shared/presentation/widgets/app_media_image.dart';
+import 'package:flowdelivery_app/shared/utils/price_formatter.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class ProductDetailsSections extends StatelessWidget {
   const ProductDetailsSections({
     required this.product,
     required this.onBack,
+    this.cartAction,
+    this.headerAction,
     super.key,
   });
 
   final ProductDetails product;
   final VoidCallback onBack;
+  final Widget? cartAction;
+  final Widget? headerAction;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context);
-    final formattedPrice = _formatPrice(context, product.priceInCents);
+    final formattedPrice = formatPriceInCents(context, product.priceInCents);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,6 +35,7 @@ class ProductDetailsSections extends StatelessWidget {
             product.name,
           ),
           onBack: onBack,
+          action: headerAction,
         ),
         SizedBox(height: AppSpacing.lg),
         Text(
@@ -59,15 +64,12 @@ class ProductDetailsSections extends StatelessWidget {
             color: colorScheme.onSurfaceVariant,
           ),
         ),
+        if (cartAction != null) ...[
+          SizedBox(height: AppSpacing.xl),
+          cartAction!,
+        ],
       ],
     );
-  }
-
-  String _formatPrice(BuildContext context, int priceInCents) {
-    final price = priceInCents / 100;
-    return NumberFormat.simpleCurrency(
-      locale: Localizations.localeOf(context).toLanguageTag(),
-    ).format(price);
   }
 }
 
@@ -179,11 +181,13 @@ class _ProductHeader extends StatelessWidget {
     required this.imageAssetPath,
     required this.imageSemanticLabel,
     required this.onBack,
+    this.action,
   });
 
   final String imageAssetPath;
   final String imageSemanticLabel;
   final VoidCallback onBack;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -234,6 +238,8 @@ class _ProductHeader extends StatelessWidget {
             icon: const Icon(Icons.arrow_back),
           ),
         ),
+        if (action != null)
+          Positioned(right: AppSpacing.md, top: AppSpacing.md, child: action!),
       ],
     );
   }
