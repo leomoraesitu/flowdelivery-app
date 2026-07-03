@@ -11,6 +11,11 @@ Reference plan:
 
 - `.ai/plans/2026-06-24-cart-plan.md`
 
+Real Trello story:
+
+- `[FEAT] Cart — Carrinho local (Sprint 9)` — `https://trello.com/c/VFGNIm0O`
+  (board `FlowDelivery - Product Backlog`, list `🚧 In Progress`)
+
 ## Status
 
 Open. Branch: `feat/cart` (from `develop`).
