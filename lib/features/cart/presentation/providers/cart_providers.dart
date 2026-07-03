@@ -13,10 +13,7 @@ class CartNotifier extends Notifier<Cart> {
   @override
   Cart build() => Cart();
 
-  CartAddResult addItem(
-    ProductDetails product, {
-    required String restaurantName,
-  }) {
+  CartAddResult addItem(ProductDetails product) {
     final currentRestaurantId = state.restaurantId;
     if (currentRestaurantId != null &&
         currentRestaurantId != product.restaurantId) {
@@ -35,7 +32,6 @@ class CartNotifier extends Notifier<Cart> {
         CartItem(
           productId: product.id,
           restaurantId: product.restaurantId,
-          restaurantName: restaurantName,
           name: product.name,
           imageAssetPath: product.imageAssetPath,
           priceInCents: product.priceInCents,
@@ -78,4 +74,10 @@ final cartProvider = NotifierProvider<CartNotifier, Cart>(CartNotifier.new);
 
 final cartItemCountProvider = Provider<int>(
   (ref) => ref.watch(cartProvider).itemCount,
+);
+
+/// Derived per-product selector so product surfaces rebuild only when their
+/// own cart entry changes, not on every cart mutation.
+final cartItemProvider = Provider.family<CartItem?, String>(
+  (ref, productId) => ref.watch(cartProvider).itemByProductId(productId),
 );

@@ -155,7 +155,7 @@ class CartItemTile extends StatelessWidget {
             ),
           ),
           SizedBox(width: AppSpacing.md),
-          _QuantityControl(
+          CartQuantityControl(
             quantity: item.quantity,
             onIncrease: onIncreaseQuantity,
             onDecrease: onDecreaseQuantity,
@@ -226,11 +226,12 @@ class CartCheckoutSection extends StatelessWidget {
   }
 }
 
-class _QuantityControl extends StatelessWidget {
-  const _QuantityControl({
+class CartQuantityControl extends StatelessWidget {
+  const CartQuantityControl({
     required this.quantity,
     required this.onIncrease,
     required this.onDecrease,
+    super.key,
   });
 
   final int quantity;

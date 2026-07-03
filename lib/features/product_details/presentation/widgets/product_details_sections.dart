@@ -9,11 +9,13 @@ class ProductDetailsSections extends StatelessWidget {
   const ProductDetailsSections({
     required this.product,
     required this.onBack,
+    this.cartAction,
     super.key,
   });
 
   final ProductDetails product;
   final VoidCallback onBack;
+  final Widget? cartAction;
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +61,13 @@ class ProductDetailsSections extends StatelessWidget {
             color: colorScheme.onSurfaceVariant,
           ),
         ),
+        if (cartAction != null) ...[
+          SizedBox(height: AppSpacing.xl),
+          cartAction!,
+        ],
       ],
     );
   }
-
 }
 
 class ProductDetailsStateCard extends StatelessWidget {
