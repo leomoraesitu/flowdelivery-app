@@ -1,7 +1,8 @@
 # FlowDelivery — Project Bootstrap
 
 Version: 1.0.0  
-Status: Sprint 1 authentication foundation complete and validated
+Status: Sprints 1-9 complete — auth foundation, read-only catalog browsing
+(released as v0.2.0), and the Sprint 9 session-local cart slice
 Author: Leonardo de Moraes Souza  
 Project Type: Portfolio / SaaS Simulation / Fullstack Flutter Engineering  
 Architecture: MVVM + Feature First  
@@ -466,7 +467,8 @@ Environment files must NEVER be committed with secrets.
 
 ## Current Implementation
 
-The current repository implementation uses Supabase for authentication only.
+The current repository implementation uses Supabase for authentication,
+the read-only catalog database, and public catalog media Storage.
 
 Implemented:
 
@@ -476,13 +478,22 @@ Implemented:
 - Password reset screen and password update support for an established recovery session
 - Repository and datasource boundaries that keep Supabase out of widgets and ViewModels
 - Unconfigured auth repository fallback when Supabase defines are missing
+- Read-only catalog database (Home feed, restaurant menu, product tables)
+  with versioned migrations, explicit `SELECT` grants, RLS read policies,
+  and deterministic seeds (Sprints 3-7)
+- Public-read `catalog-media` Storage bucket with a shared data-layer
+  public-URL resolver; Storage mutations stay outside Flutter (Sprint 8)
+
+Client-side only (no Supabase surface):
+
+- Session-local shopping cart owned by a Riverpod `Notifier` (Sprint 9);
+  persistence is deferred to the Checkout slice
 
 Planned but not yet implemented:
 
-- Database
 - Realtime
-- Storage
 - Edge Functions
+- Write paths beyond auth (orders, checkout, profile persistence)
 
 ---
 
