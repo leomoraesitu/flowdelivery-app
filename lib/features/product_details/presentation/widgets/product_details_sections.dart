@@ -2,8 +2,8 @@ import 'package:flowdelivery_app/app/theme/app_tokens.dart';
 import 'package:flowdelivery_app/features/product_details/domain/entities/product_details.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 import 'package:flowdelivery_app/shared/presentation/widgets/app_media_image.dart';
+import 'package:flowdelivery_app/shared/utils/price_formatter.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class ProductDetailsSections extends StatelessWidget {
   const ProductDetailsSections({
@@ -20,7 +20,7 @@ class ProductDetailsSections extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context);
-    final formattedPrice = _formatPrice(context, product.priceInCents);
+    final formattedPrice = formatPriceInCents(context, product.priceInCents);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,12 +63,6 @@ class ProductDetailsSections extends StatelessWidget {
     );
   }
 
-  String _formatPrice(BuildContext context, int priceInCents) {
-    final price = priceInCents / 100;
-    return NumberFormat.simpleCurrency(
-      locale: Localizations.localeOf(context).toLanguageTag(),
-    ).format(price);
-  }
 }
 
 class ProductDetailsStateCard extends StatelessWidget {

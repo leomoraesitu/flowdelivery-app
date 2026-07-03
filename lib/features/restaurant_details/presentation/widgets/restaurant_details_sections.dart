@@ -4,8 +4,8 @@ import 'package:flowdelivery_app/features/restaurant_details/domain/entities/res
 import 'package:flowdelivery_app/features/restaurant_details/presentation/providers/restaurant_details_providers.dart';
 import 'package:flowdelivery_app/l10n/generated/app_localizations.dart';
 import 'package:flowdelivery_app/shared/presentation/widgets/app_media_image.dart';
+import 'package:flowdelivery_app/shared/utils/price_formatter.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class RestaurantDetailsSections extends StatelessWidget {
   const RestaurantDetailsSections({
@@ -394,7 +394,7 @@ class _MenuItemCard extends StatelessWidget {
                     ),
                     SizedBox(height: AppSpacing.sm),
                     Text(
-                      _formatPrice(context, item.priceInCents),
+                      formatPriceInCents(context, item.priceInCents),
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: colorScheme.primary,
                         fontWeight: FontWeight.w700,
@@ -423,10 +423,4 @@ class _MenuItemCard extends StatelessWidget {
     );
   }
 
-  String _formatPrice(BuildContext context, int priceInCents) {
-    final price = priceInCents / 100;
-    return NumberFormat.simpleCurrency(
-      locale: Localizations.localeOf(context).toLanguageTag(),
-    ).format(price);
-  }
 }
