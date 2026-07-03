@@ -13,6 +13,7 @@ class RestaurantDetailsSections extends StatelessWidget {
     required this.onBack,
     required this.onCategorySelected,
     this.onProductSelected,
+    this.headerAction,
     super.key,
   });
 
@@ -20,6 +21,7 @@ class RestaurantDetailsSections extends StatelessWidget {
   final VoidCallback onBack;
   final ValueChanged<String> onCategorySelected;
   final ValueChanged<String>? onProductSelected;
+  final Widget? headerAction;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class RestaurantDetailsSections extends StatelessWidget {
         _RestaurantHeader(
           imageAssetPath: details.imageAssetPath,
           onBack: onBack,
+          action: headerAction,
         ),
         SizedBox(height: AppSpacing.lg),
         Text(
@@ -182,10 +185,15 @@ class RestaurantDetailsLoadingState extends StatelessWidget {
 }
 
 class _RestaurantHeader extends StatelessWidget {
-  const _RestaurantHeader({required this.imageAssetPath, required this.onBack});
+  const _RestaurantHeader({
+    required this.imageAssetPath,
+    required this.onBack,
+    this.action,
+  });
 
   final String imageAssetPath;
   final VoidCallback onBack;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -240,6 +248,8 @@ class _RestaurantHeader extends StatelessWidget {
             icon: const Icon(Icons.arrow_back),
           ),
         ),
+        if (action != null)
+          Positioned(right: AppSpacing.md, top: AppSpacing.md, child: action!),
       ],
     );
   }

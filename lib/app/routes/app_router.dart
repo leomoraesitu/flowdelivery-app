@@ -52,14 +52,17 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 },
               );
             },
+            onOpenCart: () => context.pushNamed(AppRoutes.cartName),
           );
         },
       ),
       GoRoute(
         path: AppRoutes.productDetailsPath,
         name: AppRoutes.productDetailsName,
-        builder: (context, state) =>
-            ProductDetailsPage(productId: state.pathParameters['productId']!),
+        builder: (context, state) => ProductDetailsPage(
+          productId: state.pathParameters['productId']!,
+          onOpenCart: () => context.pushNamed(AppRoutes.cartName),
+        ),
       ),
       GoRoute(
         path: AppRoutes.cartPath,

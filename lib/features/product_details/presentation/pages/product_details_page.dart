@@ -1,5 +1,6 @@
 import 'package:flowdelivery_app/app/theme/app_tokens.dart';
 import 'package:flowdelivery_app/features/cart/presentation/providers/cart_providers.dart';
+import 'package:flowdelivery_app/features/cart/presentation/widgets/cart_badge_button.dart';
 import 'package:flowdelivery_app/features/cart/presentation/widgets/cart_sections.dart';
 import 'package:flowdelivery_app/features/product_details/domain/entities/product_details.dart';
 import 'package:flowdelivery_app/features/product_details/presentation/providers/product_details_providers.dart';
@@ -9,10 +10,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProductDetailsPage extends ConsumerWidget {
-  const ProductDetailsPage({required this.productId, this.onBack, super.key});
+  const ProductDetailsPage({
+    required this.productId,
+    this.onBack,
+    this.onOpenCart,
+    super.key,
+  });
 
   final String productId;
   final VoidCallback? onBack;
+  final VoidCallback? onOpenCart;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -51,6 +58,9 @@ class ProductDetailsPage extends ConsumerWidget {
                     product: product,
                     onBack: onBack ?? () => Navigator.of(context).maybePop(),
                     cartAction: _CartActionArea(product: product),
+                    headerAction: onOpenCart == null
+                        ? null
+                        : CartBadgeButton(onPressed: onOpenCart!),
                   );
                 },
                 error: (error, stackTrace) {

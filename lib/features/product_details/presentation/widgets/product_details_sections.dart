@@ -10,12 +10,14 @@ class ProductDetailsSections extends StatelessWidget {
     required this.product,
     required this.onBack,
     this.cartAction,
+    this.headerAction,
     super.key,
   });
 
   final ProductDetails product;
   final VoidCallback onBack;
   final Widget? cartAction;
+  final Widget? headerAction;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class ProductDetailsSections extends StatelessWidget {
             product.name,
           ),
           onBack: onBack,
+          action: headerAction,
         ),
         SizedBox(height: AppSpacing.lg),
         Text(
@@ -178,11 +181,13 @@ class _ProductHeader extends StatelessWidget {
     required this.imageAssetPath,
     required this.imageSemanticLabel,
     required this.onBack,
+    this.action,
   });
 
   final String imageAssetPath;
   final String imageSemanticLabel;
   final VoidCallback onBack;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -233,6 +238,8 @@ class _ProductHeader extends StatelessWidget {
             icon: const Icon(Icons.arrow_back),
           ),
         ),
+        if (action != null)
+          Positioned(right: AppSpacing.md, top: AppSpacing.md, child: action!),
       ],
     );
   }
