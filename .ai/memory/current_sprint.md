@@ -2,9 +2,71 @@
 
 ## Active Sprint
 
-Sprint 8 - Storage-Backed Catalog Media (Closed)
+Sprint 9 - Cart (Closed)
 
 ## Active Status
+
+Closed on 2026-07-03. All 8 tasks were implemented, validated, and
+committed task-by-task on `feat/cart`. The consolidated regression matrix
+passed with 64 tests, all seven real Trello checklists on
+`https://trello.com/c/VFGNIm0O` are complete, and the card is in `Done`.
+
+## Sprint 9 Goal
+
+Add a session-local shopping cart so authenticated users can add products
+from product details, review and adjust quantities on a dedicated `/cart`
+page, and see a running total — without remote persistence or checkout.
+
+## Sprint 9 Outcome
+
+- `CartItem`/`Cart` immutable pure-Dart aggregates with value equality;
+  `CartNotifier` (`Notifier<Cart>`) as the feature's domain boundary — no
+  repository/datasource, per the approved plan.
+- Single-restaurant constraint enforced in the domain via the
+  `CartAddResult { added, requiresConfirmation }` return signal (no
+  exception-based control flow, Finding A precedent) with a localized
+  confirmation dialog in presentation.
+- Protected `/cart` route with centralized GoRouter guard coverage.
+- `CartPage` empty/non-empty states, quantity controls with remove
+  affordance at qty 1, disabled checkout CTA with placeholder microcopy.
+- Product details integration: add-to-cart button ↔ in-cart quantity
+  controls through the derived `cartItemProvider` family selector.
+- `CartBadgeButton` (Badge M3, hidden at zero) floating on restaurant and
+  product hero headers, watching only `cartItemCountProvider`; navigation
+  injected by the router via `onOpenCart` callbacks.
+- `formatPriceInCents` extracted to `lib/shared/utils/price_formatter.dart`
+  (Finding D rule: cart was the third consumer); duplicated `_formatPrice`
+  removed from restaurant/product details sections.
+- 21 `cart*` ARB keys (pt_BR template with descriptions, pt, en) including
+  the ICU plural `cartItemCount`.
+- Approved deviations: no-accent PT copy per catalog convention; extra
+  `cartClearAction` key; `CartItem.restaurantName` removed (dialog copy
+  does not use it and ProductDetailsPage cannot source it).
+
+## Sprint 9 Validation
+
+- 12 widget-free `CartNotifier` unit tests, 5 `CartPage` widget tests,
+  5 product-details cart-integration tests, 2 `/cart` router guard tests.
+- Consolidated matrix: 64 tests passed; Dart MCP `analyze_files` clean on
+  every touched slice; all l10n/theme/Trello guards green.
+
+## Sprint 9 Plan
+
+- `.ai/plans/2026-06-24-cart-plan.md`
+- `docs/project-management/SPRINT_9.md`
+- Real Trello story (Done): `https://trello.com/c/VFGNIm0O`
+
+## Sprint 9 Deferred
+
+- Cart persistence across restarts (Checkout sprint).
+- Checkout, payment, order creation, delivery fee/address, coupons.
+- Product customization (variants, add-ons, special instructions).
+
+## Previous Sprint
+
+Sprint 8 - Storage-Backed Catalog Media (Closed)
+
+## Sprint 8 Status
 
 Closed on 2026-06-11. Runtime, automated validation, and authenticated
 mobile/wide visual QA are complete. All seven real Trello checklists are

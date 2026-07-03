@@ -2,9 +2,55 @@
 
 ## Active Feature
 
-Storage-Backed Catalog Media (Sprint 8 — Closed)
+Cart — Carrinho Local (Sprint 9 — Closed)
 
 ## Active Status
+
+Sprint 9 closed on 2026-07-03. The slice delivered a session-local cart:
+pure-Dart `CartItem`/`Cart` aggregates, `CartNotifier` as the domain
+boundary (no repository/datasource), the protected `/cart` route,
+`CartPage` empty/non-empty states with a disabled checkout CTA,
+product-details add/quantity integration with the localized
+single-restaurant confirmation dialog, hero-header cart badges, and the
+shared `formatPriceInCents` extraction. All seven real Trello checklists
+on `https://trello.com/c/VFGNIm0O` are complete and the card is in `Done`.
+
+## Sprint 9 Progress
+
+- [x] Task 1 — domain: `CartItem`, `Cart`, `CartNotifier`, providers
+  (commit `809f06a`).
+- [x] Task 2 — 21 `cart*` ARB keys across pt_BR/pt/en plus regenerated
+  localizations (commit `ae13fb3`).
+- [x] Task 3 — `CartPage` UI and shared price formatter extraction
+  (commit `2a3fecc`).
+- [x] Task 4 — protected `/cart` route with router guard tests
+  (commit `77a3c3c`).
+- [x] Task 5 — product-details cart actions and dialog (commit `be94b00`).
+- [x] Task 6 — `CartBadgeButton` on catalog hero headers (commit `da920ac`).
+- [x] Task 7 — notifier unit tests, cart/product widget tests, guards,
+  consolidated 64-test matrix (commit `a5fe3ce`).
+- [x] Task 8 — docs/memory/technical-debt/Trello reconciliation.
+
+## Architecture Notes (Sprint 9)
+
+- Cart is write-driven session state: `Notifier<Cart>` in Riverpod is the
+  domain boundary; no repository/datasource layer exists for this feature.
+- Restaurant-mismatch is expected business flow, signaled by the
+  `CartAddResult` return enum — never by exception (Finding A precedent).
+- Presentation sections are dumb (no `WidgetRef`); only pages and the
+  cart-owned smart widgets (`CartBadgeButton`, `_CartActionArea`) watch
+  providers, always through derived selectors (`cartItemCountProvider`,
+  `cartItemProvider`) to scope rebuilds.
+- `CartItem.restaurantName` was deliberately removed (approved deviation):
+  the dialog copy does not interpolate it and `ProductDetails` cannot
+  source it. Reintroduce only with a real data source if Checkout needs it.
+- Cart state is session-only by design; totals reset on restart.
+
+## Previous Feature
+
+Storage-Backed Catalog Media (Sprint 8 — Closed)
+
+## Sprint 8 Status
 
 Sprint 8 closed on 2026-06-11. The slice delivered Storage-backed catalog
 media, shared URL resolution, shared presentation rendering, focused automated

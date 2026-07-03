@@ -12,9 +12,15 @@ Portfolio-grade Flutter food delivery application built with MVVM architecture, 
 
 **▶️ https://leomoraesitu.github.io/flowdelivery-app/**
 
-The Flutter web build is deployed to GitHub Pages and serves the `v0.2.0` read-only catalog browsing experience: sign in, then browse the Home feed, restaurant details, and product details backed by Supabase. The deploy runs automatically on each version tag (`v*.*.*`).
+The Flutter web build is deployed to GitHub Pages and serves the `v0.3.0` experience: sign in, browse the Home feed, restaurant details, and product details backed by Supabase, and build an order with the session-local shopping cart. The deploy runs automatically on each version tag (`v*.*.*`).
 
 > Sign-in/recovery require the Supabase Auth URL allow-list to include the Pages origin. An Android APK is also published with every release under [Releases](https://github.com/leomoraesitu/flowdelivery-app/releases).
+
+## 🎬 Cart Demo (Sprint 9)
+
+<p align="center">
+  <img width="300" alt="Cart flow demo: add from product details, quantity controls, single-restaurant dialog, and cart total" src="docs/ux/demo/cart-demo.gif" />
+</p>
 
 ---
 
@@ -31,7 +37,7 @@ FlowDelivery is a modern delivery platform developed as a portfolio-grade softwa
 - CI/CD readiness
 - Professional engineering conventions
 
-As of `v0.2.0`, FlowDelivery ships a validated read-only catalog browsing experience (Sprints 2-8) on top of the Sprint 1 authentication foundation: authenticated Home feed, restaurant details, product details, deterministic catalog seed coverage, and Storage-backed catalog media — all served live on the web demo above and as a release APK. PT-BR/EN localization, Theme Guard, and Localization Guard are enforced across presentation slices.
+As of `v0.2.0`, FlowDelivery ships a validated read-only catalog browsing experience (Sprints 2-8) on top of the Sprint 1 authentication foundation: authenticated Home feed, restaurant details, product details, deterministic catalog seed coverage, and Storage-backed catalog media — all served live on the web demo above and as a release APK. Sprint 9 added the first interactive commerce slice: a session-local shopping cart (add from product details, quantity controls, single-restaurant constraint, protected `/cart` page, and header badges), landing in the next release. PT-BR/EN localization, Theme Guard, and Localization Guard are enforced across presentation slices.
 
 ---
 
@@ -102,9 +108,11 @@ This project uses AI-assisted workflows during development with explicit human a
 
 Recommended command loop:
 
-```powershell
-.\scripts\ai\ai_memory_loop.ps1
+```bash
+./scripts/ai/ai_memory_loop.sh
 ```
+
+(PowerShell equivalents remain available as `scripts/ai/*.ps1` for Windows.)
 
 Operational flow:
 
@@ -199,18 +207,18 @@ FlowDelivery uses a scalable Design System strategy including:
 
 ## Product Details
 
-- Product customization
-- Add-to-cart flow
-- Dynamic pricing
+- Add-to-cart flow (implemented — in-cart quantity controls and single-restaurant dialog)
+- Product customization (planned)
+- Dynamic pricing (planned)
 
 ---
 
 ## Cart & Checkout
 
-- Shopping cart
-- Address selection
-- Payment flow
-- Order summary
+- Shopping cart (implemented — session-local, Sprint 9; persistence deferred to Checkout)
+- Address selection (planned)
+- Payment flow (planned)
+- Order summary (planned)
 
 ---
 
@@ -370,7 +378,7 @@ flutter run
 
 ## Phase 3 — Commerce
 
-- [ ] Cart
+- [x] Cart (session-local, Sprint 9)
 - [ ] Checkout
 - [ ] Payments
 - [ ] Orders

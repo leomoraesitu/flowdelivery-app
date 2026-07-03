@@ -406,4 +406,79 @@ class AppLocalizationsEn extends AppLocalizations {
   String productDetailsPriceSemanticLabel(String price) {
     return 'Price $price';
   }
+
+  @override
+  String get cartTitle => 'My Cart';
+
+  @override
+  String get cartEmptyTitle => 'Your cart is empty';
+
+  @override
+  String get cartEmptyMessage =>
+      'Add items from a restaurant to start your order.';
+
+  @override
+  String get cartEmptyAction => 'Explore restaurants';
+
+  @override
+  String cartItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '$count item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cartSubtotal => 'Subtotal';
+
+  @override
+  String get cartTotal => 'Total';
+
+  @override
+  String get cartClearAction => 'Clear cart';
+
+  @override
+  String get cartRemoveItem => 'Remove item';
+
+  @override
+  String get cartIncreaseQuantity => 'Increase quantity';
+
+  @override
+  String get cartDecreaseQuantity => 'Decrease quantity';
+
+  @override
+  String get cartProceedToCheckout => 'Proceed to Checkout';
+
+  @override
+  String get cartCheckoutPlaceholder => 'Checkout coming soon';
+
+  @override
+  String get cartAddToCart => 'Add to cart';
+
+  @override
+  String get cartUpdateQuantity => 'Update quantity';
+
+  @override
+  String get cartAlreadyInCart => 'In cart';
+
+  @override
+  String get cartDifferentRestaurantTitle => 'Start a new order?';
+
+  @override
+  String get cartDifferentRestaurantMessage =>
+      'Your cart has items from another restaurant. Clear it and add this item?';
+
+  @override
+  String get cartDifferentRestaurantConfirm => 'Yes, clear';
+
+  @override
+  String get cartDifferentRestaurantCancel => 'Cancel';
+
+  @override
+  String cartItemImageSemanticLabel(String name) {
+    return '$name image';
+  }
 }
