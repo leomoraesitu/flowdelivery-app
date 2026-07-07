@@ -7,6 +7,9 @@ import 'package:flowdelivery_app/features/auth/data/repositories/unconfigured_au
 import 'package:flowdelivery_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart'
     as auth_presentation;
+import 'package:flowdelivery_app/features/checkout/data/datasources/order_remote_datasource.dart';
+import 'package:flowdelivery_app/features/checkout/data/repositories/order_repository_impl.dart';
+import 'package:flowdelivery_app/features/checkout/domain/repositories/order_repository.dart';
 import 'package:flowdelivery_app/features/home/data/datasources/home_remote_datasource.dart';
 import 'package:flowdelivery_app/features/home/data/repositories/home_repository_impl.dart';
 import 'package:flowdelivery_app/features/home/domain/repositories/home_repository.dart';
@@ -98,6 +101,20 @@ final appProductDetailsRepositoryProvider = Provider<ProductDetailsRepository>((
 ) {
   return ProductDetailsRepositoryImpl(
     datasource: ref.watch(appProductDetailsRemoteDatasourceProvider),
+  );
+});
+
+final appOrderRemoteDatasourceProvider = Provider<OrderRemoteDatasource>((
+  ref,
+) {
+  return SupabaseOrderRemoteDatasource(
+    client: ref.watch(supabaseClientProvider),
+  );
+});
+
+final appOrderRepositoryProvider = Provider<OrderRepository>((ref) {
+  return OrderRepositoryImpl(
+    datasource: ref.watch(appOrderRemoteDatasourceProvider),
   );
 });
 
