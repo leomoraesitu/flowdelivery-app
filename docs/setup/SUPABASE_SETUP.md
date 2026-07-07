@@ -144,6 +144,35 @@ Migration application order matters: apply `home_remote_feed_foundation` before
 `restaurant_details_remote_catalog`, because the catalog tables reference
 `public.restaurants`.
 
+## Orders Write Path (Checkout)
+
+Sprint 10 introduced the first write-side migration,
+`checkout_orders_foundation`
+(`supabase/migrations/20260706200000_checkout_orders_foundation.sql`), applied
+to the remote project on 2026-07-06:
+
+- `public.orders` and `public.order_items` with named check constraints,
+  including `orders_total_consistency`
+  (`total = subtotal + delivery fee`).
+- Explicit paired grants: `SELECT, INSERT` for `authenticated`, `SELECT` for
+  `service_role`, nothing for `anon`.
+- RLS `INSERT`/`SELECT` policies scoped to `auth.uid()`; `order_items` access
+  is derived from ownership of the parent order. There are no `UPDATE` or
+  `DELETE` policies — orders are immutable in this slice.
+- `public.create_order(restaurant_id, delivery_address,
+  delivery_fee_in_cents, items jsonb)`: plpgsql, `SECURITY INVOKER` (RLS still
+  applies inside), empty `search_path`, `EXECUTE` granted only to
+  `authenticated` and `service_role`. It derives subtotal/total server-side
+  from the submitted items and inserts the order plus its items in a single
+  transaction. The Flutter datasource calls it via `.rpc('create_order')` and
+  never retries (double-order risk).
+
+Deployment runbook used (Sprint 7 precedent): run the full migration SQL in a
+rollback transaction against the remote project first (including an
+authenticated smoke test of `create_order`, cross-user RLS isolation, and
+empty-items rejection), then apply it via Supabase MCP `apply_migration`, then
+verify `anon` denial, `pg_policies`, and security advisors post-apply.
+
 ## Catalog Media Storage
 
 The public `catalog-media` bucket stores non-sensitive restaurant and product

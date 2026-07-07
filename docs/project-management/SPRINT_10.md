@@ -15,11 +15,37 @@ Real Trello story:
 
 - `[FEAT] Checkout — Pedido persistido (Sprint 10)` —
   `https://trello.com/c/yEdTwW5F`
-  (board `FlowDelivery - Product Backlog`, list `✅ Ready`)
+  (board `FlowDelivery - Product Backlog`, list `🎉 Done`)
 
 ## Status
 
-Planned. Awaiting explicit approval before Task 1 implementation.
+Closed (2026-07-07). All 9 tasks implemented, validated, and committed
+task-by-task on `feat/checkout`. The consolidated regression matrix passed
+with 66 tests, the `checkout_orders_foundation` migration is applied to the
+remote project, and the real Trello card is fully checked.
+
+Task commits: `eb55d0e` (migration + create_order), `4a8d2fe` (domain),
+`2687b59` (data layer), `d911f3f` (ARB copy), `3a1a421` (ViewModel),
+`8634ce2` (route + cart CTA), `d086722` (CheckoutPage UI), `7365d4a`
+(test matrix).
+
+Approved deviations from the plan:
+
+- Task 2 delivered 4 files instead of 3: the failure type lives in a
+  dedicated `domain/failures/order_placement_failure.dart`, mirroring the
+  auth convention.
+- `orderRepositoryProvider` lives in the ViewModel file (its dependency
+  surface, unconfigured `StateError` convention), avoiding a circular
+  import with `checkout_providers.dart`.
+- The localized demo delivery address is passed into
+  `placeOrder(deliveryAddress:)` by the page — ViewModels cannot read
+  `AppLocalizations`.
+- A minimal `CheckoutPage` skeleton landed in Task 6 (the route cannot
+  compile without a target widget); the full UI landed in Task 7.
+- `checkoutItemQuantity` was added beyond the plan's key list for the
+  summary quantity prefix.
+- `cartCheckoutPlaceholder` became an unused ARB key when the cart CTA was
+  enabled; removal is recorded as accepted minor debt.
 
 ## Sprint Goal
 
@@ -66,34 +92,34 @@ with my order ID while my cart is cleared.
 
 ## Backlog
 
-- [ ] Task 1 - migration: orders schema + atomic `create_order` function.
-- [ ] Task 2 - domain: `OrderDraft`, `PlacedOrder`, `OrderRepository`.
-- [ ] Task 3 - data: DTOs, RPC datasource, repository impl, composition.
-- [ ] Task 4 - ARB copy for all checkout user-facing strings.
-- [ ] Task 5 - `CheckoutViewModel` and providers.
-- [ ] Task 6 - route `/checkout` + enable the CartPage CTA.
-- [ ] Task 7 - `CheckoutPage` UI (summary, states, success).
-- [ ] Task 8 - validation: unit, widget, router, and guard matrix.
-- [ ] Task 9 - reconcile docs, memory, technical debt, and Trello.
+- [x] Task 1 - migration: orders schema + atomic `create_order` function.
+- [x] Task 2 - domain: `OrderDraft`, `PlacedOrder`, `OrderRepository`.
+- [x] Task 3 - data: DTOs, RPC datasource, repository impl, composition.
+- [x] Task 4 - ARB copy for all checkout user-facing strings.
+- [x] Task 5 - `CheckoutViewModel` and providers.
+- [x] Task 6 - route `/checkout` + enable the CartPage CTA.
+- [x] Task 7 - `CheckoutPage` UI (summary, states, success).
+- [x] Task 8 - validation: unit, widget, router, and guard matrix.
+- [x] Task 9 - reconcile docs, memory, technical debt, and Trello.
 
 ## Acceptance Criteria
 
-- [ ] `orders`/`order_items` exist with RLS and explicit grants; `anon` is
+- [x] `orders`/`order_items` exist with RLS and explicit grants; `anon` is
   denied; users cannot read other users' orders.
-- [ ] Order creation is atomic through `create_order`; no partial inserts.
-- [ ] Domain entities and repository contract are pure Dart with no
+- [x] Order creation is atomic through `create_order`; no partial inserts.
+- [x] Domain entities and repository contract are pure Dart with no
   Flutter/Supabase imports; failures are neutral codes mapped to copy only
   in presentation.
-- [ ] `CheckoutViewModel` is tested without widgets, guards re-entry while
+- [x] `CheckoutViewModel` is tested without widgets, guards re-entry while
   submitting, and clears the cart exactly once on success.
-- [ ] `/checkout` is protected; unauthenticated access redirects to sign-in.
-- [ ] `CartPage` CTA navigates to `/checkout` when the cart is non-empty.
-- [ ] `CheckoutPage` renders summary, submitting, failure, and success
+- [x] `/checkout` is protected; unauthenticated access redirects to sign-in.
+- [x] `CartPage` CTA navigates to `/checkout` when the cart is non-empty.
+- [x] `CheckoutPage` renders summary, submitting, failure, and success
   states with localized copy and the shared price formatter.
-- [ ] All checkout strings are in ARB files consumed via `AppLocalizations`.
-- [ ] No hardcoded colors or spacing values in new or updated presentation
+- [x] All checkout strings are in ARB files consumed via `AppLocalizations`.
+- [x] No hardcoded colors or spacing values in new or updated presentation
   files.
-- [ ] All existing guard tests remain green; the consolidated test matrix
+- [x] All existing guard tests remain green; the consolidated test matrix
   passes.
 
 ## Out of Scope
@@ -120,24 +146,24 @@ with my order ID while my cart is cleared.
 
 ## Localization Guard
 
-- [ ] All checkout user-facing strings are defined in `app_pt_BR.arb`
+- [x] All checkout user-facing strings are defined in `app_pt_BR.arb`
   (template) with `@` descriptions.
-- [ ] All keys are present and translated in `app_pt.arb` and `app_en.arb`.
-- [ ] Placeholder metadata is consistent across all three catalogs.
-- [ ] `flutter gen-l10n` was run after every ARB change.
-- [ ] `arb_catalog_parity_test.dart` and
+- [x] All keys are present and translated in `app_pt.arb` and `app_en.arb`.
+- [x] Placeholder metadata is consistent across all three catalogs.
+- [x] `flutter gen-l10n` was run after every ARB change.
+- [x] `arb_catalog_parity_test.dart` and
   `generated_localizations_freshness_test.dart` are green.
-- [ ] No hardcoded user-facing strings in any checkout or updated
+- [x] No hardcoded user-facing strings in any checkout or updated
   presentation file.
 
 ## Theme Guard
 
-- [ ] No hardcoded `Color(...)`, `Colors.*`, or hex values in checkout or
+- [x] No hardcoded `Color(...)`, `Colors.*`, or hex values in checkout or
   updated files.
-- [ ] No hardcoded numeric spacing or radius values outside app token
+- [x] No hardcoded numeric spacing or radius values outside app token
   references.
-- [ ] All interactive elements use semantic `ColorScheme` roles.
-- [ ] `no_hardcoded_visual_values_test.dart` remains green.
+- [x] All interactive elements use semantic `ColorScheme` roles.
+- [x] `no_hardcoded_visual_values_test.dart` remains green.
 
 ## Risks
 
