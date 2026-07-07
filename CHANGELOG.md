@@ -6,6 +6,52 @@ The project follows Semantic Versioning and Conventional Commits.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-07-07
+
+### Added
+
+- Persisted checkout flow (Sprint 10): authenticated users can review their
+  cart on `/checkout`, confirm an order, and receive a real persisted order
+  ID.
+- First complete write path in the app:
+  `CheckoutPage -> CheckoutViewModel -> OrderRepository ->
+  OrderRemoteDatasource -> Supabase RPC`.
+- Supabase `orders` and `order_items` foundation with explicit grants, RLS
+  scoped to `auth.uid()`, and an atomic `create_order` SECURITY INVOKER
+  function.
+- Pure-Dart checkout domain contracts: `OrderDraft`, `PlacedOrder`,
+  `OrderRepository`, and neutral order-placement failure codes.
+- Checkout data layer with RPC datasource, DTO parsing, repository
+  implementation, and app-level dependency composition.
+- `CheckoutViewModel` with idle, submitting, success, and failure states;
+  double-submit protection; and single cart clear on success.
+- Protected `/checkout` route plus enabled cart checkout CTA.
+- Localized checkout UI with order summary, demo delivery address, static
+  cash-on-delivery payment method, retry feedback, and success confirmation.
+- 18 checkout localization keys across pt_BR, pt, and en, plus generated
+  `AppLocalizations` accessors.
+- Focused checkout datasource, repository, ViewModel, widget, cart CTA,
+  router, localization, theme, and Trello guard coverage.
+
+### Changed
+
+- Cart checkout action now navigates to the real checkout flow instead of
+  remaining a placeholder.
+- Supabase setup documentation now includes the orders migration runbook and
+  write-path precedent.
+- Sprint 10 docs, project memory, and technical debt notes reconciled with
+  the persisted checkout milestone.
+
+### Known Limitations
+
+- Payment remains a static "cash on delivery" demo method.
+- Delivery address is still a localized demo placeholder; persisted profile
+  addresses are deferred.
+- Order history, order tracking, Realtime status updates, dynamic delivery
+  fees, coupons, and payment gateway integration remain future slices.
+- Cart state remains session-local until a separate persistence slice is
+  approved.
+
 ## [0.3.0] - 2026-07-03
 
 ### Added
