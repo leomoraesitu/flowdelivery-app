@@ -457,9 +457,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get cartProceedToCheckout => 'Ir para o checkout';
 
   @override
-  String get cartCheckoutPlaceholder => 'Checkout em breve';
-
-  @override
   String get cartAddToCart => 'Adicionar ao carrinho';
 
   @override
@@ -502,6 +499,17 @@ class AppLocalizationsPt extends AppLocalizations {
   String get checkoutPaymentCashOnDelivery => 'Pagamento na entrega';
 
   @override
+  String get checkoutPaymentMethodCashOnDeliveryDescription =>
+      'Pague quando receber seu pedido.';
+
+  @override
+  String get checkoutPaymentStatusTitle => 'Status do pagamento';
+
+  @override
+  String get checkoutPaymentStatusPendingOnDelivery =>
+      'Pendente para pagamento na entrega';
+
+  @override
   String get checkoutSummaryTitle => 'Resumo do pedido';
 
   @override
@@ -540,6 +548,11 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String checkoutSuccessMessage(String orderId) {
     return 'Seu pedido $orderId foi recebido e ja esta em preparo.';
+  }
+
+  @override
+  String checkoutSuccessPaymentStatus(String paymentStatus) {
+    return 'Status do pagamento: $paymentStatus';
   }
 
   @override
@@ -999,9 +1012,6 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get cartProceedToCheckout => 'Ir para o checkout';
 
   @override
-  String get cartCheckoutPlaceholder => 'Checkout em breve';
-
-  @override
   String get cartAddToCart => 'Adicionar ao carrinho';
 
   @override
@@ -1044,6 +1054,17 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get checkoutPaymentCashOnDelivery => 'Pagamento na entrega';
 
   @override
+  String get checkoutPaymentMethodCashOnDeliveryDescription =>
+      'Pague quando receber seu pedido.';
+
+  @override
+  String get checkoutPaymentStatusTitle => 'Status do pagamento';
+
+  @override
+  String get checkoutPaymentStatusPendingOnDelivery =>
+      'Pendente para pagamento na entrega';
+
+  @override
   String get checkoutSummaryTitle => 'Resumo do pedido';
 
   @override
@@ -1082,6 +1103,11 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String checkoutSuccessMessage(String orderId) {
     return 'Seu pedido $orderId foi recebido e ja esta em preparo.';
+  }
+
+  @override
+  String checkoutSuccessPaymentStatus(String paymentStatus) {
+    return 'Status do pagamento: $paymentStatus';
   }
 
   @override

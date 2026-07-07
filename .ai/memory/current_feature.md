@@ -2,40 +2,54 @@
 
 ## Active Feature
 
-Checkout — Pedido Persistido (Sprint 10 — Closed)
+Payments Foundation (Sprint 11 — Closed)
 
 ## Active Status
 
-Sprint 10 closed on 2026-07-07. The slice delivered the project's first
-complete write path: the `checkout_orders_foundation` migration
-(`orders`/`order_items` with RLS scoped to `auth.uid()` and the atomic
-`create_order` SECURITY INVOKER function), pure-Dart
-`OrderDraft`/`PlacedOrder` entities with the `OrderRepository` contract,
-the RPC datasource/repository/composition chain, 18 `checkout*` ARB keys,
-`CheckoutViewModel` (idle/submitting/success/failure with re-entry guard
-and single cart clear), the protected `/checkout` route with the CartPage
-CTA enabled, the prototype-aligned `CheckoutPage`, and a 21-test checkout
-suite inside the consolidated 66-test matrix. All six real Trello
-checklists on `https://trello.com/c/yEdTwW5F` are complete.
+Sprint 11 closed on 2026-07-07. The slice delivered persisted payment
+foundation for checkout: `payments` table + atomic `create_order` payment
+insert, payment domain types (`PaymentMethod`, `PaymentStatus`,
+`PaymentSummary`), DTO/datasource/repository payment payload mapping,
+localized payment copy in ARB catalogs, checkout payment method/status
+rendering in ViewModel + UI, focused validation (72 tests) and consolidated
+matrix validation (206 tests), and final Trello parity on
+`https://trello.com/c/cQDUVgYR` in `🎉 Done`.
 
-## Sprint 10 Progress
+Task 1 is complete with commit `81afca3` (`payments` table + atomic
+`create_order` evolution).
 
-- [x] Task 1 — migration: orders schema + atomic `create_order`
-  (commit `eb55d0e`; applied to the remote project).
-- [x] Task 2 — domain entities, failure codes, repository contract
-  (commit `4a8d2fe`).
-- [x] Task 3 — DTO, RPC datasource, repository impl, app composition
-  (commit `2687b59`).
-- [x] Task 4 — 18 `checkout*` ARB keys + regenerated localizations
-  (commit `d911f3f`).
-- [x] Task 5 — `CheckoutViewModel` + providers + repository override
-  (commit `3a1a421`).
-- [x] Task 6 — protected `/checkout` route + enabled cart CTA
-  (commit `8634ce2`).
-- [x] Task 7 — `CheckoutPage` summary/states UI (commit `d086722`).
-- [x] Task 8 — 21-test checkout suite; consolidated matrix 66 green
-  (commit `7365d4a`).
-- [x] Task 9 — docs/memory/technical-debt/Trello reconciliation.
+Task 2 is complete in the local worktree: checkout domain now models
+`PaymentMethod`, `PaymentStatus`, and `PaymentSummary`; `OrderDraft`
+includes `paymentMethod`; `PlacedOrder` includes a payment summary with a
+pending-on-delivery default.
+
+## Sprint 11 Progress
+
+- [x] Task 1 — migration: `payments` foundation + atomic order/payment RPC
+  (commit `81afca3`).
+- [x] Task 2 — payment domain entities wired into checkout order contracts
+  (validated locally with focused checkout tests).
+- [x] Task 3 — DTO/datasource/repository mapping for payment payload
+  (payment method forwarded to RPC, payment summary mapped in repository,
+  invalid remote payment values mapped to domain failure; focused data tests
+  green).
+- [x] Task 4 — ARB copy for payment method/status
+  (added payment status/method keys in pt_BR/pt/en, removed obsolete
+  `cartCheckoutPlaceholder`, regenerated localizations, and localization
+  guards green: ARB parity, generated freshness, no hardcoded UI strings).
+- [x] Task 5 — ViewModel + checkout UI payment state
+  (ViewModel now sends `PaymentMethod.cashOnDelivery` explicitly; checkout
+  payment section renders localized method description; success state renders
+  localized payment status; focused presentation tests + localization/theme
+  guard tests green).
+- [x] Task 6 — full validation and regression matrix
+  (focused analyze on checkout/cart/routes/l10n green; focused regression
+  suite green with 72 tests across checkout data/presentation, cart,
+  router/auth-recovery, and localization/theme guards; consolidated
+  `flutter test` matrix green with 206 tests).
+- [x] Task 7 — docs/memory/technical-debt/Trello reconciliation
+  (Sprint 11 docs updated, technical debt reconciled, and Trello checklist
+  parity finalized with card moved to `🎉 Done`).
 
 ## Architecture Notes (Sprint 10)
 

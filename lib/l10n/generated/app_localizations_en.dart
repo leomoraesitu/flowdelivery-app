@@ -453,9 +453,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cartProceedToCheckout => 'Proceed to Checkout';
 
   @override
-  String get cartCheckoutPlaceholder => 'Checkout coming soon';
-
-  @override
   String get cartAddToCart => 'Add to cart';
 
   @override
@@ -498,6 +495,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get checkoutPaymentCashOnDelivery => 'Pay on delivery';
 
   @override
+  String get checkoutPaymentMethodCashOnDeliveryDescription =>
+      'Pay when your order arrives.';
+
+  @override
+  String get checkoutPaymentStatusTitle => 'Payment status';
+
+  @override
+  String get checkoutPaymentStatusPendingOnDelivery =>
+      'Pending payment on delivery';
+
+  @override
   String get checkoutSummaryTitle => 'Order summary';
 
   @override
@@ -536,6 +544,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String checkoutSuccessMessage(String orderId) {
     return 'Your order $orderId has been received and is being prepared.';
+  }
+
+  @override
+  String checkoutSuccessPaymentStatus(String paymentStatus) {
+    return 'Payment status: $paymentStatus';
   }
 
   @override

@@ -574,10 +574,6 @@
   "@cartProceedToCheckout": {
     "description": "Label for the checkout call-to-action button on the cart page."
   },
-  "cartCheckoutPlaceholder": "Checkout em breve",
-  "@cartCheckoutPlaceholder": {
-    "description": "Feedback copy explaining the checkout action is not available yet."
-  },
   "cartAddToCart": "Adicionar ao carrinho",
   "@cartAddToCart": {
     "description": "Label for the add-to-cart button on the product details page."
@@ -626,6 +622,12 @@
   "@checkoutPaymentTitle": {"description": "Section title for the payment method card on the checkout page."},
   "checkoutPaymentCashOnDelivery": "Pagamento na entrega",
   "@checkoutPaymentCashOnDelivery": {"description": "Label for the static pay-on-delivery payment method, the only method in this slice."},
+  "checkoutPaymentMethodCashOnDeliveryDescription": "Pague quando receber seu pedido.",
+  "@checkoutPaymentMethodCashOnDeliveryDescription": {"description": "Description shown for the cash-on-delivery payment method during checkout."},
+  "checkoutPaymentStatusTitle": "Status do pagamento",
+  "@checkoutPaymentStatusTitle": {"description": "Section title for payment status content in checkout states."},
+  "checkoutPaymentStatusPendingOnDelivery": "Pendente para pagamento na entrega",
+  "@checkoutPaymentStatusPendingOnDelivery": {"description": "Payment status copy used when the payment is pending until delivery."},
   "checkoutSummaryTitle": "Resumo do pedido",
   "@checkoutSummaryTitle": {"description": "Section title for the order summary list on the checkout page."},
   "checkoutSubtotal": "Subtotal",
@@ -650,6 +652,8 @@
   "@checkoutSuccessTitle": {"description": "Title shown after the order is successfully placed."},
   "checkoutSuccessMessage": "Seu pedido {orderId} foi recebido e ja esta em preparo.",
   "@checkoutSuccessMessage": {"description": "Body copy shown after successful placement, including the created order id.", "placeholders": {"orderId": {"type": "String", "example": "9b2f6a1c-3d47-4a08-9f21-5e6f7a8b9c0d"}}},
+  "checkoutSuccessPaymentStatus": "Status do pagamento: {paymentStatus}",
+  "@checkoutSuccessPaymentStatus": {"description": "Summary line shown in checkout success with the localized payment status.", "placeholders": {"paymentStatus": {"type": "String", "example": "Pendente para pagamento na entrega"}}},
   "checkoutSuccessBackToHome": "Voltar para o inicio",
   "@checkoutSuccessBackToHome": {"description": "Label for the back-to-home action on the checkout success view."}
 }

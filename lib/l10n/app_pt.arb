@@ -126,7 +126,6 @@
   "cartIncreaseQuantity": "Aumentar quantidade",
   "cartDecreaseQuantity": "Diminuir quantidade",
   "cartProceedToCheckout": "Ir para o checkout",
-  "cartCheckoutPlaceholder": "Checkout em breve",
   "cartAddToCart": "Adicionar ao carrinho",
   "cartUpdateQuantity": "Atualizar quantidade",
   "cartAlreadyInCart": "No carrinho",
@@ -140,6 +139,9 @@
   "checkoutDemoAddress": "Rua das Flores, 123 - Centro",
   "checkoutPaymentTitle": "Forma de pagamento",
   "checkoutPaymentCashOnDelivery": "Pagamento na entrega",
+  "checkoutPaymentMethodCashOnDeliveryDescription": "Pague quando receber seu pedido.",
+  "checkoutPaymentStatusTitle": "Status do pagamento",
+  "checkoutPaymentStatusPendingOnDelivery": "Pendente para pagamento na entrega",
   "checkoutSummaryTitle": "Resumo do pedido",
   "checkoutSubtotal": "Subtotal",
   "checkoutDeliveryFee": "Taxa de entrega",
@@ -152,5 +154,6 @@
   "checkoutRetryAction": "Tentar novamente",
   "checkoutSuccessTitle": "Pedido confirmado!",
   "checkoutSuccessMessage": "Seu pedido {orderId} foi recebido e ja esta em preparo.",
+  "checkoutSuccessPaymentStatus": "Status do pagamento: {paymentStatus}",
   "checkoutSuccessBackToHome": "Voltar para o inicio"
 }

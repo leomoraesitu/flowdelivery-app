@@ -126,6 +126,10 @@ void main() {
           find.text(l10n.checkoutPaymentCashOnDelivery),
           findsOneWidget,
         );
+        expect(
+          find.text(l10n.checkoutPaymentMethodCashOnDeliveryDescription),
+          findsOneWidget,
+        );
         expect(find.text(l10n.checkoutItemQuantity(2)), findsOneWidget);
         expect(find.text(_burger.name), findsOneWidget);
         expect(find.text(_formatCents(subtotal)), findsNWidgets(2));
@@ -230,6 +234,14 @@ void main() {
         expect(find.text(l10n.checkoutSuccessTitle), findsOneWidget);
         expect(
           find.text(l10n.checkoutSuccessMessage(_placedOrder.id)),
+          findsOneWidget,
+        );
+        expect(
+          find.text(
+            l10n.checkoutSuccessPaymentStatus(
+              l10n.checkoutPaymentStatusPendingOnDelivery,
+            ),
+          ),
           findsOneWidget,
         );
         expect(container.read(cartProvider).isEmpty, isTrue);

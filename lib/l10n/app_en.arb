@@ -126,7 +126,6 @@
   "cartIncreaseQuantity": "Increase quantity",
   "cartDecreaseQuantity": "Decrease quantity",
   "cartProceedToCheckout": "Proceed to Checkout",
-  "cartCheckoutPlaceholder": "Checkout coming soon",
   "cartAddToCart": "Add to cart",
   "cartUpdateQuantity": "Update quantity",
   "cartAlreadyInCart": "In cart",
@@ -140,6 +139,9 @@
   "checkoutDemoAddress": "Rua das Flores, 123 - Centro",
   "checkoutPaymentTitle": "Payment method",
   "checkoutPaymentCashOnDelivery": "Pay on delivery",
+  "checkoutPaymentMethodCashOnDeliveryDescription": "Pay when your order arrives.",
+  "checkoutPaymentStatusTitle": "Payment status",
+  "checkoutPaymentStatusPendingOnDelivery": "Pending payment on delivery",
   "checkoutSummaryTitle": "Order summary",
   "checkoutSubtotal": "Subtotal",
   "checkoutDeliveryFee": "Delivery fee",
@@ -152,5 +154,6 @@
   "checkoutRetryAction": "Try again",
   "checkoutSuccessTitle": "Order confirmed!",
   "checkoutSuccessMessage": "Your order {orderId} has been received and is being prepared.",
+  "checkoutSuccessPaymentStatus": "Payment status: {paymentStatus}",
   "checkoutSuccessBackToHome": "Back to Home"
 }

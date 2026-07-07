@@ -1,5 +1,6 @@
 import 'package:flowdelivery_app/features/cart/presentation/providers/cart_providers.dart';
 import 'package:flowdelivery_app/features/checkout/domain/entities/order_draft.dart';
+import 'package:flowdelivery_app/features/checkout/domain/entities/payment_summary.dart';
 import 'package:flowdelivery_app/features/checkout/domain/entities/placed_order.dart';
 import 'package:flowdelivery_app/features/checkout/domain/failures/order_placement_failure.dart';
 import 'package:flowdelivery_app/features/checkout/domain/repositories/order_repository.dart';
@@ -96,6 +97,7 @@ class CheckoutViewModel extends Notifier<CheckoutState> {
       ],
       deliveryFeeInCents: OrderDraft.standardDeliveryFeeInCents,
       deliveryAddress: deliveryAddress,
+      paymentMethod: PaymentMethod.cashOnDelivery,
     );
 
     try {
