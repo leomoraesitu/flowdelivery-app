@@ -12,7 +12,7 @@ Portfolio-grade Flutter food delivery application built with MVVM architecture, 
 
 **▶️ https://leomoraesitu.github.io/flowdelivery-app/**
 
-The Flutter web build is deployed to GitHub Pages and serves the `v0.4.0` experience: sign in, browse the Home feed, restaurant details, product details, build a session-local cart, and confirm a persisted checkout order backed by Supabase. The deploy runs automatically on each version tag (`v*.*.*`).
+The Flutter web build is deployed to GitHub Pages and serves the `v0.4.0` release line: sign in, browse the Home feed, restaurant details, product details, build a session-local cart, and confirm a persisted checkout order backed by Supabase. Sprint 11 Payments Foundation is complete in the codebase and documentation, but it has not been published as a public release tag. The deploy runs automatically on each version tag (`v*.*.*`).
 
 > Sign-in/recovery require the Supabase Auth URL allow-list to include the Pages origin. An Android APK is also published with every release under [Releases](https://github.com/leomoraesitu/flowdelivery-app/releases).
 
@@ -37,7 +37,7 @@ FlowDelivery is a modern delivery platform developed as a portfolio-grade softwa
 - CI/CD readiness
 - Professional engineering conventions
 
-As of `v0.4.0`, FlowDelivery ships a validated commerce path on top of the authenticated catalog experience: remote Home feed, restaurant details, product details, Storage-backed catalog media, session-local cart, protected checkout, and persisted order creation through Supabase. PT-BR/EN localization, Theme Guard, and Localization Guard are enforced across presentation slices, with release APKs and checksums attached under GitHub Releases.
+As of the current development line, FlowDelivery ships a validated commerce path on top of the authenticated catalog experience: remote Home feed, restaurant details, product details, Storage-backed catalog media, session-local cart, protected checkout, and persisted order creation through Supabase. Sprint 11 extends checkout with a persisted payment foundation and localized payment status copy. PT-BR/EN localization, Theme Guard, and Localization Guard are enforced across presentation slices, with release APKs and checksums attached under GitHub Releases when a version tag is published.
 
 ---
 
@@ -216,10 +216,10 @@ FlowDelivery uses a scalable Design System strategy including:
 ## Cart & Checkout
 
 - Shopping cart (implemented — session-local, Sprint 9)
-- Checkout (implemented — persisted order creation, Sprint 10)
+- Checkout (implemented — persisted order creation, Sprint 10; payment foundation, Sprint 11)
 - Order summary (implemented — subtotal, fixed delivery fee, total)
 - Address selection (demo placeholder; persisted profile addresses planned)
-- Payment flow (static cash-on-delivery demo; gateway integration planned)
+- Payment flow (cash-on-delivery payment foundation implemented; gateway integration planned)
 
 ---
 
@@ -381,7 +381,7 @@ flutter run
 
 - [x] Cart (session-local, Sprint 9)
 - [x] Checkout (persisted order creation, Sprint 10)
-- [ ] Payments
+- [x] Payments (cash-on-delivery foundation, Sprint 11)
 - [ ] Orders
 
 ---
