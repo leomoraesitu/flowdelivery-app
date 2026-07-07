@@ -7,6 +7,10 @@ const _validRow = {
   'order_id': 'order-1',
   'order_total_in_cents': 4299,
   'order_created_at': '2026-07-07T12:00:00Z',
+  'payment_id': 'payment-1',
+  'payment_method': 'cash_on_delivery',
+  'payment_status': 'pending_on_delivery',
+  'payment_amount_in_cents': 4299,
 };
 
 SupabaseOrderRemoteDatasource _buildDatasource(
@@ -25,6 +29,7 @@ Future<PlacedOrderDto> _createOrder(
     restaurantId: 'burger_artisan_collective',
     deliveryAddress: 'Rua Demo, 123',
     deliveryFeeInCents: 599,
+    paymentMethod: 'cash_on_delivery',
     items: const [
       {
         'product_id': 'signature_truffle',
@@ -53,6 +58,7 @@ void main() {
       expect(calledParams?['restaurant_id'], 'burger_artisan_collective');
       expect(calledParams?['delivery_address'], 'Rua Demo, 123');
       expect(calledParams?['delivery_fee_in_cents'], 599);
+      expect(calledParams?['order_payment_method'], 'cash_on_delivery');
       expect(calledParams?['items'], isA<List<Map<String, Object?>>>());
     });
 
@@ -64,6 +70,10 @@ void main() {
       expect(dto.id, 'order-1');
       expect(dto.totalInCents, 4299);
       expect(dto.createdAt, DateTime.parse('2026-07-07T12:00:00Z'));
+      expect(dto.paymentId, 'payment-1');
+      expect(dto.paymentMethod, 'cash_on_delivery');
+      expect(dto.paymentStatus, 'pending_on_delivery');
+      expect(dto.paymentAmountInCents, 4299);
     });
 
     test('parses a single-map payload into the placed-order DTO', () async {

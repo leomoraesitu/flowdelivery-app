@@ -23,7 +23,10 @@ pending-on-delivery default.
   (commit `81afca3`).
 - [x] Task 2 — payment domain entities wired into checkout order contracts
   (validated locally with focused checkout tests).
-- [ ] Task 3 — DTO/datasource/repository mapping for payment payload.
+- [x] Task 3 — DTO/datasource/repository mapping for payment payload
+  (payment method forwarded to RPC, payment summary mapped in repository,
+  invalid remote payment values mapped to domain failure; focused data tests
+  green).
 - [ ] Task 4 — ARB copy for payment method/status.
 - [ ] Task 5 — ViewModel + checkout UI payment state.
 - [ ] Task 6 — full validation and regression matrix.
