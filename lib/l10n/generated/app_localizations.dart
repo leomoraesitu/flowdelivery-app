@@ -863,12 +863,6 @@ abstract class AppLocalizations {
   /// **'Ir para o checkout'**
   String get cartProceedToCheckout;
 
-  /// Feedback copy explaining the checkout action is not available yet.
-  ///
-  /// In pt_BR, this message translates to:
-  /// **'Checkout em breve'**
-  String get cartCheckoutPlaceholder;
-
   /// Label for the add-to-cart button on the product details page.
   ///
   /// In pt_BR, this message translates to:
@@ -947,6 +941,24 @@ abstract class AppLocalizations {
   /// **'Pagamento na entrega'**
   String get checkoutPaymentCashOnDelivery;
 
+  /// Description shown for the cash-on-delivery payment method during checkout.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Pague quando receber seu pedido.'**
+  String get checkoutPaymentMethodCashOnDeliveryDescription;
+
+  /// Section title for payment status content in checkout states.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Status do pagamento'**
+  String get checkoutPaymentStatusTitle;
+
+  /// Payment status copy used when the payment is pending until delivery.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Pendente para pagamento na entrega'**
+  String get checkoutPaymentStatusPendingOnDelivery;
+
   /// Section title for the order summary list on the checkout page.
   ///
   /// In pt_BR, this message translates to:
@@ -1018,6 +1030,12 @@ abstract class AppLocalizations {
   /// In pt_BR, this message translates to:
   /// **'Seu pedido {orderId} foi recebido e ja esta em preparo.'**
   String checkoutSuccessMessage(String orderId);
+
+  /// Summary line shown in checkout success with the localized payment status.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Status do pagamento: {paymentStatus}'**
+  String checkoutSuccessPaymentStatus(String paymentStatus);
 
   /// Label for the back-to-home action on the checkout success view.
   ///
