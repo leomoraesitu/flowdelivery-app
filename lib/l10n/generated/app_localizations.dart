@@ -916,6 +916,114 @@ abstract class AppLocalizations {
   /// In pt_BR, this message translates to:
   /// **'Imagem de {name}'**
   String cartItemImageSemanticLabel(String name);
+
+  /// Title shown on the checkout page header.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Finalizar Pedido'**
+  String get checkoutTitle;
+
+  /// Section title for the delivery address card on the checkout page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Endereco de entrega'**
+  String get checkoutDeliveryAddressTitle;
+
+  /// Static demo delivery address shown on checkout; persisted profile addresses are a future slice.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Rua das Flores, 123 - Centro'**
+  String get checkoutDemoAddress;
+
+  /// Section title for the payment method card on the checkout page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Forma de pagamento'**
+  String get checkoutPaymentTitle;
+
+  /// Label for the static pay-on-delivery payment method, the only method in this slice.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Pagamento na entrega'**
+  String get checkoutPaymentCashOnDelivery;
+
+  /// Section title for the order summary list on the checkout page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Resumo do pedido'**
+  String get checkoutSummaryTitle;
+
+  /// Label for the order subtotal row in the checkout summary.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Subtotal'**
+  String get checkoutSubtotal;
+
+  /// Label for the delivery fee row in the checkout summary.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Taxa de entrega'**
+  String get checkoutDeliveryFee;
+
+  /// Label for the order total row in the checkout summary.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Total'**
+  String get checkoutTotal;
+
+  /// Quantity prefix shown before an item name in the checkout order summary.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{quantity}x'**
+  String checkoutItemQuantity(int quantity);
+
+  /// Label for the confirm-order button on the checkout page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Confirmar pedido'**
+  String get checkoutConfirmAction;
+
+  /// Feedback copy shown while the order is being submitted.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Enviando pedido...'**
+  String get checkoutSubmitting;
+
+  /// Title shown when order placement fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nao foi possivel concluir o pedido'**
+  String get checkoutErrorTitle;
+
+  /// Body copy shown when order placement fails, inviting the user to retry.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Ocorreu um erro ao enviar seu pedido. Tente novamente.'**
+  String get checkoutErrorMessage;
+
+  /// Label for the retry button after a failed order placement.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tentar novamente'**
+  String get checkoutRetryAction;
+
+  /// Title shown after the order is successfully placed.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Pedido confirmado!'**
+  String get checkoutSuccessTitle;
+
+  /// Body copy shown after successful placement, including the created order id.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Seu pedido {orderId} foi recebido e ja esta em preparo.'**
+  String checkoutSuccessMessage(String orderId);
+
+  /// Label for the back-to-home action on the checkout success view.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Voltar para o inicio'**
+  String get checkoutSuccessBackToHome;
 }
 
 class _AppLocalizationsDelegate

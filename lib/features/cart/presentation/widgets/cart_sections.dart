@@ -198,28 +198,21 @@ class CartTotalSection extends StatelessWidget {
 }
 
 class CartCheckoutSection extends StatelessWidget {
-  const CartCheckoutSection({super.key});
+  const CartCheckoutSection({required this.onProceedToCheckout, super.key});
+
+  final VoidCallback? onProceedToCheckout;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         FilledButton.icon(
-          onPressed: null,
+          onPressed: onProceedToCheckout,
           icon: const Icon(Icons.arrow_forward, size: AppSizes.iconMd),
           label: Text(l10n.cartProceedToCheckout),
-        ),
-        SizedBox(height: AppSpacing.xs),
-        Text(
-          l10n.cartCheckoutPlaceholder,
-          textAlign: TextAlign.center,
-          style: theme.textTheme.bodySmall?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
-          ),
         ),
       ],
     );

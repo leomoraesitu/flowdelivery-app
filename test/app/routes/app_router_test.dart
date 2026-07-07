@@ -10,6 +10,7 @@ import 'package:flowdelivery_app/features/auth/presentation/pages/sign_in_page.d
 import 'package:flowdelivery_app/features/auth/presentation/providers/auth_providers.dart';
 import 'package:flowdelivery_app/features/auth/presentation/viewmodels/auth_view_model.dart';
 import 'package:flowdelivery_app/features/cart/presentation/pages/cart_page.dart';
+import 'package:flowdelivery_app/features/checkout/presentation/pages/checkout_page.dart';
 import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
 import 'package:flowdelivery_app/features/product_details/domain/entities/product_details.dart';
 import 'package:flowdelivery_app/features/product_details/domain/repositories/product_details_repository.dart';
@@ -634,6 +635,91 @@ void main() {
     expect(router.state.uri.path, AppRoutes.signInPath);
     expect(find.byType(SignInPage), findsOneWidget);
     expect(find.byType(CartPage), findsNothing);
+  });
+
+  testWidgets('allows authenticated users to open the checkout route', (
+    tester,
+  ) async {
+    late GoRouter router;
+    final fakeRepository = _FakeAuthRepository();
+    final authViewModel = AuthViewModel(authRepository: fakeRepository);
+
+    await authViewModel.signInWithEmailAndPassword(
+      email: 'user@example.com',
+      password: 'password123',
+    );
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(fakeRepository),
+          authViewModelProvider.overrideWith((ref) => authViewModel),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            router = ref.watch(appRouterProvider);
+            return MaterialApp.router(
+              routerConfig: router,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
+        ),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    router.goNamed(AppRoutes.checkoutName);
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, AppRoutes.checkoutPath);
+    expect(find.byType(CheckoutPage), findsOneWidget);
+  });
+
+  testWidgets('redirects unauthenticated users away from the checkout route', (
+    tester,
+  ) async {
+    late GoRouter router;
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authRepositoryProvider.overrideWithValue(_FakeAuthRepository()),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            router = ref.watch(appRouterProvider);
+            return MaterialApp.router(
+              routerConfig: router,
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+            );
+          },
+        ),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    router.go(AppRoutes.checkoutPath);
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, AppRoutes.signInPath);
+    expect(find.byType(SignInPage), findsOneWidget);
+    expect(find.byType(CheckoutPage), findsNothing);
   });
 
   testWidgets('keeps current route while auth state is loading', (

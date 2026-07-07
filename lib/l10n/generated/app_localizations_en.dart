@@ -481,4 +481,63 @@ class AppLocalizationsEn extends AppLocalizations {
   String cartItemImageSemanticLabel(String name) {
     return '$name image';
   }
+
+  @override
+  String get checkoutTitle => 'Checkout';
+
+  @override
+  String get checkoutDeliveryAddressTitle => 'Delivery address';
+
+  @override
+  String get checkoutDemoAddress => 'Rua das Flores, 123 - Centro';
+
+  @override
+  String get checkoutPaymentTitle => 'Payment method';
+
+  @override
+  String get checkoutPaymentCashOnDelivery => 'Pay on delivery';
+
+  @override
+  String get checkoutSummaryTitle => 'Order summary';
+
+  @override
+  String get checkoutSubtotal => 'Subtotal';
+
+  @override
+  String get checkoutDeliveryFee => 'Delivery fee';
+
+  @override
+  String get checkoutTotal => 'Total';
+
+  @override
+  String checkoutItemQuantity(int quantity) {
+    return '${quantity}x';
+  }
+
+  @override
+  String get checkoutConfirmAction => 'Confirm order';
+
+  @override
+  String get checkoutSubmitting => 'Placing your order...';
+
+  @override
+  String get checkoutErrorTitle => 'We could not place your order';
+
+  @override
+  String get checkoutErrorMessage =>
+      'Something went wrong while placing your order. Please try again.';
+
+  @override
+  String get checkoutRetryAction => 'Try again';
+
+  @override
+  String get checkoutSuccessTitle => 'Order confirmed!';
+
+  @override
+  String checkoutSuccessMessage(String orderId) {
+    return 'Your order $orderId has been received and is being prepared.';
+  }
+
+  @override
+  String get checkoutSuccessBackToHome => 'Back to Home';
 }

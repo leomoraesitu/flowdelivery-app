@@ -6,9 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CartPage extends ConsumerWidget {
-  const CartPage({this.onExploreRestaurants, super.key});
+  const CartPage({
+    this.onExploreRestaurants,
+    this.onProceedToCheckout,
+    super.key,
+  });
 
   final VoidCallback? onExploreRestaurants;
+  final VoidCallback? onProceedToCheckout;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -69,7 +74,9 @@ class CartPage extends ConsumerWidget {
                         SizedBox(height: AppSpacing.xs),
                         CartTotalSection(totalInCents: cart.totalInCents),
                         SizedBox(height: AppSpacing.lg),
-                        const CartCheckoutSection(),
+                        CartCheckoutSection(
+                          onProceedToCheckout: onProceedToCheckout,
+                        ),
                       ],
                     ),
             ),

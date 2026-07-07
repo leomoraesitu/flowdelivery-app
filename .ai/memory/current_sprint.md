@@ -2,9 +2,77 @@
 
 ## Active Sprint
 
-Sprint 9 - Cart (Closed)
+Sprint 10 - Checkout (Closed)
 
 ## Active Status
+
+Closed on 2026-07-07. All 9 tasks were implemented, validated, and
+committed task-by-task on `feat/checkout`. The consolidated regression
+matrix passed with 66 tests, the `checkout_orders_foundation` migration is
+applied to the remote project, all six real Trello checklists on
+`https://trello.com/c/yEdTwW5F` are complete, and the card is in `Done`.
+
+## Sprint 10 Goal
+
+Add a checkout flow so authenticated users can review their cart on a
+protected `/checkout` page and confirm the order, persisting it to
+Supabase — the project's first complete write path.
+
+## Sprint 10 Outcome
+
+- `orders`/`order_items` with named constraints, explicit paired grants,
+  RLS `INSERT`/`SELECT` scoped to `auth.uid()`, and the atomic
+  `create_order` function (SECURITY INVOKER, empty search_path,
+  server-side totals); validated in a rollback transaction before apply
+  and verified post-apply (anon denial, cross-user isolation, advisors).
+- Pure-Dart `OrderDraft`/`OrderDraftItem`/`PlacedOrder` with derived
+  totals and `OrderDraft.standardDeliveryFeeInCents`;
+  `OrderPlacementFailure` neutral codes (auth convention);
+  `OrderRepository.placeOrder` documented as atomic and non-retryable.
+- `SupabaseOrderRemoteDatasource` owning `.rpc('create_order')` with an
+  injectable rpcCaller; `OrderRepositoryImpl` mapping draft→payload and
+  remote→domain failures; composed via `appOrderRepositoryProvider` and
+  the presentation `orderRepositoryProvider` override.
+- `CheckoutViewModel` (`Notifier<CheckoutState>` sealed states) with
+  re-entry guard, empty-cart no-op, single cart clear on success, and
+  `reset()` for page re-entry.
+- Protected `/checkout` + CartPage CTA navigation via router-injected
+  callback; "Checkout em breve" placeholder removed.
+- `CheckoutPage` per prototype: demo address card, static pay-on-delivery,
+  quantity-prefixed summary rows, subtotal/fee/total via the shared
+  formatter, submitting/failure/success states, back-to-home.
+- 18 `checkout*` ARB keys (pt_BR template, pt, en; no-accent PT).
+- 21 new tests (7 ViewModel, 6 datasource, 3 repository, 5 page) inside
+  the consolidated 66-test matrix.
+
+## Sprint 10 Validation
+
+- Rollback-transaction smoke test + `apply_migration` + post-apply
+  security checks on the remote project.
+- Dart MCP `analyze_files` clean on every touched slice.
+- Consolidated matrix: 66 tests passed (checkout, cart, router, l10n
+  guards, Theme Guard, Trello Guard).
+
+## Sprint 10 Plan
+
+- `.ai/plans/2026-07-06-checkout-plan.md`
+- `docs/project-management/SPRINT_10.md`
+- Real Trello story (Done): `https://trello.com/c/yEdTwW5F`
+- Epic: `https://trello.com/c/iXdaDVOO`
+
+## Sprint 10 Deferred
+
+- Order history (`/orders`), tracking, Realtime, status transitions.
+- Payment gateway, coupons, dynamic delivery fee.
+- Persisted profile/address data.
+- Cart persistence across restarts (Planned Scope / Monitoring).
+- `cartCheckoutPlaceholder` unused ARB key removal (accepted minor debt).
+
+## Previous Sprint
+
+Sprint 9 - Cart (Closed)
+
+## Sprint 9 Status
 
 Closed on 2026-07-03. All 8 tasks were implemented, validated, and
 committed task-by-task on `feat/cart`. The consolidated regression matrix
