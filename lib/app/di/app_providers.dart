@@ -10,6 +10,8 @@ import 'package:flowdelivery_app/features/auth/presentation/providers/auth_provi
 import 'package:flowdelivery_app/features/checkout/data/datasources/order_remote_datasource.dart';
 import 'package:flowdelivery_app/features/checkout/data/repositories/order_repository_impl.dart';
 import 'package:flowdelivery_app/features/checkout/domain/repositories/order_repository.dart';
+import 'package:flowdelivery_app/features/checkout/presentation/viewmodels/checkout_view_model.dart'
+    as checkout_presentation;
 import 'package:flowdelivery_app/features/home/data/datasources/home_remote_datasource.dart';
 import 'package:flowdelivery_app/features/home/data/repositories/home_repository_impl.dart';
 import 'package:flowdelivery_app/features/home/domain/repositories/home_repository.dart';
@@ -133,5 +135,8 @@ final appProviderOverrides = [
     ref,
   ) {
     return ref.watch(appProductDetailsRepositoryProvider);
+  }),
+  checkout_presentation.orderRepositoryProvider.overrideWith((ref) {
+    return ref.watch(appOrderRepositoryProvider);
   }),
 ];
