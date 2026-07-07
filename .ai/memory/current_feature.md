@@ -2,12 +2,18 @@
 
 ## Active Feature
 
-Payments Foundation (Sprint 11 — In Progress)
+Payments Foundation (Sprint 11 — Closed)
 
 ## Active Status
 
-Sprint 11 started on 2026-07-07 to add a persisted payment foundation to
-checkout while keeping pay-on-delivery as the only method in scope.
+Sprint 11 closed on 2026-07-07. The slice delivered persisted payment
+foundation for checkout: `payments` table + atomic `create_order` payment
+insert, payment domain types (`PaymentMethod`, `PaymentStatus`,
+`PaymentSummary`), DTO/datasource/repository payment payload mapping,
+localized payment copy in ARB catalogs, checkout payment method/status
+rendering in ViewModel + UI, focused validation (72 tests) and consolidated
+matrix validation (206 tests), and final Trello parity on
+`https://trello.com/c/cQDUVgYR` in `🎉 Done`.
 
 Task 1 is complete with commit `81afca3` (`payments` table + atomic
 `create_order` evolution).
@@ -41,7 +47,9 @@ pending-on-delivery default.
   suite green with 72 tests across checkout data/presentation, cart,
   router/auth-recovery, and localization/theme guards; consolidated
   `flutter test` matrix green with 206 tests).
-- [ ] Task 7 — docs/memory/technical-debt/Trello reconciliation.
+- [x] Task 7 — docs/memory/technical-debt/Trello reconciliation
+  (Sprint 11 docs updated, technical debt reconciled, and Trello checklist
+  parity finalized with card moved to `🎉 Done`).
 
 ## Architecture Notes (Sprint 10)
 
