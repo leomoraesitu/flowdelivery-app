@@ -40,6 +40,7 @@ String _formatCents(int cents) {
 Widget _buildTestApp({
   required ProviderContainer container,
   VoidCallback? onExploreRestaurants,
+  VoidCallback? onProceedToCheckout,
 }) {
   return UncontrolledProviderScope(
     container: container,
@@ -53,7 +54,10 @@ Widget _buildTestApp({
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: CartPage(onExploreRestaurants: onExploreRestaurants),
+      home: CartPage(
+        onExploreRestaurants: onExploreRestaurants,
+        onProceedToCheckout: onProceedToCheckout,
+      ),
     ),
   );
 }
@@ -123,11 +127,41 @@ void main() {
           findsOneWidget,
         );
 
-        final checkoutButton = tester.widget<FilledButton>(
+        expect(
           find.widgetWithText(FilledButton, l10n.cartProceedToCheckout),
+          findsOneWidget,
         );
-        expect(checkoutButton.enabled, isFalse);
-        expect(find.text(l10n.cartCheckoutPlaceholder), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'checkout CTA is enabled and triggers the navigation callback',
+      (tester) async {
+        var checkoutRequested = 0;
+        container.read(cartProvider.notifier).addItem(_burger);
+
+        await tester.pumpWidget(
+          _buildTestApp(
+            container: container,
+            onProceedToCheckout: () => checkoutRequested++,
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        final context = tester.element(find.byType(CartPage));
+        final l10n = AppLocalizations.of(context);
+        final checkoutButtonFinder = find.widgetWithText(
+          FilledButton,
+          l10n.cartProceedToCheckout,
+        );
+
+        expect(tester.widget<FilledButton>(checkoutButtonFinder).enabled, isTrue);
+
+        await tester.ensureVisible(checkoutButtonFinder);
+        await tester.tap(checkoutButtonFinder);
+        await tester.pumpAndSettle();
+
+        expect(checkoutRequested, 1);
       },
     );
 
