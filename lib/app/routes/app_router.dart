@@ -76,7 +76,9 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.checkoutPath,
         name: AppRoutes.checkoutName,
-        builder: (context, state) => const CheckoutPage(),
+        builder: (context, state) => CheckoutPage(
+          onBackToHome: () => context.goNamed(AppRoutes.homeName),
+        ),
       ),
       GoRoute(
         path: AppRoutes.signInPath,
