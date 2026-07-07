@@ -2,40 +2,32 @@
 
 ## Active Feature
 
-Checkout — Pedido Persistido (Sprint 10 — Closed)
+Payments Foundation (Sprint 11 — In Progress)
 
 ## Active Status
 
-Sprint 10 closed on 2026-07-07. The slice delivered the project's first
-complete write path: the `checkout_orders_foundation` migration
-(`orders`/`order_items` with RLS scoped to `auth.uid()` and the atomic
-`create_order` SECURITY INVOKER function), pure-Dart
-`OrderDraft`/`PlacedOrder` entities with the `OrderRepository` contract,
-the RPC datasource/repository/composition chain, 18 `checkout*` ARB keys,
-`CheckoutViewModel` (idle/submitting/success/failure with re-entry guard
-and single cart clear), the protected `/checkout` route with the CartPage
-CTA enabled, the prototype-aligned `CheckoutPage`, and a 21-test checkout
-suite inside the consolidated 66-test matrix. All six real Trello
-checklists on `https://trello.com/c/yEdTwW5F` are complete.
+Sprint 11 started on 2026-07-07 to add a persisted payment foundation to
+checkout while keeping pay-on-delivery as the only method in scope.
 
-## Sprint 10 Progress
+Task 1 is complete with commit `81afca3` (`payments` table + atomic
+`create_order` evolution).
 
-- [x] Task 1 — migration: orders schema + atomic `create_order`
-  (commit `eb55d0e`; applied to the remote project).
-- [x] Task 2 — domain entities, failure codes, repository contract
-  (commit `4a8d2fe`).
-- [x] Task 3 — DTO, RPC datasource, repository impl, app composition
-  (commit `2687b59`).
-- [x] Task 4 — 18 `checkout*` ARB keys + regenerated localizations
-  (commit `d911f3f`).
-- [x] Task 5 — `CheckoutViewModel` + providers + repository override
-  (commit `3a1a421`).
-- [x] Task 6 — protected `/checkout` route + enabled cart CTA
-  (commit `8634ce2`).
-- [x] Task 7 — `CheckoutPage` summary/states UI (commit `d086722`).
-- [x] Task 8 — 21-test checkout suite; consolidated matrix 66 green
-  (commit `7365d4a`).
-- [x] Task 9 — docs/memory/technical-debt/Trello reconciliation.
+Task 2 is complete in the local worktree: checkout domain now models
+`PaymentMethod`, `PaymentStatus`, and `PaymentSummary`; `OrderDraft`
+includes `paymentMethod`; `PlacedOrder` includes a payment summary with a
+pending-on-delivery default.
+
+## Sprint 11 Progress
+
+- [x] Task 1 — migration: `payments` foundation + atomic order/payment RPC
+  (commit `81afca3`).
+- [x] Task 2 — payment domain entities wired into checkout order contracts
+  (validated locally with focused checkout tests).
+- [ ] Task 3 — DTO/datasource/repository mapping for payment payload.
+- [ ] Task 4 — ARB copy for payment method/status.
+- [ ] Task 5 — ViewModel + checkout UI payment state.
+- [ ] Task 6 — full validation and regression matrix.
+- [ ] Task 7 — docs/memory/technical-debt/Trello reconciliation.
 
 ## Architecture Notes (Sprint 10)
 
