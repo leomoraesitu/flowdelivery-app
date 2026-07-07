@@ -36,7 +36,11 @@ pending-on-delivery default.
   payment section renders localized method description; success state renders
   localized payment status; focused presentation tests + localization/theme
   guard tests green).
-- [ ] Task 6 — full validation and regression matrix.
+- [x] Task 6 — full validation and regression matrix
+  (focused analyze on checkout/cart/routes/l10n green; focused regression
+  suite green with 72 tests across checkout data/presentation, cart,
+  router/auth-recovery, and localization/theme guards; consolidated
+  `flutter test` matrix green with 206 tests).
 - [ ] Task 7 — docs/memory/technical-debt/Trello reconciliation.
 
 ## Architecture Notes (Sprint 10)
