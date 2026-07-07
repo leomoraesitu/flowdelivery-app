@@ -1,0 +1,241 @@
+{
+  "name": "[FEAT] Payments foundation (Sprint 11)",
+  "targetBoard": "FlowDelivery - Product Backlog",
+  "targetList": "✅ Ready",
+  "labels": [
+    "feat",
+    "backend",
+    "frontend",
+    "supabase",
+    "database",
+    "security",
+    "mvvm",
+    "qa",
+    "priority-medium",
+    "recruiter-portfolio"
+  ],
+  "customFields": {
+    "Sprint": "Sprint 11",
+    "Story Points": 8,
+    "Priority": "MEDIUM",
+    "Status": "TODO"
+  },
+  "desc": "# Objective\nAdd a payment foundation so every placed order has a persisted, auditable payment record linked to the order. Sprint 11 keeps pay on delivery as the only customer-facing method and does not process real online payments.\n\n# Scope\nAdd a payments table, update create_order to insert payments atomically, extend checkout domain/data mapping, show payment status in checkout success UI, add ARB copy, and validate RLS/guards/tests.\n\n# Acceptance Criteria\nEvery order creates exactly one payment row atomically; payment data is RLS-protected; payment concepts stay in pure-Dart domain types; Supabase details stay in data layers; UI uses ARB copy and theme tokens; no gateway secrets or real card processing are introduced.\n\n# Dependencies\nSprint 10 checkout persistence, orders/order_items schema, create_order RPC, ARB pipeline, Theme Guard, remote Supabase project access.\n\n# Technical Notes\nUse SECURITY INVOKER for create_order, keep Flutter free of payment provider secrets, and treat future Stripe/webhook work as a separate gateway slice.",
+  "checklists": [
+    {
+      "name": "Scope",
+      "checkItems": [
+        {
+          "name": "Add payments table linked 1:1 with orders",
+          "pos": 1,
+          "state": "incomplete"
+        },
+        {
+          "name": "Update create_order RPC to insert orders, order_items, and payments atomically",
+          "pos": 2,
+          "state": "incomplete"
+        },
+        {
+          "name": "Extend checkout domain models with payment method/status/value objects",
+          "pos": 3,
+          "state": "incomplete"
+        },
+        {
+          "name": "Extend DTO and repository mapping so PlacedOrder includes payment summary",
+          "pos": 4,
+          "state": "incomplete"
+        },
+        {
+          "name": "Update checkout UI and success state to show payment status",
+          "pos": 5,
+          "state": "incomplete"
+        },
+        {
+          "name": "Keep cash_on_delivery as the only selectable method",
+          "pos": 6,
+          "state": "incomplete"
+        }
+      ]
+    },
+    {
+      "name": "Acceptance Criteria",
+      "checkItems": [
+        {
+          "name": "Every new order creates exactly one linked payment row in the same transaction as orders and order_items",
+          "pos": 1,
+          "state": "incomplete"
+        },
+        {
+          "name": "payments has RLS enabled, explicit grants, anon denial, and cross-user read isolation",
+          "pos": 2,
+          "state": "incomplete"
+        },
+        {
+          "name": "Payment concepts are represented by pure-Dart domain types",
+          "pos": 3,
+          "state": "incomplete"
+        },
+        {
+          "name": "Supabase RPC and data details stay inside datasource and repository layers",
+          "pos": 4,
+          "state": "incomplete"
+        },
+        {
+          "name": "PlacedOrder includes a payment summary mapped from the RPC response",
+          "pos": 5,
+          "state": "incomplete"
+        },
+        {
+          "name": "Checkout success UI shows payment status using ARB copy",
+          "pos": 6,
+          "state": "incomplete"
+        },
+        {
+          "name": "No real card, gateway, or secret handling is introduced in Flutter",
+          "pos": 7,
+          "state": "incomplete"
+        }
+      ]
+    },
+    {
+      "name": "Dependencies",
+      "checkItems": [
+        {
+          "name": "Sprint 10 checkout persistence and create_order RPC are available",
+          "pos": 1,
+          "state": "incomplete"
+        },
+        {
+          "name": "Existing orders and order_items RLS/grants discipline is preserved",
+          "pos": 2,
+          "state": "incomplete"
+        },
+        {
+          "name": "ARB pipeline and generated localization freshness guard are available",
+          "pos": 3,
+          "state": "incomplete"
+        },
+        {
+          "name": "Theme Guard and app design tokens are available",
+          "pos": 4,
+          "state": "incomplete"
+        },
+        {
+          "name": "Remote Supabase project access is available for migration validation",
+          "pos": 5,
+          "state": "incomplete"
+        }
+      ]
+    },
+    {
+      "name": "Localization Guard Checklist",
+      "checkItems": [
+        {
+          "name": "Every new user-facing string has an ARB key",
+          "pos": 1,
+          "state": "incomplete"
+        },
+        {
+          "name": "UI reads strings through `AppLocalizations`",
+          "pos": 2,
+          "state": "incomplete"
+        },
+        {
+          "name": "No hardcoded copy in `Text`, `SnackBar`, `Tooltip`, `AlertDialog`, `BottomSheet`, `showModalBottomSheet`, or `semanticLabel`",
+          "pos": 3,
+          "state": "incomplete"
+        },
+        {
+          "name": "ARB catalog parity guard remains green after copy changes",
+          "pos": 4,
+          "state": "incomplete"
+        },
+        {
+          "name": "New placeholders are declared in template metadata and preserved across translated catalogs",
+          "pos": 5,
+          "state": "incomplete"
+        },
+        {
+          "name": "New placeholders and route placeholders are covered by the guard tests",
+          "pos": 6,
+          "state": "incomplete"
+        },
+        {
+          "name": "Generated localization freshness guard remains green after ARB changes once available",
+          "pos": 7,
+          "state": "incomplete"
+        }
+      ]
+    },
+    {
+      "name": "Theme Guard Checklist",
+      "checkItems": [
+        {
+          "name": "UI uses only semantic theme APIs and app tokens (`Theme.of(context)`, `AppSpacing`, `AppRadius`, `AppSizes`, `AppDurations`)",
+          "pos": 1,
+          "state": "incomplete"
+        },
+        {
+          "name": "No `Color(0x...)` hardcoded values in feature presentation code",
+          "pos": 2,
+          "state": "incomplete"
+        },
+        {
+          "name": "No direct `AppLightColors` or `AppDarkColors` usage outside `lib/app/theme`",
+          "pos": 3,
+          "state": "incomplete"
+        },
+        {
+          "name": "No direct `Colors.*` hardcoded usage in feature presentation when equivalent semantic `ColorScheme` roles exist",
+          "pos": 4,
+          "state": "incomplete"
+        },
+        {
+          "name": "Visual hardcoded guard test remains green after UI changes",
+          "pos": 5,
+          "state": "incomplete"
+        }
+      ]
+    },
+    {
+      "name": "Validation",
+      "checkItems": [
+        {
+          "name": "Migration SQL is smoke-tested in a rollback transaction before apply",
+          "pos": 1,
+          "state": "incomplete"
+        },
+        {
+          "name": "Authenticated order creation creates the payment row atomically",
+          "pos": 2,
+          "state": "incomplete"
+        },
+        {
+          "name": "anon denial and cross-user payment read isolation are verified",
+          "pos": 3,
+          "state": "incomplete"
+        },
+        {
+          "name": "Focused checkout domain/data/presentation tests pass",
+          "pos": 4,
+          "state": "incomplete"
+        },
+        {
+          "name": "Localization and Theme Guard tests remain green",
+          "pos": 5,
+          "state": "incomplete"
+        },
+        {
+          "name": "Consolidated regression matrix passes",
+          "pos": 6,
+          "state": "incomplete"
+        },
+        {
+          "name": "Docs, memory, technical debt, and real Trello parity are reconciled after validation evidence exists",
+          "pos": 7,
+          "state": "incomplete"
+        }
+      ]
+    }
+  ]
+}

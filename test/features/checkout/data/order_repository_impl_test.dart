@@ -2,6 +2,7 @@ import 'package:flowdelivery_app/features/checkout/data/datasources/order_remote
 import 'package:flowdelivery_app/features/checkout/data/dtos/placed_order_dto.dart';
 import 'package:flowdelivery_app/features/checkout/data/repositories/order_repository_impl.dart';
 import 'package:flowdelivery_app/features/checkout/domain/entities/order_draft.dart';
+import 'package:flowdelivery_app/features/checkout/domain/entities/payment_summary.dart';
 import 'package:flowdelivery_app/features/checkout/domain/failures/order_placement_failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -26,9 +27,10 @@ final _draft = OrderDraft(
 );
 
 class _FakeOrderRemoteDatasource implements OrderRemoteDatasource {
-  _FakeOrderRemoteDatasource({this.error});
+  _FakeOrderRemoteDatasource({this.error, this.result});
 
   final Object? error;
+  final PlacedOrderDto? result;
   Map<String, Object?>? receivedPayload;
 
   @override
@@ -36,12 +38,14 @@ class _FakeOrderRemoteDatasource implements OrderRemoteDatasource {
     required String restaurantId,
     required String deliveryAddress,
     required int deliveryFeeInCents,
+    required String paymentMethod,
     required List<Map<String, Object?>> items,
   }) {
     receivedPayload = {
       'restaurant_id': restaurantId,
       'delivery_address': deliveryAddress,
       'delivery_fee_in_cents': deliveryFeeInCents,
+      'order_payment_method': paymentMethod,
       'items': items,
     };
 
@@ -51,11 +55,16 @@ class _FakeOrderRemoteDatasource implements OrderRemoteDatasource {
     }
 
     return Future<PlacedOrderDto>.value(
-      PlacedOrderDto(
-        id: 'order-1',
-        totalInCents: 4949,
-        createdAt: DateTime.parse('2026-07-07T12:00:00Z'),
-      ),
+      result ??
+          PlacedOrderDto(
+            id: 'order-1',
+            totalInCents: 4949,
+            createdAt: DateTime.parse('2026-07-07T12:00:00Z'),
+            paymentId: 'payment-1',
+            paymentMethod: 'cash_on_delivery',
+            paymentStatus: 'pending_on_delivery',
+            paymentAmountInCents: 4949,
+          ),
     );
   }
 }
@@ -71,11 +80,16 @@ void main() {
       expect(order.id, 'order-1');
       expect(order.totalInCents, 4949);
       expect(order.createdAt, DateTime.parse('2026-07-07T12:00:00Z'));
+      expect(order.payment.id, 'payment-1');
+      expect(order.payment.method, PaymentMethod.cashOnDelivery);
+      expect(order.payment.status, PaymentStatus.pendingOnDelivery);
+      expect(order.payment.amountInCents, 4949);
 
       final payload = datasource.receivedPayload!;
       expect(payload['restaurant_id'], _draft.restaurantId);
       expect(payload['delivery_address'], _draft.deliveryAddress);
       expect(payload['delivery_fee_in_cents'], _draft.deliveryFeeInCents);
+      expect(payload['order_payment_method'], 'cash_on_delivery');
       expect(payload['items'], const [
         {
           'product_id': 'signature_truffle',
@@ -128,6 +142,72 @@ void main() {
       await expectLater(
         () => repository.placeOrder(_draft),
         throwsA(isA<StateError>()),
+      );
+    });
+
+    test('maps unknown remote payment_method to OrderPlacementFailure', () async {
+      final repository = OrderRepositoryImpl(
+        datasource: _FakeOrderRemoteDatasource(
+          result: PlacedOrderDto(
+            id: 'order-1',
+            totalInCents: 4949,
+            createdAt: DateTime.parse('2026-07-07T12:00:00Z'),
+            paymentId: 'payment-1',
+            paymentMethod: 'card',
+            paymentStatus: 'pending_on_delivery',
+            paymentAmountInCents: 4949,
+          ),
+        ),
+      );
+
+      await expectLater(
+        () => repository.placeOrder(_draft),
+        throwsA(
+          isA<OrderPlacementFailure>()
+              .having(
+                (failure) => failure.code,
+                'code',
+                OrderPlacementFailureCode.genericFailure,
+              )
+              .having(
+                (failure) => failure.fallbackMessage,
+                'fallbackMessage',
+                contains('payment_method'),
+              ),
+        ),
+      );
+    });
+
+    test('maps unknown remote payment_status to OrderPlacementFailure', () async {
+      final repository = OrderRepositoryImpl(
+        datasource: _FakeOrderRemoteDatasource(
+          result: PlacedOrderDto(
+            id: 'order-1',
+            totalInCents: 4949,
+            createdAt: DateTime.parse('2026-07-07T12:00:00Z'),
+            paymentId: 'payment-1',
+            paymentMethod: 'cash_on_delivery',
+            paymentStatus: 'paid',
+            paymentAmountInCents: 4949,
+          ),
+        ),
+      );
+
+      await expectLater(
+        () => repository.placeOrder(_draft),
+        throwsA(
+          isA<OrderPlacementFailure>()
+              .having(
+                (failure) => failure.code,
+                'code',
+                OrderPlacementFailureCode.genericFailure,
+              )
+              .having(
+                (failure) => failure.fallbackMessage,
+                'fallbackMessage',
+                contains('payment_status'),
+              ),
+        ),
       );
     });
   });

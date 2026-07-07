@@ -1,6 +1,7 @@
 import 'package:flowdelivery_app/app/theme/app_tokens.dart';
 import 'package:flowdelivery_app/features/cart/presentation/providers/cart_providers.dart';
 import 'package:flowdelivery_app/features/checkout/domain/entities/order_draft.dart';
+import 'package:flowdelivery_app/features/checkout/domain/entities/payment_summary.dart';
 import 'package:flowdelivery_app/features/checkout/presentation/providers/checkout_providers.dart';
 import 'package:flowdelivery_app/features/checkout/presentation/viewmodels/checkout_view_model.dart';
 import 'package:flowdelivery_app/features/checkout/presentation/widgets/checkout_sections.dart';
@@ -55,6 +56,10 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                   padding: EdgeInsets.symmetric(vertical: AppSpacing.xl),
                   child: CheckoutSuccessSection(
                     orderId: order.id,
+                    paymentStatusText: _localizedPaymentStatus(
+                      order.payment.status,
+                      l10n,
+                    ),
                     onBackToHome:
                         widget.onBackToHome ??
                         () => Navigator.of(context).maybePop(),
@@ -100,5 +105,15 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
         ),
       ),
     );
+  }
+
+  String _localizedPaymentStatus(
+    PaymentStatus status,
+    AppLocalizations l10n,
+  ) {
+    return switch (status) {
+      PaymentStatus.pendingOnDelivery =>
+        l10n.checkoutPaymentStatusPendingOnDelivery,
+    };
   }
 }

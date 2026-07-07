@@ -66,9 +66,21 @@ class CheckoutPaymentSection extends StatelessWidget {
           ),
           SizedBox(width: AppSpacing.sm),
           Expanded(
-            child: Text(
-              l10n.checkoutPaymentCashOnDelivery,
-              style: theme.textTheme.bodyMedium,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.checkoutPaymentCashOnDelivery,
+                  style: theme.textTheme.bodyMedium,
+                ),
+                SizedBox(height: AppSpacing.xxs),
+                Text(
+                  l10n.checkoutPaymentMethodCashOnDeliveryDescription,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ],
             ),
           ),
           Icon(
@@ -225,11 +237,13 @@ class CheckoutConfirmSection extends StatelessWidget {
 class CheckoutSuccessSection extends StatelessWidget {
   const CheckoutSuccessSection({
     required this.orderId,
+    required this.paymentStatusText,
     required this.onBackToHome,
     super.key,
   });
 
   final String orderId;
+  final String paymentStatusText;
   final VoidCallback onBackToHome;
 
   @override
@@ -259,6 +273,12 @@ class CheckoutSuccessSection extends StatelessWidget {
           style: theme.textTheme.bodyMedium?.copyWith(
             color: theme.colorScheme.onSurfaceVariant,
           ),
+        ),
+        SizedBox(height: AppSpacing.xs),
+        Text(
+          l10n.checkoutSuccessPaymentStatus(paymentStatusText),
+          textAlign: TextAlign.center,
+          style: theme.textTheme.bodyMedium,
         ),
         SizedBox(height: AppSpacing.lg),
         FilledButton(

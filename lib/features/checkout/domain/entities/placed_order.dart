@@ -1,13 +1,19 @@
+import 'package:flowdelivery_app/features/checkout/domain/entities/payment_summary.dart';
+
 class PlacedOrder {
-  const PlacedOrder({
+  PlacedOrder({
     required this.id,
     required this.totalInCents,
     required this.createdAt,
-  });
+    PaymentSummary? payment,
+  }) : payment =
+           payment ??
+           PaymentSummary.pendingOnDelivery(amountInCents: totalInCents);
 
   final String id;
   final int totalInCents;
   final DateTime createdAt;
+  final PaymentSummary payment;
 
   @override
   bool operator ==(Object other) {
@@ -15,18 +21,20 @@ class PlacedOrder {
         other is PlacedOrder &&
             other.id == id &&
             other.totalInCents == totalInCents &&
-            other.createdAt == createdAt;
+            other.createdAt == createdAt &&
+            other.payment == payment;
   }
 
   @override
-  int get hashCode => Object.hash(id, totalInCents, createdAt);
+  int get hashCode => Object.hash(id, totalInCents, createdAt, payment);
 
   @override
   String toString() {
     return 'PlacedOrder('
         'id: $id, '
         'totalInCents: $totalInCents, '
-        'createdAt: $createdAt'
+        'createdAt: $createdAt, '
+        'payment: $payment'
         ')';
   }
 }

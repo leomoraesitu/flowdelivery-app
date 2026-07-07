@@ -203,7 +203,7 @@ Notes:
   reference. Reintroduce only with a real data source if a future slice
   needs the name in copy.
 
-### Unused `cartCheckoutPlaceholder` ARB key after checkout CTA activation
+### Checkout payments foundation transitional duplication (Sprint 11)
 
 Status:
 Accepted / Monitoring
@@ -212,14 +212,15 @@ Impact:
 Low
 
 Notes:
-- Sprint 10 Task 6 enabled the CartPage checkout CTA and removed the
-  "Checkout em breve" microcopy from the UI, leaving the
-  `cartCheckoutPlaceholder` key without consumers in the three catalogs.
-- The ARB guards do not flag unused keys (only parity/metadata), so the
-  key is harmless; it was kept during the sprint to avoid a
-  three-catalog + regen churn inside a routing task.
-- Remove the key (template + pt + en + `flutter gen-l10n`) in the next
-  slice that touches the ARB catalogs.
+- Sprint 11 introduced `public.payments` as the source of payment lifecycle
+  state and evolved `create_order` to persist payment rows atomically with
+  orders and order_items.
+- `orders.payment_method` remains as transitional duplication while
+  `payments.method` is now also persisted. This is intentional to minimize
+  migration blast radius during the foundation slice.
+- Revisit removal/normalization only in a future approved migration slice
+  after confirming read/write consumers no longer depend on the legacy
+  orders column.
 
 ### Checkout write path — accepted minor debts (Sprint 10)
 

@@ -1,5 +1,7 @@
 import 'dart:collection';
 
+import 'package:flowdelivery_app/features/checkout/domain/entities/payment_summary.dart';
+
 class OrderDraftItem {
   const OrderDraftItem({
     required this.productId,
@@ -46,6 +48,7 @@ class OrderDraft {
     required List<OrderDraftItem> items,
     required this.deliveryFeeInCents,
     required this.deliveryAddress,
+    this.paymentMethod = PaymentMethod.cashOnDelivery,
   }) : assert(items.isNotEmpty, 'Order draft requires at least one item.'),
        assert(
          deliveryFeeInCents >= 0,
@@ -63,6 +66,7 @@ class OrderDraft {
   final UnmodifiableListView<OrderDraftItem> items;
   final int deliveryFeeInCents;
   final String deliveryAddress;
+  final PaymentMethod paymentMethod;
 
   int get subtotalInCents =>
       items.fold<int>(0, (total, item) => total + item.subtotalInCents);
@@ -78,6 +82,7 @@ class OrderDraft {
         other.restaurantId != restaurantId ||
         other.deliveryFeeInCents != deliveryFeeInCents ||
         other.deliveryAddress != deliveryAddress ||
+        other.paymentMethod != paymentMethod ||
         other.items.length != items.length) {
       return false;
     }
@@ -94,6 +99,7 @@ class OrderDraft {
     restaurantId,
     deliveryFeeInCents,
     deliveryAddress,
+    paymentMethod,
     Object.hashAll(items),
   );
 
@@ -103,7 +109,8 @@ class OrderDraft {
         'restaurantId: $restaurantId, '
         'items: $items, '
         'deliveryFeeInCents: $deliveryFeeInCents, '
-        'deliveryAddress: $deliveryAddress'
+        'deliveryAddress: $deliveryAddress, '
+        'paymentMethod: $paymentMethod'
         ')';
   }
 }

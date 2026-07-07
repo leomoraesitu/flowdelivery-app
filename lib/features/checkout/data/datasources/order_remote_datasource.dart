@@ -21,6 +21,7 @@ abstract interface class OrderRemoteDatasource {
     required String restaurantId,
     required String deliveryAddress,
     required int deliveryFeeInCents,
+    required String paymentMethod,
     required List<Map<String, Object?>> items,
   });
 }
@@ -42,6 +43,7 @@ class SupabaseOrderRemoteDatasource implements OrderRemoteDatasource {
     required String restaurantId,
     required String deliveryAddress,
     required int deliveryFeeInCents,
+    required String paymentMethod,
     required List<Map<String, Object?>> items,
   }) async {
     try {
@@ -49,6 +51,7 @@ class SupabaseOrderRemoteDatasource implements OrderRemoteDatasource {
         'restaurant_id': restaurantId,
         'delivery_address': deliveryAddress,
         'delivery_fee_in_cents': deliveryFeeInCents,
+        'order_payment_method': paymentMethod,
         'items': items,
       });
 
