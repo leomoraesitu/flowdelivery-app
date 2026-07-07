@@ -374,7 +374,7 @@
       "cards": [
         {
           "name": "[DOCS] Preparar notas da release",
-          "desc": "# Conteúdo\n- [ ] Novidades\n- [ ] Correções\n- [ ] Mudanças técnicas relevantes\n- [ ] Limitações conhecidas",
+          "desc": "# Conteúdo\n- [ ] Novidades\n- [ ] Correções\n- [ ] Mudanças técnicas relevantes\n- [ ] Limitações conhecidas\n- [ ] CHANGELOG.md com a entrada da versão (itens de [Unreleased] promovidos) no commit de preparação, antes do merge em main e da tag",
           "idLabels": [
             "lab_docs",
             "lab_release"
@@ -391,7 +391,7 @@
       "cards": [
         {
           "name": "[RELEASE] Pós-release checklist",
-          "desc": "# Checklist\n- [ ] Tag publicada\n- [ ] Changelog atualizado\n- [ ] Evidências de QA anexadas\n- [ ] Próximos débitos registrados",
+          "desc": "# Checklist\n- [ ] Tag publicada\n- [ ] Changelog conferido (entrada da versão criada na fase de preparação, antes da tag)\n- [ ] Evidências de QA anexadas\n- [ ] Próximos débitos registrados",
           "checklists": [
             {
               "name": "Checklist",
@@ -402,7 +402,7 @@
                   "state": "incomplete"
                 },
                 {
-                  "name": "Changelog atualizado",
+                  "name": "Changelog conferido (entrada da versão criada na fase de preparação, antes da tag)",
                   "pos": 2,
                   "state": "incomplete"
                 },

@@ -92,6 +92,13 @@ Release notes must include:
 - technical changes
 - known limitations
 
+The release preparation commit (version bump + `docs/releases/vX.Y.Z.md`)
+must also update `CHANGELOG.md`: promote the `[Unreleased]` items into a new
+`[X.Y.Z] - date` entry and add anything shipped in the release that is not
+yet listed. This happens **before** the merge to `main` and the tag, so the
+tagged commit already carries the complete changelog entry (v0.3.0 lesson:
+the changelog was reconciled post-tag and required an extra commit on `main`).
+
 ### 5. Approval
 
 A release can ship when:
@@ -151,5 +158,6 @@ Rollback action must be documented with:
 - [ ] Release scope is documented
 - [ ] QA evidence is available
 - [ ] Release notes are prepared
+- [ ] `CHANGELOG.md` has the version entry before the tag is created
 - [ ] Risks are accepted or mitigated
 - [ ] Post-release follow-ups are tracked

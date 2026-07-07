@@ -485,6 +485,65 @@ class AppLocalizationsPt extends AppLocalizations {
   String cartItemImageSemanticLabel(String name) {
     return 'Imagem de $name';
   }
+
+  @override
+  String get checkoutTitle => 'Finalizar Pedido';
+
+  @override
+  String get checkoutDeliveryAddressTitle => 'Endereco de entrega';
+
+  @override
+  String get checkoutDemoAddress => 'Rua das Flores, 123 - Centro';
+
+  @override
+  String get checkoutPaymentTitle => 'Forma de pagamento';
+
+  @override
+  String get checkoutPaymentCashOnDelivery => 'Pagamento na entrega';
+
+  @override
+  String get checkoutSummaryTitle => 'Resumo do pedido';
+
+  @override
+  String get checkoutSubtotal => 'Subtotal';
+
+  @override
+  String get checkoutDeliveryFee => 'Taxa de entrega';
+
+  @override
+  String get checkoutTotal => 'Total';
+
+  @override
+  String checkoutItemQuantity(int quantity) {
+    return '${quantity}x';
+  }
+
+  @override
+  String get checkoutConfirmAction => 'Confirmar pedido';
+
+  @override
+  String get checkoutSubmitting => 'Enviando pedido...';
+
+  @override
+  String get checkoutErrorTitle => 'Nao foi possivel concluir o pedido';
+
+  @override
+  String get checkoutErrorMessage =>
+      'Ocorreu um erro ao enviar seu pedido. Tente novamente.';
+
+  @override
+  String get checkoutRetryAction => 'Tentar novamente';
+
+  @override
+  String get checkoutSuccessTitle => 'Pedido confirmado!';
+
+  @override
+  String checkoutSuccessMessage(String orderId) {
+    return 'Seu pedido $orderId foi recebido e ja esta em preparo.';
+  }
+
+  @override
+  String get checkoutSuccessBackToHome => 'Voltar para o inicio';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -968,4 +1027,63 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String cartItemImageSemanticLabel(String name) {
     return 'Imagem de $name';
   }
+
+  @override
+  String get checkoutTitle => 'Finalizar Pedido';
+
+  @override
+  String get checkoutDeliveryAddressTitle => 'Endereco de entrega';
+
+  @override
+  String get checkoutDemoAddress => 'Rua das Flores, 123 - Centro';
+
+  @override
+  String get checkoutPaymentTitle => 'Forma de pagamento';
+
+  @override
+  String get checkoutPaymentCashOnDelivery => 'Pagamento na entrega';
+
+  @override
+  String get checkoutSummaryTitle => 'Resumo do pedido';
+
+  @override
+  String get checkoutSubtotal => 'Subtotal';
+
+  @override
+  String get checkoutDeliveryFee => 'Taxa de entrega';
+
+  @override
+  String get checkoutTotal => 'Total';
+
+  @override
+  String checkoutItemQuantity(int quantity) {
+    return '${quantity}x';
+  }
+
+  @override
+  String get checkoutConfirmAction => 'Confirmar pedido';
+
+  @override
+  String get checkoutSubmitting => 'Enviando pedido...';
+
+  @override
+  String get checkoutErrorTitle => 'Nao foi possivel concluir o pedido';
+
+  @override
+  String get checkoutErrorMessage =>
+      'Ocorreu um erro ao enviar seu pedido. Tente novamente.';
+
+  @override
+  String get checkoutRetryAction => 'Tentar novamente';
+
+  @override
+  String get checkoutSuccessTitle => 'Pedido confirmado!';
+
+  @override
+  String checkoutSuccessMessage(String orderId) {
+    return 'Seu pedido $orderId foi recebido e ja esta em preparo.';
+  }
+
+  @override
+  String get checkoutSuccessBackToHome => 'Voltar para o inicio';
 }

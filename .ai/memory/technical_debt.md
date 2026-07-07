@@ -178,7 +178,7 @@ Notes:
 - Future media replacements should prefer versioned filenames rather than overwriting unchanged object URLs, to reduce stale CDN/browser cache behavior.
 - Reclassify only if a dedicated contract rename or cache-busting strategy becomes necessary for a later approved media slice.
 
-### Cart persistence deferred to the Checkout sprint
+### Cart persistence remains session-only after the Checkout sprint
 
 Status:
 Planned Scope / Monitoring
@@ -190,15 +190,61 @@ Notes:
 - Sprint 9 delivered the cart as session-only in-memory state by approved
   plan decision: `CartNotifier` (`Notifier<Cart>`) owns the aggregate and
   no `shared_preferences`/Supabase persistence exists.
+- Sprint 10 (Checkout) explicitly kept cart persistence deferred by
+  approved scoping decision: with the order persisted in `orders`/
+  `order_items`, cart loss on restart no longer hurts the demo flow.
 - Totals reset on restart; this is expected and documented behavior for
   the current demo scope, not a regression.
-- Promote to implementation only inside the approved Checkout slice, where
-  session continuity has real value. Follow the session-persistence
-  classification policy above: escalate to Technical Debt only if cart
-  loss starts impacting approved demo/QA scope.
-- `CartItem.restaurantName` was removed in Sprint 9 (approved deviation);
-  if Checkout needs the restaurant name in cart/checkout copy, reintroduce
-  it with a real data source rather than an empty placeholder.
+- Follow the session-persistence classification policy above: escalate to
+  Technical Debt only if cart loss starts impacting approved demo/QA
+  scope.
+- `CartItem.restaurantName` stayed removed through Sprint 10: the checkout
+  summary renders item names only and `orders.restaurant_id` stores the
+  reference. Reintroduce only with a real data source if a future slice
+  needs the name in copy.
+
+### Unused `cartCheckoutPlaceholder` ARB key after checkout CTA activation
+
+Status:
+Accepted / Monitoring
+
+Impact:
+Low
+
+Notes:
+- Sprint 10 Task 6 enabled the CartPage checkout CTA and removed the
+  "Checkout em breve" microcopy from the UI, leaving the
+  `cartCheckoutPlaceholder` key without consumers in the three catalogs.
+- The ARB guards do not flag unused keys (only parity/metadata), so the
+  key is harmless; it was kept during the sprint to avoid a
+  three-catalog + regen churn inside a routing task.
+- Remove the key (template + pt + en + `flutter gen-l10n`) in the next
+  slice that touches the ARB catalogs.
+
+### Checkout write path — accepted minor debts (Sprint 10)
+
+Status:
+Accepted / Monitoring
+
+Impact:
+Low
+
+Notes:
+- `OrderPlacementFailureCode.networkFailure` and
+  `unconfiguredEnvironment` exist in the domain enum but no layer emits
+  them yet: the repository maps every `OrderRemoteException` to
+  `genericFailure` and checkout has no unconfigured fallback repository
+  (the route is only reachable authenticated, mirroring
+  restaurant/product details). Refine the mapping if user-facing error
+  differentiation becomes a requirement.
+- The fixed delivery fee is a client-side domain constant
+  (`OrderDraft.standardDeliveryFeeInCents`); the server accepts any
+  non-negative fee. Acceptable for the demo scope because totals are
+  derived server-side from items + submitted fee; revisit when dynamic
+  fees land.
+- The `create_order` function validates non-empty items and non-negative
+  amounts but does not cross-check `product_id` against
+  `restaurant_menu_items` (snapshot semantics, Finding C precedent kept).
 
 ### PostgREST `.order()` defaults to descending — keep catalog/feed ordering explicit
 

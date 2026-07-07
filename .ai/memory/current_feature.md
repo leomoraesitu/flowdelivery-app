@@ -2,9 +2,67 @@
 
 ## Active Feature
 
-Cart — Carrinho Local (Sprint 9 — Closed)
+Checkout — Pedido Persistido (Sprint 10 — Closed)
 
 ## Active Status
+
+Sprint 10 closed on 2026-07-07. The slice delivered the project's first
+complete write path: the `checkout_orders_foundation` migration
+(`orders`/`order_items` with RLS scoped to `auth.uid()` and the atomic
+`create_order` SECURITY INVOKER function), pure-Dart
+`OrderDraft`/`PlacedOrder` entities with the `OrderRepository` contract,
+the RPC datasource/repository/composition chain, 18 `checkout*` ARB keys,
+`CheckoutViewModel` (idle/submitting/success/failure with re-entry guard
+and single cart clear), the protected `/checkout` route with the CartPage
+CTA enabled, the prototype-aligned `CheckoutPage`, and a 21-test checkout
+suite inside the consolidated 66-test matrix. All six real Trello
+checklists on `https://trello.com/c/yEdTwW5F` are complete.
+
+## Sprint 10 Progress
+
+- [x] Task 1 — migration: orders schema + atomic `create_order`
+  (commit `eb55d0e`; applied to the remote project).
+- [x] Task 2 — domain entities, failure codes, repository contract
+  (commit `4a8d2fe`).
+- [x] Task 3 — DTO, RPC datasource, repository impl, app composition
+  (commit `2687b59`).
+- [x] Task 4 — 18 `checkout*` ARB keys + regenerated localizations
+  (commit `d911f3f`).
+- [x] Task 5 — `CheckoutViewModel` + providers + repository override
+  (commit `3a1a421`).
+- [x] Task 6 — protected `/checkout` route + enabled cart CTA
+  (commit `8634ce2`).
+- [x] Task 7 — `CheckoutPage` summary/states UI (commit `d086722`).
+- [x] Task 8 — 21-test checkout suite; consolidated matrix 66 green
+  (commit `7365d4a`).
+- [x] Task 9 — docs/memory/technical-debt/Trello reconciliation.
+
+## Architecture Notes (Sprint 10)
+
+- First write path: UI → `CheckoutViewModel` → `OrderRepository` →
+  `OrderRemoteDatasource` → `.rpc('create_order')`. Atomicity lives in the
+  Postgres function (single transaction, SECURITY INVOKER so RLS applies);
+  subtotal/total are derived server-side from the submitted items.
+- No retry anywhere in the chain (double-order risk); the ViewModel also
+  guards re-entry while submitting.
+- Error translation in three layers: `PostgrestException` →
+  `OrderRemoteException` (data) → `OrderPlacementFailure` neutral code
+  (domain) → localized copy (presentation only).
+- `orderRepositoryProvider` lives in the ViewModel file (unconfigured
+  `StateError` convention) to avoid a viewmodel↔providers circular import.
+- The localized demo address is passed by the page into
+  `placeOrder(deliveryAddress:)`; ViewModels cannot read
+  `AppLocalizations`. The address persists as order content.
+- Checkout widgets consume a presentation-only `CheckoutSummaryItem`; the
+  cart is read exclusively through `cartProvider` (no cart entity imports
+  in checkout widgets).
+- Orders are immutable in this slice (no UPDATE/DELETE policies).
+
+## Previous Feature
+
+Cart — Carrinho Local (Sprint 9 — Closed)
+
+## Sprint 9 Status
 
 Sprint 9 closed on 2026-07-03. The slice delivered a session-local cart:
 pure-Dart `CartItem`/`Cart` aggregates, `CartNotifier` as the domain
