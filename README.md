@@ -12,7 +12,7 @@ Portfolio-grade Flutter food delivery application built with MVVM architecture, 
 
 **▶️ https://leomoraesitu.github.io/flowdelivery-app/**
 
-The Flutter web build is deployed to GitHub Pages and serves the `v0.3.0` experience: sign in, browse the Home feed, restaurant details, and product details backed by Supabase, and build an order with the session-local shopping cart. The deploy runs automatically on each version tag (`v*.*.*`).
+The Flutter web build is deployed to GitHub Pages and serves the `v0.4.0` experience: sign in, browse the Home feed, restaurant details, product details, build a session-local cart, and confirm a persisted checkout order backed by Supabase. The deploy runs automatically on each version tag (`v*.*.*`).
 
 > Sign-in/recovery require the Supabase Auth URL allow-list to include the Pages origin. An Android APK is also published with every release under [Releases](https://github.com/leomoraesitu/flowdelivery-app/releases).
 
@@ -37,7 +37,7 @@ FlowDelivery is a modern delivery platform developed as a portfolio-grade softwa
 - CI/CD readiness
 - Professional engineering conventions
 
-As of `v0.2.0`, FlowDelivery ships a validated read-only catalog browsing experience (Sprints 2-8) on top of the Sprint 1 authentication foundation: authenticated Home feed, restaurant details, product details, deterministic catalog seed coverage, and Storage-backed catalog media — all served live on the web demo above and as a release APK. Sprint 9 added the first interactive commerce slice: a session-local shopping cart (add from product details, quantity controls, single-restaurant constraint, protected `/cart` page, and header badges), landing in the next release. PT-BR/EN localization, Theme Guard, and Localization Guard are enforced across presentation slices.
+As of `v0.4.0`, FlowDelivery ships a validated commerce path on top of the authenticated catalog experience: remote Home feed, restaurant details, product details, Storage-backed catalog media, session-local cart, protected checkout, and persisted order creation through Supabase. PT-BR/EN localization, Theme Guard, and Localization Guard are enforced across presentation slices, with release APKs and checksums attached under GitHub Releases.
 
 ---
 
@@ -75,7 +75,7 @@ As of `v0.2.0`, FlowDelivery ships a validated read-only catalog browsing experi
 ## Backend
 
 - Supabase (integrated)
-- PostgreSQL (integrated — catalog schema with RLS and grants)
+- PostgreSQL (integrated — catalog and persisted checkout schema with RLS and grants)
 - Authentication (implemented)
 - Storage (integrated — public-read `catalog-media` bucket)
 - Realtime (planned)
@@ -215,10 +215,11 @@ FlowDelivery uses a scalable Design System strategy including:
 
 ## Cart & Checkout
 
-- Shopping cart (implemented — session-local, Sprint 9; persistence deferred to Checkout)
-- Address selection (planned)
-- Payment flow (planned)
-- Order summary (planned)
+- Shopping cart (implemented — session-local, Sprint 9)
+- Checkout (implemented — persisted order creation, Sprint 10)
+- Order summary (implemented — subtotal, fixed delivery fee, total)
+- Address selection (demo placeholder; persisted profile addresses planned)
+- Payment flow (static cash-on-delivery demo; gateway integration planned)
 
 ---
 
@@ -379,7 +380,7 @@ flutter run
 ## Phase 3 — Commerce
 
 - [x] Cart (session-local, Sprint 9)
-- [ ] Checkout
+- [x] Checkout (persisted order creation, Sprint 10)
 - [ ] Payments
 - [ ] Orders
 

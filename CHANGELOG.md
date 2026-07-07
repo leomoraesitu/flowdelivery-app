@@ -32,6 +32,8 @@ The project follows Semantic Versioning and Conventional Commits.
   `AppLocalizations` accessors.
 - Focused checkout datasource, repository, ViewModel, widget, cart CTA,
   router, localization, theme, and Trello guard coverage.
+- Android release APK artifact for `v0.4.0`, with SHA-1 and SHA-256 checksum
+  assets attached to the GitHub Release.
 
 ### Changed
 
