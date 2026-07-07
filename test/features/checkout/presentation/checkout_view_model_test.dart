@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flowdelivery_app/features/cart/presentation/providers/cart_providers.dart';
 import 'package:flowdelivery_app/features/checkout/domain/entities/order_draft.dart';
+import 'package:flowdelivery_app/features/checkout/domain/entities/payment_summary.dart';
 import 'package:flowdelivery_app/features/checkout/domain/entities/placed_order.dart';
 import 'package:flowdelivery_app/features/checkout/domain/failures/order_placement_failure.dart';
 import 'package:flowdelivery_app/features/checkout/domain/repositories/order_repository.dart';
@@ -111,6 +112,7 @@ void main() {
         final draft = repository.receivedDrafts.single;
         expect(draft.restaurantId, _burger.restaurantId);
         expect(draft.deliveryAddress, 'Rua Demo, 123');
+        expect(draft.paymentMethod, PaymentMethod.cashOnDelivery);
         expect(
           draft.deliveryFeeInCents,
           OrderDraft.standardDeliveryFeeInCents,

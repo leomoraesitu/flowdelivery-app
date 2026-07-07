@@ -31,7 +31,11 @@ pending-on-delivery default.
   (added payment status/method keys in pt_BR/pt/en, removed obsolete
   `cartCheckoutPlaceholder`, regenerated localizations, and localization
   guards green: ARB parity, generated freshness, no hardcoded UI strings).
-- [ ] Task 5 — ViewModel + checkout UI payment state.
+- [x] Task 5 — ViewModel + checkout UI payment state
+  (ViewModel now sends `PaymentMethod.cashOnDelivery` explicitly; checkout
+  payment section renders localized method description; success state renders
+  localized payment status; focused presentation tests + localization/theme
+  guard tests green).
 - [ ] Task 6 — full validation and regression matrix.
 - [ ] Task 7 — docs/memory/technical-debt/Trello reconciliation.
 
