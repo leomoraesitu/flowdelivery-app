@@ -6,6 +6,8 @@ The project follows Semantic Versioning and Conventional Commits.
 
 ## [Unreleased]
 
+No unreleased changes yet.
+
 ## [0.4.0] - 2026-07-07
 
 ### Added
