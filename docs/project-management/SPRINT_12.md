@@ -76,7 +76,7 @@ from newest to oldest.
 
 - [x] Task 1 - domain: order history entity, status, repository contract.
 - [x] Task 2 - data: DTO, Supabase datasource, repository implementation.
-- [ ] Task 3 - providers and app composition.
+- [x] Task 3 - providers and app composition.
 - [ ] Task 4 - ARB copy for order history.
 - [ ] Task 5 - UI: OrdersPage states and order card.
 - [ ] Task 6 - routing: protected `/orders` + Home bottom-nav wiring.
@@ -200,6 +200,13 @@ deferred to future approved slices.
   Scope Task 2 is complete, Validation datasource tests are complete,
   Validation Supabase MCP read check is complete, and an evidence comment was
   added. Verified card parity: Scope `2/8`, Validation `3/7`, overall `5/41`.
+- 2026-07-08 Task 3 local evidence: focused provider tests passed
+  (`flutter test test/features/orders/presentation/order_history_providers_test.dart`);
+  touched-file `dart analyze` reported no issues; the focused orders
+  domain/data/provider slice passed 19 tests. Real Trello reconciliation was
+  completed: Scope Task 3 is complete, Validation provider tests are complete,
+  and an evidence comment was added. Verified card parity: Scope `3/8`,
+  Validation `4/7`, overall `7/41`.
 
 ## Notes
 

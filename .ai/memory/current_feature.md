@@ -20,6 +20,11 @@ embedded order-history payload, resolves restaurant media through the shared
 public-media resolver, maps remote failures/status drift to neutral domain
 failures, and focused data validation is green.
 
+Task 3 is complete in the local worktree: `orderHistoryProvider` exposes the
+read through a `FutureProvider`, `orderHistoryRepositoryProvider` follows the
+unconfigured `StateError` presentation contract, and `app_providers.dart` wires
+the real Supabase datasource/repository through the app composition root.
+
 ## Sprint 12 Progress
 
 - [x] Task 1 — domain: order history entity, status, repository contract
@@ -28,7 +33,10 @@ failures, and focused data validation is green.
   (focused data tests + touched-file analysis green; Supabase read-only
   schema/RLS/embed-shape check green; real Trello parity updated to Scope
   `2/8`, Validation `3/7`, overall `5/41`).
-- [ ] Task 3 — providers and app composition.
+- [x] Task 3 — providers and app composition
+  (focused provider tests + touched-file analysis green; orders domain/data/
+  presentation provider slice green with 19 tests; real Trello parity updated
+  to Scope `3/8`, Validation `4/7`, overall `7/41`).
 - [ ] Task 4 — ARB copy for order history.
 - [ ] Task 5 — UI: OrdersPage states and order card.
 - [ ] Task 6 — routing: protected `/orders` + Home bottom-nav wiring.
@@ -51,7 +59,9 @@ failures, and focused data validation is green.
 - The Task 2 datasource owns the PostgREST embed shape and converts it to a
   flat DTO row: `restaurants(name, image_asset_path)` becomes restaurant
   metadata, and `order_items(quantity)` is summed into `itemCount`.
-- Localization and Theme Guards are not applicable to Tasks 1-2 because they
+- Task 3 keeps the read slice without a ViewModel: Riverpod owns async loading
+  through `FutureProvider`, while the repository boundary remains injectable.
+- Localization and Theme Guards are not applicable to Tasks 1-3 because they
   add no user-facing copy and no presentation styling.
 
 ## Previous Feature
