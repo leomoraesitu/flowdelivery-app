@@ -225,9 +225,9 @@ FlowDelivery uses a scalable Design System strategy including:
 
 ## Orders
 
-- Order tracking
-- Order history
-- Delivery status timeline
+- Order history (implemented — protected read-only history, Sprint 12)
+- Order tracking (planned)
+- Delivery status timeline (planned)
 
 ---
 
@@ -250,14 +250,13 @@ FlowDelivery uses a scalable Design System strategy including:
 - Cart
 - Checkout
 - Order Tracking
-- Order History
 - User Profile
 
 ---
 
 # 🧪 Quality Assurance
 
-Planned QA strategy includes:
+Current QA strategy includes:
 
 - Unit tests
 - Widget tests
@@ -265,6 +264,8 @@ Planned QA strategy includes:
 - Lint rules
 - Static analysis
 - CI validation pipelines
+- Focused regression matrices for released slices
+- Localization Guard and Theme Guard on presentation slices
 
 ---
 
@@ -382,7 +383,7 @@ flutter run
 - [x] Cart (session-local, Sprint 9)
 - [x] Checkout (persisted order creation, Sprint 10)
 - [x] Payments (cash-on-delivery foundation, Sprint 11)
-- [ ] Orders
+- [x] Orders (protected read-only history, Sprint 12)
 
 ---
 
