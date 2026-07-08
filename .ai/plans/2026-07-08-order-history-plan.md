@@ -265,6 +265,10 @@ composition-root override convention.
 
 **Goal:** Add all user-facing history copy before widgets exist.
 
+**Status:** Complete locally on 2026-07-08. Added the order-history ARB copy in
+pt_BR/pt/en, regenerated `AppLocalizations`, and validated the focused
+localization guard slice.
+
 **Files to update:**
 
 - `lib/l10n/app_pt_BR.arb` (template, with descriptions)
@@ -287,6 +291,13 @@ composition-root override convention.
 
 - `flutter gen-l10n`;
 - ARB catalog parity guard, generated freshness guard, hardcoded copy guard.
+
+**Evidence:**
+
+- `flutter test test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart`
+  passed with 9 tests.
+- `dart analyze lib/l10n/generated/app_localizations.dart lib/l10n/generated/app_localizations_en.dart lib/l10n/generated/app_localizations_pt.dart test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart`
+  reported no issues.
 
 **Skills aplicáveis:** `flutter-setup-localization`, `fd-code-reviewer`.
 

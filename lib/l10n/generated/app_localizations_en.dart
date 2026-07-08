@@ -553,4 +553,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get checkoutSuccessBackToHome => 'Back to Home';
+
+  @override
+  String get ordersPageTitle => 'My orders';
+
+  @override
+  String get ordersStatusPlaced => 'Order placed';
+
+  @override
+  String ordersItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '$count item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ordersTotalLabel => 'Total';
+
+  @override
+  String get ordersEmptyTitle => 'You do not have any orders yet';
+
+  @override
+  String get ordersEmptyMessage =>
+      'When you place an order, it will appear here.';
+
+  @override
+  String get ordersEmptyAction => 'Explore restaurants';
+
+  @override
+  String get ordersErrorTitle => 'Could not load your orders';
+
+  @override
+  String get ordersErrorMessage => 'Try again to refresh your order history.';
+
+  @override
+  String get ordersRetryAction => 'Try again';
+
+  @override
+  String get ordersLoadingSemanticLabel => 'Loading order history';
 }

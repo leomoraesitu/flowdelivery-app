@@ -77,7 +77,7 @@ from newest to oldest.
 - [x] Task 1 - domain: order history entity, status, repository contract.
 - [x] Task 2 - data: DTO, Supabase datasource, repository implementation.
 - [x] Task 3 - providers and app composition.
-- [ ] Task 4 - ARB copy for order history.
+- [x] Task 4 - ARB copy for order history.
 - [ ] Task 5 - UI: OrdersPage states and order card.
 - [ ] Task 6 - routing: protected `/orders` + Home bottom-nav wiring.
 - [ ] Task 7 - full validation and regression matrix.
@@ -207,6 +207,17 @@ deferred to future approved slices.
   completed: Scope Task 3 is complete, Validation provider tests are complete,
   and an evidence comment was added. Verified card parity: Scope `3/8`,
   Validation `4/7`, overall `7/41`.
+- 2026-07-08 Task 4 evidence: order-history copy was added to
+  `app_pt_BR.arb`, `app_pt.arb`, and `app_en.arb`; `flutter gen-l10n`
+  refreshed `AppLocalizations`; focused localization guards passed
+  (`flutter test test/app/l10n/arb_catalog_parity_test.dart
+  test/app/l10n/generated_localizations_freshness_test.dart
+  test/app/l10n/no_hardcoded_ui_strings_test.dart`) with 9 tests; focused
+  l10n `dart analyze` reported no issues. Real Trello reconciliation was
+  completed: Scope Task 4 is complete; Localization Guard evidence-backed
+  items are complete except UI consumption through `AppLocalizations`, which
+  remains open until Task 5 renders `OrdersPage`. Verified card parity: Scope
+  `4/8`, Validation `4/7`, Localization Guard `5/6`, overall `13/41`.
 
 ## Notes
 

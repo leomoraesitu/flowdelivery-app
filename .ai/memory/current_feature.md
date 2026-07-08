@@ -25,6 +25,13 @@ read through a `FutureProvider`, `orderHistoryRepositoryProvider` follows the
 unconfigured `StateError` presentation contract, and `app_providers.dart` wires
 the real Supabase datasource/repository through the app composition root.
 
+Task 4 is complete in the local worktree: order-history copy now lives in the
+pt_BR template ARB plus pt/en catalogs, `AppLocalizations` was regenerated, and
+focused localization guards are green. Real Trello parity was updated after
+evidence: Scope `4/8`, Validation `4/7`, Localization Guard `5/6`, overall
+`13/41`; the UI consumption checklist item intentionally remains open until
+Task 5 renders `OrdersPage`.
+
 ## Sprint 12 Progress
 
 - [x] Task 1 — domain: order history entity, status, repository contract
@@ -37,7 +44,11 @@ the real Supabase datasource/repository through the app composition root.
   (focused provider tests + touched-file analysis green; orders domain/data/
   presentation provider slice green with 19 tests; real Trello parity updated
   to Scope `3/8`, Validation `4/7`, overall `7/41`).
-- [ ] Task 4 — ARB copy for order history.
+- [x] Task 4 — ARB copy for order history
+  (`flutter gen-l10n` refreshed generated accessors; l10n parity,
+  generated-freshness, hardcoded-copy guards green with 9 tests; focused l10n
+  analyze green; real Trello parity updated to Scope `4/8`, Localization
+  Guard `5/6`, overall `13/41`).
 - [ ] Task 5 — UI: OrdersPage states and order card.
 - [ ] Task 6 — routing: protected `/orders` + Home bottom-nav wiring.
 - [ ] Task 7 — full validation and regression matrix.
@@ -61,8 +72,12 @@ the real Supabase datasource/repository through the app composition root.
   metadata, and `order_items(quantity)` is summed into `itemCount`.
 - Task 3 keeps the read slice without a ViewModel: Riverpod owns async loading
   through `FutureProvider`, while the repository boundary remains injectable.
-- Localization and Theme Guards are not applicable to Tasks 1-3 because they
-  add no user-facing copy and no presentation styling.
+- Task 4 establishes the localized copy contract before UI: page title,
+  honest `placed` status, ICU item-count plural, total label, loading
+  semantics, and empty/error/retry actions are available through
+  `AppLocalizations`.
+- Localization Guard is applicable from Task 4 onward; Theme Guard remains not
+  applicable to Task 4 because no UI styling was introduced.
 
 ## Previous Feature
 

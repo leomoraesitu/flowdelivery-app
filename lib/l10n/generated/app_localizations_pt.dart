@@ -557,6 +557,49 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get checkoutSuccessBackToHome => 'Voltar para o inicio';
+
+  @override
+  String get ordersPageTitle => 'Meus pedidos';
+
+  @override
+  String get ordersStatusPlaced => 'Pedido realizado';
+
+  @override
+  String ordersItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count itens',
+      one: '$count item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ordersTotalLabel => 'Total';
+
+  @override
+  String get ordersEmptyTitle => 'Voce ainda nao tem pedidos';
+
+  @override
+  String get ordersEmptyMessage =>
+      'Quando voce finalizar um pedido, ele aparecera aqui.';
+
+  @override
+  String get ordersEmptyAction => 'Explorar restaurantes';
+
+  @override
+  String get ordersErrorTitle => 'Nao foi possivel carregar seus pedidos';
+
+  @override
+  String get ordersErrorMessage =>
+      'Tente novamente para atualizar seu historico de pedidos.';
+
+  @override
+  String get ordersRetryAction => 'Tentar novamente';
+
+  @override
+  String get ordersLoadingSemanticLabel => 'Carregando historico de pedidos';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -1112,4 +1155,47 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get checkoutSuccessBackToHome => 'Voltar para o inicio';
+
+  @override
+  String get ordersPageTitle => 'Meus pedidos';
+
+  @override
+  String get ordersStatusPlaced => 'Pedido realizado';
+
+  @override
+  String ordersItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count itens',
+      one: '$count item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ordersTotalLabel => 'Total';
+
+  @override
+  String get ordersEmptyTitle => 'Voce ainda nao tem pedidos';
+
+  @override
+  String get ordersEmptyMessage =>
+      'Quando voce finalizar um pedido, ele aparecera aqui.';
+
+  @override
+  String get ordersEmptyAction => 'Explorar restaurantes';
+
+  @override
+  String get ordersErrorTitle => 'Nao foi possivel carregar seus pedidos';
+
+  @override
+  String get ordersErrorMessage =>
+      'Tente novamente para atualizar seu historico de pedidos.';
+
+  @override
+  String get ordersRetryAction => 'Tentar novamente';
+
+  @override
+  String get ordersLoadingSemanticLabel => 'Carregando historico de pedidos';
 }
