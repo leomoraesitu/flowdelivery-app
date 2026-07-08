@@ -12,7 +12,7 @@ Portfolio-grade Flutter food delivery application built with MVVM architecture, 
 
 **▶️ https://leomoraesitu.github.io/flowdelivery-app/**
 
-The Flutter web build is deployed to GitHub Pages and serves the `v0.4.0` release line: sign in, browse the Home feed, restaurant details, product details, build a session-local cart, and confirm a persisted checkout order backed by Supabase. Sprint 11 Payments Foundation is complete in the codebase and documentation, but it has not been published as a public release tag. The deploy runs automatically on each version tag (`v*.*.*`).
+The Flutter web build is deployed to GitHub Pages and serves the `v0.5.0` release line: sign in, browse the Home feed, restaurant details, product details, build a session-local cart, and confirm a persisted checkout order backed by Supabase — now with a persisted payment record created atomically with each order and localized payment method/status in the checkout (Sprint 11 Payments Foundation). The deploy runs automatically on each version tag (`v*.*.*`).
 
 > Sign-in/recovery require the Supabase Auth URL allow-list to include the Pages origin. An Android APK is also published with every release under [Releases](https://github.com/leomoraesitu/flowdelivery-app/releases).
 
