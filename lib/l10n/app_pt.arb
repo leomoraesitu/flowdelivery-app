@@ -155,5 +155,16 @@
   "checkoutSuccessTitle": "Pedido confirmado!",
   "checkoutSuccessMessage": "Seu pedido {orderId} foi recebido e ja esta em preparo.",
   "checkoutSuccessPaymentStatus": "Status do pagamento: {paymentStatus}",
-  "checkoutSuccessBackToHome": "Voltar para o inicio"
+  "checkoutSuccessBackToHome": "Voltar para o inicio",
+  "ordersPageTitle": "Meus pedidos",
+  "ordersStatusPlaced": "Pedido realizado",
+  "ordersItemCount": "{count, plural, one{{count} item} other{{count} itens}}",
+  "ordersTotalLabel": "Total",
+  "ordersEmptyTitle": "Voce ainda nao tem pedidos",
+  "ordersEmptyMessage": "Quando voce finalizar um pedido, ele aparecera aqui.",
+  "ordersEmptyAction": "Explorar restaurantes",
+  "ordersErrorTitle": "Nao foi possivel carregar seus pedidos",
+  "ordersErrorMessage": "Tente novamente para atualizar seu historico de pedidos.",
+  "ordersRetryAction": "Tentar novamente",
+  "ordersLoadingSemanticLabel": "Carregando historico de pedidos"
 }

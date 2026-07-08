@@ -17,6 +17,11 @@ import 'package:flowdelivery_app/features/home/data/repositories/home_repository
 import 'package:flowdelivery_app/features/home/domain/repositories/home_repository.dart';
 import 'package:flowdelivery_app/features/home/presentation/providers/home_feed_providers.dart'
     as home_presentation;
+import 'package:flowdelivery_app/features/orders/data/datasources/order_history_remote_datasource.dart';
+import 'package:flowdelivery_app/features/orders/data/repositories/order_history_repository_impl.dart';
+import 'package:flowdelivery_app/features/orders/domain/repositories/order_history_repository.dart';
+import 'package:flowdelivery_app/features/orders/presentation/providers/order_history_providers.dart'
+    as order_history_presentation;
 import 'package:flowdelivery_app/features/product_details/data/datasources/product_details_remote_datasource.dart';
 import 'package:flowdelivery_app/features/product_details/data/repositories/product_details_repository_impl.dart';
 import 'package:flowdelivery_app/features/product_details/domain/repositories/product_details_repository.dart';
@@ -106,9 +111,7 @@ final appProductDetailsRepositoryProvider = Provider<ProductDetailsRepository>((
   );
 });
 
-final appOrderRemoteDatasourceProvider = Provider<OrderRemoteDatasource>((
-  ref,
-) {
+final appOrderRemoteDatasourceProvider = Provider<OrderRemoteDatasource>((ref) {
   return SupabaseOrderRemoteDatasource(
     client: ref.watch(supabaseClientProvider),
   );
@@ -117,6 +120,22 @@ final appOrderRemoteDatasourceProvider = Provider<OrderRemoteDatasource>((
 final appOrderRepositoryProvider = Provider<OrderRepository>((ref) {
   return OrderRepositoryImpl(
     datasource: ref.watch(appOrderRemoteDatasourceProvider),
+  );
+});
+
+final appOrderHistoryRemoteDatasourceProvider =
+    Provider<OrderHistoryRemoteDatasource>((ref) {
+      return SupabaseOrderHistoryRemoteDatasource(
+        client: ref.watch(supabaseClientProvider),
+        mediaUrlResolver: ref.watch(appPublicMediaUrlResolverProvider),
+      );
+    });
+
+final appOrderHistoryRepositoryProvider = Provider<OrderHistoryRepository>((
+  ref,
+) {
+  return OrderHistoryRepositoryImpl(
+    datasource: ref.watch(appOrderHistoryRemoteDatasourceProvider),
   );
 });
 
@@ -138,5 +157,8 @@ final appProviderOverrides = [
   }),
   checkout_presentation.orderRepositoryProvider.overrideWith((ref) {
     return ref.watch(appOrderRepositoryProvider);
+  }),
+  order_history_presentation.orderHistoryRepositoryProvider.overrideWith((ref) {
+    return ref.watch(appOrderHistoryRepositoryProvider);
   }),
 ];

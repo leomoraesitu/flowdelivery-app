@@ -5,6 +5,7 @@ abstract final class AppRoutes {
   static const String productDetailsName = 'product-details';
   static const String cartName = 'cart';
   static const String checkoutName = 'checkout';
+  static const String ordersName = 'orders';
   static const String signInName = 'sign-in';
   static const String signUpName = 'sign-up';
   static const String forgotPasswordName = 'forgot-password';
@@ -18,6 +19,7 @@ abstract final class AppRoutes {
       '/restaurants/:restaurantId/products/:productId';
   static const String cartPath = '/cart';
   static const String checkoutPath = '/checkout';
+  static const String ordersPath = '/orders';
   static const String signInPath = '/sign-in';
   static const String signUpPath = '/sign-up';
   static const String forgotPasswordPath = '/forgot-password';

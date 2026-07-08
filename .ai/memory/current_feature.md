@@ -2,9 +2,145 @@
 
 ## Active Feature
 
-Payments Foundation (Sprint 11 — Closed)
+Order History (Sprint 12 — In Progress)
 
 ## Active Status
+
+Sprint 12 started on 2026-07-08. The slice adds a read-only order history for
+authenticated users, proving the checkout write path can be read back through
+RLS-scoped transactional data without leaking Supabase details into UI.
+
+Task 1 is complete and pushed in commit `eb913cc`: `OrderHistoryEntry` and
+`OrderHistoryStatus` model a read-only history row in pure Dart,
+`OrderHistoryRepository` exposes `loadOrderHistory()` with empty-list success
+semantics, and focused domain validation is green.
+
+Task 2 is complete in the local worktree: the orders data layer now parses the
+embedded order-history payload, resolves restaurant media through the shared
+public-media resolver, maps remote failures/status drift to neutral domain
+failures, and focused data validation is green.
+
+Task 3 is complete in the local worktree: `orderHistoryProvider` exposes the
+read through a `FutureProvider`, `orderHistoryRepositoryProvider` follows the
+unconfigured `StateError` presentation contract, and `app_providers.dart` wires
+the real Supabase datasource/repository through the app composition root.
+
+Task 4 is complete in the local worktree: order-history copy now lives in the
+pt_BR template ARB plus pt/en catalogs, `AppLocalizations` was regenerated, and
+focused localization guards are green. Real Trello parity was updated after
+evidence: Scope `4/8`, Validation `4/7`, Localization Guard `5/6`, overall
+`13/41`; the UI consumption checklist item intentionally remains open until
+Task 5 renders `OrdersPage`.
+
+Task 5 is complete in the local worktree: `OrdersPage` renders localized
+loading/error/empty/success states, delegates the read to `orderHistoryProvider`,
+keeps sections/cards presentation-only, renders restaurant media through
+`AppMediaImage`, formats totals with `formatPriceInCents`, formats dates through
+`MaterialLocalizations`, and focused widget/guard validation is green. Real
+Trello reconciliation was completed after evidence: Scope `5/8`, Acceptance
+Criteria `5/9`, Validation `5/7`, Localization Guard `6/6`, Theme Guard `5/5`,
+overall `26/41`; routing, bottom-nav, authenticated `/orders`, and the
+consolidated matrix remain open for later tasks.
+
+Task 6 is complete in the local worktree: `/orders` is registered as a
+protected centralized GoRouter route, Home receives an injected `onOpenOrders`
+callback for the "Pedidos" bottom-nav destination, Browse/Account remain
+deferred no-ops, and focused router/Home validation is green. Real Trello
+reconciliation was completed after evidence: Scope `6/8`, Acceptance Criteria
+`7/9`, Validation `6/7`, Localization Guard `6/6`, Theme Guard `5/5`, overall
+`30/41`; consolidated matrix and final docs/technical-debt closure remain open
+for later tasks.
+
+Task 7 is complete in the local worktree: the focused regression matrix passed
+for orders, Home, router, cart, checkout, l10n, and theme guards, and the
+targeted `dart analyze` slice reported no issues. No new copy or UI styling was
+introduced in this step; it only validated the existing implementation and
+kept the remaining docs/Trello reconciliation for Task 8.
+
+Task 8 is complete in the local worktree: `docs/project-management/SPRINT_12.md`
+and the feature memory were reconciled, technical debt notes were updated, and
+the real Trello card was finalized with all evidence-backed checklists
+completed. The order history sprint is now closed locally and on Trello.
+
+## Sprint 12 Progress
+
+- [x] Task 1 — domain: order history entity, status, repository contract
+  (focused domain test + touched-file analysis green).
+- [x] Task 2 — data: DTO, Supabase datasource, repository implementation
+  (focused data tests + touched-file analysis green; Supabase read-only
+  schema/RLS/embed-shape check green; real Trello parity updated to Scope
+  `2/8`, Validation `3/7`, overall `5/41`).
+- [x] Task 3 — providers and app composition
+  (focused provider tests + touched-file analysis green; orders domain/data/
+  presentation provider slice green with 19 tests; real Trello parity updated
+  to Scope `3/8`, Validation `4/7`, overall `7/41`).
+- [x] Task 4 — ARB copy for order history
+  (`flutter gen-l10n` refreshed generated accessors; l10n parity,
+  generated-freshness, hardcoded-copy guards green with 9 tests; focused l10n
+  analyze green; real Trello parity updated to Scope `4/8`, Localization
+  Guard `5/6`, overall `13/41`).
+- [x] Task 5 — UI: OrdersPage states and order card
+  (focused widget tests green with 5 tests; touched-file analysis green;
+  Localization Guard + Theme Guard green with 10 tests; real Trello parity
+  updated to Scope `5/8`, Acceptance Criteria `5/9`, Validation `5/7`,
+  Localization Guard `6/6`, Theme Guard `5/5`, overall `26/41`).
+- [x] Task 6 — routing: protected `/orders` + Home bottom-nav wiring
+  (focused router tests green with 17 tests; Home widget tests green with
+  11 tests; touched-file analysis green; no new copy/styling introduced; real
+  Trello parity updated to Scope `6/8`, Acceptance Criteria `7/9`,
+  Validation `6/7`, overall `30/41`).
+- [x] Task 7 — full validation and regression matrix
+  (focused regression matrix green with 28 tests; targeted analyzer green; no
+  new copy/styling introduced; Task 8 remains open for docs/memory/Trello
+  reconciliation).
+- [x] Task 8 — docs, memory, technical debt, and Trello reconciliation
+  (Sprint 12 docs/memory/technical debt reconciled; real Trello card finalized
+  and moved to `🎉 Done`).
+
+## Architecture Notes (Sprint 12)
+
+- Read path mirrors the validated read-only pattern:
+  `OrdersPage` → `orderHistoryProvider` → `OrderHistoryRepository` →
+  datasource → Supabase.
+- No ViewModel for the initial listing slice: the page performs a single
+  read with no user actions, following the ADR-003 precedent from product
+  details.
+- Empty history is success (`[]`), not an exception.
+- The current domain status is intentionally honest: `placed` only. Tabs,
+  tracking, cancellation, reorder, and order details remain out of scope.
+- Supabase, embedded PostgREST payloads, and public media URL resolution
+  belong to the future data layer, not the entity or UI.
+- The Task 2 datasource owns the PostgREST embed shape and converts it to a
+  flat DTO row: `restaurants(name, image_asset_path)` becomes restaurant
+  metadata, and `order_items(quantity)` is summed into `itemCount`.
+- Task 3 keeps the read slice without a ViewModel: Riverpod owns async loading
+  through `FutureProvider`, while the repository boundary remains injectable.
+- Task 4 establishes the localized copy contract before UI: page title,
+  honest `placed` status, ICU item-count plural, total label, loading
+  semantics, and empty/error/retry actions are available through
+  `AppLocalizations`.
+- Localization Guard is applicable from Task 4 onward; Theme Guard remains not
+  applicable to Task 4 because no UI styling was introduced.
+- Task 5 keeps only `OrdersPage` as a Riverpod-aware widget; loading, error,
+  empty, list, and card sections are pure presentation widgets. The retry
+  action invalidates the read provider, which is safe for this read-only path.
+- Task 5 UI uses semantic Material theme roles and app tokens only; no direct
+  Supabase, repository calls, hardcoded user copy, or hardcoded visual values
+  were introduced in presentation.
+- Task 6 follows the existing router-injected callback convention:
+  centralized GoRouter owns `/orders`, while Home only invokes `onOpenOrders`
+  from the "Pedidos" destination and remains route-string agnostic.
+- Task 7 is validation-only: it does not change architecture or UI; it proves
+  the read slice remains stable across orders, Home, router, cart, checkout,
+  localization, and theme guards.
+- Task 8 is governance-only: it closes the sprint records and Trello parity
+  after the implementation evidence already validated the slice.
+
+## Previous Feature
+
+Payments Foundation (Sprint 11 — Closed)
+
+## Sprint 11 Status
 
 Sprint 11 closed on 2026-07-07. The slice delivered persisted payment
 foundation for checkout: `payments` table + atomic `create_order` payment

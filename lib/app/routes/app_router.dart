@@ -8,6 +8,7 @@ import 'package:flowdelivery_app/features/auth/presentation/state/auth_state.dar
 import 'package:flowdelivery_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flowdelivery_app/features/checkout/presentation/pages/checkout_page.dart';
 import 'package:flowdelivery_app/features/home/presentation/pages/home_page.dart';
+import 'package:flowdelivery_app/features/orders/presentation/pages/orders_page.dart';
 import 'package:flowdelivery_app/features/product_details/presentation/pages/product_details_page.dart';
 import 'package:flowdelivery_app/features/restaurant_details/presentation/pages/restaurant_details_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,6 +36,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               pathParameters: {'restaurantId': restaurantId},
             );
           },
+          onOpenOrders: () => context.pushNamed(AppRoutes.ordersName),
         ),
       ),
       GoRoute(
@@ -81,6 +83,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         ),
       ),
       GoRoute(
+        path: AppRoutes.ordersPath,
+        name: AppRoutes.ordersName,
+        builder: (context, state) => OrdersPage(
+          onExploreRestaurants: () => context.goNamed(AppRoutes.homeName),
+        ),
+      ),
+      GoRoute(
         path: AppRoutes.signInPath,
         name: AppRoutes.signInName,
         builder: (context, state) => const SignInPage(),
@@ -113,6 +122,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           currentPath == AppRoutes.homePath ||
           currentPath == AppRoutes.cartPath ||
           currentPath == AppRoutes.checkoutPath ||
+          currentPath == AppRoutes.ordersPath ||
           currentPath.startsWith('${AppRoutes.restaurantDetailsBasePath}/');
 
       if (authStatus == AuthStatus.loading) {

@@ -19,7 +19,7 @@ final _homePageTestTheme = AppTheme.light.copyWith(
   splashFactory: NoSplash.splashFactory,
 );
 
-Widget _buildTestApp({List overrides = const []}) {
+Widget _buildTestApp({List overrides = const [], VoidCallback? onOpenOrders}) {
   return ProviderScope(
     overrides: overrides.cast(),
     child: MaterialApp(
@@ -32,7 +32,7 @@ Widget _buildTestApp({List overrides = const []}) {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const HomePage(),
+      home: HomePage(onOpenOrders: onOpenOrders),
     ),
   );
 }
@@ -343,7 +343,30 @@ void main() {
       expect(callCount, greaterThan(callCountBeforeRetry));
     });
 
-    testWidgets('keeps deferred bottom navigation items non-functional', (
+    testWidgets('opens orders from the bottom navigation orders tab', (
+      tester,
+    ) async {
+      var openOrdersCount = 0;
+
+      await tester.pumpWidget(
+        _buildTestApp(onOpenOrders: () => openOrdersCount++),
+      );
+      await tester.pumpAndSettle();
+
+      final context = tester.element(find.byType(HomePage));
+      final l10n = AppLocalizations.of(context);
+
+      await tester.tap(find.text(l10n.homeBottomNavOrders));
+      await tester.pumpAndSettle();
+
+      final navigationBar = tester.widget<NavigationBar>(
+        find.byType(NavigationBar),
+      );
+      expect(navigationBar.selectedIndex, 0);
+      expect(openOrdersCount, 1);
+    });
+
+    testWidgets('keeps deferred browse and account navigation items idle', (
       tester,
     ) async {
       await tester.pumpWidget(_buildTestApp());
@@ -363,12 +386,6 @@ void main() {
         find.text(homeFeedFixtureContent.featuredRestaurants.first.name),
         findsOneWidget,
       );
-
-      await tester.tap(find.text(l10n.homeBottomNavOrders));
-      await tester.pumpAndSettle();
-
-      navigationBar = tester.widget<NavigationBar>(find.byType(NavigationBar));
-      expect(navigationBar.selectedIndex, 0);
 
       await tester.tap(find.text(l10n.homeBottomNavAccount));
       await tester.pumpAndSettle();
