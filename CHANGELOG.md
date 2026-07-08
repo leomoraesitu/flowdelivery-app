@@ -8,6 +8,58 @@ The project follows Semantic Versioning and Conventional Commits.
 
 No unreleased changes yet.
 
+## [0.5.0] - 2026-07-08
+
+### Added
+
+- Persisted payments foundation (Sprint 11): confirmed orders now create a
+  payment record atomically with the order and its items.
+- Supabase `payments` table with explicit grants, RLS scoped to the order
+  owner through `auth.uid()`, and named constraints.
+- Atomic `create_order` evolution: the SECURITY INVOKER function now inserts
+  the payment row in the same transaction as `orders`/`order_items`.
+- Pure-Dart payment domain types wired into the checkout contracts:
+  `PaymentMethod`, `PaymentStatus`, and `PaymentSummary`; `OrderDraft`
+  carries the payment method and `PlacedOrder` exposes a payment summary
+  with a pending-on-delivery default.
+- Checkout data layer payment mapping: the payment method is forwarded to
+  the RPC payload, the payment summary is mapped from the remote response,
+  and invalid remote payment values map to a neutral domain failure.
+- Localized payment method and status copy across pt_BR, pt, and en, plus
+  regenerated `AppLocalizations` accessors.
+- Checkout UI payment state: the payment section renders the localized
+  method description and the success state renders the localized payment
+  status.
+- Focused payment regression coverage (72 tests) inside the consolidated
+  206-test matrix, with localization, theme, and Trello guards green.
+- Android release APK artifact for `v0.5.0`, with SHA-1 and SHA-256 checksum
+  assets attached to the GitHub Release.
+
+### Changed
+
+- `CheckoutViewModel` now sends `PaymentMethod.cashOnDelivery` explicitly
+  when placing an order instead of relying on server-side defaults.
+- Sprint 11 docs, project memory, and technical debt notes reconciled with
+  the payments foundation milestone.
+
+### Removed
+
+- Obsolete `cartCheckoutPlaceholder` localization key (accepted minor debt
+  from Sprint 10) across all ARB catalogs.
+
+### Known Limitations
+
+- Payment remains a demo cash-on-delivery method; no payment gateway
+  integration, card capture, or payment status transitions yet.
+- `orders.payment_method` remains as transitional duplication while
+  `payments.method` is the new source of truth (accepted Sprint 11 debt).
+- Delivery address is still a localized demo placeholder; persisted profile
+  addresses are deferred.
+- Order history, order tracking, Realtime status updates, dynamic delivery
+  fees, and coupons remain future slices.
+- Cart state remains session-local until a separate persistence slice is
+  approved.
+
 ## [0.4.0] - 2026-07-07
 
 ### Added
