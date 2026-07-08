@@ -32,6 +32,16 @@ evidence: Scope `4/8`, Validation `4/7`, Localization Guard `5/6`, overall
 `13/41`; the UI consumption checklist item intentionally remains open until
 Task 5 renders `OrdersPage`.
 
+Task 5 is complete in the local worktree: `OrdersPage` renders localized
+loading/error/empty/success states, delegates the read to `orderHistoryProvider`,
+keeps sections/cards presentation-only, renders restaurant media through
+`AppMediaImage`, formats totals with `formatPriceInCents`, formats dates through
+`MaterialLocalizations`, and focused widget/guard validation is green. Real
+Trello reconciliation was completed after evidence: Scope `5/8`, Acceptance
+Criteria `5/9`, Validation `5/7`, Localization Guard `6/6`, Theme Guard `5/5`,
+overall `26/41`; routing, bottom-nav, authenticated `/orders`, and the
+consolidated matrix remain open for later tasks.
+
 ## Sprint 12 Progress
 
 - [x] Task 1 — domain: order history entity, status, repository contract
@@ -49,7 +59,11 @@ Task 5 renders `OrdersPage`.
   generated-freshness, hardcoded-copy guards green with 9 tests; focused l10n
   analyze green; real Trello parity updated to Scope `4/8`, Localization
   Guard `5/6`, overall `13/41`).
-- [ ] Task 5 — UI: OrdersPage states and order card.
+- [x] Task 5 — UI: OrdersPage states and order card
+  (focused widget tests green with 5 tests; touched-file analysis green;
+  Localization Guard + Theme Guard green with 10 tests; real Trello parity
+  updated to Scope `5/8`, Acceptance Criteria `5/9`, Validation `5/7`,
+  Localization Guard `6/6`, Theme Guard `5/5`, overall `26/41`).
 - [ ] Task 6 — routing: protected `/orders` + Home bottom-nav wiring.
 - [ ] Task 7 — full validation and regression matrix.
 - [ ] Task 8 — docs, memory, technical debt, and Trello reconciliation.
@@ -78,6 +92,12 @@ Task 5 renders `OrdersPage`.
   `AppLocalizations`.
 - Localization Guard is applicable from Task 4 onward; Theme Guard remains not
   applicable to Task 4 because no UI styling was introduced.
+- Task 5 keeps only `OrdersPage` as a Riverpod-aware widget; loading, error,
+  empty, list, and card sections are pure presentation widgets. The retry
+  action invalidates the read provider, which is safe for this read-only path.
+- Task 5 UI uses semantic Material theme roles and app tokens only; no direct
+  Supabase, repository calls, hardcoded user copy, or hardcoded visual values
+  were introduced in presentation.
 
 ## Previous Feature
 

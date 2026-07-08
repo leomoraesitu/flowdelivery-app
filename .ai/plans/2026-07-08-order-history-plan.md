@@ -307,6 +307,11 @@ localization guard slice.
 
 **Goal:** Render the honest history list per the approved prototype subset.
 
+**Status:** Complete locally on 2026-07-08. `OrdersPage` renders the four
+async states and order cards using localized copy, semantic theme roles, app
+tokens, shared media rendering, localized date formatting, and shared currency
+formatting.
+
 **Files to create:**
 
 - `lib/features/orders/presentation/pages/orders_page.dart`
@@ -327,6 +332,15 @@ localization guard slice.
 
 - widget tests for the four states + card content rendering;
 - Localization Guard and Theme Guard suites green.
+
+**Evidence:**
+
+- `flutter test test/features/orders/presentation/orders_page_test.dart`
+  passed with 5 tests.
+- `dart analyze lib/features/orders/presentation/pages/orders_page.dart lib/features/orders/presentation/widgets/order_history_sections.dart test/features/orders/presentation/orders_page_test.dart`
+  reported no issues.
+- `flutter test test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`
+  passed with 10 tests.
 
 **Skills aplicáveis:** `fd-flutter-teacher`, `flutter-add-widget-test`,
 `flutter-build-responsive-layout`.

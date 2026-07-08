@@ -78,7 +78,7 @@ from newest to oldest.
 - [x] Task 2 - data: DTO, Supabase datasource, repository implementation.
 - [x] Task 3 - providers and app composition.
 - [x] Task 4 - ARB copy for order history.
-- [ ] Task 5 - UI: OrdersPage states and order card.
+- [x] Task 5 - UI: OrdersPage states and order card.
 - [ ] Task 6 - routing: protected `/orders` + Home bottom-nav wiring.
 - [ ] Task 7 - full validation and regression matrix.
 - [ ] Task 8 - docs, memory, technical debt, and Trello reconciliation.
@@ -218,6 +218,25 @@ deferred to future approved slices.
   items are complete except UI consumption through `AppLocalizations`, which
   remains open until Task 5 renders `OrdersPage`. Verified card parity: Scope
   `4/8`, Validation `4/7`, Localization Guard `5/6`, overall `13/41`.
+- 2026-07-08 Task 5 local evidence: `OrdersPage` renders localized loading,
+  error, empty, and success states from `orderHistoryProvider`; order cards use
+  `AppMediaImage`, `MaterialLocalizations` for dates, `ordersItemCount` ICU
+  plural copy, `formatPriceInCents`, and the honest localized `placed` status
+  chip. Focused widget tests passed
+  (`flutter test test/features/orders/presentation/orders_page_test.dart`) with
+  5 tests; touched-file `dart analyze` reported no issues; Localization Guard
+  and Theme Guard passed
+  (`flutter test test/app/l10n/no_hardcoded_ui_strings_test.dart
+  test/app/l10n/arb_catalog_parity_test.dart
+  test/app/l10n/generated_localizations_freshness_test.dart
+  test/app/theme/no_hardcoded_visual_values_test.dart`) with 10 tests. Real
+  Trello reconciliation was completed: Scope Task 5 is complete, OrdersPage
+  widget validation is complete, Localization Guard and Theme Guard are fully
+  complete, and evidence-backed acceptance criteria for query shape,
+  empty/unknown-status behavior, no migration/write behavior, card content,
+  and Supabase/UI isolation are complete. Verified card parity: Scope `5/8`,
+  Acceptance Criteria `5/9`, Validation `5/7`, Localization Guard `6/6`,
+  Theme Guard `5/5`, overall `26/41`.
 
 ## Notes
 
