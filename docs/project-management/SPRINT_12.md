@@ -75,7 +75,7 @@ from newest to oldest.
 ## Backlog
 
 - [x] Task 1 - domain: order history entity, status, repository contract.
-- [ ] Task 2 - data: DTO, Supabase datasource, repository implementation.
+- [x] Task 2 - data: DTO, Supabase datasource, repository implementation.
 - [ ] Task 3 - providers and app composition.
 - [ ] Task 4 - ARB copy for order history.
 - [ ] Task 5 - UI: OrdersPage states and order card.
@@ -190,6 +190,16 @@ deferred to future approved slices.
   "Domain entity equality/defaults tests pass and touched domain files analyze
   clean" is complete, and an evidence comment was added. Verified card parity:
   Scope `1/8`, Validation `1/7`, overall `2/41`.
+- 2026-07-08 Task 2 local evidence: focused data tests passed
+  (`flutter test test/features/orders/data/order_history_remote_datasource_test.dart
+  test/features/orders/data/order_history_repository_impl_test.dart`) and
+  touched-file `dart analyze` reported no issues. Supabase MCP read-only check
+  confirmed `orders -> restaurants` and `order_items -> orders` FK support,
+  authenticated SELECT RLS policies for `orders`/`order_items`, and the
+  representative join/embed shape. Real Trello reconciliation was completed:
+  Scope Task 2 is complete, Validation datasource tests are complete,
+  Validation Supabase MCP read check is complete, and an evidence comment was
+  added. Verified card parity: Scope `2/8`, Validation `3/7`, overall `5/41`.
 
 ## Notes
 

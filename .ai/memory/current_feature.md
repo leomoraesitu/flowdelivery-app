@@ -10,16 +10,24 @@ Sprint 12 started on 2026-07-08. The slice adds a read-only order history for
 authenticated users, proving the checkout write path can be read back through
 RLS-scoped transactional data without leaking Supabase details into UI.
 
-Task 1 is complete in the local worktree: `OrderHistoryEntry` and
-`OrderHistoryStatus` now model a read-only history row in pure Dart,
+Task 1 is complete and pushed in commit `eb913cc`: `OrderHistoryEntry` and
+`OrderHistoryStatus` model a read-only history row in pure Dart,
 `OrderHistoryRepository` exposes `loadOrderHistory()` with empty-list success
 semantics, and focused domain validation is green.
+
+Task 2 is complete in the local worktree: the orders data layer now parses the
+embedded order-history payload, resolves restaurant media through the shared
+public-media resolver, maps remote failures/status drift to neutral domain
+failures, and focused data validation is green.
 
 ## Sprint 12 Progress
 
 - [x] Task 1 — domain: order history entity, status, repository contract
   (focused domain test + touched-file analysis green).
-- [ ] Task 2 — data: DTO, Supabase datasource, repository implementation.
+- [x] Task 2 — data: DTO, Supabase datasource, repository implementation
+  (focused data tests + touched-file analysis green; Supabase read-only
+  schema/RLS/embed-shape check green; real Trello parity updated to Scope
+  `2/8`, Validation `3/7`, overall `5/41`).
 - [ ] Task 3 — providers and app composition.
 - [ ] Task 4 — ARB copy for order history.
 - [ ] Task 5 — UI: OrdersPage states and order card.
@@ -40,8 +48,11 @@ semantics, and focused domain validation is green.
   tracking, cancellation, reorder, and order details remain out of scope.
 - Supabase, embedded PostgREST payloads, and public media URL resolution
   belong to the future data layer, not the entity or UI.
-- Localization and Theme Guards are not applicable to Task 1 because it adds
-  no user-facing copy and no presentation styling.
+- The Task 2 datasource owns the PostgREST embed shape and converts it to a
+  flat DTO row: `restaurants(name, image_asset_path)` becomes restaurant
+  metadata, and `order_items(quantity)` is summed into `itemCount`.
+- Localization and Theme Guards are not applicable to Tasks 1-2 because they
+  add no user-facing copy and no presentation styling.
 
 ## Previous Feature
 
