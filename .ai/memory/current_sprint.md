@@ -2,9 +2,74 @@
 
 ## Active Sprint
 
-Sprint 10 - Checkout (Closed)
+Sprint 11 - Payments Foundation (Closed)
 
 ## Active Status
+
+Closed on 2026-07-07. All 7 tasks were implemented, validated, and
+committed task-by-task on `feat/payments-foundation`. The focused
+regression suite passed with 72 tests and the consolidated `flutter test`
+matrix passed with 206 tests. The `payments` foundation migration is
+applied to the remote project, Trello checklist parity is complete on
+`https://trello.com/c/cQDUVgYR`, and the card is in `🎉 Done`. The branch
+was merged through PR #7 (`feat/payments-foundation` -> `develop`) and
+PR #8 (`develop` -> `main`), and the milestone shipped as release
+`v0.5.0` on 2026-07-08.
+
+## Sprint 11 Goal
+
+Persist a payment record atomically with every confirmed order and render
+the payment method and status in the checkout experience, laying the
+foundation for future payment lifecycle work without a gateway.
+
+## Sprint 11 Outcome
+
+- Supabase `payments` table with explicit grants, named constraints, and
+  RLS scoped to the order owner through `auth.uid()`; the atomic
+  `create_order` function evolved to insert the payment row in the same
+  transaction as `orders`/`order_items` (commit `81afca3`).
+- Pure-Dart payment domain types wired into checkout contracts:
+  `PaymentMethod`, `PaymentStatus`, `PaymentSummary`; `OrderDraft` carries
+  the payment method and `PlacedOrder` exposes a payment summary with a
+  pending-on-delivery default.
+- Data layer payment mapping: payment method forwarded to the RPC payload,
+  payment summary mapped from the remote response, invalid remote payment
+  values mapped to a neutral domain failure.
+- Localized payment method/status copy in pt_BR/pt/en; obsolete
+  `cartCheckoutPlaceholder` key removed; localization guards green.
+- `CheckoutViewModel` sends `PaymentMethod.cashOnDelivery` explicitly; the
+  checkout payment section renders the localized method description and
+  the success state renders the localized payment status.
+- Accepted debt: `orders.payment_method` remains as transitional
+  duplication while `payments.method` is the new source of truth.
+
+## Sprint 11 Validation
+
+- Focused regression suite: 72 tests across checkout data/presentation,
+  cart, router/auth-recovery, and localization/theme guards.
+- Consolidated `flutter test` matrix: 206 tests passed.
+- Dart MCP `analyze_files` clean on every touched slice.
+
+## Sprint 11 Plan
+
+- `docs/project-management/SPRINT_11.md`
+- Real Trello story (Done): `https://trello.com/c/cQDUVgYR`
+
+## Sprint 11 Deferred
+
+- Payment gateway integration, card capture, and payment status
+  transitions.
+- Removal of the transitional `orders.payment_method` duplication (future
+  approved migration slice).
+- Order history (`/orders`), tracking, Realtime, coupons, dynamic delivery
+  fee, persisted profile/address data, and cart persistence across
+  restarts.
+
+## Previous Sprint
+
+Sprint 10 - Checkout (Closed)
+
+## Sprint 10 Status
 
 Closed on 2026-07-07. All 9 tasks were implemented, validated, and
 committed task-by-task on `feat/checkout`. The consolidated regression
