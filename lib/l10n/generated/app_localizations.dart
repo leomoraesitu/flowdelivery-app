@@ -1042,6 +1042,72 @@ abstract class AppLocalizations {
   /// In pt_BR, this message translates to:
   /// **'Voltar para o inicio'**
   String get checkoutSuccessBackToHome;
+
+  /// Title shown on the order history page.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Meus pedidos'**
+  String get ordersPageTitle;
+
+  /// Status chip label for an order that has been placed. This is the only supported order status in this slice.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Pedido realizado'**
+  String get ordersStatusPlaced;
+
+  /// Pluralized item count shown on an order history card.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'{count, plural, one{{count} item} other{{count} itens}}'**
+  String ordersItemCount(int count);
+
+  /// Label shown before the formatted order total on an order history card.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Total'**
+  String get ordersTotalLabel;
+
+  /// Title shown when order history loads successfully with no orders.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Voce ainda nao tem pedidos'**
+  String get ordersEmptyTitle;
+
+  /// Body copy shown when order history loads successfully with no orders.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Quando voce finalizar um pedido, ele aparecera aqui.'**
+  String get ordersEmptyMessage;
+
+  /// Button label on the empty order history state that navigates back to Home.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Explorar restaurantes'**
+  String get ordersEmptyAction;
+
+  /// Title shown when order history loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Nao foi possivel carregar seus pedidos'**
+  String get ordersErrorTitle;
+
+  /// Body copy shown when order history loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tente novamente para atualizar seu historico de pedidos.'**
+  String get ordersErrorMessage;
+
+  /// Retry button label shown after order history loading fails.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Tentar novamente'**
+  String get ordersRetryAction;
+
+  /// Semantic label announced for the order history loading indicator.
+  ///
+  /// In pt_BR, this message translates to:
+  /// **'Carregando historico de pedidos'**
+  String get ordersLoadingSemanticLabel;
 }
 
 class _AppLocalizationsDelegate

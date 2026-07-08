@@ -28,7 +28,9 @@ Epics:
 
 ## Status
 
-Planned. Awaiting explicit approval before implementation.
+Complete locally on 2026-07-08. All eight tasks were implemented and
+validated; Sprint 12 documentation, memory, technical debt notes, and the real
+Trello card were reconciled after evidence, and the card was moved to `🎉 Done`.
 
 ## Sprint Goal
 
@@ -73,18 +75,18 @@ from newest to oldest.
 
 ## Backlog
 
-- [ ] Task 1 - domain: order history entity, status, repository contract.
-- [ ] Task 2 - data: DTO, Supabase datasource, repository implementation.
-- [ ] Task 3 - providers and app composition.
-- [ ] Task 4 - ARB copy for order history.
-- [ ] Task 5 - UI: OrdersPage states and order card.
-- [ ] Task 6 - routing: protected `/orders` + Home bottom-nav wiring.
-- [ ] Task 7 - full validation and regression matrix.
-- [ ] Task 8 - docs, memory, technical debt, and Trello reconciliation.
+- [x] Task 1 - domain: order history entity, status, repository contract.
+- [x] Task 2 - data: DTO, Supabase datasource, repository implementation.
+- [x] Task 3 - providers and app composition.
+- [x] Task 4 - ARB copy for order history.
+- [x] Task 5 - UI: OrdersPage states and order card.
+- [x] Task 6 - routing: protected `/orders` + Home bottom-nav wiring.
+- [x] Task 7 - full validation and regression matrix.
+- [x] Task 8 - docs, memory, technical debt, and Trello reconciliation.
 
 ## Acceptance Criteria
 
-- [ ] Authenticated users see only their own orders on `/orders`, newest
+- [x] Authenticated users see only their own orders on `/orders`, newest
   first, with RLS ownership enforced server-side.
 - [ ] History loads through one embedded PostgREST query (no N+1).
 - [ ] Empty history renders the localized empty state as success.
@@ -97,8 +99,8 @@ from newest to oldest.
   item count, formatted total, and the honest `placed` status chip.
 - [ ] Supabase details stay inside datasource/repository layers.
 - [ ] Localization Guard and Theme Guard remain green.
-- [ ] Focused suites and the consolidated regression matrix pass.
-- [ ] Docs, memory, technical debt, and Trello are reconciled only after
+- [x] Focused suites and the consolidated regression matrix pass.
+- [x] Docs, memory, technical debt, and Trello are reconciled only after
   validation evidence exists.
 
 ## Out of Scope
@@ -181,6 +183,85 @@ deferred to future approved slices.
 - Checklist items are completed only after local implementation evidence
   exists; real parity is verified through the local Trello MCP before
   closure.
+- 2026-07-08 reconciliation note: Task 1 has local evidence
+  (`flutter test test/features/orders/domain/order_history_domain_test.dart`
+  passed with 4 tests; touched-file `dart analyze` reported no issues).
+  Real Trello reconciliation was completed through the local Claude Trello MCP
+  (`@delorenj/mcp-server-trello`): Scope Task 1 is complete, Validation
+  "Domain entity equality/defaults tests pass and touched domain files analyze
+  clean" is complete, and an evidence comment was added. Verified card parity:
+  Scope `1/8`, Validation `1/7`, overall `2/41`.
+- 2026-07-08 Task 2 local evidence: focused data tests passed
+  (`flutter test test/features/orders/data/order_history_remote_datasource_test.dart
+  test/features/orders/data/order_history_repository_impl_test.dart`) and
+  touched-file `dart analyze` reported no issues. Supabase MCP read-only check
+  confirmed `orders -> restaurants` and `order_items -> orders` FK support,
+  authenticated SELECT RLS policies for `orders`/`order_items`, and the
+  representative join/embed shape. Real Trello reconciliation was completed:
+  Scope Task 2 is complete, Validation datasource tests are complete,
+  Validation Supabase MCP read check is complete, and an evidence comment was
+  added. Verified card parity: Scope `2/8`, Validation `3/7`, overall `5/41`.
+- 2026-07-08 Task 3 local evidence: focused provider tests passed
+  (`flutter test test/features/orders/presentation/order_history_providers_test.dart`);
+  touched-file `dart analyze` reported no issues; the focused orders
+  domain/data/provider slice passed 19 tests. Real Trello reconciliation was
+  completed: Scope Task 3 is complete, Validation provider tests are complete,
+  and an evidence comment was added. Verified card parity: Scope `3/8`,
+  Validation `4/7`, overall `7/41`.
+- 2026-07-08 Task 4 evidence: order-history copy was added to
+  `app_pt_BR.arb`, `app_pt.arb`, and `app_en.arb`; `flutter gen-l10n`
+  refreshed `AppLocalizations`; focused localization guards passed
+  (`flutter test test/app/l10n/arb_catalog_parity_test.dart
+  test/app/l10n/generated_localizations_freshness_test.dart
+  test/app/l10n/no_hardcoded_ui_strings_test.dart`) with 9 tests; focused
+  l10n `dart analyze` reported no issues. Real Trello reconciliation was
+  completed: Scope Task 4 is complete; Localization Guard evidence-backed
+  items are complete except UI consumption through `AppLocalizations`, which
+  remains open until Task 5 renders `OrdersPage`. Verified card parity: Scope
+  `4/8`, Validation `4/7`, Localization Guard `5/6`, overall `13/41`.
+- 2026-07-08 Task 5 local evidence: `OrdersPage` renders localized loading,
+  error, empty, and success states from `orderHistoryProvider`; order cards use
+  `AppMediaImage`, `MaterialLocalizations` for dates, `ordersItemCount` ICU
+  plural copy, `formatPriceInCents`, and the honest localized `placed` status
+  chip. Focused widget tests passed
+  (`flutter test test/features/orders/presentation/orders_page_test.dart`) with
+  5 tests; touched-file `dart analyze` reported no issues; Localization Guard
+  and Theme Guard passed
+  (`flutter test test/app/l10n/no_hardcoded_ui_strings_test.dart
+  test/app/l10n/arb_catalog_parity_test.dart
+  test/app/l10n/generated_localizations_freshness_test.dart
+  test/app/theme/no_hardcoded_visual_values_test.dart`) with 10 tests. Real
+  Trello reconciliation was completed: Scope Task 5 is complete, OrdersPage
+  widget validation is complete, Localization Guard and Theme Guard are fully
+  complete, and evidence-backed acceptance criteria for query shape,
+  empty/unknown-status behavior, no migration/write behavior, card content,
+  and Supabase/UI isolation are complete. Verified card parity: Scope `5/8`,
+  Acceptance Criteria `5/9`, Validation `5/7`, Localization Guard `6/6`,
+  Theme Guard `5/5`, overall `26/41`.
+- 2026-07-08 Task 6 local evidence: `/orders` was added to centralized
+  `AppRoutes`/GoRouter, protected by the existing auth redirect, and wired
+  from Home's "Pedidos" bottom-nav destination through an injected
+  `onOpenOrders` callback. Browse and Account bottom-nav destinations remain
+  deferred no-ops. Focused router tests passed
+  (`flutter test test/app/routes/app_router_test.dart`) with 17 tests; focused
+  Home widget tests passed
+  (`flutter test test/features/home/presentation/home_page_test.dart`) with
+  11 tests; touched-file `dart analyze` reported no issues. No new
+  user-facing copy or UI styling was introduced. Real Trello reconciliation was
+  completed: Scope Task 6 is complete, router/Home validation is complete, and
+  the `/orders` protected-route plus Home bottom-nav "Pedidos" acceptance
+  criteria are complete. Verified card parity: Scope `6/8`, Acceptance
+  Criteria `7/9`, Validation `6/7`, Localization Guard `6/6`, Theme Guard
+  `5/5`, overall `30/41`.
+- 2026-07-08 Task 7 local evidence: focused regression matrix passed for
+  orders, Home, router, cart, checkout, l10n, and theme guards with 28 tests;
+  targeted `dart analyze` on the touched slice reported no issues. Real Trello
+  reconciliation completed Scope Task 7 and the consolidated Validation item.
+- 2026-07-08 Task 8 local evidence: Sprint 12 docs, memory, and technical debt
+  notes were reconciled after validation, and the real Trello card was finalized
+  with all evidence-backed checklist items complete. Verified card parity:
+  Scope `8/8`, Acceptance Criteria `9/9`, Validation `7/7`, Localization Guard
+  `6/6`, Theme Guard `5/5`, overall `41/41`; card moved to `🎉 Done`.
 
 ## Notes
 

@@ -155,5 +155,16 @@
   "checkoutSuccessTitle": "Order confirmed!",
   "checkoutSuccessMessage": "Your order {orderId} has been received and is being prepared.",
   "checkoutSuccessPaymentStatus": "Payment status: {paymentStatus}",
-  "checkoutSuccessBackToHome": "Back to Home"
+  "checkoutSuccessBackToHome": "Back to Home",
+  "ordersPageTitle": "My orders",
+  "ordersStatusPlaced": "Order placed",
+  "ordersItemCount": "{count, plural, one{{count} item} other{{count} items}}",
+  "ordersTotalLabel": "Total",
+  "ordersEmptyTitle": "You do not have any orders yet",
+  "ordersEmptyMessage": "When you place an order, it will appear here.",
+  "ordersEmptyAction": "Explore restaurants",
+  "ordersErrorTitle": "Could not load your orders",
+  "ordersErrorMessage": "Try again to refresh your order history.",
+  "ordersRetryAction": "Try again",
+  "ordersLoadingSemanticLabel": "Loading order history"
 }

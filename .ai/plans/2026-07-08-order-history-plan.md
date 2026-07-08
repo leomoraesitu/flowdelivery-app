@@ -265,6 +265,10 @@ composition-root override convention.
 
 **Goal:** Add all user-facing history copy before widgets exist.
 
+**Status:** Complete locally on 2026-07-08. Added the order-history ARB copy in
+pt_BR/pt/en, regenerated `AppLocalizations`, and validated the focused
+localization guard slice.
+
 **Files to update:**
 
 - `lib/l10n/app_pt_BR.arb` (template, with descriptions)
@@ -288,6 +292,13 @@ composition-root override convention.
 - `flutter gen-l10n`;
 - ARB catalog parity guard, generated freshness guard, hardcoded copy guard.
 
+**Evidence:**
+
+- `flutter test test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart`
+  passed with 9 tests.
+- `dart analyze lib/l10n/generated/app_localizations.dart lib/l10n/generated/app_localizations_en.dart lib/l10n/generated/app_localizations_pt.dart test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/l10n/no_hardcoded_ui_strings_test.dart`
+  reported no issues.
+
 **Skills aplicáveis:** `flutter-setup-localization`, `fd-code-reviewer`.
 
 **Localization Guard:** required. **Theme Guard:** not applicable.
@@ -295,6 +306,11 @@ composition-root override convention.
 ### Task 5 — UI: OrdersPage states and order card
 
 **Goal:** Render the honest history list per the approved prototype subset.
+
+**Status:** Complete locally on 2026-07-08. `OrdersPage` renders the four
+async states and order cards using localized copy, semantic theme roles, app
+tokens, shared media rendering, localized date formatting, and shared currency
+formatting.
 
 **Files to create:**
 
@@ -317,6 +333,15 @@ composition-root override convention.
 - widget tests for the four states + card content rendering;
 - Localization Guard and Theme Guard suites green.
 
+**Evidence:**
+
+- `flutter test test/features/orders/presentation/orders_page_test.dart`
+  passed with 5 tests.
+- `dart analyze lib/features/orders/presentation/pages/orders_page.dart lib/features/orders/presentation/widgets/order_history_sections.dart test/features/orders/presentation/orders_page_test.dart`
+  reported no issues.
+- `flutter test test/app/l10n/no_hardcoded_ui_strings_test.dart test/app/l10n/arb_catalog_parity_test.dart test/app/l10n/generated_localizations_freshness_test.dart test/app/theme/no_hardcoded_visual_values_test.dart`
+  passed with 10 tests.
+
 **Skills aplicáveis:** `fd-flutter-teacher`, `flutter-add-widget-test`,
 `flutter-build-responsive-layout`.
 
@@ -325,6 +350,11 @@ composition-root override convention.
 ### Task 6 — Routing: protected `/orders` + Home bottom-nav wiring
 
 **Goal:** Make order history reachable through centralized routing.
+
+**Status:** Complete locally on 2026-07-08. `/orders` is registered in the
+centralized router, protected by the existing auth redirect, and Home's
+"Pedidos" bottom-nav destination invokes an injected navigation callback while
+the other deferred tabs remain idle.
 
 **Files to update:**
 
@@ -348,6 +378,14 @@ composition-root override convention.
 - Home widget test updated for the new tab behavior;
 - analyze touched files.
 
+**Evidence:**
+
+- `flutter test test/app/routes/app_router_test.dart` passed with 17 tests.
+- `flutter test test/features/home/presentation/home_page_test.dart` passed
+  with 11 tests.
+- `dart analyze lib/app/routes/app_routes.dart lib/app/routes/app_router.dart lib/features/home/presentation/pages/home_page.dart test/app/routes/app_router_test.dart test/features/home/presentation/home_page_test.dart`
+  reported no issues.
+
 **Skills aplicáveis:** `flutter-setup-declarative-routing`, `fd-architect`.
 
 **Localization Guard / Theme Guard:** only if copy/styling changes.
@@ -356,6 +394,10 @@ composition-root override convention.
 
 **Goal:** Prove the read slice did not regress checkout/cart/Home/router
 behavior.
+
+**Status:** Complete locally on 2026-07-08. The focused regression matrix
+passed for orders, Home, router, cart, checkout, localization guards, and the
+theme guard, and the targeted analyzer slice reported no issues.
 
 **Validation targets:**
 
@@ -367,6 +409,12 @@ behavior.
 - Dart MCP `add_roots` before Dart validation (project rule).
 
 **Skills aplicáveis:** `fd-qa-engineer`, `dart-run-static-analysis`.
+
+**Evidence:**
+
+- `flutter test` focused matrix over orders, Home, router, cart, checkout, and
+  guard suites passed with 28 tests.
+- `dart analyze` on the touched slice reported no issues.
 
 ### Task 8 — Docs, memory, technical debt, and Trello reconciliation
 

@@ -147,6 +147,7 @@ Notes:
 - This debt remains `Reduced / Monitoring` because the repo can guard versioned artifacts, but cannot prove external Trello state without MCP/API access and human-supervised validation.
 - Sprint 4 Task 4 external parity was verified against `[FEAT] Home discovery interactions` (`https://trello.com/c/5EUe5qOp`) after local validation. Only evidence-backed items were completed; Task 5 regression coverage and Task 6 final reconciliation remain open.
 - Sprint 4 final parity was rechecked after Task 5 validation and Task 6 reconciliation. The real card now has Scope `6/6`, Validation `8/8`, Localization Guard `7/7`, Theme Guard `5/5`, Acceptance Criteria `8/8`, and Dependencies `6/6`, with a final evidence comment recorded.
+- Sprint 12 order history closed the same workflow again: implementation evidence was validated first, then docs/memory/technical-debt notes were reconciled, and the real Trello card was finalized with all evidence-backed checklist items complete.
 
 ### Product details slice — seed coverage and accepted minor debts (Sprint 6 / Sprint 7)
 
