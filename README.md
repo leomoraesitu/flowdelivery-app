@@ -37,7 +37,7 @@ FlowDelivery is a modern delivery platform developed as a portfolio-grade softwa
 - CI/CD readiness
 - Professional engineering conventions
 
-As of the current development line, FlowDelivery ships a validated commerce path on top of the authenticated catalog experience: remote Home feed, restaurant details, product details, Storage-backed catalog media, session-local cart, protected checkout, and persisted order creation through Supabase. Sprint 11 extends checkout with a persisted payment foundation and localized payment status copy. PT-BR/EN localization, Theme Guard, and Localization Guard are enforced across presentation slices, with release APKs and checksums attached under GitHub Releases when a version tag is published.
+As of the current release line, FlowDelivery ships a validated commerce path on top of the authenticated catalog experience: remote Home feed, restaurant details, product details, Storage-backed catalog media, session-local cart, protected checkout with payment foundation, and protected order history backed by Supabase. PT-BR/EN localization, Theme Guard, and Localization Guard are enforced across presentation slices, with release APKs and checksums attached under GitHub Releases when a version tag is published.
 
 ---
 

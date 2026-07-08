@@ -8,6 +8,47 @@ The project follows Semantic Versioning and Conventional Commits.
 
 No unreleased changes yet.
 
+## [0.6.0] - 2026-07-08
+
+### Added
+
+- Protected order history flow (Sprint 12): authenticated users can open
+  `/orders` and review their own persisted orders, newest first.
+- New `orders` feature module with pure-Dart domain contracts,
+  Supabase-backed datasource/repository, provider wiring, and localized
+  presentation states.
+- Single embedded order history read query over `orders`,
+  `restaurants(name,image_asset_path)`, and `order_items(quantity)`, reusing
+  the existing RLS ownership model and indexes.
+- Home bottom navigation wiring for the `Pedidos` destination plus route
+  protection coverage for `/orders`.
+- Localized order history copy across pt_BR, pt, and en, plus regenerated
+  `AppLocalizations` outputs.
+- Focused Sprint 12 regression evidence (28 tests), targeted analyzer-green
+  validation, and final Trello parity `41/41` before release.
+- Android release APK artifact for `v0.6.0`, with SHA-1 and SHA-256
+  checksum assets attached to the GitHub Release.
+
+### Changed
+
+- README live demo and release references now point to the `v0.6.0` demo
+  line and the current app demo GIF.
+- Sprint 12 docs, project memory, technical debt notes, and release
+  governance artifacts were reconciled after validation.
+
+### Known Limitations
+
+- Order history remains read-only: no reorder, cancellation, editing, or
+  order details page yet.
+- Status transitions, tracking timeline, Realtime updates, filtering,
+  searching, pagination, and history tabs remain future slices.
+- Delivery address is still a localized demo placeholder; persisted profile
+  addresses are deferred.
+- Payment remains a demo cash-on-delivery flow without gateway
+  integration or settlement lifecycle.
+- Cart state remains session-local until a separate persistence slice is
+  approved.
+
 ## [0.5.0] - 2026-07-08
 
 ### Added
