@@ -79,7 +79,7 @@ from newest to oldest.
 - [x] Task 3 - providers and app composition.
 - [x] Task 4 - ARB copy for order history.
 - [x] Task 5 - UI: OrdersPage states and order card.
-- [ ] Task 6 - routing: protected `/orders` + Home bottom-nav wiring.
+- [x] Task 6 - routing: protected `/orders` + Home bottom-nav wiring.
 - [ ] Task 7 - full validation and regression matrix.
 - [ ] Task 8 - docs, memory, technical debt, and Trello reconciliation.
 
@@ -237,6 +237,21 @@ deferred to future approved slices.
   and Supabase/UI isolation are complete. Verified card parity: Scope `5/8`,
   Acceptance Criteria `5/9`, Validation `5/7`, Localization Guard `6/6`,
   Theme Guard `5/5`, overall `26/41`.
+- 2026-07-08 Task 6 local evidence: `/orders` was added to centralized
+  `AppRoutes`/GoRouter, protected by the existing auth redirect, and wired
+  from Home's "Pedidos" bottom-nav destination through an injected
+  `onOpenOrders` callback. Browse and Account bottom-nav destinations remain
+  deferred no-ops. Focused router tests passed
+  (`flutter test test/app/routes/app_router_test.dart`) with 17 tests; focused
+  Home widget tests passed
+  (`flutter test test/features/home/presentation/home_page_test.dart`) with
+  11 tests; touched-file `dart analyze` reported no issues. No new
+  user-facing copy or UI styling was introduced. Real Trello reconciliation was
+  completed: Scope Task 6 is complete, router/Home validation is complete, and
+  the `/orders` protected-route plus Home bottom-nav "Pedidos" acceptance
+  criteria are complete. Verified card parity: Scope `6/8`, Acceptance
+  Criteria `7/9`, Validation `6/7`, Localization Guard `6/6`, Theme Guard
+  `5/5`, overall `30/41`.
 
 ## Notes
 

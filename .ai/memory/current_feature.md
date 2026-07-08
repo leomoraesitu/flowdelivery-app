@@ -42,6 +42,21 @@ Criteria `5/9`, Validation `5/7`, Localization Guard `6/6`, Theme Guard `5/5`,
 overall `26/41`; routing, bottom-nav, authenticated `/orders`, and the
 consolidated matrix remain open for later tasks.
 
+Task 6 is complete in the local worktree: `/orders` is registered as a
+protected centralized GoRouter route, Home receives an injected `onOpenOrders`
+callback for the "Pedidos" bottom-nav destination, Browse/Account remain
+deferred no-ops, and focused router/Home validation is green. Real Trello
+reconciliation was completed after evidence: Scope `6/8`, Acceptance Criteria
+`7/9`, Validation `6/7`, Localization Guard `6/6`, Theme Guard `5/5`, overall
+`30/41`; consolidated matrix and final docs/technical-debt closure remain open
+for later tasks.
+
+Task 7 is complete in the local worktree: the focused regression matrix passed
+for orders, Home, router, cart, checkout, l10n, and theme guards, and the
+targeted `dart analyze` slice reported no issues. No new copy or UI styling was
+introduced in this step; it only validated the existing implementation and
+kept the remaining docs/Trello reconciliation for Task 8.
+
 ## Sprint 12 Progress
 
 - [x] Task 1 — domain: order history entity, status, repository contract
@@ -64,8 +79,15 @@ consolidated matrix remain open for later tasks.
   Localization Guard + Theme Guard green with 10 tests; real Trello parity
   updated to Scope `5/8`, Acceptance Criteria `5/9`, Validation `5/7`,
   Localization Guard `6/6`, Theme Guard `5/5`, overall `26/41`).
-- [ ] Task 6 — routing: protected `/orders` + Home bottom-nav wiring.
-- [ ] Task 7 — full validation and regression matrix.
+- [x] Task 6 — routing: protected `/orders` + Home bottom-nav wiring
+  (focused router tests green with 17 tests; Home widget tests green with
+  11 tests; touched-file analysis green; no new copy/styling introduced; real
+  Trello parity updated to Scope `6/8`, Acceptance Criteria `7/9`,
+  Validation `6/7`, overall `30/41`).
+- [x] Task 7 — full validation and regression matrix
+  (focused regression matrix green with 28 tests; targeted analyzer green; no
+  new copy/styling introduced; Task 8 remains open for docs/memory/Trello
+  reconciliation).
 - [ ] Task 8 — docs, memory, technical debt, and Trello reconciliation.
 
 ## Architecture Notes (Sprint 12)
@@ -98,6 +120,12 @@ consolidated matrix remain open for later tasks.
 - Task 5 UI uses semantic Material theme roles and app tokens only; no direct
   Supabase, repository calls, hardcoded user copy, or hardcoded visual values
   were introduced in presentation.
+- Task 6 follows the existing router-injected callback convention:
+  centralized GoRouter owns `/orders`, while Home only invokes `onOpenOrders`
+  from the "Pedidos" destination and remains route-string agnostic.
+- Task 7 is validation-only: it does not change architecture or UI; it proves
+  the read slice remains stable across orders, Home, router, cart, checkout,
+  localization, and theme guards.
 
 ## Previous Feature
 

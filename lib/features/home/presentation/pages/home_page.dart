@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
-  const HomePage({this.onRestaurantSelected, super.key});
+  const HomePage({this.onRestaurantSelected, this.onOpenOrders, super.key});
 
   final ValueChanged<String>? onRestaurantSelected;
+  final VoidCallback? onOpenOrders;
 
   static const double _desktopContentMaxWidth = 880;
 
@@ -19,7 +20,10 @@ class HomePage extends ConsumerWidget {
     final l10n = AppLocalizations.of(context);
 
     return Scaffold(
-      bottomNavigationBar: _HomeBottomNavigationBar(l10n: l10n),
+      bottomNavigationBar: _HomeBottomNavigationBar(
+        l10n: l10n,
+        onOpenOrders: onOpenOrders,
+      ),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -279,15 +283,20 @@ class _HomeFeedStateCard extends StatelessWidget {
 }
 
 class _HomeBottomNavigationBar extends StatelessWidget {
-  const _HomeBottomNavigationBar({required this.l10n});
+  const _HomeBottomNavigationBar({required this.l10n, this.onOpenOrders});
 
   final AppLocalizations l10n;
+  final VoidCallback? onOpenOrders;
 
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
       selectedIndex: 0,
-      onDestinationSelected: (_) {},
+      onDestinationSelected: (index) {
+        if (index == 2) {
+          onOpenOrders?.call();
+        }
+      },
       destinations: [
         NavigationDestination(
           icon: const Icon(Icons.home_outlined, size: AppSizes.iconLg),

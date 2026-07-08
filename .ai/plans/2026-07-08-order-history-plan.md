@@ -351,6 +351,11 @@ formatting.
 
 **Goal:** Make order history reachable through centralized routing.
 
+**Status:** Complete locally on 2026-07-08. `/orders` is registered in the
+centralized router, protected by the existing auth redirect, and Home's
+"Pedidos" bottom-nav destination invokes an injected navigation callback while
+the other deferred tabs remain idle.
+
 **Files to update:**
 
 - `lib/app/routes/` (protected `/orders` route)
@@ -373,6 +378,14 @@ formatting.
 - Home widget test updated for the new tab behavior;
 - analyze touched files.
 
+**Evidence:**
+
+- `flutter test test/app/routes/app_router_test.dart` passed with 17 tests.
+- `flutter test test/features/home/presentation/home_page_test.dart` passed
+  with 11 tests.
+- `dart analyze lib/app/routes/app_routes.dart lib/app/routes/app_router.dart lib/features/home/presentation/pages/home_page.dart test/app/routes/app_router_test.dart test/features/home/presentation/home_page_test.dart`
+  reported no issues.
+
 **Skills aplicáveis:** `flutter-setup-declarative-routing`, `fd-architect`.
 
 **Localization Guard / Theme Guard:** only if copy/styling changes.
@@ -381,6 +394,10 @@ formatting.
 
 **Goal:** Prove the read slice did not regress checkout/cart/Home/router
 behavior.
+
+**Status:** Complete locally on 2026-07-08. The focused regression matrix
+passed for orders, Home, router, cart, checkout, localization guards, and the
+theme guard, and the targeted analyzer slice reported no issues.
 
 **Validation targets:**
 
@@ -392,6 +409,12 @@ behavior.
 - Dart MCP `add_roots` before Dart validation (project rule).
 
 **Skills aplicáveis:** `fd-qa-engineer`, `dart-run-static-analysis`.
+
+**Evidence:**
+
+- `flutter test` focused matrix over orders, Home, router, cart, checkout, and
+  guard suites passed with 28 tests.
+- `dart analyze` on the touched slice reported no issues.
 
 ### Task 8 — Docs, memory, technical debt, and Trello reconciliation
 
