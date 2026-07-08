@@ -28,8 +28,9 @@ Epics:
 
 ## Status
 
-In progress. Task 1 has local implementation evidence and matching real Trello
-checklist reconciliation.
+Complete locally on 2026-07-08. All eight tasks were implemented and
+validated; Sprint 12 documentation, memory, technical debt notes, and the real
+Trello card were reconciled after evidence, and the card was moved to `🎉 Done`.
 
 ## Sprint Goal
 
@@ -80,12 +81,12 @@ from newest to oldest.
 - [x] Task 4 - ARB copy for order history.
 - [x] Task 5 - UI: OrdersPage states and order card.
 - [x] Task 6 - routing: protected `/orders` + Home bottom-nav wiring.
-- [ ] Task 7 - full validation and regression matrix.
-- [ ] Task 8 - docs, memory, technical debt, and Trello reconciliation.
+- [x] Task 7 - full validation and regression matrix.
+- [x] Task 8 - docs, memory, technical debt, and Trello reconciliation.
 
 ## Acceptance Criteria
 
-- [ ] Authenticated users see only their own orders on `/orders`, newest
+- [x] Authenticated users see only their own orders on `/orders`, newest
   first, with RLS ownership enforced server-side.
 - [ ] History loads through one embedded PostgREST query (no N+1).
 - [ ] Empty history renders the localized empty state as success.
@@ -98,8 +99,8 @@ from newest to oldest.
   item count, formatted total, and the honest `placed` status chip.
 - [ ] Supabase details stay inside datasource/repository layers.
 - [ ] Localization Guard and Theme Guard remain green.
-- [ ] Focused suites and the consolidated regression matrix pass.
-- [ ] Docs, memory, technical debt, and Trello are reconciled only after
+- [x] Focused suites and the consolidated regression matrix pass.
+- [x] Docs, memory, technical debt, and Trello are reconciled only after
   validation evidence exists.
 
 ## Out of Scope
@@ -252,6 +253,15 @@ deferred to future approved slices.
   criteria are complete. Verified card parity: Scope `6/8`, Acceptance
   Criteria `7/9`, Validation `6/7`, Localization Guard `6/6`, Theme Guard
   `5/5`, overall `30/41`.
+- 2026-07-08 Task 7 local evidence: focused regression matrix passed for
+  orders, Home, router, cart, checkout, l10n, and theme guards with 28 tests;
+  targeted `dart analyze` on the touched slice reported no issues. Real Trello
+  reconciliation completed Scope Task 7 and the consolidated Validation item.
+- 2026-07-08 Task 8 local evidence: Sprint 12 docs, memory, and technical debt
+  notes were reconciled after validation, and the real Trello card was finalized
+  with all evidence-backed checklist items complete. Verified card parity:
+  Scope `8/8`, Acceptance Criteria `9/9`, Validation `7/7`, Localization Guard
+  `6/6`, Theme Guard `5/5`, overall `41/41`; card moved to `🎉 Done`.
 
 ## Notes
 

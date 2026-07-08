@@ -57,6 +57,11 @@ targeted `dart analyze` slice reported no issues. No new copy or UI styling was
 introduced in this step; it only validated the existing implementation and
 kept the remaining docs/Trello reconciliation for Task 8.
 
+Task 8 is complete in the local worktree: `docs/project-management/SPRINT_12.md`
+and the feature memory were reconciled, technical debt notes were updated, and
+the real Trello card was finalized with all evidence-backed checklists
+completed. The order history sprint is now closed locally and on Trello.
+
 ## Sprint 12 Progress
 
 - [x] Task 1 — domain: order history entity, status, repository contract
@@ -88,7 +93,9 @@ kept the remaining docs/Trello reconciliation for Task 8.
   (focused regression matrix green with 28 tests; targeted analyzer green; no
   new copy/styling introduced; Task 8 remains open for docs/memory/Trello
   reconciliation).
-- [ ] Task 8 — docs, memory, technical debt, and Trello reconciliation.
+- [x] Task 8 — docs, memory, technical debt, and Trello reconciliation
+  (Sprint 12 docs/memory/technical debt reconciled; real Trello card finalized
+  and moved to `🎉 Done`).
 
 ## Architecture Notes (Sprint 12)
 
@@ -126,6 +133,8 @@ kept the remaining docs/Trello reconciliation for Task 8.
 - Task 7 is validation-only: it does not change architecture or UI; it proves
   the read slice remains stable across orders, Home, router, cart, checkout,
   localization, and theme guards.
+- Task 8 is governance-only: it closes the sprint records and Trello parity
+  after the implementation evidence already validated the slice.
 
 ## Previous Feature
 
