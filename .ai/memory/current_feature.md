@@ -2,9 +2,52 @@
 
 ## Active Feature
 
-Payments Foundation (Sprint 11 — Closed)
+Order History (Sprint 12 — In Progress)
 
 ## Active Status
+
+Sprint 12 started on 2026-07-08. The slice adds a read-only order history for
+authenticated users, proving the checkout write path can be read back through
+RLS-scoped transactional data without leaking Supabase details into UI.
+
+Task 1 is complete in the local worktree: `OrderHistoryEntry` and
+`OrderHistoryStatus` now model a read-only history row in pure Dart,
+`OrderHistoryRepository` exposes `loadOrderHistory()` with empty-list success
+semantics, and focused domain validation is green.
+
+## Sprint 12 Progress
+
+- [x] Task 1 — domain: order history entity, status, repository contract
+  (focused domain test + touched-file analysis green).
+- [ ] Task 2 — data: DTO, Supabase datasource, repository implementation.
+- [ ] Task 3 — providers and app composition.
+- [ ] Task 4 — ARB copy for order history.
+- [ ] Task 5 — UI: OrdersPage states and order card.
+- [ ] Task 6 — routing: protected `/orders` + Home bottom-nav wiring.
+- [ ] Task 7 — full validation and regression matrix.
+- [ ] Task 8 — docs, memory, technical debt, and Trello reconciliation.
+
+## Architecture Notes (Sprint 12)
+
+- Read path mirrors the validated read-only pattern:
+  `OrdersPage` → `orderHistoryProvider` → `OrderHistoryRepository` →
+  datasource → Supabase.
+- No ViewModel for the initial listing slice: the page performs a single
+  read with no user actions, following the ADR-003 precedent from product
+  details.
+- Empty history is success (`[]`), not an exception.
+- The current domain status is intentionally honest: `placed` only. Tabs,
+  tracking, cancellation, reorder, and order details remain out of scope.
+- Supabase, embedded PostgREST payloads, and public media URL resolution
+  belong to the future data layer, not the entity or UI.
+- Localization and Theme Guards are not applicable to Task 1 because it adds
+  no user-facing copy and no presentation styling.
+
+## Previous Feature
+
+Payments Foundation (Sprint 11 — Closed)
+
+## Sprint 11 Status
 
 Sprint 11 closed on 2026-07-07. The slice delivered persisted payment
 foundation for checkout: `payments` table + atomic `create_order` payment

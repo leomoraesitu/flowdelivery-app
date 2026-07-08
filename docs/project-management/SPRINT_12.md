@@ -28,7 +28,8 @@ Epics:
 
 ## Status
 
-Planned. Awaiting explicit approval before implementation.
+In progress. Task 1 has local implementation evidence and matching real Trello
+checklist reconciliation.
 
 ## Sprint Goal
 
@@ -73,7 +74,7 @@ from newest to oldest.
 
 ## Backlog
 
-- [ ] Task 1 - domain: order history entity, status, repository contract.
+- [x] Task 1 - domain: order history entity, status, repository contract.
 - [ ] Task 2 - data: DTO, Supabase datasource, repository implementation.
 - [ ] Task 3 - providers and app composition.
 - [ ] Task 4 - ARB copy for order history.
@@ -181,6 +182,14 @@ deferred to future approved slices.
 - Checklist items are completed only after local implementation evidence
   exists; real parity is verified through the local Trello MCP before
   closure.
+- 2026-07-08 reconciliation note: Task 1 has local evidence
+  (`flutter test test/features/orders/domain/order_history_domain_test.dart`
+  passed with 4 tests; touched-file `dart analyze` reported no issues).
+  Real Trello reconciliation was completed through the local Claude Trello MCP
+  (`@delorenj/mcp-server-trello`): Scope Task 1 is complete, Validation
+  "Domain entity equality/defaults tests pass and touched domain files analyze
+  clean" is complete, and an evidence comment was added. Verified card parity:
+  Scope `1/8`, Validation `1/7`, overall `2/41`.
 
 ## Notes
 
