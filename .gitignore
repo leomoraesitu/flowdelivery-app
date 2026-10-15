@@ -59,3 +59,6 @@ key.properties
 # Claude Code: junction to .agents/skills (source of truth lives there) + local settings
 .claude/skills/
 .claude/settings.local.json
+
+# Codex CLI config (contains MCP tokens)
+.codex/
